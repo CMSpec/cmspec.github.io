@@ -9,29 +9,29 @@
 export const siteContent = {
   brand: {
     name: "CMSpec",
-    owner: "Camila Muñoz",
-    email: "camila@example.com",
-    tagline: "Un espectro de ideas, investigación y aprendizaje.",
+    owner: "Camila Muñoz Santander",
+    email: "camila.mspec@gmail.com",
+    tagline: "Un espectro de intereses entre investigación, aprendizaje y curiosidad.",
   },
 
   navigation: {
     ariaLabel: "Navegación principal",
     links: [
       { label: "Espectro", href: "#espectro" },
-      { label: "Laboratorio", href: "#laboratorio" },
+      { label: "Visualización", href: "#laboratorio" },
       { label: "Archivo", href: "#archivo" },
     ],
-    contactLabel: "Conversemos",
+    contactLabel: "Contacto",
   },
 
   hero: {
-    kicker: "Cuaderno abierto de Camila Muñoz",
+    kicker: "Un Cuaderno de notas de Camila",
     title: "Ideas a través de todo el",
     highlightedTitle: "espectro.",
     introduction:
-      "Investigo, enseño y exploro con matemáticas, datos y visualización. CMSpec es el lugar donde esas preguntas se encuentran.",
+      "Investigo, enseño y exploro con matemáticas, datos y visualización. CMSpec es el lugar donde se reúne el espectro de mis intereses.",
     primaryAction: "Explorar CMSpec",
-    secondaryAction: "Ver un experimento",
+    secondaryAction: "Explorar la visualización",
     visualizationLabel: "Visualización del espectro de intereses de CMSpec",
   },
 
@@ -69,7 +69,7 @@ export const siteContent = {
       title: "Misceláneo",
       eyebrow: "El resto del espectro",
       description:
-        "Lecturas, hobbies, experimentos y hallazgos que alimentan la curiosidad fuera del aula.",
+        "Lecturas, hobbies, proyectos personales y hallazgos que alimentan la curiosidad fuera del aula.",
       color: "var(--pink)",
     },
   ],
@@ -79,12 +79,12 @@ export const siteContent = {
     titleFirstLine: "Cuatro formas de mirar",
     titleSecondLine: "una misma curiosidad.",
     description:
-      "Cada sección tiene su propio pulso. Juntas forman un archivo vivo de ideas en desarrollo.",
+      "Cada sección representa una parte de mis intereses. Juntas forman un archivo vivo de ideas en desarrollo.",
     cardLink: "Próximamente",
   },
 
   laboratory: {
-    index: "02 / LABORATORIO INTERACTIVO",
+    index: "02 / VISUALIZACIÓN INTERACTIVA",
     title: "Cuando un resultado positivo no significa lo que parece.",
     description:
       "Cambia los supuestos de esta prueba diagnóstica. Observa cómo la prevalencia transforma el significado de un resultado positivo, incluso cuando la prueba es precisa.",
@@ -111,7 +111,7 @@ export const siteContent = {
     titleFirstLine: "Un archivo que crecerá",
     titleSecondLine: "con cada pregunta.",
     description:
-      "La primera versión de CMSpec abre el espacio. Pronto aquí vivirán investigaciones, cursos, notas y experimentos reales.",
+      "La primera versión de CMSpec abre el espacio. Pronto aquí vivirán investigaciones, cursos, notas y visualizaciones interactivas.",
     topics: [
       "Investigaciones",
       "Notas matemáticas",
