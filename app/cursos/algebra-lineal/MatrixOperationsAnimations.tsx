@@ -91,7 +91,7 @@ export function DotProductAnimation() {
       <div className="dot-product-stage">
         <div className="dot-product-vectors">
           {[{ label: "a", values: vectorA }, { label: "b", values: vectorB }].map((vector) => (
-            <div className="animated-vector" key={vector.label}>
+            <div className="animated-vector column-vector" key={vector.label}>
               <strong>{vector.label} =</strong>
               <div>
                 {vector.values.map((value, index) => (
@@ -101,16 +101,12 @@ export function DotProductAnimation() {
             </div>
           ))}
         </div>
-        <div className="dot-product-terms" aria-label="Productos de las coordenadas">
-          {products.map((product, index) => (
-            <div className={`${index <= animation.step ? "is-revealed" : ""} ${index === animation.step ? "is-active" : ""}`} key={`term-${index}`}>
-              <span>({vectorA[index]})({vectorB[index]})</span>
-              <strong>{index <= animation.step ? product : "·"}</strong>
-            </div>
-          ))}
-        </div>
-        <p className={`dot-product-result ${animation.complete ? "is-visible" : ""}`}>
-          −12 + 4 − 15 = <strong>−23</strong>
+        <p className="dot-product-equation" aria-label="Cálculo completo del producto punto">
+          <i>a</i> · <i>b</i> = {vectorA.map((value, index) => (
+            <span className={index === animation.step ? "is-active" : ""} key={`product-${index}`}>
+              ({value})({vectorB[index]}){index < vectorA.length - 1 ? " + " : ""}
+            </span>
+          ))} = <strong>−23</strong>
         </p>
       </div>
       <div className="matrix-animation-controls">

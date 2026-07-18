@@ -51,6 +51,8 @@ export function TraceAnimation() {
 export function TriangularMatricesAnimation() {
   const upper = [4, -1, 5, 0, -6, 0, 0, 0, 8];
   const lower = [-3, 0, 2, 7];
+  const upperRegion = [0, 1, 2, 4, 5, 8];
+  const lowerRegion = [0, 2, 3];
   const animation = useSteppedAnimation(2);
   const showingUpper = animation.step === 0;
 
@@ -61,11 +63,11 @@ export function TriangularMatricesAnimation() {
         <p id="triangular-title">Matrices triangulares superior e inferior</p>
       </header>
       <div className="triangular-animation-stage">
-        <StructureMatrix values={upper} active={showingUpper ? upper.flatMap((value, index) => value !== 0 ? [index] : []) : []} label="C · triangular superior" />
-        <StructureMatrix values={lower} active={!showingUpper ? lower.flatMap((value, index) => value !== 0 ? [index] : []) : []} label="D · triangular inferior" />
+        <StructureMatrix values={upper} active={showingUpper ? upperRegion : []} label="C · triangular superior" />
+        <StructureMatrix values={lower} active={!showingUpper ? lowerRegion : []} label="D · triangular inferior" />
       </div>
       <div className="matrix-animation-controls">
-        <p aria-live="polite">{showingUpper ? "C: los elementos no nulos están en la diagonal y sobre ella" : "D: los elementos no nulos están en la diagonal y bajo ella"}</p>
+        <p aria-live="polite">{showingUpper ? "C: se destaca la diagonal y toda la región superior" : "D: se destaca la diagonal y toda la región inferior"}</p>
         <button type="button" onClick={animation.toggle}>{animation.complete ? "Repetir" : animation.playing ? "Pausar" : "Continuar"}</button>
       </div>
     </section>
@@ -78,9 +80,10 @@ export function SymmetryAnimation() {
   const pairs = [[1, 3], [2, 6], [5, 7]];
   const animation = useSteppedAnimation(6);
   const isSymmetricPhase = animation.step < 3;
-  const pair = pairs[animation.step % 3];
-  const leftValue = (isSymmetricPhase ? symmetric : antisymmetric)[pair[0]];
-  const rightValue = (isSymmetricPhase ? symmetric : antisymmetric)[pair[1]];
+  const symmetricPair = pairs[Math.min(animation.step, 2)];
+  const antisymmetricPair = pairs[Math.max(animation.step - 3, 0)];
+  const symmetricValues = symmetricPair.map((index) => symmetric[index]);
+  const antisymmetricValues = antisymmetricPair.map((index) => antisymmetric[index]);
 
   return (
     <section id="unidad-1-a0000000023" className="symmetry-animation course-concept-animation ejem_thmwrapper" aria-labelledby="symmetry-title">
@@ -89,11 +92,20 @@ export function SymmetryAnimation() {
         <p id="symmetry-title">Simetría y antisimetría respecto de la diagonal</p>
       </header>
       <div className="symmetry-animation-stage">
-        <StructureMatrix values={symmetric} active={isSymmetricPhase ? pair : []} label="A · simétrica" />
-        <StructureMatrix values={antisymmetric} active={!isSymmetricPhase ? pair : []} label="B · antisimétrica" />
-        <p className="symmetry-relation">
-          {isSymmetricPhase ? `${leftValue} = ${rightValue}` : `${leftValue} = −(${rightValue})`}
-        </p>
+        <div className={`symmetry-row ${isSymmetricPhase ? "is-current" : ""}`}>
+          <StructureMatrix values={symmetric} active={isSymmetricPhase ? symmetricPair : []} label="Matriz A" />
+          <div>
+            <p className="symmetry-relation">{symmetricValues[0]} = {symmetricValues[1]}</p>
+            <p>Es simétrica, pues <i>a</i><sub>ij</sub> = <i>a</i><sub>ji</sub>.</p>
+          </div>
+        </div>
+        <div className={`symmetry-row ${!isSymmetricPhase ? "is-current" : ""}`}>
+          <StructureMatrix values={antisymmetric} active={!isSymmetricPhase ? antisymmetricPair : []} label="Matriz B" />
+          <div>
+            <p className="symmetry-relation">{antisymmetricValues[0]} = −({antisymmetricValues[1]})</p>
+            <p>Es antisimétrica, pues <i>b</i><sub>ij</sub> = −<i>b</i><sub>ji</sub>.</p>
+          </div>
+        </div>
       </div>
       <div className="matrix-animation-controls">
         <p aria-live="polite">
