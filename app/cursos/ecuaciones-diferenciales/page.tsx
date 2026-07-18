@@ -23,7 +23,7 @@ export default function DifferentialEquationsCoursePage() {
         <div className="course-meta">
           <div><span>AUTORÍA</span><strong>{course.authors}</strong></div>
           <div><span>COLECCIÓN</span><strong>CMSpec · Aprender</strong></div>
-          <div><span>CONTENIDO</span><strong>11 clases · Apuntes completos</strong></div>
+          <div><span>CONTENIDO</span><strong>Apuntes de ecuaciones desde primer orden a ordenes superiores y métodos de resolución</strong></div>
         </div>
       </article>
 
