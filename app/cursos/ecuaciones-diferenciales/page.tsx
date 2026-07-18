@@ -37,7 +37,6 @@ export default function DifferentialEquationsCoursePage() {
               </a>
             ))}
           </nav>
-          <small>{course.note}</small>
         </aside>
 
         <section className="course-reader" aria-labelledby="edo-reader-title">
@@ -50,7 +49,7 @@ export default function DifferentialEquationsCoursePage() {
           <div className="edo-visual-note" aria-label="Idea central de las ecuaciones diferenciales">
             <span>UNA RELACIÓN LOCAL</span>
             <strong>y′ = f(x, y)</strong>
-            <p>La derivada describe el cambio local; la solución reconstruye la trayectoria completa.</p>
+            <p>Las ecuaciones diferenciales surgieron de la necesidad de describir fenómenos en los que solo era posible observar el cambio, permitiendo comprender y predecir la evolución de sistemas en el tiempo y el espacio.</p>
           </div>
 
           <div className="reading-chapters">
