@@ -86,7 +86,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 
 .learn-page { min-height: 100vh; background: #fffefa; }
 .learn-masthead { max-width: 1180px; margin: 0 auto; padding: 105px 34px 90px; }
-.learn-masthead h1 { max-width: none; font: 400 clamp(88px, 14vw, 190px) Georgia, serif; line-height: .8; letter-spacing: -.075em; }
+.learn-masthead h1 { max-width: none; font: 400 clamp(44px, 7vw, 95px) Georgia, serif; line-height: .9; letter-spacing: -.06em; }
 .learn-deck { max-width: 650px; margin-top: 60px; padding-top: 22px; border-top: 1px solid var(--ink); }
 .learn-deck p { margin: 0; color: #385963; font: 24px/1.45 Georgia, serif; }
 .notes-library { padding: 90px clamp(24px, 7vw, 108px) 120px; background: #fff; border-top: 1px solid var(--line); }
@@ -201,7 +201,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   footer { grid-template-columns: 1fr; }
   .course-header { height: 62px; grid-template-columns: 1fr auto; }.course-publication { display: none; }.course-back { font-size: 10px; }
   .course-masthead { padding: 70px 24px 60px; }.course-masthead h1 { font-size: 64px; }.course-deck { font-size: 20px; }.course-meta { grid-template-columns: 1fr; gap: 15px; }
-  .learn-masthead { padding: 80px 24px 65px; }.learn-masthead h1 { font-size: 82px; }.learn-deck { margin-top: 42px; }.learn-deck p { font-size: 20px; }
+  .learn-masthead { padding: 80px 24px 65px; }.learn-masthead h1 { font-size: 41px; }.learn-deck { margin-top: 42px; }.learn-deck p { font-size: 20px; }
   .notes-library { padding: 70px 24px 85px; }.notes-library > header { grid-template-columns: 1fr; gap: 18px; }.notes-library > header > p:last-child { grid-column: auto; }.note-entry { grid-template-columns: 1fr; gap: 32px; padding: 50px 0; }.note-dates { grid-template-columns: 1fr 1fr; gap: 18px; }.note-visual { grid-column: auto; min-height: 210px; }.learn-colophon { grid-template-columns: 1fr; gap: 22px; }
   .course-article-layout { grid-template-columns: 1fr; padding: 65px 24px 85px; gap: 60px; background: #fffefa; }
   .course-toc { position: static; }.course-toc nav { grid-template-columns: 1fr 1fr; column-gap: 20px; }.course-toc small { max-width: 430px; }

@@ -15,7 +15,7 @@ const notes = [
     title: "Ecuaciones Diferenciales",
     description: "Métodos de primer orden, ecuaciones de orden superior, Laplace, Fourier y problemas de frontera.",
     subtitle: "De una razón de cambio local a una trayectoria completa",
-    authors: "Camila Muñoz y Marcos Morales",
+    authors: "Marcos Morales Inostroza y Camila Muñoz Santander",
     published: "18 julio 2026",
     modified: "18 julio 2026",
     href: "/cursos/ecuaciones-diferenciales",
