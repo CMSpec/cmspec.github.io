@@ -232,6 +232,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .latex-content .centered { max-width: 100%; margin: 28px 0; padding: 18px 12px; overflow-x: auto; text-align: center; }
 .course-math { max-width: 100%; overflow-x: auto; margin: 30px -18px; padding: 24px 18px; text-align: center; background: color-mix(in srgb, var(--chapter-accent) 7%, white); border-top: 1px solid color-mix(in srgb, var(--chapter-accent) 30%, white); border-bottom: 1px solid color-mix(in srgb, var(--chapter-accent) 30%, white); }
 .course-math math { font-size: 1.12em; }
+#unidad-1-a0000000006 .course-math math { font-size: calc(1.12em + 2px); }
 .course-callout { display: block; margin: 34px 0; padding: 26px 28px; border-left: 3px solid var(--blue); background: #f1f6f7; }
 .course-callout > strong:first-child { display: block; margin-bottom: 14px; color: var(--blue); font: 700 11px var(--font-geist-mono); letter-spacing: .12em; text-transform: uppercase; }
 .defin_thmwrapper, .thm_thmwrapper, .prop_thmwrapper, .lemma_thmwrapper, .cor_thmwrapper, .rec_thmwrapper, .ejem_thmwrapper, .sol_thmwrapper, .rmk_thmwrapper { margin: 34px 0; padding: 26px 28px; border-left: 3px solid var(--blue); background: #f1f6f7; }
