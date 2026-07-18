@@ -1,6 +1,7 @@
 import { linearAlgebraCourse } from "../../../content/courses/algebra-lineal";
 import { linearAlgebraChapters } from "../../../content/courses/algebra-lineal-chapters";
 import MatrixScalarAnimation from "./MatrixScalarAnimation";
+import MatrixMultiplicationAnimation from "./MatrixMultiplicationAnimation";
 import { DotProductAnimation, MatrixAdditionAnimation } from "./MatrixOperationsAnimations";
 import { SymmetryAnimation, TraceAnimation, TriangularMatricesAnimation } from "./MatrixStructureAnimations";
 
@@ -80,6 +81,11 @@ function SectionContent({ html, placeVisual }: { html: string; placeVisual: bool
       startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000043">',
       endMarker: '<p>La multiplicación entre matrices',
       element: <DotProductAnimation />,
+    },
+    {
+      startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000047">',
+      endMarker: '<p>La multiplicación de matrices no es conmutativa',
+      element: <MatrixMultiplicationAnimation />,
     },
   ];
 
