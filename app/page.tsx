@@ -1,28 +1,7 @@
-"use client";
-
-import { useMemo, useState } from "react";
 import { siteContent } from "../content/site";
 
 export default function Home() {
-  const { brand, navigation, hero, domains, spectrumSection, laboratory, archive } = siteContent;
-  const [activeDomain, setActiveDomain] = useState(0);
-  const [prevalence, setPrevalence] = useState(20);
-  const [sensitivity, setSensitivity] = useState(90);
-  const [specificity, setSpecificity] = useState(85);
-
-  const test = useMemo(() => {
-    const population = 1000;
-    const ill = population * (prevalence / 100);
-    const healthy = population - ill;
-    const truePositive = Math.round(ill * (sensitivity / 100));
-    const falseNegative = Math.round(ill - truePositive);
-    const trueNegative = Math.round(healthy * (specificity / 100));
-    const falsePositive = Math.round(healthy - trueNegative);
-    const ppv = Math.round((truePositive / (truePositive + falsePositive)) * 100);
-    return { truePositive, falseNegative, trueNegative, falsePositive, ppv };
-  }, [prevalence, sensitivity, specificity]);
-
-  const active = domains[activeDomain];
+  const { brand, navigation, hero, domains, spectrumSection, archive } = siteContent;
 
   return (
     <main>
@@ -53,10 +32,6 @@ export default function Home() {
             {hero.title} <em>{hero.highlightedTitle}</em>
           </h1>
           <p className="hero-intro">{hero.introduction}</p>
-          <div className="hero-actions">
-            <a className="button primary" href="#espectro">{hero.primaryAction}</a>
-            <a className="text-link" href="#laboratorio">{hero.secondaryAction} <span>↓</span></a>
-          </div>
         </div>
 
         <div className="spectrum-stage" aria-label={hero.visualizationLabel}>
@@ -67,21 +42,17 @@ export default function Home() {
             <small>SPEC</small>
           </div>
           {domains.map((domain, index) => (
-            <button
-              className={`spectrum-node node-${index + 1} ${activeDomain === index ? "active" : ""}`}
+            <a
+              className={`spectrum-node node-${index + 1}`}
               key={domain.id}
-              onClick={() => setActiveDomain(index)}
+              href={domain.id === "learn" ? domain.href : `#${domain.id}`}
               style={{ "--node-color": domain.color } as React.CSSProperties}
-              aria-pressed={activeDomain === index}
             >
               <span>{domain.short}</span>
               {domain.title}
-            </button>
+            </a>
           ))}
-          <div className="stage-caption">
-            <span style={{ background: active.color }} />
-            <p><strong>{active.eyebrow}</strong>{active.description}</p>
-          </div>
+          <a className="button primary stage-cta" href="#espectro">{hero.primaryAction}</a>
         </div>
       </section>
 
@@ -95,7 +66,7 @@ export default function Home() {
         </div>
         <div className="domain-grid">
           {domains.map((domain, index) => (
-            <article className={`domain-card card-${index + 1}`} key={domain.id}>
+            <article className={`domain-card card-${index + 1}`} id={domain.id} key={domain.id}>
               <div className="card-top"><span>{domain.short}</span><span className="card-arrow">↗</span></div>
               <p className="card-eyebrow">{domain.eyebrow}</p>
               <h3>{domain.title}</h3>
@@ -103,35 +74,6 @@ export default function Home() {
               <a href={domain.href}>{domain.linkLabel} <span>→</span></a>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="lab-section" id="laboratorio">
-        <div className="lab-intro">
-          <p className="section-index">{laboratory.index}</p>
-          <h2>{laboratory.title}</h2>
-          <p>{laboratory.description}</p>
-          <div className="formula-note">
-            <span>{laboratory.predictiveValueLabel}</span>
-            <strong>{test.ppv}%</strong>
-            <small>{laboratory.predictiveValueExplanation}</small>
-          </div>
-        </div>
-
-        <div className="simulator">
-          <div className="controls">
-            <RangeControl label={laboratory.controls.prevalence} value={prevalence} setValue={setPrevalence} min={1} max={60} />
-            <RangeControl label={laboratory.controls.sensitivity} value={sensitivity} setValue={setSensitivity} min={50} max={100} />
-            <RangeControl label={laboratory.controls.specificity} value={specificity} setValue={setSpecificity} min={50} max={100} />
-          </div>
-          <p className="population-label">{laboratory.populationIntro} <strong>{laboratory.populationSize}</strong></p>
-          <div className="result-grid">
-            <Result label={laboratory.results.truePositive} value={test.truePositive} tone="blue" />
-            <Result label={laboratory.results.falsePositive} value={test.falsePositive} tone="pink" />
-            <Result label={laboratory.results.falseNegative} value={test.falseNegative} tone="olive" />
-            <Result label={laboratory.results.trueNegative} value={test.trueNegative} tone="green" />
-          </div>
-          <p className="simulator-footnote">{laboratory.footnote}</p>
         </div>
       </section>
 
@@ -154,17 +96,4 @@ export default function Home() {
       </footer>
     </main>
   );
-}
-
-function RangeControl({ label, value, setValue, min, max }: { label: string; value: number; setValue: (value: number) => void; min: number; max: number }) {
-  return (
-    <label className="range-control">
-      <span>{label}<strong>{value}%</strong></span>
-      <input aria-label={label} type="range" min={min} max={max} value={value} onChange={(event) => setValue(Number(event.target.value))} />
-    </label>
-  );
-}
-
-function Result({ label, value, tone }: { label: string; value: number; tone: string }) {
-  return <div className={`result result-${tone}`}><span>{label}</span><strong>{value}</strong><i style={{ width: `${Math.max(8, Math.min(100, value / 8))}%` }} /></div>;
 }

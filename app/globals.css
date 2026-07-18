@@ -31,7 +31,7 @@ nav a:hover, .header-cta:hover { color: var(--blue); }
 .kicker, .section-index { font-family: var(--font-geist-mono), monospace; font-size: 11px; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; }
 .kicker { display: flex; align-items: center; gap: 10px; color: var(--blue); margin: 0 0 25px; }
 .kicker span { width: 25px; height: 2px; background: var(--blue); }
-h1 { max-width: 720px; margin: 0; font-size: clamp(58px, 7.2vw, 106px); line-height: .92; letter-spacing: -.075em; font-weight: 560; }
+h1 { max-width: 720px; margin: 0; font-size: clamp(29px, 3.6vw, 53px); line-height: .98; letter-spacing: -.055em; font-weight: 560; }
 h1 em { color: var(--blue); font-family: Georgia, serif; font-weight: 400; }
 .hero-intro { max-width: 590px; color: var(--muted); font-size: clamp(17px, 1.45vw, 21px); line-height: 1.58; margin: 34px 0; }
 .hero-actions { display: flex; align-items: center; gap: 30px; }
@@ -52,6 +52,7 @@ h1 em { color: var(--blue); font-family: Georgia, serif; font-weight: 400; }
 .spectrum-node:hover, .spectrum-node.active { transform: translateY(-3px); border-color: var(--node-color); }
 .spectrum-node span { display: grid; place-items: center; width: 28px; height: 28px; background: var(--node-color); border-radius: 50%; font-family: var(--font-geist-mono); color: var(--ink); }
 .node-1 { top: 9%; left: 7%; }.node-2 { top: 17%; right: 1%; }.node-3 { bottom: 20%; left: 0; }.node-4 { bottom: 13%; right: 3%; }
+.stage-cta { position: absolute; z-index: 3; left: 50%; bottom: -1%; transform: translateX(-50%); white-space: nowrap; }
 .stage-caption { position: absolute; left: 21%; right: 21%; bottom: -1%; display: flex; gap: 12px; padding: 14px 16px; background: rgba(255,250,246,.82); backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
 .stage-caption > span { flex: 0 0 4px; border-radius: 4px; }.stage-caption p { margin: 0; font-size: 11px; line-height: 1.45; color: var(--muted); }.stage-caption strong { display: block; color: var(--ink); margin-bottom: 3px; }
 
@@ -193,7 +194,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 @media (max-width: 600px) {
   .site-header { height: 72px; }.header-cta { font-size: 0; }.header-cta span { font-size: 18px; }
   .hero { min-height: auto; padding-top: 52px; }.hero-actions { align-items: flex-start; flex-direction: column; gap: 10px; }
-  .spectrum-stage { aspect-ratio: .9; margin: 30px 0 20px; }.spectrum-node { font-size: 0; padding-right: 10px; }.node-1{top:8%;left:0}.node-2{top:18%;right:0}.node-3{bottom:19%;left:0}.node-4{bottom:15%;right:0}.stage-caption{left:5%;right:5%;bottom:-3%}
+  .spectrum-stage { aspect-ratio: .9; margin: 30px 0 20px; }.spectrum-node { font-size: 0; padding-right: 10px; }.node-1{top:8%;left:0}.node-2{top:18%;right:0}.node-3{bottom:19%;left:0}.node-4{bottom:15%;right:0}.stage-cta{bottom:-3%}
   .domains-section, .lab-section, .archive-section { padding-top: 78px; padding-bottom: 78px; }
   .domain-grid { grid-template-columns: 1fr; }.domain-card { min-height: 330px; }
   .result-grid { grid-template-columns: 1fr; }.simulator { box-shadow: 9px 9px 0 var(--blue); }

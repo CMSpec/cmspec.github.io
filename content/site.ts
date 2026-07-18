@@ -19,7 +19,6 @@ export const siteContent = {
     links: [
       { label: "Espectro", href: "#espectro" },
       { label: "Aprender", href: "/aprender" },
-      { label: "Visualización", href: "#laboratorio" },
       { label: "Archivo", href: "#archivo" },
     ],
     contactLabel: "Contacto",
@@ -27,12 +26,11 @@ export const siteContent = {
 
   hero: {
     kicker: "Un Cuaderno de notas de Camila",
-    title: "Ideas a través de todo el",
+    title: "Conocimiento a través de todo el",
     highlightedTitle: "espectro.",
     introduction:
       "Investigo, enseño y exploro con matemáticas, datos y visualización. CMSpec es el lugar donde se reúne el espectro de mis intereses.",
     primaryAction: "Explorar CMSpec",
-    secondaryAction: "Explorar la visualización",
     visualizationLabel: "Visualización del espectro de intereses de CMSpec",
   },
 
@@ -51,7 +49,7 @@ export const siteContent = {
     {
       id: "health",
       short: "02",
-      title: "Datos & Salud",
+      title: "Colaboraciones en Salud",
       eyebrow: "Leer lo que los datos dicen",
       description:
         "Análisis reproducibles y visualizaciones para comprender preguntas relevantes en salud.",
@@ -62,7 +60,7 @@ export const siteContent = {
     {
       id: "learn",
       short: "03",
-      title: "Aprender",
+      title: "Apuntes y exploración",
       eyebrow: "Explorar antes de memorizar",
       description:
         "Cursos y apuntes de pregrado con simulaciones, ejemplos y explicaciones interactivas.",
@@ -85,8 +83,8 @@ export const siteContent = {
 
   spectrumSection: {
     index: "01 / EL ESPECTRO",
-    titleFirstLine: "Cuatro formas de mirar",
-    titleSecondLine: "una misma curiosidad.",
+    titleFirstLine: "Espectro",
+    titleSecondLine: "del sitio",
     description:
       "Cada sección representa una parte de mis intereses. Juntas forman un archivo vivo de ideas en desarrollo.",
   },
@@ -115,8 +113,8 @@ export const siteContent = {
   },
 
   archive: {
-    index: "03 / EN CONSTRUCCIÓN",
-    titleFirstLine: "Un archivo que crecerá",
+    index: "02 / EN CONSTRUCCIÓN",
+    titleFirstLine: "Este archivo crecerá",
     titleSecondLine: "con cada pregunta.",
     description:
       "La primera versión de CMSpec abre el espacio. Pronto aquí vivirán investigaciones, cursos, notas y visualizaciones interactivas.",
