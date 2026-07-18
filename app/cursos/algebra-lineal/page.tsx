@@ -43,7 +43,7 @@ export default function LinearAlgebraCoursePage() {
         <section className="course-reader" aria-labelledby="course-reader-title">
           <header className="reader-heading">
             <p>APUNTES COMPLETOS</p>
-            <h2 id="course-reader-title">Seis unidades para construir una mirada lineal.</h2>
+            <h2 id="course-reader-title">Bases del álgebra lineal.</h2>
             <p>Abre una unidad para consultar sus definiciones, teoremas, ejemplos, observaciones y fórmulas.</p>
           </header>
 
