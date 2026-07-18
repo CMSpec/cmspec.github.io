@@ -35,7 +35,7 @@ export default function MatrixScalarAnimation() {
   }
 
   return (
-    <section className="matrix-scalar-animation ejem_thmwrapper" aria-labelledby="matrix-scalar-title">
+    <section id="unidad-1-a0000000036" className="matrix-scalar-animation ejem_thmwrapper" aria-labelledby="matrix-scalar-title">
       <header className="matrix-animation-heading">
         <div>
           <span>Ejemplo</span>
