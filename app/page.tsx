@@ -100,24 +100,22 @@ export default function Home() {
         </div>
 
         <div className="spectrum-stage" aria-label="Visualización del espectro de intereses de CMSpec">
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
-          <div className="spectrum-core">
-            <span>CM</span>
-            <small>SPEC</small>
-          </div>
           {domains.map((domain, index) => (
             <button
-              className={`spectrum-node node-${index + 1} ${activeDomain === index ? "active" : ""}`}
+              className={`venn-set venn-${index + 1} ${activeDomain === index ? "active" : ""}`}
               key={domain.id}
               onClick={() => setActiveDomain(index)}
               style={{ "--node-color": domain.color } as React.CSSProperties}
               aria-pressed={activeDomain === index}
             >
               <span>{domain.short}</span>
-              {domain.title}
+              <strong>{domain.title}</strong>
             </button>
           ))}
+          <div className="spectrum-core">
+            <span>CM</span>
+            <small>intersección</small>
+          </div>
           <div className="stage-caption">
             <span style={{ background: active.color }} />
             <p><strong>{active.eyebrow}</strong>{active.description}</p>
