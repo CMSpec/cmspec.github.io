@@ -125,8 +125,10 @@ function renderFragment(source) {
     stash(`<div class="course-centered">${renderFragment(body)}</div>`, true));
   text = text.replace(/\\begin\{figure\}(?:\[[^\]]*\])?([\s\S]*?)\\end\{figure\}/g, (_, body) =>
     stash(`<div class="course-figure">${renderFragment(body)}</div>`, true));
-  text = text.replace(/\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}/g, (_, file) =>
-    stash(`<span class="course-image-note">Figura del apunte: ${escapeHtml(file)}</span>`));
+  text = text.replace(/\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}/g, (_, file) => {
+    const filename = path.basename(file);
+    return stash(`<img class="course-note-image" src="/courses/algebra-lineal/${escapeHtml(filename)}" alt="Figura del apunte: ${escapeHtml(filename)}" />`, true);
+  });
 
   const inlineCommands = [
     ["textbf", "strong"], ["emph", "em"], ["textit", "em"], ["underline", "u"],
