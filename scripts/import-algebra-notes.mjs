@@ -32,7 +32,7 @@ const macros = {
 
 const calloutLabels = {
   defin: "Definición", thm: "Teorema", prop: "Proposición", lemma: "Lema",
-  cor: "Corolario", ejem: "Ejemplo", ejer: "Ejercicio", sol: "Solución",
+  cor: "Corolario", ejem: "Ejemplo", sol: "Solución",
   rmk: "Observación", rec: "Recuerdo",
 };
 
@@ -90,6 +90,7 @@ function renderFragment(source) {
 
   let text = decodeLatexText(stripComments(source));
   text = text.replace(/\\label\{[^}]*\}/g, "");
+  text = text.replace(/\\begin\{ejer\}[\s\S]*?\\end\{ejer\}/g, "");
 
   text = text.replace(/\\\[([\s\S]*?)\\\]/g, (_, math) =>
     stash(`<div class="course-math">${renderMath(math, true)}</div>`, true));
