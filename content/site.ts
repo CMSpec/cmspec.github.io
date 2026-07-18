@@ -43,8 +43,8 @@ export const siteContent = {
       description:
         "Proyectos, avances, modelos y notas matemáticas que hacen visible el proceso, no solo el resultado.",
       color: "var(--olive)",
-      href: "#archivo",
-      linkLabel: "Próximamente",
+      href: "/investigacion",
+      linkLabel: "Abrir la colección",
     },
     {
       id: "health",
@@ -54,8 +54,8 @@ export const siteContent = {
       description:
         "Análisis, exporación y discusión en tópicos de salud pública.",
       color: "var(--blue)",
-      href: "#archivo",
-      linkLabel: "Próximamente",
+      href: "/salud",
+      linkLabel: "Abrir la colección",
     },
     {
       id: "learn",
@@ -76,8 +76,8 @@ export const siteContent = {
       description:
         "Tejido, patrones, simetrías y otros hobbies que conectan la creatividad manual con el pensamiento matemático.",
       color: "var(--pink)",
-      href: "#archivo",
-      linkLabel: "Próximamente",
+      href: "/tejido",
+      linkLabel: "Abrir la colección",
     },
   ],
 

@@ -45,7 +45,7 @@ export default function Home() {
             <a
               className={`spectrum-node node-${index + 1}`}
               key={domain.id}
-              href={domain.id === "learn" ? domain.href : `#${domain.id}`}
+              href={domain.href}
               style={{ "--node-color": domain.color } as React.CSSProperties}
             >
               <span>{domain.short}</span>
