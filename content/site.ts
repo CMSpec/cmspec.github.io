@@ -17,7 +17,7 @@ export const siteContent = {
   navigation: {
     ariaLabel: "Navegación principal",
     links: [
-      { label: "Espectro", href: "#espectro" },
+      { label: "Mapa del sitio", href: "/mapa-del-sitio" },
       { label: "Aprender", href: "/aprender" },
       { label: "Archivo", href: "#archivo" },
     ],
