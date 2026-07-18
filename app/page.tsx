@@ -1,47 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-
-const domains = [
-  {
-    id: "research",
-    short: "01",
-    title: "Investigación & Math",
-    eyebrow: "Pensar con estructura",
-    description:
-      "Proyectos, avances, modelos y notas matemáticas que hacen visible el proceso, no solo el resultado.",
-    color: "var(--olive)",
-  },
-  {
-    id: "health",
-    short: "02",
-    title: "Datos & Salud",
-    eyebrow: "Leer lo que los datos dicen",
-    description:
-      "Análisis reproducibles y visualizaciones para comprender preguntas relevantes en salud.",
-    color: "var(--blue)",
-  },
-  {
-    id: "learn",
-    short: "03",
-    title: "Aprender",
-    eyebrow: "Explorar antes de memorizar",
-    description:
-      "Cursos y apuntes de pregrado con simulaciones, ejemplos y explicaciones interactivas.",
-    color: "var(--green)",
-  },
-  {
-    id: "misc",
-    short: "04",
-    title: "Misceláneo",
-    eyebrow: "El resto del espectro",
-    description:
-      "Lecturas, hobbies, experimentos y hallazgos que alimentan la curiosidad fuera del aula.",
-    color: "var(--pink)",
-  },
-];
+import { siteContent } from "../content/site";
 
 export default function Home() {
+  const { brand, navigation, hero, domains, spectrumSection, laboratory, archive } = siteContent;
   const [activeDomain, setActiveDomain] = useState(0);
   const [prevalence, setPrevalence] = useState(20);
   const [sensitivity, setSensitivity] = useState(90);
@@ -64,42 +27,39 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="CMSpec, inicio">
+        <a className="brand" href="#inicio" aria-label={`${brand.name}, inicio`}>
           <span className="brand-mark" aria-hidden="true">
             <i />
             <i />
             <i />
             <i />
           </span>
-          <span>CMSpec</span>
+          <span>{brand.name}</span>
         </a>
-        <nav aria-label="Navegación principal">
-          <a href="#espectro">Espectro</a>
-          <a href="#laboratorio">Laboratorio</a>
-          <a href="#archivo">Archivo</a>
+        <nav aria-label={navigation.ariaLabel}>
+          {navigation.links.map((link) => (
+            <a href={link.href} key={link.href}>{link.label}</a>
+          ))}
         </nav>
         <a className="header-cta" href="#contacto">
-          Conversemos <span aria-hidden="true">↗</span>
+          {navigation.contactLabel} <span aria-hidden="true">↗</span>
         </a>
       </header>
 
       <section className="hero" id="inicio">
         <div className="hero-copy">
-          <p className="kicker"><span /> Cuaderno abierto de Camila Muñoz</p>
+          <p className="kicker"><span /> {hero.kicker}</p>
           <h1>
-            Ideas a través de todo el <em>espectro.</em>
+            {hero.title} <em>{hero.highlightedTitle}</em>
           </h1>
-          <p className="hero-intro">
-            Investigo, enseño y exploro con matemáticas, datos y visualización.
-            CMSpec es el lugar donde esas preguntas se encuentran.
-          </p>
+          <p className="hero-intro">{hero.introduction}</p>
           <div className="hero-actions">
-            <a className="button primary" href="#espectro">Explorar CMSpec</a>
-            <a className="text-link" href="#laboratorio">Ver un experimento <span>↓</span></a>
+            <a className="button primary" href="#espectro">{hero.primaryAction}</a>
+            <a className="text-link" href="#laboratorio">{hero.secondaryAction} <span>↓</span></a>
           </div>
         </div>
 
-        <div className="spectrum-stage" aria-label="Visualización del espectro de intereses de CMSpec">
+        <div className="spectrum-stage" aria-label={hero.visualizationLabel}>
           <div className="orbit orbit-one" />
           <div className="orbit orbit-two" />
           <div className="spectrum-core">
@@ -129,9 +89,9 @@ export default function Home() {
 
       <section className="domains-section" id="espectro">
         <div className="section-heading">
-          <p className="section-index">01 / EL ESPECTRO</p>
-          <h2>Cuatro formas de mirar<br />una misma curiosidad.</h2>
-          <p>Cada sección tiene su propio pulso. Juntas forman un archivo vivo de ideas en desarrollo.</p>
+          <p className="section-index">{spectrumSection.index}</p>
+          <h2>{spectrumSection.titleFirstLine}<br />{spectrumSection.titleSecondLine}</h2>
+          <p>{spectrumSection.description}</p>
         </div>
         <div className="domain-grid">
           {domains.map((domain, index) => (
@@ -140,7 +100,7 @@ export default function Home() {
               <p className="card-eyebrow">{domain.eyebrow}</p>
               <h3>{domain.title}</h3>
               <p>{domain.description}</p>
-              <a href="#archivo">Próximamente <span>→</span></a>
+              <a href="#archivo">{spectrumSection.cardLink} <span>→</span></a>
             </article>
           ))}
         </div>
@@ -148,52 +108,49 @@ export default function Home() {
 
       <section className="lab-section" id="laboratorio">
         <div className="lab-intro">
-          <p className="section-index">02 / LABORATORIO INTERACTIVO</p>
-          <h2>Cuando un resultado positivo no significa lo que parece.</h2>
-          <p>
-            Cambia los supuestos de esta prueba diagnóstica. Observa cómo la prevalencia transforma
-            el significado de un resultado positivo, incluso cuando la prueba es precisa.
-          </p>
+          <p className="section-index">{laboratory.index}</p>
+          <h2>{laboratory.title}</h2>
+          <p>{laboratory.description}</p>
           <div className="formula-note">
-            <span>Valor predictivo positivo</span>
+            <span>{laboratory.predictiveValueLabel}</span>
             <strong>{test.ppv}%</strong>
-            <small>de los positivos realmente tienen la condición</small>
+            <small>{laboratory.predictiveValueExplanation}</small>
           </div>
         </div>
 
         <div className="simulator">
           <div className="controls">
-            <RangeControl label="Prevalencia" value={prevalence} setValue={setPrevalence} min={1} max={60} />
-            <RangeControl label="Sensibilidad" value={sensitivity} setValue={setSensitivity} min={50} max={100} />
-            <RangeControl label="Especificidad" value={specificity} setValue={setSpecificity} min={50} max={100} />
+            <RangeControl label={laboratory.controls.prevalence} value={prevalence} setValue={setPrevalence} min={1} max={60} />
+            <RangeControl label={laboratory.controls.sensitivity} value={sensitivity} setValue={setSensitivity} min={50} max={100} />
+            <RangeControl label={laboratory.controls.specificity} value={specificity} setValue={setSpecificity} min={50} max={100} />
           </div>
-          <p className="population-label">En una población de <strong>1.000 personas</strong></p>
+          <p className="population-label">{laboratory.populationIntro} <strong>{laboratory.populationSize}</strong></p>
           <div className="result-grid">
-            <Result label="Verdaderos positivos" value={test.truePositive} tone="blue" />
-            <Result label="Falsos positivos" value={test.falsePositive} tone="pink" />
-            <Result label="Falsos negativos" value={test.falseNegative} tone="olive" />
-            <Result label="Verdaderos negativos" value={test.trueNegative} tone="green" />
+            <Result label={laboratory.results.truePositive} value={test.truePositive} tone="blue" />
+            <Result label={laboratory.results.falsePositive} value={test.falsePositive} tone="pink" />
+            <Result label={laboratory.results.falseNegative} value={test.falseNegative} tone="olive" />
+            <Result label={laboratory.results.trueNegative} value={test.trueNegative} tone="green" />
           </div>
-          <p className="simulator-footnote">Modelo educativo simplificado · No constituye consejo médico</p>
+          <p className="simulator-footnote">{laboratory.footnote}</p>
         </div>
       </section>
 
       <section className="archive-section" id="archivo">
-        <p className="section-index">03 / EN CONSTRUCCIÓN</p>
+        <p className="section-index">{archive.index}</p>
         <div>
-          <h2>Un archivo que crecerá<br />con cada pregunta.</h2>
-          <p>La primera versión de CMSpec abre el espacio. Pronto aquí vivirán investigaciones, cursos, notas y experimentos reales.</p>
+          <h2>{archive.titleFirstLine}<br />{archive.titleSecondLine}</h2>
+          <p>{archive.description}</p>
         </div>
         <div className="archive-list">
-          <span>Investigaciones</span><span>Notas matemáticas</span><span>Datos de salud</span><span>Apuntes interactivos</span>
+          {archive.topics.map((topic) => <span key={topic}>{topic}</span>)}
         </div>
       </section>
 
       <footer id="contacto">
-        <a className="brand footer-brand" href="#inicio"><span className="brand-mark"><i /><i /><i /><i /></span>CMSpec</a>
-        <p>Un espectro de ideas, investigación y aprendizaje.</p>
-        <a href="mailto:camila@example.com">camila@example.com <span>↗</span></a>
-        <small>© {new Date().getFullYear()} Camila Muñoz</small>
+        <a className="brand footer-brand" href="#inicio"><span className="brand-mark"><i /><i /><i /><i /></span>{brand.name}</a>
+        <p>{brand.tagline}</p>
+        <a href={`mailto:${brand.email}`}>{brand.email} <span>↗</span></a>
+        <small>© {new Date().getFullYear()} {brand.owner}</small>
       </footer>
     </main>
   );
