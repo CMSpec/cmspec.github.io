@@ -203,6 +203,13 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .latex-content li { margin: 8px 0; padding-left: 5px; }
 .latex-content a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
 .latex-content math { font-size: 1.05em; }
+.latex-content math mtable > mtr > mtd { padding: .28em .45em; }
+.latex-content math mtable:has(> mtr:nth-child(5)) > mtr > mtd { padding-block: .38em; padding-inline: 0; }
+.latex-content math mtable > mtr > mtd + mtd { padding-left: .95em; }
+.latex-content math mtable:has(> mtr > mtd:nth-child(3)) > mtr > mtd + mtd { padding-left: .45em; }
+.latex-content math mtable:has(> mtr > mtd:nth-child(5)) > mtr > mtd + mtd { padding-left: 0; }
+.latex-content math mtable > mtr > mtd > mstyle > mrow { padding-block: .1em .32em; }
+.latex-content .centered { max-width: 100%; margin: 28px 0; padding: 18px 12px; overflow-x: auto; text-align: center; }
 .course-math { max-width: 100%; overflow-x: auto; margin: 30px -18px; padding: 24px 18px; text-align: center; background: color-mix(in srgb, var(--chapter-accent) 7%, white); border-top: 1px solid color-mix(in srgb, var(--chapter-accent) 30%, white); border-bottom: 1px solid color-mix(in srgb, var(--chapter-accent) 30%, white); }
 .course-math math { font-size: 1.12em; }
 .course-callout { display: block; margin: 34px 0; padding: 26px 28px; border-left: 3px solid var(--blue); background: #f1f6f7; }
