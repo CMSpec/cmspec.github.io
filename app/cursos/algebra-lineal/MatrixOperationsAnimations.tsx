@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-function useSteppedAnimation(length: number) {
+export function useSteppedAnimation(length: number) {
   const [step, setStep] = useState(0);
   const [playing, setPlaying] = useState(true);
 

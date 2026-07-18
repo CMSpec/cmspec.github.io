@@ -2,6 +2,7 @@ import { linearAlgebraCourse } from "../../../content/courses/algebra-lineal";
 import { linearAlgebraChapters } from "../../../content/courses/algebra-lineal-chapters";
 import MatrixScalarAnimation from "./MatrixScalarAnimation";
 import { DotProductAnimation, MatrixAdditionAnimation } from "./MatrixOperationsAnimations";
+import { SymmetryAnimation, TraceAnimation, TriangularMatricesAnimation } from "./MatrixStructureAnimations";
 
 function cleanDefinitionName(html: string) {
   return html
@@ -48,7 +49,23 @@ function SectionContent({ html, placeVisual }: { html: string; placeVisual: bool
 
   if (markerIndex >= 0) operations.push({ start: markerIndex, end: markerIndex, element: <RowVectorVisual /> });
 
+  const traceInsertionMarker = '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000017">';
+  const traceInsertionIndex = html.indexOf(traceInsertionMarker);
+  if (traceInsertionIndex >= 0) {
+    operations.push({ start: traceInsertionIndex, end: traceInsertionIndex, element: <TraceAnimation /> });
+  }
+
   const animatedExamples = [
+    {
+      startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000019">',
+      endMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000020">',
+      element: <TriangularMatricesAnimation />,
+    },
+    {
+      startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000023">',
+      endMarker: '<div class="prop_thmwrapper theorem-style-plain" id="unidad-1-traspuesta">',
+      element: <SymmetryAnimation />,
+    },
     {
       startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000027">',
       endMarker: '<div class="rmk_thmwrapper theorem-style-plain" id="unidad-1-a0000000029">',
