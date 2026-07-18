@@ -11,7 +11,7 @@ export const siteContent = {
     name: "CMSpec",
     owner: "Camila Muñoz Santander",
     email: "camila.mspec@gmail.com",
-    tagline: "Un espectro de intereses entre investigación, aprendizaje y curiosidad.",
+    tagline: "Un espectro de intereses entre aprendizaje, curiosidad y manualidades.",
   },
 
   navigation: {
@@ -86,7 +86,7 @@ export const siteContent = {
     titleFirstLine: "Espectro",
     titleSecondLine: "del sitio",
     description:
-      "Cada sección representa una parte de mis intereses. Juntas forman un archivo vivo de ideas en desarrollo.",
+      "Cada sección representa una parte de mis intereses. Pueden existir intersecciones entre ellos, que a veces no son tan evidentes.",
   },
 
   laboratory: {
