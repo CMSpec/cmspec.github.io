@@ -3,7 +3,7 @@ const notes = [
     number: "01",
     title: "Álgebra Lineal",
     description: "Vectores, matrices, sistemas, espacios vectoriales, transformaciones y cambios de base.",
-    subtitle: "Seis unidades para construir una mirada lineal",
+    subtitle: "Bases para construir una mirada lineal",
     authors: "Camila Muñoz Santander",
     published: "18 julio 2026",
     modified: "18 julio 2026",
