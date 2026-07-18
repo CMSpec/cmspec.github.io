@@ -1,6 +1,7 @@
 import { linearAlgebraCourse } from "../../../content/courses/algebra-lineal";
 import { linearAlgebraChapters } from "../../../content/courses/algebra-lineal-chapters";
 import MatrixScalarAnimation from "./MatrixScalarAnimation";
+import { DotProductAnimation, MatrixAdditionAnimation } from "./MatrixOperationsAnimations";
 
 function cleanDefinitionName(html: string) {
   return html
@@ -41,33 +42,56 @@ function RowVectorVisual() {
 }
 
 function SectionContent({ html, placeVisual }: { html: string; placeVisual: boolean }) {
-  const scalarExampleStart = '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000036">';
-  const scalarExampleEnd = "<p>Con esta definición, es posible mostrar que:";
-  const scalarStartIndex = html.indexOf(scalarExampleStart);
-  const scalarEndIndex = html.indexOf(scalarExampleEnd, scalarStartIndex);
-
-  if (scalarStartIndex >= 0 && scalarEndIndex > scalarStartIndex) {
-    return (
-      <>
-        <div className="latex-content" dangerouslySetInnerHTML={{ __html: html.slice(0, scalarStartIndex) }} />
-        <MatrixScalarAnimation />
-        <div className="latex-content" dangerouslySetInnerHTML={{ __html: html.slice(scalarEndIndex) }} />
-      </>
-    );
-  }
-
   const marker = '<div class="defin_thmwrapper';
   const markerIndex = placeVisual ? html.indexOf(marker) : -1;
+  const operations: Array<{ start: number; end: number; element: ReturnType<typeof RowVectorVisual> }> = [];
 
-  if (markerIndex < 0) {
+  if (markerIndex >= 0) operations.push({ start: markerIndex, end: markerIndex, element: <RowVectorVisual /> });
+
+  const animatedExamples = [
+    {
+      startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000027">',
+      endMarker: '<div class="rmk_thmwrapper theorem-style-plain" id="unidad-1-a0000000029">',
+      element: <MatrixAdditionAnimation />,
+    },
+    {
+      startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000036">',
+      endMarker: "<p>Con esta definición, es posible mostrar que:",
+      element: <MatrixScalarAnimation />,
+    },
+    {
+      startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000043">',
+      endMarker: '<p>La multiplicación entre matrices',
+      element: <DotProductAnimation />,
+    },
+  ];
+
+  animatedExamples.forEach(({ startMarker, endMarker, element }) => {
+    const start = html.indexOf(startMarker);
+    const end = html.indexOf(endMarker, start);
+    if (start >= 0 && end > start) operations.push({ start, end, element });
+  });
+
+  if (operations.length === 0) {
     return <div className="latex-content" dangerouslySetInnerHTML={{ __html: html }} />;
   }
 
+  operations.sort((a, b) => a.start - b.start);
+  let cursor = 0;
+
   return (
     <>
-      <div className="latex-content" dangerouslySetInnerHTML={{ __html: html.slice(0, markerIndex) }} />
-      <RowVectorVisual />
-      <div className="latex-content" dangerouslySetInnerHTML={{ __html: html.slice(markerIndex) }} />
+      {operations.map((operation, index) => {
+        const before = html.slice(cursor, operation.start);
+        cursor = operation.end;
+        return (
+          <div className="course-content-fragment" key={`${operation.start}-${index}`}>
+            {before && <div className="latex-content" dangerouslySetInnerHTML={{ __html: before }} />}
+            {operation.element}
+          </div>
+        );
+      })}
+      {cursor < html.length && <div className="latex-content" dangerouslySetInnerHTML={{ __html: html.slice(cursor) }} />}
     </>
   );
 }
