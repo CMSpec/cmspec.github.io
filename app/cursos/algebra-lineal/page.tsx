@@ -27,7 +27,7 @@ function RowVectorVisual() {
       <div>
         <span>EJEMPLO VISUAL · VECTORES</span>
         <h3>De una tabla a un vector fila</h3>
-        <p>Una fila con tres datos puede interpretarse como un vector que conserva su orden.</p>
+        <p>Una fila de datos ordenados puede interpretarse como un vector.</p>
       </div>
       <img
         src="/images/algebra-lineal/tabla-a-vector-fila.png"
@@ -58,8 +58,8 @@ function SectionContent({ html, placeVisual }: { html: string; placeVisual: bool
 
 export default function LinearAlgebraCoursePage() {
   const course = linearAlgebraCourse;
-  const firstUnitDefinitions = getDefinitionIndex(
-    linearAlgebraChapters[0].sections.map((section) => section.html).join(""),
+  const definitionsByUnit = linearAlgebraChapters.map((chapter) =>
+    getDefinitionIndex(chapter.sections.map((section) => section.html).join("")),
   );
   const firstDefinitionSectionIndex = linearAlgebraChapters[0].sections.findIndex((section) =>
     section.html.includes('<div class="defin_thmwrapper'),
@@ -93,21 +93,22 @@ export default function LinearAlgebraCoursePage() {
           <p>EN ESTE CURSO</p>
           <nav>
             {course.units.map((unit, index) => (
-              <a href={`#lectura-unidad-${index + 1}`} key={unit.number}>
-                <span>{unit.number}</span>{unit.title}
-              </a>
+              <div className="course-toc-group" key={unit.number}>
+                <a className="course-toc-unit" href={`#lectura-unidad-${index + 1}`}>
+                  <span>{unit.number}</span>{unit.title}
+                </a>
+                {definitionsByUnit[index].length > 0 && (
+                  <div className="course-definition-list" aria-label={`Definiciones de ${unit.title}`}>
+                    {definitionsByUnit[index].map((definition) => (
+                      <a href={`#${definition.id}`} key={definition.id}>
+                        <span>{definition.label}</span>{definition.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
-          <div className="course-definition-index">
-            <p>DEFINICIONES · UNIDAD 1</p>
-            <div>
-              {firstUnitDefinitions.map((definition) => (
-                <a href={`#${definition.id}`} key={definition.id}>
-                  <span>{definition.label}</span>{definition.name}
-                </a>
-              ))}
-            </div>
-          </div>
           <small>{course.note}</small>
         </aside>
 
