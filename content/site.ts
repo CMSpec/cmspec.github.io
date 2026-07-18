@@ -66,10 +66,10 @@ export const siteContent = {
     {
       id: "misc",
       short: "04",
-      title: "Misceláneo",
-      eyebrow: "El resto del espectro",
+      title: "Tejido & Patrones",
+      eyebrow: "La matemática hecha materia",
       description:
-        "Lecturas, hobbies, proyectos personales y hallazgos que alimentan la curiosidad fuera del aula.",
+        "Tejido, patrones, simetrías y otros hobbies que conectan la creatividad manual con el pensamiento matemático.",
       color: "var(--pink)",
     },
   ],
@@ -117,6 +117,7 @@ export const siteContent = {
       "Notas matemáticas",
       "Datos de salud",
       "Apuntes interactivos",
+      "Tejido y matemáticas",
     ],
   },
 } as const;
