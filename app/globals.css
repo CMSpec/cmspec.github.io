@@ -138,6 +138,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .callout-thm, .callout-prop, .callout-cor, .callout-lemma { border-color: var(--ink); background: #edf3f4; }
 .callout-thm > strong:first-child, .callout-prop > strong:first-child, .callout-cor > strong:first-child, .callout-lemma > strong:first-child { color: var(--ink); }
 .course-centered { text-align: center; }.course-note-image { display: block; max-width: min(100%, 680px); height: auto; margin: 24px auto; }.course-caption { display: block; color: var(--muted); font-size: 13px; font-style: italic; }.course-proof { color: var(--olive); }.course-qed { float: right; }.course-footnote { color: var(--muted); }
+.course-table-wrap { max-width: 100%; overflow-x: auto; margin: 26px 0; }.course-table { width: 100%; border-collapse: collapse; background: #fff; font-family: var(--font-geist-sans), Arial, sans-serif; font-size: 14px; }.course-table th, .course-table td { min-width: 95px; padding: 12px 14px; border: 1px solid var(--line); text-align: left; vertical-align: top; }.course-table th { background: #edf3f4; color: var(--ink); font-weight: 700; }.course-table p { margin: 0; }
 .latex-fallback { display: inline-block; white-space: pre-wrap; color: var(--blue); }
 .course-footer { background: var(--ink); color: white; grid-template-columns: 1fr auto; }
 .course-footer a { color: var(--green) !important; }

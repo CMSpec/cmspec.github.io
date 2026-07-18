@@ -55,7 +55,7 @@ export default function LinearAlgebraCoursePage() {
         <div className="reader-heading">
           <p className="section-index">APUNTES COMPLETOS</p>
           <h2 id="course-reader-title">Contenido de los capítulos.</h2>
-          <p>Abre una unidad para consultar sus definiciones, teoremas, ejemplos, ejercicios y fórmulas.</p>
+          <p>Abre una unidad para consultar sus definiciones, teoremas, ejemplos, observaciones y fórmulas.</p>
         </div>
 
         <div className="reading-chapters">

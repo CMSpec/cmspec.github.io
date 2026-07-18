@@ -64,6 +64,12 @@ function stripComments(source) {
 
 function renderMath(source, displayMode) {
   const cleaned = source
+    .replace(/\\systeme\{([\s\S]*?)\}/g, (_, equations) =>
+      `\\left\\{\\begin{aligned}${equations.split(",").map((equation) => equation.trim()).filter(Boolean).join("\\\\")}\\end{aligned}\\right.`)
+    .replace(/\\begin\{blockarray\}\{[^}]+\}/g, "\\begin{array}{ccccc|c}")
+    .replace(/\\end\{blockarray\}/g, "\\end{array}")
+    .replace(/\\begin\{block\}\{[^}]+\}/g, "")
+    .replace(/\\end\{block\}/g, "")
     .replace(/\\begin\{(equation|equation\*|align|align\*)\}/g, "\\begin{$1}")
     .trim();
   try {
@@ -91,6 +97,16 @@ function renderFragment(source) {
   let text = decodeLatexText(stripComments(source));
   text = text.replace(/\\label\{[^}]*\}/g, "");
   text = text.replace(/\\begin\{ejer\}[\s\S]*?\\end\{ejer\}/g, "");
+
+  text = text.replace(/\\begin\{tabular\}\{[^\n]*\}\s*([\s\S]*?)\\end\{tabular\}/g, (_, body) => {
+    const rows = body.replace(/\\hline/g, "").split(/\\\\/).map((row) => row.trim()).filter(Boolean);
+    const html = rows.map((row, rowIndex) => {
+      const cells = row.split("&").map((cell) => cell.trim());
+      const tag = rowIndex === 0 ? "th" : "td";
+      return `<tr>${cells.map((cell) => `<${tag}>${renderFragment(cell)}</${tag}>`).join("")}</tr>`;
+    }).join("");
+    return stash(`<div class="course-table-wrap"><table class="course-table">${html}</table></div>`, true);
+  });
 
   text = text.replace(/\\\[([\s\S]*?)\\\]/g, (_, math) =>
     stash(`<div class="course-math">${renderMath(math, true)}</div>`, true));
@@ -132,7 +148,7 @@ function renderFragment(source) {
   });
 
   const inlineCommands = [
-    ["textbf", "strong"], ["emph", "em"], ["textit", "em"], ["underline", "u"],
+    ["textbf", "strong"], ["emph", "em"], ["textit", "em"], ["underline", "u"], ["texttt", "code"],
   ];
   for (const [command, tag] of inlineCommands) {
     const pattern = new RegExp(`\\\\${command}\\{([^{}]*)\\}`, "g");
@@ -196,7 +212,9 @@ function plainHeading(value) {
 }
 
 function splitChapter(source) {
-  const cleaned = stripComments(source).replace(/\\section(?:\[[^\]]*\])?\{[^}]*\}/, "");
+  const cleaned = stripComments(source)
+    .replace(/\\begin\{subsection\}\{([^}]*)\}/g, "\\subsection{$1}")
+    .replace(/\\section(?:\[[^\]]*\])?\{[^}]*\}/, "");
   const headingPattern = /\\subsection\*?(?:\[[^\]]*\])?\{([^}]*)\}/g;
   const sections = [];
   let cursor = 0;
