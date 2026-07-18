@@ -1,4 +1,5 @@
 import { linearAlgebraCourse } from "../../../content/courses/algebra-lineal";
+import { linearAlgebraChapters } from "../../../content/courses/algebra-lineal-chapters";
 
 export default function LinearAlgebraCoursePage() {
   const course = linearAlgebraCourse;
@@ -42,6 +43,45 @@ export default function LinearAlgebraCoursePage() {
               <ol>
                 {unit.topics.map((topic) => <li key={topic}>{topic}</li>)}
               </ol>
+              <a className="unit-read-link" href={`#lectura-unidad-${index + 1}`}>
+                Leer la unidad completa <span>↓</span>
+              </a>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section className="course-reader" aria-labelledby="course-reader-title">
+        <div className="reader-heading">
+          <p className="section-index">APUNTES COMPLETOS</p>
+          <h2 id="course-reader-title">Contenido de los capítulos.</h2>
+          <p>Abre una unidad para consultar sus definiciones, teoremas, ejemplos, ejercicios y fórmulas.</p>
+        </div>
+
+        <div className="reading-chapters">
+          {linearAlgebraChapters.map((chapter, chapterIndex) => (
+            <details
+              className="reading-chapter"
+              id={`lectura-unidad-${chapterIndex + 1}`}
+              key={chapter.slug}
+              open={chapterIndex === 0}
+            >
+              <summary>
+                <span>{chapter.number}</span>
+                <h3>{chapter.title}</h3>
+                <i aria-hidden="true">+</i>
+              </summary>
+              <article className="chapter-article">
+                {chapter.sections.map((section, sectionIndex) => (
+                  <section className="chapter-section" key={`${chapter.slug}-${sectionIndex}`}>
+                    <h4>{section.title}</h4>
+                    <div
+                      className="latex-content"
+                      dangerouslySetInnerHTML={{ __html: section.html }}
+                    />
+                  </section>
+                ))}
+              </article>
             </details>
           ))}
         </div>

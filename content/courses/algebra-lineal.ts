@@ -9,7 +9,7 @@ export const linearAlgebraCourse = {
   eyebrow: "CURSO DE PREGRADO · APUNTES",
   introduction:
     "Un recorrido por las ideas fundamentales del álgebra lineal, desde vectores y matrices hasta transformaciones lineales y cambios de base.",
-  note: "Esta primera versión organiza el contenido de los apuntes originales. Las lecciones completas y las visualizaciones se incorporarán progresivamente.",
+  note: "Esta versión reúne el contenido completo de los seis capítulos de los apuntes originales. Las visualizaciones interactivas se incorporarán progresivamente.",
   units: [
     {
       number: "01",
