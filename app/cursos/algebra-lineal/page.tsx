@@ -47,6 +47,20 @@ export default function LinearAlgebraCoursePage() {
             <p>Abre una unidad para consultar sus definiciones, teoremas, ejemplos, observaciones y fórmulas.</p>
           </header>
 
+          <figure className="course-visual-example">
+            <div>
+              <span>EJEMPLO VISUAL · VECTORES</span>
+              <h3>De una tabla a un vector fila</h3>
+              <p>Una fila con tres datos puede interpretarse como un vector que conserva su orden.</p>
+            </div>
+            <img
+              src="/images/algebra-lineal/tabla-a-vector-fila.png"
+              alt="Una tabla con las columnas A, B y C y los valores 3, 5 y 8 se transforma en el vector fila 3, 5, 8"
+              width="1792"
+              height="869"
+            />
+          </figure>
+
           <div className="reading-chapters">
             {linearAlgebraChapters.map((chapter, chapterIndex) => (
               <details
