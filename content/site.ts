@@ -17,7 +17,6 @@ export const siteContent = {
   navigation: {
     ariaLabel: "Navegación principal",
     links: [
-      { label: "Mapa del sitio", href: "/mapa-del-sitio" },
       { label: "Aprender", href: "/aprender" },
       { label: "Archivo", href: "#archivo" },
     ],

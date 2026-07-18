@@ -1,4 +1,18 @@
 import { siteContent } from "../content/site";
+import { collections } from "../content/collections";
+
+const indexAreas = [
+  { number: "01", title: "Investigación & Math", href: "/investigacion", tone: "olive", entries: collections.find((item) => item.slug === "investigacion")!.entries },
+  { number: "02", title: "Colaboraciones en Salud", href: "/salud", tone: "blue", entries: collections.find((item) => item.slug === "salud")!.entries },
+  {
+    number: "03", title: "Apuntes y exploración", href: "/aprender", tone: "green",
+    entries: [
+      { title: "Álgebra Lineal", href: "/cursos/algebra-lineal" },
+      { title: "Ecuaciones Diferenciales", href: "/cursos/ecuaciones-diferenciales" },
+    ],
+  },
+  { number: "04", title: "Tejido & Patrones", href: "/tejido", tone: "pink", entries: collections.find((item) => item.slug === "tejido")!.entries },
+];
 
 export default function Home() {
   const { brand, navigation, hero, domains, spectrumSection, archive } = siteContent;
@@ -16,6 +30,31 @@ export default function Home() {
           <span>{brand.name}</span>
         </a>
         <nav aria-label={navigation.ariaLabel}>
+          <details className="site-index-menu">
+            <summary>Espectro <span aria-hidden="true">⌄</span></summary>
+            <div className="site-index-panel">
+              <div className="site-index-intro">
+                <p>ÍNDICE DEL SITIO</p>
+                <strong>Todo el espectro de CMSpec.</strong>
+                <a href="#espectro">Ver las áreas en la portada →</a>
+              </div>
+              <div className="site-index-grid">
+                {indexAreas.map((area) => (
+                  <section className={`site-index-area index-${area.tone}`} key={area.href}>
+                    <a className="site-index-area-title" href={area.href}>
+                      <span>{area.number}</span><strong>{area.title}</strong><i>↗</i>
+                    </a>
+                    <div>
+                      {area.entries.map((entry) => <a href={entry.href} key={entry.href}>{entry.title}<span>→</span></a>)}
+                    </div>
+                  </section>
+                ))}
+              </div>
+              <div className="site-index-footer">
+                <a href="#archivo">Archivo</a><a href="#contacto">Contacto</a>
+              </div>
+            </div>
+          </details>
           {navigation.links.map((link) => (
             <a href={link.href} key={link.href}>{link.label}</a>
           ))}
