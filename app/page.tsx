@@ -100,7 +100,7 @@ export default function Home() {
               <p className="card-eyebrow">{domain.eyebrow}</p>
               <h3>{domain.title}</h3>
               <p>{domain.description}</p>
-              <a href="#archivo">{spectrumSection.cardLink} <span>→</span></a>
+              <a href={domain.href}>{domain.linkLabel} <span>→</span></a>
             </article>
           ))}
         </div>

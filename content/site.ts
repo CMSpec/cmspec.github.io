@@ -44,6 +44,8 @@ export const siteContent = {
       description:
         "Proyectos, avances, modelos y notas matemáticas que hacen visible el proceso, no solo el resultado.",
       color: "var(--olive)",
+      href: "#archivo",
+      linkLabel: "Próximamente",
     },
     {
       id: "health",
@@ -53,6 +55,8 @@ export const siteContent = {
       description:
         "Análisis reproducibles y visualizaciones para comprender preguntas relevantes en salud.",
       color: "var(--blue)",
+      href: "#archivo",
+      linkLabel: "Próximamente",
     },
     {
       id: "learn",
@@ -62,6 +66,8 @@ export const siteContent = {
       description:
         "Cursos y apuntes de pregrado con simulaciones, ejemplos y explicaciones interactivas.",
       color: "var(--green)",
+      href: "/cursos/algebra-lineal",
+      linkLabel: "Ver Álgebra Lineal",
     },
     {
       id: "misc",
@@ -71,6 +77,8 @@ export const siteContent = {
       description:
         "Tejido, patrones, simetrías y otros hobbies que conectan la creatividad manual con el pensamiento matemático.",
       color: "var(--pink)",
+      href: "#archivo",
+      linkLabel: "Próximamente",
     },
   ],
 
@@ -80,7 +88,6 @@ export const siteContent = {
     titleSecondLine: "una misma curiosidad.",
     description:
       "Cada sección representa una parte de mis intereses. Juntas forman un archivo vivo de ideas en desarrollo.",
-    cardLink: "Próximamente",
   },
 
   laboratory: {
