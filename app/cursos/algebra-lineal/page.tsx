@@ -1,5 +1,6 @@
 import { linearAlgebraCourse } from "../../../content/courses/algebra-lineal";
 import { linearAlgebraChapters } from "../../../content/courses/algebra-lineal-chapters";
+import MatrixScalarAnimation from "./MatrixScalarAnimation";
 
 function cleanDefinitionName(html: string) {
   return html
@@ -40,6 +41,21 @@ function RowVectorVisual() {
 }
 
 function SectionContent({ html, placeVisual }: { html: string; placeVisual: boolean }) {
+  const scalarExampleStart = '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000036">';
+  const scalarExampleEnd = "<p>Con esta definición, es posible mostrar que:";
+  const scalarStartIndex = html.indexOf(scalarExampleStart);
+  const scalarEndIndex = html.indexOf(scalarExampleEnd, scalarStartIndex);
+
+  if (scalarStartIndex >= 0 && scalarEndIndex > scalarStartIndex) {
+    return (
+      <>
+        <div className="latex-content" dangerouslySetInnerHTML={{ __html: html.slice(0, scalarStartIndex) }} />
+        <MatrixScalarAnimation />
+        <div className="latex-content" dangerouslySetInnerHTML={{ __html: html.slice(scalarEndIndex) }} />
+      </>
+    );
+  }
+
   const marker = '<div class="defin_thmwrapper';
   const markerIndex = placeVisual ? html.indexOf(marker) : -1;
 
