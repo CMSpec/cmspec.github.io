@@ -3,18 +3,22 @@ const notes = [
     number: "01",
     title: "Álgebra Lineal",
     description: "Vectores, matrices, sistemas, espacios vectoriales, transformaciones y cambios de base.",
-    meta: "6 unidades · Lectura completa",
+    subtitle: "Seis unidades para construir una mirada lineal",
+    authors: "Camila Muñoz Santander",
+    published: "18 julio 2026",
+    modified: "18 julio 2026",
     href: "/cursos/algebra-lineal",
-    tone: "blue",
     formula: "A\u2009x = b",
   },
   {
     number: "02",
     title: "Ecuaciones Diferenciales",
     description: "Métodos de primer orden, ecuaciones de orden superior, Laplace, Fourier y problemas de frontera.",
-    meta: "11 clases · Lectura completa",
+    subtitle: "De una razón de cambio local a una trayectoria completa",
+    authors: "Camila Muñoz y Marcos Morales",
+    published: "18 julio 2026",
+    modified: "18 julio 2026",
     href: "/cursos/ecuaciones-diferenciales",
-    tone: "green",
     formula: "y′ = f(x, y)",
   },
 ] as const;
@@ -37,7 +41,6 @@ export default function LearnPage() {
         <h1>Aprender</h1>
         <div className="learn-deck">
           <p>Una biblioteca de ideas matemáticas para leer con calma, conectar conceptos y volver a consultar.</p>
-          <span>EDICIÓN EN CURSO · 2026</span>
         </div>
       </section>
 
@@ -48,27 +51,27 @@ export default function LearnPage() {
           <p>Cada curso conserva la estructura de los originales en LaTeX y la transforma en una lectura web integrada a CMSpec.</p>
         </header>
 
-        <div className="notes-grid">
+        <div className="notes-list">
           {notes.map((note) => (
-            <a className={`note-card note-${note.tone}`} href={note.href} key={note.href}>
-              <div className="note-card-top"><span>{note.number}</span><span>APUNTES ↗</span></div>
-              <div className="note-formula" aria-hidden="true">{note.formula}</div>
-              <div className="note-card-copy">
-                <p>{note.meta}</p>
-                <h3>{note.title}</h3>
-                <p>{note.description}</p>
+            <article className="note-entry" key={note.href}>
+              <div className="note-dates">
+                <p><span>PUBLICACIÓN</span><time>{note.published}</time></p>
+                <p><span>ÚLTIMA MODIFICACIÓN</span><time>{note.modified}</time></p>
               </div>
-            </a>
+              <div className="note-entry-copy">
+                <p>{note.number} / APUNTES DE PREGRADO</p>
+                <h3>{note.title}</h3>
+                <p className="note-subtitle">{note.subtitle}</p>
+                <p className="note-authors">Por {note.authors}</p>
+                <p className="note-description">{note.description}</p>
+                <a href={note.href}>Leer el curso <span aria-hidden="true">→</span></a>
+              </div>
+              <a className="note-visual" href={note.href} aria-label={`Abrir ${note.title}`}>
+                <span>{note.formula}</span>
+                <small>VISUAL POR INCORPORAR</small>
+              </a>
+            </article>
           ))}
-          <article className="note-card note-future">
-            <div className="note-card-top"><span>03</span><span>PRÓXIMAMENTE</span></div>
-            <div className="note-formula" aria-hidden="true">∑</div>
-            <div className="note-card-copy">
-              <p>COLECCIÓN ABIERTA</p>
-              <h3>Próximo cuaderno</h3>
-              <p>Este espacio crecerá con nuevas materias, visualizaciones y relaciones entre ideas.</p>
-            </div>
-          </article>
         </div>
       </section>
 
