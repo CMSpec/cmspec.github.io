@@ -1,8 +1,69 @@
 import { linearAlgebraCourse } from "../../../content/courses/algebra-lineal";
 import { linearAlgebraChapters } from "../../../content/courses/algebra-lineal-chapters";
 
+function cleanDefinitionName(html: string) {
+  return html
+    .replace(/<annotation[\s\S]*?<\/annotation>/g, "")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&times;/g, "×")
+    .replace(/&nbsp;|&#xA0;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function getDefinitionIndex(html: string) {
+  return html.split('<div class="defin_thmwrapper').slice(1).flatMap((block) => {
+    const id = block.match(/id="([^"]+)"/)?.[1];
+    const label = block.match(/<span class="defin_thmlabel">\s*([^<]+)<\/span>/)?.[1]?.trim();
+    const nameHtml = block.match(/<b class="bfseries">([\s\S]*?)<\/b>/)?.[1];
+    const name = nameHtml ? cleanDefinitionName(nameHtml) : "";
+    return id && label && name ? [{ id, label, name }] : [];
+  });
+}
+
+function RowVectorVisual() {
+  return (
+    <figure className="course-visual-example">
+      <div>
+        <span>EJEMPLO VISUAL · VECTORES</span>
+        <h3>De una tabla a un vector fila</h3>
+        <p>Una fila con tres datos puede interpretarse como un vector que conserva su orden.</p>
+      </div>
+      <img
+        src="/images/algebra-lineal/tabla-a-vector-fila.png"
+        alt="Una tabla con las columnas A, B y C y los valores 3, 5 y 8 se transforma en el vector fila 3, 5, 8"
+        width="1792"
+        height="869"
+      />
+    </figure>
+  );
+}
+
+function SectionContent({ html, placeVisual }: { html: string; placeVisual: boolean }) {
+  const marker = '<div class="defin_thmwrapper';
+  const markerIndex = placeVisual ? html.indexOf(marker) : -1;
+
+  if (markerIndex < 0) {
+    return <div className="latex-content" dangerouslySetInnerHTML={{ __html: html }} />;
+  }
+
+  return (
+    <>
+      <div className="latex-content" dangerouslySetInnerHTML={{ __html: html.slice(0, markerIndex) }} />
+      <RowVectorVisual />
+      <div className="latex-content" dangerouslySetInnerHTML={{ __html: html.slice(markerIndex) }} />
+    </>
+  );
+}
+
 export default function LinearAlgebraCoursePage() {
   const course = linearAlgebraCourse;
+  const firstUnitDefinitions = getDefinitionIndex(
+    linearAlgebraChapters[0].sections.map((section) => section.html).join(""),
+  );
+  const firstDefinitionSectionIndex = linearAlgebraChapters[0].sections.findIndex((section) =>
+    section.html.includes('<div class="defin_thmwrapper'),
+  );
 
   return (
     <main className="course-page">
@@ -37,6 +98,16 @@ export default function LinearAlgebraCoursePage() {
               </a>
             ))}
           </nav>
+          <div className="course-definition-index">
+            <p>DEFINICIONES · UNIDAD 1</p>
+            <div>
+              {firstUnitDefinitions.map((definition) => (
+                <a href={`#${definition.id}`} key={definition.id}>
+                  <span>{definition.label}</span>{definition.name}
+                </a>
+              ))}
+            </div>
+          </div>
           <small>{course.note}</small>
         </aside>
 
@@ -46,20 +117,6 @@ export default function LinearAlgebraCoursePage() {
             <h2 id="course-reader-title">Bases del álgebra lineal.</h2>
             <p>Abre una unidad para consultar sus definiciones, teoremas, ejemplos, observaciones y fórmulas.</p>
           </header>
-
-          <figure className="course-visual-example">
-            <div>
-              <span>EJEMPLO VISUAL · VECTORES</span>
-              <h3>De una tabla a un vector fila</h3>
-              <p>Una fila con tres datos puede interpretarse como un vector que conserva su orden.</p>
-            </div>
-            <img
-              src="/images/algebra-lineal/tabla-a-vector-fila.png"
-              alt="Una tabla con las columnas A, B y C y los valores 3, 5 y 8 se transforma en el vector fila 3, 5, 8"
-              width="1792"
-              height="869"
-            />
-          </figure>
 
           <div className="reading-chapters">
             {linearAlgebraChapters.map((chapter, chapterIndex) => (
@@ -78,9 +135,9 @@ export default function LinearAlgebraCoursePage() {
                   {chapter.sections.map((section, sectionIndex) => (
                     <section className="chapter-section" key={`${chapter.slug}-${sectionIndex}`}>
                       <h4>{section.title}</h4>
-                      <div
-                        className="latex-content"
-                        dangerouslySetInnerHTML={{ __html: section.html }}
+                      <SectionContent
+                        html={section.html}
+                        placeVisual={chapterIndex === 0 && sectionIndex === firstDefinitionSectionIndex}
                       />
                     </section>
                   ))}
