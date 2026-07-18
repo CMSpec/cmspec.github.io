@@ -52,7 +52,7 @@ export const siteContent = {
       title: "Colaboraciones en Salud",
       eyebrow: "Leer lo que los datos dicen",
       description:
-        "Análisis reproducibles y visualizaciones para comprender preguntas relevantes en salud.",
+        "Análisis, exporación y discusión en tópicos de salud pública.",
       color: "var(--blue)",
       href: "#archivo",
       linkLabel: "Próximamente",
