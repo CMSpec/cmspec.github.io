@@ -18,6 +18,7 @@ export const siteContent = {
     ariaLabel: "Navegación principal",
     links: [
       { label: "Espectro", href: "#espectro" },
+      { label: "Aprender", href: "/aprender" },
       { label: "Visualización", href: "#laboratorio" },
       { label: "Archivo", href: "#archivo" },
     ],
@@ -66,8 +67,8 @@ export const siteContent = {
       description:
         "Cursos y apuntes de pregrado con simulaciones, ejemplos y explicaciones interactivas.",
       color: "var(--green)",
-      href: "/cursos/algebra-lineal",
-      linkLabel: "Ver Álgebra Lineal",
+      href: "/aprender",
+      linkLabel: "Abrir la biblioteca",
     },
     {
       id: "misc",

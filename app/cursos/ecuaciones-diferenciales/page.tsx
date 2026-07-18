@@ -1,17 +1,17 @@
-import { linearAlgebraCourse } from "../../../content/courses/algebra-lineal";
-import { linearAlgebraChapters } from "../../../content/courses/algebra-lineal-chapters";
+import { differentialEquationsCourse } from "../../../content/courses/differential-equations";
+import { differentialEquationsChapters } from "../../../content/courses/differential-equations-chapters";
 
-export default function LinearAlgebraCoursePage() {
-  const course = linearAlgebraCourse;
+export default function DifferentialEquationsCoursePage() {
+  const course = differentialEquationsCourse;
 
   return (
-    <main className="course-page">
+    <main className="course-page edo-course">
       <header className="course-header">
         <a className="brand" href="/" aria-label="CMSpec, volver al inicio">
           <span className="brand-mark" aria-hidden="true"><i /><i /><i /><i /></span>
           <span>CMSpec</span>
         </a>
-        <span className="course-publication">APUNTES · ÁLGEBRA LINEAL</span>
+        <span className="course-publication">APUNTES · ECUACIONES DIFERENCIALES</span>
         <a className="course-back" href="/aprender">Todos los apuntes ↗</a>
       </header>
 
@@ -21,9 +21,9 @@ export default function LinearAlgebraCoursePage() {
         <h1>{course.title}</h1>
         <p className="course-deck">{course.introduction}</p>
         <div className="course-meta">
-          <div><span>AUTORA</span><strong>{course.author}</strong></div>
+          <div><span>AUTORÍA</span><strong>{course.authors}</strong></div>
           <div><span>COLECCIÓN</span><strong>CMSpec · Aprender</strong></div>
-          <div><span>CONTENIDO</span><strong>6 unidades · Apuntes completos</strong></div>
+          <div><span>CONTENIDO</span><strong>11 clases · Apuntes completos</strong></div>
         </div>
       </article>
 
@@ -31,27 +31,33 @@ export default function LinearAlgebraCoursePage() {
         <aside className="course-toc" aria-label="Índice del curso">
           <p>EN ESTE CURSO</p>
           <nav>
-            {course.units.map((unit, index) => (
-              <a href={`#lectura-unidad-${index + 1}`} key={unit.number}>
-                <span>{unit.number}</span>{unit.title}
+            {differentialEquationsChapters.map((chapter, index) => (
+              <a href={`#lectura-clase-${index + 1}`} key={chapter.slug}>
+                <span>{chapter.number}</span>{chapter.title}
               </a>
             ))}
           </nav>
           <small>{course.note}</small>
         </aside>
 
-        <section className="course-reader" aria-labelledby="course-reader-title">
+        <section className="course-reader" aria-labelledby="edo-reader-title">
           <header className="reader-heading">
             <p>APUNTES COMPLETOS</p>
-            <h2 id="course-reader-title">Seis unidades para construir una mirada lineal.</h2>
-            <p>Abre una unidad para consultar sus definiciones, teoremas, ejemplos, observaciones y fórmulas.</p>
+            <h2 id="edo-reader-title">{course.readerTitle}</h2>
+            <p>{course.readerDescription}</p>
           </header>
 
+          <div className="edo-visual-note" aria-label="Idea central de las ecuaciones diferenciales">
+            <span>UNA RELACIÓN LOCAL</span>
+            <strong>y′ = f(x, y)</strong>
+            <p>La derivada describe el cambio local; la solución reconstruye la trayectoria completa.</p>
+          </div>
+
           <div className="reading-chapters">
-            {linearAlgebraChapters.map((chapter, chapterIndex) => (
+            {differentialEquationsChapters.map((chapter, chapterIndex) => (
               <details
                 className={`reading-chapter chapter-tone-${(chapterIndex % 4) + 1}`}
-                id={`lectura-unidad-${chapterIndex + 1}`}
+                id={`lectura-clase-${chapterIndex + 1}`}
                 key={chapter.slug}
                 open={chapterIndex === 0}
               >
@@ -64,10 +70,7 @@ export default function LinearAlgebraCoursePage() {
                   {chapter.sections.map((section, sectionIndex) => (
                     <section className="chapter-section" key={`${chapter.slug}-${sectionIndex}`}>
                       <h4>{section.title}</h4>
-                      <div
-                        className="latex-content"
-                        dangerouslySetInnerHTML={{ __html: section.html }}
-                      />
+                      <div className="latex-content" dangerouslySetInnerHTML={{ __html: section.html }} />
                     </section>
                   ))}
                 </article>
@@ -77,8 +80,8 @@ export default function LinearAlgebraCoursePage() {
         </section>
 
         <aside className="course-margin-note">
-          <span>CMSpec / 01</span>
-          <p>Un espacio para leer, relacionar ideas y explorar la estructura detrás de los cálculos.</p>
+          <span>CMSpec / 02</span>
+          <p>De una razón de cambio local a una familia completa de trayectorias.</p>
         </aside>
       </div>
 

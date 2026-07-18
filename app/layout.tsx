@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
   const host = requestHeaders.get("host") ?? "localhost:3000";
   const protocol = host.startsWith("localhost") ? "http" : "https";
-  const image = `${protocol}://${host}/og.png`;
+  const image = `${protocol}://${host}/og-aprender.png`;
 
   return {
     title: "CMSpec — Un espectro de ideas",
@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: "CMSpec — Un espectro de ideas",
       description: "Investigación, matemáticas, datos, salud y aprendizaje interactivo.",
-      images: [{ url: image, width: 1536, height: 864, alt: "CMSpec — Un espectro de ideas, investigación y aprendizaje" }],
+      images: [{ url: image, width: 1672, height: 941, alt: "CMSpec — Aprender, apuntes de pregrado" }],
     },
     twitter: { card: "summary_large_image", images: [image] },
   };
