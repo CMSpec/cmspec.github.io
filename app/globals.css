@@ -90,20 +90,17 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .learn-masthead h1 { max-width: none; font: 400 clamp(44px, 7vw, 95px) Georgia, serif; line-height: .9; letter-spacing: -.06em; }
 .learn-deck { max-width: 650px; margin-top: 60px; padding-top: 22px; border-top: 1px solid var(--ink); }
 .learn-deck p { margin: 0; color: #385963; font: 24px/1.45 Georgia, serif; }
-.notes-library { padding: 90px clamp(24px, 7vw, 108px) 120px; background: #fff; border-top: 1px solid var(--line); }
-.notes-library > header { display: grid; grid-template-columns: .5fr 1fr .8fr; gap: 6vw; margin-bottom: 58px; align-items: start; }
-.notes-library > header > p:first-child { margin: 9px 0 0; color: var(--blue); font: 700 10px var(--font-geist-mono); letter-spacing: .14em; }
-.notes-library > header > p:last-child { margin: 7px 0 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+.notes-library { padding: 55px clamp(24px, 7vw, 108px) 120px; background: #fff; border-top: 1px solid var(--line); }
 .notes-list { border-top: 1px solid var(--ink); }
 .note-entry { display: grid; grid-template-columns: minmax(130px,.48fr) minmax(340px,1.25fr) minmax(260px,.8fr); gap: clamp(32px,5vw,78px); padding: 70px 0; border-bottom: 1px solid var(--line); align-items: start; }
 .note-dates { display: grid; gap: 26px; padding-top: 7px; }
 .note-dates p { display: grid; gap: 7px; margin: 0; }.note-dates span { color: var(--muted); font: 700 8px var(--font-geist-mono); letter-spacing: .12em; }.note-dates time { font: 12px Georgia, serif; }
 .note-entry-copy > p:first-child { margin: 0 0 18px; color: var(--blue); font: 700 9px var(--font-geist-mono); letter-spacing: .13em; }
 .note-entry-copy h3 { margin: 0; font: 400 clamp(45px,5vw,70px)/.95 Georgia, serif; letter-spacing: -.05em; }
+.note-entry-copy h3 a { transition: color .2s ease; }.note-entry-copy h3 a:hover { color: var(--blue); }
 .note-subtitle { margin: 18px 0 8px; color: var(--olive); font: italic 19px/1.4 Georgia, serif; }
 .note-authors { margin: 0 0 24px; color: var(--muted); font: 12px var(--font-geist-sans); }
 .note-description { max-width: 600px; margin: 0 0 27px; color: #49656d; font: 16px/1.65 Georgia, serif; }
-.note-entry-copy > a { display: inline-flex; gap: 25px; padding-top: 10px; border-top: 1px solid var(--ink); font-size: 12px; font-weight: 700; }
 .note-visual { display: grid; min-height: 260px; padding: 24px; place-items: center; background: linear-gradient(135deg,#e8f3f5,#f1f7e4); border: 1px solid var(--line); transition: transform .2s ease; }
 .note-visual:hover { transform: translateY(-4px); }.note-visual > span { color: var(--blue); font: italic 43px Georgia, serif; }.note-visual small { align-self: end; justify-self: start; color: var(--muted); font: 8px var(--font-geist-mono); letter-spacing: .13em; }
 .note-entry:nth-child(2) .note-visual { background: linear-gradient(135deg,#f1f7e4,#fff0e8); }.note-entry:nth-child(2) .note-visual > span { color: var(--olive); }

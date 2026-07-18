@@ -44,13 +44,7 @@ export default function LearnPage() {
         </div>
       </section>
 
-      <section className="notes-library" aria-labelledby="notes-title">
-        <header>
-          <p>01 / COLECCIÓN</p>
-          <h2 id="notes-title">Apuntes disponibles</h2>
-          <p>Cada curso conserva la estructura de los originales en LaTeX y la transforma en una lectura web integrada a CMSpec.</p>
-        </header>
-
+      <section className="notes-library" aria-label="Apuntes disponibles">
         <div className="notes-list">
           {notes.map((note) => (
             <article className="note-entry" key={note.href}>
@@ -60,11 +54,10 @@ export default function LearnPage() {
               </div>
               <div className="note-entry-copy">
                 <p>{note.number} / APUNTES DE PREGRADO</p>
-                <h3>{note.title}</h3>
+                <h3><a href={note.href}>{note.title}</a></h3>
                 <p className="note-subtitle">{note.subtitle}</p>
                 <p className="note-authors">Por {note.authors}</p>
                 <p className="note-description">{note.description}</p>
-                <a href={note.href}>Leer el curso <span aria-hidden="true">→</span></a>
               </div>
               <a className="note-visual" href={note.href} aria-label={`Abrir ${note.title}`}>
                 <span>{note.formula}</span>
