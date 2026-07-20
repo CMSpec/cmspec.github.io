@@ -65,6 +65,7 @@ const preamble = String.raw`\documentclass[12pt]{article}
 \DeclareMathOperator{\ran}{ran}
 \newcommand{\gb}[1]{\operatorname{\textbf{#1}}}
 \newcommand{\thmname}{}
+\newcommand{\cmspecindice}[1]{}
 \newtheorem{thm}{Teorema}[section]
 \newtheorem{prop}[thm]{Proposición}
 \newtheorem{lemma}[thm]{Lema}
@@ -75,6 +76,40 @@ const preamble = String.raw`\documentclass[12pt]{article}
 \newtheorem{sol}[thm]{Solución}
 \newtheorem{rmk}[thm]{Observación}
 `;
+
+function prepareIndexMarkers(source) {
+  const markers = [];
+  const prepared = source.replace(/\\cmspecindice\{([^{}]+)\}/g, (_, title) => {
+    const token = `CMSPECINDEXMARKER${String(markers.length).padStart(4, "0")}`;
+    markers.push({ token, title: title.trim() });
+    return token;
+  });
+  return { markers, source: prepared };
+}
+
+function escapeAttribute(value) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
+function slugify(value) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function injectIndexMarkers(html, markers) {
+  return markers.reduce((result, marker, index) => {
+    const anchor = `<span class="cmspec-index-anchor" id="cmspec-indice-${slugify(marker.title)}-${index + 1}" data-cmspec-index-title="${escapeAttribute(marker.title)}"></span>`;
+    return result.replace(marker.token, anchor);
+  }, html);
+}
 
 function removeEnvironment(source, name) {
   const pattern = new RegExp(`\\\\begin\\{${name}\\}[\\s\\S]*?\\\\end\\{${name}\\}`, "g");
@@ -163,7 +198,8 @@ try {
     fs.mkdirSync(chapterWork, { recursive: true });
 
     const source = fs.readFileSync(path.join(sourceDirectory, `chap${chapterNumber}.tex`), "utf8");
-    fs.writeFileSync(path.join(chapterWork, "chapter.tex"), `${preamble}\n\\begin{document}\n${prepareSource(source)}\n\\end{document}\n`);
+    const indexedSource = prepareIndexMarkers(source);
+    fs.writeFileSync(path.join(chapterWork, "chapter.tex"), `${preamble}\n\\begin{document}\n${prepareSource(indexedSource.source)}\n\\end{document}\n`);
 
     const sourceImage = path.join(sourceDirectory, "Regla_de_Sarrus.png");
     if (fs.existsSync(sourceImage)) fs.copyFileSync(sourceImage, path.join(chapterWork, "Regla_de_Sarrus.png"));
@@ -179,7 +215,7 @@ try {
     if (!main) throw new Error(`plasTeX no generó contenido para chap${chapterNumber}.tex`);
 
     const slug = `unidad-${chapterNumber}`;
-    const html = prefixAnchors(renderMathInHtml(main), slug)
+    const html = prefixAnchors(injectIndexMarkers(renderMathInHtml(main), indexedSource.markers), slug)
       .replace(/<img([^>]*?)src="Regla_de_Sarrus\.png"([^>]*)>/g, '<img$1src="/courses/algebra-lineal/Regla_de_Sarrus.png"$2>');
 
     chapters.push({

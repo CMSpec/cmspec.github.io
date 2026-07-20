@@ -16,6 +16,11 @@ function cleanDefinitionName(html: string) {
 }
 
 function getDefinitionIndex(html: string) {
+  const selectedEntries = [...html.matchAll(/<span class="cmspec-index-anchor" id="([^"]+)" data-cmspec-index-title="([^"]+)"><\/span>/g)]
+    .map((match) => ({ id: match[1], label: "·", name: cleanDefinitionName(match[2]) }));
+
+  if (selectedEntries.length > 0) return selectedEntries;
+
   return html.split('<div class="defin_thmwrapper').slice(1).flatMap((block) => {
     const id = block.match(/id="([^"]+)"/)?.[1];
     const label = block.match(/<span class="defin_thmlabel">\s*([^<]+)<\/span>/)?.[1]?.trim();

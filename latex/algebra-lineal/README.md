@@ -22,3 +22,18 @@ El comando `npm run course:sync` convierte estos seis capítulos con plasTeX y
 actualiza el contenido web. Las animaciones interactivas se mantienen en los
 componentes del sitio y se insertan junto al contenido convertido.
 
+## Elegir qué aparece en el índice
+
+Escribe esta línea inmediatamente antes del concepto que quieras incorporar:
+
+```tex
+\cmspecindice{Matriz}
+```
+
+El texto entre llaves será el nombre visible en el índice y el enlace llevará
+al punto exacto donde colocaste la línea. Para quitar una entrada del índice,
+elimina solamente `\cmspecindice{...}`; el contenido del apunte no se borra.
+
+Cuando un capítulo contiene al menos una marca `\cmspecindice`, CMSpec muestra
+solo las entradas seleccionadas de ese capítulo. Los capítulos todavía no
+marcados conservan temporalmente su índice automático anterior.
