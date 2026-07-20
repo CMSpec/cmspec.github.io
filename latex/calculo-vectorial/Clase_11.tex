@@ -1,0 +1,184 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Primera Semana\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+\end{picture}
+
+
+\begin{center}
+\huge{D\'ecima Semana}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Cálculo Vectorial}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Cálculo Vectorial. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:} 
+\end{center}
+\vspace{0.1cm}
+\begin{center}
+\begin{minipage}{0.5\textwidth}
+\begin{enumerate}
+    \item Teorema de Green
+\end{enumerate}
+\end{minipage}
+\end{center}
+
+
+
+
+\vspace{6cm}
+
+
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+
+\section{Definiciones}
+
+\textbf{Definición:} Una curva $C$ parametrizada por $r(t)$ con $a \leq t \leq b$, se dice \textbf{cerrada}, si su punto inicial es igual al punto final, es decir $r(a)=r(b)$, si $F$ es un campo vectorial, entonces la integral de línea sobre \textbf{curva cerrada} $C$, se denota por
+
+\begin{align*}
+    \oint_C F \cdot dr
+\end{align*}
+
+\textbf{Nota:} Una integral de línea sobre una curva cerrada es el mismo concepto que integral de línea normal, solo que se elige una notación distinta debido a la relevancia que tienen las curvas cerradas. \\
+
+\textbf{Ejemplo:} La circunferencia $C$ es una curva cerrada, una parametrización es por ejemplo $r(t)=(\cos(t),\sin(t))$, $0 \leq t \leq 2\pi$ \\
+
+
+\textbf{Definición:} Una curva $C$ se dice que está \textbf{orientada positivamente} si su parametrización $r(t)$, recorre la curva en dirección contraria a las agujas del reloj. \\
+
+\textbf{Nota:} La definición formal de orientación positiva es complicada y no forma parte de este curso.
+
+
+
+
+
+\newpage
+
+\section{Teorema de Green}
+
+Ahora estamos listos para establecer el teorema de Green \\
+
+\textbf{Teorema de Green: } Sea $C$ una curva suave a trozos, cerrada y orientada positivamente y sea $F=(M,N)$ donde $M$y $N$ tienen derivadas parciales continuas en una región abierta que contiene a la región $R$ limitada por $C$, entonces
+
+
+\begin{align*}
+    \oint_C F \cdot dr = \iint_R \left( N_y-M_x\right) dA
+\end{align*}
+
+Note que si $F$ es conservativo entonces necesariamente $ \displaystyle \oint_C F \cdot dr = 0$ \\
+
+
+
+
+\textbf{Ejemplo 1:} Empleando el Teorema de Green determine el área de la región limitada por la hipocicloide dada en forma paramétrica por $r(t) =(\cos^3(t),\sin^3(t))$, $0 \leq t \leq 2\pi$ \\
+
+\textbf{Solución: } Tenemos que el área será
+
+\begin{align*}
+    \iint_R 1 dA
+\end{align*}
+
+Donde $R$ es la región limitada por la hipocicloide, para poder usar Green necesitamos una función $F=(M,N)$ que cumpla con que $N_x-M_y=1$, haciendo $F=(0,x)$, funciona, luego
+
+\begin{align*}
+    \iint_R 1 dA &=  \oint_C (0,x) \cdot r \\
+    &=  \int_0^{2\pi} (0,\cos^3(t)) \cdot (-3\cos^2(t)\sin(t),3\sin^2(t)\cos(t)) dt\\
+    &=  \int_0^{2\pi} 3\cos^4(t)\sin^2(t)dt\\
+    &=  3\int_0^{2\pi} \cos^4(t)(1-\cos^2(t)))dt\\
+    &=  3\int_0^{2\pi} \cos^4(t)-\cos^6(t)dt\\
+    &= 3 \frac{\pi}{8} \\
+    &= \frac{3\pi}{8} \\
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 

@@ -1,0 +1,525 @@
+  \documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Primera Semana\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+\end{picture}
+
+
+
+\begin{center}
+\huge{Tercera Semana}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Cálculo Vectorial}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Cálculo Vectorial. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\setlength{\parindent}{2.9cm}-  Límites	\\
+\phantom{abefwfewefwfefffw} - Continuidad	\\
+\phantom{abefwfewefwfefffw} - Derivadas direccionales	\\
+\phantom{abefwfewefwfefffw} - Derivadas parciales	\\
+
+
+
+\vspace{6cm}
+
+
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+
+
+
+
+\begin{align*}
+    \Large{\textbf{Límites de campos vectoriales}}
+\end{align*}
+
+Supongamos que tenemos una función vectorial $f:\mathbb{R}^m \to \mathbb{R}$. Si $f$ es una funcion polinómica en varias variables, entonces se tiene
+
+\begin{align*}
+\displaystyle \lim_{x \to a} f(x) = f(a)
+\end{align*}
+
+Es posible demostrar eso por definición pero no lo vamos a hacer. \\
+
+
+\textbf{Ejemplos: } 
+
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (2,-1)} x^3-2y = 2^3-2(-1) =10
+\end{align*}
+
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y,z) \to (3,-2,1)} x^2y-zy+\sqrt{z} = (-2)3^2-(1)(-2)+\sqrt{1} = -18+2+1=-15
+\end{align*}
+
+
+En el caso de que tengamos una funcion racional $f(X) = \displaystyle \frac{P(X)}{Q(X)}$ con $P$ y $Q$ polinomios y $Q(a) \neq 0$, entonces
+
+
+
+\begin{align*}
+\displaystyle \lim_{X \to a} \displaystyle \frac{P(X)}{Q(X)} = \displaystyle \frac{P(a)}{Q(a)}
+\end{align*}
+
+
+\textbf{Ejemplos: } 
+
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (2,3)} \frac{x}{x^2+y^2} = \frac{2}{13}
+\end{align*}
+
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y,z) \to (1,1,1)} \frac{x^2+z}{x+y} = \frac{2}{2} = 1
+\end{align*}
+
+
+
+El problema ocurre cuando $Q(a) =P(a)= 0$, en este caso hay que recurrir a t\'ecnicas que nos ayuden a resolver la indeterminacion, por ejemplo la simplificacion de fracciones \\
+
+
+
+\textbf{Ejemplo 1: } 
+
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (1,1)} \frac{x^2-y^2}{x-y} &= \lim_{(x,y) \to (1,1)} \frac{(x+y)(x-y)}{x-y} \\
+&= \lim_{(x,y) \to (1,1)} \frac{x+y}{1} \\
+&= \lim_{(x,y) \to (1,1)} x+y \\
+&= 2
+\end{align*}
+
+\newpage
+
+
+\textbf{Ejemplo 2: } 
+
+\begin{align*}
+\displaystyle \lim_{(x,y,z) \to (1,2,0)} \frac{z^2x-yz}{zy} &= \lim_{(x,y,z) \to (1,2,0)} \frac{z(zx-y)}{zy}\\
+&= \lim_{(x,y,z) \to (1,2,0)} \frac{zx-y}{y}\\
+&=  -1\\
+\end{align*}
+
+
+
+Y en general cuando no haya indeterminaciones los limies existen, por ejemplo
+
+
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (0,0)} \cos(x+y)&= \cos(0) =1
+\end{align*}
+
+
+
+Hay ocaciones en los cuales los limites no existen. Consideremos
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (0,0)}  \frac{x}{y} 
+\end{align*}
+
+Vamos a probar que este l\'imite no existe, para poder demostrarlo usaremos los siguientes teoremas \\ 
+
+
+
+\textbf{Teorema 1: } Sea $\mathbb{R}^m \to \mathbb{R}^n$ y $a \in \mathbb{R}^m$, en caso de que exista $\displaystyle \lim_{x \to a} f(x) = L$ entonces es único \\ \\
+
+
+
+
+\textbf{Teorema 2: } Sea $\mathbb{R}^m \to \mathbb{R}^n$ y $a \in \mathbb{R}^m$, en caso de que exista $\displaystyle \lim_{x \to a} f(x) = L$ entonces dada cualquier curva parametrizada $h(t)$ y $t_0 \in \mathbb{R}$, tal que $ a=h(t_0) $, se debe tener \\
+
+
+\begin{align*}
+\displaystyle \lim_{x \to a} f(x) = \lim_{t \to t_0} f(h(t_0)) 
+\end{align*}
+
+
+\textbf{Ejemplo 1: } Vamos demostrar que \\
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (0,0)}  \frac{x}{y} 
+\end{align*}
+
+NO existe, tomamos $(x,y) = (t^2,t)$, el cual es valido pues para $t=0$ tenemos $(0,0)$, entonces
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (0,0)}  \frac{x}{y} = \lim_{t \to 0}  \frac{t^2}{t}  = \lim_{t \to 0}  t = 0  
+\end{align*}
+
+
+Por otra parte, tomando $(x,y) = (t,t)$, el cual es valido pues para $t=0$ tenemos $(0,0)$, entonces
+
+
+
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (0,0)}  \frac{x}{y} = \lim_{t \to 0}  \frac{t}{t}  = 1  
+\end{align*}
+
+Podemos ver que el limite no es unico por lo tanto no existe.  \\ \\
+
+
+
+\newpage
+
+
+\textbf{Ejemplo 2: } Vamos demostrar que \\
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (0,0)}  \frac{2xy}{x^2+y^2} 
+\end{align*}
+
+NO existe, tomamos $(x,y) = (t,t)$, el cual es valido pues para $t=0$ tenemos $(0,0)$, entonces
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (0,0)}  \frac{2xy}{x^2+y^2} = \lim_{t \to 0}  \frac{2t^2}{2t^2}  = 1  
+\end{align*}
+
+
+Por otra parte, tomando $(x,y) = (0,t)$, el cual es v\'alido pues para $t=0$ tenemos $(0,0)$, entonces 
+
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (0,0)}  \frac{2xy}{x^2+y^2}  = \lim_{t \to 0}  \frac{0}{t^2}   = 0  
+\end{align*}
+
+Podemos ver que el l\'imite no es \'unico por lo tanto no existe. \\ \\ \\
+
+
+En caso de que el l\'imite sea en varias dimensiones se hace coordenada a coordenada \\
+
+
+
+
+\textbf{Ejemplo 3: } En caso de que no haya ninguna indeterminación el cálculo es muy fácil \\
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (1,0)}   \left( \frac{ 3x}{y+1} , \frac{x+y}{x}\right)    &=  \left( 1 , 1\right) 
+\end{align*}
+
+Otra forma de resolver indeterminaciones es usando el teorema del Sandwich \\
+
+\textbf{Teorema del Sandwich:} Sea $f: \mathbb{R}^n \to \mathbb{R}$ y sean $g(x)$ y $h(x)$ funciones tales que $g(x) \leq f(x) \leq h(x)$ $\forall x \in \mathbb{R}^n$. Supongamos adem\'as que $\displaystyle \lim_{x \to a} g(x) = \lim_{x \to a} h(x) = L$, es decir, los l\'imites existen y son iguales, entonces $\displaystyle\lim_{x \to a} f(x)$ existe y
+
+\begin{align*}
+    \lim_{x \to a} f(x) = L
+\end{align*}
+
+\textbf{Ejemplo:} Determinar
+
+\begin{align*}
+    \lim_{(x,y) \to (0,0)} \frac{|\sin(x)\sin(y)|}{|x|+|y|}
+\end{align*}
+
+\textbf{Respuesta:} Recordamos que $|\sin(x)| \leq x$, luego
+
+
+\begin{align*}
+    0 \leq \frac{|\sin(x)\sin(y)|}{|x|+|y|} \leq \frac{|xy|}{|x|+|y|}
+\end{align*}
+
+Ahora bien, se sabe que $(|x|+|y|)^2 = |x|^2+2|x||y|+|y|^2 \geq 2|x||y|$, luego 
+
+\begin{align*}
+    2\frac{|x||y|}{|x|+|y|} \leq |x|+|y|
+\end{align*}
+
+y entonces
+\begin{align*}
+    0 \leq \frac{|x||y|}{|x|+|y|} \leq \frac{|x|+|y|}{2}
+\end{align*}
+
+De esta forma  como $\displaystyle \lim_{(x,y) \to (0,0)} |x|+|y| = 0$, entonces por el teorema del Sandwich, se tiene que
+
+\begin{align*}
+    \lim_{(x,y) \to (0,0)} \frac{|x|+|y|}{2} = 0
+\end{align*}
+
+Pero entonces nuevamente por el teorema del sandwich se tiene que
+
+
+\begin{align*}
+    \lim_{(x,y) \to (0,0)} \frac{|\sin(x)\sin(y)|}{|x|+|y|} = 0
+\end{align*}
+
+\textbf{Ejercicio para el alumno: }Usando el teorema del sandwich, determine el siguiente l\'imite
+
+\begin{align*}
+    \lim_{(x,y) \to (0,0)} \frac{|\sin(x^2+y^2)|}{\sqrt{x^2+y^2}}
+\end{align*}
+
+\textit{Pista: Use que $0 \leq |\sin(x)| \leq |x|$}
+
+
+
+\newpage
+
+
+
+\begin{center}
+\textbf{\large{Coordenadas polares}} \\
+\end{center}
+
+
+
+Para funciones $f: \mathbb{R}^2 \to \mathbb{R}$ se puede hacer uso de cambio a coordenadas polares $x = \rho \cos(\theta)$ y $y = \rho \sen(\theta)$ y entonces si el limite existe
+
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (0,0)}   f(x,y)   &=  \lim_{\rho \to 0} f(\rho \cos(\theta), \rho \sen(\theta))
+\end{align*}
+
+Para que el límite exista no puede depender del angulo $\theta$ \\ \\
+
+
+
+
+\textbf{Ejemplo 1: } Vamos a calcular \\
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (0,0)}   \frac{x^2\sen(x^2+y^2)}{\sqrt{x^2+y^2}}  &=  \lim_{\rho \to 0}  \frac{\rho^2 \cos^2(\theta)\sen(\rho^2)}{\rho} \\
+&=  \lim_{\rho \to 0}  \rho \cos^2(\theta)\sen(\rho^2) \\
+\end{align*}
+
+Ahora bien indpendiente del angulo $\theta$ el limite siempre es cero porque las funcions $\sen$ y $\cos$ estan acotadas, luego
+
+
+
+\begin{align*}
+\displaystyle \lim_{(x,y) \to (0,0)}   \frac{x^2\sen(x^2+y^2)}{\sqrt{x^2+y^2}}  &=  \lim_{\rho \to 0}  \frac{\rho^2 \cos^2(\theta)\sen(\rho^2)}{\rho} \\
+&=  \lim_{\rho \to 0}  \rho \cos^2(\theta)\sen(\rho^2) \\
+&= 0
+\end{align*}
+
+
+\newpage
+
+\begin{center}
+\textbf{\large{Continuidad}} \\
+\end{center}
+
+Sea $f : A \subseteq \mathbb{R}^m \to \mathbb{R}^n$, se dice que es continua en un punto $a \in \mathbb{R}^n$ si   \\
+
+
+\begin{equation}
+\lim_{x \to a} f(x) = f(a)
+\end{equation}
+
+
+Ademas, $f$ es continua si $f$ es continua en todo punto de su dominio. En general la mayor\'ia de las funciones que vamos a estudiar en este curso son continuas pero hay casos en los cuales hay dicontinuidades\ \\
+
+\textbf{Ejemplo :} Sea $f$ dada por
+
+\begin{align*}
+f(x,y) = \left\{ \begin{array}{lcc} \frac{x^2\sen^2(y)}{x^2+y^2} & si & (x,y) \neq (0,0) \\ \\ 0 & si & (x,y) =(0,0) \end{array} \right.
+\end{align*}
+
+Para verificar que es continua solo tenemos que preocuparnos del punto $(0,0)$, ahora bien
+
+
+\begin{align*}
+\lim_{(x,y) \to (0,0)} f(x,y) &= \lim_{(x,y) \to (0,0)} \frac{x^2\sen^2(y)}{x^2+y^2} \\
+\end{align*}
+
+
+Para calcular el limite hacemos el cambio a polares y obtenemos
+
+
+\begin{align*}
+\lim_{(x,y) \to (0,0)} f(x,y) &= \lim_{(x,y) \to (0,0)} \frac{x^2\sen^2(y)}{x^2+y^2} \\
+&= \lim_{\rho \to 0} \frac{\rho^2 \cos^2(\theta)\sen^2(\rho \sen(\theta))}{\rho^2} \\
+&= \lim_{\rho \to 0} \cos^2(\theta)\sen^2(\rho \sen(\theta)) \\
+&=0
+\end{align*}
+
+
+Por lo tanto $f$ si es continua. \\ \\
+
+\newpage
+
+
+
+\begin{center}
+    \Large{\textbf{Derivadas direccionales}}
+\end{center}
+
+Es posible extender la definición de derivada en una dimensión a derivadas en varias variables, la diferencia es que en una dimensión solo podemos movernos en una dirección, mientras que en $n>1$ dimensiones podemos movernos en infinitas direcciones, asumimos que $n > 1$. \\
+
+\textbf{Definición:} Dada una función $f: \mathbb{R}^n \to \mathbb{R}$ Se define la derivada direccional  en el punto $a$ y en la dirección $u $, como
+
+\begin{align*}
+    D_u f (a) = \lim_{ h \to 0 } \frac{f(a+hu)-f(a)}{h}
+\end{align*}
+
+La derivada direccional tiene la misma interpretacción geométrica que la derivada en una dimensión, la única diferencia es que ahora las variables se mueven en la dirección del vector $u$ en lugar de moverse en el eje $x$, pero la interpretación geométrica es esencialmente la misma. \\
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/derivadadireccional.png}
+    \caption{La derivada direccional corresponde a la pendiente de la recta tangente en un punto cuando se mueve en la direeci\'on del vector  $u$}
+    \label{fig:etiqueta}
+\end{figure}
+
+
+
+
+\textbf{Ejemplo:} Sea $f(x,y) = x^2+y^2$ y $u=(1,1)$, calculemos $D_u f (1,0)$, tenemos que
+
+
+\begin{align*}
+    D_u f (1,0) &= \lim_{ h \to 0 } \frac{f((1,0)+h(1,1))-f(1,0)}{h} \\
+    &= \lim_{ h \to 0 } \frac{f((h+1,h))-1}{h} \\
+    &= \lim_{ h \to 0 } \frac{(h+1)^2+h^2-1}{h} \\
+    &= \lim_{ h \to 0 } \frac{2h^2+2h}{h} \\
+    &= \lim_{ h \to 0 } 2h+2 \\
+    &= 2
+\end{align*}
+
+Esto significa que la pendiente de la recta tangente a la superficie $f(x,y) =x^2+y^2$ cuando se mueve en la dirección $(1,1)$ es de $2$. \\
+
+
+\newpage
+
+\begin{center}
+    \Large{\textbf{Derivadas parciales}}
+\end{center}
+
+En el caso en que en una derivada direccional la dirección sea respecto al vector $u=\hat{\imath}$, escribimos
+
+\begin{align*}
+    D_{\hat{\imath}} f (a) = \frac{\partial f}{\partial x} (a) =f_x
+\end{align*}
+
+en caso de $u=\hat{\jmath}$ y $u=\hat{k}$, se escribe
+
+\begin{align*}
+    D_{\hat{\jmath}} f (a) &= \frac{\partial f}{\partial y} (a) = f_y \\
+    D_{\hat{k}} f (a) &= \frac{\partial f}{\partial z} (a) = f_z
+\end{align*}
+
+y a estas derivadas direccionales se les llama \textbf{derivadas parciales}, son muy fáciles de calcular, solo hay que considerar el resto de las variables como constantes y considerar que solo varía la variable a derivar. Por ejemplo, si consideramos $f(x,y,z) = xyz$, entonces
+
+\begin{align*}
+   \frac{\partial f}{\partial x} =yz
+\end{align*}
+
+Porque tanto $y$ como $z$ son constantes y por lo tanto es como estar multiplicando $x$ por un numero cualquiera. En caso de tener $g(x,y,z) = x+y+z$, entonces
+
+
+\begin{align*}
+   g_x = 1
+\end{align*}
+
+porque como $y$ y $z$ son contantes, al derivar nos queda cero. Si derivamos $h(x,y,z) = e^{xz}+\cos(x+y)$, obtenemos
+
+\begin{align*}
+   \frac{\partial h}{\partial x} = ze^{xz}-\sen(x+y)
+\end{align*}
+
+\textbf{Actividad en clases: } Calcular las tres derivadas parciales de las siguientes funciones\\
+
+a) $\displaystyle f(x,y,z) = \frac{x}{z} + xy^2$ \\
+
+b) $\displaystyle f(x,y,z) = x^{yz}$ \\
+
+c) $\displaystyle f(x,y,z) = xy+z$ \\
+
+
+\end{document} 

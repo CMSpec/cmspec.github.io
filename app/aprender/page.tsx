@@ -21,6 +21,17 @@ const notes = [
     href: "/cursos/ecuaciones-diferenciales",
     formula: "y′ = f(x, y)",
   },
+  {
+    number: "03",
+    title: "Cálculo Vectorial",
+    description: "Vectores, funciones de varias variables, derivadas, integrales múltiples, campos e integrales de línea.",
+    subtitle: "Del espacio euclidiano al cambio en varias dimensiones",
+    authors: "Marcos Morales Inostroza y Camila Muñoz Santander",
+    published: "21 julio 2026",
+    modified: "21 julio 2026",
+    href: "/cursos/calculo-vectorial",
+    formula: "∇f · u",
+  },
 ] as const;
 
 export default function LearnPage() {

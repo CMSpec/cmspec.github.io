@@ -1,0 +1,281 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Primera Semana\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+\end{picture}
+
+
+\begin{center}
+\huge{Quinta Semana}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Cálculo Vectorial}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Cálculo Vectorial. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\setlength{\parindent}{2.9cm}- Extremos locales\\
+\phantom{abefwfewefwfefffw} - Extremos condicionados	\\
+
+
+
+\vspace{6cm}
+
+
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+\section{ Extremos locales}
+
+Ahora vamos a extender los  conceptos de extremo local y punto crítico que se vio en cálulo diferencial \\
+
+\textbf{Definición:} Sea $f: A \subseteq \mathbb{R}^n \to \mathbb{R}$, donde $A$ es un conjunto abierto, se dice que $x_0 \in A$ es un \textbf{mínimo local} si existe $r> 0$ tal que para todo $x \in B(x_0,r) \subseteq A$ se tiene $f(x_0) \leq f(x)$. De forma análoga se dice que   $x_0 \in A$ es un \textbf{máximo local} si existe $r> 0$ tal que para todo $x \in B(x_0,r) \subseteq A$ se tiene $f(x_0) \geq f(x)$.  \\
+
+
+
+
+Recordemos que en cálculo diferencial para determinar los posibles candidatos a extremos locales de una función $f$ se buscaban los puntos $x$ tales que $f'(x)=0$ y luego se usaba el criterio de la segunda derivada para ver si eran máximos locales o mínimos locales. En este caso usaremos algo análogo \\
+
+
+\textbf{Definición: } Sea $f: A \subseteq \mathbb{R}^n \to \mathbb{R}$, donde $A$ es un conjunto abierto, se dice que $x_0 \in A$ es un \textbf{punto crítico} de $f$ si y sólo si $D f(x_0) = 0$, es decir, si el diferencial de $f$ en $x_0$ es igual a $0$. \\
+
+Notemos que esto es equivalente a que $\nabla f (x_0)= (0,0)$ porque el gradiente corresponde a las coordenadas del operador lineal. \\
+
+
+\textbf{Ejemplo:} Hallar los puntos críticos de $f(x,y) = x^2+2y^2-x+2y $ \\
+
+\textbf{Solución:} Calculamos el gradiente 
+
+\begin{align*}
+    \nabla f (x,y) = (f_x,f_y) = (2x-1,4y+2)
+\end{align*}
+
+Ahora vemos cuando se hace $(0,0)$, es decir $(2x-1,4y+2)=(0,0)$, luego $2x-1=0$ y $4y+2=0$, de esta forma concluimos que $x=1/2$ e $y=-1/2$, por lo tanto el único punto crítico es $(1/2,-1/2)$. \\
+
+\textbf{Teorema:}  $f: A \subseteq \mathbb{R}^n \to \mathbb{R}$, donde $A$ es un conjunto abierto y $x_0 \in A$, si $x_0$ es un extremo local, entonces es un punto cr\'itico
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{Imagenes/maximo.jpg}
+    \caption{Como se puede apreciar un extremo local tiene un plano tangente paralelo al plano $XY$ y por lo tanto su gradiente debe ser $(0,0)$}
+    \label{fig:etiqueta}
+\end{figure}  
+
+
+
+\textbf{Nota Importante:} No todos los puntos críticos corresponden a extremos locales.\\
+
+\textbf{Definición:} Sea $f: A \subseteq \mathbb{R}^n \to \mathbb{R}$, donde $A$ es un conjunto abierto y sea $x_0 \in A$ es un punto crítico, se dice que $x_0$ es un \textbf{punto silla} si para toda bola abierta $B(x_0,r) \subseteq A$ se tiene que existen puntos $x,y \in B(x_0,r)$ tales que $f(x_0) < f(x)$ y $f(y) < f(x_0)$. \\
+
+En otras palabras los puntos silla son puntos críticos que no son ni máximos ni mínimos locales. \\
+
+\newpage
+
+Para determinar cuando un punto crítico es un máximo o un mínimo necesitamos definir la \textbf{matriz Hessiana}, pero solo lo haremos para funciones de dos variables, es posible extender los sigueintes resultados a más variables pero no lo usaremos en este curso. \\
+
+\textbf{Definición: } Sea $f(x,y)$ función diferenciable en dos variables y sea $x_0$ un punto en el dominio de $f$, definimos la matriz Hessiana como
+
+\begin{align*}
+    \mathcal{H}(f,x_0) = \begin{pmatrix}
+        f_{xx}(x_0) & f_{xy}(x_0) \\
+        f_{yx}(x_0) & f_{yy}(x_0)
+    \end{pmatrix}
+\end{align*}
+
+
+Usando esta definición tenemos el sigueinte teorema
+
+
+
+\textbf{Teorema: }Sea $x_0 \in \mathbb{R}^2$ y $f$ función diferenciable con dominio en una bola abierta. Supongamos que $x_0$ es un punto crítico de $f$. Entonces \\
+
+a) Si det$(\mathcal{H}(f,x_0)>0)$ y $f_{xx}(x_0)<0$, entonces $f$ tiene un máximo local en $x_0$. \\
+b) Si det$(\mathcal{H}(f,x_0))>0$ y $f_{xx}(x_0)>0$, entonces $f$ tiene un mínimo local en $x_0$. \\
+c) Si det$(\mathcal{H}(f,x_0))<0$ entonces $f$ tiene un punto silla en $x_0$ . \\
+
+Este criterío sería como el análogo al criterio de la segunda derivada en cálculo en una variable. veamos un ejemplo.\\
+
+\textbf{Ejemplo:} Hallar y clasificar los puntos críticos de la función $f(x,y) =x^3+y^3-3xy$ \\
+
+\textbf{Solución: } Calculamos el gradiente
+
+\begin{align*}
+    \nabla f (x,y) = (f_x,f_y) = (3x^2-3y,3y^2-3x)
+\end{align*}
+
+Ahora si $\nabla f (x,y)=(0,0)$, entonces $3x^2-3y=0$ y $3y^2-3x=0$, si dividimos por $3$ ambas ecuaciones obtenemos  $x^2-y=0$ y $y^2-x=0$ de la primera ecuación obtenemos que $y=x^2$, reemplazando en la segunda ecuación nos queda $x^4-x=0$ o bien $x(x^3-1)=0$ que tiene dos soluciones reales $x=0$ y $x=1$, si $x=0$ entonces $y=1$ y si $x=1$, entonces $y=1$, por lo tanto tenemos dos puntos críticos $(0,0)$ y $(1,1)$. Para ver que tipo de puntos críticos son calculamos la matris Hessiana
+
+
+\begin{align*}
+    \mathcal{H}(f,(x,y)) = \begin{pmatrix}
+        f_{xx}(x_0) & f_{xy}(x_0) \\
+        f_{yx}(x_0) & f_{yy}(x_0)
+    \end{pmatrix} = \begin{pmatrix}
+        6x & -3 \\
+        -3 & 6y
+    \end{pmatrix}
+\end{align*}
+
+Luego
+
+\begin{align*}
+    det(\mathcal{H}(f,(x,y))) = 36xy-9
+\end{align*}
+
+Ahora si evaluamos en $(0,0)$, obtenemos $det(\mathcal{H}(f,(0,0))) =-9 < 0$ y por lo tanto $(0,0)$ es un punto silla. Si evaluamos en $(1,1)$, obtenemos $det(\mathcal{H}(f,(1,1))) =27 > 0$, además $f_{xx}(1,1)= 6 > 0$ y por lo tanto $(1,1)$ es un minimo local. \\ \\
+
+
+\textbf{Ejercicio para los alumnos:} Determine los valores extremos de $f(x,y) = e^x\cos(y)$ \\
+
+\textbf{Ejercicio para los alumnos:} Determine la distancia m\'inima entre el origen y la superficie $z^2=x^2y+4$\\
+
+
+\newpage
+
+
+
+\section{ Extremos condicionados}
+
+Supongamos que tenemos la función  $f: A \subseteq \mathbb{R}^2 \to \mathbb{R}$ y queremos ver si tiene algún extremo, pero no queremos ver en todo el dominio de $f$ sino que queremos restringirnos a otro dominio definido por una función $g(x,y) =0$. Bajo estas condiciones la forma en la que encontramos extremos condicionados no es útil, sin embargo existe una regla que nos permite encontrar estos extremos condicionados \\
+
+\textbf{Regla de los multiplicadores de Lagrange: } Supongamos que tenemos $f: A \subseteq \mathbb{R}^2 \to \mathbb{R}$ y sea $g$ una curva que está determinada por una ecuación implícita $g(x,y)=0$ . Si $f$ tiene un extremo local cuando se restringe a la curva $g$ entonces existe $\lambda \in \mathbb{R}$ tal que
+
+\begin{align*}
+    \nabla f = \lambda \nabla g
+\end{align*}
+
+En otras palabras el gradiente de $f$ tiene que tener la misma dirección que el gradiente de $g$. Además si obtenemos solo dos valores entonces uno será el máximo y el otro será el mínimo \\
+
+Esta regla nos permite calcular los extremos condicionados de la función, veamos un ejemplo \\
+
+\textbf{Ejemplo:} Encontrar los valores extremos de la función $f(x,y)= y^2-x^2$ sobre la elipse $x^2+4y^2=4$ \\
+
+\textbf{Solución: } En este caso la restricción es $g(x,y)= x^2+4y^2-4$ y hay que resolver el sistema
+
+\begin{align*}
+    \nabla f(x,y) &= \lambda \nabla g(x,y) \\
+    g(x,y) &= 0
+\end{align*}
+
+Calculando
+
+\begin{align*}
+    -2x &=2\lambda x \\
+    2y &= 8\lambda y \\
+    x^2+4y^2-4 &= 0
+\end{align*}
+
+Ahora bien de la primera igualdad, obtenemos que $-2x=2\lambda x$, hay dos opciones $x=0$ o bien $\lambda = -1$, si $x=0$, entonces de la tercera igualdad obtenemos
+
+\begin{align*}
+    4y^2-4 &= 0 \\
+    y^2 &=1
+\end{align*}
+
+Y por lo tanto $y=1$ o $y=-1$ y obtenemos los puntos $(0,1)$ y $(0,-1)$. Po otra parte, si $\lambda =-1$ entonces de la ecuación 2 obtenemos
+
+\begin{align*}
+    2y &= -8 y
+\end{align*}
+
+Lo cual solo es posible si $y=0$, entonces por la ecuación 3 tendríamos
+
+\begin{align*}
+ x^2-4=0
+\end{align*}
+
+y por lo tanto $x=2$ o bien $x=-2$ y obtenemos los puntos $(2,0)$ y $(-2,0)$. Por lo tanto los extremos condicionados son $(0,1)$, $(0,-1)$, $(2,0)$ y $(-2,0)$. Evaluando las funciones en estos puntos obtenemos que el máximo de la función restringida es $1$ y el mínimo es $4$, pues solo obtenemos dos valores. \\
+
+
+
+En el caso general la regla de los multiplicadores de Lagrange es el siguiente \\
+
+\textbf{Regla de los multiplicadores de Lagrange: } Supongamos que tenemos $f: A \subseteq \mathbb{R}^n \to \mathbb{R}$ y sean $g_1,g_2,...,g_m$ curvas que estan determinadas por ecuaciones implícitas de la forma $g(X)=0$ . Si $f$ tiene un extremo local cuando se restringe a la curva $g$ entonces existen $\lambda_1,\lambda_2,... ,\lambda_m \in \mathbb{R}$ tales que
+
+\begin{align*}
+    \nabla f = \lambda_1 \nabla g_1 +\lambda_2 \nabla g_2 + ... + \lambda_m \nabla g_m
+\end{align*}
+
+
+En caso de que los puntos críticos condicionados sean más de dos se puede usar el Hessiano Orlado, para determinar la natrualeza de los extremos, pero no lo veremos en este curso. \\ \\
+
+
+\textbf{Ejercicio para los alumnos: } Determine  los extremos de la funci\'on $f(x,y) = e^{xy}$ con la restricci\'on $x^2+y^2=16$ \\
+
+\textbf{Ejercicio para los alumnos: } Determine  los extremos de la funci\'on $f(x,y,z) = x+y+z$ con la restricci\'on $\frac{1}{x}+\frac{1}{y}+\frac{1}{z} = 1$ \\
+
+\end{document} 

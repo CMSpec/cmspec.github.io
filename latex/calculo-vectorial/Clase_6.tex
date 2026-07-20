@@ -1,0 +1,485 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Primera Semana\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+\end{picture}
+
+
+\begin{center}
+\huge{Sexta Semana}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Cálculo Vectorial}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Cálculo Vectorial. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\setlength{\parindent}{2.9cm}- Funciones vectoriales\\
+\phantom{abefwfewefwfefffw} - Vector normal, vector binormal y vector tangente	\\
+\phantom{abefwfewefwfefffw} - Longitud de una curva	\\
+\phantom{abefwfewefwfefffw} - Curvatura	\\
+
+
+
+\vspace{6cm}
+
+
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+\section{Funciones Vectoriales}
+
+
+Ahora lo que vamos a hacer es estudiar con mayor detenimiento las funciones vecotriales, recordemos que estas son funciones de la forma $f: \mathbb{R} \to \mathbb{R}^n$, es decir, son funciones en una variable pero cuya imagen es un vector, estas funciones en dos y tres dimensiones representan curvas parametrizadas en el plano y el espacio. En estas funciones los conceptos vistos antes toman un significado diferente y es necesario tratarlos aparte. \\
+
+
+\subsection{Derivadas }
+
+\textbf{Definición:} Dada una función vectorial $r: \mathbb{R} \to \mathbb{R}^3$ dada por $r(t) = (r_1(t),r_2(t),r_3(t))$, podemos definir la \textbf{derivada $r'$}, como
+
+
+\begin{align*}
+    r'(t) = (r_1'(t),r_2'(t),r_3'(t))
+\end{align*}
+
+Es decir, se deriva coordenada a coordenada, esta definición corresponde a la primera columna de la matriz jacobiana de la función vectorial. Este vector también se conoce como \textbf{Vector velocidad} y al vector $r''(t)$ se le conoce como \textbf{vector aceleración} \\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/derivada.png}
+    \caption{Intepretación gráfica de $r'(t)$}
+    \label{fig:etiqueta}
+\end{figure}  
+
+La derivada $r'(t_0)$ representa directamente a un vector tangente a la curva en $t_0$. \\
+
+\textbf{Definición:} Dada una función vectorial $r(t)$ se define el vector tangente unitario a la curva en  $t$ como
+
+\begin{align*}
+    T(t) = \frac{r'(t)}{||r'(t)||}
+\end{align*}
+
+Notemos que $T(t)$ es un vector unitario, es decir $||T(t)|| = 1$. La ecuación de la recta tangente a la curva en $t=t_0$ viene dada en su ecuación vectorial por
+
+\begin{align*}
+    L :  r(t_0)+ \lambda T(t_0), \lambda \in \mathbb{R}
+\end{align*}
+
+Aunque en realidad se puede usar cualquier vector tangente, no necesariamente el tangente unitario. \\
+
+\textbf{Ejemplo 1: } Sea la curva dada por $r(t) = (t, \sen(t), t^2)$, tenemos que
+
+
+\begin{align*}
+    r'(t) = \left( 1,\cos(t), 2t\right)
+\end{align*}
+
+Luego
+
+\begin{align*}
+   || r'(t) || = \sqrt{1+\cos^2(t)+4t^2}
+\end{align*}
+
+El vector tangente  será
+
+\begin{align*}
+    T(t)= \frac{\displaystyle \left( 1,\cos(t), 2t\right) }{\sqrt{1+\cos^2(t)+4t^2}}
+\end{align*}
+
+La ecuación vectorial  de la recta tangente a $r(t)$ en el punto $t=0$ viene dada por
+
+\begin{align*}
+    L &:  r(0)+ \lambda T(0), \lambda \in \mathbb{R} \\
+    L &:  (1,0,0) + \lambda \left( \frac{(1,1,0)}{\sqrt{2}}\right), \lambda \in \mathbb{R} \\
+\end{align*}
+
+Adicionalmente exiten el vector normal y binormal \\
+
+\textbf{Definición: } Dada una función vectorial $r(t)$ se define el \textbf{vector normal}  unitario a la curva en  $t$ como
+
+\begin{align*}
+    N(t) = \frac{T'(t)}{||T'(t)||}
+\end{align*}
+
+Se define el  \textbf{vector binormal} como
+
+\begin{align*}
+    B(t) = T(t) \times N(t)
+\end{align*}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/vectores.png}
+    \caption{Vectores tangente, normal y binormal de un campo vectorial $f$}
+    \label{fig:etiqueta}
+\end{figure}
+
+
+
+Estos vectores nos permiten determinar las ecuaciones del plano normal, el plano rectificador y el plano osculador. \\
+
+
+\newpage
+
+
+\subsection{Plano Osculador, plano normal y plano rectificante}
+
+
+
+\textbf{Definici\'on: }Sea $P =(x_0,y_0,z_0)\in \mathbb{R}^3$ un punto de la curva $r(t)$, con $r(t_0) = (x_0,y_0,z_0)$, el \textbf{plano osculador de $r$ en el punto $P$}, es el plano que pasa por el punto $(x_0,y_0,z_0)$ y que tiene por vector normal $B(t_0)$, su ecuaci\'on viene dada por
+
+\begin{align*}
+    B(t_0) \cdot ((x,y,z)- (x_0,y_0,z_0)) = 0
+\end{align*}
+
+\textbf{Definici\'on: }Sea $P =(x_0,y_0,z_0)\in \mathbb{R}^3$ un punto de la curva $r(t)$, con $r(t_0) = (x_0,y_0,z_0)$, el \textbf{plano normal de $r$ en el punto $P$}, es el plano que pasa por el punto $(x_0,y_0,z_0)$ y que tiene por vector normal $T(t_0)$, su ecuaci\'on viene dada por
+
+\begin{align*}
+    T(t_0) \cdot ((x,y,z)- (x_0,y_0,z_0)) = 0
+\end{align*}
+
+
+
+\textbf{Definici\'on: }Sea $P =(x_0,y_0,z_0)\in \mathbb{R}^3$ un punto de la curva $r(t)$, con $r(t_0) = (x_0,y_0,z_0)$, el \textbf{plano rectificante de $r$ en el punto $P$}, es el plano que pasa por el punto $(x_0,y_0,z_0)$ y que tiene por vector normal $N(t_0)$, su ecuaci\'on viene dada por
+
+\begin{align*}
+    N(t_0) \cdot ((x,y,z)- (x_0,y_0,z_0)) = 0
+\end{align*}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/planoss.png}\
+    \caption{Descripci\'on gr\'afica de los planos normal, rectificante y osculador}
+    \label{fig:etiqueta}
+\end{figure}
+
+
+\textbf{Ejercicio:} Sea $r(t) = (\cos(t),\sin(t),t)$, determine el vector tangente, el vector normal y el vector binormal, adem\'as determine las ecuaciones del plano osculador, el plano normal y el plano rectificante en $t=0$. \\
+
+\textbf{Respuesta: } Calculamos la derivada de la curva
+
+\[
+r'(t) = (-\sin t, \cos t, 1).
+\]
+
+Evaluando en $t = 0$:
+\[
+r'(0) = (0, 1, 1), \quad ||r'(0)|| = \sqrt{0^2 + 1^2 + 1^2} = \sqrt{2}.
+\]
+
+Por tanto, el vector tangente  es
+
+\[
+T(0) = \frac{1}{\sqrt{2}}(0, 1, 1).
+\]
+
+Para el Vector normal  Calculamos la segunda derivada
+
+\[
+r''(t) = (-\cos t, -\sin t, 0), \quad r''(0) = (-1, 0, 0).
+\]
+
+Como $r''(0)$ es ortogonal a $r'(0)$ y tiene norma 1, es el vector normal unitario es:
+\[
+N(0) = (-1, 0, 0).
+\]
+
+Para el vector binormal calculamos el producto cruz
+\[
+B(0) = \frac{1}{\sqrt{2}}(0,1,1) \times (-1,0,0) = \frac{1}{\sqrt{2}}(0,-1,1).
+\]
+
+
+En $t=0 $, tenemos que $r(0) = (1, 0, 0)$.
+
+\subsubsection*{Plano osculador}
+El plano osculador tiene como vector normal $B(0) = \frac{1}{\sqrt{2}}(0, -1, 1)$, luego su ecuaci\'on es
+
+\[
+\frac{1}{\sqrt{2}}(0, -1, 1) \cdot (x - 1, y, z) = 0
+\]
+
+O bien
+
+
+\begin{align*}
+    z-y =0
+\end{align*}
+
+\subsubsection*{Plano normal}
+El plano normal tiene como vector normal  $T(0) = \frac{1}{\sqrt{2}}(0, 1, 1)$, luego su ecuaci\'on es
+
+\[
+\frac{1}{\sqrt{2}}(0,1,1) \cdot (x - 1, y, z) = 0
+\]
+
+O bien
+
+\begin{align*}
+    y+z =0
+\end{align*}
+
+\subsubsection*{Plano rectificante}
+
+El plano rectificante tiene como vector normal  $N(0) = (-1, 0, 0)$:
+
+\[
+(-1, 0, 0) \cdot (x - 1, y, z) = 0
+\Rightarrow -(x - 1) = 0 
+\]
+
+O bien
+
+\begin{align*}
+    x =1
+\end{align*}
+
+\newpage
+
+
+
+
+
+
+
+
+
+\subsection{Longitud de una curva }
+
+Dada una funci\'on vectorial $r(t) = (r_1(t), r_2(t), r_3(t))$ y dos puntos $r(t_0) =a$ y $r(t_1) = b$ que pertenecen a la curva, es natural preguntarse cuanto mide el largo de la curva entre $a$ y $b$, para poder responder esta pregunta usaremos las mismas t\'ecnicas vistas en c\'alculo integral, vamos a sub-dividir el intervalo $(t_0,t_1)$ en $n$ distintos intervalos $(t_{i-1},t_i)$ de igual largo $\Delta t$, generando una partici\'on de la curva
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/curvavectorial.png}\
+    \caption{Partici\'on de la curva }
+    \label{fig:etiqueta}
+\end{figure}
+
+Luego el largo de cada segmento viene dado por $|| r(t_{i})-r(t_{i-1})||$ y entonces creamos la suma parcial
+
+\begin{align*}
+    S = \sum_{i=0}^n || r(t_{i})-r(t_{i-1})||
+\end{align*}
+
+Ahora bien,
+
+\begin{align*}
+    || r(t_{i})-r(t_{i-1})|| &= \sqrt{(r_1(t_i)-r_1(t_{i-1}))^2+(r_2(t_i)-r_2(t_{i-1}))^2+(r_3(t_i)-r_3(t_{i-1}))^2}
+\end{align*}
+
+Ahora bien, por el teorema del valor medio, para cada $r_k$, existe $c_{k,i} \in (t_{i-1},t_i)$ tal que $r_1(t_i)-r_1(t_{i-1}) = r'(c_{k,i})\Delta t$, luego
+
+
+\begin{align*}
+    || r(t_{i})-r(t_{i-1})|| &= \sqrt{r_1'(c_{1,i})^2+r_2'(c_{2,i})^2+r_3'(c_{3,i})^2}\Delta t \\
+    &= ||r'(c_i)|| \Delta t 
+\end{align*}
+
+Donde $c_i = (c_{1,i}, c_{2,i}, c_{3,i}) $, luego la suma queda
+
+\begin{align*}
+    S = \sum_{i=0}^n || r'(c_i)||\Delta t
+\end{align*}
+
+Hciendo $\Delta t \to 0$, obtenemos la f\'ormula integral
+
+\begin{align*}
+    L = \int_{t_0}^{t_1} || r'(t)|| dt
+\end{align*}
+
+\textit{Nota:} Esta demostraci\'on no es del todo rigurosa porque la forma en la que hemos llegado a la integral es un poco ambigua, en el sentido de que no deber\'ia conicidir exactamente con la integral de Riemann cl\'asica, sin embargo una demostraci\'on m\'as rigurosa tomar\'ia demasiado tiempo. \\
+
+\textbf{Resultado:} Sea $r: \mathbb{R} \to \mathbb{R}^3$ función vectorial, la longitud de la curva entre $t=a$ y $t=b$ viene dada por
+
+\begin{align*}
+    L(a,b) = \int_a^b ||r'(t)|| dt
+\end{align*}
+
+En caso de que se especifiquen los puntos de la curva en lugar de los valores de $a$ y $b$, hay que encontrarlos utilizando la definición de la función. \\
+
+
+\textbf{Ejemplo: } Calcular la longitud de la curva parametrizada por
+\[
+\vec{r}(t) = \langle \cos(t), \sin(t), t \rangle, \quad \text{para } t \in [0, 2\pi].
+\]
+
+\textbf{Respuesta:} Primero derivamos 
+\[
+r'(t) = ( -\sin(t), \cos(t), 1 )
+\]
+
+Calculamos la norma
+
+\[
+|| r'(t) || = \sqrt{(-\sin(t))^2 + (\cos(t))^2 + 1^2} = \sqrt{\sin^2(t) + \cos^2(t) + 1} = \sqrt{1 + 1} = \sqrt{2}.
+\]
+
+Por lo tanto, la longitud de la curva es:
+\[
+L = \int_0^{2\pi} || r'(t) || \, dt = \int_0^{2\pi} \sqrt{2} \, dt = \sqrt{2} \cdot (2\pi - 0) = 2\pi\sqrt{2}.
+\]
+
+\textbf{Ejercicio para los alumnos: } Determinar la longitud de la curva $r(t) = (1,t,t^2)$, entre los puntos $(1,0,0)$ y $(1,1,1)$ \\
+
+\textit{Pista: Para calcular la integral considere la sustituci\'on $t=\frac{1}{2}\tan(\theta)$, tambi\'en use que}
+
+\begin{align*}
+    \int \sec^3(x)dx = \frac{1}{2}\sec(x)\tan(x)+\frac{1}{2}\ln|\sec(x)+\tan(x)|
+\end{align*}
+
+\newpage
+
+\subsection{Curvatura}
+
+
+\textbf{Definición:} Sea $r: \mathbb{R} \to \mathbb{R}^3$ función vecotrial, la curvatura de $r$ en el punto $t$ se define por
+
+\begin{align*}
+    \tau(t) = \frac{||r'(t) \times r''(t)||}{|| r'(t)||^3}
+\end{align*}
+
+
+
+
+
+
+Las interpretaciones geométrica es directas del nombre. la curvatura representa que tan pronunciada es la forma en que la funci\'on vectorial se curva en $t$. \\
+
+\textbf{Ejercicio:} Calcular la curvatura de la curva
+
+\[
+r(t) = \langle t, t^2, 0 \rangle.
+\]
+
+En $t=1$ \\
+
+\textbf{Respuesta:} Tenemos que
+
+\[
+\tau(t) = \frac{||r'(t) \times r''(t)||}{||r'(t)||^3}.
+\]
+
+Calculamos las derivadas primera y segunda
+\[
+r'(t) = \langle 1, 2t, 0 \rangle, \quad r''(t) = \langle 0, 2, 0 \rangle.
+\]
+
+El producto cruz de los vectores es
+\[
+r'(t) \times r''(t) = 
+\begin{vmatrix}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+1 & 2t & 0 \\
+0 & 2 & 0
+\end{vmatrix}
+= \langle 0, 0, 2 \rangle.
+\]
+
+Por lo tanto
+\[
+||r'(t) \times \vec{r}''(t)|| = 2.
+\]
+
+Ahora calculamos la norma de \( r'(t) \)
+\[
+||r'(t)|| = \sqrt{1 + 4t^2}.
+\]
+
+Entonces la curvatura es
+\[
+\tau(t) = \frac{2}{(1 + 4t^2)^{3/2}}.
+\]
+
+Evaluando en $t=1$, obtenemos
+
+Entonces la curvatura es:
+\[
+\tau(1) = \frac{2}{5^{3/2}}.
+\]
+
+
+
+
+
+
+
+
+
+
+\end{document} 
