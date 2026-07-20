@@ -1,0 +1,937 @@
+\section{Espacios Vectoriales}
+
+\textbf{Objetivos del Capítulo}
+
+\begin{itemize}
+\item
+Aprender la definici\'on de un espacio vectorial real.
+
+\item
+Estudiar el concepto de subespacio vectorial.
+
+\item
+Familiarizarse con la operación de combinación lineal y el concepto de espacio generado.
+
+\item
+Conocer la propiedad de independencia lineal.
+
+\item
+Profundizar en el conjunto mínimo de vectores con los que se puede generar un espacio vectorial. Para definir el concepto de bases y dimensiones de un espacio vectorial.
+
+\item
+Expresar vectores con bases diferentes.
+
+\item
+Aprender a definir conceptos relacionados con subespacios vectoriales formados a partir de las filas y las columnas de matrices.
+
+\end{itemize}
+
+
+
+\subsection{Definición y Propiedades Básicas}
+
+Durante toda esta secci\'on, denotaremos por $K$ un \emph{cuerpo}, esto es de un conjunto con dos leyes de composici\'on, denotadas $+$ y $\cdot$, y dos elementos especiales 0 y 1, distintos entre s\'i, que cumplen las siguientes
+propiedades:
+
+\begin{enumerate}
+    \item $+$ y $\cdot$ son asociativas;
+    \item $+$ y $\cdot$ son conmutativas;
+    \item $\cdot$ es distributiva con respecto a $+$;
+    \item $0$ es el neutro de $+$ y $1$ es el neutro de $\cdot$;
+    \item para todo $a \in K$, existe $a'\in  K$ tal que $a + a'=0$ (usualmente $a'$ se denota por $-a$);
+    \item para todo $a \in K\setminus \{0\}$, existe $a \in K \setminus \{0\}$ tal que $a \cdot a' = 1$ (usualmente $a''$ se denota $a^{-1}$ o $1/a$).
+\end{enumerate}
+Si bien esta definici\'on es general, durante el curso consideraremos $K$ igual a $\Q, \R$ o $\C$.
+
+Sea $(K, +, \cdot)$ un cuerpo. Comencemos con la definici\'on de un espacio vectorial.
+\begin{defin}
+
+Un $K-$espacio vectorial (o espacio vectorial sobre $K$) es un
+conjunto no vac\'io $V$ provisto de dos operaciones binarias 
+\begin{align*}
+        + : V \times V &\to V &\cdot : K \times V &\to V\\
+ (x, y) &\mapsto x + y&  (\alpha, y)& \mapsto \alpha \cdot y
+\end{align*}
+llamadas respectivamente suma y multiplicación por escalar y que satisfacen las siguientes propiedades:
+
+\begin{enumerate}
+
+\item
+$+$ es asociativa, es decir $(x+ y)+ z = x+ (y+ z)$ para todo $x, y, z \in V$.
+
+\item
+$+$ es conmutativa, es decir $x + y = y + x$ para todo $x, y \in V$.
+
+\item
+$+$ tiene un elemento neutro $0_V$ , es decir $x + 0_V = x = 0_V + x$ para todo
+$x \in V$.
+
+\item
+$+$ tiene inversos, es decir, para todo $x \in V$ , existe $x' \in V$ tal que $x + x' =0_V$.
+
+\item
+$\alpha \cdot  (\beta \cdot  x) = (\alpha \cdot \beta) \cdot  x$ para todo $\alpha , \beta \in K$ y todo $x \in V$.
+
+\item
+$(\alpha + \beta) \cdot x = (\alpha \cdot x) + (\beta \cdot x)$ para todo $\alpha,\beta \in K$ y todo $x \in V$.
+
+\item
+$\alpha \cdot (x + y) = (\alpha \cdot x) + (\alpha \cdot y)$ para todo $\alpha \in K$ y todo $x, y \in V$.
+
+\item
+$1 \cdot x = x$ para todo $x \in V$.
+\end{enumerate}
+\end{defin}
+Los elementos de un espacio vectorial se llaman vectores.
+Denotaremos por $(V,+,\cdot, K)$ al $K-$espacio vectorial $V$.
+
+
+
+\begin{ejem}
+\begin{enumerate}
+\item
+$\mathbb{R}^2$ es un espacio vectorial sobre $\R$.
+
+\item
+$\mathbb{R}^n$ es un espacio vectorial sobre $\R$.
+
+\item
+$V= \{ \textbf{0} \}$ es un espacio vectorial sobre cualquier cuerpo.
+
+\item
+$V= \{ 1 \}$ No es un espacio vectorial.
+
+\item
+$V= \{ (x,y)\in \R^2: y = mx \}$ es un espacio vectorial sobre $\R$.
+
+
+\item
+$V = M_{m\times n}(\R)$ el conjunto de matrices $m\times n$ con coeficientes en $\R$ es
+un $\R-$espacio vectorial para la suma de matrices y la  multiplicaci\'on por escalares.
+
+\item $\C$ es un $\R-$espacio vectorial con la suma de complejos y la multiplicaci\'on por escalar dada por $\alpha(a+bi) = \alpha a+\alpha bi$ para todo $\alpha \in \R$ y $(a+bi)\in \C$.
+$\C$ es un $C-$espacio vectorial con la suma de complejos y la  la multiplicaci\'on de complejos.
+Estos espacios vectoriales son distintos.
+\item Definimos el conjunto de todos los polinomios con coeficientes en $K$ con indeterminada $x$ como
+\[K[x]=\left\{p(x)=\sum_{i=0}^m a_i x^i\quad\colon a_i\in K, \quad m \in \N\right\},\]
+con las operaciones adici\'on y ponderaci\'on definidas por
+\begin{enumerate}
+    \item $\sum_{i=0}^s a_i x^i+\sum_{i=0}^t b_i x^i=\sum_{i=0}^m (a_i+b_i) x^i$, donde $m=\max\{s,t\}$.
+    \item $\alpha\left(\sum_{i=0}^m a_i x^i\right)=\sum_{i=0}^m (\alpha a_i) x^i$.
+\end{enumerate}
+Con estas operaciones $(K[x],+, \cdot, K)$ es un espacio vectorial.
+\item Definimos el conjunto 
+\[K_n[x]=\left\{p(x)\in K[x]\colon \deg(p(x))\leq n\right\}.\]
+Este conjunto con las operaciones anteriores, es un espacio vectorial sobre $K$.
+\item Sea $A\subset \R$ no vac\'io. El conjunto de funciones 
+\[\mathcal{F}(A,\R):=\{f:A\to \R\colon f \text{ funci\'on}\},\]
+con la suma y poderaci\'on usuales(punto a punto), es un $\R-$espacio vectorial.
+\item Sea $A\subset \R$ no vac\'io. El conjunto de funciones continuas
+\[\mathcal{C}(A,\R):=\{f:A\to \R\colon f \text{ funci\'on continua}\},\]
+con la suma y poderaci\'on usuales, es un $\R-$espacio vectorial.
+\item Sea $A\subset \R$ no vac\'io. El conjunto de funciones continuas
+\[\mathcal{D}(A,\R):=\{f:A\to \R\colon f \text{ funci\'on derivable}\},\]
+con la suma y poderaci\'on usuales, es un $\R-$espacio vectorial.
+\end{enumerate}
+\end{ejem}
+
+\begin{ejer}
+Verifique que los ejemplos anteriores son efectivamente espacios vectoriales sobre los cuerpos correspondientes.
+\end{ejer}
+
+
+
+\begin{thm}
+Sea $V$ un espacio vectorial. Entonces:
+
+\begin{enumerate}
+\item
+$\alpha \textbf{0} = \textbf{0}$ para todo escalar $\alpha$.
+
+\item
+$\textbf{0} \cdot x = \textbf{0}$ para todo $x \in V$.
+
+\item
+Si $\alpha x = \textbf{0}$, entonces $\alpha = 0$ o $x = \textbf{0}$ (o ambos).
+
+\item
+$(-1)x = -x$ para todo $x \in V$.
+\end{enumerate}
+\end{thm}
+\begin{ejer}
+Demuestre las propiedades anteriores.
+\end{ejer}
+\subsection{Subespacios vectoriales}
+\begin{defin}
+Se dice que $H$ es un subespacio vectorial de $V$ si $H$ es un subconjunto no vacío de $V$, y $H$ es un espacio vectorial, junto con las operaciones de suma entre vectores y multiplicación por escalar definidas para $V$.
+\end{defin}
+
+\begin{thm}
+Un subconjunto no vacío de $H$ de un espacio vectorial $V$ es un subespacio de $V$ si se cumplen las siguientes condiciones:
+
+\begin{enumerate}
+\item
+Si $x \in H$ y $y \in H$, entonces $x + y \in H$.
+
+\item
+Si $x \in H$, entonces $\alpha x \in H$ para todo escalar $\alpha$.
+\end{enumerate}
+\end{thm}
+
+\begin{rmk}
+Todo subespacio de un espacio vectorial $V$ contiene al vector $\textbf{0}$.
+\end{rmk}
+
+La definici\'on de subespacio se puede reducir a una sola propiedad, que es la siguiente: para todo $\alpha \in K$ y para todo $x, y \in H$, $\alpha x+y \in H$. En efecto, esta propiedad se deduce inmediatamente de (1) y (2). Por otra parte, partiendo de esta propiedad
+obtenemos (1) tomando $\alpha = 1$. Con $x = y$ y $\alpha = -1$ obtenemos que $0\in H $, por
+lo que podemos tomar $y = 0$ y obtenemos (2). En particular, vemos que todo
+subespacio vectorial contiene a $0$.
+
+
+
+
+\begin{ejem}
+\begin{enumerate}
+\item
+$H = \{ \textbf{0} \}$.
+
+\item
+Todo espacio vectorial es subespacio de sí mismo.
+
+
+\item
+Sea $V = \mathbb{R}^2$. Un subespacio vectorial de $V$ es $H = \{ (x,y): y = mx \}$.
+
+
+\item
+Demuestre que $H_1 = \{(x,y,z): 2x - y - z = 0 \}$ es un subespacio de $\mathbb{R}^3$
+\item Demuestre que $H = \{ (x,y,z): x + 2y + 3z = 0 \}$ es un subespacio vectorial de $\mathbb{R}^3$
+\end{enumerate}
+\end{ejem}
+
+
+
+\begin{thm}
+Sean $H_1$ y $H_2$ subespacios de un espacio vectorial $V$. Entonces $H_1 \cap H_2$ es un subespacio vectorial de $V$.
+\end{thm}
+
+\begin{ejem}
+Sea $V = \mathbb{R}^3$ y sean $H_1 = \{(x,y,z): 2x - y - z = 0 \}$ y $H_2 = \{ (x,y,z): x + 2y + 3z = 0 \}$. Entonces $H_1$ y $H_2$ son subespacios de $\mathbb{R}^3$. $H_1 \cap H_2$ es la intersecci\'on de los dos planos.
+\end{ejem}
+
+
+\subsection{Combinación Lineal e Independencia Lineal}
+
+\begin{defin}
+Sean $v_1, v_2, \dots, v_n$ vectores en un espacio vectorial $V$. Entonces cualquier vector, $v$, de la forma: 
+$$v = a_1 v_1 + a_2v_2 + \cdots +a_n v_n$$ 
+
+donde $a_1, a_2, \dots a_n$ son escalares, se denomina una combinación lineal de $v_1, v_2, \dots , v_n$.
+\end{defin}
+
+
+\begin{ejem}
+Consideremos el vector $\begin{pmatrix} -7 \\ 7 \\ 7  \end{pmatrix} \in \mathbb{R}^3$. 
+\\\
+
+Como $\begin{pmatrix} -7 \\ 7 \\ 7  \end{pmatrix} = 2\begin{pmatrix} -1 \\ 2 \\ 4 \end{pmatrix} - \begin{pmatrix} 5 \\ -3 \\ 1 \end{pmatrix}$ 
+\\\
+
+luego $\begin{pmatrix} -7 \\ 7 \\ 7  \end{pmatrix}$ es una combinaci\'on lineal de $\begin{pmatrix} -1 \\ 2 \\ 4 \end{pmatrix}$ y $\begin{pmatrix} 5 \\ -3 \\ 1 \end{pmatrix}$.
+\end{ejem}
+
+
+\begin{defin}
+Sea $A=\{v_1, v_2, \dots, v_n\}$ subconjunto de vectores en un espacio vectorial $V$. Se dice que el conjunto $A$ es
+Linealmente Independiente (L.I.) si 
+$$ a_1 v_1 + a_2v_2 + \cdots +a_n v_n=0$$ 
+implica que $a_i=0$ para todo $i=1, \dots, n.$
+En caso contrario, es decir, existe $i\in \{1,\dots, n\}$ tal que $a_i\neq 0$, el conjunto $A$ se dice linealmente dependiente (L.D.).
+\end{defin}
+
+\begin{rmk}
+\begin{enumerate}
+\item 
+Un conjunto de vectores $v_1,v_2, \dots , v_n$ en un espacio vectorial $V$ es linealmente dependiente si y sólo si al menos uno de ellos puede expresarse como una combinaci\'on lineal de los otros.
+
+    \item Todo subconjunto de vectores L. I. es también L.I.
+    \item Todo conjunto de vectores que contenga un conjunto de vectores L.D. es también
+L.D.
+\item Todo conjunto de vectores que contenga al vector nulo es L.D.
+\item Si $v$ es un vector no nulo de un espacio vectorial $V$, entonces el conjunto $\{v\}$ es
+L.I.
+\end{enumerate}
+\end{rmk}
+
+\begin{ejem}
+Los vectores $\{(1,1,1) , (1,2,2) , (2,1,-1)\}$ , son linealmente independientes, justifique su
+respuesta:
+Consideremos la ecuación 
+\[\alpha (1,1,1 ) + \beta ( 1,2,2 ) + \gamma ( 2,1,-1) = ( 0, 0,0 ) ,\]
+que determina el sistema lineal homogéneo 
+\begin{align*}
+    \alpha + \beta + 2\gamma &= 0,\\ \alpha + 2\beta + \gamma &= 0,\\ \alpha + 2\beta - \gamma &= 0,
+\end{align*} cuyas soluciones son $ \alpha  = 0 $, $\beta = 0$ y $\gamma = 0$, por tanto, los
+vectores son linealmente independientes.
+\end{ejem}
+
+\begin{ejer}
+Determine si los siguientes conjuntos son linealmente independientes o lin. dependiente.
+\begin{enumerate}
+    \item $\{(2, -1), (1,0)\}$ en el $\R-$ espacio vectorial $\R^2$.
+    \item $\{(1,1,0), (1,1,1), (0,1, -1)\}$ en el $\R-$ espacio vectorial $\R^3$.
+    \item $\{ 1, x -1, x^2 + 2x + 1, x^2\}$ en el $\R-$ espacio vectorial $\R[x]$.
+    \item $\left\{\begin{pmatrix} -2 & 1 \\ 1 & 0 \end{pmatrix},\begin{pmatrix} 1 & -1 \\ 0 & 2 \end{pmatrix},\begin{pmatrix} -1 & 0 \\ 1 & 2 \end{pmatrix},\begin{pmatrix} 0 & -3 \\ 1 & 2 \end{pmatrix}\right\}$ en el $\R-$ espacio vectorial $M_{2}(\R).$
+\end{enumerate}
+\end{ejer}
+
+\begin{ejer}
+Sean $\{v_1, v_2, v_3\}$ vectores linealmente independientes en un espacio vectorial $V$. Demuestre que los siguientes conjuntos son linealmente independientes.
+\begin{enumerate}
+    \item $\{ v_1 + v_2- v_3, v_2+ v_3, 2v_1\}$.
+\item $\{ v_1 + v_2, v_1 - 2v_2 + v_3, v_1 - v_3\}$.
+\end{enumerate}
+\end{ejer}
+
+\begin{ejer}
+Determine el valor de $k \in \R$ de modo que los siguientes conjuntos sean:
+\begin{enumerate}
+    \item $\{ (1, k, 0), (-1,2,1), (2, -1, k) \}$ linealmente independientes.
+    \item ${ -x_1 + x_2 + 3x_3, 5x_1- 2x_2 + 9x_3, x_1 - kx_2+ 2kx_3 } $ linealmente dependiente.
+\end{enumerate}
+\end{ejer}
+
+\begin{ejer}
+Escriba el vector $v = 11 - 9x + 3x^2 \in \R_2[x]$ como combinación lineal de los vectores $v_1 = 1 - x $, $v_2 = 2x + x^2$ y $v_3 = 5 - x + 3x^2$.
+\end{ejer}
+
+\begin{defin}
+Se dice que los vectores $v_1, v_2 \dots , v_n$ de un espacio vectorial $V$ generan a $V$ si todo vector en $V$ se puede escribir como una combinación lineal de los mismos. Es decir, para todo $v \in V$ existen escalares $a_1,a_2, \dots a_n$ tales que
+$$v = a_1 v_1 + a_2 v_2 + \cdots + a_n v_n$$
+\end{defin}
+
+\begin{ejem}
+\begin{enumerate}
+\item
+Los vectores $e_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ y $e_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$ generan $\mathbb{R}^2$
+\\\
+
+\item
+$e_1 = \begin{pmatrix} 1 \\ 0 \\ 0\end{pmatrix}$, $e_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}$ y $e_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}$ generan $\mathbb{R}^3$
+\end{enumerate}
+\end{ejem}
+
+
+
+
+
+\begin{ejem}
+\begin{enumerate}
+\item
+$1,x,x^2, \dots, x^n$ generan a $\mathbb{R}_n[x]$
+\\\
+
+\item
+$\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$, $\begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}$, $\begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}$ y $\begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}$ generan a $M_{2}$
+\\\
+
+\item
+No hay un conjunto finito de vectores que generen $\mathbb{R}[x]$
+\end{enumerate}
+\end{ejem}
+
+
+\subsection{Espacio generado.}
+
+Sea $V$ un espacio vectorial sobre $K$.
+\begin{defin}
+Sea $v_1, v_2 \dots , v_k$ $k$ vectores de un espacio vectorial $V$. El espacio generado por $\{ v_1,v_2, \dots v_k \}$ es el conjunto de combinaciones lineales de $v_1,v_2, \dots ,v_k$. Es decir, 
+\begin{center}
+   $<\{v_1, v_2, \dots , v_k \}> = \{ v\in V\colon v =  a_1 v_1 + a_2 v_2 + \cdots + a_k v_k \}$  
+\end{center}
+donde $a_1, a_2, \dots a_k$ son escalares. De manera m\'as general, sea $S$ un subconjunto de $V$, el subespacio generado por $S$ se define como
+\[<S>=\{v\in V\colon v=\sum_{i=1}^n a_i v_i,\quad v_i\in S, \quad a_i \in K, \quad n\in \N\},\]
+que corresponde al conjunto de todas las
+combinaciones lineales finitas de vectores de $S$ con coeficientes en $K$,
+\end{defin}
+
+\begin{thm}
+Si $v_1, v_2, \dots, v_k$ son vectores en un espacio vectorial $V$, entonces $<\{v_1, v_2, \dots , v_k \}>$ es un subespacio vectorial de $V$.
+\end{thm}
+
+\begin{rmk}
+\begin{enumerate}
+\item Sea $S$ un conjunto de vectores de un espacio vectorial $V$. El subespacio generado por S,
+se define como la intersección de todos los subespacios de $V$ que contienen a $S$.
+\item $<S>$ es el menor(m\'as pequeño) subespacio generado por $S$.
+\item $<\emptyset>=\{0\}$
+\end{enumerate}
+\end{rmk}
+
+
+
+\begin{ejem}
+Sean $v_1 = (2,-1,4)$ y $v_2 = (4,1,6)$. Encuentre $H=<\{ v_1,v_2 \}>$
+\end{ejem}
+
+\begin{thm}
+Sean $v_1, v_2, \dots, v_n, v_{n+1}$; $n+1$ vectores que están en un espacio vectorial $V$. Si $v_1, v_2, \dots , v_n$ generan a $V$, entonces $v_1, v_2, \dots, v_n, v_{n+1}$ también generan a $V$.
+\end{thm}
+
+
+
+
+\begin{ejer}
+Demuestre el teorema anterior.
+\end{ejer}
+
+
+\begin{thm}
+Cualquier conjunto de $n$ vectores linealmente independientes en $\mathbb{R}^n$ genera a $\mathbb{R}^n$.
+\end{thm}
+
+
+
+
+
+
+
+
+
+\begin{thm}
+Un conjunto de $n$ vectores en $\mathbb{R}^m$ es siempre linealmente dependiente si $n > m$.
+\end{thm}
+
+\begin{ejem}
+Los vectores  $\begin{pmatrix} 2 \\ -3 \\ 4 \end{pmatrix}, \begin{pmatrix} 4 \\ 7 \\ -6 \end{pmatrix}, \begin{pmatrix} 18 \\ -11 \\ 4 \end{pmatrix}, \begin{pmatrix} 2 \\ -7 \\ 3 \end{pmatrix}$ son Ld.
+\end{ejem}
+
+\begin{cor}
+Un conjunto de vectores linealmente independientes en $\mathbb{R}^n$ contiene a lo más $n$ vectores.
+\end{cor}
+
+
+
+
+
+\begin{thm}
+Sean $v_1, v_2, \dots v_n$, $n$ vectores en $\mathbb{R}^n$ y sea $A$ una matriz de $n \times n$ cuyas columnas son $v_1, v_2, \dots v_n$. Entonces, $v_1, v_2, \dots, v_n$ son linealmente independientes si y solo si la única solución al sistema homogéneo $Ax = 0$ es la solución trivial $x = 0$.
+\end{thm}
+
+\begin{thm}
+Sea $A$ una matriz de $n \times n$. Entonces $\det A \not= 0$ si y solo si las columnas de $A$ son linealmente independientes.
+\end{thm}
+
+
+
+
+
+\begin{ejem}
+\begin{enumerate}
+\item
+Determine si los vectores $\begin{pmatrix} 1 \\ -2 \\ 3 \end{pmatrix}, \begin{pmatrix} 2 \\ -2 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 7 \end{pmatrix}$ son Li o Ld.
+\\\
+
+\item
+Determine si los vectores $\begin{pmatrix} 1 \\ -3 \\ 0 \end{pmatrix}, \begin{pmatrix} 3 \\ 0 \\ 4 \end{pmatrix}, \begin{pmatrix} 11 \\ -6 \\ 12 \end{pmatrix}$ son Li o Ld.
+\end{enumerate}
+\end{ejem}
+
+
+
+\subsection{Bases y Dimensión}
+
+\begin{defin}
+Un conjunto finito de vectores $\{ v_1,v_2, \dots, v_n \}$ es una base para un espacio vectorial $V$ si 
+
+\begin{enumerate}
+\item
+$\{ v_1,v_2, \dots, v_n \}$ es linealmente independiente.
+
+\item
+$\{ v_1,v_2, \dots, v_n \}$ genera a $V$.
+\end{enumerate}
+\end{defin}
+
+\begin{ejem}
+En $\mathbb{R}^2$ los vectores $e_1 = \begin{pmatrix} 1 \\ 0  \end{pmatrix}$ y $e_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$ son una base para $\mathbb{R}^2$.
+\end{ejem}
+
+\begin{rmk}
+Todo conjunto de $n$ vectores linealmente independientes en $\mathbb{R}^n$ es una base en $\mathbb{R}^n$.
+\end{rmk}
+
+
+
+\begin{defin}
+En $\mathbb{R}^n$ al conjunto de vectores 
+$$e_1 = \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, e_2 = \begin{pmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix}, \cdots, e_n = \begin{pmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix}$$ 
+
+se le denomina base canónica.
+\end{defin}
+
+\begin{ejem}
+Encuentre una base para el conjunto de vectores que se encuentran en el plano 
+\[\pi = \left\{ \begin{pmatrix} x \\ y \\ z \end{pmatrix} : 2x-y+3z=0 \right\}\]
+\end{ejem}
+
+
+
+
+
+\begin{ejem}
+¿Cuál puede ser la base canónica de $\mathbb{R}_3[x]$ y de $M_{2 }(\R)$?
+\end{ejem}
+
+
+
+
+
+\begin{thm}
+Si $\{ v_1,v_2, \dots, v_n \}$ es una base para $V$ y si $v \in V$, entonces existe un conjunto único de escalares $c_1, c_2, \dots, c_n$ tales que $v = c_1v_1+c_2v_2 + \cdots c_nv_n$.
+\end{thm}
+
+\begin{thm}
+Si $u_1,u_2, \dots u_m$ y $v_1,v_2, \dots, v_n$ son bases en un espacio vectorial $V$, entonces $m = n$.
+\end{thm}
+
+\begin{defin}
+Sea $V$ un espacio vectorial sobre $K$, diremos que la dimensión de $V$ es $n$ si y sólo si tiene
+una base de $n$ vectores y escribimos $\dim_K(V)=n$ o simplemente $\dim(V)=n$ y el cuerpo se da por conocido.
+
+De otra manera, $V$ se denomina espacio vectorial de dimensión infinita. Si $V = \{ \textbf{0} \}$, entonces se dice que $V$ tiene dimensión cero.
+\end{defin}
+
+
+
+
+
+\begin{ejem}
+\begin{enumerate}
+\item
+$\dim_\R\mathbb{R}^n = n$
+
+
+\item
+$\dim_\R\mathbb{\R}_n[x] = n+1$
+
+
+\item
+$\dim_\R M_{mn}(\R) = mn$
+
+
+\item
+$\dim_\R\mathbb{\R}[x] = \infty$
+\end{enumerate}
+\end{ejem}
+\begin{ejer}
+Exhiba bases que confirmen los números precedentes en los casos de dimensión finita.
+\end{ejer}
+
+
+
+\begin{thm}
+Suponga que dim$V=n$. Si $u_1,u_2, \dots, u_m$ es un conjunto de $m$ vectores linealmente independientes en $V$, entonces $m \le n$.
+\end{thm}
+
+\begin{thm}
+Sea $H$ un subespacio vectorial de dimensión finita $V$. Entonces $H$ tiene dimensión finita y dim$H \le$dim$V$.
+\end{thm}
+
+\begin{ejem}
+\begin{enumerate}
+\item
+$\mathbb{R}^3$ tiene dimensi\'on 3. Luego, los subespacios de $\mathbb{R}^3$ tienen dimensi\'on 3, 2, 1 o 0.
+\\\
+
+\item
+Encuentre una base y la dimensi\'on para el espacio de soluci\'on $S$ del sistema:
+\begin{center}
+    $x+2y-z=0$
+
+$2x-y+3z=0$
+\end{center}
+\end{enumerate}
+\end{ejem}
+
+
+
+
+
+\begin{ejem}
+Encuentre una base para el espacio de soluciones $S$ del sistema:
+\begin{center}
+    $2x-y+3z=0$
+
+$4x-2y+6z=0$
+
+$-6x+3y-9z=0$
+\end{center}
+\end{ejem}
+
+\begin{thm}
+Cualquier conjunto de $n$ vectores linealmente independientes en un espacio vectorial $V$ de dimensión $n$ constituyen una base para $V$.
+\end{thm}
+
+\begin{thm}
+Sea $V$ un $K-$espacio vectorial finitamente generado. Sea
+$S \subset V$ un subconjunto de $V$ LI sobre $K$. Entonces existe una base $B$ de $V$ tal que
+$S \subset B$. En otras palabras, todo subconjunto LI se puede completar a una base de
+$V $. En particular, todo espacio vectorial finitamente generado posee una base.
+\end{thm}
+
+\subsection{Suma de subespacios}
+Tal como vimos anteriormente, no todo subconjunto de un espacio vectorial es también un espacio vectorial. Ya vimos como, a partir de conjuntos de vectores, podemos generar subespacios.
+Esto se puede aplicar a la uni\'on de subespacios (la cual, nuevamente, no es un
+subespacio). Sin embargo, existe una forma más sencilla de interpretar el espacio generado por dos o más subespacios. Se trata de lo siguiente:
+
+\begin{defin}
+Sea $V$ un espacio vectorial sobre $K$ y sean $W_1, \dots, W_n \leq V$ subespacios. Definimos la suma de los subespacios $W_i$ y anotamos $\sum^n_
+{i=1} W_i$ (o sencillamente $W_1 + W_2$ si $n = 2$) el conjunto
+\[\{v_1+v_2+\cdots+v_n \colon v_i\in W_i \text{ para todo } 1\leq i\leq n\}=<\cup_{i=1}^nW_i>.\]
+\end{defin}
+Veamos ahora que ocurre con la dimensi\'on de un espacio suma.
+\begin{thm}
+Sean $W_1, W_2$ subespacios vectoriales de dimensi\'on finita de un
+$K-$espacio vectorial $V $. Entonces $W_1 + W_2$ es de dimensi\'on finita y
+\[\dim_K(W_1+ W_2)=\dim_K(W_1)+\dim_K(W_2)-\dim_K(W_1\cap W_2).\]
+\end{thm}
+
+
+
+\begin{defin}
+Sea $V$ un espacio vectorial y sean $W_1, W_2$ dos subespacios vectoriales de $V$, se define la
+\emph{suma directa} de estos subespacios al subespacio $W_1 \oplus W_2$ si y sólo si $ W_1 + W_2= W$ y además $W_1 \cap W_2 = \{ 0\}$.
+\end{defin}
+\begin{ejem}
+Sean los subespacios vectoriales $W_1= \{ (x, y, z) \in \R^3 \colon z = 0\}$ , $W_2 =\{ (x, y, z) \in \R^3 \colon  x = y = 0 \}$
+Se puede observar que $W_1$ representa un plano del espacio y $W_2$ una recta del espacio no coincidente con el plano, pudiéndose comprobar que $W_1 \cap W_2 = \{0\}$, y además que $W_1 + W_2 = \R^3$. Por tanto se puede afirmar que $W_1 \oplus W_2 = \R^3$.
+\end{ejem}
+\section{Espacios vectoriales con producto interno}
+
+\textbf{Objetivos del Capítulo}
+
+\begin{itemize}
+\item
+Familiarizarse con la operación de producto interno. 
+
+
+\item
+Estudiar los conceptos de ortogonalidad y proyecciones con especto a espacios vectoriales.
+
+\item
+Calcular bases ortonormales y proyecciones ortogonales.
+
+\end{itemize}
+
+
+
+
+
+\subsection{Espacio Euclideos}
+
+\begin{defin}
+Un $K$ espacio vectorial $V$ será llamado euclideo si hay una regla que asigna a cada par de
+vectores $u, v \in V$ un número complejo, llamado producto escalar designado por $\langle u , v\rangle$ 
+\begin{align*}
+    \langle \; , \rangle : V
+\times V &\to K\\
+    (u,v)&\mapsto \langle u , v\rangle
+\end{align*}
+de manera que se cumplen las siguientes propiedades:
+\begin{enumerate}[(a)]
+\item Simetría: $\langle u , v\rangle=\overline{\langle v , u\rangle}$ para todo $u, v \in V$ y donde la barra indica conjugaci\'on compleja.
+\item Distributividad: $\langle u , v+w\rangle=\langle u , v\rangle+\langle u , w\rangle$ para todo $u, v, w \in V$.
+\item Ponderación: $\langle ku , v\rangle=k\langle u , v\rangle$ para todo $u, v \in V$, y todo $k \in K$.
+\item Positividad:$\langle u , u\rangle\geq 0$ , para todo $u \in V$.
+\end{enumerate}
+De (b) y (a) se deduce que:
+\begin{enumerate}
+    \item $\langle u+v , w\rangle=\langle u , w\rangle+\langle v , w\rangle$ para todo $u, v, w \in V$.
+    \item $\langle u , kv\rangle=k\langle u , v\rangle$ para todo $u, v \in V$, y todo $k \in K$.
+\end{enumerate}
+Utilizando (1) se tiene que $\langle v , w\rangle=\langle 0+v , w\rangle=\langle 0 , w\rangle+\langle v , w\rangle$ con lo cual $\langle 0 , w\rangle=0$ y por la propiedad simétrica también $\langle w, 0\rangle=0$. En particular $\langle v , v\rangle=0$ si $u= 0$.
+Por tanto un espacio vectorial real $V$ será llamado euclideo o espacio con \emph{producto interno}
+si hay una función $\langle , \rangle: V \times V \to K$ tal que $(u, v) \to \langle u , v\rangle$, y que satisface
+todas las propiedades descritas anteriormente.
+
+\end{defin}
+
+\begin{ejem}
+\begin{enumerate}
+    \item En $\mathcal{F}(\R,\R)$, espacio vectorial de las funciones reales consideremos el subespacio vectorial $\mathcal{C}(I,\R)$
+de todas las funciones continuas en $I = [0,1]$. Se define como producto interno habitual 
+
+
+\begin{align*}
+    \langle \; , \rangle: \mathcal{C}(I,\R)\times \mathcal{C}(I,\R) &\to \R\\
+    (f, g) &\mapsto \langle f, g\rangle = \int_0^1 f(x) \cdot g(x)\;dx
+\end{align*}
+    \item En $M_n(\R)$, se define un producto interno habitual: $\langle A, B\rangle = tr(A^tB)$ o bien $\langle A, B\rangle = tr(BA^t)$.
+    \item En $\R^n$, el  producto interno más habitual es el llamado producto interno euclidiano o producto punto entre los vectores $x = (x_1, x_2, \dots,x_n), y = (y_1, y_2,\dots,y_n) \in \R^n$ se define como:
+\[\langle x, y \rangle=\sum_{i=1}^n x_i y_i.\]
+Verificar para $\R^3$.
+
+\item En el espacio vectorial $\R_2[x]$, se define para cada $p(x), q(x) \in \R_2[x]$ el producto interno entre polinomios definido por $\langle p(x), q(x)\rangle = p(0)  q(0) + p(1)  q(1) + p(2)  q(2)$
+\end{enumerate}
+\end{ejem}
+
+
+
+
+
+
+\subsection{Norma, distancia, vector unitario y ángulo entre vectores}
+
+
+
+\begin{defin}
+Sea $V$ un $K-$espacio vectorial y sea $v \in V$ vector, se define la longitud o norma de $v$, denotada por $\|v\|$, está dada por \[\|v\| = \sqrt{\langle v, v\rangle}.\] 
+\end{defin}
+
+
+
+\begin{ejem}
+\begin{enumerate}
+    \item En $\mathbb{R}^3$ la norma de un vector $v = (x,y,z)$ está dada por $\|v\| = \sqrt{x^2+y^2+z^2}$.
+    \item La norma del vector $v = (2,-1,3,4,-6) \in \mathbb{R}^5$ es $\sqrt{2^2+(-1)^2+3^2+4^2+(-6)^2} = \sqrt{66}$.
+\end{enumerate}
+\end{ejem}
+
+
+
+\begin{thm}
+Sea $V$ un $K-$espacio vectorial con producto interno, entonces
+\begin{enumerate}[(a)]
+    \item $\|\alpha v\|= |\alpha| \|v\|$ para todo $\alpha\in K$, todo $v\in V$.
+    \item $\|v\|>0$, para todo $v\neq 0$ y $\|0_V\|=0$.
+    \item $|\langle v, w \rangle|\leq \|v\|\|w\|$ para todo $v,w\in V$ (Desigualdad de Schwarz).
+    \item $\|v+w\|\leq \|v\|+\|w\|$ para todo $v,w\in V$(Desigualdad triangular).
+\end{enumerate}
+\end{thm}
+
+\begin{defin}
+Sea $V$ espacio vectorial con un producto interno. Diremos que $u,v\in V$ son \emph{ortogonales} si $\langle v, w \rangle=0$. En cuyo caso escribiremos $v\perp w$.
+\end{defin}
+\begin{ejem}
+En $\R^2$, los vectores $(2,3)$ y $(6,-4)$ son ortogonales.
+\end{ejem}
+
+
+\begin{prop}
+\begin{enumerate}
+    \item $0_V\perp v$ para todo $v\in V$.
+    \item Si $<u,v>=0$ para todo $v\in V$, entonces $u=0_V$.
+    \item $u\perp v$, entonces $v\perp u$ para todo $u,v\in V$.
+    \item $u\perp v$ y $v\perp w$ \textbf{no implica} que $u\perp w$ para todo $u,v,w\in V$.
+\end{enumerate}
+\end{prop}
+
+Si $V$ es un $K$ espacio vectorial y $S = \{v_1, \dots, v_n\}$ es una $K$ base de $V$, entonces para cada $v \in V$, existen escalares únicos $a_1,\dots, a_n $ en $K $ tal que todo elemento $v \in V$ se puede escribir como una combinación lineal de los elementos de la base $S$, es decir:
+\[ v=a_1v_1+\dots+ a_nv_n\]
+Supongamos que en un $V$ espacio vectorial con producto interno $\langle , \rangle$, existe una base $S = \{v_1, \dots, v_n\}$ tal que $\langle v_i, v_j \rangle= 0$ si $i \neq j$, entonces sigue que:
+\[a_i=\frac{\langle v, v_i \rangle}{\langle v_i, v_i \rangle}.\]
+
+\begin{defin}
+Sea $V$ un $K$ espacio vectorial con producto interno $\langle ,  \rangle$, y consideremos $S = \{v_1, \dots, v_n\}$ tal que $S\subset V$, entonces $S$ se llamará una \emph{base ortogonal} si:
+\begin{enumerate}[(a)]
+    \item $S$ es una base de $V$.
+    \item si $i \neq j$, entonces $\langle v_i, v_j \rangle=0$.
+    \item La coordenada respecto de la base ortogonal $a_i=\frac{\langle v, v_i \rangle}{\langle v_i, v_i \rangle}$ se llamará el i-ésimo coeficiente de Fourier del vector $v$.
+\end{enumerate}
+
+\end{defin}
+\begin{ejer}
+
+Demuestre que el conjunto $\{( 1 , 0 , 0 , ( 0 , 1 , 0), ( 0 , 0, 1)\}$ es una base ortogonal para $\mathbb{R}^3$.
+
+\end{ejer}
+
+
+\begin{defin}
+Un conjunto de vectores es ortonormal si cualquier par de ellos es ortogonal y cada uno tiene longitud $1$.
+\end{defin}
+
+Si se define un vector normal o unitario como aquel cuya norma es uno, entonces normalizar
+a un vector $v\in V$, consistirá en ponderarlo por el recíproco de su norma construyendo un
+nuevo vector que llamaremos el normal asociado a $v$, es decir
+\[\hat{v}=\frac{v}{\|v\|}.\]
+\begin{ejer}
+\begin{enumerate}
+    \item Calcule la norma del vector $\left(\frac{1}{2},\frac{1}{2},\frac{1}{2},\frac{1}{2}\right)$.
+
+    \item Normalice la matriz $A=\begin{pmatrix} 1 &-4 \\ 1&1 \end{pmatrix}$ con el producto interno $tr(A^tB)$
+\end{enumerate}
+\end{ejer}
+
+\begin{defin} En resumen
+\begin{enumerate}
+    \item $S=\{v_i\}$ es un conjunto normal si $v_i$ tiene norma 1 para todo $i$. Notaci\'on: $\hat{S}$.
+    \item $S=\{v_i\}$ es un conjunto ortogonal si $<v_i,v_j>=0$ para todo $i\neq j$. Notaci\'on: ${S}_\perp$.
+    \item $S=\{v_i\}$ es un conjunto ortonormal si $<v_i,v_j>=0$ para todo $i\neq j$ y  $<v_i,v_j>=1$ para todo $i= j$. Notaci\'on: $\hat{S}_\perp$.
+\end{enumerate}
+Si el conjunto es una base, entonces serán bases normal, ortogonal y ortonormal respectivamente.
+\end{defin}
+
+%%El conjunto de todos los vectores ortogonales a un conjunto $S$ no vacío, es un s.e.$v$ de $V$ y se le llama subespacio vectorial ortogonal a $S$. Notación: $S^\perp $.
+%$S^\perp$ es s.e.v. ortogonal con $<S>$, se dice que $ S^\perp$ y $<S>$ son s.e.v. complementos.
+
+\begin{defin}
+\'Angulo entre vectores: Si el ángulo formado por $v$ y $w$ mide $\alpha$, entonces $ cos \alpha =\frac{<v, w>}{\|v\|\| w\|}.$
+La distancia entre dos vectores se define como $d(u,v)=\|u-v\|.$
+\end{defin}
+
+
+\begin{thm}
+Si $S = \{ v_1,v_2, \dots, v_k  \}$ es un conjunto ortogonal de vectores diferentes de cero, entonces $S$ es linealmente independiente.
+\end{thm}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\begin{itemize}
+%\item
+%\textbf{Def: }Una matriz $Q$ de $n \times n$ se llama ortogonal si $Q$ es invertible y $Q^{-1} = Q^T$
+%\\\
+
+%\item
+%\textbf{Teo: }La matriz $Q$ de $n \times n$ es ortogonal si y sólo si las columnas de $Q$ forman una base ortonormal para %$\mathbb{R}^n$.
+%\\\
+
+%\item
+%\textbf{Ej: }$Q = \begin{pmatrix} \frac{1}{ \sqrt{2} } & -\frac{1}{ \sqrt{6} } & \frac{1}{ \sqrt{3} } \\ \frac{1}{ \sqrt{2} } & \frac{1}{ \sqrt{6} } & -\frac{1}{ \sqrt{3} }   \\ 0 & \frac{2}{ \sqrt{6} } & \frac{1}{ \sqrt{3} }  \end{pmatrix}$
+%\end{itemize}
+\section[Proyecci\'on ortogonal]{Proyecci\'on ortogonal, distancia a un subespacio y complemento ortogonal.}
+
+
+\begin{defin}Sea $H$ un subespacio de $\mathbb{R}^n$ con base ortonormal $\{ u_1,u_2, \dots , u_k  \}$. Si $v \in \mathbb{R}^n$, entonces la proyección ortogonal de $v$ sobre $W$, denotada por $P_W(v)$, está dada por:
+$P_W( v) = <v , u_1>u_1 + <v , u_2>u_2 + \cdots + <v , u_k>u_k$. En el caso de que la base sea ortogonal, debemos dividir cada sumando por el cuadrado de la norma de $u_i$.
+\end{defin}
+
+
+\begin{ejer}
+Encuentre $P_\pi (v)$ donde
+ $\pi = \left\{ \begin{pmatrix} x \\ y \\ z \end{pmatrix}: 2x-y+3z=0 \right\}$ y $v = \begin{pmatrix} 3 \\ -2 \\ 4 \end{pmatrix}$
+\end{ejer}
+\begin{prop}
+Sea V un K espacio vectorial con producto interno $< , >$, $H$ subespacio de $V$ y $\{ w_1,w_2, \dots, w_k \}$ una base
+ortogonal de W, entonces $P_W(v)=v$ si y s\'olo si $v\in W$.
+\end{prop}
+\begin{cor}
+Sea V un K espacio vectorial con producto interno $< , >$, $W$ subespacio de $V$ y $\{ w_1,w_2, \dots, w_k \}$ una base
+ortogonal de W, entonces $P_W\circ P_W=P_W$.
+\end{cor}
+
+
+
+%\begin{thm}
+%Sea $H$ un subespacio de $\mathbb{R}^n$. Suponga que $H$ tiene dos bases ortonormales, $\{ u_1,u_2, \dots, u_k \}$ y $\{ w_1,w_2, \dots, w_k \}$. Sea $v \in \mathbb{R}^n$. Entonces: $(v \cdot u_1)u_1 + (v \cdot u_2)u_2 + \cdots + (v \cdot u_k)u_k = (v \cdot w_1)w_1 + (v \cdot w_2)w_2 + \cdots + (v \cdot w_k)w_k$.
+%\end{thm} 
+
+\begin{defin}
+Si V es un K espacio vectorial con producto interno $<, > $, $W$ subespacio de $V$, entonces $\|v-P_W(v)\|$, es la distancia del vector al subespacio $W$. Usaremos la notación $d(v,W)=\|v-P_W(v)\|$.
+\end{defin}
+
+
+Con las propiedades obtenidas para la proyección ortogonal, la distancia entre un vector y un
+subespacio hereda naturalmente la siguiente propiedad:
+$$d(v,W)=0 \Longleftrightarrow P_W(v)=v.$$
+
+\begin{defin}
+Sea $H$ un subespacio de $\mathbb{R}^n$. El complemento ortogonal de $H$ denotado por $H^\perp$, está dado por $H^\perp = \{ x \in \mathbb{R}^n: x \cdot h =0$ para toda $h \in H \}$.
+\end{defin}
+
+
+\begin{thm}
+Si $H$ es un subespacio de $\mathbb{R}^n$, entonces
+
+\begin{enumerate}
+\item
+$H^\perp$ es un subespacio de $\mathbb{R}^n$.
+
+\item
+$H \cap H^\perp = \{ 0 \}$.
+
+\item
+$\dim H^\perp = n-\dim H$.
+
+\end{enumerate}
+\end{thm}
+
+\begin{defin}
+Sea $H$ un subespacio de $\mathbb{R}^n$ y sea $v \in \mathbb{R}^n$. Entonces existe un par único de vectores $h$ y $p$ tales que $h \in H$, $p \in H^\perp$ y $v = h + p$. En particular $h = P_H(v)$ y $p = P_{H^\perp}(v)$ de manera que $v = h+p = P_H(v) + P_{H^\perp}(v)$.
+\end{defin}
+
+
+
+
+
+
+
+
+\begin{ejer}
+Sea $\pi = \left\{ \begin{pmatrix} x \\ y \\ z \end{pmatrix}: 2x-y+3z=0 \right\}$. Exprese el vector $v = \begin{pmatrix} 3 \\ -2 \\ 4 \end{pmatrix}$ en términos de $h+p$.
+\end{ejer} 
+
+
+
+
+
+
+
+
+
+%\begin{itemize}
+%\item
+%\textbf{Teo: }Sea $H$ un subespacio de $\mathbb{R}^n$ y sea $v$ un vector en $\mathbb{R}^n$. Entonces proy$_Hv$ es la mejor aproximación para $v$ en $H$ en el siguiente sentido: si $h$ es cualquier otro vector en $H$, entonces $|v -$proy$_Hv | < |v - h|$.
+
+%\end{itemize}
+
+\subsection{Proceso de Ortonormalización de Gram-Schmidt: }
+Dada una base de un espacio vectorial, podemos obtener una base ortonormal. A este proceso se le conoce como Ortonormalización de Gram-Schmidt.
+
+Sea $W$ un subespacio de dimensión $m$ de $V$. Entonces $H$ tiene una base ortonormal.
+
+\begin{itemize}
+
+\item
+\textbf{Procedimiento para obtener una base ortonormal}
+Sea $B = \{v_i\}_{i=1}^m $ una base ordenada cualquiera de $W $.
+\begin{enumerate}
+\item Sea $w_1 = v_1$. Construyamos $w_2 = v_2 - c_1v_1$, con $c_1 =\dfrac{<v_2,v_1>}{<v_1,v_1>}, $ coeficiente de Fourier de $v_2$ sobre $v_1$, de modo que $w_2 \perp v_1$.
+\item Suponemos que esta construcción de $w_k$ es posible hacerla hasta
+obtener el conjunto ortogonal $ \{w_i\}_{i=1}^{m-1}$ con $w_k=v_k-\sum_{i=1}^{k-1}c_iw_i$.
+\item Obtenemos $w_m=v_m-\sum_{i=1}^{m-1}c_iw_i$.
+De este modo, queda demostrado que hemos construido una base ortogonal
+para $W$.
+
+\end{enumerate}
+Si al final del proceso se normaliza cada vector obteniendo los nuevos
+vectores $w_k$, se construirá una base ortonormal para $W$.
+\end{itemize}
+
+
+
+
+
+
+
+
+\begin{ejem}Construya una base ortonormal comenzando con la base 
+$$v_1 = \begin{pmatrix} 1 \\ -1 \\ -1 \\ 1 \end{pmatrix}, v_2 = \begin{pmatrix} 2 \\ 1 \\ 0 \\ 1 \end{pmatrix}, v_3 = \begin{pmatrix} 2 \\ 2 \\ 1 \\ 2 \end{pmatrix}  $$
+\end{ejem}
+
+\begin{ejem} Encuentre una base ortonormal para el conjunto de vectores en $\mathbb{R}^3$ que está sobre el plano 
+$$\pi = \left\{ \begin{pmatrix} x \\ y \\ z \end{pmatrix}: 2x-y+3z=0 \right\}$$
+\end{ejem}
