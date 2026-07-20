@@ -158,25 +158,37 @@ export default function LinearAlgebraCoursePage() {
 
       <div className="course-article-layout">
         <aside className="course-toc" aria-label="Índice del curso">
-          <p>EN ESTE CURSO</p>
-          <nav>
-            {course.units.map((unit, index) => (
-              <div className="course-toc-group" key={unit.number}>
-                <a className="course-toc-unit" href={`#lectura-unidad-${index + 1}`}>
-                  <span>{unit.number}</span>{unit.title}
-                </a>
-                {definitionsByUnit[index].length > 0 && (
-                  <div className="course-definition-list" aria-label={`Definiciones de ${unit.title}`}>
-                    {definitionsByUnit[index].map((definition) => (
-                      <a href={`#${definition.id}`} key={definition.id}>
-                        <span>{definition.label}</span>{definition.name}
-                      </a>
-                    ))}
+          <details className="course-toc-disclosure" open>
+            <summary>
+              <span>EN ESTE CURSO</span>
+              <i aria-hidden="true">+</i>
+            </summary>
+            <nav>
+              {course.units.map((unit, index) => (
+                <details className="course-toc-group" key={unit.number} open={index === 0}>
+                  <summary className="course-toc-unit">
+                    <span>{unit.number}</span>
+                    <strong>{unit.title}</strong>
+                    <i aria-hidden="true">+</i>
+                  </summary>
+                  <div className="course-toc-children">
+                    <a className="course-toc-open-unit" href={`#lectura-unidad-${index + 1}`}>
+                      Abrir unidad <span aria-hidden="true">→</span>
+                    </a>
+                    {definitionsByUnit[index].length > 0 && (
+                      <div className="course-definition-list" aria-label={`Conceptos de ${unit.title}`}>
+                        {definitionsByUnit[index].map((definition) => (
+                          <a href={`#${definition.id}`} key={definition.id}>
+                            <span>{definition.label}</span>{definition.name}
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            ))}
-          </nav>
+                </details>
+              ))}
+            </nav>
+          </details>
           <small>{course.note}</small>
         </aside>
 
