@@ -1,0 +1,514 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Semana 4\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+
+
+\end{picture}
+
+
+\begin{center}
+\huge{Ecuaciones diferenciales Parciales}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Ecuaciones Diferenciales Ordinarias (EDO)}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Ecuaciones diferenciales ordinarias. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\setlength{\parindent}{2.95cm}- Series de Fourier \\
+\phantom{abefwfewefwfefffwi} - Ecuaciones diferenciales parciales: Separación de variables\\
+\phantom{abefwfewefwfefffwi} - Condiciones de frontera\\
+
+
+
+
+
+\vspace{6cm}
+
+
+\begin{center}
+\today
+\end{center}
+\begin{center}
+Santiago, Chile
+\end{center}
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+
+\section{Series de Fourier }
+
+Sea función $f:\mathbb{R} \to \mathbb{C}$ una función de periodo $T$, se definen los coeficientes de Fourier de $f$, de la siguiente forma
+
+
+\begin{align*}
+    a_n = \frac{2}{T} \int_0^T \cos \left( \frac{2\pi n t}{T}\right) f(t) dt
+\end{align*}
+
+\begin{align*}
+    b_n = \frac{2}{T} \int_0^T \sin \left( \frac{2\pi n t}{T}\right) f(t) dt
+\end{align*}
+
+\textbf{Definición:} Dada una función $f:\mathbb{R} \to \mathbb{C}$ función periódica de periodo $T$, se define la \textbf{serie de  Fourier} de $f$ evaluada en $t$, como
+
+\begin{align*}
+  \frac{a_0}{2}+ \sum_{n=1}^\infty a_n\cos \left( \frac{2\pi n}{T} t  \right) +b_n\sin \left( \frac{2\pi n}{T} t  \right) 
+\end{align*}
+
+Se tiene el siguiente teorema  \\
+
+\textbf{Teorema Riemann, Dirichlet: } Sea $f: \mathbb{R} \to \mathbb{C}$ una función periódica con periodo $T$ derivable a trozos en $[0,T]$. Entonces se verifica que \\
+
+1.  Para todo $t \in \mathbb{R}$ donde $f$ es continua
+
+\begin{align*}
+    f(t) = \frac{a_0}{2}+ \sum_{n=1}^\infty a_n\cos \left( \frac{2\pi n}{T} t  \right) +b_n\sin \left( \frac{2\pi n}{T} t  \right)
+\end{align*}
+
+2. Si $f$ no es continua en un punto $t$ entonces se verifica que
+
+\begin{align*}
+ \frac{a_0}{2}+ \sum_{n=1}^\infty a_n\cos \left( \frac{2\pi n}{T} t  \right) +b_n\sin \left( \frac{2\pi n}{T} t  \right) = \frac{\displaystyle\lim_{x \to t^+}f(x)+\lim_{x \to t^-}f(x) }{2}   
+\end{align*}
+
+
+\textbf{Nota:} Vamos a saltar todos los detalles y demostraciones, ya que no forman parte del propósito de este curso. \\
+
+\textbf{Aplicación 1:} Este teorema nos indica que cualquier función periódica derivable a trozos se puede descomponer en sumas de senos y cosenos, lo cual es  útil en aplicaciones como señales. Por ejemplo, supongamos que una señal que llega a un receptor es producto de la superposición de muchas señales, al descomponer esa señal en su serie de Fourier podemos obtener cada señal individual que compone a la señal que llegó. Esto es extremadamente útil en telecomunicaciones. \\
+
+\textbf{Aplicación 2:} En teoría de la música es muy importante saber y entender que tipo de frecuencias componen los sonidos, las series de Fourier ayudan a entender este fenómeno al descomponer las ondas sonoras complejas en ondas más simples.  \\
+
+\newpage
+
+Si consideramos la identidad de Euler
+
+\begin{align*}
+    e^{xi} = \cos(x)+i\sin(x)
+\end{align*}
+
+Y escribimos los coeficientes con $n\in \mathbb{Z}$
+
+\begin{align*}
+    c_n = \frac{1}{T} \int_0^T e^{-2\pi i n t/T} f(t) dt
+\end{align*}
+
+Entonces se tiene que 
+
+\begin{align*}
+    f(t) &= \frac{a_0}{2}+ \sum_{n=1}^\infty a_n\cos \left( \frac{2\pi n}{T} t  \right) +b_n\sin \left( \frac{2\pi n}{T} t  \right) \\
+    &=\sum_{n=-\infty}^{\infty} c_n e^{2\pi i n t/T}
+\end{align*}
+
+Que es una forma alternativa más cómoda de escribir series de Fourier. Veamos un ejemplo importante. \\
+
+\textbf{Ejemplo: } Considere la función $f(t) = t$ para $0\leq t < 1$ y $f(t+1)=f(t)$, es decir, una función periódica de periodo 1. Vamos a calcular su serie de Fourier, tenemos que
+
+\begin{align*}
+    a_0 &= 2 \int_0^1 t dt \\
+     &= 1
+\end{align*}
+
+Por otra parte, recordando que $\sen(2\pi n) =0$ y $\cos(2\pi n) =1$ para $ n\in \mathbb{N}$, se tiene
+
+\begin{align*}
+    a_n &= 2 \int_0^1 \cos(2\pi n t)t dt \\
+     &= \frac{2\pi \sin(2\pi n)+\cos(2\pi n)-1}{4\pi^2 n^2} \\
+     &= 0
+\end{align*}
+
+\begin{align*}
+    b_n &= 2 \int_0^1 \sin(2\pi n t)t dt \\
+     &= \frac{\sin(2\pi n)-2\pi n\cos(2\pi n)}{2\pi^2 n^2}\\
+     &= -\frac{1}{\pi n}
+\end{align*}
+
+Luego la serie de Fourier viene dada por
+
+\begin{align*}
+    \frac{1}{2} - \frac{1}{\pi}\sum_{n=1}^\infty \frac{\sin(2\pi n t)}{n}
+\end{align*}
+
+Por el teorema, esto implica que para $t \in (0,1)$
+
+\begin{align*}
+  t =  \frac{1}{2} - \frac{1}{\pi}\sum_{n=1}^\infty \frac{\sin(2\pi n t)}{n}
+\end{align*}
+
+
+Tomando $t= \frac{1}{4}$, obtenemos
+
+
+
+\begin{align*}
+ \frac{1}{4} =  \frac{1}{2} - \frac{1}{\pi}\sum_{n=1}^\infty \frac{\sin\left( \frac{\pi}{2} n\right)}{n}
+\end{align*}
+
+Ahora bien, si $n$ es par entonces $\sin\left( \frac{\pi}{2} n\right) = 0$, por otra parte, si $n$ es impar de la forma $n = 2k -1 $, entonces $\sin\left( \frac{\pi}{2} n\right) = (-1)^{k+1}$, entonces
+
+\begin{align*}
+ \frac{1}{4} =  \frac{1}{2} - \frac{1}{\pi}\sum_{k=1}^\infty \frac{ (-1)^{k+1}}{2k-1}
+\end{align*}
+
+De donde se deduce que
+
+\begin{align*}
+\sum_{k=1}^\infty \frac{ (-1)^{k+1}}{2k-1} = \frac{\pi}{4}
+\end{align*}
+
+Que es nada mas ni nada menos que la conocida Serie de Leibniz  \\    
+
+
+\textbf{NOTA IMPORTANTE: }Las series de Fourier se pueden calcular usando cualquier intervalo de largo igual al periodo de la función, nosotros hemos usado $[0,T]$, pero también podría ser $[-T/2,T/2]$ que también se usa mucho debido a su simetría. Los resultados son los mismos, pero las integrales para calcular los coeficientes se calculan con los nuevos límites dados por el nuevo intervalo, en este caso tendríamos
+
+\begin{align*}
+    a_n = \frac{2}{T} \int_{-T/2}^{T/2} \cos \left( \frac{2\pi n t}{T}\right) f(t) dt
+\end{align*}
+
+\begin{align*}
+    b_n = \frac{2}{T} \int_{-T/2}^{T/2} \sin \left( \frac{2\pi n t}{T}\right) f(t) dt
+\end{align*}
+
+
+\textbf{Ejercicio 1: }Demuestre que la serie de Fourier de la función $f(x)=x$ en el intervalo $(-2,2)$ viene dada por
+
+\begin{align*}
+    \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}\sen \left( \frac{n\pi}{2} x\right) 
+\end{align*}
+
+Y concluya nuevamente la serie de Leibniz. \\
+
+
+
+\textbf{Ejercicio 2: } Demuestre que la serie de Fourier de la función dada por $f(t)=t^2$ en el intervalo $[-\pi,\pi)$ es
+
+\begin{align*}
+    f(t) = \frac{\pi^2}{3} + 4 \sum_{n=1}^\infty \frac{(-1)^n\cos(nx)}{n^2}
+\end{align*}
+
+Utilice lo anterior para demostrar que
+
+\begin{align*}
+    \sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}
+\end{align*}
+
+\newpage
+
+\section{Ecuaciones diferenciales parciales: Separación de Variables}
+
+Una ecuación diferencial parcial (EDP) es una igualdad en la cual la incógnita es una función que depende de más de una variable $u=u(x_1,x_2,...,x_n)$ y en la igualdad aparecen derivadas parciales, que pueden ser de cualquier orden, incluso cruzadas. \\
+
+\textbf{Ejemplo 1:} La ecuación diferencial dada por
+
+\begin{align*}
+    u_x+u_{xy} = 1
+\end{align*}
+
+Es una ecuación diferencial parcial, una solución es la función dada por $u(x,y) = x+y$. \\
+
+A diferencia de las ecuaciones diferenciales ordinarias, las ecuaciones diferenciales parciales son mucho más complicadas y en general se resuelven usando métodos numéricos. Sin embargo, existen algunos métodos que ayudan a resolverlas en situaciones muy específicas. Uno de estos métodos es el famoso \textbf{método de separación de variables} \\
+
+\textbf{Método de separación de variables:} Sea $u=u(x,t)$ función en dos variables, que además, es la incógnita en una EDP, este método consiste en asumir que $u = M(x)N(t)$, es decir, la función es el producto de dos funciones no nulas, una que depende de $x$ y la otra que depende de $t$, después se intenta separar $M$ y $N$ de tal forma que de un lado de la igualdad quede algo que solo depende de $x$ y del otro lado algo que solo depende de $t$, se concluye que ambos lados deben ser constantes y se resuelve cada EDO por separado. Cabe destacar que este método no siempre es posible de realizar. Veamos un ejemplo para ver como funciona. \\
+
+
+\textbf{Ejemplo: } Consideremos la EDP dada por $u_x+u_t = u$, supongamos que $u= M(x)N(t)$, entonces
+
+\begin{align*}
+    u_x &= N(t)M'(x) \\
+    u_t &= M(x)N'(t)
+\end{align*}
+
+Reemplazando en la ecuación inicial obtenemos
+
+\begin{align*}
+    N(t)M'(x)+M(x)N'(t) =  M(x)N(t)
+\end{align*}
+
+Ahora intentamos separar las variables
+
+\begin{align*}
+    M(x)N'(t) &=  M(x)N(t)-N(t)M'(x) \\
+    M(x)N'(t) &=  N(t)(M(x)-M'(x)) \\
+    \frac{N'(t)}{N(t)} &=\frac{M(x)-M'(x)}{M(x)}
+\end{align*}
+
+En la última igualdad podemos ver que la parte del lado izquierdo solo depende de $t$ mientras que la parte del lado derecho solo depende de $x$, la única forma que esto sea posible es que ambas sean constantes, luego 
+
+\begin{align*}
+    \frac{N'(t)}{N(t)} &=\frac{M(x)-M'(x)}{M(x)}= k
+\end{align*}
+
+Donde $k$ es constante. De esta forma, obtenemos la EDO
+
+
+\begin{align*}
+    \frac{M(x)-M'(x)}{M(x)} &= k
+\end{align*}
+
+\begin{align*}
+    M'(x)=(1-k)M(x)
+\end{align*}
+
+Cuya solución es $M(x) = c_1e^{(1-k)x}$ y, por otra parte,
+
+
+\begin{align*}
+    \frac{N'(t)}{N(t)} &= k
+\end{align*}
+
+\begin{align*}
+    N'(t) &= kN(t)
+\end{align*}
+
+Cuya solución es $N(t) = c_2 e^{kt}$. De esta forma
+
+\begin{align*}
+    u(x,t) &= M(x)N(t) \\
+    &= c_1e^{(1-k)x}c_2 e^{kt} \\
+    &= ce^{x+k(t-x)}
+\end{align*}
+
+Que es la solución dada por el método de separación de variables, aquí $c$ y $k$ son constantes arbitrarias. \\
+
+\textbf{Nota Importante: } En algunos casos es muy importante diferenciar si $k>0$, $k=0$ o $k< 0$, en especial cuando las ecuaciones tienen orden dos, pero en este caso no es necesario. \\ \\
+
+
+\newpage
+
+
+\section{Condiciones de Frontera}
+
+Los problemas de frontera en las EDP son equivalentes a los PVI.  Pero en general son mucho más complicados y las condiciones iniciales son llamadas condiciones de borde o condiciones de frontera, la razón por la que se llaman de esta manera es porque se aplican en los límites donde la función está definida y las condiciones iniciales sueles ser funciones que recorren el borde donde está definida una de las dos variables. Veamos unos ejemplos\\
+
+\textbf{La ecuación del calor:} Sea $u(x,t)$ con $0<t<t_0$ y $a< x < b$, la ecuación del calor viene dada por 
+
+\begin{align*}
+    u_t-\lambda u_{xx} = 0
+\end{align*}
+
+Donde $\lambda \in \mathbb{R}$. Podemos agregar condiciones de frontera dadas por $u(a,t)= f(t)$, $u(b,t) =g(t)$ y $u(x,0) = h(x)$, donde $f,g$ y $h$ son funciones (podemos notar que siempre elegimos los límites de los intervalos donde las variables están definidas), también se pueden exigir condiciones sobre $u_t(a,t)$ o bien sobre $u_t(b,t)$. Es imposible encontrar una solución general a este tipo de problemas de frontera, los pasos dependen mucho de las funciones $f,g$ y $h$, en algunos casos es necesario recurrir a las series de Fourier y en otros casos no.\\
+
+\textbf{Ejemplo: } Consideremos el problema de frontera dado por
+
+\begin{align*}
+    u_t-4u_{xx} = 0
+\end{align*}
+
+Donde $0<x<1$ y $t > 0$ $u(0,t)$. Con las condiciones $u(0,t)=u(1,t)=0$ y $u(x,0)=x-1/2$. Vamos a empezar usando el método de separación de variables, consideramos $u=M(x)N(t)$, entonces
+
+\begin{align*}
+    u_t &=MN' \\
+     u_{xx} &=NM''
+\end{align*}
+
+Luego tenemos
+
+
+\begin{align*}
+    MN'-4NM'' &= 0 \\
+    \frac{N'}{N} &= 4\frac{M''}{M}
+\end{align*}
+
+De esta forma 
+
+\begin{align*}
+    \frac{N'}{N} &= 4\frac{M''}{M} = k
+\end{align*}
+
+Con $k \in \mathbb{R}$. Luego
+
+\begin{align*}
+   N'&=  kN
+\end{align*}
+
+Que es una EDO de primer orden cuya solución es $N = ce^{kt}$, por otra parte
+
+\begin{align*}
+    M''=kM
+\end{align*}
+
+Es una EDO de segundo orden cuya solución depende del valor de $k$, si $k>0$, digamos $k=\alpha^2$, entonces la solución es
+
+\begin{align*}
+    M(x) = c_1e^{\alpha x}+c_2e^{-\alpha x}
+\end{align*}
+
+Si $k=0$, entonces
+
+\begin{align*}
+    M(x) = c_1+c_2x
+\end{align*}
+
+Si $k<0$, digamos $k=-\alpha^2$, entonces
+
+\begin{align*}
+    M(x) = c_1\cos(\alpha x)+c_2\sen(\alpha x)
+\end{align*}
+
+Sin las condiciones de borde la solución queda como tres posibilidades
+
+\begin{align*}
+    u_1(x,t) &= ce^{\alpha^2t}(c_1e^{\alpha x}+c_2e^{-\alpha x}) \\
+    u_2(x,t) &= ce^{kt}(c_1+c_2x) \\
+    u_3(x,t) &= ce^{-\alpha^2t}(c_1\cos(\alpha x)+c_2\sen(\alpha x))
+\end{align*}
+
+Estas serían las soluciones dadas por el método de separación de variables, pero no son todas las posibles. Además, hay que agregar las condiciones de borde. \\
+
+Tenemos que $u(0,t)=u(1,t)=0$, veamos cuáles de las tres opciones nos sirve, para $u_1$ tenemos
+
+
+\begin{align*}
+    u_1(0,t) &= ce^{\alpha^2t}(c_1+c_2) =0 \\
+    u_1(1,t) &= ce^{\alpha^2t}(c_1e^{\alpha }+c_2e^{-\alpha}) =0\\
+\end{align*}
+
+Es fácil ver que es necesario que $c_1=c_2=0$ y por lo tanto $M=0$, esta solución no nos sirve porque en ese caso $u=MN=0$ y no se cumpliría $u(x,0)=x-1/2$. Para $u_2$, tenemos
+
+
+\begin{align*}
+    u_2(0,t) &= ce^{\alpha^2t}(c_1) =0 \\
+    u_2(1,t) &= ce^{\alpha^2t}(c_1+c_2) =0\\
+\end{align*}
+
+Nuevamente, podemos ver que $c_1=c_2=0$ y entonces $u=0$. Nuestra única esperanza es $u_3$ que simplemente llamaremos $u$, tenemos
+
+\begin{align*}
+    u(0,t) &= ce^{-\alpha^2t}(c_1)=0 \\
+    u(1,t) &= ce^{-\alpha^2t}(c_2\sen(\alpha)) =0\\
+\end{align*}
+
+De la primera igualdad se deduce que $c_1=0$. Notemos que en la última igualdad tenemos $c_2=0$ o bien $\sen(\alpha)=0$, pero $c_2=0$ no nos sirve, por lo tanto, elegimos $\sen(\alpha) =0 $ y entonces se concluye que
+
+\begin{align*}
+    \alpha = n \pi
+\end{align*}
+
+con $ n\in \mathbb{Z} $ y la solución nos queda de la forma
+
+\begin{align*}
+    u(x,t) &= ce^{-n^2\pi^2t}\sen(n\pi x)
+\end{align*}
+
+Sigue sin cumplirse que $u(x,0)=x-1/2$, de hecho $u(x,0)=c\sen(n\pi x)$ Ahora bien, podemos notar que para cada $n \in \mathbb{Z}$ se tiene una solución diferente, y como tenemos una EDP lineal, si sumamos una cantidad numerable de soluciones seguimos obteniendo una solución (este es un teorema que no vamos a demostrar). De esta forma, tomado solo los valores pares obtenemos quela función
+
+
+\begin{align*}
+    u(x,t) &= \sum_{n=1}^{\infty}c_ne^{-4n^2\pi^2t}\sen(2n\pi x)
+\end{align*}
+
+También es una solución de la EDP que cumple las dos primeras condiciones de borde. Aquí  cada $c_n$ corresponde a una constante que depende de $n$. Ahora bien $u(x,0) = x-1/2$, por lo tanto,
+
+
+\begin{align*}
+    x -\frac{1}{2}&= \sum_{n=1}^{\infty}c_n\sen(2n\pi x)
+\end{align*}
+
+
+Pero debido a al ejemplo 1 de la sección 1 sabemos que la serie de Fourier de $x-1/2$ en $(0,1)$ es 
+
+\begin{align*}
+    - \frac{1}{\pi}\sum_{n=1}^\infty \frac{\sin(2\pi n t)}{n}
+\end{align*}
+
+Por lo tanto, necesitamos que
+
+\begin{align*}
+    - \frac{1}{\pi}\sum_{n=1}^\infty \frac{\sin(2\pi n t)}{n}&= \sum_{n=1}^{\infty}c_n\sen(2n\pi x)
+\end{align*}
+
+Concluimos que
+
+
+\begin{align*}
+    c_n= -\frac{1}{n\pi}
+\end{align*}
+
+
+Y con esto demostramos que la solución del problema de frontera es
+
+\begin{align*}
+    u(x,t) = -\sum_{n=1}^\infty \frac{1}{\pi n}e^{-4n^2\pi^2t}\sen(2n\pi x)
+\end{align*}
+
+Estos ejercicios son muy largos y complicados en general.
+
+
+
+
+\end{document} 

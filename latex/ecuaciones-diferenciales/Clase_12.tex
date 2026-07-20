@@ -1,0 +1,526 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Semana 4\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+
+
+\end{picture}
+
+
+\begin{center}
+\huge{Ejercicios Control Recuperativo y Examen}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Ecuaciones Diferenciales Ordinarias (EDO)}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Ecuaciones diferenciales ordinarias. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\setlength{\parindent}{2.95cm}- Clase de ejercicios
+
+
+
+
+
+\vspace{6cm}
+
+
+\begin{center}
+\today
+\end{center}
+\begin{center}
+Santiago, Chile
+\end{center}
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+\section{Clase de ejercicios }
+
+
+\textbf{Ejercicio 1: } Encuentra una solución explícita de la siguiente ecuación diferencial de orden 1
+
+\begin{align*}
+    x\frac{dy}{dx}+y=x^2y^3
+\end{align*}
+
+Luego resuelva el PVI cuando $y(1)=-1$. \\
+
+\textbf{Solución:} Es una ecuación de Bernoullí, usamos el cambio de variable $z=y^{1-3}=y^{-2}$, luego $z'=-2y^{-3}y'$ o bien $y'= -y^3/2 z'$, reemplazando obtenemos
+
+\begin{align*}
+    -\frac{xy^3}{2}z'+y=x^2y^3
+\end{align*}
+
+Multiplicando todo por $-2y^{-3}x^{-1}$, obtenemos
+
+\begin{align*}
+    z'-\frac{2}{x}y^{-2}= -2x
+\end{align*}
+
+o bien
+
+\begin{align*}
+    z'-\frac{2}{x}z= -2x
+\end{align*}
+
+Es una lineal, usando la fórmula general
+
+
+\begin{align*}
+    z &= e^{-\int \frac{-2}{x}dx} \left( \int  -2x e^{-\int \frac{2}{x}dx} dx +c \right) \\
+    &= e^{\int \frac{2}{x}dx} \left( \int  -2x e^{-\int \frac{2}{x}dx} dx +c \right) \\
+    &= e^{\ln(x^2)} \left( \int  -2xe^{\ln(x^{-2})} dx +c \right) \\
+    &= x^2 \left( \int  -2x x^{-2}dx +c \right) \\
+    &= x^2 \left( -2\int \frac{1}{x} dx +c \right) \\
+    &= x^2 \left( -2\ln(x)+c \right) \\
+\end{align*}
+
+Luego
+
+\begin{align*}
+ y^{-2}&= x^2 \left( -2\ln(x)+c \right) \\
+\end{align*}
+
+Luego
+
+\begin{align*}
+ y &= \pm \frac{1}{\sqrt{x^2c-2x^2\ln(x) }}\\
+\end{align*}
+
+Ahora cambiamos $y(1)=-1$, usamos la raíz negativa, nos queda
+
+\begin{align*}
+ -1 &= \frac{-1}{\sqrt{c-2\ln(1) }}\\
+\end{align*}
+
+Luego
+
+\begin{align*}
+ \sqrt{c } &= 1\\
+  c &= 1
+\end{align*}
+
+Por lo tanto la solución del PVI es
+
+\begin{align*}
+ y &= \pm \frac{1}{\sqrt{x^2-2x^2\ln(x) }}\\
+\end{align*}
+
+\newpage
+
+\textbf{Ejercicio 2: } Resuelva la siguiente ecuación diferencial \\
+
+\begin{align*}
+    (5x+4y)dx+(4x-8y^3)dy=0
+\end{align*}
+
+\textbf{Solución: } Tenemos $M= 5x+4$ y  $N= 4x-8y^3$, luego
+
+\begin{align*}
+    M_y= 4 =N_x
+\end{align*}
+
+Por lo tanto es exacta, tenemos entonces que
+
+\begin{align*}
+    f(x,y) &= \int 5x+4y dx \\
+    &= \frac{5}{2}x^2+4xy+c(y) \\
+\end{align*}
+
+Derivando respecto a $y$
+
+\begin{align*}
+    f_y &= 4x+c'(y) \\
+\end{align*}
+
+Igualando con $N$
+
+\begin{align*}
+     4x+c'(y) &= 4x-8y^3\\
+     c'(y)=-8y^3
+\end{align*}
+
+Luego
+
+\begin{align*}
+    c(y ) &= \int -8y^3 dy \\
+    &= -2y^4\\
+\end{align*}
+
+Tenemos entonces que
+
+\begin{align*}
+    f(x,y) &= \frac{5}{2}x^2+4xy-2y^4 \\
+\end{align*}
+
+Por lo tanto la solución de la EDO es
+
+\begin{align*}
+    \frac{5}{2}x^2+4xy-2y^4 =c \\
+\end{align*}
+
+
+\newpage
+
+
+\textbf{Ejercicio 3: } Resuelva el siguiente PVI usando coeficientes indeterminados
+
+
+\begin{align*}
+    y''+y'-2y &= 1+x-x^2 \\
+    y(0) &= 1 \\
+    y'(0) &= 0
+\end{align*}
+
+\textbf{Solución: } Primero resolvemos la homogenea usando $y=e^{mx}$, obtenemos el polinomio asociado
+
+
+
+\begin{align*}
+    m^2+m-1 &= 0
+\end{align*}
+
+De donde se deduce que $m_1=1$ y $m_2=-2$, de esta forma la solución de la homogenea es
+
+\begin{align*}
+    y_h= c_1e^x+c_2e^{-2x}
+\end{align*}
+
+La solución particular tiene la forma 
+
+
+\begin{align*}
+    y_p= Ax^2+Bx+C
+\end{align*}
+
+Luego $y_p'=2Ax+B$ y $y_p''=2A$, reemplazando en la original obtenemos
+
+
+\begin{align*}
+    2A+2Ax+B-2(Ax^2+Bx+C) &= 1+x-x^2 \\
+    -2Ax^2+2(A-B)x+2A-2C+B &= 1+x-x^2 \\
+\end{align*}
+
+De donde se deduce que $A=1/2$, luego $2(A-B)=1$ y por lo tanto $B=0$, por otra parte $2A-2C+B =1$ de donde se deduce nuevamente $C=0$, le polinomio entonces es $y_p=\frac{x^2}{2}$, de esta forma, la solución de la EDO es
+
+\begin{align*}
+    y= c_1e^x+c_2e^{-2x} +\frac{x^2}{2}
+\end{align*}
+
+Luego
+
+\begin{align*}
+    y'= c_1e^x-2c_2e^{-2x} +2x
+\end{align*}
+
+Ahora bien $y(0)=1$, obtenemos
+
+\begin{align*}
+    1= c_1+c_2
+\end{align*}
+
+Por otra parte con $y'(0)=0$, obtenemos
+
+\begin{align*}
+    0= c_1-2c_2
+\end{align*}
+
+Restando ambas ecuaciones, obtenemos
+
+\begin{align*}
+    3c_2&=1 \\
+    c_2 &=\frac{1}{3}
+\end{align*}
+
+Luego
+
+\begin{align*}
+    c_1 &=\frac{2}{3}
+\end{align*}
+
+La solución del PVI es
+
+\begin{align*}
+    y= \frac{2}{3}e^x+\frac{1}{3}e^{-2x} +\frac{x^2}{2}
+\end{align*}
+
+\newpage
+
+\textbf{Ejercicio 4: } Resuelva el siguiente PVI usando variación de parámetros
+
+
+\begin{align*}
+    y''+9y=\sin(3x)
+\end{align*}
+
+\textbf{Solución: } Primero resolvemos la homogenea usando $y=e^{mx}$, obtenemos el polinomio asociado
+
+
+
+\begin{align*}
+    m^2+1 &= 0
+\end{align*}
+
+De donde se deduce que $m_1=3i$ y $m_2=-3i$, $y_1=\cos(3x)$ e $y_2=\sen(3x)$ de esta forma la solución de la homogenea es
+
+\begin{align*}
+    y_h= c_1\cos(3x)+c_2\sin(3x)
+\end{align*}
+
+Ahora bien, $f(x)=\sin(3x)$, por otra parte
+
+
+\begin{align*}
+    W(y_1,y_2) &= \begin{vmatrix}
+\cos(3x) & \sen(3x) \\
+-3\sen(x) & 3\cos(x) 
+\end{vmatrix} \\
+&= 3\cos^2(x)+3\sen^2(x) \\
+&= 3
+\end{align*}
+
+luego
+
+\begin{align*}
+    C_1(x) &= -\frac{1}{3}\int \sen(3x)\sen(3x) dx\\
+    &= -\frac{1}{3}\int \sen^2(3x) dx\\
+\end{align*}
+
+haciendo $u=3x$, entonces $du=3dx$, luego $dx=du/3$
+
+\begin{align*}
+    C_1(x) &= -\frac{1}{3}\int \sen(3x)\sen(3x) dx\\
+    &= -\frac{1}{9}\int \sen^2(u) du\\
+    &= -\frac{1}{9}\left( \frac{u}{2}-\frac{\sen(2u)}{4} \right) \\
+    &= -\frac{1}{9}\left( \frac{3x}{2}-\frac{\sen(6x)}{4} \right) \\
+\end{align*}
+
+Por otra parte
+
+\begin{align*}
+    C_2(x) &= \frac{1}{3}\int \cos(3x)\sen(3x) dx\\
+\end{align*}
+
+haciendo $u=\cos(3x)$, se tiene $du=3\sen(3x)dx$, luego
+
+\begin{align*}
+    C_2(x) &= \frac{1}{9}\int u du\\
+    &= -\frac{u^2}{18}\\
+    &= -\frac{1}{18}\cos^2(3x)\\
+\end{align*}
+
+Luego
+
+\begin{align*}
+    y &=   c_1\cos(3x)+c_2\sin(3x)+ \left( -\frac{1}{9}\left( \frac{3x}{2}-\frac{\sen(6x)}{4} \right) \right)\cos(3x)+ \left( -\frac{1}{18}\cos^2(3x) \right)\sen(3x) \\
+    &=   c_1\cos(3x)+c_2\sin(3x)-\frac{1}{6}x\cos(3x)+\frac{1}{36}\sen(6x)\cos(3x)-\frac{1}{18}\cos^2(3x)\sen(3x) \\
+    &=   c_1\cos(3x)+c_2\sin(3x)-\frac{1}{6}x\cos(3x)+\frac{1}{36}2\sen(3x)\cos(3x)\cos(3x)-\frac{1}{18}\cos^2(3x)\sen(3x) \\
+     &=   c_1\cos(3x)+c_2\sin(3x)-\frac{1}{6}x\cos(3x)+\frac{1}{18}2\sen(3x)\cos^2(3x)-\frac{1}{18}\cos^2(3x)\sen(3x) \\
+     &= c_1\cos(3x)+c_2\sin(3x)-\frac{1}{6}x\cos(3x)
+\end{align*}
+
+
+
+
+\newpage
+
+\textbf{Ejercicio 5: } Resuelva la siguiente ecuación diferencial
+
+
+\begin{align*}
+    y''-5y'+6y &=\cos(t) \\
+    y(0) &= 0\\
+    y'(0) &= 1
+\end{align*}
+
+\textbf{Solución: }  Aplicamos Laplace
+
+\begin{align*}
+    \mathcal{L}[y'']-5\mathcal{L}[y']+6\mathcal{L}[y] &=\mathcal{L}[\cos(t)] \\
+    s^2\mathcal{L}[y]-sy(0)-y'(0)-5(s\mathcal{L}[y]-y(0))+6\mathcal{L}[y] &= \frac{s}{s^2+1} \\
+    \mathcal{L}[y](s^2-5s+6)-1 &= \frac{s}{s^2+1} \\
+    \mathcal{L}[y](s^2-5s+6) &= \frac{s}{s^2+1}+1 \\
+    \mathcal{L}[y](s^2-5s+6) &= \frac{s^2+s+1}{s^2+1} \\
+    \mathcal{L}[y] &= \frac{s^2+s+1}{(s^2-5s+6)(s^2+1)} \\
+    \mathcal{L}[y] &= \frac{s^2+s+1}{(s-3)(s-2)(s^2+1)} \\
+\end{align*}    
+    
+Aplicamos fracciones parciales
+
+\begin{align*}
+    \frac{s^2+s+1}{(s-3)(s-2)(s^2+1)} &= \frac{As+B}{s^2+1}+\frac{C}{s-2}+\frac{D}{s-3} \\
+    s^2+s+1 &= (As+B)(s-2)(s-3)+C(s^2+1)(s-3)+D(s^2+1)(s-2)\\
+    s^2+s+1 &= (As+B)(s^2-5s+6)+C(s^3-3s^2+s-3)+D(s^3-2s^2+s-2)\\
+    s^2+s+1 &= (As^3-5As^2+6As+Bs^2-5Bs+6B)+C(s^3-3s^2+s-3)+D(s^3-2s^2+s-2)\\
+    s^2+s+1 &= s^3(A+C+D)+s^2(B-5A-3C-2D)+s(6A+C-5B+D)+6B-3C-2D\\
+\end{align*}
+
+Concluimos que
+
+\begin{align*}
+    A+C+D &=0 \\
+    B-5A-3C-2D &=1 \\
+    6A+C-5B+D&= 1 \\
+    6B-3C-2D &= 1
+\end{align*}
+
+De la primera ecuación obtenemos que
+
+\begin{align*}
+    A=-C-D
+\end{align*}
+
+Reemplazando en las otras
+
+\begin{align*}
+    2C+3D+B &= 1 \\
+    -5C-5D-5B &= 1 \\
+    6B-3C-2D &= 1
+\end{align*}
+
+De la primera ecuación obtenemos que
+
+\begin{align*}
+    B=1-2C-3D
+\end{align*}
+
+Reemplazando en las otras dos
+
+\begin{align*}
+    -5C-5D-5(1-2C-3D) &= 1 \\
+    6(1-2C-3D)-3C-2D &= 1
+\end{align*}
+
+O bien
+
+\begin{align*}
+    5C+10D&= 6 \\
+    -15C-20D&= -5
+\end{align*}
+
+Dividiendo la segunda por 3
+
+\begin{align*}
+    5C+10D&= 6 \\
+    -5C-\frac{20}{3}D&= -\frac{5}{3}
+\end{align*}
+
+
+Sumando las ecuaciones
+
+
+\begin{align*}
+    \frac{10}{3}D &=\frac{13}{3} \\
+    D &= \frac{13}{10}
+\end{align*}
+
+Ahora reemplazando en la primera obtenemos
+
+
+\begin{align*}
+    5C+13&= 6 \\
+    C &= -\frac{7}{5}
+\end{align*}
+
+Luego
+
+\begin{align*}
+    B &= 1+2\frac{7}{5}-3\frac{13}{10} \\
+    &= 1+\frac{14}{5}-\frac{39}{10} \\
+    &= -\frac{1}{10}
+\end{align*}
+
+\begin{align*}
+    A &=\frac{7}{5}-\frac{13}{10} \\
+    A &=\frac{1}{10}
+\end{align*}
+
+De esta forma
+
+\begin{align*}
+    \frac{s^2+s+1}{(s-3)(s-2)(s^2+1)} = \frac{s-1}{10(s^2+1)}-\frac{7}{5(s-2)}+\frac{13}{10(s-3)}
+\end{align*}
+
+Por lo tanto
+
+\begin{align*}
+    y &= \mathcal{L}^{-1}\left[ \frac{s-1}{10(s^2+1)}-\frac{7}{5(s-2)}+\frac{13}{10(s-3)}\right] (t) \\
+    &= \frac{\cos(t)}{10}-\frac{\sin(t)}{10}-\frac{7}{5}e^{2t}+\frac{13}{10}e^{3t}
+\end{align*}
+
+
+
+\end{document} 

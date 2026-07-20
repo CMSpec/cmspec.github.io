@@ -1,0 +1,431 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Semana 4\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+
+\end{picture}
+
+
+\begin{center}
+\huge{Clase 7}
+\end{center}
+
+\begin{center}
+\Large{Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Ecuaciones Diferenciales Ordinarias (EDO)}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Ecuaciones diferenciales ordinarias. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+\phantom{abefwfewefwfefffwi} -  Ecuaciones no homogéneas con coeficientes indeterminados	\\
+\hspace*{2.96cm}- Método de variación de parámetros\\
+
+
+
+
+
+\vspace{6cm}
+
+
+\begin{center}
+\today
+\end{center}
+\begin{center}
+Santiago, Chile
+\end{center}
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+\section{Método de  coeficientes indeterminados}
+
+
+
+Ahora queda la pregunta de qué pasa cuando tenemos una ecuación diferencial de la forma
+
+\begin{center}
+$ay''+by'+cy = g(x)$
+\end{center}
+
+Con $g(x) \neq 0$, en otras palabras una ecuación diferencial NO homogenea con coeficientes constantes. En este caso es recomendable aplicar un método conocido como \textit{método de coeficientes indeterminados}, el cual consiste en asumir que la solución particular $y_p$ de la parte no homogenea es de una fomra similar a $g(x)$. Este método funciona bien cuando $g(x)$ es un polinomio, una exponencial o bien un seno o coseno. Vamos a ver estos tres casos \\
+
+1- En caso de que $g(x)= 6x^2+3x+5$, tenemos que asumir que $y_p= Ax^2+Bx+C$, y en general en caso de que sea un polinomio de grado $n$ tenemos que asumir que $y_p = A_1x^n+A_2x^{n-1}+.. +A_1x +A_0$. Luego tenemos que reemplazar en la ecuación diferencial inicial y encontrar los coeficientes para que se cumpla la igualdad. \\
+
+2- Si $g(x)=\alpha\sen(\omega x)$ o bien $g(x)=\alpha\cos(\omega x)$ con $\alpha \in \mathbb{R}$, entonces hay que asumir $y_p= A\sen(\omega x)+B\cos(\omega x)$. \\
+
+3- Si $g(x)= \alpha e^{kx}$ donde $k,\alpha \in\mathbb{R}$, entonces hay que asumir $y_p= Ae^{kx}$. \\
+
+
+
+\textbf{Ejercicio 1: } Resolver $y''-4y=12x$. \\
+
+\textit{Respuesta: } Primero resolvemos la parte homogenea, es decir $y''-4y=0$, si reemplazamos por $e^{mx}$, obtenemos la ecuación $m^2-4=0$, que tiene dos raíces ditintas $m=2$ y $m=-2$, luego la solución general de la homogena es
+
+\begin{center}
+$c_1e^{2x}+c_2e^{-2x}$
+\end{center}
+
+Para encontrar la solución particular $y_p$, nos damos cuenta de que $g(x)= 12x$ es un polinomio de grado 1, luego hay que asumir $y_p= Ax+B$, entonces $y_p'=A$ y $y_p''= 0$, luego sustituyendo en la ecuación diferencial, obtenemos
+
+\begin{center}
+$-4(Ax+B)= 12x$
+\end{center}
+
+\begin{center}
+$-4Ax-4B= 12x$
+\end{center}
+
+
+Luego $-4A=12$ y $-4B=0$, de donde se deduce que $A=-3$ y $B=0$. Por lo tanto $y_p=-3x$. De esta forma la solución general de la ecuación diferencial inicial esta dada por
+
+
+\begin{center}
+$y= c_1e^{x_1}+y_2e^{x_2} -3x$
+\end{center}
+
+
+En caso de que $g(x)$ sea una combinación de multiplicaciones y sumas de estas funciones, entonces lo que hay que hacer es encontrar las derivadas de $g$ y considerar cada término con coeficientes, hay que derivar tantas veces como el orden de la ecuación diferencial. Veremos un ejemplo para ser más concretos. \\
+
+
+
+
+\textbf{Ejercicio 2: } Resolver $y''-2y'-3y=4x-5+6xe^{2x}$. \\
+
+\textit{Respuesta: } Empecemos por la solución particular, en este caso $g(x)= 4x+5+6xe^{2x}$, por una parte para $4x+5$ necesitamos algo del estilo $Ax+B$. Ahora bien, en caso de $6xe^{2x}$, como tenemos una ecuación diferencial de orden 2, tenemos que calcular sus dos primeras derivadas, la primera derivada da $6e^{2x}++12xe^{2x}$ y su segunda derivada da $24e^{2x} +24xe^{2x}$, vemos que hay dos tipos de términos $e^{2x}$ y $xe^{2x}$, por lo tanto necesitamos algo del estilo $Ce^{2x}+Dxe^{2x}$. entonces $y_p$ debe ser de la forma
+
+\begin{center}
+$y_p= Ax+B+Ce^{2x}+Dxe^{2x}$
+\end{center}
+
+Primero calculamos sus derivadas
+
+\begin{center}
+$y_p'= A+2Ce^{2x}+De^{2x}+2Dxe^{2x}$
+\end{center}
+
+
+
+\begin{center}
+$y_p''= 4Ce^{2x}+ 4De^{2x}+4Dxe^{2x}$
+\end{center}
+
+
+Reemplazando en la ecuación diferencial inicial, obtenemos
+
+\begin{center}
+$4Ce^{2x}+ 4De^{2x}+4Dxe^{2x} -2(A+2Ce^{2x}+De^{2x}+2Dxe^{2x})-3(Ax+B+Ce^{2x}+Dxe^{2x})= 4x-5+6xe^{2x}$
+\end{center}
+
+Juntando los términos semejantes obtenemos
+
+\begin{center}
+$-3Ax +(-2A-3B)+ (2D-3C)e^{2x}+ -3Dxe^{2x}= 4x-5+6xe^{2x}$
+\end{center}
+
+Obtenemos las ecuaciones
+
+\begin{center}
+$-3A=4$
+\end{center}
+
+\begin{center}
+$-2A-3B=-5$
+\end{center}
+
+\begin{center}
+$2D-3C=0$
+\end{center}
+\begin{center}
+$-3D= 6$
+\end{center}
+
+De la primera y la última se deduce que $A= \displaystyle -\frac{4}{3}$ y $D= \displaystyle -2$. Reemplazando en las otras do obtenemos $B= \displaystyle \frac{23}{9}$ y $C= \displaystyle -\frac{4}{3}$. Por lo tanto, la solución particular es
+
+\begin{center}
+$\displaystyle y_p= -\frac{4}{3}x + \frac{23}{9} -\frac{4}{3}e^{2x}-2xe^{2x}$
+\end{center}
+
+Ahora para resolver la homogena usamos $e^{mx}$ y obtenemos $m^2-2m-3 =0$ cuyas soluciones son $m_1=-1$ y $m_2=3$, por lo tanto la solución de la homogenea es
+
+\begin{center}
+$c_1e^{-x}+c_2e^{3x}$
+\end{center}
+
+Por lo tanto la solución general de la ecuación diferencial inicial viene dada por
+
+
+\begin{center}
+$y= \displaystyle c_1e^{-x}+c_2e^{3x} -\frac{4}{3}x + \frac{23}{9} -\frac{4}{3}e^{2x}-2xe^{2x}$
+\end{center}
+
+\subsection{Cuando el método de coeficientes indeterminados falla}
+
+El método de coeficientes indeterminados puede fallar en un caso en particular, y es cuando la función $f(x)$ es linealmente dependiente con alguna de las soluciones de la ecuación homogenea \\
+
+\textbf{Ejemplo} Resolver la EDO $y''-5y'+6y=5e^{2x}$ usando el método de coeficientes indeterminados \\
+
+\textbf{Solución:} Intentemos usar el método y veamos que pasa, en este caso la solución particular sería de la forma $y_p = Ae^{2x}$, derivando dos veces tenemos $y_p'=2Ae^{2x}$ e $y_p'' = 4Ae^{2x}$. Reemplazando en la ecuación original obtenemos
+
+\begin{align*}
+    4Ae^{2x}-5(2Ae^{2x})+6Ae^{2x} &=5e^{2x} \\
+    0 \cdot Ae^{2x} &=5e^{2x} \\
+    0&=5e^{2x} \\
+\end{align*}
+
+Como podemos ver el método falla completamente, esto es debido a que una de las soluciones de la parte homogénea es $y_1=e^{2x}$ que es un múltiplo escalar de $5e^{2x}$, la otra solución es $y_2=e^{3x}$. \\
+
+Para poder solucionar este problema basta con multiplicar la expresión $Ae^x$ por un polinomio, la solución particular nos queda de la forma $y_p =p(x)e^{2x}$. En este caso nos conviene multiplicar por $x$,  entonces la solución particular es de la forma 
+
+\begin{align*}
+    y_p= Axe^{2x}
+\end{align*}
+
+No vamos a demostrar por qué esto funciona, simplemente reemplazando en la ecuación original por  $y_p =p(x)e^{2x}$ nos damos cuenta que $p(x)=x$. Este polinomio funciona para $f(x)=e^{m x}$, $f(x) = \sen(\beta x)$ y $f(x)= \cos(\beta x)$, en caso de que $f(x)=xe^{mx}$ el polinomio que nos sirve es $p(x)=x^2$ y con esto cubrimos todos los casos, obivamente esto hay que hacerlo siempre y cuando $f(x)$ sea linealmente dependiente con $y_1$ o bien con $y_2$, en caso contrario no es necesario hacer esto (las soluciones que aparecen en ecuaciones homogéneas de coeficientes constantes vistas en la sección anterior). \\
+
+
+Volvamos al ejercicio, tenemos que
+
+\begin{align*}
+    y_p' &= 2Axe^{2x}+Ae^{2x} \\
+     y_p'' &= 4Axe^{2x}+4Ae^{2x}
+\end{align*}
+
+
+Reemplazando todo nos queda
+
+\begin{align*}
+    4Axe^{2x}+4Ae^{2x}-5(2Axe^{2x}+Ae^{2x})+6Axe^{2x}=5e^{2x}
+\end{align*}
+
+Luego
+
+\begin{align*}
+    -Ae^x=5e^{2x}
+\end{align*}
+
+De donde se deduce que $A=-5$. Por lo tanto la solución es
+
+\begin{align*}
+    y=c_1e^{2x}+c_2e^{3x}-5xe^x
+\end{align*}
+
+\textbf{Ejercicio:}  Resolver la EDO $y''-2y'+y=6xe^{x}$ usando el método de coeficientes indeterminados \\
+
+
+
+\section{Método de variación de parámetros}
+
+El método de variación de parámetros sirve para encontrar la solución particular en una ecuación diferencial lineal no homogenea,
+
+\begin{center}
+$y''+p(x)y'+q(x)y=f(x)$
+\end{center}
+
+Pero requiere conocer de antemano la solución general de la parte homogenea, supongamos que la solución de la ecuación homogenea viene dada por
+
+\begin{center}
+$ c_1y_1+c_2y_2$
+\end{center}
+
+se considera que la solución particular $y_p$ es de la forma
+
+\begin{center}
+$y_p= c_1(x)y_1 +c_2(x)y_2$
+\end{center}
+
+
+Derivando obtenemos
+
+
+
+\begin{center}
+$y_p'= c_1'y_1+ c_1y_1'+c_2'y_2 +c_2y_2'$
+\end{center}
+
+Para simplificar  vamos a considerar $c_1'y_1+c_2'y_2=0$, de esta forma 
+
+\begin{center}
+$y_p'=  c_1y_1'+c_2y_2'$
+\end{center}
+
+
+Luego derivando otra vez
+
+
+\begin{center}
+$y_p''=  c_1' y_1'+ c_1y_1''+ c_2'y_2' + c_2y_2''$
+\end{center}
+
+
+Reemplazando en la ecuación no-homogenea obtenemos
+
+
+
+\begin{center}
+$c_1' y_1'+ c_1y_1''+ c_2'y_2' + c_2y_2''+p(x)(c_1y_1'+c_2y_2')+q(x)(c_1y_1+c_2y_2)=f(x)$
+\end{center}
+
+
+\begin{center}
+$c_1' y_1'+ c_2'y_2' + c_1(y_1'' + p(x)y_1' +q(x)y_1) + c_2(y_2'' + p(x)y_2' +q(x)y_2)=f(x)$
+\end{center}
+
+Pero como $y_1$ e $y_2$ son soluciones de la homogenea entonces $y_1'' + p(x)y_1' +q(x)y_1 = 0$ y $y_2'' + p(x)y_2' +q(x)y_2 =0$. Por lo tanto concluimos que 
+
+
+\begin{center}
+$c_1' y_1'+ c_2'y_2'=f(x)$
+\end{center}
+
+Entonces tenemos el sistema de ecuaciones
+
+
+\begin{align*}
+c_1'(x)y_1+c_2'(x)y_2&=0 \\
+c_1'(x) y_1'+ c_2(x)'y_2'&=f(x)
+\end{align*}
+
+El cual es un sistema de 2x2 cuya solución viene dada por
+
+\begin{center}
+$\displaystyle c_1'(x) = 	\frac{-y_2(x)f(x)}{W(y_1,y_2)}$
+\end{center}
+
+\begin{center}
+$\displaystyle c_2'(x) = 	\frac{y_1(x)f(x)}{W(y_1,y_2)}$
+\end{center}
+
+
+Donde $W(y_1,y_2)$ es el Wronskiano, por lo tanto concluimos que
+
+
+\begin{center}
+$\displaystyle c_1(x) = \int \frac{-y_2(x)f(x)}{W(y_1,y_2)}$
+\end{center}
+
+\begin{center}
+$\displaystyle c_2(x) = \int \frac{y_1(x)f(x)}{W(y_1,y_2)}$
+\end{center}
+
+Por lo tanto la solución general viene dada por
+
+
+\begin{center}
+$\displaystyle y= c_1y_2 +c_2y_2 + y_1\int \frac{-y_2(x)f(x)}{W(y_1,y_2)} +y_2 \int \frac{y_1(x)f(x)}{W(y_1,y_2)} $
+\end{center}
+
+
+\newpage
+
+
+\textbf{Ejemplo: } Resolver $y'' +y = \sec^2(x)$. \\
+
+\textit{Respuesta: } Primero resolvemos la homogenea $y''+y'=0$, tomando $y=e^{mx}$ obtenemos $m^2+1=0$, las soluciones son $m_1=i$ y $m_2=-i$, la solución es  $y_1 = \cos(x)$ y $y_2 =\sen(x)$. \\
+
+Suponemos que la solución particular es de la forma $y_p= c_1(x)y_1 +c_2(x)y_2$. Primero calculamos $W(y_1,y_1)$, entonces
+
+\begin{center}
+$\displaystyle W(y_1,y_2) = y_1y_2'-y_2y_1' = \cos^2(x)+\sen^2(x) =1$
+\end{center}
+
+
+Usando la fórmula directamente obtenemos que
+
+
+\begin{center}
+$c_1(x) = \displaystyle \int -\sen(x) \frac{1}{\cos^2(x)} dx = \int -\tan(x)\sec(x)dx = -\sec(x)$
+\end{center}
+
+
+\begin{center}
+$c_2(x) = \displaystyle \int \cos(x) \frac{1}{\cos^2(x)} dx = \int \sec(x)dx = \ln(\sec(x) +\tan(x))$
+\end{center}
+
+Por lo tanto la solución general es
+
+
+\begin{center}
+$y= \displaystyle c_1\cos(x) +c_2\sen(x) - \cos(x)\sec(x)+ \sen(x) \ln(\sec(x)+\tan(x)) $
+\end{center}
+
+\newpage
+
+
+
+
+
+
+
+
+
+\end{document} 

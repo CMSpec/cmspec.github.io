@@ -1,0 +1,364 @@
+  \documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Semana 4\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+
+
+\end{picture}
+
+
+\begin{center}
+\huge{Clase 3}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Ecuaciones Diferenciales Ordinarias (EDO)}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Ecuaciones diferenciales ordinarias. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\setlength{\parindent}{2.95cm}- Factor integrante	\\
+\phantom{abefwfewefwifefffw} - Ecuaciones homogeneas	\\
+\vspace{6cm}
+
+
+\begin{center}
+\today
+\end{center}
+\begin{center}
+Santiago, Chile
+\end{center}
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+
+
+\section{Factor integrante}
+
+Supongamos que la EDO $M(x,y)dx+N(x,y)dy=0$ no es exacta, podemos asumir que existe una función $\omega(x,y)$ tal que al multiplicar la EDO por $\omega(x,y)$ la ecuación resultante
+
+\begin{center}
+$\omega(x,y) M(x,y)dx+\omega(x,y) N(x,y)dy=0$ 
+\end{center}
+
+es exacta. Para trabajar utilizaremos la notación de Euler $f_x =\displaystyle \frac{\partial f}{\partial x}$. Para que la ecuación sea exacta necesitamos que
+
+\begin{center}
+$\displaystyle \frac{\partial \left( \omega(x,y)M(x,y) \right)}{\partial y} = \frac{\partial \left( \omega(x,y)N(x,y) \right)}{\partial x}  $
+\end{center}
+
+Luego
+
+\begin{center}
+$\displaystyle \omega_yM+M_y\omega=  \omega_xN+N_x\omega $
+\end{center}
+
+\begin{center}
+$\displaystyle \omega(M_y-N_x)=  \omega_xN - \omega_y M$
+\end{center}
+
+En el caso de que $\omega(x,y)=\omega(x)$, es decir $\omega$ es sólo función de $x$, entonces $\omega_y=0$, luego
+
+
+\begin{center}
+$\displaystyle \omega'=  \omega \frac{M_y-N_x}{N}$
+\end{center}
+
+
+Entonces si $\displaystyle \frac{M_y-N_x}{N}$ depende sólo de $x$, tendríamos que $\omega$ está dado por la  ecuación diferencial.
+
+\begin{center}
+$\displaystyle \frac{d\omega}{dx}=  \omega \frac{M_y-N_x}{N}$
+\end{center}
+
+
+
+ A $\omega(x,y)$ se le conoce como \textbf{Factor integrante}. \\
+
+En el caso de que $\displaystyle \frac{N_x-M_y}{M}$ depende sólo de $y$, entonces $\omega$ está dado por la  ecuación diferencial.
+
+\begin{center}
+$\displaystyle  \frac{d\omega}{dy}=  \omega \frac{N_x-M_y}{M}$
+\end{center}
+
+(\textbf{Los siguientes casos no se vieron en clases})En el caso de que $\displaystyle \frac{N_x-M_y}{M-N}$ depende sólo $t=x+y$ como función, entonces $\omega$ está dado por la  ecuación diferencial.
+
+\begin{center}
+$\displaystyle  \frac{d\omega}{t}= \omega\frac{N_x-M_y}{M-N}$
+\end{center}
+
+Donde $\omega$ queda en función de $t=x+y$. Por último, si $\displaystyle \frac{M_x-N_y}{M+N}$ depende sólo de $s=x-y$, entonces $\omega$ está dado por la  ecuación diferencial.
+
+\begin{center}
+$\displaystyle  \frac{d\omega}{ds}= \omega\frac{M_x-N_y}{M+N}$
+\end{center}
+
+Donde $\omega$ queda en función de $s=x-y$. Existen más ocaciones en las cuales se puede calcular el factor integrante de forma eficiente, pero hay que tratar cada una de esos casos de forma individual. \\ \\
+
+\textbf{Nota Importante: } Hay muchos más tipos de factores integrantes que van a aparecer en las ayudantías, aquí solo hemos menocionado unos cuantos. \\
+
+
+\textbf{Ejercicio: }Resolver $x^2y^2dx+ (x^3y+y+3)dy=0$. \\
+
+\textit{Pista: Encuentre el factor integrante asuminedo que dependerá sólo de $y$, en este caso la ecuación del factor integrante viene dada por  $\displaystyle  \frac{d\omega}{dy}=  \omega \frac{N_x-M_y}{M}$ } \\
+
+\textbf{Respuesta: } Tenemos que $M(x,y)= x^2y^2$ y $N(x,y)= x^3+y+3$. La ecuación diferencial del factor integrante viene dada por
+
+
+\begin{center}
+$\displaystyle  \frac{d\omega}{dy}=  \omega \frac{N_x-M_y}{M} = \omega\frac{3yx^2-2yx^2}{x^2y^2}= \frac{\omega}{y}$
+\end{center}
+
+
+De aquí se concluye que
+
+\begin{center}
+$\displaystyle \frac{d\omega}{\omega} = \frac{dy}{y}$
+\end{center}
+
+Integrando
+
+\begin{center}
+$\ln(\omega)= \ln(y)+c$
+\end{center}
+
+
+
+
+\begin{center}
+$\omega= ky$
+\end{center}
+
+Como el factor integrante no es único podemos tomar cualquiera, siempre elegiremos el más sencillo, en este caso sería cuando $k=1$, por lo tanto tenemos
+$\omega(y)=y$. Multiplicando la EDO inicial $x^2y^2dx+ (x^3y+y+3)dy=0$ por $y$, obtenemos la nueva EDO
+
+\begin{center}
+$$x^2y^3dx+ (x^3y^2+y^2+3y)dy=0$$
+\end{center}
+
+
+En este caso $M(x,y)= x^2y^3$ y $N(x,y)=x^3y^2+y^2+3y$, podemos verificar que
+
+\begin{center}
+$\displaystyle M_y=N_x= 3x^2y^2$
+\end{center}
+
+Sea $f(x,y)$, la función dada por una EDO exacta, tenemos entonces que
+
+\begin{center}
+$\displaystyle \frac{\partial f}{\partial x} =M(x,y) = x^2y^3$
+\end{center}
+
+Luego
+
+\begin{center}
+$\displaystyle f(x,y) = \int x^2y^3 dx = \frac{x^3y^3}{3} +c(y)$
+\end{center}
+
+Por otra parte, sabemos que 
+
+\begin{center}
+$\displaystyle \frac{\partial f}{\partial y} = N(x,y)= x^3y^2+y^2+3y$
+\end{center}
+
+Ahora bien
+
+\begin{center}
+$\displaystyle \frac{\partial f}{\partial y} = \frac{\partial \left( \frac{x^3y^3}{3} +c(y) \right) }{\partial y} = x^3y^2+c'(y)$
+\end{center}
+
+
+Luego
+
+\begin{center}
+$ x^3y^2+c'(y) =  x^3y^2+y^2+3y$
+\end{center}
+
+Por lo tanto
+
+
+\begin{center}
+$ c'(y) =  y^2+3y$
+\end{center}
+
+Integrando
+
+
+
+\begin{align*}
+c(y) &=  \displaystyle \int y^2+3y dy \\
+&=  \frac{y^3}{3} +\frac{3}{2}y^2 +c \\
+\end{align*}
+
+Reemplazando, obtenemos
+
+\begin{center}
+$\displaystyle f(x,y) =  \frac{x^3y^3}{3} +  \frac{y^3}{3} +\frac{3}{2}y^2 +c $
+\end{center}
+
+La solución de la EDO viene dada por
+
+\begin{center}
+$\displaystyle \frac{x^3y^3}{3} +  \frac{y^3}{3} +\frac{3}{2}y^2 =c $.
+\end{center}
+
+\newpage
+
+
+
+\section{Ecuaciones Homogeneas}
+
+
+
+
+\textbf{Definición: }Una función $f(x,y)$ se dice homogenea si cumple que $f(tx,ty)=t^nf(x,y)$ para todo $t \in \mathbb{R}$. \\
+
+\textbf{Ejemplo: }Todos los polinomios en dos variables tales que cada término tenga el mismo grado como por ejemplo $x^2-xy$, $x^3+xy^2 +x^2y$ o bien $x+y$, son homogeneos. \\
+
+Los polinomios que no tienen todos sus coeficientes del mismo grado no son homogeneos por ejemplo $x+y+2$ no es homogenea porque el término $2$ tiene grado cero, tampoco es homogenea la ecuación $x^3 +xy +y^2x$, porque el término $xy$ tiene grado 2 mientras que el término $x^3$ tiene grado 3. \\
+
+
+
+
+
+\textbf{Definición: }Una función ecuación diferencial de la forma $M(x,y)dx +N(x,y)dy=0$ se dice homogenea si y sólo sí $M$ y $N$ son homogeneas del mismo grado. \\
+
+
+\textbf{Resultado:} \textit{Dada una Ecuación diferencial homogenea $M(x,y)dx +N(x,y)dy=0$, haciendo el cambio de variable $y=zx$, la ecuación diferencial se transforma en una ecuación de variables separables}\\
+
+
+Notemos que al hacer el cambio de variable $y=zx$, entonces se tiene que $\displaystyle \frac{dy}{dx}= z+x\frac{dz}{dx}$. \\
+
+
+\textbf{Ejercicio: } Encontrar la solución de la ecuación diferencial $\displaystyle xy^2\frac{dy}{dx} =y^3-x^3$.\\
+
+\textit{Respuesta: }Notemos que es una ED homogenea de grado 3, haciendo el cambio de variable $y=zx$, entonces  $\displaystyle \frac{dy}{dx}= z+x\frac{dz}{dx}$, reemplazando
+
+\begin{center}
+$\displaystyle  x(zx)^2 \left(  z+x\frac{dz}{dx} \right) =(zx)^3-x^3 $
+\end{center}
+
+\begin{center}
+$\displaystyle  x^3z^2 \left(  z+x\frac{dz}{dx} \right) =x^3(z^3-1) $
+\end{center}
+
+
+
+\begin{center}
+$\displaystyle  z^2 \left(  z+x\frac{dz}{dx} \right) =z^3-1 $
+\end{center}
+
+\begin{center}
+$\displaystyle  z^3+xz^2\frac{dz}{dx} =z^3-1 $
+\end{center}
+
+\begin{center}
+$\displaystyle  xz^2\frac{dz}{dx} =-1 $
+\end{center}
+
+
+
+\begin{center}
+$\displaystyle  z^2dz =-\frac{dx}{x} $
+\end{center}
+
+Integrando
+
+
+\begin{center}
+$\displaystyle   \int z^2dz =- \int\frac{dx}{x} $
+\end{center}
+
+\begin{center}
+$\displaystyle   \frac{z^3}{3} =-\ln(x) +c $
+\end{center}
+
+\begin{center}
+$\displaystyle   \frac{\left(\frac{y}{x}\right)^3}{3} =-\ln(x) +c $
+\end{center}
+
+
+Que es la solución implícita del la ED inicial.
+
+
+
+
+
+
+
+
+
+\end{document} 

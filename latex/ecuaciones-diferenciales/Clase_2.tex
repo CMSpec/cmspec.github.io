@@ -1,0 +1,522 @@
+ \documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Primera Semana\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+
+\end{picture}
+
+
+\begin{center}
+\huge{Clase 2}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Ecuaciones Diferenciales Ordinarias (EDO)}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Ecuaciones diferenciales ordinarias. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\setlength{\parindent}{2.87cm}- Ecuaciones Diferenciales Exactas	\\
+\phantom{abefwfewefwfefffw} - Ecuaciones diferenciales lineales	\\
+
+\vspace{6cm}
+
+
+\begin{center}
+\today
+\end{center}
+\begin{center}
+Santiago, Chile
+\end{center}
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+
+
+
+\section{Ecuaciones Diferenciales Exactas}
+
+Ahora vamos a ver nuestro segundo tipo de ecuación diferencial de primer orden. Una ecuación diferencial de primer orden puede ser escrita en su forma diferencial como 
+
+\begin{center}
+$M(x,y) dx +N(x,y)dy=0$
+\end{center}
+
+Donde tanto $ M$ como $N$ son funciones en dos variables que dependen de $x$ y de $y$. Para dejar una ecuación diferencial en su forma diferencial basta con multiplicar por $dx$ como si fuera un número cualquiera\\
+
+
+\textbf{Definición: } Consideremos una ecuación  en su forma diferencial
+
+\begin{center}
+$M(x,y) dx +N(x,y)dy=0$
+\end{center}
+
+Este tipo de ecuaciones se dice que son \textbf{exactas} en un conjunto $D \subset \mathbb{R}^2$ si existe una función $f(x,y)$ tal que
+
+\begin{center}
+$\displaystyle \frac{\partial f}{\partial x} (x,y) = f_x = M(x,y)$, y $\displaystyle \frac{\partial f}{\partial y} (x,y) = f_y = N(x,y)$
+\end{center}
+
+En caso de existir tal función, entonces la solución general de la ecuación diferencial viene dada por
+
+\begin{align*}
+    f(x,y) = c
+\end{align*}
+
+
+\textbf{Ejemplo: }Consideramos la ecuación diferencial $(2xy^2+1)dx + 2x^2ydy=0	$, entonces la función  $f(x,y)=x^2y^2+x$ cumple que $f_x= 2xy^2+1$ y $f_y= 2x^2y$ \\
+
+
+
+
+\textit{Observación: La familia de soluciones de una ecuación diferencial exacta no está definida por $f(x,y)$, sino por alguna curva de nivel de esta superficie, es decir, $f(x,y)=c$} \\
+
+\textbf{Proposición: }Supongamos que $M(x,y)$ y $N(x,y)$ son continuas y tienen primeras derivadas parciales en una región $D \subset \mathbb{R}^2$. Entonces una condición necesaria y suficiente para que $M(x,y)dx+N(x,y)dy=0$ sea una EDO exacta es que
+
+\begin{center}
+$M_y =N_x$
+\end{center}
+
+
+\textbf{Ejemplo: }Sea $(1+e^xy+xe^xy)dx+(xe^x+2)dy=0$. Identifique $M(x,y)$ y $N(x,y)$ y verifique si es exacta. \\
+
+\textit{Respuesta: } En este caso $M(x,y)= 1+e^xy+xe^xy$ y $N(x,y)= xe^x+2$. Notamos que
+
+\begin{center}
+$\displaystyle M_y = e^x+xe^x$
+\end{center}
+
+Por otra parte
+
+\begin{center}
+$\displaystyle N_x = e^x+xe^x$
+\end{center}
+
+Luego $\displaystyle  M_y=N_x $ y por lo tanto la EDO es exacta. \\
+
+Una vez identificada una EDO exacta el objetivo es encontrar la solución, para ello necesitamos encontrar $f(x,y)$, ahora bien sabemos que
+
+\begin{center}
+$\displaystyle \frac{\partial f}{\partial x} = M(x,y)$
+\end{center}
+
+Luego
+
+\begin{center}
+$\displaystyle f(x,y)= \int M(x,y)dx +c(y)$
+\end{center}
+
+Donde $c(y)$ es constante respecto a $x$, pero no respecto a $y$. Tenemos que encontrar $c(y)$. Usando la segunda condición de EDO exacta, tenemos que
+
+
+\begin{center}
+$N(x,y) = \displaystyle \frac{\partial f}{\partial y}$
+\end{center}
+
+Luego
+
+\begin{center}
+$N(x,y) = \displaystyle \frac{\partial }{\partial y} \int M(x,y)dx +c'(y) $
+\end{center}
+
+De esta forma encontramos $c'(y)$, integrando obtenemos $c(y)$ y así $f(x,y)$ queda completamente determinada. \\
+
+\textit{Nota: También se puede empezar por $N(x,y)$ y así la primera constante quedará en función de $x$ y será de la forma $c(x)$.} \\
+
+
+
+
+\textbf{Ejercicio 1: }Resolver $(2x^2+6xy^2)dx+(6x^2y+4y^3)dy=0$\\
+
+\textbf{Respuesta: } Definimos $M(x,y)= 2x^2+6xy^2$ y $N(x,y)= 6x^2y+4y^3$. Verificamos primero la condición de ecuaciones diferenciales para asegurarnos de que no perdemos el tiempo, tenemos que
+
+\begin{center}
+$\displaystyle \frac{\partial M}{\partial y}= 12xy$,  $\displaystyle \frac{\partial N}{\partial x}= 12xy$
+\end{center}
+
+Por lo tanto es seguro usar el método de EDO exacta. tenemos entonces
+
+\begin{center}
+$\displaystyle \frac{\partial f}{\partial x} = 2x^2+6xy^2$
+\end{center} 
+
+Luego
+
+\begin{center}
+$f(x,y) = \displaystyle \int 2x^2+6xy^2 dx = \frac{2}{3}x^3+3x^2y^2 +c(y)$
+\end{center} 
+
+Por otra parte
+
+
+\begin{center}
+$N(x,y)= \displaystyle \frac{\partial f}{\partial y} = 6x^2y+c'(y) $
+\end{center}
+
+Por lo tanto como $N(x,y)= 6x^2y+4y^3$, tendríamos
+
+\begin{center}
+$$6x^2y+c'(y)=6x^2y+4y^3$$
+\end{center}
+
+Por lo tanto
+
+\begin{center}
+$$c'(y)=4y^3$$
+\end{center}
+
+Concluimos que
+
+\begin{center}
+$$c(y)=\displaystyle \int 4y^3 dy = 4 \frac{y^4}{4} +c = y^4 +c$$
+\end{center}
+
+\newpage
+
+Reemplazando, obtenemos que
+
+\begin{center}
+$f(x,y) = \displaystyle  \frac{2}{3}x^3+3x^2y^2 + y^4+c$
+\end{center} 
+
+
+El conjunto solución viene dado por la expresión
+
+\begin{center}
+$\displaystyle  \frac{2}{3}x^3+3x^2y^2 + y^4 =c$
+\end{center}
+
+
+
+\textbf{Ejercicio 2: }Resolver $y'=\displaystyle \frac{(x+y)^2}{1-2xy-x^2}$ \\
+
+\textbf{Respuesta: }La ecuación es equivalente a
+
+\begin{center}
+$\displaystyle \frac{dy}{dx} = \frac{(x+y)^2}{1-2xy-x^2}$
+\end{center}
+
+o bien
+
+
+\begin{center}
+$\displaystyle (x+y)^2dx +(x^2+2xy-1)dy = 0$
+\end{center}
+
+
+Definimos $M(x,y)= (x+y)^2=x^2+2xy+y^2$ y $N(x,y)= x^2+2xy-1$. Verificamos primero la condición de ecuaciones diferenciales para asegurarnos de que no perdemos el tiempo, tenemos que
+
+\begin{center}
+$\displaystyle \frac{\partial M}{\partial y}=  2x+2y$,  $\displaystyle \frac{\partial N}{\partial x}= 2x+2y$
+\end{center}
+
+Por lo tanto es seguro usar el método de EDO exacta. tenemos entonces
+
+\begin{center}
+$\displaystyle \frac{\partial f}{\partial x} = x^2+2xy+y^2$
+\end{center} 
+
+Luego
+
+\begin{center}
+$f(x,y) = \displaystyle  \int x^2+2xy+y^2 dx =\frac{x^3}{3}+x^2y + y^2x	+ c(y)$
+\end{center} 
+
+Por otra parte
+
+
+\begin{center}
+$N(x,y)= \displaystyle \frac{\partial f}{\partial y} = x^2+2xy+c'(y) $
+\end{center}
+
+Por lo tanto como $N(x,y)= x^2+2xy-1$, tendríamos
+
+\begin{center}
+$$x^2+2xy+c'(y)=x^2+2xy-1$$
+\end{center}
+
+Por lo tanto
+
+\begin{center}
+$$c'(y)=-1$$
+\end{center}
+
+Concluimos que
+
+\begin{center}
+$$c(y)=\displaystyle = \int -1dy = -y+c$$
+\end{center}
+
+\newpage
+
+Reemplazando, obtenemos que
+
+\begin{center}
+$f(x,y) = \displaystyle  \frac{x^3}{3}+x^2y + y^2x	-y +c$
+\end{center} 
+
+
+El conjunto solución viene dado por la expresión
+
+\begin{center}
+$\displaystyle  \frac{x^3}{3}+x^2y + y^2x	-y =c$
+\end{center}
+
+
+\newpage
+
+
+\section{Ecuaciones diferenciales lineales}
+
+Una ecuación diferencial lineal, es una ecuación de la forma
+
+\begin{center}
+$y'+a(x)y=b(x)$
+\end{center}
+
+Donde $a(x)$ y $b(x)$ son funciones que dependen sólo de $x$. De momento no sabemos resolver esta ecuación. Pero, en el caso en el cuál $b(x)=0$, entonces sí podemos resolver, en efecto, tenemos que
+
+
+
+\begin{center}
+$y'+a(x)y=0$
+\end{center}
+
+Luego
+
+\begin{center}
+$y'=-a(x)y$
+\end{center}
+
+Es una ecuación de variables separables. Resolviendo tenemos
+
+
+
+\begin{center}
+$\displaystyle \frac{dy}{y}=-a(x)dx$
+\end{center}
+
+integrando
+
+
+\begin{center}
+$\displaystyle \int\frac{dy}{y}=- \int a(x)dx$
+\end{center}
+
+\begin{center}
+$\displaystyle \ln(y)=- \int a(x)dx +c$
+\end{center}
+
+Por lo tanto 
+
+\begin{center}
+$\displaystyle y= c e^{- \int a(x)dx} $
+\end{center}
+
+Esta es la solución general para $b(x)=0$. Ahora bien, si $b(x) \neq 0$, lo que hacemos es multiplicar la EDO original por $e^{ \int a(x)dx}$ y obtenemos
+
+
+\begin{center}
+$\displaystyle e^{ \int a(x)dx}\left( \frac{dy}{dx}+a(x)y\right) =e^{ \int a(x)dx}b(x)$
+\end{center}
+
+Luego
+
+\begin{center}
+$\displaystyle e^{ \int a(x)dx} \frac{dy}{dx}+e^{ \int a(x)dx} a(x)y =e^{ \int a(x)dx}b(x)$
+\end{center}
+
+Notamos que
+
+
+\begin{center}
+$\displaystyle \frac{d \left( ye^{ \int a(x)dx}\right) }{dx} = e^{ \int a(x)dx}\frac{dy}{dx}+ y a(x)e^{ \int a(x)dx}$
+\end{center}
+
+Por lo tanto 
+
+\begin{center}
+$\displaystyle \frac{d \left( ye^{ \int a(x)dx}\right) }{dx} =e^{ \int a(x)dx}b(x)$
+\end{center}
+
+Integrando
+
+\begin{center}
+$  \displaystyle \int \frac{d \left( ye^{ \int a(x)dx}\right) }{dx} dx = \int b(x) e^{ \int a(x)dx}dx +c$
+\end{center}
+
+
+\begin{center}
+$\displaystyle ye^{ \int a(x)dx} = \int b(x) e^{ \int a(x)dx} +c$
+\end{center}
+
+Luego tenemos la solución general
+
+
+\begin{center}
+$\displaystyle y = e^{ -\int a(x)dx}\left(  \int b(x) e^{ \int a(x)dx} +c  \right) $
+\end{center}
+
+\textbf{Nota: }Al termino  $\displaystyle e^{ \int a(x)dx}$ se le conoce como \textbf{factor integrante} y en general es un término que al multiplicar toda la ecuación diferencial por él nos da una ecuación diferencial conocida. \\
+
+
+\begin{center}
+\textbf{\large{Ejercicios}} \\
+\end{center}
+
+\textbf{Ejercicio 1:} Resolver la EDO $\displaystyle y' + \frac{x}{x^2+1} y = 0$ \\
+
+
+\textit{Respuesta: }Reconocemos que tenemos una ecuación lineal donde $b(x)=0$ y $a(x)= \displaystyle \frac{x}{x^2+1}$ , la solución viene dada por
+
+\begin{align*}
+\displaystyle y &= ce^{-\int a(x)dx} \\
+&= ce^{-\int \frac{x}{x^2+1}dx} 
+\end{align*}
+
+Ahora bien para resolver
+
+\begin{center}
+$\displaystyle \int \frac{x}{x^2+1}dx $
+\end{center}
+
+tomamos $u=x^2+1$ y entonces $du=2xdx$ o bien $xdx=\frac{du}{2} $, luego
+
+\begin{align*}
+\displaystyle \int \frac{x}{x^2+1}dx &= \int \frac{du}{2u} \\
+&= \frac{1}{2}\int \frac{du}{u} \\
+&= \frac{1}{2}\ln(u) \\
+&= \frac{1}{2}\ln(x^2+1) \\
+\end{align*}
+
+Reemplazando
+
+
+\begin{align*}
+\displaystyle y  &= ce^{-\int \frac{x}{x^2+1}dx} \\
+ &= ce^{-\frac{1}{2} \ln(x^2+1) dx} \\
+ &= ce^{\ln\left( (x^2+1)^{-\frac{1}{2} }\right)  } \\
+ &= c(x^2+1)^{-\frac{1}{2} }  \\
+  &= \frac{c}{\sqrt{x^2+1}} \\
+\end{align*}
+
+
+\newpage
+
+
+
+\textbf{Ejercicio 2:} Resolver la EDO $\displaystyle y' = y\tan(x)+\cos(x)$ \\
+
+
+\textit{Respuesta: }Reconocemos que tenemos una ecuación lineal donde $a(x)=-\tan(x)$ y $b(x)= \cos(x)$ , la solución viene dada por
+
+
+
+\begin{center}
+$\displaystyle y = e^{ -\int a(x)dx}\left(  \int b(x) e^{ \int a(x)dx} +c  \right) $
+\end{center}
+
+Ahora bien 
+
+\begin{align*}
+\displaystyle \int a(x)dx &= \int -\tan(x)dx \\
+&= -\ln(\sec(x))\\
+&= \ln(\sec(x)^{-1})\\
+&= \ln(\cos(x))\\
+\end{align*}
+
+Luego
+
+\begin{center}
+$\displaystyle e^{ -\int a(x)dx}  = e^{\ln(\cos(x))}=\cos(x)$
+\end{center}
+
+
+De esta forma
+
+
+\begin{align*}
+\displaystyle y &= e^{ -\int a(x)dx}\left(  \int b(x) e^{ \int a(x)dx} +c  \right) \\
+&= e^{ -\ln(\cos(x))}\left(  \int \cos(x)\cos(x)dx +c  \right)\\
+&= e^{ \ln(\cos(x)^{-1})}\left(  \int \cos(x)^2dx +c  \right)\\
+&= \sec(x)\left(  \frac{x}{2} + \frac{\sen(2x)}{4}+c  \right)\\
+\end{align*}
+
+
+
+
+
+\end{document} 

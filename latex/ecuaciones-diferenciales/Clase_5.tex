@@ -1,0 +1,350 @@
+  \documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Semana 4\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+\end{picture}
+
+
+\begin{center}
+\huge{Clase 5}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Ecuaciones Diferenciales Ordinarias (EDO)}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Ecuaciones diferenciales ordinarias. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\setlength{\parindent}{2.95cm}-  Ecuaciones de orden $n$	\\
+\phantom{abefwfewefwfefffwi} -  Ecuaciones diferenciales lineales de orden $n$	\\
+\phantom{abefwfewefwfefffwi} -  Independencia lineal de funciones	\\
+\phantom{abefwfewefwfefffwi} -  Reducción a ecuación de primer orden	\\
+\phantom{abefwfewefwfefffwi} -  Búsqueda de la segunda solución	\\
+
+
+\vspace{6cm}
+
+
+\begin{center}
+\today
+\end{center}
+\begin{center}
+Santiago, Chile
+\end{center}
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+
+
+\section{Ecuaciones de orden $n$}
+
+
+
+\textbf{Definición: }Recordemos que un problema de valor inicial (PVI) de orden $n$ es una ecuación diferencial de la forma
+
+
+\begin{align*}
+F(x,y,y',y'', ... ,y^{(n)}) &=0 \\
+y(x_0)&=y_0 \\
+y'(x_1)&=y_1 \\
+\vdots \\
+y^{(n-1)}(x_{n-1}) &=y_{n-1}
+\end{align*}
+
+
+\textbf{Ejemplo: } La ecuación diferencial $y''+3x^2\sen(y)-3y^2y' =0$ con las condiciones $y(0)=1$ e $y'(0)=0$ es un PVI de orden 2. \\
+
+
+Una solución de un problema de valores iniciales es una función $y$ que cumple todas las condiciones pedidas. \\ 
+
+\textbf{Ejemplo: } $y(x)= 3e^{2x} +e^{-2x}-3x$  es solución del PVI
+
+
+\begin{align*}
+y''-4y-12x &=0\\
+y(0) &= 4 \\
+y'(0) &=1 \\
+\end{align*}
+
+
+\textbf{Definición: } Una ecuación diferencial de orden $n$ se dice lineal si es de la forma
+
+
+\begin{align*}
+a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)}+ ... + a_2(x)y''+a_1(x)y' +a_0(x)y =g(x)
+\end{align*}
+
+Todas las ecuaciones lineales que vimos durante la primera parte de este curso son ecuaciones diferenciales lineales de primer orden o de orden 1. \\
+
+
+\textbf{Definición: }  Una ecuación diferencial lineal de orden $n$ se dice \textbf{homog\'enea} si $g(x)=0$, es decir, si es de la forma
+
+\begin{align*}
+a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)}+ ... + a_2(x)y''+a_1(x)y' +a_0(x)y =0
+\end{align*}
+
+Esta definición es completamente distinta a la dada anteriormente durante la primera parte del curso, antes se llamaban ecuaciones diferenciales homogeneas, en cambio estas se llaman ecuaciones diferenciales lineales homog\'eneas.
+
+
+
+
+\newpage
+
+\section{Ecuaciones diferenciales lineales de orden $n$}
+
+
+El siguiente teorema nos ayuda a entender como se comportan las ecuaciones diferenciales lineales homog\'eneas de orden $n$ \\
+
+\textbf{Teorema: } Sea $a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)}+ ... +a_0(x)y =0$ una ecuación diferencial lineal homog\'enea. Consideramos $S$ el conjunto solución de esta ecuación diferencial, entonces $S$ es un espacio vectorial finitamente generado sobre $\mathbb{R}$ y además  dim$(S) = n$. \\
+
+
+En otras palabras, si encontramos $n$ soluciones $y_1,y_2, ... , y_n$  de la ecuación diferencial inicial que sean l.i, entonces todas las soluciones son de la forma 
+
+\begin{center}
+$y = c_1y_1+c_2y_2+ ...+ c_n y_n$
+\end{center}
+
+\textbf{Ejemplo 1: } Tenemos que la ecuación diferencial homog\'enea $y'''+6y''+11y'-6y =0$ tiene como soluciones $e^x$, $e^{2x}$ y $e^{3x}$. Luego, la solución general de la ecuación diferencial es de la forma
+
+\begin{center}
+$y = c_1e^x +c_2e^{2x}+c_3e^{3x}$
+\end{center}
+
+
+\textbf{Ejemplo 2: } Tenemos que la ecuación diferencial homog\'enea $y''-4y =0$ tiene como soluciones $e^{2x}$ y $e^{-2x}$. Luego, la solución general de la ecuación diferencial es de la forma
+
+\begin{center}
+$y = c_1e^{2x} +c_2e^{-2x}$
+\end{center}
+
+Ahora bien, para poder resolver una ecuación diferencial no homog\'enea, tenemos el siguiente teorema. \\
+
+
+\textbf{Teorema: } Sea $a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)}+ ... +a_0(x)y =g(x)$ una ecuación diferencial lineal No homog\'enea. Consideramos la ecuación homog\'enea $a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)}+ ... +a_0(x)y =0$ con sus soluciones $y_1,y_2,... , y_n$ y además supongamos que tenemos una solución particular $y_p$ de la ecuación no homog\'enea. Entonces toda solución de la ecuación no homog\'enea es de la forma
+
+\begin{center}
+$y= c_1y_1+c_2y_2+... +c_ny_n +y_p$
+\end{center}
+
+En otras palabras, para encontrar la solución general de una ecuación diferencial no homog\'enea, sólo hay que resolver la parte homog\'enea asociada y encontrar una solución particular $y_p$ de la ecuación diferencial no homog\'enea. El gran desafío consiste en encontrar dicha solución particular. \\
+
+\textbf{Ejemplo : } Tenemos que la ecuación diferencial  no homog\'enea $y''-4y =12x$ tiene como solución particular $y_p(x)= -3x$. Además la ecuación homog\'enea $y''-4y =0$ tiene como soluciones $e^{2x}$ y $e^{-2x}$. Luego, la solución general de la ecuación diferencial es de la forma
+
+\begin{center}
+$y = c_1e^{2x} +c_2e^{-2x} -3x$
+\end{center}
+
+
+\newpage
+
+
+\section{Independencia lineal de funciones}
+
+Como hemos visto en la sección anterior, es muy importante que las soluciones sean linealmente independientes porque de lo contrario no obtenemos la solución general. Por suerte, existe una forma eficiente para determinar cuando un conjunto de funciones es linealmente independiente o no.\\
+
+Dadas $n$ funciones $f_1,f_2,... ,f_n$, una forma eficiente de saber si son  l.i es mediante el Wronskiano definido por
+
+
+\begin{center}
+$W(f_1,f_2, ... , f_n) = \left| \begin{matrix}
+f_1 & f_2 & ... & f_n \\
+f_1' & f_2' & ... & f_n' \\
+f_1'' & f_2'' & ... & f_n'' \\
+\vdots & \vdots & ... & \vdots \\
+f_1^{(n-1)} & f_2^{(n-1)} & ... & f_n^{(n-1)} \\
+\end{matrix} \right|$
+\end{center}
+
+\textbf{Teorema: } Un conjunto de funciones $f_1,f_2,... ,f_n$ es l.i si y sólo si $W(f_1,f_2,..., f_n) \neq 0$. \\
+
+\textbf{Ejemplo: }Tenemos las funciones $e^{2x}$ y $e^{-2x}$, veamos que son l.i, calculamos su Wronskiano
+
+\begin{center}
+$W(e^{2x},e^{-2x}) = \left| \begin{matrix}
+e^{2x} & e^{-2x} \\
+2e^{2x} & -2e^{-2x} \\
+\end{matrix} \right|$
+\end{center} 
+
+Luego
+
+\begin{center}
+$W(e^{2x},e^{-2x}) =e^{2x}(-2e^{-2x}) -2e^{2x}e^{-2x} = -2-2 =-4 \neq 0$
+\end{center} 
+
+Por lo tanto $e^{2x}$ y $e^{-2x}$ son l.i
+
+
+\newpage
+
+\section{Reducción a ecuación de primer orden}
+
+En caso de que una ecuación diferencial de segundo orden sea del estilo $F(y'',y')=0$, entonces podemos reducir la ecuación a una ecuación diferencial de primer orden haciendo el cambio de variable $z=y'$, entonces $z'=y''$.\\
+
+\textbf{Ejemplo: } Resolver $y''+y'=0$. \\
+
+\textit{Solución: }Hacemos el cambio de variable $z=y'$, la nueva ecuación queda
+
+\begin{center}
+$z'+z = 0$
+\end{center}
+
+Que es una ecuación de variables separables, tenemos
+
+\begin{center}
+$\displaystyle \frac{dz}{z} = -dx$
+\end{center}
+
+Integrando
+
+\begin{center}
+$\displaystyle  \int \frac{dz}{z} = \int -dx$
+\end{center}
+
+
+\begin{center}
+$\displaystyle \ln(z) = -x +c_1$
+\end{center}
+
+\begin{center}
+$\displaystyle z = c_1 e^{-x}$
+\end{center}
+
+Recordemos que $z= y'$, luego
+
+\begin{center}
+$\displaystyle y' = c_1 e^{-x}$
+\end{center}
+
+integrando nuevamente
+
+\begin{center}
+$\displaystyle y =  \int c_1 e^{-x}$
+\end{center}
+
+\begin{center}
+$\displaystyle y =  -c_1e^{-x} +c_2$
+\end{center}
+
+Que es la solución general.
+
+
+\newpage
+
+\section{Búsqueda de la segunda solución}
+
+
+
+Supongamos que tenemos una ecuación diferencial de la forma
+
+\begin{center}
+$y''+b(x)y'+c(x)y=0	$
+\end{center}
+
+Asumamos que tenemos una solución $y_1$ de esta ecuación diferencial. Entonces podemos encontrar una segunda solución suponiendo que es de la forma $y_2=v(x)y_1$, reemplazando esto en la ecuación diferencial resolviendo, obtenemos
+
+\begin{center}
+$\displaystyle y_2 =y_1 \int \frac{e^{-\int b(x)dx}}{y_1^2} dx$
+\end{center}
+
+Es fácil demostrar que esta segunda solución es linealmente independiente con la primera solución. \\
+
+\textbf{Ejercicio: } Sea la ecuación diferencial $x^2y''-3xy'+4y=0$ y asuma que $y_1=x^2$ es una solución de la ecuación diferencial, encuentre a la solución general de la ecuación diferencial. \\
+
+\textit{Respuesta: } Para usar la fórmula primero es necesario dejar la ecuación diferencial en el formato mostrado anteriormente, entonces tenemos que dividir por $x^2$ y obtenemos
+
+\begin{center}
+$$\displaystyle y''-\frac{3}{x} y'+\frac{4}{x^2} y=0$$
+\end{center}
+
+Notamos que en este caso $b(x)= \displaystyle \frac{-3}{x}$. Entonces la segunda solución viene dada por
+
+\begin{align*}
+\displaystyle y_2 &= x^2 \int \frac{e^{-\int \frac{-3}{x} dx}}{(x^2)^2} dx \\
+ &= x^2 \int \frac{e^{3\ln(x)}}{(x^2)^2} dx \\
+  &= x^2 \int \frac{e^{\ln(x^{3})}}{x^4} dx \\
+&= x^2 \int \frac{x^{3}}{x^4} dx \\
+&= x^2 \int \frac{1}{x} dx \\  
+&= x^2 \ln(x) \\  
+\end{align*}
+
+Por lo tanto la solución general será
+
+\begin{center}
+$y = c_1 x^2+c_2x^2\ln(x)$
+\end{center}
+
+\end{document} 

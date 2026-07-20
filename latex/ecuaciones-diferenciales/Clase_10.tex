@@ -1,0 +1,462 @@
+ \documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Semana 4\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+
+
+\end{picture}
+
+
+\begin{center}
+\huge{Laplace y Aplicaciones}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Ecuaciones Diferenciales Ordinarias (EDO)}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Ecuaciones diferenciales ordinarias. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\setlength{\parindent}{2.95cm}- Segundo Teorema de Traslación\\
+\phantom{abefwfewefwfefffwi} - Derivada de una Transformada de Laplace\\
+\phantom{abefwfewefwfefffwi} - Integral de una transformada de Laplace\\
+\phantom{abefwfewefwfefffwi} - Resolución de sistemas de ecuaciones diferenciales\\
+
+
+
+
+
+\vspace{6cm}
+
+
+\begin{center}
+\today
+\end{center}
+\begin{center}
+Santiago, Chile
+\end{center}
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+\section{Segundo teorema de traslación}
+
+
+
+\textbf{Teorema (Segundo teorema de traslación): }Sea $f: [0,+\infty) \to \mathbb{R}$ continua por trozos y de orden exponencial. Si $a \in \mathbb{R}^+$, entonces
+
+\begin{center}
+$\mathcal{L}[u(t-a)f(t-a)](s) =e^{-as}\mathcal{L}[f(t)](s)$
+\end{center}
+
+O bien equivalentemente
+
+
+\begin{center}
+$\mathcal{L}[u(t-a)f(t)](s) =e^{-as}\mathcal{L}[f(t+a)](s)$
+\end{center}
+
+Por ejemplo $\displaystyle \mathcal{L}[u(t-2)\cos(t-2)](s) =e^{-2s}\mathcal{L}[\cos(t)](s) = \frac{e^{-2s} s}{s^2+1}$. \\ \\ \\
+
+
+
+\textbf{Teorema (Segundo teorema de traslación(Versión transformada inversa)): }Sea $f: [0,+\infty) \to \mathbb{R}$ continua por trozos y de orden exponencial. Si $a \in \mathbb{R}^+$, entonces
+
+\begin{center}
+$\mathcal{L}^{-1}[e^{-as}f(s)](t) =u(t-a)\mathcal{L}^{-1}[f(s)](t-a)$
+\end{center}
+
+
+Por ejemplo $\displaystyle \mathcal{L}^{-1}\left[ \frac{e^{-2s}}{s^2} \right] (t)  = u(t-2) \mathcal{L}^{-1} \left[ \frac{1}{s^2} \right] (t-2) = (t-2)u(t-2)$ \\
+
+
+
+\newpage
+
+
+\begin{center}
+\textbf{\large{Ejemplo con ecuaciones diferenciales}} \\
+\end{center}
+
+Vamos a resolver el siguiente problema de valores iniciales usando la transformada de Laplace
+
+
+\begin{align*}
+y''+4y &=f(t) \\
+y(0)&=0 \\
+y'(0)&=0
+\end{align*}
+
+Donde 
+
+\begin{center}
+$f(t) = \left\{ \begin{array}{lcc} 1 & si & 0 \leq t < 3 \\ \\ 2 & si & t \geq 3  \end{array} \right.$
+\end{center}
+
+\textit{Respuesta: } Aplicamos transformada de Laplace, tenemos que
+
+\begin{align*}
+\mathcal{L}[y''+4y] &=\mathcal{L}[f(t)] \\
+\mathcal{L}[y'']+\mathcal{L}[4y] &=\mathcal{L}[f(t)]  \\
+s^2\mathcal{L}[y]-sy(0)-y'(0)+4\mathcal{L}[y] &=\mathcal{L}[f(t)]\\
+\mathcal{L}[y](s^2+4) &=\mathcal{L}[f(t)]
+\end{align*}
+
+Por otra parte, notemos que 
+
+\begin{center}
+$f(t ) = 1+(2-1)u(t-3)=1+u(t-3)$
+\end{center}
+
+Luego
+
+
+\begin{center}
+$\displaystyle \mathcal{L} [f(t)] = \mathcal{L}[1-u(t-3)] = \frac{1}{s}+\frac{e^{-3s}}{s} $
+\end{center}
+
+Luego
+
+
+
+\begin{align*}
+\mathcal{L}[y](s^2+4) &=\frac{1}{s}+\frac{e^{-3s}}{s}
+\end{align*}
+
+
+De donde se deduce que
+
+\begin{align*}
+\mathcal{L}[y] &=\frac{1}{s(s^2+4)}+\frac{e^{-3s}}{s(s^2+4)}
+\end{align*}
+
+Ahora usamos fraciones parciales
+
+\begin{align*}
+\frac{1}{s(s^2+4)} &= \frac{A}{s}+\frac{Bs+C}{s^2+4} \\
+&= \frac{A(s^2+4)+s(Bs+C)}{s(s^2+4)} \\
+&= \frac{s^2(A+B)+Cs+4A}{s(s^2+4)} \\
+\end{align*}
+
+De donde se deduce que $A=1/4$, $B=-1/4$ y $C=0$, luego
+
+
+\begin{align*}
+\frac{1}{s(s^2+4)} &= \frac{1}{4s}-\frac{s}{4(s^2+4)} \\
+\end{align*}
+
+Aplicando transformada inversa tenemos	
+
+
+\begin{align*}
+\mathcal{L}^{-1}\left[  \frac{1}{s(s^2+4)}\right]  &= \mathcal{L}^{-1}\left[\frac{1}{4s}-\frac{s}{4(s^2+4)} \right] \\
+&= \frac{1}{4}-\frac{\cos(4t)}{4}
+\end{align*}
+
+Y aplicando el segundo teorema de traslación obtenemos que
+
+
+\begin{align*}
+\mathcal{L}^{-1}\left[  e^{-3s}\frac{1}{s(s^2+4)}\right]  &= u(t-3)\mathcal{L}^{-1}\left[\frac{1}{4s}-\frac{s}{4(s^2+4)} \right](t-3) \\
+&= u(t-3)\left( \frac{1}{4}- \frac{\cos(4(t-3))}{4} \right) 
+\end{align*}
+
+
+Por lo tanto, la ecuación que teníamos
+
+\begin{align*}
+\mathcal{L}[y] &=\frac{1}{s(s^2+4)}+\frac{e^{-3s}}{s(s^2+4)}
+\end{align*}
+
+Se resuelve como
+
+\begin{align*}
+y &= \mathcal{L}^{-1} \left[ \frac{1}{s(s^2+4)}+\frac{e^{-3s}}{s(s^2+4)}\right] 
+\end{align*}
+
+
+
+\begin{align*}
+y &= \frac{1}{4}-\frac{\cos(2t)}{4} +u(t-3)\left( \frac{1}{4}- \frac{\cos(2(t-3))}{4} \right) 
+\end{align*}
+
+O bien
+
+
+
+\begin{center}
+$y = \left\{ \begin{array}{lcc} \frac{1}{4}-\frac{\cos(2t)}{4} & si &  0\leq t < 3 \\ \\ \frac{1}{2}-\frac{\cos(2t)+\cos(2(t-3))}{4} & si & t \geq 3  \end{array} \right.$
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+
+\section{Derivada de una transformada de Laplace}
+
+El siguiente resultado puede ser demostrado directamente usando la definición de la transformada de Laplace, en este curso no vamos a hacer la demostración. \\
+
+\textbf{Proposición: } Sea $f$ una función de orden exponencial y $n \in \mathbb{N}$, entonces
+
+\begin{align*}
+    (-1)^n \frac{d^n}{ds^n} \mathcal{L}[f](s) = \mathcal{L}[t^nf(t)](s)
+\end{align*}
+
+Este resultado nos sirve principalmente para calcular transformadas de Laplace de la forma $\mathcal{L}[t^nf(t)](s)$, para $n=1$ tenemos
+
+
+\begin{align*}
+     \mathcal{L}[tf(t)](s) = -\frac{d}{ds} \mathcal{L}[f](s)
+\end{align*}
+
+\textbf{Ejemplo: } Calculemos la transformada de Laplace de $f(t) =t\sin(at) $, sabemos que 
+
+\begin{align*}
+    \mathcal{L}[\sin(at)](s) = \frac{a}{s^2+a^2}
+\end{align*}
+
+Derivemos esto respecto a $s$, obtenemos
+
+\begin{align*}
+    \frac{d}{ds} \mathcal{L}[\sin(at)](s) &=  \frac{d}{ds} \left( \frac{a}{s^2+a^2} \right) \\
+    &=  \frac{(s^2+a^2)a'-(s^2+a^2)'a}{(s^2+a^2)^2} \\
+    &=  \frac{-2as}{(s^2+a^2)^2} \\
+\end{align*}
+
+Por lo tanto
+
+
+\begin{align*}
+    \mathcal{L}[t\sin(at)](s) = \frac{2as}{(s^2+a^2)^2} 
+\end{align*}
+
+Notemos que esto implica que
+
+\begin{align*}
+    \mathcal{L}^{-1} \left[\frac{s}{(s^2+a^2)^2} \right] = \frac{t\sin(at)}{2a} 
+\end{align*}
+
+
+\textbf{Ejercicio 1: } Demuestre que
+
+\begin{align*}
+    \mathcal{L}[t\cos(at)](s) = \frac{s^2-a^2}{(s^2+a^2)^2} 
+\end{align*}
+
+
+
+\textbf{Ejercicio 2: } Demuestre que
+
+\begin{align*}
+    \mathcal{L}[\sin(at)-at\cos(t)](s) = \frac{2a^3}{(s^2+a^2)^2} 
+\end{align*}
+
+Y por lo tanto
+
+\begin{align*}
+    \mathcal{L}^{-1}\left[ \frac{1}{(s^2+a^2)^2}\right](s)  =\frac{1}{2a^3}(\sin(at)-at\cos(t))
+\end{align*}
+
+\newpage
+
+
+\section{Integral de una transformada de Laplace}
+
+
+Al igual que en la sección anterior, el siguiente resultado puede ser demostrado directamente usando la definición de la transformada de Laplace. \\
+
+\textbf{Proposición: } Sea $f$ una función de orden exponencial, entonces
+
+\begin{align*}
+    \int_s^\infty \mathcal{L}[f(t)] (u) du = \mathcal{L}\left[ \frac{f(t)}{t}\right](s)
+\end{align*}
+
+
+Al igual que en la sección anterior, este resultado nos sirve principalmente para calcular transformadas de Laplace de la forma $\displaystyle \mathcal{L}\left[ \frac{f(t)}{t}\right](s)$. \\
+
+\textbf{Ejemplo: } Calculemos la transformada de Laplace de $f(t) =\displaystyle \frac{\sin(at)}{t}$ con $a>0$, sabemos que 
+
+
+\begin{align*}
+    \mathcal{L}\left[ \frac{\sin(at)}{t}\right](s) &= \int_s^\infty \mathcal{L}[\sin(at)] (u) du \\
+    &= \int_s^\infty \frac{a}{u^2+a^2}  du \\
+    &= \arctan \left( \frac{u}{a}\right) \bigg|_s^\infty \\
+    &= \frac{\pi}{2}-\arctan\left( \frac{s}{a}\right)
+\end{align*}
+
+\textbf{Ejercicio : } Demuestre que
+
+\begin{align*}
+    \mathcal{L}\left[ \frac{\cos(at)}{t}\right](s) 
+\end{align*}
+
+No existe, tiende a infinito
+
+
+\newpage
+
+
+
+\section{Resolución de sistemas de ecuaciones diferenciales}
+
+Vamos a ver ahora como aplicar las transformadas de Laplace para resolver sistemas de ecuaciones diferenciales, consideremos
+
+\begin{align*}
+   x' &= -6x+2y \\
+    y' &= -3x+y \\
+\end{align*}
+
+Con las condiciones $y(0)=0$ y $x(0)=1$. Esto es un sistema de ecuaciones diferenciales de $2x2$ en donde $x$ e $y$ son variables de un parámetro $t$. aplicamos transformada de Laplace en ambas igualdades, llamamos $\mathcal{L}[x]=L$ y $\mathcal{L}[y]=M$. luego
+
+
+\begin{align*}
+   sL-1 &= -6L+2M \\
+    sM &= -3L+M \\
+\end{align*}
+
+Ahora vamos a despejar $L$ y $M$. Despejamos $M$ en la segunda ecuación y obtenemos
+
+\begin{align*}
+M &= -\frac{3L}{s-1} \\
+\end{align*}
+
+Reemplazando
+
+\begin{align*}
+   sL-1 &= -6L-\frac{6L}{s-1} \\
+\end{align*}
+
+
+
+\begin{align*}
+   L &= \frac{s-1}{s^2+5s} \\
+   &= \frac{s-1}{s(s+5)}
+\end{align*}
+
+y entonces
+
+\begin{align*}
+M &= -\frac{3}{s(s+5)} \\
+\end{align*}
+
+
+Usamos fracciones parciales y obtenemos
+
+\begin{align*}
+L=\frac{s-1}{s(s+5)} = -\frac{1}{5s}+\frac{6}{5(s+5)}
+\end{align*}
+
+\begin{align*}
+M= \frac{3}{s(s+5)} = -\frac{3}{5s}+\frac{3}{5(s+5)}
+\end{align*}
+
+
+Luego
+
+
+\begin{align*}
+x(t) &= \mathcal{L}^{-1} \left[ -\frac{1}{5s}+\frac{6}{5(s+5)}\right] \\
+&= -\frac{1}{5}+ \frac{6}{5}e^{-5t}
+\end{align*}
+
+
+\begin{align*}
+y(t) &= \mathcal{L}^{-1} \left[ -\frac{3}{5s}+\frac{3}{5(s+5)}\right] \\
+&= -\frac{3}{5}+ \frac{3}{5}e^{-5t}
+\end{align*}
+
+Que es la solución del sistema de ecuaciones diferenciales.
+
+
+
+
+
+
+
+
+
+\end{document} 

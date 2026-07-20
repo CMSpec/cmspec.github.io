@@ -1,0 +1,545 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Primera Semana\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+
+\end{picture}
+
+
+\begin{center}
+\huge{Clase 1}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Ecuaciones Diferenciales Ordinarias (EDO)}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Ecuaciones diferenciales ordinarias. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\phantom{abefwfewweflw} - Primeras definiciones 	\\
+\phantom{abefwfewefwfefffw} - Soluciones de una ecuación diferencial	\\
+\phantom{abefwfewefwfefffw} - Problemas de valores iniciales	\\
+\phantom{abefwfewefwfefffw} - Ecuaciones Diferenciales de variables separables	\\
+
+\vspace{6cm}
+
+
+\begin{center}
+\today
+\end{center}
+\begin{center}
+Santiago, Chile
+\end{center}
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+
+En situaciones de la vida real, es difícil encontrar o conocer directamente la relación entre una variable y el fenómeno a describir. Generalmente, se dispone de las razones de cambio de la función buscada y el modelo que relaciona las cantidades. Es decir, se desconoce la funión, pero se conoce como 'cambia' en el tiempo. Durante este curso desarrollaremos técnicas para encontrar dicha función a partir de la información disponible.
+
+
+\section{Primeras Definiciones }
+
+Una ecuación diferencial es cualquier ecuación de la forma
+
+\begin{center}
+$F(x,y,y',y'',... , y^{(n)})=0$
+\end{center}
+
+Donde $F$ es una función de parámetros $x,y,y',y'',... , y^{(n)}$ , es decir, $F$ relaciona la variable $x$ con las derivadas de una función $y$.
+
+Notemos que estos parámetros son funciones, no números. Aquí unos ejemplos de ecuaciones diferenciales
+
+\begin{center}
+$\displaystyle y''-2\frac{y}{x^2}=0 \hspace{2cm} \displaystyle y'=2y$ \newline
+
+$\displaystyle y'=3y^2-4\sin(y)\hspace{2cm} \displaystyle yy'''-4x\ln(y'')=0$ \newline
+\end{center}
+
+En algunos casos es posible dejar la derivanda $n-$ésima en función del resto de las derivadas y los parámetros $y$ y $x$
+
+\begin{center}
+$y^{(n)}=f(x,y,y',... ,y^{(n-1)})$
+\end{center}
+
+\textbf{Ejemplo: } Tomamos la ecuación diferencial $xy''-3y\sin(x)-y''2x^2+1=0$, en este caso, podemos despejar $y''$ y queda
+
+\begin{center}
+$\displaystyle y''= \frac{3y\sin(x)-1}{x-2x^2}$
+\end{center}
+
+
+\textit{Nota:} En este caso fue posible despejar $y''$, pero en general esto no siempre se puede hacer. \\  \ \\
+
+\textit{\textbf{Definición: }}Dada la ecuación diferencial $F(x,y,y',...,y^{(n)})=0$, decimos que $n$ es el \textbf{orden de la ecuación diferencial}, es decir, el mayor índice de la derivada que aparece en la ecuación diferencial. \\
+
+\textbf{Ejemplo: } La ecuación diferencial $\displaystyle (y'')^5+3 y''-2\frac{y}{x^2}=0$ tiene orden 2. Por otra parte, la ecuación diferencial dada por $\displaystyle yy'''-4x\ln(y'')=0$ tiene orden 3. \\
+
+\textit{Nota: } No hay que confundir el orden de la ecuación diferencial con el grado del exponente de $y''$. \\
+
+
+
+
+\textit{\textbf{Definición: }} Una ecuación diferencial $F(x,y,y',...,y^{(n)})=0$ se dice \textbf{Lineal} si $F$ es lineal respecto a $y,y',... , y^{n}$ \\
+
+\textbf{Ejemplo: } La EDO $\displaystyle y''-\frac{2}{x^2} y= 0$ es lineal. Por otra parte, la EDO $\displaystyle (y'')^2-\frac{2}{x^2} y= 0$ No es lineal. \\ \\
+
+
+En otras palabras, los términos en los que aparecen  $y$, $y'$,... $y^{(n)}$ sólo pueden estar multiplicados por funciones que dependen de $x$ o bien términos constantes, tampoco deben estar dentro de funciones como $\sin$, $\log$ o exponenciales. Por ejemplo las EDO
+
+\begin{align*}
+    \log(y') = x+y
+\end{align*}
+
+O bien
+
+\begin{align*}
+    y'+e^y = x
+\end{align*}
+
+Tampoco son lineales.
+
+\newpage
+
+\section{Soluciones de una ecuación diferencial}
+
+
+\textit{\textbf{Definición: }} Dada una ecuación diferencial $F(x,y,y',... ,y^{(n)})=0$, se dice que una función continua $\phi$ definida sobre un intervalo $I$ \textbf{es solución de  la ecuación diferencial} si posee por lo menos $n$ derivadas continuas y además
+
+\begin{center}
+$F(x,\phi,\phi',... ,\phi^{(n)} )=0$
+\end{center}
+
+\textbf{Ejemplos: } Dada la EDO $\displaystyle y''-\frac{2}{x^2}y =0$, se tiene que $\phi(x)= \displaystyle x^2-\frac{1}{x}$ es una solución. Otro ejemplo es la ecuación diferencial dada por $\displaystyle \frac{dy}{dx} =\frac{3x^2}{2y}$, en este caso se tiene que $y^2-x^3+8=0$ es solución. \\
+
+
+
+
+
+
+\textit{\textbf{Definición: }} Una \textit{Solución explícita} de una EDO, es una solución de la forma $y = \phi(x)$. Es decir, la variable $y$ está despejada sólo en términos de $x$. \\
+
+
+\textbf{Ejemplo 1: } $y= xe^x$ es solución explícita de la EDO $y''-2y'+y=0$. \\
+
+
+
+
+\textit{\textbf{Definición: }} Una \textit{Solución implícita} de una EDO, es una solución de la forma $f(x,y) = 0$. Es decir, la variable  $y$ no se encuentra despejada sólo  en términos de $x$. \\
+
+
+\textbf{Ejemplo 2: } $x^2+y^2-25=0$ es solución implícita de la EDO $\displaystyle \frac{dy}{dx}= -\frac{x}{y}$. Porque $y$ no está despejada respecto a $x$\\
+
+
+\textbf{Nota importante 1:} No siempre es posible obtener una solución explícita de una ecuación diferencial porque no siempre se puede despejar $y$ respecto a $x$. \\
+
+
+\textbf{Nota importante 2:} En el ejemplo 2 es posible obtener una solución explícita, las soluciones serían 
+
+\begin{align*}
+    y_1 &= \sqrt{25-x^2} \\
+    y_2 &= -\sqrt{25-x^2} 
+\end{align*}
+
+Es necesario incluir las dos opciones para que la respuesta sea equivalente a la dada anteriormente. \\
+
+El tipo de EDO más simple es  la dada por $y'=0$, esta es una ecuación diferencial lineal de orden 1, se sabe por cálculo diferencial que todas las soluciónes de esta EDO son de la forma $y=c$, donde $c$ es una constante arbitraria. En general si tenemos la EDO $y'= f(x)$, entonces la solución de esta EDO viene dada por
+
+\begin{center}
+$y= \displaystyle \int f(x)dx  +c$, donde $c$ es la constante de integración.
+\end{center}
+
+Como podemos ver, es una solución explícita. Por ejemplo la ecuación diferencial $y'= \cos(x)$ tiene por solución general $y= \sin(x) +c$. \\
+
+\textbf{Nota importante: }La solución general en este caso es de la forma $y= \sin(x) +c$, esta escritura en realidad representa un conjunto infinito de soluciones posibles, esto quiere decir que cualquier valor que escribamos para $c$ es una solución diferente, es decir, hay una cantidad infinita de soluciones, una por cada valor que le asignemos a $c$, de esa forma podemos encontrar todas las soluciones de $y'=\cos(x)$. \\
+
+
+\textbf{Definición: } La solución general de una EDO corresponde a encontrar todas las posibles soluciones de la EDO. \\
+
+\textbf{Nota importante:} Resolver una ecuación diferencial significa encontrar la solución general de la EDO, no una solución particular. 
+
+
+
+\newpage
+
+
+\section{Problemas de valores iniciales}
+
+
+
+
+Si bien en algunos casos es posible encontrar una solución en una EDO, no es claro que siempre existan soluciones. Por otra parte, podemos ver que la solución no necesariamente es única, así que queremos ver si es posible agregar condiciones de tal manera que la solución sí sea única.\\
+
+
+\textbf{Definición (PVI):} Un problema de valores iniciales (PVI) consiste en una EDO $F(x,y,y',....,y^{(n)})=0$ y $n$ puntos $(x_0,y_0)$,$(x_1,y_1)$,... ,$(x_{n-1},y_{n-1})$ sujeto a las restricciones
+
+\begin{align*}
+y(x_0)&=y_0 \\
+y'(x_1)&=y_1 \\
+\vdots \\
+y^{(n-1)}(x_{n-1}) &=y_{n-1}
+\end{align*}
+
+Estas restricciones también se llaman \textbf{condiciones iniciales}. El siguiente teorema responde nuestra pregunta \\
+
+\textbf{Teorema (Existencia y Unicidad): }Sea $D$ un conjunto abierto en el plano y $f: D \to \mathbb{R}$ función continua. Supongamos que $f$ tiene derivadas parciales respecto a $y$ en $D$ y además $\frac{\partial f}{\partial y}$ es continua sobre $D$. Sea $(x_0,y_0) \in D$, entonces la ecuación diferencial
+
+\begin{center}
+$y'=f(x,y)$
+\end{center}
+
+Tiene una solución $\phi$ definida en un intervalo alrededor de $x_0$ que verifica $\phi(x_0)=y_0$. Además si $\psi$ es otra solución definida sobre $D$ y $\psi(x_0)=y_0$, entonces $\phi=\psi$. \\
+
+Este teorema nos asegura la existencia de soluciones de cualquier ecuación de la forma $y'= f(x,y)$ siempre y cuando $\frac{\partial f}{\partial y}$ exista y sea continua. Además si tenemos una condición inicial $y(x_0)=y_0$ entonces esta solución es única. \\
+
+\textbf{Ejemplo 1: } Una solución de la  EDO $y'=y$ es $y=e^x$, en general toda función de la forma $y=ce^x$ con $c$ constante será solución. Pero, si agregamos la condición inicial $y(0)=5$, entonces la única solución posible es $y=5e^x$. \\
+
+\textbf{Ejemplo 2: } Una solución general de la  EDO $y''+y'-2y=0$ está dada por $y(x)=c_1e^x+c_2e^{-2x}$, donde $c_1$ y $c_2$ son constantes (Demuéstrelo). Pero, si agregamos las condiciones iniciales $y(0)=2$ e $y'(0)=1$, entonces la única solución posible es $y(x)= \frac{5}{3}e^{x}+\frac{1}{3}e^{-2x}$. \\
+
+Ahora vamos a resolver un ejercicio simple. \\
+
+
+\textbf{Ejercicio: } Resuelva el PVI dado por 
+
+\begin{align*}
+    y'' &= \frac{1}{x^2+1} \\
+    y\left( 0\right) &=-2 \\
+    y'\left( 0\right) &= 1
+\end{align*}
+
+\textbf{Respuesta: } Este tipo de ecuaciones $y^{(n)} = f(x)$ siempre se pueden resolver simplemente integrado múltiples veces, pero tenemos que tener el cuidado de que cada vez que integramos la contante que sale es distinta, para marcar esa diferencia usamos distintos sub-índices. 
+
+\newpage
+
+Primero resolvemos la ecuación diferencial sin considerar las condiciones iniciales. Integrando, obtenemos
+
+\begin{align*}
+    y' &= \int \frac{1}{x^2+1} dx \\
+       &= \arctan(x) +c_1 
+\end{align*}
+
+Notemos que escribimos el sub-índice 1 para distinguir la primera constante de integración de las que van a aparecer después. Ahora hay que vovler a integrar
+
+
+\begin{align*}
+    y  &= \int \arctan(x) +c_1 dx \\
+       &= \int \arctan(x)dx + \int c_1 dx \\
+       &= \int \arctan(x)dx + c_1x +c_2
+\end{align*}
+
+Aquí $c_1$ está dentro de la integral y por lo tanto también hay que integrarla, al ser una constante su integral es $c_1x$, además hay que agregar la segunda constante $c_2$. Por otra parte para integrar $\arctan(x)$ usamos integrales por partes usando $u=\arctan(x)$ y $dv=dx$, luego $v=x$ y $du = \frac{dx}{x^2+1}$, de esta forma
+
+\begin{align*}
+   \int \arctan(x) dx = x\arctan(x) - \int \frac{x}{x^2+1} dx
+\end{align*}
+
+Esta última integral se resuelve con una sustitución simple $u=x^2+1$ y entonces $du=2xdx$, de esta forma
+
+\begin{align*}
+   \int \arctan(x) dx &= x\arctan(x) - \frac{1}{2}\int \frac{du}{u}\\
+   &= x\arctan(x) - \frac{1}{2}\ln(x^2+1)\\
+\end{align*}
+
+Por lo tanto
+
+
+\begin{align*}
+    y  &= \int \arctan(x) +c_1 dx \\
+    y &= x\arctan(x) - \frac{1}{2}\ln(x^2+1) +c_1x+c_2
+\end{align*}
+
+Esta es la solución general de nuestra ecuación diferencial. Para encontrar la solución al PVI usamos las condiciones iniciales. Tenemos $y(0)=-2$, reemplazando
+
+\begin{align*}
+    y(0) &= 0 \cdot \arctan(0) - \frac{1}{2}\ln(0^2+1) +c_1 \cdot 0+c_2 \\
+   y(0) &= c_2 \\
+   -2 &=c_2
+\end{align*}
+
+Es decir, reemplazamos la variable $y$ por $-2$ y la variable $x$ por $0$. Concluimos entonces que $c_2= -2$. Por otra parte tenemos que $y'(0)=1$, luego
+
+\begin{align}
+    y'(0) &= \arctan(0)+c_1 \\
+    1 &=c_1
+\end{align}
+
+De esta forma obtenemos las dos constantes y por lo tanto la solución única del PVI es
+
+\begin{align*}
+    y &= x\arctan(x) - \frac{1}{2}\ln(x^2+1) +x-2
+\end{align*}
+
+
+
+\section{Ecuaciones Diferenciales de Variables Separables}
+
+
+A partir de aquí, nos vamos a concentrar en ecuaciones de primer orden, veremos nuestro primer tipo de ecuación diferencial de primer orden. \\
+
+
+\textbf{Definición: }Supongamos que una ecuación diferencial tiene forma
+
+\begin{center}
+$\displaystyle \frac{dy}{dx}= g(x)h(y)$
+\end{center}
+
+Además, supongamos que esta ecuación está definida en un conjunto $A= I \times J$, donde $I$ y $J$ son intervalos abiertos en $\mathbb{R}$ y que las funciones $g:I \to \mathbb{R}$ y $h: J \to \mathbb{R}$ son continuas, además $h(y_0) \neq 0 \text{, } \forall y_0 \in J$. Así  la ecuación anterior se puede escribir como.
+
+\begin{center}
+$\displaystyle \frac{dy}{h(y)}= g(x)dx$
+\end{center}
+
+Este tipo de ecuaciones se llaman \textbf{ecuación de variables separables}. \\
+
+
+\textbf{Ejemplos: }Las siguientes ecuaciones son ejemplos de ecuaciones de variables 
+
+
+\begin{center}
+$(1+x)dy-ydx=0$
+\end{center}
+
+\begin{center}
+$\displaystyle \frac{dy}{dx}= \frac{2x+xy}{y^2+1}$
+\end{center}
+
+
+La solución general de una ecuación de variables separables es de la forma
+
+\begin{center}
+$\displaystyle \int \frac{dy}{h(y)} = \int g(x)dx +c$
+\end{center}
+
+La solución es implícita ya que en general no siempre es posible despejar $x$ en función de $y$. \\
+
+\textbf{Nota importante:} Al resolver las integrales sólo hay que poner una constante $c$, nunca dos. \\
+
+
+\textbf{Ejemplo: } La ecuación $y'=y$ es de variables separables, en este caso $h(y)=y$ y $g(x)=1$. Tenemos $\displaystyle \frac{dy}{y}=dx$, luego
+
+\begin{center}
+$\displaystyle \int \frac{dy}{y}= \int dx$
+\end{center}
+
+Ahora hay que integrar, nos queda
+
+\begin{align*}
+    \ln|y| &= x+c
+\end{align*}
+
+y entonces
+
+\begin{align*}
+    |y| &= e^{x+c} \\
+    |y| &= e^ce^{x} \\
+\end{align*}
+
+notemos que como $c$ es una constante arbitraria, entonces $e^c$ es también una constante arbitraria, aunque es positiva, por lo tanto podemos escribir $e^c=c$ con $c>0$, obviamente esto no tiene sentido en términos de aritmética, es solo para simplificar la expresión. Entonces obtenemos la solución
+
+\begin{center}
+$|y|=ce^x$ con $c > 0$
+\end{center}
+
+
+Ahora la pregunta es ¿como despejamos $y$ para obtener una solución explícita?, no podemos despejar $y$ de forma directa porque está dentro de un módulo, pero podemos hacer algo diferente. En este curso, cuando resolvemos una ecuación diferencial, pedimos una solución en un intervalo arbitrario, por lo tanto podríamos en un principio escribir la solución sin el módulo es decir cuando $y \in (0,+\infty)$, de esta forma tenemos
+
+
+
+\begin{center}
+$y=ce^x$ con $c > 0$
+\end{center}
+
+Pero notemos que nos restringimos a $y \in (0,+\infty)$, si por otra parte, nos restringimos a $y \in (-\infty,0 )$, obtenemos
+
+\begin{center}
+$-y=ce^x$ con $c>0$
+\end{center}
+
+y entonces
+
+\begin{center}
+$y=-ce^x$ con $c>0$
+\end{center}
+
+Ahora,  podemos redefinir $c$ por $-c$ pero en este caso la constante será negativa, luego obtenemos
+
+\begin{center}
+$y=ce^x$ con $c<0$
+\end{center}
+
+
+
+Por lo tanto, tanto $c<0$ como $c>0$ funcionan. Por otra parte si $c=0$, obtenemos $y= 0\cdot e^x=0$, la función constante $0$, que también es solución de la ecuación diferencial.  Por lo tanto la solución general explícita está dada por
+
+\begin{center}
+$y=ce^x$  con $c \in \mathbb{R}$
+\end{center}
+
+De esta forma para despejar el módulo, \textbf{en este ejemplo en particular }, basta con cambiar el dominio de la constante $c$, antes se tenía que $c>0$, ahora tenemos $c \in \mathbb{R}$. \\
+
+En general esto siempre se puede hacer, pero los pasos a seguir pueden ser muy distintos, por eso, no es necesario escribir los logaritmos naturales con módulos al resolver una integral. Sin embargo, hay que tener mucho cuidado porque las condiciones iniciales podrían traernos problemas, ya veremos más ejemplos en el futuro.\\ 
+
+\newpage
+
+\textbf{Ejercicio 1: }Resolver $\displaystyle \frac{dx}{dt} = 4(x^2+1)$ de tal forma que $x(\pi/4)=0$\\
+
+\textbf{Respuesta: } La ecuación es equivalente a
+
+\begin{center}
+$$\displaystyle \frac{dx}{x^2+1} = 4dt$$
+\end{center}
+
+Luego
+
+\begin{center}
+$$\displaystyle \int \frac{dx}{x^2+1} = \int 4dt$$
+\end{center}
+
+
+\begin{center}
+$$\arctan (x) = 4t +c$$
+\end{center}
+
+Por lo tanto
+
+\begin{center}
+$$x = \tan(4t +c)$$
+\end{center}
+
+Como $x(\pi/4)=0$, entonces $\tan(\pi+c)=0$, de dónde se concluye que $c = k \pi$ con $k \in \mathbb{Z}$, pero como la función tangente tiene paeriodo $\pi$ podemos simplemente escribir $c=0$. Por lo tanto la solución es
+
+\begin{center}
+$x(t)= \tan(4t)$
+\end{center}
+
+
+\textbf{Ejercicio 2: }Encontrar la solución explícita de la EDO $\displaystyle \sin(3x) +2y\cos^3(3x)\frac{dy}{dx}=0$\\
+
+\textbf{Respuesta: } La ecuación es equivalente a
+
+\begin{align*}
+\displaystyle 2ydy &=-\frac{\sen(3x)}{\cos^3(3x)}dx \\
+&=-\tan(3x)\sec^2(3x)dx
+\end{align*}
+
+Luego
+
+\begin{center}
+$\displaystyle \int 2y dy = -\int \tan(3x)\sec^2(3x)dx$
+\end{center}
+
+Tomamos $u= \sec(3x)$, entonces $du= 3\sec(3x)\tan(3x)dx$, luego
+
+\begin{align*}
+\displaystyle y^2 &= -\int \frac{u}{3} du \\
+&= -\frac{u^2}{6} +c \\
+&= -\frac{\sec^2(3x)}{6} +c 
+\end{align*}
+
+Para encontrar la solución explícita necesitamos extraer raíz cuadrada, y obtenemos
+
+
+\begin{align*}
+\displaystyle |y|&= \sqrt{-\frac{\sec^2(3x)}{6} +c }
+\end{align*}
+
+
+Nuevamente hay que quitarnos el módulo, pero en este caso no podemos simplemente redefinir $c$, entonces para quitarnos el módulo simplemente, hay que considerar tanto el signo positivo como negativo al extraer la raíz. De esta forma, la solución general viene dada por
+
+
+\begin{center}
+$y = \pm\displaystyle \sqrt{-\frac{\sec^2(3x)}{6} +c} $
+\end{center}
+Hay que entender una cosa, esta notación significa que por cada valor de $c$  y por cada signo, obtenemos una solución diferente. Notemos también que cada solución tiene un dominio distinto para la variable $x$.\\
+
+
+En caso de que no se especifique que la solución sea explícita simplemente se puede dejar la solución implícita
+
+
+\begin{align*}
+\displaystyle y^2 &= -\frac{\sec^2(3x)}{6} +c \\
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+\end{document} 

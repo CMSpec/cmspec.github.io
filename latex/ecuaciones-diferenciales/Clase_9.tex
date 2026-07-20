@@ -1,0 +1,401 @@
+  \documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Semana 4\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+
+
+\end{picture}
+
+
+\begin{center}
+\huge{Laplace y Aplicaciones}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Ecuaciones Diferenciales Ordinarias (EDO)}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Ecuaciones diferenciales ordinarias. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\setlength{\parindent}{2.95cm}- Resolución de una ecuación diferencial\\
+\phantom{abefwfewefwfefffwi} - Primer Teorema de Traslación\\
+\phantom{abefwfewefwfefffwi} - Función de Heviside \\
+
+
+
+
+
+
+\vspace{6cm}
+
+
+\begin{center}
+\today
+\end{center}
+\begin{center}
+Santiago, Chile
+\end{center}
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+
+\section{Resolución de una ecuación diferencial}
+
+Para resolver una ecuación diferencial usando transformadas de Laplace se usa el siguiente método \\
+
+\textbf{Ejemplo 1: } Resolver $y'+2y=4t$ con la condición inicial $y(0)=3$, usando transformadas de Laplace.  \\
+
+\textit{Respuesta: } Primero aplicamos la transformada de Laplace  a ambos lados
+
+\begin{center}
+$\displaystyle \mathcal{L}[y'+2y]= \mathcal{L}[4t]$
+\end{center}
+
+\begin{center}
+$\displaystyle \mathcal{L}[y']+2 \mathcal{L}[y]= \frac{4}{s^2}$
+\end{center}
+
+\begin{center}
+$\displaystyle s\mathcal{L}[y] -y(0)+2 \mathcal{L}[y]= \frac{4}{s^2}$
+\end{center}
+
+\begin{center}
+$\displaystyle (s+2)\mathcal{L}[y] -3= \frac{4}{s^2}$
+\end{center}
+
+\begin{center}
+$\displaystyle (s+2)\mathcal{L}[y] = \frac{4}{s^2} +3$
+\end{center}
+
+\begin{center}
+$\displaystyle \mathcal{L}[y] = \frac{4}{s^2(s+2)} +\frac{3}{s+2}$
+\end{center}
+
+Ahora aplicamos la transformada inversa
+
+
+\begin{center}
+$\displaystyle y = \mathcal{L}^{-1}\left[ \frac{4}{s^2(s+2)} +\frac{3}{s+2}\right] $
+\end{center}
+
+\begin{center}
+$\displaystyle y = \mathcal{L}^{-1}\left[ \frac{4}{s^2(s+2)} \right] +  3\mathcal{L}^{-1} \left[ \frac{1}{s+2}\right] $
+\end{center}
+
+Ahora usamos fracciones parciales
+
+\begin{align*}
+\displaystyle \frac{4}{s^2(s+2)} &= \frac{A}{s}+\frac{B}{s^2}+\frac{C}{s+2} \\
+&= \frac{As(s+2)+ B(s+2)+Cs^2}{s^2(s+2)} \\
+&=\frac{(A+C)s^2+(2A+B)s+2B}{s^2(s+2)}
+\end{align*}
+
+De donde se deduce que $2B=4$, $2A+B=0$ y $A+C=0$, por lo tanto $B=2$ $A=-1$ y $C=1$, luego
+
+
+\begin{center}
+$\displaystyle y = \mathcal{L}^{-1}\left[ -\frac{1}{s} +\frac{2}{s^2}+\frac{1}{s+2} \right] +  3\mathcal{L}^{-1} \left[ \frac{1}{s+2}\right] $
+\end{center}
+
+
+\begin{center}
+$\displaystyle y = -1+2t+4e^{-2t} $
+\end{center}
+
+
+\textbf{Ejemplo 2: } Resolver $y''+3y=0$  con las condiciones iniciales $y(0)=1$ y $y'(0)=2$, usando transformadas de Laplace.  \\
+
+\textit{Respuesta: } Primero aplicamos la transformada de Laplace  a ambos lados
+
+\begin{center}
+$\displaystyle \mathcal{L}[y''+3y]= \mathcal{L}[0]$
+\end{center}
+
+\begin{center}
+$\displaystyle \mathcal{L}[y'']+3 \mathcal{L}[y]= 0$
+\end{center}
+
+\begin{center}
+$\displaystyle s^2\mathcal{L}[y] -sy(0)-y'(0)+3 \mathcal{L}[y]= 0$
+\end{center}
+
+\begin{center}
+$\displaystyle (s^2+3)\mathcal{L}[y] -s-2 = 0$
+\end{center}
+
+\begin{center}
+$\displaystyle (s^2+3)\mathcal{L}[y] = s+2$
+\end{center}
+
+\begin{center}
+$\displaystyle \mathcal{L}[y] = \frac{s+2}{s^2+3}$
+\end{center}
+
+Ahora aplicamos la transformada inversa
+
+
+\begin{center}
+$\displaystyle y = \mathcal{L}^{-1}\left[ \frac{s+2}{s^2+3} \right] $
+\end{center}
+
+\begin{center}
+$\displaystyle y = \mathcal{L}^{-1}\left[ \frac{s}{s^2+3} \right] +  2\mathcal{L}^{-1} \left[ \frac{1}{s^2+3}\right] $
+\end{center}
+
+\begin{center}
+$\displaystyle y = \mathcal{L}^{-1}\left[ \frac{s}{s^2+(\sqrt{3})^2} \right] +  \frac{2}{\sqrt{3}}\mathcal{L}^{-1} \left[ \frac{\sqrt{3}}{s^2+(\sqrt{3})^2}\right] $
+\end{center}
+
+\begin{center}
+$\displaystyle y = \cos(\sqrt{3} t) +  \frac{2}{\sqrt{3}}\sen(\sqrt{3}t)$
+\end{center}
+
+
+\newpage
+
+
+\section{Primer teorema de traslación}
+
+
+\textbf{Teorema (Primer teorema de traslación):} Sea $f: [0,\infty) \to \mathbb{R}$ continua por tramos y de orden exponencial. Si $a\in \mathbb{R}$, entonces
+
+\begin{center}
+$\displaystyle \mathcal{L}[e^{at}f(t)](s) = \mathcal{L}[f(t)](s-a)$
+\end{center}
+
+
+Vamos a ver algunos ejemplos de como funciona esta propiedad, por ejemplo, nosotros sabemos que
+
+\begin{center}
+$\displaystyle\mathcal{L}[\cos(t)](s) = \frac{s}{s^2+1}$
+\end{center}
+
+Ahora bien si queremos calcular $\mathcal{L}[e^{5t}\cos(t)](s) $, lo único que hay que hacer es evaluar la transformada de laplace de $\cos(t)$ en $s-5$ en lugar de evaluarla en $s$
+
+\begin{center}
+$\displaystyle \mathcal{L}[e^{5t}\cos(t)](s) = \mathcal{L}[\cos(t)](s-5) = \frac{s-5}{(s-5)^2+1}$
+\end{center}
+
+
+
+
+\textit{Ejemplo:} Calcular $\mathcal{L}[e^{-4t}t^4](s)$. \\
+
+\textit{Respuesta: } Tenemos que
+
+
+\begin{center}
+$\displaystyle \mathcal{L}[e^{-4t}t^4](s) = \mathcal{L}[t^4](s-(-4)) = \mathcal{L}[t^4](s+4) = \frac{4!}{(s+4)^5}= \frac{24}{(s+4)^5}$
+\end{center}
+
+Esta propiedad también puede ser usada para calcular transformadas inversas \\
+
+\textbf{Teorema (Primer teorema de traslación (Versión transformada inversa)):} Sea $f: [0,\infty) \to \mathbb{R}$ continua por tramos y de orden exponencial. Si $a\in \mathbb{R}$, entonces
+
+\begin{center}
+$\displaystyle \mathcal{L}^{-1}[f(s-a)](t) = e^{ta}\mathcal{L}^{-1}[f(s)](t)$
+\end{center}
+
+
+\textit{Ejemplo:} Calcular $\displaystyle \mathcal{L}^{-1} \left[ \frac{1}{(s+1)^2} \right](t)$. \\
+
+\textit{Respuesta: } Sabemos que
+
+
+\begin{center}
+$\displaystyle \mathcal{L}^{-1} \left[ \frac{1}{s^2} \right](t) = t$
+\end{center}
+
+Por lo tanto
+
+\begin{center}
+$\displaystyle \mathcal{L}^{-1} \left[ \frac{1}{(s+1)^2} \right](t) = e^{-t}t$
+\end{center}
+
+
+
+\textit{Ejemplo:} Caclular $\displaystyle \mathcal{L}^{-1} \left[ \frac{1}{(s-3)^2+4} \right](t)$. \\
+
+\textit{Respuesta: } Sabemos que
+
+
+\begin{center}
+$\displaystyle \mathcal{L}^{-1} \left[ \frac{1}{s^2+4} \right](t) = \frac{1}{2} \mathcal{L}^{-1} \left[ \frac{2}{s^2+4} \right](t) = \frac{\sen(2t)}{2}$
+\end{center}
+
+Por lo tanto
+
+\begin{center}
+$\displaystyle \mathcal{L}^{-1} \left[ \frac{1}{(s-3)^2+4} \right](t) = \frac{1}{2} e^{3t}\sen(2t)$
+\end{center}
+
+
+
+\newpage
+
+
+\section{Función de Heaviside}
+
+
+\textbf{Definición: }La función de Heaviside $u_{t_0}(t) = u(t-t_0)$ se define como
+
+\begin{equation*}
+u(t-t_0) =
+\begin{cases}
+0 & \text{si $0 \leq t < t_0$}\\
+1 & \text{si $t \geq t_0$}
+\end{cases}
+\end{equation*}
+
+También suele llamarse funció escalón. En general cualquier función escalonada puede escribirse como sumas de función de Heaviside, por ejemplo, tomemos
+
+\begin{equation*}
+h(t) =
+\begin{cases}
+2 & \text{si $0 \leq t < 1$}\\
+-7 & \text{si $1 \leq t < 17$} \\
+12 & \text{si $t \geq 17$} \\
+\end{cases}
+\end{equation*}
+
+Para poder escribir $h$ como sumas de funciones de Heaviside primero se considera el primer valor independiente del resto, en ese caso es $2$. Después se considera la resta entre el segundo valor y el primer valor, en este caso $-7-2 = -9$ y por último la resta entre el tercer valor y el segundo valor, en este caso $12-(-7) =19$, por el momento la función se vería así
+
+
+\begin{center}
+$h(t) = 2-9u(t-t_1)+19u(t-t_2)$
+\end{center}
+
+Notemos que el número 2 no multiplica a una función de Heaviside, el número 2 se queda solo. Ahora bien, los valores $t_1$ y $t_2$ corresponden precisamente a los límites dados por la función $h$, es decir, $t_1= 1$ y $t_2=17$, por lo tanto
+
+\begin{center}
+$h(t) = 2-9u(t-1)+19u(t-17)$
+\end{center}
+
+
+En cuanto a la transformada de Laplace, tenemos que
+
+\begin{center}
+$\displaystyle \mathcal{L}[u(t-t_0)](s) = \frac{e^{-st_0}}{s}$
+\end{center}
+
+
+\textbf{Ejemplo: }Caclular la transformada de laplace de la siguiente función
+
+
+
+
+\begin{equation*}
+f(t) =
+\begin{cases}
+-1 & \text{si $0 \leq t < 5$}\\
+4 & \text{si $5 \leq t < 12$} \\
+7 & \text{si $t \geq 12$} \\
+\end{cases}
+\end{equation*}
+
+\textit{Respuesta: } El valor $-1$ se deja aparte, el segundo valor será $4-(-1)=5$ y el tercer valor será $7-4=3$. En cuanto a los valores de los intervalos, estos son los mismos que los de $f$, es decir $5$ y $12$, luego
+
+\begin{center}
+$f(t) = -1+5u(t-5)+3u(t-12)$
+\end{center}
+
+
+Por lo tanto
+
+
+\begin{align*}
+\mathcal{L}[f(t)](s) &= -\mathcal{L}[1](s)+5\mathcal{L}[u(t-5)]+3\mathcal{L}[u(t-12)](s) \\
+&= -\frac{1}{s}+5\frac{e^{-5s}}{s}+3\frac{e^{-12s}}{s} \\
+&= \frac{5e^{-5s}+3e^{-12s}-1}{s}
+\end{align*}
+
+\newpage
+
+
+
+
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
