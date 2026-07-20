@@ -53,6 +53,7 @@ En el caso de matrices cuadradas de orden $n$ es escribe $\M_n(K)$.
 
 Una matriz $A$ de $m \times n$ cuyas entradas son todas  iguales a 0, se denomina \textbf{matriz cero} de $m \times n$ y se denota por $0_{m\times n}$.
 
+\cmspecindice{Matriz identidad}
 La matriz cuadrada $I_n=(a_{ij})$ de $n\times n$ tal que 
 \[a_{ij}=\left\{\begin{array}{ll}
     1 & \text{ si } i= j, \\
@@ -62,6 +63,7 @@ se llama \textbf{matriz identidad} de orden $n$. Su nombre se debe a sus propied
 
 Dos matrices $A=(a_{ij})$ y $B=(b_{ij})$ son iguales si son del mismo tamaño y las componentes correspondientes son iguales, es decir, $a_{ij}=b_{ij}$ para cada $i$ y para cada $j$.
 
+\cmspecindice{Traspuesta}
 Si $A = (a_{i j})$ es una matriz de orden $m \times n$, la \textbf{transpuesta} de $A$, denotada por $A^t$,
 es la matriz de orden $n \times m$ que se obtiene al intercambiar las filas por las columnas
 de $A$. En consecuencia, 
@@ -125,8 +127,10 @@ P=\begin{blockarray}{cccccc}
 \end{rmk}
 
 \begin{defin}
+\cmspecindice{Diagonal}
 La \textbf{diagonal de una matriz} $A$ son las entradas $a_{i j}$, tales que $i=j$ y se denota por $\diag(A):=(a_{11}, \dots, a_{nn})$.
 
+\cmspecindice{Traza}
 Para una matriz cuadrada de orden $n$, se define la \textbf{traza de $A$} como
 \[\tr(A):=\sum_{i=1}^{n} a_{ii},\]
 es decir, la traza corresponde a la suma de los elementos de la diagonal de una matriz.
