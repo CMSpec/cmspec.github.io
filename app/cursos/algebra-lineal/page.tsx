@@ -7,6 +7,7 @@ import VectorExplorations from "./VectorExplorations";
 import ChangeOfBasis2D from "./ChangeOfBasis2D";
 import { DotProductAnimation, MatrixAdditionAnimation } from "./MatrixOperationsAnimations";
 import { SymmetryAnimation, TraceAnimation, TriangularMatricesAnimation } from "./MatrixStructureAnimations";
+import CourseIndex from "../_components/CourseIndex";
 
 function cleanDefinitionName(html: string) {
   return html
@@ -181,6 +182,16 @@ export default function LinearAlgebraCoursePage() {
   const firstDefinitionSectionIndex = linearAlgebraChapters[0].sections.findIndex((section) =>
     section.html.includes('<div class="defin_thmwrapper'),
   );
+  const indexUnits = course.units.map((unit, index) => ({
+    number: unit.number,
+    title: unit.title,
+    href: `#lectura-unidad-${index + 1}`,
+    items: definitionsByUnit[index].map((definition) => ({
+      href: `#${definition.id}`,
+      label: definition.label,
+      title: definition.name,
+    })),
+  }));
 
   return (
     <main className="course-page linear-algebra-course">
@@ -206,40 +217,7 @@ export default function LinearAlgebraCoursePage() {
       </article>
 
       <div className="course-article-layout">
-        <aside className="course-toc" aria-label="Índice del curso">
-          <details className="course-toc-disclosure" open>
-            <summary>
-              <span>EN ESTE CURSO</span>
-              <i aria-hidden="true">+</i>
-            </summary>
-            <nav>
-              {course.units.map((unit, index) => (
-                <details className="course-toc-group" key={unit.number} open={index === 0}>
-                  <summary className="course-toc-unit">
-                    <span>{unit.number}</span>
-                    <strong>{unit.title}</strong>
-                    <i aria-hidden="true">+</i>
-                  </summary>
-                  <div className="course-toc-children">
-                    <a className="course-toc-open-unit" href={`#lectura-unidad-${index + 1}`}>
-                      Abrir unidad <span aria-hidden="true">→</span>
-                    </a>
-                    {definitionsByUnit[index].length > 0 && (
-                      <div className="course-definition-list" aria-label={`Conceptos de ${unit.title}`}>
-                        {definitionsByUnit[index].map((definition) => (
-                          <a href={`#${definition.id}`} key={definition.id}>
-                            <span>{definition.label}</span>{definition.name}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </details>
-              ))}
-            </nav>
-          </details>
-          <small>{course.note}</small>
-        </aside>
+        <CourseIndex units={indexUnits} note={course.note} />
 
         <section className="course-reader" aria-labelledby="course-reader-title">
           <header className="reader-heading">

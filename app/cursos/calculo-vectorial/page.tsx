@@ -1,8 +1,18 @@
 import { vectorCalculusCourse } from "../../../content/courses/vector-calculus";
 import { vectorCalculusChapters } from "../../../content/courses/vector-calculus-chapters";
+import CourseIndex from "../_components/CourseIndex";
 
 export default function VectorCalculusCoursePage() {
   const course = vectorCalculusCourse;
+  const indexUnits = vectorCalculusChapters.map((chapter, chapterIndex) => ({
+    number: chapter.number,
+    title: chapter.title,
+    href: `#lectura-clase-${chapterIndex + 1}`,
+    items: chapter.sections.map((section, sectionIndex) => ({
+      href: `#${chapter.slug}-seccion-${sectionIndex + 1}`,
+      title: section.title,
+    })),
+  }));
 
   return (
     <main className="course-page vector-course">
@@ -28,18 +38,7 @@ export default function VectorCalculusCoursePage() {
       </article>
 
       <div className="course-article-layout">
-        <aside className="course-toc" aria-label="Índice del curso">
-          <details className="course-toc-disclosure" open>
-            <summary><span>EN ESTE CURSO</span><i aria-hidden="true">+</i></summary>
-            <nav>
-              {vectorCalculusChapters.map((chapter, index) => (
-                <a className="course-toc-unit" href={`#lectura-clase-${index + 1}`} key={chapter.slug}>
-                  <span>{chapter.number}</span><strong>{chapter.title}</strong>
-                </a>
-              ))}
-            </nav>
-          </details>
-        </aside>
+        <CourseIndex units={indexUnits} />
 
         <section className="course-reader" aria-labelledby="vector-reader-title">
           <header className="reader-heading">
@@ -69,7 +68,11 @@ export default function VectorCalculusCoursePage() {
                 </summary>
                 <article className="chapter-article">
                   {chapter.sections.map((section, sectionIndex) => (
-                    <section className="chapter-section" key={`${chapter.slug}-${sectionIndex}`}>
+                    <section
+                      className="chapter-section"
+                      id={`${chapter.slug}-seccion-${sectionIndex + 1}`}
+                      key={`${chapter.slug}-${sectionIndex}`}
+                    >
                       <h4>{section.title}</h4>
                       <div className="latex-content" dangerouslySetInnerHTML={{ __html: section.html }} />
                     </section>

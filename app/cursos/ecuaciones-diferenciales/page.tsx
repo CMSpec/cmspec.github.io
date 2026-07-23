@@ -1,8 +1,18 @@
 import { differentialEquationsCourse } from "../../../content/courses/differential-equations";
 import { differentialEquationsChapters } from "../../../content/courses/differential-equations-chapters";
+import CourseIndex from "../_components/CourseIndex";
 
 export default function DifferentialEquationsCoursePage() {
   const course = differentialEquationsCourse;
+  const indexUnits = differentialEquationsChapters.map((chapter, chapterIndex) => ({
+    number: chapter.number,
+    title: chapter.title,
+    href: `#lectura-clase-${chapterIndex + 1}`,
+    items: chapter.sections.map((section, sectionIndex) => ({
+      href: `#${chapter.slug}-seccion-${sectionIndex + 1}`,
+      title: section.title,
+    })),
+  }));
 
   return (
     <main className="course-page edo-course">
@@ -28,16 +38,7 @@ export default function DifferentialEquationsCoursePage() {
       </article>
 
       <div className="course-article-layout">
-        <aside className="course-toc" aria-label="Índice del curso">
-          <p>EN ESTE CURSO</p>
-          <nav>
-            {differentialEquationsChapters.map((chapter, index) => (
-              <a href={`#lectura-clase-${index + 1}`} key={chapter.slug}>
-                <span>{chapter.number}</span>{chapter.title}
-              </a>
-            ))}
-          </nav>
-        </aside>
+        <CourseIndex units={indexUnits} />
 
         <section className="course-reader" aria-labelledby="edo-reader-title">
           <header className="reader-heading">
@@ -67,7 +68,11 @@ export default function DifferentialEquationsCoursePage() {
                 </summary>
                 <article className="chapter-article">
                   {chapter.sections.map((section, sectionIndex) => (
-                    <section className="chapter-section" key={`${chapter.slug}-${sectionIndex}`}>
+                    <section
+                      className="chapter-section"
+                      id={`${chapter.slug}-seccion-${sectionIndex + 1}`}
+                      key={`${chapter.slug}-${sectionIndex}`}
+                    >
                       <h4>{section.title}</h4>
                       <div className="latex-content" dangerouslySetInnerHTML={{ __html: section.html }} />
                     </section>
