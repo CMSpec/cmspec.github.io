@@ -1,38 +1,4 @@
-const notes = [
-  {
-    number: "01",
-    title: "Álgebra Lineal",
-    description: "Vectores, matrices, sistemas, espacios vectoriales, transformaciones y cambios de base.",
-    subtitle: "Bases para construir una mirada lineal",
-    authors: "Camila Muñoz Santander",
-    published: "18 julio 2026",
-    modified: "18 julio 2026",
-    href: "/cursos/algebra-lineal",
-    formula: "A\u2009x = b",
-  },
-  {
-    number: "02",
-    title: "Ecuaciones Diferenciales",
-    description: "Métodos de primer orden, ecuaciones de orden superior, Laplace, Fourier y problemas de frontera.",
-    subtitle: "De una razón de cambio local a una trayectoria completa",
-    authors: "Marcos Morales Inostroza y Camila Muñoz Santander",
-    published: "18 julio 2026",
-    modified: "18 julio 2026",
-    href: "/cursos/ecuaciones-diferenciales",
-    formula: "y′ = f(x, y)",
-  },
-  {
-    number: "03",
-    title: "Cálculo Vectorial",
-    description: "Vectores, funciones de varias variables, derivadas, integrales múltiples, campos e integrales de línea.",
-    subtitle: "Del espacio euclidiano al cambio en varias dimensiones",
-    authors: "Marcos Morales Inostroza y Camila Muñoz Santander",
-    published: "21 julio 2026",
-    modified: "21 julio 2026",
-    href: "/cursos/calculo-vectorial",
-    formula: "∇f · u",
-  },
-] as const;
+import { courseNotes } from "../../content/course-library";
 
 export default function LearnPage() {
   return (
@@ -57,7 +23,7 @@ export default function LearnPage() {
 
       <section className="notes-library" aria-label="Apuntes disponibles">
         <div className="notes-list">
-          {notes.map((note) => (
+          {courseNotes.map((note) => (
             <article className="note-entry" key={note.href}>
               <div className="note-dates">
                 <p><span>PUBLICACIÓN</span><time>{note.published}</time></p>
