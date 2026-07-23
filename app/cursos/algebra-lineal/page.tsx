@@ -66,14 +66,37 @@ function SectionContent({
 
   if (markerIndex >= 0) {
     operations.push({
-      start: markerIndex,
+      start: 0,
       end: markerIndex,
-      element: <><RowVectorVisual /><VectorExplorations /></>,
+      element: (
+        <div className="definition-side-layout">
+          <div className="definition-side-copy">
+            <div className="latex-content" dangerouslySetInnerHTML={{ __html: html.slice(0, markerIndex) }} />
+            <RowVectorVisual />
+          </div>
+          <aside className="definition-side-visual" aria-label="Exploraciones interactivas sobre vectores">
+            <VectorExplorations />
+          </aside>
+        </div>
+      ),
     });
   }
 
   if (placeChangeBasis) {
-    operations.push({ start: 0, end: 0, element: <ChangeOfBasis3D /> });
+    operations.push({
+      start: 0,
+      end: html.length,
+      element: (
+        <div className="definition-side-layout definition-side-layout-basis">
+          <div className="definition-side-copy">
+            <div className="latex-content" dangerouslySetInnerHTML={{ __html: html }} />
+          </div>
+          <aside className="definition-side-visual" aria-label="Exploración tridimensional del cambio de base">
+            <ChangeOfBasis3D />
+          </aside>
+        </div>
+      ),
+    });
   }
 
   const traceInsertionMarker = '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000017">';
@@ -160,7 +183,7 @@ export default function LinearAlgebraCoursePage() {
   );
 
   return (
-    <main className="course-page">
+    <main className="course-page linear-algebra-course">
       <header className="course-header">
         <a className="brand" href="/" aria-label="CMSpec, volver al inicio">
           <span className="brand-mark" aria-hidden="true"><i /><i /><i /><i /></span>
