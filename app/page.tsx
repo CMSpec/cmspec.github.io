@@ -103,13 +103,18 @@ export default function Home() {
         </div>
         <div className="domain-grid">
           {domains.map((domain, index) => (
-            <article className={`domain-card card-${index + 1}`} id={domain.id} key={domain.id}>
+            <a
+              className={`domain-card card-${index + 1}`}
+              href={domain.href}
+              id={domain.id}
+              key={domain.id}
+            >
               <div className="card-top"><span>{domain.short}</span><span className="card-arrow">↗</span></div>
               <p className="card-eyebrow">{domain.eyebrow}</p>
               <h3>{domain.title}</h3>
               <p>{domain.description}</p>
-              <a href={domain.href}>{domain.linkLabel} <span>→</span></a>
-            </article>
+              <span className="domain-card-link">{domain.linkLabel} <span>→</span></span>
+            </a>
           ))}
         </div>
       </section>
