@@ -4,7 +4,7 @@ import MatrixScalarAnimation from "./MatrixScalarAnimation";
 import MatrixMultiplicationAnimation from "./MatrixMultiplicationAnimation";
 import RowReductionAnimation from "./RowReductionAnimation";
 import VectorExplorations from "./VectorExplorations";
-import ChangeOfBasis3D from "./ChangeOfBasis3D";
+import ChangeOfBasis2D from "./ChangeOfBasis2D";
 import { DotProductAnimation, MatrixAdditionAnimation } from "./MatrixOperationsAnimations";
 import { SymmetryAnimation, TraceAnimation, TriangularMatricesAnimation } from "./MatrixStructureAnimations";
 
@@ -91,8 +91,8 @@ function SectionContent({
           <div className="definition-side-copy">
             <div className="latex-content" dangerouslySetInnerHTML={{ __html: html }} />
           </div>
-          <aside className="definition-side-visual" aria-label="Exploración tridimensional del cambio de base">
-            <ChangeOfBasis3D />
+          <aside className="definition-side-visual" aria-label="Exploración en R2 del cambio de base">
+            <ChangeOfBasis2D />
           </aside>
         </div>
       ),
