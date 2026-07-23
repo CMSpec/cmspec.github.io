@@ -122,7 +122,13 @@ function VectorSumLab() {
     <section className="vector-lab" aria-labelledby="vector-sum-title">
       <header className="vector-lab-heading">
         <div><span>Exploración 02</span><h5 id="vector-sum-title">Suma de vectores en ℝ²</h5></div>
-        <strong>u + v = ({result[0]}, {result[1]})</strong>
+        <strong className="vector-sum-equation">
+          <i className="vector-sum-u">u</i>
+          {" + "}
+          <i className="vector-sum-v">v</i>
+          {" = "}
+          <i className="vector-sum-result">({result[0]}, {result[1]})</i>
+        </strong>
       </header>
       <Plane label="Suma geométrica de los vectores u y v mediante la regla punta con cola">
         <VectorArrow className={`vector-arrow vector-arrow-u ${step === 0 ? "is-current" : ""}`} to={u} label="u" />
