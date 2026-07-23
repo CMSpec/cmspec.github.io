@@ -3,6 +3,8 @@ import { linearAlgebraChapters } from "../../../content/courses/algebra-lineal-c
 import MatrixScalarAnimation from "./MatrixScalarAnimation";
 import MatrixMultiplicationAnimation from "./MatrixMultiplicationAnimation";
 import RowReductionAnimation from "./RowReductionAnimation";
+import VectorExplorations from "./VectorExplorations";
+import ChangeOfBasis3D from "./ChangeOfBasis3D";
 import { DotProductAnimation, MatrixAdditionAnimation } from "./MatrixOperationsAnimations";
 import { SymmetryAnimation, TraceAnimation, TriangularMatricesAnimation } from "./MatrixStructureAnimations";
 
@@ -49,12 +51,30 @@ function RowVectorVisual() {
   );
 }
 
-function SectionContent({ html, placeVisual }: { html: string; placeVisual: boolean }) {
+function SectionContent({
+  html,
+  placeChangeBasis,
+  placeVisual,
+}: {
+  html: string;
+  placeChangeBasis: boolean;
+  placeVisual: boolean;
+}) {
   const marker = '<div class="defin_thmwrapper';
   const markerIndex = placeVisual ? html.indexOf(marker) : -1;
   const operations: Array<{ start: number; end: number; element: ReturnType<typeof RowVectorVisual> }> = [];
 
-  if (markerIndex >= 0) operations.push({ start: markerIndex, end: markerIndex, element: <RowVectorVisual /> });
+  if (markerIndex >= 0) {
+    operations.push({
+      start: markerIndex,
+      end: markerIndex,
+      element: <><RowVectorVisual /><VectorExplorations /></>,
+    });
+  }
+
+  if (placeChangeBasis) {
+    operations.push({ start: 0, end: 0, element: <ChangeOfBasis3D /> });
+  }
 
   const traceInsertionMarker = '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000017">';
   const traceInsertionIndex = html.indexOf(traceInsertionMarker);
@@ -225,6 +245,7 @@ export default function LinearAlgebraCoursePage() {
                       <SectionContent
                         html={section.html}
                         placeVisual={chapterIndex === 0 && sectionIndex === firstDefinitionSectionIndex}
+                        placeChangeBasis={chapterIndex === 5 && sectionIndex === 0}
                       />
                     </section>
                   ))}

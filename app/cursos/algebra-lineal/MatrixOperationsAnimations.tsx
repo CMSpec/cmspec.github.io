@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export function useSteppedAnimation(length: number) {
+export function useSteppedAnimation(length: number, duration = 900) {
   const [step, setStep] = useState(0);
   const [playing, setPlaying] = useState(true);
 
@@ -11,9 +11,9 @@ export function useSteppedAnimation(length: number) {
     const timer = window.setTimeout(() => {
       if (step < length - 1) setStep((current) => current + 1);
       else setPlaying(false);
-    }, 900);
+    }, duration);
     return () => window.clearTimeout(timer);
-  }, [length, playing, step]);
+  }, [duration, length, playing, step]);
 
   const complete = step === length - 1 && !playing;
 
@@ -26,7 +26,17 @@ export function useSteppedAnimation(length: number) {
     }
   }
 
-  return { step, playing, complete, toggle };
+  function previous() {
+    setPlaying(false);
+    setStep((current) => Math.max(0, current - 1));
+  }
+
+  function next() {
+    setPlaying(false);
+    setStep((current) => Math.min(length - 1, current + 1));
+  }
+
+  return { step, playing, complete, toggle, previous, next };
 }
 
 function Matrix({ values, step, reveal = false, label }: { values: number[]; step: number; reveal?: boolean; label: string }) {

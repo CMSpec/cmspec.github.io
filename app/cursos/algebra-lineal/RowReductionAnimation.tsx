@@ -91,7 +91,7 @@ function RowMatrix({
 }
 
 export default function RowReductionAnimation() {
-  const animation = useSteppedAnimation(steps.length);
+  const animation = useSteppedAnimation(steps.length, 2600);
   const current = steps[animation.step];
 
   return (
@@ -126,10 +126,14 @@ export default function RowReductionAnimation() {
       </div>
 
       <div className="matrix-animation-controls">
-        <p>{animation.complete ? "Escalonamiento completado" : "Las filas coloreadas participan en la operación."}</p>
-        <button type="button" onClick={animation.toggle}>
-          {animation.complete ? "Repetir" : animation.playing ? "Pausar" : "Continuar"}
-        </button>
+        <p>{animation.complete ? "Escalonamiento completado" : "Cada paso permanece 2,6 segundos. También puedes recorrerlos manualmente."}</p>
+        <div className="animation-button-group">
+          <button type="button" onClick={animation.previous} disabled={animation.step === 0}>Anterior</button>
+          <button type="button" onClick={animation.toggle}>
+            {animation.complete ? "Repetir" : animation.playing ? "Pausar" : "Continuar"}
+          </button>
+          <button type="button" onClick={animation.next} disabled={animation.step === steps.length - 1}>Siguiente</button>
+        </div>
       </div>
     </section>
   );
