@@ -32,4 +32,15 @@ export const courseNotes = [
     href: "/cursos/calculo-vectorial",
     formula: "∇f · u",
   },
+  {
+    number: "04",
+    title: "Laboratorio de Álgebra Lineal",
+    description: "Animaciones para explorar vectores, matrices, operaciones, reducción por filas y cambios de base.",
+    subtitle: "Una colección visual para observar cada operación paso a paso",
+    authors: "Camila Muñoz Santander",
+    published: "23 julio 2026",
+    modified: "23 julio 2026",
+    href: "/cursos/laboratorio-algebra-lineal",
+    formula: "u + v → AB",
+  },
 ] as const;
