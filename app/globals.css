@@ -272,12 +272,15 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 #unidad-1-a0000000006 .course-math math { font-size: calc(1.12em + 2px); }
 .course-callout { display: block; margin: 34px 0; padding: 26px 28px; border-left: 3px solid var(--blue); background: #f1f6f7; }
 .course-callout > strong:first-child { display: block; margin-bottom: 14px; color: var(--blue); font: 700 11px var(--font-geist-mono); letter-spacing: .12em; text-transform: uppercase; }
-.defin_thmwrapper, .thm_thmwrapper, .prop_thmwrapper, .lemma_thmwrapper, .cor_thmwrapper, .rec_thmwrapper, .ejem_thmwrapper, .sol_thmwrapper, .rmk_thmwrapper { margin: 34px 0; padding: 26px 28px; border-left: 3px solid var(--blue); background: #f1f6f7; }
-.defin_thmheading, .thm_thmheading, .prop_thmheading, .lemma_thmheading, .cor_thmheading, .rec_thmheading, .ejem_thmheading, .sol_thmheading, .rmk_thmheading { display: flex; gap: 7px; margin-bottom: 14px; color: var(--blue); font: 700 11px var(--font-geist-mono); letter-spacing: .1em; text-transform: uppercase; }
+.defin_thmwrapper, .thm_thmwrapper, .prop_thmwrapper, .lemma_thmwrapper, .cor_thmwrapper, .rec_thmwrapper, .ejem_thmwrapper, .ejer_thmwrapper, .sol_thmwrapper, .rmk_thmwrapper { margin: 34px 0; padding: 26px 28px; border-left: 3px solid var(--blue); background: #f1f6f7; }
+.defin_thmheading, .thm_thmheading, .prop_thmheading, .lemma_thmheading, .cor_thmheading, .rec_thmheading, .ejem_thmheading, .ejer_thmheading, .sol_thmheading, .rmk_thmheading { display: flex; gap: 7px; margin-bottom: 14px; color: var(--blue); font: 700 11px var(--font-geist-mono); letter-spacing: .1em; text-transform: uppercase; }
 .thm_thmwrapper, .prop_thmwrapper, .lemma_thmwrapper, .cor_thmwrapper, .rec_thmwrapper { border-color: var(--olive); background: #f4f3e7; }
 .thm_thmheading, .prop_thmheading, .lemma_thmheading, .cor_thmheading, .rec_thmheading { color: var(--olive); }
 .ejem_thmwrapper, .sol_thmwrapper { border-color: var(--green); background: #f3f8e8; }
 .ejem_thmheading, .sol_thmheading { color: #657f28; }
+.ejer_thmwrapper { border: 1px solid rgba(213,143,114,.42); border-left: 4px solid #d58f72; background: #fff9f5; }
+.ejer_thmheading { color: #a55f45; }
+.ejer_thmheading::after { content: "Sin resolver"; margin-left: auto; color: var(--muted); font-size: 9px; letter-spacing: .08em; }
 .rmk_thmwrapper { border-color: #d58f72; background: #fff2eb; }
 .rmk_thmheading { color: #a55f45; }
 .latex-content [class$="_thmcontent"] > :last-child { margin-bottom: 0; }
@@ -344,7 +347,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .course-toc { position: static; }.course-toc nav { grid-template-columns: 1fr 1fr; column-gap: 20px; max-height: none; overflow: visible; }.course-toc small { max-width: 430px; }
   .reading-chapter > summary { grid-template-columns: 42px 1fr auto; gap: 10px; }
   .chapter-article { padding-bottom: 55px; }.chapter-section { padding: 35px 0; }
-  .latex-content { font-size: 16px; }.course-callout, .defin_thmwrapper, .thm_thmwrapper, .prop_thmwrapper, .lemma_thmwrapper, .cor_thmwrapper, .rec_thmwrapper, .ejem_thmwrapper, .sol_thmwrapper, .rmk_thmwrapper { padding: 20px 18px; }.course-math { margin-left: 0; margin-right: 0; }
+  .latex-content { font-size: 16px; }.course-callout, .defin_thmwrapper, .thm_thmwrapper, .prop_thmwrapper, .lemma_thmwrapper, .cor_thmwrapper, .rec_thmwrapper, .ejem_thmwrapper, .ejer_thmwrapper, .sol_thmwrapper, .rmk_thmwrapper { padding: 20px 18px; }.course-math { margin-left: 0; margin-right: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }

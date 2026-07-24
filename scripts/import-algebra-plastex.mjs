@@ -73,6 +73,7 @@ const preamble = String.raw`\documentclass[12pt]{article}
 \newtheorem{rec}[thm]{Recuerdo}
 \newtheorem{defin}[thm]{Definición}
 \newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}{Ejercicio}[section]
 \newtheorem{sol}[thm]{Solución}
 \newtheorem{rmk}[thm]{Observación}
 `;
@@ -111,15 +112,10 @@ function injectIndexMarkers(html, markers) {
   }, html);
 }
 
-function removeEnvironment(source, name) {
-  const pattern = new RegExp(`\\\\begin\\{${name}\\}[\\s\\S]*?\\\\end\\{${name}\\}`, "g");
-  return source.replace(pattern, "");
-}
-
 function prepareSource(source) {
-  let prepared = removeEnvironment(source, "ejer");
+  let prepared = source;
   prepared = prepared
-    .replace(/^\\proof\s*\(Ejercicio\)\s*$/gm, "")
+    .replace(/^\\proof\s*\(Ejercicio\)\s*$/gm, "\\begin{ejer}Demuestre el resultado anterior.\\end{ejer}")
     .replace(/\s*\(ejercicio:[^)]*\)/gi, "")
     .replace(/\\begin\{subsection\}\{([^}]*)\}/g, "\\subsection{$1}")
     .replace(/\\systeme\{([\s\S]*?)\}/g, (_, equations) =>

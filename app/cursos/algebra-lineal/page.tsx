@@ -34,6 +34,18 @@ function getDefinitionIndex(html: string) {
   });
 }
 
+function findTheoremStart(
+  html: string,
+  type: "defin" | "ejem" | "prop" | "rmk",
+  label: string,
+) {
+  const escapedLabel = label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = new RegExp(
+    `<div class="${type}_thmwrapper[^"]*" id="[^"]+">[\\s\\S]{0,700}?<span class="${type}_thmlabel">\\s*${escapedLabel}\\s*</span>`,
+  );
+  return html.search(pattern);
+}
+
 function RowVectorVisual() {
   return (
     <figure className="course-visual-example">
@@ -100,53 +112,50 @@ function SectionContent({
     });
   }
 
-  const traceInsertionMarker = '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000017">';
-  const traceInsertionIndex = html.indexOf(traceInsertionMarker);
+  const traceInsertionIndex = findTheoremStart(html, "ejem", "1.5");
   if (traceInsertionIndex >= 0) {
     operations.push({ start: traceInsertionIndex, end: traceInsertionIndex, element: <TraceAnimation /> });
   }
 
   const animatedExamples = [
     {
-      startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000019">',
-      endMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000020">',
+      start: findTheoremStart(html, "ejem", "1.7"),
+      end: findTheoremStart(html, "ejem", "1.8"),
       element: <TriangularMatricesAnimation />,
     },
     {
-      startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000023">',
-      endMarker: '<div class="prop_thmwrapper theorem-style-plain" id="unidad-1-traspuesta">',
+      start: findTheoremStart(html, "ejem", "1.10"),
+      end: findTheoremStart(html, "prop", "1.11"),
       element: <SymmetryAnimation />,
     },
     {
-      startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000027">',
-      endMarker: '<div class="rmk_thmwrapper theorem-style-plain" id="unidad-1-a0000000029">',
+      start: findTheoremStart(html, "ejem", "1.13"),
+      end: findTheoremStart(html, "rmk", "1.14"),
       element: <MatrixAdditionAnimation />,
     },
     {
-      startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000036">',
-      endMarker: "<p>Con esta definición, es posible mostrar que:",
+      start: findTheoremStart(html, "ejem", "1.19"),
+      end: html.indexOf("<p>Con esta definición, es posible mostrar que:"),
       element: <MatrixScalarAnimation />,
     },
     {
-      startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000043">',
-      endMarker: '<p>La multiplicación entre matrices',
+      start: findTheoremStart(html, "ejem", "1.22"),
+      end: html.indexOf("<p>La multiplicación entre matrices"),
       element: <DotProductAnimation />,
     },
     {
-      startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000047">',
-      endMarker: '<p>La multiplicación de matrices no es conmutativa',
+      start: findTheoremStart(html, "ejem", "1.24"),
+      end: html.indexOf("<p>La multiplicación de matrices no es conmutativa"),
       element: <MatrixMultiplicationAnimation />,
     },
     {
-      startMarker: '<div class="ejem_thmwrapper theorem-style-plain" id="unidad-1-a0000000080">',
-      endMarker: '<div class="defin_thmwrapper theorem-style-plain" id="unidad-1-a0000000082">',
+      start: findTheoremStart(html, "ejem", "1.40"),
+      end: findTheoremStart(html, "defin", "1.41"),
       element: <RowReductionAnimation />,
     },
   ];
 
-  animatedExamples.forEach(({ startMarker, endMarker, element }) => {
-    const start = html.indexOf(startMarker);
-    const end = html.indexOf(endMarker, start);
+  animatedExamples.forEach(({ start, end, element }) => {
     if (start >= 0 && end > start) operations.push({ start, end, element });
   });
 
