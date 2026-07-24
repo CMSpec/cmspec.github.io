@@ -3,7 +3,7 @@ import { linearAlgebraChapters } from "../../../content/courses/algebra-lineal-c
 import MatrixScalarAnimation from "./MatrixScalarAnimation";
 import MatrixMultiplicationAnimation from "./MatrixMultiplicationAnimation";
 import RowReductionAnimation from "./RowReductionAnimation";
-import VectorExplorations from "./VectorExplorations";
+import { ScalarVectorLab, VectorCombinationLab, VectorSumLab } from "./VectorExplorations";
 import ChangeOfBasis2D from "./ChangeOfBasis2D";
 import { DotProductAnimation, MatrixAdditionAnimation } from "./MatrixOperationsAnimations";
 import { SymmetryAnimation, TraceAnimation, TriangularMatricesAnimation } from "./MatrixStructureAnimations";
@@ -68,7 +68,9 @@ function RowVectorVisual() {
 function visualElement(name: string) {
   const visuals: Record<string, JSX.Element> = {
     "tabla-vector": <RowVectorVisual />,
-    "exploraciones-vectores": <VectorExplorations />,
+    "exploracion-vector-01": <ScalarVectorLab />,
+    "exploracion-vector-02": <VectorSumLab />,
+    "exploracion-vector-03": <VectorCombinationLab />,
     traza: <TraceAnimation />,
     "matrices-triangulares": <TriangularMatricesAnimation />,
     simetria: <SymmetryAnimation />,

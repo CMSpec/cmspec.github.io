@@ -58,7 +58,9 @@ La traza es la suma de los elementos de la diagonal.
 Las marcas disponibles son:
 
 - `tabla-vector`: tabla que se transforma en vector fila.
-- `exploraciones-vectores`: ponderación, suma y combinaciones de vectores.
+- `exploracion-vector-01`: ponderación de un vector por un escalar.
+- `exploracion-vector-02`: suma de dos vectores en el plano.
+- `exploracion-vector-03`: combinaciones de dos vectores entre 0 y 1.
 - `traza`: suma animada de la diagonal.
 - `matrices-triangulares`: matrices triangular superior e inferior.
 - `simetria`: matrices simétrica y antisimétrica.

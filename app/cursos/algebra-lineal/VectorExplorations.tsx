@@ -73,7 +73,7 @@ function Plane({ children, label }: { children: React.ReactNode; label: string }
   );
 }
 
-function ScalarVectorLab() {
+export function ScalarVectorLab() {
   const [lambda, setLambda] = useState(1.5);
   const scaled = multiply(lambda, u);
   const description =
@@ -109,7 +109,7 @@ function ScalarVectorLab() {
   );
 }
 
-function VectorSumLab() {
+export function VectorSumLab() {
   const [step, setStep] = useState(0);
   const result = add(u, v);
 
@@ -147,7 +147,7 @@ function VectorSumLab() {
   );
 }
 
-function VectorCombinationLab() {
+export function VectorCombinationLab() {
   const samples = useMemo(() => Array.from({ length: 121 }, (_, index) => {
     const alpha = (index % 11) / 10;
     const beta = Math.floor(index / 11) / 10;
