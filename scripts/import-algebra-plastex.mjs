@@ -74,7 +74,7 @@ const preamble = String.raw`\documentclass[12pt]{article}
 \newtheorem{defin}[thm]{Definición}
 \newtheorem{ejem}[thm]{Ejemplo}
 \newtheorem{ejer}{Ejercicio}[section]
-\newtheorem{sol}[thm]{Solución}
+\newtheorem{sol}{Solución}[section]
 \newtheorem{rmk}[thm]{Observación}
 `;
 

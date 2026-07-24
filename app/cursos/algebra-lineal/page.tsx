@@ -8,6 +8,7 @@ import ChangeOfBasis2D from "./ChangeOfBasis2D";
 import { DotProductAnimation, MatrixAdditionAnimation } from "./MatrixOperationsAnimations";
 import { SymmetryAnimation, TraceAnimation, TriangularMatricesAnimation } from "./MatrixStructureAnimations";
 import CourseIndex from "../_components/CourseIndex";
+import SolutionDisclosures from "./SolutionDisclosures";
 
 function cleanDefinitionName(html: string) {
   return html
@@ -204,6 +205,7 @@ export default function LinearAlgebraCoursePage() {
 
   return (
     <main className="course-page linear-algebra-course">
+      <SolutionDisclosures />
       <header className="course-header">
         <a className="brand" href="/" aria-label="CMSpec, volver al inicio">
           <span className="brand-mark" aria-hidden="true"><i /><i /><i /><i /></span>

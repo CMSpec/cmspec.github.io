@@ -276,11 +276,18 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .defin_thmheading, .thm_thmheading, .prop_thmheading, .lemma_thmheading, .cor_thmheading, .rec_thmheading, .ejem_thmheading, .ejer_thmheading, .sol_thmheading, .rmk_thmheading { display: flex; gap: 7px; margin-bottom: 14px; color: var(--blue); font: 700 11px var(--font-geist-mono); letter-spacing: .1em; text-transform: uppercase; }
 .thm_thmwrapper, .prop_thmwrapper, .lemma_thmwrapper, .cor_thmwrapper, .rec_thmwrapper { border-color: var(--olive); background: #f4f3e7; }
 .thm_thmheading, .prop_thmheading, .lemma_thmheading, .cor_thmheading, .rec_thmheading { color: var(--olive); }
-.ejem_thmwrapper, .sol_thmwrapper { border-color: var(--green); background: #f3f8e8; }
-.ejem_thmheading, .sol_thmheading { color: #657f28; }
+.ejem_thmwrapper { border-color: var(--green); background: #f3f8e8; }
+.ejem_thmheading { color: #657f28; }
 .ejer_thmwrapper { border: 1px solid rgba(213,143,114,.42); border-left: 4px solid #d58f72; background: #fff9f5; }
 .ejer_thmheading { color: #a55f45; }
 .ejer_thmheading::after { content: "Sin resolver"; margin-left: auto; color: var(--muted); font-size: 9px; letter-spacing: .08em; }
+.sol_thmwrapper { border-color: var(--blue); background: #edf7fa; }
+.sol_thmheading { align-items: center; margin-bottom: 0; color: var(--blue); cursor: pointer; user-select: none; }
+.sol_thmheading::after { content: "Mostrar solución +"; margin-left: auto; color: var(--blue); font-size: 9px; letter-spacing: .08em; }
+.sol_thmheading:focus-visible { outline: 2px solid var(--blue); outline-offset: 5px; }
+.sol_thmwrapper.sol-is-open .sol_thmheading { margin-bottom: 14px; }
+.sol_thmwrapper.sol-is-open .sol_thmheading::after { content: "Ocultar solución −"; }
+.sol_thmcontent[hidden] { display: none; }
 .rmk_thmwrapper { border-color: #d58f72; background: #fff2eb; }
 .rmk_thmheading { color: #a55f45; }
 .latex-content [class$="_thmcontent"] > :last-child { margin-bottom: 0; }
