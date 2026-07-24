@@ -256,8 +256,18 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .chapter-section h4::before { content: ""; display: block; width: 32px; height: 3px; margin-bottom: 16px; background: var(--chapter-accent); }
 .latex-content { color: #203f47; font-family: Georgia, serif; font-size: 18px; line-height: 1.74; }
 .latex-content p { margin: 0 0 20px; }
-.latex-content ul, .latex-content ol { margin: 18px 0 26px; padding-left: 28px; }
+.latex-content ul, .latex-content ol { margin: 18px 0 26px; padding-left: 32px; }
+.latex-content ul.itemize { list-style: disc outside; }
+.latex-content ol.enumerate { list-style: decimal outside; }
+.latex-content ol.enumerate-alpha { list-style: none; counter-reset: cmspec-alpha; }
+.latex-content ol.enumerate-alpha > li { position: relative; counter-increment: cmspec-alpha; }
+.latex-content ol.enumerate-alpha > li::before { content: "(" counter(cmspec-alpha, lower-alpha) ")"; position: absolute; right: calc(100% + 8px); color: var(--blue); font-family: var(--font-geist-mono), monospace; font-size: .82em; font-weight: 700; }
+.latex-content ul.itemize ul.itemize { list-style-type: circle; }
+.latex-content ol.enumerate ol.enumerate:not(.enumerate-alpha) { list-style-type: lower-alpha; }
 .latex-content li { margin: 8px 0; padding-left: 5px; }
+.latex-content li::marker { color: var(--blue); font-family: var(--font-geist-mono), monospace; font-size: .82em; font-weight: 700; }
+.latex-content li > p { margin-bottom: 8px; }
+.latex-content li > p:last-child { margin-bottom: 0; }
 .latex-content a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
 .latex-content math { font-size: 1.05em; }
 .latex-content math mtable > mtr > mtd { padding: .28em .45em; }

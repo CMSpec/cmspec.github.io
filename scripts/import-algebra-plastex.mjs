@@ -112,9 +112,17 @@ function injectIndexMarkers(html, markers) {
   }, html);
 }
 
+function injectListStyles(html) {
+  return html.replace(
+    /(?:<p>\s*)?CMSPECENUMALPHA\s*(?:<\/p>\s*)?<ol class="enumerate">/g,
+    '<ol class="enumerate enumerate-alpha">',
+  );
+}
+
 function prepareSource(source) {
   let prepared = source;
   prepared = prepared
+    .replace(/\\begin\{enumerate\}\s*\[\(a\)\]/g, "CMSPECENUMALPHA\n\\begin{enumerate}")
     .replace(/^\\proof\s*\(Ejercicio\)\s*$/gm, "\\begin{ejer}Demuestre el resultado anterior.\\end{ejer}")
     .replace(/\s*\(ejercicio:[^)]*\)/gi, "")
     .replace(/\\begin\{subsection\}\{([^}]*)\}/g, "\\subsection{$1}")
@@ -211,7 +219,7 @@ try {
     if (!main) throw new Error(`plasTeX no generó contenido para chap${chapterNumber}.tex`);
 
     const slug = `unidad-${chapterNumber}`;
-    const html = prefixAnchors(injectIndexMarkers(renderMathInHtml(main), indexedSource.markers), slug)
+    const html = prefixAnchors(injectListStyles(injectIndexMarkers(renderMathInHtml(main), indexedSource.markers)), slug)
       .replace(/<img([^>]*?)src="Regla_de_Sarrus\.png"([^>]*)>/g, '<img$1src="/courses/algebra-lineal/Regla_de_Sarrus.png"$2>');
 
     chapters.push({
