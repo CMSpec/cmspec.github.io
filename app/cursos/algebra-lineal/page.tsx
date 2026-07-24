@@ -65,99 +65,73 @@ function RowVectorVisual() {
   );
 }
 
-function SectionContent({
-  html,
-  placeChangeBasis,
-  placeVisual,
-}: {
-  html: string;
-  placeChangeBasis: boolean;
-  placeVisual: boolean;
-}) {
-  const marker = '<div class="defin_thmwrapper';
-  const markerIndex = placeVisual ? html.indexOf(marker) : -1;
-  const operations: Array<{ start: number; end: number; element: ReturnType<typeof RowVectorVisual> }> = [];
+function visualElement(name: string) {
+  const visuals: Record<string, JSX.Element> = {
+    "tabla-vector": <RowVectorVisual />,
+    "exploraciones-vectores": <VectorExplorations />,
+    traza: <TraceAnimation />,
+    "matrices-triangulares": <TriangularMatricesAnimation />,
+    simetria: <SymmetryAnimation />,
+    "suma-matrices": <MatrixAdditionAnimation />,
+    "producto-escalar-matriz": <MatrixScalarAnimation />,
+    "producto-punto": <DotProductAnimation />,
+    "producto-matrices": <MatrixMultiplicationAnimation />,
+    "reduccion-filas": <RowReductionAnimation />,
+    "cambio-de-base": <ChangeOfBasis2D />,
+  };
+  const visual = visuals[name];
+  return visual ? <div className="movable-course-visual">{visual}</div> : null;
+}
 
-  if (markerIndex >= 0) {
-    operations.push({
-      start: 0,
-      end: markerIndex,
-      element: (
-        <div className="definition-side-layout">
-          <div className="definition-side-copy">
-            <div className="latex-content" dangerouslySetInnerHTML={{ __html: html.slice(0, markerIndex) }} />
-            <RowVectorVisual />
-          </div>
-          <aside className="definition-side-visual" aria-label="Exploraciones interactivas sobre vectores">
-            <VectorExplorations />
-          </aside>
-        </div>
-      ),
-    });
+function SectionContent({ html }: { html: string }) {
+  const operations: Array<{ start: number; end: number; element: JSX.Element | null }> = [];
+  const visualMarkerPattern = /(?:<p>\s*)?<span class="cmspec-visual-anchor" data-cmspec-visual="([^"]+)"><\/span>(?:\s*<\/p>)?/g;
+
+  for (const match of html.matchAll(visualMarkerPattern)) {
+    if (match.index === undefined) continue;
+    const element = visualElement(match[1]);
+    if (element) {
+      operations.push({
+        start: match.index,
+        end: match.index + match[0].length,
+        element,
+      });
+    }
   }
 
-  if (placeChangeBasis) {
-    operations.push({
-      start: 0,
-      end: html.length,
-      element: (
-        <div className="definition-side-layout definition-side-layout-basis">
-          <div className="definition-side-copy">
-            <div className="latex-content" dangerouslySetInnerHTML={{ __html: html }} />
-          </div>
-          <aside className="definition-side-visual" aria-label="Exploración en R2 del cambio de base">
-            <ChangeOfBasis2D />
-          </aside>
-        </div>
-      ),
-    });
-  }
-
-  const traceInsertionIndex = findTheoremStart(html, "ejem", "1.5");
-  if (traceInsertionIndex >= 0) {
-    operations.push({ start: traceInsertionIndex, end: traceInsertionIndex, element: <TraceAnimation /> });
-  }
-
-  const animatedExamples = [
+  const replacedSourceExamples = [
     {
       start: findTheoremStart(html, "ejem", "1.7"),
       end: findTheoremStart(html, "ejem", "1.8"),
-      element: <TriangularMatricesAnimation />,
     },
     {
       start: findTheoremStart(html, "ejem", "1.10"),
       end: findTheoremStart(html, "prop", "1.11"),
-      element: <SymmetryAnimation />,
     },
     {
       start: findTheoremStart(html, "ejem", "1.13"),
       end: findTheoremStart(html, "rmk", "1.14"),
-      element: <MatrixAdditionAnimation />,
     },
     {
       start: findTheoremStart(html, "ejem", "1.19"),
       end: html.indexOf("<p>Con esta definición, es posible mostrar que:"),
-      element: <MatrixScalarAnimation />,
     },
     {
       start: findTheoremStart(html, "ejem", "1.22"),
       end: html.indexOf("<p>La multiplicación entre matrices"),
-      element: <DotProductAnimation />,
     },
     {
       start: findTheoremStart(html, "ejem", "1.24"),
       end: html.indexOf("<p>La multiplicación de matrices no es conmutativa"),
-      element: <MatrixMultiplicationAnimation />,
     },
     {
       start: findTheoremStart(html, "ejem", "1.40"),
       end: findTheoremStart(html, "defin", "1.41"),
-      element: <RowReductionAnimation />,
     },
   ];
 
-  animatedExamples.forEach(({ start, end, element }) => {
-    if (start >= 0 && end > start) operations.push({ start, end, element });
+  replacedSourceExamples.forEach(({ start, end }) => {
+    if (start >= 0 && end > start) operations.push({ start, end, element: null });
   });
 
   if (operations.length === 0) {
@@ -188,9 +162,6 @@ export default function LinearAlgebraCoursePage() {
   const course = linearAlgebraCourse;
   const definitionsByUnit = linearAlgebraChapters.map((chapter) =>
     getDefinitionIndex(chapter.sections.map((section) => section.html).join("")),
-  );
-  const firstDefinitionSectionIndex = linearAlgebraChapters[0].sections.findIndex((section) =>
-    section.html.includes('<div class="defin_thmwrapper'),
   );
   const indexUnits = course.units.map((unit, index) => ({
     number: unit.number,
@@ -256,8 +227,6 @@ export default function LinearAlgebraCoursePage() {
                       <h4>{section.title}</h4>
                       <SectionContent
                         html={section.html}
-                        placeVisual={chapterIndex === 0 && sectionIndex === firstDefinitionSectionIndex}
-                        placeChangeBasis={chapterIndex === 5 && sectionIndex === 0}
                       />
                     </section>
                   ))}

@@ -23,6 +23,10 @@ De la misma manera, un \textbf{vector columna} de $n$ componentes es un conjunto
    x_n 
 \end{array}\right).\]
 En ambos casos, si un vector tiene $n$ componentes, se dice que el vector es de dimensión $n$.
+
+\cmspecvisual{tabla-vector}
+\cmspecvisual{exploraciones-vectores}
+
 \begin{defin}
 \cmspecindice{Matriz}
 Una \textbf{matriz $A$ de $m \times n$} es un arreglo rectangular de $mn$ elementos de un conjunto dispuestos en $m$ filas y $n$ columnas:
@@ -143,6 +147,8 @@ Mientras que para un vector $(a_{1} ,a_{2} ,  \dots  a_{n})$ se define \textbf{l
 \end{defin}
 
 
+\cmspecvisual{traza}
+
 \begin{ejem}
 \begin{enumerate}
     \item     $A=\begin{pmatrix}
@@ -167,6 +173,8 @@ superior} si $a_{i j} = 0$ para $i > j$, y se llama \textbf{triangular inferior}
 si $a_{i j} = 0$ para $i < j$.
 
 \end{defin}
+
+\cmspecvisual{matrices-triangulares}
 
 \begin{ejem}
     $C=\begin{pmatrix}
@@ -215,6 +223,8 @@ $A^t = A$ y se dice que $A$ es \textbf{antisimétrica} si $A^t = -A$, donde $-A$
 $-A = (-a_{i j})$.
 \end{defin}
 
+\cmspecvisual{simetria}
+
 \begin{ejem}
     La matriz $A=\begin{pmatrix}
     6 & -1 & 4\\
@@ -255,6 +265,8 @@ de $A$ y $B$ es la matriz de $m \times n$
 \end{array}\right)_{m\times n},\]
 es decir, $c_{ij}=a_{ij}+b_{ij}$ para cada $i,j$.
 \end{defin}
+
+\cmspecvisual{suma-matrices}
 
 \begin{ejem}
 \begin{align*}
@@ -319,6 +331,8 @@ Si $A$ es una matriz de $m \times n$ y si $\alpha$ es un escalar, es decir un el
 \end{array}\right)_{m\times n}.\]
 En general omitiremos el punto ($\cdot$), escribiendo $\alpha A$ en vez de $\alpha \cdot A$.
 \end{defin}
+
+\cmspecvisual{producto-escalar-matriz}
 
 \begin{ejem}
     $3\begin{pmatrix}
@@ -431,6 +445,8 @@ $$a \cdot b = a_1b_1 + a_2b_2 + \cdots + a_nb_n$$
 
 
 
+\cmspecvisual{producto-punto}
+
 \begin{ejem}
 Sean $a =  \begin{pmatrix} -4 \\ -2 \\ 3 \end{pmatrix}$ y $b =  \begin{pmatrix} 3 \\ -2 \\ -5 \end{pmatrix}$. Entonces:
 
@@ -451,6 +467,8 @@ es decir,
 \end{center}
 \end{defin}
 
+
+\cmspecvisual{producto-matrices}
 
 \begin{ejem}
 Si $A=\begin{pmatrix}
@@ -777,6 +795,8 @@ se anota: $F_i\longrightarrow\alpha  F_i$.
     \item Sumar dos filas: Si la fila $i$ se suma a la fila $j$, anotamos $F i + F j$, donde el resultado queda en la fila $j$.
     \item Finalmente, podemos combinar las dos últimas operaciones y obtener $F_j\longrightarrow \alpha  F_i + F_j$. El resultado queda en la fila $j$.
 \end{itemize}
+
+\cmspecvisual{reduccion-filas}
 
 \begin{ejem}
 \begin{align*}

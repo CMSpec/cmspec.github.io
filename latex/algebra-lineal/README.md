@@ -37,3 +37,37 @@ elimina solamente `\cmspecindice{...}`; el contenido del apunte no se borra.
 Cuando un capítulo contiene al menos una marca `\cmspecindice`, CMSpec muestra
 solo las entradas seleccionadas de ese capítulo. Los capítulos todavía no
 marcados conservan temporalmente su índice automático anterior.
+
+## Mover animaciones y visualizaciones
+
+Cada recurso interactivo aparece donde esté escrita su marca
+`\cmspecvisual{...}`. Para moverlo, corta la línea completa, pégala entre los
+dos párrafos donde quieras verlo y vuelve a sincronizar el curso.
+
+Por ejemplo:
+
+```tex
+La traza es la suma de los elementos de la diagonal.
+
+\cmspecvisual{traza}
+
+\begin{ejem}
+...
+```
+
+Las marcas disponibles son:
+
+- `tabla-vector`: tabla que se transforma en vector fila.
+- `exploraciones-vectores`: ponderación, suma y combinaciones de vectores.
+- `traza`: suma animada de la diagonal.
+- `matrices-triangulares`: matrices triangular superior e inferior.
+- `simetria`: matrices simétrica y antisimétrica.
+- `suma-matrices`: suma entrada por entrada.
+- `producto-escalar-matriz`: multiplicación de una matriz por un escalar.
+- `producto-punto`: producto punto coordenada por coordenada.
+- `producto-matrices`: producto entre filas y columnas.
+- `reduccion-filas`: operaciones elementales.
+- `cambio-de-base`: cambio de base en el plano.
+
+Usa cada marca una sola vez. Debe ir en una línea independiente y fuera de
+ambientes como `defin`, `ejem`, `ejer`, `enumerate` o `itemize`.

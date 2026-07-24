@@ -66,6 +66,7 @@ const preamble = String.raw`\documentclass[12pt]{article}
 \newcommand{\gb}[1]{\operatorname{\textbf{#1}}}
 \newcommand{\thmname}{}
 \newcommand{\cmspecindice}[1]{}
+\newcommand{\cmspecvisual}[1]{}
 \newtheorem{thm}{Teorema}[section]
 \newtheorem{prop}[thm]{Proposición}
 \newtheorem{lemma}[thm]{Lema}
@@ -83,6 +84,16 @@ function prepareIndexMarkers(source) {
   const prepared = source.replace(/\\cmspecindice\{([^{}]+)\}/g, (_, title) => {
     const token = `CMSPECINDEXMARKER${String(markers.length).padStart(4, "0")}`;
     markers.push({ token, title: title.trim() });
+    return token;
+  });
+  return { markers, source: prepared };
+}
+
+function prepareVisualMarkers(source) {
+  const markers = [];
+  const prepared = source.replace(/\\cmspecvisual\{([^{}]+)\}/g, (_, name) => {
+    const token = `CMSPECVISUALMARKER${String(markers.length).padStart(4, "0")}`;
+    markers.push({ token, name: name.trim() });
     return token;
   });
   return { markers, source: prepared };
@@ -108,6 +119,13 @@ function slugify(value) {
 function injectIndexMarkers(html, markers) {
   return markers.reduce((result, marker, index) => {
     const anchor = `<span class="cmspec-index-anchor" id="cmspec-indice-${slugify(marker.title)}-${index + 1}" data-cmspec-index-title="${escapeAttribute(marker.title)}"></span>`;
+    return result.replace(marker.token, anchor);
+  }, html);
+}
+
+function injectVisualMarkers(html, markers) {
+  return markers.reduce((result, marker) => {
+    const anchor = `<span class="cmspec-visual-anchor" data-cmspec-visual="${escapeAttribute(marker.name)}"></span>`;
     return result.replace(marker.token, anchor);
   }, html);
 }
@@ -203,7 +221,8 @@ try {
 
     const source = fs.readFileSync(path.join(sourceDirectory, `chap${chapterNumber}.tex`), "utf8");
     const indexedSource = prepareIndexMarkers(source);
-    fs.writeFileSync(path.join(chapterWork, "chapter.tex"), `${preamble}\n\\begin{document}\n${prepareSource(indexedSource.source)}\n\\end{document}\n`);
+    const visualSource = prepareVisualMarkers(indexedSource.source);
+    fs.writeFileSync(path.join(chapterWork, "chapter.tex"), `${preamble}\n\\begin{document}\n${prepareSource(visualSource.source)}\n\\end{document}\n`);
 
     const sourceImage = path.join(sourceDirectory, "Regla_de_Sarrus.png");
     if (fs.existsSync(sourceImage)) fs.copyFileSync(sourceImage, path.join(chapterWork, "Regla_de_Sarrus.png"));
@@ -219,7 +238,10 @@ try {
     if (!main) throw new Error(`plasTeX no generó contenido para chap${chapterNumber}.tex`);
 
     const slug = `unidad-${chapterNumber}`;
-    const html = prefixAnchors(injectListStyles(injectIndexMarkers(renderMathInHtml(main), indexedSource.markers)), slug)
+    const html = prefixAnchors(
+      injectVisualMarkers(injectListStyles(injectIndexMarkers(renderMathInHtml(main), indexedSource.markers)), visualSource.markers),
+      slug,
+    )
       .replace(/<img([^>]*?)src="Regla_de_Sarrus\.png"([^>]*)>/g, '<img$1src="/courses/algebra-lineal/Regla_de_Sarrus.png"$2>');
 
     chapters.push({
