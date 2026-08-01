@@ -28,11 +28,12 @@ function pointFor(stage: Stage, u: number, v: number): Point3 {
   return { x: radius * Math.cos(theta), y: 47 * Math.sin(phi), z: radius * Math.sin(theta) };
 }
 
-function project(point: Point3, width: number, height: number) {
+function project(point: Point3, width: number, height: number, tilt: number) {
   const angle = -.42;
   const x = point.x * Math.cos(angle) - point.z * Math.sin(angle);
   const z = point.x * Math.sin(angle) + point.z * Math.cos(angle);
-  return { x: width / 2 + x, y: height / 2 + point.y - z * .18, depth: z };
+  const verticalScale = 1 - tilt * .42;
+  return { x: width / 2 + x, y: height / 2 + point.y * verticalScale - z * tilt, depth: z };
 }
 
 function drawSurface(canvas: HTMLCanvasElement, from: Stage, to: Stage, progress: number) {
@@ -46,7 +47,8 @@ function drawSurface(canvas: HTMLCanvasElement, from: Stage, to: Stage, progress
   ctx.scale(ratio, ratio);
   ctx.clearRect(0, 0, width, height);
 
-  const map = (u: number, v: number) => project(mix(pointFor(from, u, v), pointFor(to, u, v), progress), width, height);
+  const viewTilt = ([.12, .22, .64][from] * (1 - progress)) + ([.12, .22, .64][to] * progress);
+  const map = (u: number, v: number) => project(mix(pointFor(from, u, v), pointFor(to, u, v), progress), width, height, viewTilt);
   const drawLine = (fixed: number, horizontal: boolean, color: string, lineWidth = 1.2) => {
     ctx.beginPath();
     for (let i = 0; i <= 64; i += 1) {
@@ -59,19 +61,18 @@ function drawSurface(canvas: HTMLCanvasElement, from: Stage, to: Stage, progress
     ctx.stroke();
   };
 
-  for (let i = 0; i <= 8; i += 1) drawLine(i / 8, true, "rgba(130,151,47,.62)");
-  for (let i = 0; i <= 12; i += 1) drawLine(i / 12, false, "rgba(0,119,151,.58)");
+  for (let i = 0; i <= 8; i += 1) drawLine(i / 8, true, "rgba(130,151,47,.25)", 1);
+  for (let i = 0; i <= 12; i += 1) drawLine(i / 12, false, "rgba(0,119,151,.24)", 1);
 
-  if (from === 0 && to !== 0 && progress < .75) {
-    const alpha = 1 - progress / .75;
-    drawLine(0, false, `rgba(0,119,151,${alpha})`, 4);
-    drawLine(1, false, `rgba(0,119,151,${alpha})`, 4);
-  }
-  if ((to === 1 || from === 1) && progress < .96) {
-    const alpha = to === 2 ? 1 - progress : 1;
-    drawLine(0, true, `rgba(130,151,47,${Math.max(.08, alpha)})`, 4);
-    drawLine(1, true, `rgba(130,151,47,${Math.max(.08, alpha)})`, 4);
-  }
+  /* Las dos copias de cada borde se mantienen visibles durante el pegado;
+     al cerrarse pasan a ser ciclos destacados sobre la superficie. */
+  const verticalAlpha = to === 2 ? Math.max(.35, 1 - progress * .65) : .96;
+  drawLine(0, false, `rgba(0,119,151,${verticalAlpha})`, 6.5);
+  drawLine(1, false, `rgba(0,119,151,${verticalAlpha})`, 6.5);
+
+  const horizontalAlpha = from === 0 && to === 1 ? .32 : (to === 2 || from === 2 ? .94 : .68);
+  drawLine(0, true, `rgba(130,151,47,${horizontalAlpha})`, 6.5);
+  drawLine(1, true, `rgba(130,151,47,${horizontalAlpha})`, 6.5);
 
   ctx.fillStyle = "#123d46";
   ctx.font = "600 12px ui-monospace, SFMono-Regular, Menlo, monospace";
