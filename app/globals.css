@@ -186,6 +186,27 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .braid-word strong { color: var(--ink); font: 400 21px Georgia, serif; overflow-wrap: anywhere; }
 .braid-builder-note { margin: 0; padding: 0 30px 28px; color: var(--muted); font: 13px/1.55 Georgia, serif; }
 
+.stitch-inversion-figure { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: clamp(20px,5vw,58px); margin: 0 0 95px; padding: 55px clamp(22px,5vw,58px) 32px; border-block: 1px solid var(--line); background: #fff; }
+.stitch-face { min-height: 230px; padding: 28px; display: grid; align-content: center; justify-items: center; border: 1px solid var(--line); text-align: center; }
+.stitch-face span { display: grid; width: 78px; height: 78px; place-items: center; margin-bottom: 18px; border-radius: 50%; color: #fff; background: var(--blue); font: 44px Georgia, serif; }
+.stitch-wrong span { color: var(--ink); background: var(--pink); }
+.stitch-face strong { font: 400 30px Georgia, serif; }.stitch-face small { margin-top: 8px; color: var(--muted); font: 10px var(--font-geist-mono); }
+.inversion-arrow { display: grid; justify-items: center; color: var(--blue); }.inversion-arrow span { font: 9px var(--font-geist-mono); letter-spacing: .1em; text-transform: uppercase; }.inversion-arrow strong { font: 48px Georgia, serif; }.inversion-arrow small { color: var(--olive); font: italic 24px Georgia, serif; }
+.stitch-inversion-figure figcaption { grid-column: 1 / -1; margin-top: 20px; color: var(--ink); font: 22px Georgia, serif; text-align: center; }
+.binary-pullquote { border-left-color: var(--olive); }
+.binary-textile-figure { margin: 45px 0; }
+.binary-textile-grid { display: grid; grid-template-columns: repeat(8,1fr); border-top: 1px solid var(--ink); border-left: 1px solid var(--ink); }
+.binary-textile-grid span { aspect-ratio: 1; display: grid; place-items: center; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); font: 16px var(--font-geist-mono); }
+.binary-textile-grid .bit-zero { color: #fff; background: var(--blue); }.binary-textile-grid .bit-one { color: var(--ink); background: var(--pink); }
+.binary-textile-figure figcaption { display: flex; gap: 25px; margin-top: 14px; color: var(--muted); font: 11px var(--font-geist-mono); }.binary-textile-figure figcaption span { display: flex; align-items: center; gap: 7px; }.binary-textile-figure figcaption i { width: 11px; height: 11px; border-radius: 50%; }.legend-zero { background: var(--blue); }.legend-one { background: var(--pink); }
+.binary-history-section { border-top-color: var(--olive); }.binary-programmers-section { border-top-color: var(--blue); }.binary-formal-section { border-top-color: var(--green); }
+.binary-formulas { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 40px 0; background: var(--line); border: 1px solid var(--line); }
+.binary-formulas span, .binary-formulas strong { min-height: 105px; display: grid; place-items: center; background: #fff; font: 400 32px Georgia, serif; }
+.binary-formulas strong { grid-column: 1 / -1; color: var(--blue); }
+.binary-sources { max-width: 760px; margin: 40px auto 0; padding: 60px 0 0; border-top: 1px solid var(--ink); }
+.binary-sources h2 { margin-bottom: 30px; font-size: clamp(36px,4.5vw,54px); }
+.binary-sources a { display: flex; justify-content: space-between; gap: 20px; padding: 18px 0; border-top: 1px solid var(--line); color: #49656d; font: 15px/1.5 Georgia, serif; }.binary-sources a:hover { color: var(--blue); }.binary-sources a span { color: var(--blue); }
+
 .sitemap-page { min-height: 100vh; background: #fffefa; }
 .sitemap-masthead { max-width: 1180px; margin: 0 auto; padding: 95px 34px 75px; }
 .sitemap-masthead h1 { max-width: none; font: 400 clamp(54px,8vw,104px)/.92 Georgia, serif; letter-spacing: -.06em; }
@@ -393,6 +414,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .learn-masthead { padding: 80px 24px 65px; }.learn-masthead h1 { font-size: 41px; }.learn-deck { margin-top: 42px; }.learn-deck p { font-size: 20px; }
   .notes-library { padding: 70px 24px 85px; }.notes-library > header { grid-template-columns: 1fr; gap: 18px; }.notes-library > header > p:last-child { grid-column: auto; }.note-entry { grid-template-columns: 1fr; gap: 32px; padding: 50px 0; }.note-dates { grid-template-columns: 1fr 1fr; gap: 18px; }.note-visual { grid-column: auto; min-height: 210px; }.learn-colophon { grid-template-columns: 1fr; gap: 22px; }
   .braid-article { padding: 64px 24px 85px; box-shadow: inset 7px 0 0 var(--section-edge), inset -7px 0 0 var(--section-edge); }.braid-article-lead { font-size: 22px; }.braid-hero-image { margin-bottom: 70px; }.braid-prose-section { padding: 54px 0; }.braid-prose-section > p:not(.braid-section-number) { font-size: 17px; }.braid-pullquote { padding-left: 24px; font-size: 26px; }.braid-builder > header { grid-template-columns: 1fr; padding: 28px 20px 24px; }.braid-builder > header > p:first-child { grid-row: auto; }.braid-controls { padding: 18px 20px; }.braid-controls button.secondary { margin-left: 0; }.braid-word { grid-template-columns: 1fr; padding: 22px 20px; }.braid-builder-note { padding: 0 20px 24px; }.braid-presentation { font-size: 19px; overflow-x: auto; }
+  .stitch-inversion-figure { grid-template-columns: 1fr; gap: 22px; margin-bottom: 70px; padding: 34px 0 26px; }.stitch-face { min-height: 190px; }.inversion-arrow { transform: rotate(90deg); }.inversion-arrow span, .inversion-arrow small { transform: rotate(-90deg); }.stitch-inversion-figure figcaption { grid-column: 1; font-size: 19px; }.binary-textile-grid span { font-size: 12px; }.binary-formulas span, .binary-formulas strong { min-height: 82px; font-size: 25px; }
   .course-article-layout { grid-template-columns: 1fr; padding: 65px 24px 85px; gap: 60px; background: #fff; }
   .course-visual-example > div { grid-template-columns: 1fr; }.course-visual-example h3, .course-visual-example p { grid-column: 1; grid-row: auto; }
   .matrix-animation-heading { align-items: flex-start; flex-direction: column; }.matrix-animation-heading p { text-align: left; }.matrix-animation-stage { grid-template-columns: auto 1fr; gap: 18px 12px; padding: 28px 20px; }.matrix-equals { grid-column: 1; }.matrix-animation-controls { align-items: flex-start; flex-direction: column; }.matrix-animation-controls button { align-self: stretch; }

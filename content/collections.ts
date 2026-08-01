@@ -131,6 +131,20 @@ export const collections: EditorialCollection[] = [
     tone: "pink",
     entries: [
       {
+        number: "04",
+        title: "Del revés al bit",
+        subtitle: "Tejido, inversión y sistemas binarios",
+        description: "Una lectura del derecho y el revés como dos estados que conduce desde los puntos tejidos hasta los bits y la historia de la programación.",
+        authors: "Camila Muñoz Santander",
+        published: "1 agosto 2026",
+        modified: "1 agosto 2026",
+        href: "/tejido/del-reves-al-bit",
+        visual: "D ↔ R · 0 ↔ 1",
+        eyebrow: "04 / TEJIDO & COMPUTACIÓN",
+        introduction: "Cuando damos vuelta un tejido, aquello que veíamos como derecho aparece como revés. Si lo damos vuelta nuevamente, recuperamos la vista inicial. Ese gesto cotidiano contiene una idea matemática precisa: una transformación que es su propia inversa.",
+        sections: [],
+      },
+      {
         number: "03",
         title: "Trenzas, nudos y tejido",
         subtitle: "Cuando cruzar hilos se convierte en álgebra",
