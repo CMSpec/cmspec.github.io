@@ -131,6 +131,20 @@ export const collections: EditorialCollection[] = [
     tone: "pink",
     entries: [
       {
+        number: "05",
+        title: "Repetir, identificar, representar",
+        subtitle: "De los días de la semana a superficies con agujeros",
+        description: "Módulos, representantes y dominios fundamentales para comprender cómo un patrón repetido puede convertirse en un cilindro, un toro o una superficie de género 2.",
+        authors: "Camila Muñoz Santander",
+        published: "1 agosto 2026",
+        modified: "1 agosto 2026",
+        href: "/tejido/repeticion-identificaciones-y-superficies",
+        visual: "ℤ/7ℤ → T²",
+        eyebrow: "05 / PATRONES & TOPOLOGÍA",
+        introduction: "Repetir un patrón también significa decidir qué posiciones consideraremos equivalentes. Los días de la semana, los puntos de un tejido y los bordes de una superficie comparten esa misma idea: elegir una pieza representativa y reconstruir el conjunto mediante identificaciones.",
+        sections: [],
+      },
+      {
         number: "04",
         title: "Del revés al bit",
         subtitle: "Tejido, inversión y sistemas binarios",
