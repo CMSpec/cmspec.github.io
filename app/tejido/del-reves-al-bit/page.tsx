@@ -38,6 +38,12 @@ export default function BinaryTextilesPage() {
           <figcaption id="stitch-inversion-caption">I(D)=R, I(R)=D y, por lo tanto, I²=id.</figcaption>
         </figure>
 
+        <figure className="stitch-comparison-figure" aria-labelledby="stitch-comparison-caption">
+          <div className="stitch-comparison-labels" aria-hidden="true"><span>DERECHO</span><span>REVÉS</span></div>
+          <img src="/images/derecho-reves-tejido.png" alt="Comparación ampliada del punto derecho, con columnas de formas en V, y el punto revés, con hileras de pequeños relieves horizontales" />
+          <figcaption id="stitch-comparison-caption">A la izquierda, el derecho forma columnas de «V»; a la derecha, el revés muestra relieves horizontales. Son las dos vistas de una misma estructura tejida.</figcaption>
+        </figure>
+
         <section className="braid-prose-section">
           <p className="braid-section-number">01 / DAR VUELTA</p>
           <h2>Dos caras de un mismo punto</h2>
