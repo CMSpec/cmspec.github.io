@@ -61,8 +61,13 @@ function drawSurface(canvas: HTMLCanvasElement, from: Stage, to: Stage, progress
     ctx.stroke();
   };
 
-  for (let i = 0; i <= 8; i += 1) drawLine(i / 8, true, "rgba(130,151,47,.25)", 1);
-  for (let i = 0; i <= 12; i += 1) drawLine(i / 12, false, "rgba(0,119,151,.24)", 1);
+  const isTorusView = from === 2 || to === 2;
+  const horizontalDivisions = isTorusView ? 5 : 8;
+  const verticalDivisions = isTorusView ? 7 : 12;
+  const horizontalGrid = isTorusView ? "rgba(130,151,47,.39)" : "rgba(130,151,47,.25)";
+  const verticalGrid = isTorusView ? "rgba(0,119,151,.37)" : "rgba(0,119,151,.24)";
+  for (let i = 0; i <= horizontalDivisions; i += 1) drawLine(i / horizontalDivisions, true, horizontalGrid, isTorusView ? 1.35 : 1);
+  for (let i = 0; i <= verticalDivisions; i += 1) drawLine(i / verticalDivisions, false, verticalGrid, isTorusView ? 1.35 : 1);
 
   /* Las dos copias de cada borde se mantienen visibles durante el pegado;
      al cerrarse pasan a ser ciclos destacados sobre la superficie. */
