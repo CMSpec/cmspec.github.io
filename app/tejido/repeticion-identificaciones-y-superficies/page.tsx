@@ -60,6 +60,7 @@ export default function QuotientPatternsPage() {
           <h2>Cuando repetir cambia la forma del espacio</h2>
           <p>Pensemos ahora en un patrón que cubre todo el plano. Si repetimos un rectángulo hacia la izquierda y hacia la derecha, podemos quedarnos con una sola copia e identificar sus bordes verticales: salir por un lado equivale a entrar por el opuesto. El cociente es un cilindro.</p>
           <p>Si además repetimos hacia arriba y hacia abajo, identificamos también los bordes horizontales. El cilindro se cierra sobre sí mismo y obtenemos un toro. Formalmente, ℝ²/ℤ²≅S¹×S¹.</p>
+          <p className="topology-seam-note"><strong>Lectura textil.</strong> Las líneas gruesas de la animación señalan los bordes que serán identificados. En una pieza tejida, esas líneas corresponderían a las costuras con las que unimos los lados para cerrar primero el cilindro y luego el toro.</p>
           <QuotientSurfaceAnimator />
           <p>La animación muestra un modelo geométrico del cociente. El rectángulo no se estira en la definición matemática: lo deformamos en el espacio tridimensional para hacer visibles las identificaciones. Topológicamente importan las conexiones, no la curvatura de la dona.</p>
         </section>

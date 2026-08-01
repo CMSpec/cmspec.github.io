@@ -400,6 +400,8 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .week-cycle span { display: block; margin-bottom: 10px; color: #a55f45; font: 700 10px var(--font-geist-mono), monospace; }
 .week-cycle strong { color: var(--ink); font: 400 14px Georgia, serif; }
 .quotient-formula { max-width: 650px; margin: 36px 0; padding: 25px 28px; color: var(--blue); background: #fff; border-block: 1px solid var(--line); font: italic 30px Georgia, serif; text-align: center; }
+.quotient-article .topology-seam-note { margin: 35px 0 0; padding: 20px 24px; color: var(--muted); background: #fff8f3; border-left: 4px solid #d58f72; font-size: 16px !important; }
+.topology-seam-note strong { color: #a55f45; font-family: var(--font-geist-sans), sans-serif; }
 .motif-figure { margin: 44px 0; }
 .motif-strip { display: grid; grid-template-columns: repeat(3, 1fr); background: #fff; }
 .motif-strip > div { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); border-block: 1px solid var(--line); }
