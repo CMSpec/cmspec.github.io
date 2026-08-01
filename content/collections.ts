@@ -34,7 +34,7 @@ export const collections: EditorialCollection[] = [
     title: "Investigar",
     deck: "Un espacio para documentar preguntas, modelos, avances y conexiones matemáticas mientras toman forma.",
     colophon: "Estas entradas son documentos vivos: registran procesos, preguntas abiertas y relaciones que pueden seguir desarrollándose.",
-    tone: "olive",
+    tone: "blue",
     entries: [
       {
         number: "01",
@@ -81,7 +81,7 @@ export const collections: EditorialCollection[] = [
     title: "Salud",
     deck: "Análisis, exploración y discusión para comprender preguntas relevantes de salud pública.",
     colophon: "Las entradas de esta colección describen preguntas y métodos; no reemplazan orientación clínica ni constituyen consejo médico.",
-    tone: "blue",
+    tone: "olive",
     entries: [
       {
         number: "01",

@@ -41,7 +41,7 @@ export const siteContent = {
       eyebrow: "Pensar con estructura",
       description:
         "Proyectos, avances, modelos y notas matemáticas que hacen visible el proceso, no solo el resultado.",
-      color: "var(--olive)",
+      color: "var(--blue)",
       href: "/investigacion",
       linkLabel: "Abrir la colección",
     },
@@ -52,7 +52,7 @@ export const siteContent = {
       eyebrow: "Leer lo que los datos dicen",
       description:
         "Análisis, exporación y discusión en tópicos de salud pública.",
-      color: "var(--blue)",
+      color: "var(--olive)",
       href: "/salud",
       linkLabel: "Abrir la colección",
     },

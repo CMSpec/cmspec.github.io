@@ -3,8 +3,8 @@ import { collections } from "../content/collections";
 import { courseNotes } from "../content/course-library";
 
 const indexAreas = [
-  { number: "01", title: "Investigación & Math", href: "/investigacion", tone: "olive", entries: collections.find((item) => item.slug === "investigacion")!.entries },
-  { number: "02", title: "Colaboraciones en Salud", href: "/salud", tone: "blue", entries: collections.find((item) => item.slug === "salud")!.entries },
+  { number: "01", title: "Investigación & Math", href: "/investigacion", tone: "blue", entries: collections.find((item) => item.slug === "investigacion")!.entries },
+  { number: "02", title: "Colaboraciones en Salud", href: "/salud", tone: "olive", entries: collections.find((item) => item.slug === "salud")!.entries },
   {
     number: "03", title: "Apuntes y exploración", href: "/aprender", tone: "green",
     entries: courseNotes.map(({ title, href }) => ({ title, href })),
