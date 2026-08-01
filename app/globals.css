@@ -153,6 +153,39 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .editorial-reading h2 { font-size: clamp(36px,5vw,58px); }
 .editorial-reading h2 + p { max-width: 650px; margin: 25px 0 0; color: #49656d; font: 18px/1.7 Georgia, serif; }
 
+.braid-article { max-width: 1120px; margin: 0 auto; padding: 88px clamp(32px, 7vw, 108px) 125px; background: #fff; box-shadow: inset 12px 0 0 var(--section-edge), inset -12px 0 0 var(--section-edge); }
+.braid-article-lead { max-width: 790px; margin: 0 0 64px; color: #385963; font: 27px/1.5 Georgia, serif; }
+.braid-hero-image { margin: 0 0 94px; }
+.braid-hero-image img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+.braid-hero-image figcaption { margin-top: 13px; color: var(--muted); font: 11px/1.5 var(--font-geist-mono); }
+.braid-prose-section { max-width: 760px; margin: 0 auto; padding: 70px 0; border-top: 1px solid var(--line); }
+.braid-section-number { margin: 0 0 22px; color: #a85f45; font: 700 10px var(--font-geist-mono); letter-spacing: .14em; }
+.braid-prose-section h2 { margin-bottom: 30px; font-size: clamp(38px, 5vw, 62px); }
+.braid-prose-section > p:not(.braid-section-number) { margin: 0 0 24px; color: #203f47; font: 19px/1.78 Georgia, serif; }
+.braid-pullquote { max-width: 760px; margin: 18px auto 70px; padding: 34px 0 34px 38px; border-left: 5px solid var(--blue); color: var(--ink); font: italic 31px/1.35 Georgia, serif; }
+.braid-formal-section { border-top-color: var(--olive); }
+.braid-presentation { display: grid; gap: 15px; margin: 38px 0; padding: 30px 0; border-block: 1px solid var(--blue); color: var(--ink); font: 24px/1.5 Georgia, serif; text-align: center; }
+.braid-presentation strong { font-weight: 400; }
+.braid-closing-section { border-top-color: #d58f72; }
+
+.braid-builder { max-width: 900px; margin: 50px auto 95px; border-top: 6px solid var(--blue); border-bottom: 1px solid var(--line); background: #fff; }
+.braid-builder > header { display: grid; grid-template-columns: minmax(150px,.4fr) minmax(0,1fr); gap: 12px 35px; padding: 34px 30px 30px; border-bottom: 1px solid var(--line); }
+.braid-builder > header > p:first-child { grid-row: span 2; margin: 3px 0 0; color: var(--blue); font: 700 10px/1.5 var(--font-geist-mono); letter-spacing: .14em; }
+.braid-builder > header h2 { font-size: clamp(31px,4vw,48px); }
+.braid-builder > header > p:last-child { margin: 5px 0 0; color: var(--muted); font: 16px/1.6 Georgia, serif; }
+.braid-controls { display: flex; flex-wrap: wrap; gap: 10px; padding: 22px 30px; border-bottom: 1px solid var(--line); }
+.braid-controls button { min-width: 68px; min-height: 44px; padding: 0 15px; border: 1px solid var(--blue); border-radius: 999px; color: #fff; background: var(--blue); cursor: pointer; font: 700 16px Georgia, serif; transition: color .2s ease, background .2s ease, transform .2s ease; }
+.braid-controls button:hover:not(:disabled), .braid-controls button:focus-visible { transform: translateY(-2px); }
+.braid-controls button.secondary { margin-left: auto; color: var(--blue); background: #fff; font: 700 11px var(--font-geist-sans); }
+.braid-controls button.secondary + button.secondary { margin-left: 0; }
+.braid-controls button:disabled { opacity: .35; cursor: not-allowed; }
+.braid-canvas-wrap { padding: 20px 0 4px; overflow-x: auto; }
+.braid-canvas-wrap canvas { display: block; width: 100%; min-width: 620px; height: 330px; background: #fff; }
+.braid-word { display: grid; grid-template-columns: 150px minmax(0,1fr); gap: 10px 25px; padding: 25px 30px; border-top: 1px solid var(--line); }
+.braid-word span { color: var(--muted); font: 700 9px var(--font-geist-mono); letter-spacing: .1em; text-transform: uppercase; }
+.braid-word strong { color: var(--ink); font: 400 21px Georgia, serif; overflow-wrap: anywhere; }
+.braid-builder-note { margin: 0; padding: 0 30px 28px; color: var(--muted); font: 13px/1.55 Georgia, serif; }
+
 .sitemap-page { min-height: 100vh; background: #fffefa; }
 .sitemap-masthead { max-width: 1180px; margin: 0 auto; padding: 95px 34px 75px; }
 .sitemap-masthead h1 { max-width: none; font: 400 clamp(54px,8vw,104px)/.92 Georgia, serif; letter-spacing: -.06em; }
@@ -359,6 +392,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .edo-course .course-masthead h1 { font-size: 32px; }
   .learn-masthead { padding: 80px 24px 65px; }.learn-masthead h1 { font-size: 41px; }.learn-deck { margin-top: 42px; }.learn-deck p { font-size: 20px; }
   .notes-library { padding: 70px 24px 85px; }.notes-library > header { grid-template-columns: 1fr; gap: 18px; }.notes-library > header > p:last-child { grid-column: auto; }.note-entry { grid-template-columns: 1fr; gap: 32px; padding: 50px 0; }.note-dates { grid-template-columns: 1fr 1fr; gap: 18px; }.note-visual { grid-column: auto; min-height: 210px; }.learn-colophon { grid-template-columns: 1fr; gap: 22px; }
+  .braid-article { padding: 64px 24px 85px; box-shadow: inset 7px 0 0 var(--section-edge), inset -7px 0 0 var(--section-edge); }.braid-article-lead { font-size: 22px; }.braid-hero-image { margin-bottom: 70px; }.braid-prose-section { padding: 54px 0; }.braid-prose-section > p:not(.braid-section-number) { font-size: 17px; }.braid-pullquote { padding-left: 24px; font-size: 26px; }.braid-builder > header { grid-template-columns: 1fr; padding: 28px 20px 24px; }.braid-builder > header > p:first-child { grid-row: auto; }.braid-controls { padding: 18px 20px; }.braid-controls button.secondary { margin-left: 0; }.braid-word { grid-template-columns: 1fr; padding: 22px 20px; }.braid-builder-note { padding: 0 20px 24px; }.braid-presentation { font-size: 19px; overflow-x: auto; }
   .course-article-layout { grid-template-columns: 1fr; padding: 65px 24px 85px; gap: 60px; background: #fff; }
   .course-visual-example > div { grid-template-columns: 1fr; }.course-visual-example h3, .course-visual-example p { grid-column: 1; grid-row: auto; }
   .matrix-animation-heading { align-items: flex-start; flex-direction: column; }.matrix-animation-heading p { text-align: left; }.matrix-animation-stage { grid-template-columns: auto 1fr; gap: 18px 12px; padding: 28px 20px; }.matrix-equals { grid-column: 1; }.matrix-animation-controls { align-items: flex-start; flex-direction: column; }.matrix-animation-controls button { align-self: stretch; }

@@ -1,6 +1,6 @@
 import type { EditorialCollection, EditorialEntry } from "../../content/collections";
 
-function BrandHeader({ label, backHref = "/" }: { label: string; backHref?: string }) {
+export function BrandHeader({ label, backHref = "/" }: { label: string; backHref?: string }) {
   return (
     <header className="course-header">
       <a className="brand" href="/" aria-label="CMSpec, volver al inicio">

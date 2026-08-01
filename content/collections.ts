@@ -131,6 +131,20 @@ export const collections: EditorialCollection[] = [
     tone: "pink",
     entries: [
       {
+        number: "03",
+        title: "Trenzas, nudos y tejido",
+        subtitle: "Cuando cruzar hilos se convierte en álgebra",
+        description: "Una entrada desde el gesto cotidiano de trenzar hasta la formalización del grupo de trenzas y sus relaciones.",
+        authors: "Camila Muñoz Santander",
+        published: "1 agosto 2026",
+        modified: "1 agosto 2026",
+        href: "/tejido/trenzas-nudos-y-tejido",
+        visual: "σ₁ σ₂ σ₁",
+        eyebrow: "03 / MATEMÁTICA & TEJIDO",
+        introduction: "Trenzar parece un gesto simple: tomar hebras vecinas, cruzarlas y repetir. Pero si registramos el orden y la orientación de cada cruce aparece una estructura algebraica sorprendentemente rica.",
+        sections: [],
+      },
+      {
         number: "01",
         title: "Repetición y ritmo",
         subtitle: "Contar puntos para construir un patrón",
