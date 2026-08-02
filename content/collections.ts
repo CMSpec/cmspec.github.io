@@ -131,6 +131,20 @@ export const collections: EditorialCollection[] = [
     tone: "pink",
     entries: [
       {
+        number: "08",
+        title: "Topología para tejedoras",
+        subtitle: "Del punto local a la forma global de un sweater",
+        description: "Una introducción a la topología desde la experiencia de tejer: vecindades, continuidad, bordes, orificios y las propiedades que sobreviven al deformar una prenda.",
+        authors: "Camila Muñoz Santander",
+        published: "3 agosto 2026",
+        modified: "3 agosto 2026",
+        href: "/tejido/topologia-para-tejedoras",
+        visual: "local ↔ global",
+        eyebrow: "08 / TEJIDO & TOPOLOGÍA",
+        introduction: "Antes de convertirse en una prenda, un tejido es una colección de relaciones locales: cada punto se enlaza con otros y cada decisión modifica la continuidad de la tela. La topología permite preguntar cómo esas relaciones producen una forma global y qué permanece cuando la estiramos, doblamos o vestimos.",
+        sections: [],
+      },
+      {
         number: "07",
         title: "Caminar por una banda de Möbius",
         subtitle: "De un cuello tejido a una superficie no orientable",
