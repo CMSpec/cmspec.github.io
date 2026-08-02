@@ -28,8 +28,8 @@ function moebiusPoint(theta: number, v: number, radius = 122): Point3 {
   const localTheta = theta - revolution * turn;
   // Concentrate the half-turn at the front crossing (three quarters of a lap)
   // so the walker changes orientation exactly where the strip twists.
-  const twistStart = Math.PI * 1.44;
-  const twistEnd = Math.PI * 1.56;
+  const twistStart = Math.PI * 1.32;
+  const twistEnd = Math.PI * 1.68;
   const twist = revolution * Math.PI + Math.PI * smoothStep((localTheta - twistStart) / (twistEnd - twistStart));
   const radialWidth = v * Math.sin(twist);
   return {
