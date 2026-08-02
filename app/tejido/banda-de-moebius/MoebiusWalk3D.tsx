@@ -143,7 +143,9 @@ function mountScene(host: HTMLDivElement): SceneApi {
     const theta = journey * Math.PI * 4;
     const anchor = pointOnBand(theta);
     const { tangent, across, normal } = frameOnBand(theta);
-    walker.position.copy(anchor).addScaledVector(normal, .018);
+    // Lift the whole skater so the wheels rest on the surface instead of
+    // intersecting it as the local normal turns with the Möbius strip.
+    walker.position.copy(anchor).addScaledVector(normal, .145);
     const basis = new THREE.Matrix4().makeBasis(across, normal, tangent);
     walker.quaternion.setFromRotationMatrix(basis);
     const count = Math.max(2, Math.floor(journey * 520));
