@@ -168,10 +168,10 @@ export const siteContent = {
         tone: "olive",
       },
       {
-        title: "Cuando una superficie se puede tejer",
+        title: "Topología para tejedoras",
         category: "TEJIDO & ESTRUCTURAS",
-        description: "De la ecuación del círculo al crochet hiperbólico y el arrecife de las hermanas Wertheim.",
-        href: "/tejido/superficies-que-se-pueden-tejer",
+        description: "Del punto local a la forma global: continuidad, bordes y orificios vistos desde la experiencia de tejer.",
+        href: "/tejido/topologia-para-tejedoras",
         image: "/images/recommended-crochet.jpg",
         imageAlt: "Proceso de crochet realizado con hilo azul",
         credit: "Foto provisional: Liana S · Unsplash",

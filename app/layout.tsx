@@ -26,5 +26,14 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="es"><body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body></html>;
+  return (
+    <html lang="es">
+      <body id="top" className={`${geistSans.variable} ${geistMono.variable}`}>
+        {children}
+        <a className="back-to-top" href="#top" aria-label="Volver al inicio de la página" title="Volver arriba">
+          <span aria-hidden="true">↑</span>
+        </a>
+      </body>
+    </html>
+  );
 }
