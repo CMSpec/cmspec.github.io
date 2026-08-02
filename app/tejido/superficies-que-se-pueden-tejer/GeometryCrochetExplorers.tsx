@@ -64,10 +64,25 @@ export function CircleEquationExplorer() {
     ctx.setLineDash([6, 5]);
     ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + radius * scale, cy); ctx.stroke();
     ctx.setLineDash([]);
+    const legendWidth = 126;
+    const legendHeight = 58;
+    const legendX = width - legendWidth - 16;
+    const legendY = 16;
+    ctx.fillStyle = "rgba(255,255,255,.94)";
+    ctx.strokeStyle = "rgba(18,52,61,.18)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.roundRect(legendX, legendY, legendWidth, legendHeight, 4);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = "#557078";
+    ctx.font = "10px ui-monospace, SFMono-Regular, Menlo, monospace";
+    ctx.fillText("CENTRO", legendX + 12, legendY + 19);
+    ctx.fillText("RADIO", legendX + 12, legendY + 42);
     ctx.fillStyle = "#12343d";
-    ctx.font = "13px Georgia, serif";
-    ctx.fillText(`(${centerX}, ${centerY})`, cx + 10, cy - 10);
-    ctx.fillText(`r = ${radius.toFixed(1)}`, cx + radius * scale / 2 - 16, cy - 10);
+    ctx.font = "15px Georgia, serif";
+    ctx.fillText(`(${centerX}, ${centerY})`, legendX + 64, legendY + 19);
+    ctx.fillText(radius.toFixed(1), legendX + 64, legendY + 42);
   }, [centerX, centerY, radius]);
 
   useEffect(draw, [draw]);
