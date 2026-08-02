@@ -19,6 +19,7 @@ export const siteContent = {
     links: [
       { label: "Aprender", href: "/aprender" },
       { label: "Archivo", href: "#archivo" },
+      { label: "Sobre mí", href: "#sobre-mi" },
     ],
     contactLabel: "Contacto",
   },
@@ -123,6 +124,60 @@ export const siteContent = {
       "Datos de salud",
       "Apuntes interactivos",
       "Tejido y matemáticas",
+    ],
+  },
+
+  about: {
+    index: "03 / SOBRE MÍ",
+    titleFirstLine: "Camila Muñoz",
+    titleSecondLine: "Santander",
+    introduction:
+      "Soy matemática y docente. Me interesa construir formas de leer, enseñar y comunicar ideas que suelen aparecer separadas, pero que comparten estructuras y preguntas.",
+    paragraphs: [
+      "En CMSpec reúno investigación matemática, apuntes de pregrado, colaboraciones en salud pública y exploraciones visuales. Este sitio funciona como un cuaderno abierto: conserva procesos, conecta conceptos y permite que los materiales sigan creciendo.",
+      "El tejido ocupa un lugar especial en este espectro. Sus repeticiones, simetrías, cruces y superficies permiten pensar la matemática con las manos y encontrar relaciones que no siempre son evidentes en una fórmula.",
+    ],
+    interests: ["Matemáticas", "Docencia", "Salud pública", "Visualización", "Tejido & patrones"],
+  },
+
+  recommended: {
+    index: "04 / PARA SEGUIR LEYENDO",
+    title: "Entradas recomendadas",
+    description: "Tres recorridos para entrar a CMSpec desde distintos puntos del espectro.",
+    entries: [
+      {
+        title: "Álgebra Lineal",
+        category: "APUNTES & EXPLORACIÓN",
+        description: "Vectores, matrices, sistemas y transformaciones acompañados por ejemplos y visualizaciones.",
+        href: "/cursos/algebra-lineal",
+        image: "/images/recommended-math.jpg",
+        imageAlt: "Cuaderno abierto con ejercicios matemáticos sobre una mesa",
+        credit: "Foto provisional: De an Sun · Unsplash",
+        creditHref: "https://unsplash.com/photos/white-paper-document-on-brown-wooden-table-46kSHMAbCeM",
+        tone: "blue",
+      },
+      {
+        title: "Explorar datos de salud",
+        category: "COLABORACIONES EN SALUD",
+        description: "Preguntas sobre procedencia, calidad y límites antes de resumir un conjunto de datos.",
+        href: "/salud/explorar-datos",
+        image: "/images/recommended-health.jpg",
+        imageAlt: "Persona trabajando con un computador y un estetoscopio sobre la mesa",
+        credit: "Foto provisional: National Cancer Institute · Unsplash",
+        creditHref: "https://unsplash.com/photos/person-sitting-while-using-laptop-computer-and-green-stethoscope-near-NFvdKIhxYlU",
+        tone: "olive",
+      },
+      {
+        title: "Cuando una superficie se puede tejer",
+        category: "TEJIDO & PATRONES",
+        description: "De la ecuación del círculo al crochet hiperbólico y el arrecife de las hermanas Wertheim.",
+        href: "/tejido/superficies-que-se-pueden-tejer",
+        image: "/images/recommended-crochet.jpg",
+        imageAlt: "Proceso de crochet realizado con hilo azul",
+        credit: "Foto provisional: Liana S · Unsplash",
+        creditHref: "https://unsplash.com/photos/crocheting-with-blue-yarn-is-in-progress-7XP0xSMobkg",
+        tone: "pink",
+      },
     ],
   },
 } as const;

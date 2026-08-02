@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { siteContent } from "../content/site";
 import { collections } from "../content/collections";
 import { courseNotes } from "../content/course-library";
@@ -13,7 +14,7 @@ const indexAreas = [
 ];
 
 export default function Home() {
-  const { brand, navigation, hero, domains, spectrumSection, archive } = siteContent;
+  const { brand, navigation, hero, domains, spectrumSection, archive, about, recommended } = siteContent;
 
   return (
     <main>
@@ -128,6 +129,45 @@ export default function Home() {
         <div className="archive-list">
           {archive.topics.map((topic) => <span key={topic}>{topic}</span>)}
         </div>
+      </section>
+
+      <section className="about-section" id="sobre-mi">
+        <p className="section-index">{about.index}</p>
+        <div className="about-heading">
+          <h2>{about.titleFirstLine}<br />{about.titleSecondLine}</h2>
+          <p>{about.introduction}</p>
+        </div>
+        <div className="about-copy">
+          {about.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          <div className="about-interests" aria-label="Áreas de interés">
+            {about.interests.map((interest) => <span key={interest}>{interest}</span>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="recommended-section" aria-labelledby="recommended-title">
+        <header>
+          <p className="section-index">{recommended.index}</p>
+          <h2 id="recommended-title">{recommended.title}</h2>
+          <p>{recommended.description}</p>
+        </header>
+        <div className="recommended-grid">
+          {recommended.entries.map((entry) => (
+            <article className={`recommended-card recommended-${entry.tone}`} key={entry.href}>
+              <a className="recommended-image" href={entry.href} aria-label={`Leer ${entry.title}`}>
+                <Image src={entry.image} alt={entry.imageAlt} width={1400} height={933} />
+                <span>Leer la entrada ↗</span>
+              </a>
+              <div className="recommended-copy">
+                <p>{entry.category}</p>
+                <h3><a href={entry.href}>{entry.title}</a></h3>
+                <p>{entry.description}</p>
+                <a className="recommended-credit" href={entry.creditHref} target="_blank" rel="noreferrer">{entry.credit} ↗</a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p className="recommended-note">Las imágenes son provisionales y de uso libre bajo la licencia de Unsplash. Podrás reemplazarlas cuando elijas las definitivas.</p>
       </section>
 
       <footer id="contacto">

@@ -97,6 +97,32 @@ input[type="range"] { width: 100%; accent-color: var(--blue); cursor: pointer; }
 
 .archive-section { display: grid; grid-template-columns: .45fr 1.05fr 1fr; gap: 7vw; background: var(--pink); }
 .archive-list { display: grid; align-content: start; }.archive-list span { border-bottom: 1px solid rgba(18,52,61,.2); padding: 16px 0; font-size: 14px; }.archive-list span::before { content: "·"; margin-right: 12px; color: var(--blue); }
+
+.about-section { display: grid; grid-template-columns: .45fr .95fr 1.1fr; gap: 7vw; padding: 115px clamp(24px,7vw,108px); background: #fff; }
+.about-heading h2 { font-size: clamp(43px,5vw,70px); }
+.about-heading > p { max-width: 590px; margin: 32px 0 0; color: var(--ink); font: 23px/1.5 Georgia, serif; }
+.about-copy > p { max-width: 640px; margin: 0 0 25px; color: var(--muted); font: 17px/1.7 Georgia, serif; }
+.about-interests { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 40px; }
+.about-interests span { padding: 9px 13px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); background: var(--paper); font: 10px var(--font-geist-mono), monospace; letter-spacing: .05em; }
+
+.recommended-section { padding: 105px clamp(24px,7vw,108px) 120px; background: #f7f7f4; border-top: 1px solid var(--line); }
+.recommended-section > header { display: grid; grid-template-columns: .45fr .95fr 1.1fr; gap: 7vw; align-items: start; margin-bottom: 55px; }
+.recommended-section > header h2 { font-size: clamp(43px,5vw,67px); }
+.recommended-section > header > p:last-child { max-width: 440px; margin: 8px 0 0; color: var(--muted); font: 16px/1.6 Georgia, serif; }
+.recommended-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.recommended-card { --recommended-accent: var(--blue); min-width: 0; background: #fff; border: 1px solid var(--line); }
+.recommended-blue { --recommended-accent: var(--blue); }.recommended-olive { --recommended-accent: var(--olive); }.recommended-pink { --recommended-accent: #d58f72; }
+.recommended-image { position: relative; display: block; aspect-ratio: 1.45; overflow: hidden; background: #e9eef0; }
+.recommended-image img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.78); transition: transform .35s ease, filter .35s ease; }
+.recommended-image > span { position: absolute; right: 14px; bottom: 14px; padding: 9px 12px; color: #fff; background: color-mix(in srgb,var(--recommended-accent) 90%,transparent); font: 700 10px var(--font-geist-sans), sans-serif; opacity: 0; transform: translateY(5px); transition: opacity .25s ease, transform .25s ease; }
+.recommended-image:hover img, .recommended-image:focus-visible img { transform: scale(1.035); filter: saturate(1); }.recommended-image:hover > span, .recommended-image:focus-visible > span { opacity: 1; transform: none; }
+.recommended-copy { padding: 25px 24px 22px; border-top: 6px solid var(--recommended-accent); }
+.recommended-copy > p:first-child { margin: 0 0 16px; color: var(--recommended-accent); font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .12em; }
+.recommended-copy h3 { min-height: 70px; margin: 0 0 15px; color: var(--ink); font: 400 clamp(27px,2.6vw,39px)/1.02 Georgia, serif; letter-spacing: -.035em; }
+.recommended-copy h3 a:hover { color: var(--recommended-accent); }
+.recommended-copy > p:nth-of-type(2) { min-height: 78px; margin: 0 0 20px; color: var(--muted); font: 14px/1.55 Georgia, serif; }
+.recommended-credit { color: var(--muted); font: 9px/1.45 var(--font-geist-mono), monospace; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.recommended-note { margin: 24px 0 0; color: var(--muted); font: 10px var(--font-geist-mono), monospace; }
 footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-columns: 1fr 1fr 1fr auto; align-items: center; gap: 30px; background: #fff; font-size: 12px; }.footer-brand { font-size: 18px; }.footer-brand .brand-mark { width: 22px; height: 22px; }.footer-brand + p { color: var(--muted); }.footer > a:not(.brand) { color: var(--blue); font-weight: 650; }footer small { color: var(--muted); }
 
 .learn-page, .course-page { --section-color: var(--green); --section-header-text: var(--ink); --section-edge: color-mix(in srgb, var(--green) 20%, white); }
@@ -509,6 +535,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .section-heading { grid-template-columns: 1fr; }.section-heading > p:last-child { max-width: 570px; }
   .domain-grid { grid-template-columns: 1fr 1fr; }.lab-section { grid-template-columns: 1fr; }.lab-intro { max-width: 700px; }
   .archive-section { grid-template-columns: 1fr 1fr; }.archive-section > .section-index { grid-column: 1 / -1; }
+  .about-section { grid-template-columns: 1fr 1fr; }.about-section > .section-index { grid-column: 1 / -1; }.recommended-section > header { grid-template-columns: 1fr 1fr; }.recommended-section > header > .section-index { grid-column: 1 / -1; }.recommended-grid { grid-template-columns: 1fr 1fr; }.recommended-card:last-child { grid-column: 1 / -1; max-width: calc(50% - 9px); }
   footer { grid-template-columns: 1fr 1fr; }
   .course-article-layout { grid-template-columns: 180px minmax(0, 760px); }
   .course-margin-note { display: none; }
@@ -525,6 +552,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .domain-grid { grid-template-columns: 1fr; }.domain-card { min-height: 330px; }
   .result-grid { grid-template-columns: 1fr; }.simulator { box-shadow: 9px 9px 0 var(--blue); }
   .archive-section { grid-template-columns: 1fr; }.archive-section > .section-index { grid-column: auto; }
+  .about-section { grid-template-columns: 1fr; padding: 78px 24px; }.about-section > .section-index { grid-column: auto; }.about-heading > p { font-size: 20px; }.recommended-section { padding: 78px 24px 88px; }.recommended-section > header { grid-template-columns: 1fr; gap: 22px; }.recommended-section > header > .section-index { grid-column: auto; }.recommended-grid { grid-template-columns: 1fr; }.recommended-card:last-child { grid-column: auto; max-width: none; }.recommended-copy h3, .recommended-copy > p:nth-of-type(2) { min-height: 0; }
   footer { grid-template-columns: 1fr; }
   .course-header { height: 62px; grid-template-columns: 1fr auto; }.course-publication { display: none; }.course-back { font-size: 10px; }
   .course-masthead { padding: 70px 24px 60px; }.course-masthead h1 { font-size: 64px; }.course-deck { font-size: 20px; }.course-meta { grid-template-columns: 1fr; gap: 15px; }
