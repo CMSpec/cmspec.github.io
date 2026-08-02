@@ -16,7 +16,7 @@ export default function CrochetedSurfacesPage() {
         <p className="course-deck">{entry.subtitle}</p>
         <div className="course-meta">
           <div><span>AUTORÍA</span><strong>{entry.authors}</strong></div>
-          <div><span>COLECCIÓN</span><strong>Tejido & Patrones</strong></div>
+          <div><span>COLECCIÓN</span><strong>Tejido & Estructuras</strong></div>
           <div><span>RECORRIDO</span><strong>Ecuaciones · Superficies · Crochet</strong></div>
         </div>
       </article>

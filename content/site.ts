@@ -71,7 +71,7 @@ export const siteContent = {
     {
       id: "misc",
       short: "04",
-      title: "Tejido & Patrones",
+      title: "Tejido & Estructuras",
       eyebrow: "La matemática hecha materia",
       description:
         "Tejido, patrones, simetrías y otros hobbies que conectan la creatividad manual con el pensamiento matemático.",
@@ -137,7 +137,7 @@ export const siteContent = {
       "En CMSpec reúno investigación matemática, apuntes de pregrado, colaboraciones en salud pública y exploraciones visuales. Este sitio funciona como un cuaderno abierto: conserva procesos, conecta conceptos y permite que los materiales sigan creciendo.",
       "El tejido ocupa un lugar especial en este espectro. Sus repeticiones, simetrías, cruces y superficies permiten pensar la matemática con las manos y encontrar relaciones que no siempre son evidentes en una fórmula.",
     ],
-    interests: ["Matemáticas", "Docencia", "Salud pública", "Visualización", "Tejido & patrones"],
+    interests: ["Matemáticas", "Docencia", "Salud pública", "Visualización", "Tejido & estructuras"],
   },
 
   recommended: {
@@ -169,7 +169,7 @@ export const siteContent = {
       },
       {
         title: "Cuando una superficie se puede tejer",
-        category: "TEJIDO & PATRONES",
+        category: "TEJIDO & ESTRUCTURAS",
         description: "De la ecuación del círculo al crochet hiperbólico y el arrecife de las hermanas Wertheim.",
         href: "/tejido/superficies-que-se-pueden-tejer",
         image: "/images/recommended-crochet.jpg",

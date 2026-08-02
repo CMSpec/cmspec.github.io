@@ -123,8 +123,8 @@ export const collections: EditorialCollection[] = [
   },
   {
     slug: "tejido",
-    label: "TEJIDO & PATRONES",
-    kicker: "CMSPEC / TEJIDO & PATRONES",
+    label: "TEJIDO & ESTRUCTURAS",
+    kicker: "CMSPEC / TEJIDO & ESTRUCTURAS",
     title: "Tejer",
     deck: "Una colección sobre repeticiones, simetrías y estructuras matemáticas que se vuelven visibles al trabajar con hilo.",
     colophon: "Tejer permite pensar con las manos: cada muestra puede convertirse en una pequeña exploración de forma, número y estructura.",

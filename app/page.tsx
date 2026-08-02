@@ -10,7 +10,7 @@ const indexAreas = [
     number: "03", title: "Apuntes y exploración", href: "/aprender", tone: "green",
     entries: courseNotes.map(({ title, href }) => ({ title, href })),
   },
-  { number: "04", title: "Tejido & Patrones", href: "/tejido", tone: "pink", entries: collections.find((item) => item.slug === "tejido")!.entries },
+  { number: "04", title: "Tejido & Estructuras", href: "/tejido", tone: "pink", entries: collections.find((item) => item.slug === "tejido")!.entries },
 ];
 
 export default function Home() {

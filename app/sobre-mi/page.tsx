@@ -41,7 +41,7 @@ export default function AboutPage() {
         <a href="/investigacion"><span>01</span><strong>Investigación & Math</strong><small>Preguntas, modelos y notas matemáticas.</small></a>
         <a href="/salud"><span>02</span><strong>Colaboraciones en Salud</strong><small>Análisis y discusión en salud pública.</small></a>
         <a href="/aprender"><span>03</span><strong>Apuntes y exploración</strong><small>Cursos de pregrado y visualizaciones.</small></a>
-        <a href="/tejido"><span>04</span><strong>Tejido & Patrones</strong><small>Matemática que también se piensa con las manos.</small></a>
+        <a href="/tejido"><span>04</span><strong>Tejido & Estructuras</strong><small>Matemática que también se piensa con las manos.</small></a>
       </section>
 
       <footer className="course-footer"><p>CMSpec · Sobre mí</p><a href="/">Volver al espectro ↗</a></footer>

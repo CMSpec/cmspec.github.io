@@ -24,7 +24,7 @@ export default function BinaryTextilesPage() {
         <p className="course-deck">{entry.subtitle}</p>
         <div className="course-meta">
           <div><span>AUTORÍA</span><strong>{entry.authors}</strong></div>
-          <div><span>COLECCIÓN</span><strong>Tejido & Patrones</strong></div>
+          <div><span>COLECCIÓN</span><strong>Tejido & Estructuras</strong></div>
           <div><span>LECTURA</span><strong>Puntos · Bits · Programación</strong></div>
         </div>
       </article>
