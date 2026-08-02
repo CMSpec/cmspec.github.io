@@ -19,7 +19,7 @@ export const siteContent = {
     links: [
       { label: "Aprender", href: "/aprender" },
       { label: "Archivo", href: "#archivo" },
-      { label: "Sobre mí", href: "#sobre-mi" },
+      { label: "Sobre mí", href: "/sobre-mi" },
     ],
     contactLabel: "Contacto",
   },

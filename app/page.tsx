@@ -14,7 +14,7 @@ const indexAreas = [
 ];
 
 export default function Home() {
-  const { brand, navigation, hero, domains, spectrumSection, archive, about, recommended } = siteContent;
+  const { brand, navigation, hero, domains, spectrumSection, archive, recommended } = siteContent;
 
   return (
     <main>
@@ -128,20 +128,6 @@ export default function Home() {
         </div>
         <div className="archive-list">
           {archive.topics.map((topic) => <span key={topic}>{topic}</span>)}
-        </div>
-      </section>
-
-      <section className="about-section" id="sobre-mi">
-        <p className="section-index">{about.index}</p>
-        <div className="about-heading">
-          <h2>{about.titleFirstLine}<br />{about.titleSecondLine}</h2>
-          <p>{about.introduction}</p>
-        </div>
-        <div className="about-copy">
-          {about.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-          <div className="about-interests" aria-label="Áreas de interés">
-            {about.interests.map((interest) => <span key={interest}>{interest}</span>)}
-          </div>
         </div>
       </section>
 
