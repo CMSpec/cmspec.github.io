@@ -21,6 +21,10 @@ export default function AboutPage() {
 
       <section className="about-detail">
         <p className="about-detail-index">UNA PRESENTACIÓN</p>
+        <figure className="about-detail-photo">
+          <img src="/images/camila-tejido-y-gatos.jpeg" alt="Camila con un tejido azul y violeta, acompañada por sus dos gatos" />
+          <figcaption>Tejido y compañía.</figcaption>
+        </figure>
         <div className="about-detail-lead">
           <h2>Ideas que se encuentran.</h2>
           <p>{about.introduction}</p>
