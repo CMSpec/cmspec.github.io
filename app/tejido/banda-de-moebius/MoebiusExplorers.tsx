@@ -186,6 +186,7 @@ function drawWalker(
   ctx: CanvasRenderingContext2D,
   theta: number,
   screen: (point: Point3) => { x: number; y: number; depth: number },
+  opacity = 1,
 ) {
   const anchor3 = moebiusPoint(theta, 24);
   const tangent = normalize(subtract(moebiusPoint(theta + .015, 24), moebiusPoint(theta - .015, 24)));
@@ -205,6 +206,7 @@ function drawWalker(
   const stride = Math.sin(theta * 3) * 7;
 
   ctx.save();
+  ctx.globalAlpha = opacity;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
   ctx.strokeStyle = "rgba(255,250,246,.92)";
@@ -232,14 +234,19 @@ function drawWalk(canvas: HTMLCanvasElement, journey: number) {
   if (!prepared) return;
   const { context: ctx, width, height } = prepared;
   const background = ctx.createLinearGradient(0, 0, 0, height);
-  background.addColorStop(0, "#f5fbfc"); background.addColorStop(1, "#fffaf6");
+  background.addColorStop(0, "#f8faf9"); background.addColorStop(1, "#fffaf6");
   ctx.fillStyle = background; ctx.fillRect(0, 0, width, height);
 
-  const scale = Math.min(width / 405, height / 310);
-  const screen = (point: Point3) => project(point, width, height + 18, scale);
-  const cells: { points: ReturnType<typeof screen>[]; depth: number; stripe: number }[] = [];
-  const along = 72;
-  const across = 10;
+  const scale = Math.min(width / 390, height / 300);
+  const screen = (point: Point3) => project(point, width, height + 10, scale);
+  const shadow = ctx.createRadialGradient(width / 2, height * .66, 20, width / 2, height * .66, width * .36);
+  shadow.addColorStop(0, "rgba(18,52,61,.18)"); shadow.addColorStop(1, "rgba(18,52,61,0)");
+  ctx.save(); ctx.scale(1, .35); ctx.fillStyle = shadow; ctx.beginPath(); ctx.ellipse(width / 2, height * 1.88, width * .38, height * .38, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+
+  const light = normalize({ x: -.35, y: -.45, z: 1 });
+  const cells: { points: ReturnType<typeof screen>[]; depth: number; lightness: number }[] = [];
+  const along = 96;
+  const across = 12;
   for (let i = 0; i < along; i += 1) {
     const theta0 = i / along * Math.PI * 2;
     const theta1 = (i + 1) / along * Math.PI * 2;
@@ -247,22 +254,30 @@ function drawWalk(canvas: HTMLCanvasElement, journey: number) {
       const v0 = -48 + j / across * 96;
       const v1 = -48 + (j + 1) / across * 96;
       const points = [screen(moebiusPoint(theta0, v0)), screen(moebiusPoint(theta1, v0)), screen(moebiusPoint(theta1, v1)), screen(moebiusPoint(theta0, v1))];
-      cells.push({ points, depth: points.reduce((sum, point) => sum + point.depth, 0) / 4, stripe: i });
+      const theta = (theta0 + theta1) / 2;
+      const v = (v0 + v1) / 2;
+      const tangent = subtract(moebiusPoint(theta + .012, v), moebiusPoint(theta - .012, v));
+      const transverse = subtract(moebiusPoint(theta, v + 1), moebiusPoint(theta, v - 1));
+      const normal = normalize(cross(tangent, transverse));
+      const illumination = Math.abs(normal.x * light.x + normal.y * light.y + normal.z * light.z);
+      const depth = points.reduce((sum, point) => sum + point.depth, 0) / 4;
+      cells.push({ points, depth, lightness: 60 + illumination * 31 - (depth > 0 ? 7 : 0) });
     }
   }
-  cells.sort((a, b) => b.depth - a.depth).forEach(({ points, stripe }) => {
+  cells.sort((a, b) => b.depth - a.depth).forEach(({ points, lightness }) => {
     ctx.beginPath(); ctx.moveTo(points[0].x, points[0].y); points.slice(1).forEach((point) => ctx.lineTo(point.x, point.y)); ctx.closePath();
-    ctx.fillStyle = stripe % 12 < 6 ? "rgba(253,212,189,.68)" : "rgba(215,232,183,.72)";
-    ctx.fill(); ctx.strokeStyle = "rgba(18,52,61,.09)"; ctx.lineWidth = .8; ctx.stroke();
+    ctx.fillStyle = `hsl(198 8% ${lightness}%)`;
+    ctx.fill(); ctx.strokeStyle = "rgba(18,52,61,.055)"; ctx.lineWidth = .65; ctx.stroke();
   });
 
   [-48, 48].forEach((v) => {
-    ctx.beginPath();
-    for (let i = 0; i <= 150; i += 1) {
-      const point = screen(moebiusPoint(i / 150 * Math.PI * 2, v));
-      if (i === 0) ctx.moveTo(point.x, point.y); else ctx.lineTo(point.x, point.y);
+    for (let i = 0; i < 180; i += 1) {
+      const first = screen(moebiusPoint(i / 180 * Math.PI * 2, v));
+      const second = screen(moebiusPoint((i + 1) / 180 * Math.PI * 2, v));
+      ctx.beginPath(); ctx.moveTo(first.x, first.y); ctx.lineTo(second.x, second.y);
+      ctx.strokeStyle = (first.depth + second.depth) / 2 > 0 ? "rgba(18,52,61,.36)" : "#12343d";
+      ctx.lineWidth = (first.depth + second.depth) / 2 > 0 ? 2 : 3.2; ctx.stroke();
     }
-    ctx.strokeStyle = "#12343d"; ctx.lineWidth = 2.5; ctx.stroke();
   });
   for (let i = 0; i < 12; i += 1) {
     ctx.beginPath();
@@ -270,22 +285,27 @@ function drawWalk(canvas: HTMLCanvasElement, journey: number) {
       const point = screen(moebiusPoint(i / 12 * Math.PI * 2, -48 + j / 20 * 96));
       if (j === 0) ctx.moveTo(point.x, point.y); else ctx.lineTo(point.x, point.y);
     }
-    ctx.strokeStyle = "rgba(18,52,61,.18)"; ctx.lineWidth = 1.2; ctx.stroke();
+    const depth = screen(moebiusPoint(i / 12 * Math.PI * 2, 0)).depth;
+    ctx.strokeStyle = depth > 0 ? "rgba(18,52,61,.12)" : "rgba(18,52,61,.27)"; ctx.lineWidth = depth > 0 ? .8 : 1.2; ctx.stroke();
   }
 
   const maxTheta = journey * Math.PI * 4;
   const pieces = Math.max(1, Math.floor(journey * 260));
-  ctx.beginPath();
-  for (let i = 0; i <= pieces; i += 1) {
-    const point = screen(moebiusPoint(i / pieces * maxTheta, 24));
-    if (i === 0) ctx.moveTo(point.x, point.y); else ctx.lineTo(point.x, point.y);
+  for (let i = 0; i < pieces; i += 1) {
+    const first = screen(moebiusPoint(i / pieces * maxTheta, 24));
+    const second = screen(moebiusPoint((i + 1) / pieces * maxTheta, 24));
+    const behind = (first.depth + second.depth) / 2 > 0;
+    ctx.beginPath(); ctx.moveTo(first.x, first.y); ctx.lineTo(second.x, second.y);
+    ctx.strokeStyle = behind ? "rgba(255,250,246,.3)" : "rgba(255,250,246,.9)"; ctx.lineWidth = behind ? 8 : 12; ctx.lineCap = "round"; ctx.stroke();
+    ctx.strokeStyle = behind ? "rgba(213,111,82,.26)" : "#d56f52"; ctx.lineWidth = behind ? 4 : 7; ctx.stroke();
   }
-  ctx.strokeStyle = "rgba(255,250,246,.94)"; ctx.lineWidth = 13; ctx.lineCap = "round"; ctx.stroke();
-  ctx.strokeStyle = "#d56f52"; ctx.lineWidth = 8; ctx.stroke();
   const start = screen(moebiusPoint(0, 24));
   ctx.fillStyle = "#fffaf6"; ctx.strokeStyle = "#d56f52"; ctx.lineWidth = 3;
-  ctx.beginPath(); ctx.arc(start.x, start.y, 7, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-  drawWalker(ctx, maxTheta, screen);
+  ctx.beginPath(); ctx.arc(start.x, start.y, 8, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = "#12343d"; ctx.font = "600 9px ui-monospace, SFMono-Regular, Menlo, monospace"; ctx.textAlign = "center";
+  ctx.fillText("INICIO", start.x, start.y + 23);
+  const walkerDepth = screen(moebiusPoint(maxTheta, 24)).depth;
+  drawWalker(ctx, maxTheta, screen, walkerDepth > 0 ? .52 : 1);
 
   ctx.fillStyle = "rgba(255,255,255,.9)"; ctx.fillRect(18, 18, 224, 61);
   ctx.fillStyle = "#12343d"; ctx.font = "600 10px ui-monospace, SFMono-Regular, Menlo, monospace"; ctx.textAlign = "left";
@@ -294,9 +314,13 @@ function drawWalk(canvas: HTMLCanvasElement, journey: number) {
   ctx.font = "15px Georgia, serif";
   ctx.fillText(journey < .5 ? "La orientación está girando" : journey < .995 ? "La huella continúa al reverso" : "Mismo punto y orientación", 30, 64);
 
-  ctx.strokeStyle = "#d56f52"; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(width - 158, 35); ctx.lineTo(width - 121, 35); ctx.stroke();
-  ctx.fillStyle = "#12343d"; ctx.font = "600 10px ui-monospace, SFMono-Regular, Menlo, monospace";
-  ctx.fillText("HUELLA PINTADA", width - 110, 39);
+  if (width > 560) {
+    ctx.strokeStyle = "#d56f52"; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(width - 177, 31); ctx.lineTo(width - 140, 31); ctx.stroke();
+    ctx.fillStyle = "#12343d"; ctx.font = "600 10px ui-monospace, SFMono-Regular, Menlo, monospace";
+    ctx.textAlign = "left"; ctx.fillText("TRAMO VISIBLE", width - 128, 35);
+    ctx.strokeStyle = "rgba(213,111,82,.28)"; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(width - 177, 54); ctx.lineTo(width - 140, 54); ctx.stroke();
+    ctx.fillText("TRAMO POSTERIOR", width - 128, 58);
+  }
 }
 
 export function MoebiusWalk() {
@@ -334,7 +358,7 @@ export function MoebiusWalk() {
   const status = journey < .5 ? "primera vuelta" : journey < 1 ? "segunda vuelta" : "punto inicial";
   return (
     <figure className="moebius-lab walking-lab">
-      <header><p>EXPLORACIÓN 02 · UN SOLO LADO</p><h3>Caminar y dejar una huella</h3><p>La figura camina directamente sobre la banda mientras el trazo muestra el camino que ya ha recorrido.</p></header>
+      <header><p>EXPLORACIÓN 02 · UN SOLO LADO</p><h3>Caminar y dejar una huella</h3><p>La figura parte del punto marcado y avanza sobre la banda. La huella se vuelve tenue cuando el recorrido pasa por detrás.</p></header>
       <canvas ref={canvasRef} aria-label="Figura humana caminando sobre una banda de Möbius mientras deja una huella pintada" />
       <div className="moebius-controls">
         <button type="button" onClick={toggle}>{playing ? "Pausar" : journey >= .998 ? "Repetir" : "Comenzar a caminar"}</button>
