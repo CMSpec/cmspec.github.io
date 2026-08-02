@@ -186,6 +186,48 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .braid-word strong { color: var(--ink); font: 400 21px Georgia, serif; overflow-wrap: anywhere; }
 .braid-builder-note { margin: 0; padding: 0 30px 28px; color: var(--muted); font: 13px/1.55 Georgia, serif; }
 
+.geometry-crochet-article .braid-prose-section { max-width: 800px; }
+.geometry-crochet-article .braid-prose-section > p:not(.braid-section-number) { max-width: 750px; }
+.geometry-pullquote { border-left-color: #d58f72; }
+.geometry-lab { margin: 52px 0 28px; border: 1px solid var(--line); background: #fff; }
+.geometry-lab > header { display: grid; grid-template-columns: minmax(145px,.52fr) minmax(0,1fr); gap: 8px 34px; padding: 28px 30px 24px; border-bottom: 1px solid var(--line); }
+.geometry-lab > header > p:first-child { grid-row: 1 / 3; margin: 2px 0 0; color: #a55f45; font: 700 10px/1.55 var(--font-geist-mono), monospace; letter-spacing: .13em; }
+.geometry-lab > header h3 { margin: 0; color: var(--ink); font: 400 clamp(29px,3.7vw,44px)/1 Georgia, serif; letter-spacing: -.03em; }
+.geometry-lab > header > p:last-child { margin: 5px 0 0; color: var(--muted); font: 15px/1.55 Georgia, serif; }
+.geometry-lab canvas { display: block; width: 100%; height: 350px; background: #fffaf6; }
+.geometry-equation { padding: 20px 25px; color: var(--blue); background: #eef6f7; border-block: 1px solid var(--line); font: 400 clamp(25px,4vw,38px) Georgia, serif; text-align: center; }
+.geometry-controls { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; padding: 24px 30px 20px; }
+.geometry-controls label, .crochet-control label { color: var(--muted); font: 12px var(--font-geist-sans), sans-serif; }
+.geometry-controls label strong, .crochet-control label strong { float: right; color: var(--blue); font-family: var(--font-geist-mono), monospace; }
+.geometry-controls input, .crochet-control input { display: block; margin-top: 12px; }
+.geometry-lab figcaption { padding: 0 30px 25px; color: var(--muted); font: 13px/1.55 Georgia, serif; }
+.crochet-lab canvas { height: 410px; }
+.crochet-control { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 35px; padding: 23px 30px; border-top: 1px solid var(--line); }
+.crochet-control p { margin: 0; color: var(--muted); font: 14px/1.5 Georgia, serif; }
+.crochet-control p strong { color: #a55f45; }
+.algebraic-shape-strip { display: grid; grid-template-columns: repeat(3,1fr); margin: 42px 0; border: 1px solid var(--line); }
+.algebraic-shape-strip > div { min-height: 145px; display: grid; align-content: space-between; padding: 20px; background: #fff; }
+.algebraic-shape-strip > div + div { border-left: 1px solid var(--line); }
+.algebraic-shape-strip span { color: #a55f45; font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .13em; }
+.algebraic-shape-strip strong { color: var(--ink); font: italic 25px Georgia, serif; font-weight: 400; }
+.wertheim-section { border-top-color: #d58f72; }
+.reef-editorial-visual { position: relative; min-height: 390px; margin: 42px 0; overflow: hidden; background: linear-gradient(155deg,#e9f4f6,#fff0e8 48%,#eff7df); border: 1px solid var(--line); }
+.reef-editorial-visual i { position: absolute; display: block; border: 8px double currentColor; border-radius: 46% 54% 52% 48% / 58% 46% 54% 42%; opacity: .75; filter: drop-shadow(7px 13px 12px rgba(18,52,61,.1)); }
+.reef-editorial-visual i:nth-child(1) { width: 210px; height: 180px; left: 7%; bottom: -18px; color: var(--blue); transform: rotate(13deg); }
+.reef-editorial-visual i:nth-child(2) { width: 160px; height: 210px; left: 29%; top: 38px; color: #d58f72; transform: rotate(-19deg); }
+.reef-editorial-visual i:nth-child(3) { width: 235px; height: 150px; right: 8%; bottom: 18px; color: var(--olive); transform: rotate(-8deg); }
+.reef-editorial-visual i:nth-child(4) { width: 125px; height: 125px; right: 26%; top: 28px; color: var(--green); transform: rotate(22deg); }
+.reef-editorial-visual i:nth-child(5) { width: 84px; height: 150px; left: 4%; top: 22px; color: var(--olive); transform: rotate(-14deg); }
+.reef-editorial-visual i:nth-child(6) { width: 120px; height: 100px; right: 3%; top: 38px; color: var(--blue); transform: rotate(12deg); }
+.reef-editorial-visual strong { position: absolute; right: 24px; bottom: 20px; color: var(--ink); font: 700 10px var(--font-geist-mono), monospace; letter-spacing: .12em; text-transform: uppercase; }
+.sources-section h2 { margin-bottom: 35px; }
+.source-links { display: grid; border-top: 1px solid var(--ink); }
+.source-links a { display: grid; grid-template-columns: 38px 190px 1fr; align-items: center; gap: 14px; padding: 20px 0; border-bottom: 1px solid var(--line); transition: color .2s ease, padding-left .2s ease; }
+.source-links a:hover { padding-left: 8px; color: var(--blue); }
+.source-links span { color: #a55f45; font: 10px var(--font-geist-mono), monospace; }
+.source-links strong { font: 400 18px Georgia, serif; }
+.source-links small { color: var(--muted); font: 11px/1.45 var(--font-geist-sans), sans-serif; }
+
 .stitch-inversion-figure { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: clamp(20px,5vw,58px); margin: 0 0 95px; padding: 55px clamp(22px,5vw,58px) 32px; border-block: 1px solid var(--line); background: #fff; }
 .stitch-face { min-height: 230px; padding: 28px; display: grid; align-content: center; justify-items: center; border: 1px solid var(--line); text-align: center; }
 .stitch-face span { display: grid; width: 78px; height: 78px; place-items: center; margin-bottom: 18px; border-radius: 50%; color: #fff; background: var(--blue); font: 44px Georgia, serif; }
@@ -490,6 +532,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .learn-masthead { padding: 80px 24px 65px; }.learn-masthead h1 { font-size: 41px; }.learn-deck { margin-top: 42px; }.learn-deck p { font-size: 20px; }
   .notes-library { padding: 70px 24px 85px; }.notes-library > header { grid-template-columns: 1fr; gap: 18px; }.notes-library > header > p:last-child { grid-column: auto; }.note-entry { grid-template-columns: 1fr; gap: 32px; padding: 50px 0; }.note-dates { grid-template-columns: 1fr 1fr; gap: 18px; }.note-visual { grid-column: auto; min-height: 210px; }.learn-colophon { grid-template-columns: 1fr; gap: 22px; }
   .braid-article { padding: 64px 24px 85px; box-shadow: inset 7px 0 0 var(--section-edge), inset -7px 0 0 var(--section-edge); }.braid-article-lead { font-size: 22px; }.braid-hero-image { margin-bottom: 70px; }.braid-prose-section { padding: 54px 0; }.braid-prose-section > p:not(.braid-section-number) { font-size: 17px; }.braid-pullquote { padding-left: 24px; font-size: 26px; }.braid-builder > header { grid-template-columns: 1fr; padding: 28px 20px 24px; }.braid-builder > header > p:first-child { grid-row: auto; }.braid-controls { padding: 18px 20px; }.braid-controls button.secondary { margin-left: 0; }.braid-word { grid-template-columns: 1fr; padding: 22px 20px; }.braid-builder-note { padding: 0 20px 24px; }.braid-presentation { font-size: 19px; overflow-x: auto; }
+  .geometry-lab > header { grid-template-columns: 1fr; padding: 24px 20px; }.geometry-lab > header > p:first-child { grid-row: auto; }.geometry-lab canvas { height: 290px; }.crochet-lab canvas { height: 330px; }.geometry-controls { grid-template-columns: 1fr; padding-inline: 20px; }.crochet-control { grid-template-columns: 1fr; padding-inline: 20px; }.geometry-lab figcaption { padding-inline: 20px; }.algebraic-shape-strip { grid-template-columns: 1fr; }.algebraic-shape-strip > div { min-height: 100px; }.algebraic-shape-strip > div + div { border-left: 0; border-top: 1px solid var(--line); }.reef-editorial-visual { min-height: 310px; }.source-links a { grid-template-columns: 30px 1fr; }.source-links small { grid-column: 2; }
   .stitch-inversion-figure { grid-template-columns: 1fr; gap: 22px; margin-bottom: 70px; padding: 34px 0 26px; }.stitch-face { min-height: 190px; }.inversion-arrow { transform: rotate(90deg); }.inversion-arrow span, .inversion-arrow small { transform: rotate(-90deg); }.stitch-inversion-figure figcaption { grid-column: 1; font-size: 19px; }.stitch-comparison-figure { width: 100%; margin-top: -35px; margin-bottom: 70px; }.stitch-comparison-labels span { padding-inline: 10px; }.stitch-comparison-figure figcaption { font-size: 14px; }.binary-textile-grid span { font-size: 12px; }.binary-formulas span, .binary-formulas strong { min-height: 82px; font-size: 25px; }
   .stitch-pattern-builder > header { grid-template-columns: 1fr; gap: 14px; padding-inline: 18px; }.stitch-pattern-workspace { grid-template-columns: 1fr; padding-inline: 18px; }.stitch-pattern-builder > footer { align-items: flex-start; flex-direction: column; padding-inline: 18px; }.stitch-pattern-actions { width: 100%; }.stitch-pattern-actions button { flex: 1; }.stitch-pattern-hint { padding-inline: 18px; }
   .week-cycle { grid-template-columns: repeat(2, 1fr); }.week-cycle > div { border-top: 1px solid var(--line); }.week-cycle > div:nth-child(odd) { border-left: 0; }.motif-strip { grid-template-columns: 1fr; }.motif-strip > div + div { border-left: 0; border-top: 0; }.topology-lab > header { grid-template-columns: 1fr; padding: 24px 20px; }.topology-lab > header > p:first-child { grid-row: auto; }.topology-canvas { height: 300px; }.topology-controls { padding: 16px; }.topology-controls button { flex: 1 1 100%; }.topology-controls button.secondary { margin-left: 0; }.topology-steps { grid-template-columns: 1fr; }.topology-steps li + li { border-left: 0; border-top: 1px solid var(--line); }.topology-steps button { min-height: 56px; }.quotient-formula { padding-inline: 12px; font-size: 23px; }

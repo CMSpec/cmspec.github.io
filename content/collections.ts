@@ -131,6 +131,20 @@ export const collections: EditorialCollection[] = [
     tone: "pink",
     entries: [
       {
+        number: "06",
+        title: "Cuando una superficie se puede tejer",
+        subtitle: "De la ecuación del círculo al crochet hiperbólico",
+        description: "Un recorrido por las ecuaciones que describen formas, la geometría algebraica y las superficies que Margaret y Christine Wertheim convirtieron en un arrecife colectivo.",
+        authors: "Camila Muñoz Santander",
+        published: "2 agosto 2026",
+        modified: "2 agosto 2026",
+        href: "/tejido/superficies-que-se-pueden-tejer",
+        visual: "x²+y²=r² ↝ crochet",
+        eyebrow: "06 / GEOMETRÍA & CROCHET",
+        introduction: "Una ecuación puede describir con exactitud una forma y, aun así, no hacerla fácil de imaginar. El crochet ofrece otra clase de comprensión: convierte la curvatura en una superficie que puede mirarse, doblarse y tocarse.",
+        sections: [],
+      },
+      {
         number: "05",
         title: "Repetir, identificar, representar",
         subtitle: "De los días de la semana a superficies con agujeros",
