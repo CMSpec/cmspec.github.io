@@ -1,5 +1,6 @@
 import { BrandHeader } from "../../_components/editorial";
 import { getCollection, getEntry } from "../../../content/collections";
+import { StitchPatternGrid } from "./StitchPatternGrid";
 
 const textileBits = [
   0, 1, 1, 0, 0, 1, 1, 0,
@@ -66,6 +67,8 @@ export default function BinaryTextilesPage() {
             </div>
             <figcaption><span><i className="legend-zero" />0 · derecho</span><span><i className="legend-one" />1 · revés</span></figcaption>
           </figure>
+
+          <StitchPatternGrid />
 
           <p>Esta comparación no afirma que todo tejido sea un computador. Sirve para reconocer una estructura común: elegir entre dos estados, ordenar esas elecciones y repetir una regla para construir un patrón mayor.</p>
         </section>
