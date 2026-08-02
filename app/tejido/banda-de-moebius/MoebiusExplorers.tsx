@@ -186,11 +186,12 @@ function drawWalker(
   ctx: CanvasRenderingContext2D,
   theta: number,
   screen: (point: Point3) => { x: number; y: number; depth: number },
+  trackV = 0,
   opacity = 1,
 ) {
-  const anchor3 = moebiusPoint(theta, 24);
-  const tangent = normalize(subtract(moebiusPoint(theta + .015, 24), moebiusPoint(theta - .015, 24)));
-  const across = normalize(subtract(moebiusPoint(theta, 25), moebiusPoint(theta, 23)));
+  const anchor3 = moebiusPoint(theta, trackV);
+  const tangent = normalize(subtract(moebiusPoint(theta + .015, trackV), moebiusPoint(theta - .015, trackV)));
+  const across = normalize(subtract(moebiusPoint(theta, trackV + 1), moebiusPoint(theta, trackV - 1)));
   let normal = normalize(cross(tangent, across));
   if (normal.z < -.15) normal = { x: -normal.x, y: -normal.y, z: -normal.z };
 
@@ -290,36 +291,38 @@ function drawWalk(canvas: HTMLCanvasElement, journey: number) {
   }
 
   const maxTheta = journey * Math.PI * 4;
+  const pathV = 9;
   const pieces = Math.max(1, Math.floor(journey * 260));
   for (let i = 0; i < pieces; i += 1) {
-    const first = screen(moebiusPoint(i / pieces * maxTheta, 24));
-    const second = screen(moebiusPoint((i + 1) / pieces * maxTheta, 24));
-    const behind = (first.depth + second.depth) / 2 > 0;
+    const theta0 = i / pieces * maxTheta;
+    const theta1 = (i + 1) / pieces * maxTheta;
+    const first = screen(moebiusPoint(theta0, pathV));
+    const second = screen(moebiusPoint(theta1, pathV));
+    const interior = (theta0 + theta1) / 2 >= Math.PI * 2;
     ctx.beginPath(); ctx.moveTo(first.x, first.y); ctx.lineTo(second.x, second.y);
-    ctx.strokeStyle = behind ? "rgba(255,250,246,.3)" : "rgba(255,250,246,.9)"; ctx.lineWidth = behind ? 8 : 12; ctx.lineCap = "round"; ctx.stroke();
-    ctx.strokeStyle = behind ? "rgba(213,111,82,.26)" : "#d56f52"; ctx.lineWidth = behind ? 4 : 7; ctx.stroke();
+    ctx.strokeStyle = interior ? "rgba(255,250,246,.94)" : "rgba(255,250,246,.34)"; ctx.lineWidth = interior ? 11 : 8; ctx.lineCap = "round"; ctx.stroke();
+    ctx.strokeStyle = interior ? "#d56f52" : "rgba(213,111,82,.28)"; ctx.lineWidth = interior ? 7 : 4; ctx.stroke();
   }
-  const start = screen(moebiusPoint(0, 24));
+  const start = screen(moebiusPoint(0, pathV));
   ctx.fillStyle = "#fffaf6"; ctx.strokeStyle = "#d56f52"; ctx.lineWidth = 3;
   ctx.beginPath(); ctx.arc(start.x, start.y, 8, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
   ctx.fillStyle = "#12343d"; ctx.font = "600 9px ui-monospace, SFMono-Regular, Menlo, monospace"; ctx.textAlign = "center";
   ctx.fillText("INICIO", start.x, start.y + 23);
-  const walkerDepth = screen(moebiusPoint(maxTheta, 24)).depth;
-  drawWalker(ctx, maxTheta, screen, walkerDepth > 0 ? .52 : 1);
+  drawWalker(ctx, maxTheta, screen, pathV, 1);
 
   ctx.fillStyle = "rgba(255,255,255,.9)"; ctx.fillRect(18, 18, 224, 61);
   ctx.fillStyle = "#12343d"; ctx.font = "600 10px ui-monospace, SFMono-Regular, Menlo, monospace"; ctx.textAlign = "left";
-  const phaseText = journey < .5 ? "PRIMERA VUELTA" : journey < .995 ? "SEGUNDA VUELTA" : "REGRESO AL INICIO";
+  const phaseText = journey < .5 ? "RECORRIDO EXTERIOR" : journey < .995 ? "RECORRIDO INTERIOR" : "REGRESO AL INICIO";
   ctx.fillText(phaseText, 30, 41);
   ctx.font = "15px Georgia, serif";
-  ctx.fillText(journey < .5 ? "La orientación está girando" : journey < .995 ? "La huella continúa al reverso" : "Mismo punto y orientación", 30, 64);
+  ctx.fillText(journey < .5 ? "Huella tenue sobre la parte externa" : journey < .995 ? "Huella sólida sobre la parte interna" : "Mismo punto y orientación", 30, 64);
 
   if (width > 560) {
-    ctx.strokeStyle = "#d56f52"; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(width - 177, 31); ctx.lineTo(width - 140, 31); ctx.stroke();
+    ctx.strokeStyle = "rgba(213,111,82,.28)"; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(width - 177, 31); ctx.lineTo(width - 140, 31); ctx.stroke();
     ctx.fillStyle = "#12343d"; ctx.font = "600 10px ui-monospace, SFMono-Regular, Menlo, monospace";
-    ctx.textAlign = "left"; ctx.fillText("TRAMO VISIBLE", width - 128, 35);
-    ctx.strokeStyle = "rgba(213,111,82,.28)"; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(width - 177, 54); ctx.lineTo(width - 140, 54); ctx.stroke();
-    ctx.fillText("TRAMO POSTERIOR", width - 128, 58);
+    ctx.textAlign = "left"; ctx.fillText("EXTERIOR · TENUE", width - 128, 35);
+    ctx.strokeStyle = "#d56f52"; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(width - 177, 54); ctx.lineTo(width - 140, 54); ctx.stroke();
+    ctx.fillText("INTERIOR · SÓLIDO", width - 128, 58);
   }
 }
 
@@ -355,17 +358,17 @@ export function MoebiusWalk() {
   };
   useEffect(() => () => { if (frameRef.current) cancelAnimationFrame(frameRef.current); }, []);
 
-  const status = journey < .5 ? "primera vuelta" : journey < 1 ? "segunda vuelta" : "punto inicial";
+  const status = journey < .5 ? "parte exterior" : journey < 1 ? "parte interior" : "punto inicial";
   return (
     <figure className="moebius-lab walking-lab">
-      <header><p>EXPLORACIÓN 02 · UN SOLO LADO</p><h3>Caminar y dejar una huella</h3><p>La figura parte del punto marcado y avanza sobre la banda. La huella se vuelve tenue cuando el recorrido pasa por detrás.</p></header>
+      <header><p>EXPLORACIÓN 02 · UN SOLO LADO</p><h3>Caminar y dejar una huella</h3><p>La figura avanza cerca del eje medio: primero deja una huella tenue por la parte exterior y luego una huella sólida por la interior.</p></header>
       <canvas ref={canvasRef} aria-label="Figura humana caminando sobre una banda de Möbius mientras deja una huella pintada" />
       <div className="moebius-controls">
         <button type="button" onClick={toggle}>{playing ? "Pausar" : journey >= .998 ? "Repetir" : "Comenzar a caminar"}</button>
         <button type="button" className="secondary" onClick={() => { stop(); setValue(0); }}>Volver al inicio</button>
         <label>Recorrido: <strong>{status}</strong><input type="range" min="0" max="1" step="0.002" value={journey} onChange={(event) => { stop(); setValue(Number(event.target.value)); }} /></label>
       </div>
-      <figcaption>Después de una vuelta la orientación transversal se invierte. La segunda completa el camino y devuelve también la orientación inicial.</figcaption>
+      <figcaption>La segunda vuelta continúa sobre aquello que parecía la cara interior, sin saltar un borde ni abandonar la superficie.</figcaption>
     </figure>
   );
 }
