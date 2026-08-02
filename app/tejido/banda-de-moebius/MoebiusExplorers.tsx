@@ -147,38 +147,65 @@ export function MoebiusIdentification() {
   );
 }
 
-function drawInsetBand(ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number, journey: number) {
+function subtract(a: Point3, b: Point3): Point3 {
+  return { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z };
+}
+
+function cross(a: Point3, b: Point3): Point3 {
+  return { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x };
+}
+
+function normalize(point: Point3): Point3 {
+  const length = Math.hypot(point.x, point.y, point.z) || 1;
+  return { x: point.x / length, y: point.y / length, z: point.z / length };
+}
+
+function offset(point: Point3, direction: Point3, distance: number): Point3 {
+  return { x: point.x + direction.x * distance, y: point.y + direction.y * distance, z: point.z + direction.z * distance };
+}
+
+function drawWalker(
+  ctx: CanvasRenderingContext2D,
+  theta: number,
+  screen: (point: Point3) => { x: number; y: number; depth: number },
+) {
+  const anchor3 = moebiusPoint(theta, 24);
+  const tangent = normalize(subtract(moebiusPoint(theta + .015, 24), moebiusPoint(theta - .015, 24)));
+  const across = normalize(subtract(moebiusPoint(theta, 25), moebiusPoint(theta, 23)));
+  let normal = normalize(cross(tangent, across));
+  if (normal.z < -.15) normal = { x: -normal.x, y: -normal.y, z: -normal.z };
+
+  const foot = screen(offset(anchor3, normal, 2));
+  const hip = screen(offset(anchor3, normal, 21));
+  const shoulder = screen(offset(anchor3, normal, 35));
+  const head = screen(offset(anchor3, normal, 47));
+  const tangentAhead = screen(offset(offset(anchor3, normal, 24), tangent, 12));
+  const tangentBehind = screen(offset(offset(anchor3, normal, 24), tangent, -12));
+  const tangentLength = Math.hypot(tangentAhead.x - tangentBehind.x, tangentAhead.y - tangentBehind.y) || 1;
+  const tx = (tangentAhead.x - tangentBehind.x) / tangentLength;
+  const ty = (tangentAhead.y - tangentBehind.y) / tangentLength;
+  const stride = Math.sin(theta * 3) * 7;
+
   ctx.save();
-  ctx.fillStyle = "rgba(255,255,255,.94)";
-  ctx.strokeStyle = "rgba(18,52,61,.18)";
-  ctx.lineWidth = 1;
-  ctx.fillRect(x, y, width, height);
-  ctx.strokeRect(x, y, width, height);
-  const projectSmall = (p: Point3) => {
-    const q = project(p, width, height, .48);
-    return { x: x + q.x, y: y + q.y };
-  };
-  for (let j = 0; j <= 8; j += 1) {
-    const v = -43 + j / 8 * 86;
-    ctx.beginPath();
-    for (let i = 0; i <= 80; i += 1) {
-      const p = projectSmall(moebiusPoint(i / 80 * Math.PI * 2, v, 90));
-      if (i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y);
-    }
-    ctx.strokeStyle = "rgba(18,52,61,.2)"; ctx.lineWidth = 1; ctx.stroke();
-  }
-  const maxTheta = journey * Math.PI * 4;
-  ctx.beginPath();
-  const pieces = Math.max(1, Math.floor(journey * 180));
-  for (let i = 0; i <= pieces; i += 1) {
-    const theta = i / pieces * maxTheta;
-    const p = projectSmall(moebiusPoint(theta, 25, 90));
-    if (i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y);
-  }
-  ctx.strokeStyle = "#d56f52"; ctx.lineWidth = 5; ctx.stroke();
-  const walker = projectSmall(moebiusPoint(maxTheta, 0, 90));
-  ctx.fillStyle = "#007190"; ctx.beginPath(); ctx.arc(walker.x, walker.y, 7, 0, Math.PI * 2); ctx.fill();
-  ctx.fillStyle = "#12343d"; ctx.font = "600 9px ui-monospace, SFMono-Regular, Menlo, monospace"; ctx.textAlign = "left"; ctx.fillText("POSICIÓN SOBRE LA BANDA", x + 10, y + 16);
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  ctx.strokeStyle = "rgba(255,250,246,.92)";
+  ctx.lineWidth = 8;
+  ctx.beginPath(); ctx.moveTo(foot.x - tx * stride, foot.y - ty * stride); ctx.lineTo(hip.x, hip.y); ctx.lineTo(foot.x + tx * stride, foot.y + ty * stride); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(hip.x, hip.y); ctx.lineTo(shoulder.x, shoulder.y); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(shoulder.x - tx * 11, shoulder.y - ty * 11); ctx.lineTo(shoulder.x, shoulder.y); ctx.lineTo(shoulder.x + tx * 11, shoulder.y + ty * 11); ctx.stroke();
+
+  ctx.strokeStyle = "#12343d";
+  ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(foot.x - tx * stride, foot.y - ty * stride); ctx.lineTo(hip.x, hip.y); ctx.lineTo(foot.x + tx * stride, foot.y + ty * stride); ctx.stroke();
+  ctx.strokeStyle = "#007190";
+  ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.moveTo(hip.x, hip.y); ctx.lineTo(shoulder.x, shoulder.y); ctx.stroke();
+  ctx.strokeStyle = "#12343d";
+  ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(shoulder.x - tx * 11, shoulder.y - ty * 11); ctx.lineTo(shoulder.x, shoulder.y); ctx.lineTo(shoulder.x + tx * 11, shoulder.y + ty * 11); ctx.stroke();
+  ctx.fillStyle = "#f0b89b"; ctx.strokeStyle = "#12343d"; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(head.x, head.y, 7, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
   ctx.restore();
 }
 
@@ -186,37 +213,72 @@ function drawWalk(canvas: HTMLCanvasElement, journey: number) {
   const prepared = prepareCanvas(canvas);
   if (!prepared) return;
   const { context: ctx, width, height } = prepared;
-  ctx.fillStyle = "#f4f0e8"; ctx.fillRect(0, 0, width, height);
-  const mainWidth = width;
-  const roll = journey * Math.PI * 2;
-  ctx.save();
-  ctx.translate(mainWidth * .42, height * .54);
-  ctx.rotate(roll);
-  const horizonY = -height * .34;
-  const gradient = ctx.createLinearGradient(0, horizonY, 0, height * .48);
-  gradient.addColorStop(0, "#e4f2f5"); gradient.addColorStop(1, "#fffaf6");
-  ctx.fillStyle = gradient; ctx.fillRect(-width, horizonY, width * 2, height);
-  ctx.strokeStyle = "rgba(18,52,61,.26)"; ctx.lineWidth = 1.5;
-  ctx.beginPath(); ctx.moveTo(-width, horizonY); ctx.lineTo(width, horizonY); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(-width * .44, height * .48); ctx.lineTo(-24, horizonY); ctx.lineTo(24, horizonY); ctx.lineTo(width * .44, height * .48); ctx.closePath();
-  ctx.fillStyle = "#fff"; ctx.fill(); ctx.strokeStyle = "#12343d"; ctx.lineWidth = 3; ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(0, height * .48); ctx.lineTo(0, horizonY); ctx.strokeStyle = "#d56f52"; ctx.lineWidth = 18; ctx.stroke();
-  for (let i = 0; i < 8; i += 1) {
-    const phase = (i / 8 + journey * 3) % 1;
-    const y = horizonY + Math.pow(phase, 2.1) * (height * .82);
-    const half = 24 + Math.pow(phase, 1.7) * width * .42;
-    ctx.beginPath(); ctx.moveTo(-half, y); ctx.lineTo(half, y); ctx.strokeStyle = "rgba(18,52,61,.16)"; ctx.lineWidth = 1; ctx.stroke();
-  }
-  ctx.restore();
+  const background = ctx.createLinearGradient(0, 0, 0, height);
+  background.addColorStop(0, "#f5fbfc"); background.addColorStop(1, "#fffaf6");
+  ctx.fillStyle = background; ctx.fillRect(0, 0, width, height);
 
-  const insetWidth = Math.min(245, width * .34);
-  drawInsetBand(ctx, width - insetWidth - 16, 16, insetWidth, 150, journey);
-  ctx.fillStyle = "rgba(255,255,255,.92)"; ctx.fillRect(16, 16, 205, 61);
+  const scale = Math.min(width / 405, height / 310);
+  const screen = (point: Point3) => project(point, width, height + 18, scale);
+  const cells: { points: ReturnType<typeof screen>[]; depth: number; stripe: number }[] = [];
+  const along = 72;
+  const across = 10;
+  for (let i = 0; i < along; i += 1) {
+    const theta0 = i / along * Math.PI * 2;
+    const theta1 = (i + 1) / along * Math.PI * 2;
+    for (let j = 0; j < across; j += 1) {
+      const v0 = -48 + j / across * 96;
+      const v1 = -48 + (j + 1) / across * 96;
+      const points = [screen(moebiusPoint(theta0, v0)), screen(moebiusPoint(theta1, v0)), screen(moebiusPoint(theta1, v1)), screen(moebiusPoint(theta0, v1))];
+      cells.push({ points, depth: points.reduce((sum, point) => sum + point.depth, 0) / 4, stripe: i });
+    }
+  }
+  cells.sort((a, b) => b.depth - a.depth).forEach(({ points, stripe }) => {
+    ctx.beginPath(); ctx.moveTo(points[0].x, points[0].y); points.slice(1).forEach((point) => ctx.lineTo(point.x, point.y)); ctx.closePath();
+    ctx.fillStyle = stripe % 12 < 6 ? "rgba(253,212,189,.68)" : "rgba(215,232,183,.72)";
+    ctx.fill(); ctx.strokeStyle = "rgba(18,52,61,.09)"; ctx.lineWidth = .8; ctx.stroke();
+  });
+
+  [-48, 48].forEach((v) => {
+    ctx.beginPath();
+    for (let i = 0; i <= 150; i += 1) {
+      const point = screen(moebiusPoint(i / 150 * Math.PI * 2, v));
+      if (i === 0) ctx.moveTo(point.x, point.y); else ctx.lineTo(point.x, point.y);
+    }
+    ctx.strokeStyle = "#12343d"; ctx.lineWidth = 2.5; ctx.stroke();
+  });
+  for (let i = 0; i < 12; i += 1) {
+    ctx.beginPath();
+    for (let j = 0; j <= 20; j += 1) {
+      const point = screen(moebiusPoint(i / 12 * Math.PI * 2, -48 + j / 20 * 96));
+      if (j === 0) ctx.moveTo(point.x, point.y); else ctx.lineTo(point.x, point.y);
+    }
+    ctx.strokeStyle = "rgba(18,52,61,.18)"; ctx.lineWidth = 1.2; ctx.stroke();
+  }
+
+  const maxTheta = journey * Math.PI * 4;
+  const pieces = Math.max(1, Math.floor(journey * 260));
+  ctx.beginPath();
+  for (let i = 0; i <= pieces; i += 1) {
+    const point = screen(moebiusPoint(i / pieces * maxTheta, 24));
+    if (i === 0) ctx.moveTo(point.x, point.y); else ctx.lineTo(point.x, point.y);
+  }
+  ctx.strokeStyle = "rgba(255,250,246,.94)"; ctx.lineWidth = 13; ctx.lineCap = "round"; ctx.stroke();
+  ctx.strokeStyle = "#d56f52"; ctx.lineWidth = 8; ctx.stroke();
+  const start = screen(moebiusPoint(0, 24));
+  ctx.fillStyle = "#fffaf6"; ctx.strokeStyle = "#d56f52"; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(start.x, start.y, 7, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  drawWalker(ctx, maxTheta, screen);
+
+  ctx.fillStyle = "rgba(255,255,255,.9)"; ctx.fillRect(18, 18, 224, 61);
   ctx.fillStyle = "#12343d"; ctx.font = "600 10px ui-monospace, SFMono-Regular, Menlo, monospace"; ctx.textAlign = "left";
   const phaseText = journey < .5 ? "PRIMERA VUELTA" : journey < .995 ? "SEGUNDA VUELTA" : "REGRESO AL INICIO";
-  ctx.fillText(phaseText, 28, 39);
+  ctx.fillText(phaseText, 30, 41);
   ctx.font = "15px Georgia, serif";
-  ctx.fillText(journey < .5 ? "La orientación está girando" : journey < .995 ? "El camino continúa al reverso" : "Mismo punto y orientación", 28, 62);
+  ctx.fillText(journey < .5 ? "La orientación está girando" : journey < .995 ? "La huella continúa al reverso" : "Mismo punto y orientación", 30, 64);
+
+  ctx.strokeStyle = "#d56f52"; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(width - 158, 35); ctx.lineTo(width - 121, 35); ctx.stroke();
+  ctx.fillStyle = "#12343d"; ctx.font = "600 10px ui-monospace, SFMono-Regular, Menlo, monospace";
+  ctx.fillText("HUELLA PINTADA", width - 110, 39);
 }
 
 export function MoebiusWalk() {
@@ -254,8 +316,8 @@ export function MoebiusWalk() {
   const status = journey < .5 ? "primera vuelta" : journey < 1 ? "segunda vuelta" : "punto inicial";
   return (
     <figure className="moebius-lab walking-lab">
-      <header><p>EXPLORACIÓN 02 · UN SOLO LADO</p><h3>Caminar y dejar una huella</h3><p>La vista principal acompaña el giro local; el mapa pequeño muestra la posición y el camino ya pintado.</p></header>
-      <canvas ref={canvasRef} aria-label="Recorrido en primera persona por una banda de Möbius con un mapa que muestra la posición y la huella pintada" />
+      <header><p>EXPLORACIÓN 02 · UN SOLO LADO</p><h3>Caminar y dejar una huella</h3><p>La figura camina directamente sobre la banda mientras el trazo muestra el camino que ya ha recorrido.</p></header>
+      <canvas ref={canvasRef} aria-label="Figura humana caminando sobre una banda de Möbius mientras deja una huella pintada" />
       <div className="moebius-controls">
         <button type="button" onClick={toggle}>{playing ? "Pausar" : journey >= .998 ? "Repetir" : "Comenzar a caminar"}</button>
         <button type="button" className="secondary" onClick={() => { stop(); setValue(0); }}>Volver al inicio</button>
