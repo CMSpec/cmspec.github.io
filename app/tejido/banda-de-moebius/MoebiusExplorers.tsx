@@ -45,12 +45,18 @@ function useResize(redraw: () => void) {
   }, [redraw]);
 }
 
-function drawArrow(ctx: CanvasRenderingContext2D, x: number, y: number, direction: 1 | -1, color: string) {
+function drawArrow(ctx: CanvasRenderingContext2D, start: { x: number; y: number }, end: { x: number; y: number }, color: string) {
+  const angle = Math.atan2(end.y - start.y, end.x - start.x);
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
   ctx.lineWidth = 5;
-  ctx.beginPath(); ctx.moveTo(x, y + 28 * direction); ctx.lineTo(x, y - 28 * direction); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(x, y - 28 * direction); ctx.lineTo(x - 8, y - 14 * direction); ctx.lineTo(x + 8, y - 14 * direction); ctx.closePath(); ctx.fill();
+  ctx.lineCap = "round";
+  ctx.beginPath(); ctx.moveTo(start.x, start.y); ctx.lineTo(end.x, end.y); ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(end.x, end.y);
+  ctx.lineTo(end.x - 14 * Math.cos(angle - .55), end.y - 14 * Math.sin(angle - .55));
+  ctx.lineTo(end.x - 14 * Math.cos(angle + .55), end.y - 14 * Math.sin(angle + .55));
+  ctx.closePath(); ctx.fill();
 }
 
 function drawIdentification(canvas: HTMLCanvasElement, progress: number) {
@@ -60,25 +66,40 @@ function drawIdentification(canvas: HTMLCanvasElement, progress: number) {
   ctx.fillStyle = "#fffaf6";
   ctx.fillRect(0, 0, width, height);
   const flatWidth = Math.min(510, width - 70);
-  const scale = Math.min(1.16, width / 650);
-  const flatPoint = (u: number, v: number): Point3 => ({ x: (u - .5) * flatWidth / scale, y: v, z: 0 });
-  const blendPoint = (u: number, v: number) => {
-    const a = flatPoint(u, v);
-    const b = moebiusPoint(u * Math.PI * 2, v, 122);
-    const eased = progress < .5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-    return { x: a.x * (1 - eased) + b.x * eased, y: a.y * (1 - eased) + b.y * eased, z: a.z * (1 - eased) + b.z * eased };
+  const scale = Math.min(1.22, width / 620);
+  const ease = (value: number) => value * value * (3 - 2 * value);
+  const bend = ease(Math.min(1, progress / .56));
+  const twist = ease(Math.max(0, Math.min(1, (progress - .56) / .28)));
+  const close = ease(Math.max(0, Math.min(1, (progress - .84) / .16)));
+  const sweep = bend * Math.PI * (1.72 + .28 * close);
+  const curvedPoint = (u: number, v: number): Point3 => {
+    if (sweep < .001) return { x: (u - .5) * flatWidth, y: 0, z: v };
+    const radius = flatWidth / sweep;
+    const angle = (u - .5) * sweep;
+    const center = { x: radius * Math.sin(angle), y: radius * (1 - Math.cos(angle)), z: 0 };
+    const endInfluence = ease(Math.max(0, Math.min(1, (u - .68) / .32)));
+    const turn = Math.PI * twist * endInfluence;
+    const radial = { x: -Math.sin(angle), y: Math.cos(angle), z: 0 };
+    return {
+      x: center.x + v * radial.x * Math.sin(turn),
+      y: center.y + v * radial.y * Math.sin(turn),
+      z: v * Math.cos(turn),
+    };
   };
-  const screen = (u: number, v: number) => project(blendPoint(u, v), width, height + 20, scale);
+  const screen = (u: number, v: number) => project(curvedPoint(u, v), width, height + 34, scale);
 
-  for (let band = 0; band < 14; band += 1) {
-    const u0 = band / 14;
-    const u1 = (band + 1) / 14;
-    const a = screen(u0, -48), b = screen(u1, -48), c = screen(u1, 48), d = screen(u0, 48);
-    ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.lineTo(c.x, c.y); ctx.lineTo(d.x, d.y); ctx.closePath();
-    ctx.fillStyle = band % 2 ? "rgba(253,212,189,.52)" : "rgba(175,212,114,.24)";
-    ctx.fill();
-    ctx.strokeStyle = "rgba(18,52,61,.14)"; ctx.lineWidth = 1; ctx.stroke();
+  const bands: { points: ReturnType<typeof screen>[]; depth: number; index: number }[] = [];
+  for (let band = 0; band < 28; band += 1) {
+    const u0 = band / 28;
+    const u1 = (band + 1) / 28;
+    const points = [screen(u0, -48), screen(u1, -48), screen(u1, 48), screen(u0, 48)];
+    bands.push({ points, depth: points.reduce((sum, point) => sum + point.depth, 0) / 4, index: band });
   }
+  bands.sort((a, b) => b.depth - a.depth).forEach(({ points, index }) => {
+    ctx.beginPath(); ctx.moveTo(points[0].x, points[0].y); points.slice(1).forEach((point) => ctx.lineTo(point.x, point.y)); ctx.closePath();
+    ctx.fillStyle = index % 4 < 2 ? "rgba(253,212,189,.58)" : "rgba(175,212,114,.28)";
+    ctx.fill(); ctx.strokeStyle = "rgba(18,52,61,.13)"; ctx.lineWidth = 1; ctx.stroke();
+  });
   [-48, 0, 48].forEach((v, index) => {
     ctx.beginPath();
     for (let i = 0; i <= 90; i += 1) {
@@ -90,15 +111,12 @@ function drawIdentification(canvas: HTMLCanvasElement, progress: number) {
     ctx.stroke();
   });
 
-  if (progress < .42) {
-    const left = screen(0, 0); const right = screen(1, 0);
-    drawArrow(ctx, left.x, left.y, 1, "#007190");
-    drawArrow(ctx, right.x, right.y, progress < .18 ? 1 : -1, "#a85f45");
-  }
+  drawArrow(ctx, screen(0, -27), screen(0, 27), "#007190");
+  drawArrow(ctx, screen(1, 27), screen(1, -27), "#a85f45");
   ctx.fillStyle = "#12343d";
   ctx.font = "600 11px ui-monospace, SFMono-Regular, Menlo, monospace";
   ctx.textAlign = "center";
-  const label = progress < .16 ? "TIRA RECTANGULAR" : progress < .52 ? "MEDIA VUELTA EN UN EXTREMO" : progress < .96 ? "ACERCAR E IDENTIFICAR" : "BANDA DE MÖBIUS";
+  const label = progress < .12 ? "FLECHAS EN SENTIDOS OPUESTOS" : progress < .56 ? "CERRAR LA TIRA EN FORMA DE C" : progress < .84 ? "GIRAR UNO DE LOS EXTREMOS" : progress < .995 ? "UNIR LAS FLECHAS" : "BANDA DE MÖBIUS · MISMO SENTIDO";
   ctx.fillText(label, width / 2, height - 18);
 }
 
@@ -135,7 +153,7 @@ export function MoebiusIdentification() {
 
   return (
     <figure className="moebius-lab identification-lab">
-      <header><p>EXPLORACIÓN 01 · IDENTIFICACIÓN</p><h3>Dar media vuelta y unir</h3><p>La orientación de las flechas muestra qué puntos de los extremos se coserán entre sí.</p></header>
+      <header><p>EXPLORACIÓN 01 · IDENTIFICACIÓN</p><h3>Dar media vuelta y unir</h3><p>Las flechas comienzan opuestas. La tira se curva como un cilindro abierto y un extremo gira antes de cerrar la costura.</p></header>
       <canvas ref={canvasRef} aria-label="Animación de una tira rectangular que recibe media vuelta y se cierra como banda de Möbius" />
       <div className="moebius-controls">
         <button type="button" onClick={play}>{progress > .99 ? "Repetir" : "Reproducir"}</button>
