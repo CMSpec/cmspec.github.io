@@ -131,6 +131,20 @@ export const collections: EditorialCollection[] = [
     tone: "pink",
     entries: [
       {
+        number: "07",
+        title: "Caminar por una banda de Möbius",
+        subtitle: "De un cuello tejido a una superficie no orientable",
+        description: "Una media vuelta antes de coser transforma una tira en una superficie de un solo lado, con propiedades muy distintas a las de un cilindro.",
+        authors: "Camila Muñoz Santander",
+        published: "2 agosto 2026",
+        modified: "2 agosto 2026",
+        href: "/tejido/banda-de-moebius",
+        visual: "▭ ↝ ∞",
+        eyebrow: "07 / TEJIDO & TOPOLOGÍA",
+        introduction: "Un cuello de lana puede comenzar como una tira rectangular. Si antes de unir sus extremos damos media vuelta a uno de ellos, el objeto cotidiano se convierte en una banda de Möbius: una superficie cuya diferencia con un cilindro parece mínima, pero cambia por completo su geometría.",
+        sections: [],
+      },
+      {
         number: "06",
         title: "Cuando una superficie se puede tejer",
         subtitle: "De la ecuación del círculo al crochet hiperbólico",
