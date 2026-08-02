@@ -4,6 +4,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 type Point3 = { x: number; y: number; z: number };
 
+function smoothStep(value: number) {
+  const clamped = Math.max(0, Math.min(1, value));
+  return clamped * clamped * (3 - 2 * clamped);
+}
+
 function prepareCanvas(canvas: HTMLCanvasElement) {
   const ratio = window.devicePixelRatio || 1;
   const width = canvas.clientWidth;
@@ -18,11 +23,17 @@ function prepareCanvas(canvas: HTMLCanvasElement) {
 }
 
 function moebiusPoint(theta: number, v: number, radius = 122): Point3 {
-  const half = theta / 2;
+  const turn = Math.PI * 2;
+  const revolution = Math.floor(theta / turn);
+  const localTheta = theta - revolution * turn;
+  const twistStart = Math.PI * 1.16;
+  const twistEnd = Math.PI * 1.84;
+  const twist = revolution * Math.PI + Math.PI * smoothStep((localTheta - twistStart) / (twistEnd - twistStart));
+  const radialWidth = v * Math.sin(twist);
   return {
-    x: (radius + v * Math.cos(half)) * Math.cos(theta),
-    y: (radius + v * Math.cos(half)) * Math.sin(theta),
-    z: v * Math.sin(half),
+    x: (radius + radialWidth) * Math.cos(theta),
+    y: (radius + radialWidth) * Math.sin(theta),
+    z: v * Math.cos(twist),
   };
 }
 
@@ -67,23 +78,29 @@ function drawIdentification(canvas: HTMLCanvasElement, progress: number) {
   ctx.fillRect(0, 0, width, height);
   const flatWidth = Math.min(510, width - 70);
   const scale = Math.min(1.22, width / 620);
-  const ease = (value: number) => value * value * (3 - 2 * value);
-  const bend = ease(Math.min(1, progress / .56));
-  const twist = ease(Math.max(0, Math.min(1, (progress - .56) / .28)));
-  const close = ease(Math.max(0, Math.min(1, (progress - .84) / .16)));
-  const sweep = bend * Math.PI * (1.72 + .28 * close);
+  const bend = smoothStep(progress / .56);
+  const twist = smoothStep((progress - .56) / .28);
+  const close = smoothStep((progress - .84) / .16);
+  const sweep = bend * Math.PI * 1.72;
   const curvedPoint = (u: number, v: number): Point3 => {
     if (sweep < .001) return { x: (u - .5) * flatWidth, y: 0, z: v };
     const radius = flatWidth / sweep;
     const angle = (u - .5) * sweep;
     const center = { x: radius * Math.sin(angle), y: radius * (1 - Math.cos(angle)), z: 0 };
-    const endInfluence = ease(Math.max(0, Math.min(1, (u - .68) / .32)));
+    const endInfluence = smoothStep((u - .68) / .32);
     const turn = Math.PI * twist * endInfluence;
     const radial = { x: -Math.sin(angle), y: Math.cos(angle), z: 0 };
-    return {
+    const staged = {
       x: center.x + v * radial.x * Math.sin(turn),
       y: center.y + v * radial.y * Math.sin(turn),
       z: v * Math.cos(turn),
+    };
+    if (close <= 0) return staged;
+    const target = moebiusPoint(u * Math.PI * 2, v, 128);
+    return {
+      x: staged.x * (1 - close) + target.x * close,
+      y: staged.y * (1 - close) + target.y * close,
+      z: staged.z * (1 - close) + target.z * close,
     };
   };
   const screen = (u: number, v: number) => project(curvedPoint(u, v), width, height + 34, scale);
