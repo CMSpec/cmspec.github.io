@@ -120,17 +120,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="archive-section" id="archivo">
-        <p className="section-index">{archive.index}</p>
-        <div>
-          <h2>{archive.titleFirstLine}<br />{archive.titleSecondLine}</h2>
-          <p>{archive.description}</p>
-        </div>
-        <div className="archive-list">
-          {archive.topics.map((topic) => <span key={topic}>{topic}</span>)}
-        </div>
-      </section>
-
       <section className="recommended-section" aria-labelledby="recommended-title">
         <header>
           <p className="section-index">{recommended.index}</p>
@@ -154,6 +143,17 @@ export default function Home() {
           ))}
         </div>
         <p className="recommended-note">Las imágenes son provisionales y de uso libre bajo la licencia de Unsplash. Podrás reemplazarlas cuando elijas las definitivas.</p>
+      </section>
+
+      <section className="archive-section" id="archivo">
+        <p className="section-index">{archive.index}</p>
+        <div>
+          <h2>{archive.titleFirstLine}<br />{archive.titleSecondLine}</h2>
+          <p>{archive.description}</p>
+        </div>
+        <div className="archive-list">
+          {archive.topics.map((topic) => <span key={topic}>{topic}</span>)}
+        </div>
       </section>
 
       <footer id="contacto">
