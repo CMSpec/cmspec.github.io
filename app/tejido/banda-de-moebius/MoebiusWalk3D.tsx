@@ -75,6 +75,7 @@ function createWalker() {
   const dark = new THREE.MeshStandardMaterial({ color: 0x12343d, roughness: .72 });
   const blue = new THREE.MeshStandardMaterial({ color: 0x007190, roughness: .68 });
   const skin = new THREE.MeshStandardMaterial({ color: 0xf0b89b, roughness: .8 });
+  const deckMaterial = new THREE.MeshStandardMaterial({ color: 0xd56f52, roughness: .62 });
   const cylinder = (radius: number, height: number, material: THREE.Material) => new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, height, 12), material);
 
   const torso = cylinder(.12, .62, blue); torso.position.y = .48; person.add(torso);
@@ -83,6 +84,14 @@ function createWalker() {
   const rightLeg = cylinder(.055, .42, dark); rightLeg.position.set(.09, .18, 0); rightLeg.rotation.z = .18; person.add(rightLeg);
   const leftArm = cylinder(.045, .46, dark); leftArm.position.set(-.25, .57, 0); leftArm.rotation.z = -.72; person.add(leftArm);
   const rightArm = cylinder(.045, .46, dark); rightArm.position.set(.25, .57, 0); rightArm.rotation.z = .72; person.add(rightArm);
+  const deck = new THREE.Mesh(new THREE.BoxGeometry(.42, .055, .92), deckMaterial);
+  deck.position.y = -.045; person.add(deck);
+  [-.28, .28].forEach((z) => {
+    const axle = cylinder(.025, .5, dark); axle.rotation.z = Math.PI / 2; axle.position.set(0, -.095, z); person.add(axle);
+    [-.235, .235].forEach((x) => {
+      const wheel = cylinder(.065, .055, dark); wheel.rotation.z = Math.PI / 2; wheel.position.set(x, -.12, z); person.add(wheel);
+    });
+  });
   person.scale.setScalar(.72);
   person.traverse((object) => { if (object instanceof THREE.Mesh) object.castShadow = true; });
   return person;
@@ -123,9 +132,6 @@ function mountScene(host: HTMLDivElement): SceneApi {
 
   const band = new THREE.Mesh(createBandGeometry(), new THREE.MeshStandardMaterial({ color: 0xd8dad7, roughness: .74, metalness: .03, side: THREE.DoubleSide }));
   band.castShadow = true; band.receiveShadow = true; scene.add(band, createGrid());
-
-  const floor = new THREE.Mesh(new THREE.CircleGeometry(4.6, 64), new THREE.ShadowMaterial({ color: 0x12343d, opacity: .12 }));
-  floor.position.z = -1.15; floor.receiveShadow = true; scene.add(floor);
 
   const trailMaterial = new THREE.LineBasicMaterial({ color: 0xd56f52, transparent: true, opacity: .92 });
   const trail = new THREE.Line(new THREE.BufferGeometry(), trailMaterial); scene.add(trail);
@@ -218,7 +224,9 @@ export function MoebiusWalk3D() {
   return (
     <figure className="moebius-lab walking-lab moebius-three-lab">
       <header><p>EXPLORACIÓN 02 · UN SOLO LADO</p><h3>Caminar y dejar una huella en 3D</h3><p>Arrastra para girar la banda y usa la rueda o el gesto de pinza para acercarte. La figura permanece perpendicular a la superficie durante todo el recorrido.</p></header>
-      <div ref={hostRef} className="moebius-three-stage" role="img" aria-label="Banda de Möbius tridimensional manipulable con una figura que recorre su línea central" />
+      <div ref={hostRef} className="moebius-three-stage" role="img" aria-label="Banda de Möbius tridimensional manipulable con una figura en skate que recorre su línea central">
+        <div className="moebius-camera-hint" aria-hidden="true"><span>⟳</span> Mover la cámara</div>
+      </div>
       <div className="moebius-controls">
         <button type="button" onClick={toggle}>{playing ? "Pausar" : journey >= .998 ? "Repetir" : "Comenzar a caminar"}</button>
         <button type="button" className="secondary" onClick={() => { stop(); setJourney(0); }}>Volver al inicio</button>
