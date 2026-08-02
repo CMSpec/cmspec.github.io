@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const SIZE = 10;
+const SIZE = 15;
 const CELLS = SIZE * SIZE;
 
 export function StitchPatternGrid() {
@@ -17,7 +17,7 @@ export function StitchPatternGrid() {
     <section className="stitch-pattern-builder" aria-labelledby="stitch-pattern-title">
       <header>
         <div>
-          <p>DIAGRAMA INTERACTIVO · 10 × 10</p>
+          <p>DIAGRAMA INTERACTIVO · {SIZE} × {SIZE}</p>
           <h3 id="stitch-pattern-title">Diseña un patrón</h3>
         </div>
         <p aria-live="polite"><strong>{CELLS - purlCount}</strong> derechos · <strong>{purlCount}</strong> reveses</p>
@@ -26,7 +26,7 @@ export function StitchPatternGrid() {
       <div className="stitch-pattern-workspace">
         <div className="stitch-pattern-panel">
           <p>ESQUEMA</p>
-          <div className="stitch-pattern-grid" role="group" aria-label="Cuadrícula de cien puntos de tejido">
+          <div className="stitch-pattern-grid" role="group" aria-label={`Cuadrícula de ${CELLS} puntos de tejido`}>
             {stitches.map((isPurl, index) => {
               const row = Math.floor(index / SIZE) + 1;
               const column = index % SIZE + 1;
@@ -49,7 +49,7 @@ export function StitchPatternGrid() {
         <div className="stitch-pattern-panel result-panel">
           <p>RESULTADO TEJIDO · VISTA FRONTAL</p>
           <div className="knitted-result" role="img" aria-label={`Simulación del tejido con ${CELLS - purlCount} puntos derechos y ${purlCount} puntos reveses`}>
-            {stitches.map((isPurl, index) => <span className={isPurl ? "result-purl" : "result-knit"} aria-hidden="true" key={index} />)}
+            {stitches.map((isPurl, index) => <span className={`${isPurl ? "result-purl" : "result-knit"} ${Math.floor(index / SIZE) % 2 ? "result-offset" : ""}`} aria-hidden="true" key={index} />)}
           </div>
         </div>
       </div>
