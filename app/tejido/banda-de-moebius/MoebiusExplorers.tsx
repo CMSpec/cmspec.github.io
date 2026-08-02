@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { MoebiusWalk3D } from "./MoebiusWalk3D";
 
 type Point3 = { x: number; y: number; z: number };
 
@@ -354,48 +355,5 @@ function drawWalk(canvas: HTMLCanvasElement, journey: number) {
 }
 
 export function MoebiusWalk() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const frameRef = useRef<number | null>(null);
-  const [journey, setJourney] = useState(0);
-  const [playing, setPlaying] = useState(false);
-  const journeyRef = useRef(0);
-  const playingRef = useRef(false);
-
-  const redraw = useCallback(() => { if (canvasRef.current) drawWalk(canvasRef.current, journeyRef.current); }, []);
-  useEffect(redraw, [redraw]);
-  useResize(redraw);
-  const setValue = (value: number) => { journeyRef.current = value; setJourney(value); redraw(); };
-
-  const stop = () => {
-    playingRef.current = false; setPlaying(false);
-    if (frameRef.current) cancelAnimationFrame(frameRef.current);
-  };
-  const toggle = () => {
-    if (playingRef.current) return stop();
-    if (journeyRef.current >= .998) setValue(0);
-    playingRef.current = true; setPlaying(true);
-    let previous = performance.now();
-    const frame = (now: number) => {
-      if (!playingRef.current) return;
-      const next = Math.min(1, journeyRef.current + (now - previous) / 12500);
-      previous = now; setValue(next);
-      if (next >= 1) stop(); else frameRef.current = requestAnimationFrame(frame);
-    };
-    frameRef.current = requestAnimationFrame(frame);
-  };
-  useEffect(() => () => { if (frameRef.current) cancelAnimationFrame(frameRef.current); }, []);
-
-  const status = journey < .5 ? "parte exterior" : journey < 1 ? "parte interior" : "punto inicial";
-  return (
-    <figure className="moebius-lab walking-lab">
-      <header><p>EXPLORACIÓN 02 · UN SOLO LADO</p><h3>Caminar y dejar una huella</h3><p>La figura comienza perpendicular hacia afuera, se atenúa al pasar por detrás, reaparece por la izquierda y entra al interior en la torsión frontal.</p></header>
-      <canvas ref={canvasRef} aria-label="Figura humana caminando sobre una banda de Möbius mientras deja una huella pintada" />
-      <div className="moebius-controls">
-        <button type="button" onClick={toggle}>{playing ? "Pausar" : journey >= .998 ? "Repetir" : "Comenzar a caminar"}</button>
-        <button type="button" className="secondary" onClick={() => { stop(); setValue(0); }}>Volver al inicio</button>
-        <label>Recorrido: <strong>{status}</strong><input type="range" min="0" max="1" step="0.002" value={journey} onChange={(event) => { stop(); setValue(Number(event.target.value)); }} /></label>
-      </div>
-      <figcaption>El cuerpo sigue continuamente la normal local de la banda: no cambia de sentido ni abandona la superficie al pasar del exterior al interior.</figcaption>
-    </figure>
-  );
+  return <MoebiusWalk3D />;
 }
