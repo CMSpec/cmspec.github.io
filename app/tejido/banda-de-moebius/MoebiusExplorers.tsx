@@ -209,8 +209,7 @@ function drawWalker(
   const anchor3 = moebiusPoint(theta, trackV);
   const tangent = normalize(subtract(moebiusPoint(theta + .015, trackV), moebiusPoint(theta - .015, trackV)));
   const across = normalize(subtract(moebiusPoint(theta, trackV + 1), moebiusPoint(theta, trackV - 1)));
-  const surfaceNormal = normalize(cross(tangent, across));
-  const normal = { x: -surfaceNormal.x, y: -surfaceNormal.y, z: -surfaceNormal.z };
+  const normal = normalize(cross(tangent, across));
 
   const foot = screen(offset(anchor3, normal, 2));
   const hip = screen(offset(anchor3, normal, 21));
@@ -222,9 +221,13 @@ function drawWalker(
   const tx = (tangentAhead.x - tangentBehind.x) / tangentLength;
   const ty = (tangentAhead.y - tangentBehind.y) / tangentLength;
   const stride = Math.sin(theta * 3) * 7;
+  const anchorScreen = screen(anchor3);
+  const behindRing = anchorScreen.depth > 18;
+  const hiddenByBand = head.depth > anchorScreen.depth + 2;
+  const visibility = hiddenByBand ? .3 : behindRing ? .48 : 1;
 
   ctx.save();
-  ctx.globalAlpha = opacity;
+  ctx.globalAlpha = opacity * visibility;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
   ctx.strokeStyle = "rgba(255,250,246,.92)";
@@ -256,7 +259,12 @@ function drawWalk(canvas: HTMLCanvasElement, journey: number) {
   ctx.fillStyle = background; ctx.fillRect(0, 0, width, height);
 
   const scale = Math.min(width / 390, height / 300);
-  const screen = (point: Point3) => project(point, width, height + 10, scale);
+  const screen = (point: Point3) => ({
+    x: width / 2 + point.x * scale,
+    y: (height + 10) / 2 + point.z * scale - point.y * .46 * scale,
+    depth: point.y,
+  });
+  const bandHalfWidth = 35;
   const shadow = ctx.createRadialGradient(width / 2, height * .66, 20, width / 2, height * .66, width * .36);
   shadow.addColorStop(0, "rgba(18,52,61,.18)"); shadow.addColorStop(1, "rgba(18,52,61,0)");
   ctx.save(); ctx.scale(1, .35); ctx.fillStyle = shadow; ctx.beginPath(); ctx.ellipse(width / 2, height * 1.88, width * .38, height * .38, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
@@ -269,8 +277,8 @@ function drawWalk(canvas: HTMLCanvasElement, journey: number) {
     const theta0 = i / along * Math.PI * 2;
     const theta1 = (i + 1) / along * Math.PI * 2;
     for (let j = 0; j < across; j += 1) {
-      const v0 = -48 + j / across * 96;
-      const v1 = -48 + (j + 1) / across * 96;
+      const v0 = -bandHalfWidth + j / across * bandHalfWidth * 2;
+      const v1 = -bandHalfWidth + (j + 1) / across * bandHalfWidth * 2;
       const points = [screen(moebiusPoint(theta0, v0)), screen(moebiusPoint(theta1, v0)), screen(moebiusPoint(theta1, v1)), screen(moebiusPoint(theta0, v1))];
       const theta = (theta0 + theta1) / 2;
       const v = (v0 + v1) / 2;
@@ -288,7 +296,7 @@ function drawWalk(canvas: HTMLCanvasElement, journey: number) {
     ctx.fill(); ctx.strokeStyle = "rgba(18,52,61,.055)"; ctx.lineWidth = .65; ctx.stroke();
   });
 
-  [-48, 48].forEach((v) => {
+  [-bandHalfWidth, bandHalfWidth].forEach((v) => {
     for (let i = 0; i < 180; i += 1) {
       const first = screen(moebiusPoint(i / 180 * Math.PI * 2, v));
       const second = screen(moebiusPoint((i + 1) / 180 * Math.PI * 2, v));
@@ -300,7 +308,7 @@ function drawWalk(canvas: HTMLCanvasElement, journey: number) {
   for (let i = 0; i < 12; i += 1) {
     ctx.beginPath();
     for (let j = 0; j <= 20; j += 1) {
-      const point = screen(moebiusPoint(i / 12 * Math.PI * 2, -48 + j / 20 * 96));
+      const point = screen(moebiusPoint(i / 12 * Math.PI * 2, -bandHalfWidth + j / 20 * bandHalfWidth * 2));
       if (j === 0) ctx.moveTo(point.x, point.y); else ctx.lineTo(point.x, point.y);
     }
     const depth = screen(moebiusPoint(i / 12 * Math.PI * 2, 0)).depth;
@@ -378,7 +386,7 @@ export function MoebiusWalk() {
   const status = journey < .5 ? "parte exterior" : journey < 1 ? "parte interior" : "punto inicial";
   return (
     <figure className="moebius-lab walking-lab">
-      <header><p>EXPLORACIÓN 02 · UN SOLO LADO</p><h3>Caminar y dejar una huella</h3><p>La figura mantiene los pies sobre el eje medio. Su orientación sigue la superficie: comienza por fuera y atraviesa la torsión frontal hasta quedar por dentro.</p></header>
+      <header><p>EXPLORACIÓN 02 · UN SOLO LADO</p><h3>Caminar y dejar una huella</h3><p>La figura comienza perpendicular hacia afuera, se atenúa al pasar por detrás, reaparece por la izquierda y entra al interior en la torsión frontal.</p></header>
       <canvas ref={canvasRef} aria-label="Figura humana caminando sobre una banda de Möbius mientras deja una huella pintada" />
       <div className="moebius-controls">
         <button type="button" onClick={toggle}>{playing ? "Pausar" : journey >= .998 ? "Repetir" : "Comenzar a caminar"}</button>
