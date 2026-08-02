@@ -192,8 +192,8 @@ function drawWalker(
   const anchor3 = moebiusPoint(theta, trackV);
   const tangent = normalize(subtract(moebiusPoint(theta + .015, trackV), moebiusPoint(theta - .015, trackV)));
   const across = normalize(subtract(moebiusPoint(theta, trackV + 1), moebiusPoint(theta, trackV - 1)));
-  let normal = normalize(cross(tangent, across));
-  if (normal.z < -.15) normal = { x: -normal.x, y: -normal.y, z: -normal.z };
+  const surfaceNormal = normalize(cross(tangent, across));
+  const normal = { x: -surfaceNormal.x, y: -surfaceNormal.y, z: -surfaceNormal.z };
 
   const foot = screen(offset(anchor3, normal, 2));
   const hip = screen(offset(anchor3, normal, 21));
@@ -291,7 +291,7 @@ function drawWalk(canvas: HTMLCanvasElement, journey: number) {
   }
 
   const maxTheta = journey * Math.PI * 4;
-  const pathV = 9;
+  const pathV = 0;
   const pieces = Math.max(1, Math.floor(journey * 260));
   for (let i = 0; i < pieces; i += 1) {
     const theta0 = i / pieces * maxTheta;
@@ -361,14 +361,14 @@ export function MoebiusWalk() {
   const status = journey < .5 ? "parte exterior" : journey < 1 ? "parte interior" : "punto inicial";
   return (
     <figure className="moebius-lab walking-lab">
-      <header><p>EXPLORACIÓN 02 · UN SOLO LADO</p><h3>Caminar y dejar una huella</h3><p>La figura avanza cerca del eje medio: primero deja una huella tenue por la parte exterior y luego una huella sólida por la interior.</p></header>
+      <header><p>EXPLORACIÓN 02 · UN SOLO LADO</p><h3>Caminar y dejar una huella</h3><p>La figura mantiene los pies sobre el eje medio. Su orientación sigue la superficie: comienza por fuera y atraviesa la torsión frontal hasta quedar por dentro.</p></header>
       <canvas ref={canvasRef} aria-label="Figura humana caminando sobre una banda de Möbius mientras deja una huella pintada" />
       <div className="moebius-controls">
         <button type="button" onClick={toggle}>{playing ? "Pausar" : journey >= .998 ? "Repetir" : "Comenzar a caminar"}</button>
         <button type="button" className="secondary" onClick={() => { stop(); setValue(0); }}>Volver al inicio</button>
         <label>Recorrido: <strong>{status}</strong><input type="range" min="0" max="1" step="0.002" value={journey} onChange={(event) => { stop(); setValue(Number(event.target.value)); }} /></label>
       </div>
-      <figcaption>La segunda vuelta continúa sobre aquello que parecía la cara interior, sin saltar un borde ni abandonar la superficie.</figcaption>
+      <figcaption>El cuerpo sigue continuamente la normal local de la banda: no cambia de sentido ni abandona la superficie al pasar del exterior al interior.</figcaption>
     </figure>
   );
 }
