@@ -2,6 +2,7 @@ import Image from "next/image";
 import { BrandHeader } from "../../_components/editorial";
 import { getCollection, getEntry } from "../../../content/collections";
 import BraidWordBuilder from "./BraidWordBuilder";
+import MappingClassSweaterLab from "./MappingClassSweaterLab";
 
 export default function BraidsKnotsKnittingPage() {
   const collection = getCollection("tejido")!;
@@ -62,10 +63,36 @@ export default function BraidsKnotsKnittingPage() {
           <p>A diferencia de una simple permutación, hacer dos veces el mismo cruce no devuelve la identidad: en general σᵢ² ≠ e. El grupo recuerda cómo se movieron las hebras, no solo su posición final.</p>
         </section>
 
+        <section className="braid-prose-section mapping-class-intro" id="mapping-class-group">
+          <p className="braid-section-number">04 / DE LAS TRENZAS A LAS SUPERFICIES</p>
+          <h2>El <em>mapping class group</em></h2>
+          <p>Para una superficie S, su <em>mapping class group</em>, denotado Mod(S), reúne las deformaciones globales de S que preservan la orientación, considerando equivalentes aquellas que pueden transformarse continuamente una en otra. La operación del grupo es realizar una transformación después de otra.</p>
+          <div className="mapping-class-formula" aria-label="Definición esquemática del mapping class group">
+            <strong>Mod(S)</strong><span>=</span><span>Homeo⁺(S) / isotopía</span>
+          </div>
+          <p>El puente con las trenzas es preciso: B<sub>n</sub> puede verse como el mapping class group de un disco con <em>n</em> puntos marcados, permitiendo que esos puntos se permuten y manteniendo fijo el borde. Un generador σᵢ es un <em>medio giro</em> que intercambia dos puntos vecinos.</p>
+          <p>En una superficie con bordes aparecen otros movimientos fundamentales. Si elegimos una curva cerrada simple y esencial, podemos efectuar un <em>giro de Dehn</em>: girar una banda alrededor de esa curva y dejar intacto el resto. Colecciones finitas de estos giros permiten generar mapping class groups de muchas superficies orientables.</p>
+        </section>
+
+        <MappingClassSweaterLab />
+
+        <section className="braid-prose-section mapping-class-why">
+          <p className="braid-section-number">05 / POR QUÉ IMPORTA</p>
+          <h2>¿Qué nos dicen los orificios?</h2>
+          <p>Los orificios y bordes crean caminos que no pueden borrarse sin atravesarlos. Una transformación puede estirar y torcer esos caminos, pero debe respetar la manera en que se cruzan y rodean la superficie. El mapping class group registra precisamente esas simetrías topológicas.</p>
+          <div className="mapping-class-reasons">
+            <div><span>01</span><strong>Clasificar</strong><p>Ayuda a decidir cuándo dos auto-transformaciones de una superficie son esencialmente distintas.</p></div>
+            <div><span>02</span><strong>Organizar curvas</strong><p>Describe cómo cambian lazos y arcos, conservando información de intersección y de qué bordes rodean.</p></div>
+            <div><span>03</span><strong>Conectar teorías</strong><p>Relaciona trenzas, nudos, geometría hiperbólica, espacios de módulos y fibrados de superficies.</p></div>
+          </div>
+          <p>Por eso los orificios no son simples vacíos: generan restricciones y posibilidades. En un sweater idealizado, cuello, puños y cintura distinguen curvas que pueden rodear bordes diferentes. Estudiar cómo se transforman esas curvas revela la estructura global que la prenda comparte con otras superficies.</p>
+          <p className="mapping-class-source">Lectura de referencia: <a href="https://academic.oup.com/princeton-scholarship-online/book/41605/chapter-abstract/353393601" target="_blank" rel="noreferrer">Farb y Margalit, <em>Braid Groups</em> ↗</a></p>
+        </section>
+
         <section className="braid-prose-section braid-closing-section">
-          <p className="braid-section-number">04 / VOLVER AL HILO</p>
+          <p className="braid-section-number">06 / VOLVER AL HILO</p>
           <h2>Una gramática para los cruces</h2>
-          <p>El grupo de trenzas convierte un gesto manual en una gramática: generadores como movimientos básicos, palabras como instrucciones y relaciones como maneras distintas de obtener la misma estructura. Mirar el tejido desde aquí no reduce su dimensión material; abre otra forma de leer la inteligencia de sus patrones.</p>
+          <p>El grupo de trenzas convierte un gesto manual en una gramática: generadores como movimientos básicos, palabras como instrucciones y relaciones como maneras distintas de obtener la misma estructura. El mapping class group amplía esa mirada desde las hebras hacia la superficie completa. Mirar el tejido desde aquí no reduce su dimensión material; abre otra forma de leer la inteligencia de sus estructuras.</p>
         </section>
       </article>
 

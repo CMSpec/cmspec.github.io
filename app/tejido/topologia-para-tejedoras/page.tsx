@@ -56,7 +56,7 @@ export default function TopologyForKnittersPage() {
 
         <section className="braid-prose-section">
           <p className="braid-section-number">04 / CONTAR ORIFICIOS</p>
-          <h2>La dona, la taza y el sweater</h2>
+          <h2>¿Qué topología esconde un sweater?</h2>
           <p>La analogía clásica dice que una dona y una taza con asa son topológicamente equivalentes: ambas tienen un orificio que atraviesa el objeto. Si el material pudiera deformarse como arcilla sin romperse, el agujero central de la dona podría convertirse en el espacio delimitado por el asa.</p>
           <div className="topology-object-comparison" aria-label="Comparación topológica entre una dona, una taza y un sweater">
             <div className="topology-object-card"><span>DONA</span><div className="topology-donut" aria-hidden="true" /><strong>un túnel</strong></div>
@@ -67,6 +67,11 @@ export default function TopologyForKnittersPage() {
           </div>
           <p>El sweater vuelve más interesante la pregunta. Para una tejedora, el cuello, los puños y la cintura son todos “huecos” por los que algo puede pasar. Matemáticamente conviene distinguir: una cosa es un <em>asa</em> o túnel de la superficie —el género— y otra son sus <em>componentes de borde</em>. Un sweater abierto en cuello, cintura y dos puños tiene cuatro bordes circulares; no por eso tiene género cuatro.</p>
           <p>Esta distinción muestra por qué contar orificios no siempre significa contar lo primero que vemos como abertura. La topología precisa qué clase de orificio está estudiando y qué transformaciones permite.</p>
+          <a className="topology-braid-link" href="/tejido/trenzas-nudos-y-tejido#mapping-class-group">
+            <span>SIGUIENTE PREGUNTA</span>
+            <strong>¿Cómo se pueden transformar esos orificios sin cambiar la superficie?</strong>
+            <small>Explorar el mapping class group en la entrada sobre trenzas →</small>
+          </a>
         </section>
 
         <section className="braid-prose-section">
