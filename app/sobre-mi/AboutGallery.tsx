@@ -19,10 +19,12 @@ const categoryLabels: Record<AboutGalleryCategory, string> = {
 export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[] }) {
   const [filter, setFilter] = useState<"todas" | AboutGalleryCategory>("todas");
   const [selected, setSelected] = useState<AboutGalleryEntry | null>(null);
+  const [carouselIndex, setCarouselIndex] = useState(0);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const visible = filter === "todas" ? entries : entries.filter((entry) => entry.category === filter);
   const grouped = visible.filter((entry) => entry.series === "cuadernos-juntos");
   const ungrouped = visible.filter((entry) => entry.series !== "cuadernos-juntos");
+  const carouselEntry = grouped[carouselIndex % Math.max(grouped.length, 1)];
 
   function open(entry: AboutGalleryEntry) {
     setSelected(entry);
@@ -50,6 +52,10 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
     );
   }
 
+  function moveCarousel(direction: number) {
+    setCarouselIndex((current) => (current + direction + grouped.length) % grouped.length);
+  }
+
   return (
     <section className="about-gallery" aria-labelledby="about-gallery-title">
       <header>
@@ -75,10 +81,29 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
       </div>
 
       {visible.length ? (
-        <>
-          {grouped.length > 0 && <div className="about-gallery-series">{grouped.map(card)}</div>}
-          {ungrouped.length > 0 && <div className="about-gallery-grid">{ungrouped.map(card)}</div>}
-        </>
+        <div className="about-gallery-grid">
+          {carouselEntry && (
+            <figure className="about-gallery-card about-gallery-carousel">
+              <div className="about-gallery-carousel-stage">
+                <button type="button" className="about-gallery-carousel-image" onClick={() => open(carouselEntry)} aria-label={`Ampliar ${carouselEntry.title}`}>
+                  <img src={carouselEntry.src} alt={carouselEntry.alt} loading="lazy" />
+                </button>
+                <button type="button" className="about-gallery-carousel-arrow is-prev" onClick={() => moveCarousel(-1)} aria-label="Foto anterior">‹</button>
+                <button type="button" className="about-gallery-carousel-arrow is-next" onClick={() => moveCarousel(1)} aria-label="Foto siguiente">›</button>
+                <span className="about-gallery-carousel-count" aria-hidden="true">{carouselIndex + 1}/{grouped.length}</span>
+              </div>
+              <div className="about-gallery-carousel-dots" aria-label="Elegir foto">
+                {grouped.map((entry, index) => <button type="button" className={index === carouselIndex ? "is-active" : ""} onClick={() => setCarouselIndex(index)} aria-label={`Ver foto ${index + 1}: ${entry.title}`} key={entry.src} />)}
+              </div>
+              <figcaption>
+                <p>{categoryLabels[carouselEntry.category]} · {carouselEntry.date}</p>
+                <strong>{carouselEntry.title}</strong>
+                <span>{carouselEntry.caption}</span>
+              </figcaption>
+            </figure>
+          )}
+          {ungrouped.map(card)}
+        </div>
       ) : (
         <div className="about-gallery-empty">
           <span aria-hidden="true">＋</span>
