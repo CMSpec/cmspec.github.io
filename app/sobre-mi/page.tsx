@@ -1,5 +1,7 @@
 import { BrandHeader } from "../_components/editorial";
 import { siteContent } from "../../content/site";
+import { aboutGallery } from "../../content/about-gallery";
+import AboutGallery from "./AboutGallery";
 
 export default function AboutPage() {
   const { about, brand } = siteContent;
@@ -36,6 +38,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <AboutGallery entries={aboutGallery} />
 
       <section className="about-spectrum" aria-label="Áreas que componen CMSpec">
         <a href="/investigacion"><span>01</span><strong>Investigación & Math</strong><small>Preguntas, modelos y notas matemáticas.</small></a>
