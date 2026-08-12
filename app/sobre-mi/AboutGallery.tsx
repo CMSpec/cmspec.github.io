@@ -25,6 +25,7 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
   const grouped = visible.filter((entry) => entry.series === "cuadernos-juntos");
   const ungrouped = visible.filter((entry) => entry.series !== "cuadernos-juntos");
   const carouselEntry = grouped[carouselIndex % Math.max(grouped.length, 1)];
+  const carouselDescription = grouped[0];
 
   function open(entry: AboutGalleryEntry) {
     setSelected(entry);
@@ -96,9 +97,9 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
                 {grouped.map((entry, index) => <button type="button" className={index === carouselIndex ? "is-active" : ""} onClick={() => setCarouselIndex(index)} aria-label={`Ver foto ${index + 1}: ${entry.title}`} key={entry.src} />)}
               </div>
               <figcaption>
-                <p>{categoryLabels[carouselEntry.category]} · {carouselEntry.date}</p>
-                <strong>{carouselEntry.title}</strong>
-                <span>{carouselEntry.caption}</span>
+                <p>{categoryLabels[carouselDescription.category]} · {carouselDescription.date}</p>
+                <strong>{carouselDescription.title}</strong>
+                <span>{carouselDescription.caption}</span>
               </figcaption>
             </figure>
           )}
