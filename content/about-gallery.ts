@@ -8,6 +8,7 @@ export type AboutGalleryEntry = {
   category: AboutGalleryCategory;
   date: string;
   orientation?: "portrait" | "landscape" | "square";
+  series?: "cuadernos-juntos";
 };
 
 // Para añadir una foto:
@@ -18,10 +19,11 @@ export const aboutGallery: AboutGalleryEntry[] = [
     src: "/images/ultimamente/bookbinding-coleccion-chiyogami.jpg",
     alt: "Tres encuadernaciones artesanales superpuestas, en tonos rojo, verde y calipso",
     title: "Papeles y encuadernaciones",
-    caption: "Arriba: papel de arroz rojo con dorado, encuadernación belga. Al medio: chiyogami verde, encuadernación belga. Abajo: chiyogami verde, encuadernación copta.",
+    caption: "Papel chiyogami dorado, verde y calipso. Encuadernación: de tapa dura, belga y copta.",
     category: "bookbinding",
     date: "Diciembre 2026",
     orientation: "portrait",
+    series: "cuadernos-juntos",
   },
   {
     src: "/images/ultimamente/bookbinding-belga-verde-calipso.jpg",
@@ -49,6 +51,7 @@ export const aboutGallery: AboutGalleryEntry[] = [
     category: "bookbinding",
     date: "Diciembre 2026",
     orientation: "portrait",
+    series: "cuadernos-juntos",
   },
   {
     src: "/images/ultimamente/bookbinding-belga-rojo-dorado.jpg",

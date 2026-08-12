@@ -21,6 +21,8 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
   const [selected, setSelected] = useState<AboutGalleryEntry | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const visible = filter === "todas" ? entries : entries.filter((entry) => entry.category === filter);
+  const grouped = visible.filter((entry) => entry.series === "cuadernos-juntos");
+  const ungrouped = visible.filter((entry) => entry.series !== "cuadernos-juntos");
 
   function open(entry: AboutGalleryEntry) {
     setSelected(entry);
@@ -30,6 +32,22 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
   function close() {
     dialogRef.current?.close();
     setSelected(null);
+  }
+
+  function card(entry: AboutGalleryEntry) {
+    return (
+      <figure className={`about-gallery-card about-gallery-${entry.orientation ?? "landscape"}`} key={`${entry.src}-${entry.title}`}>
+        <button type="button" onClick={() => open(entry)} aria-label={`Ampliar ${entry.title}`}>
+          <img src={entry.src} alt={entry.alt} loading="lazy" />
+          <span aria-hidden="true">↗</span>
+        </button>
+        <figcaption>
+          <p>{categoryLabels[entry.category]} · {entry.date}</p>
+          <strong>{entry.title}</strong>
+          <span>{entry.caption}</span>
+        </figcaption>
+      </figure>
+    );
   }
 
   return (
@@ -57,21 +75,10 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
       </div>
 
       {visible.length ? (
-        <div className="about-gallery-grid">
-          {visible.map((entry) => (
-            <figure className={`about-gallery-card about-gallery-${entry.orientation ?? "landscape"}`} key={`${entry.src}-${entry.title}`}>
-              <button type="button" onClick={() => open(entry)} aria-label={`Ampliar ${entry.title}`}>
-                <img src={entry.src} alt={entry.alt} loading="lazy" />
-                <span aria-hidden="true">↗</span>
-              </button>
-              <figcaption>
-                <p>{categoryLabels[entry.category]} · {entry.date}</p>
-                <strong>{entry.title}</strong>
-                <span>{entry.caption}</span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+        <>
+          {grouped.length > 0 && <div className="about-gallery-series">{grouped.map(card)}</div>}
+          {ungrouped.length > 0 && <div className="about-gallery-grid">{ungrouped.map(card)}</div>}
+        </>
       ) : (
         <div className="about-gallery-empty">
           <span aria-hidden="true">＋</span>
@@ -94,4 +101,3 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
     </section>
   );
 }
-
