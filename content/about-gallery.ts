@@ -20,7 +20,7 @@ export const aboutGallery: AboutGalleryEntry[] = [
     title: "Papeles y encuadernaciones",
     caption: "Arriba: papel de arroz rojo con dorado, encuadernación belga. Al medio: chiyogami verde, encuadernación belga. Abajo: chiyogami verde, encuadernación copta.",
     category: "bookbinding",
-    date: "Diciembre 2025",
+    date: "Diciembre 2026",
     orientation: "portrait",
   },
   {
@@ -29,7 +29,7 @@ export const aboutGallery: AboutGalleryEntry[] = [
     title: "Chiyogami verde y calipso",
     caption: "Papel: chiyogami. Encuadernación: belga.",
     category: "bookbinding",
-    date: "Diciembre 2025",
+    date: "Diciembre 2026",
     orientation: "landscape",
   },
   {
@@ -38,7 +38,7 @@ export const aboutGallery: AboutGalleryEntry[] = [
     title: "Chiyogami calipso",
     caption: "Papel: chiyogami. Encuadernación: belga.",
     category: "bookbinding",
-    date: "Diciembre 2025",
+    date: "Diciembre 2026",
     orientation: "portrait",
   },
   {
@@ -47,7 +47,7 @@ export const aboutGallery: AboutGalleryEntry[] = [
     title: "Papel de arroz rojo y chiyogami",
     caption: "Primer plano: papel de arroz rojo con dorado, encuadernación belga. Al fondo: chiyogami verde, encuadernaciones belga y copta.",
     category: "bookbinding",
-    date: "Diciembre 2025",
+    date: "Diciembre 2026",
     orientation: "portrait",
   },
   {
@@ -56,7 +56,7 @@ export const aboutGallery: AboutGalleryEntry[] = [
     title: "Papel de arroz rojo con dorado",
     caption: "Papel: papel de arroz rojo con detalles dorados. Encuadernación: belga.",
     category: "bookbinding",
-    date: "Diciembre 2025",
+    date: "Diciembre 2026",
     orientation: "landscape",
   },
   {
