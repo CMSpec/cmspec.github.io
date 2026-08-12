@@ -143,7 +143,7 @@ export const siteContent = {
   recommended: {
     index: "04 / PARA SEGUIR LEYENDO",
     title: "Entradas recomendadas",
-    description: "Tres recorridos para entrar a CMSpec desde distintos puntos del espectro.",
+    description: "Recorridos para entrar a CMSpec desde distintos puntos del espectro.",
     entries: [
       {
         title: "Álgebra Lineal",
@@ -176,6 +176,17 @@ export const siteContent = {
         imageAlt: "Proceso de crochet realizado con hilo azul",
         credit: "Foto provisional: Liana S · Unsplash",
         creditHref: "https://unsplash.com/photos/crocheting-with-blue-yarn-is-in-progress-7XP0xSMobkg",
+        tone: "pink",
+      },
+      {
+        title: "Papeles y encuadernaciones",
+        category: "ÚLTIMAMENTE · SOBRE MÍ",
+        description: "Una galería de cuadernos artesanales, papeles chiyogami y encuadernaciones de tapa dura, belga y copta.",
+        href: "/sobre-mi#about-gallery-title",
+        image: "/images/ultimamente/bookbinding-coleccion-chiyogami.jpg",
+        imageAlt: "Tres encuadernaciones artesanales superpuestas, en tonos dorado, verde y calipso",
+        credit: "Fotografía propia",
+        creditHref: "/sobre-mi#about-gallery-title",
         tone: "pink",
       },
     ],

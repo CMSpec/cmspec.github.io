@@ -142,7 +142,7 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <p className="recommended-note">Las imágenes son provisionales y de uso libre bajo la licencia de Unsplash. Podrás reemplazarlas cuando elijas las definitivas.</p>
+        <p className="recommended-note">Las fotografías externas son provisionales y de uso libre bajo la licencia de Unsplash; la galería de encuadernaciones utiliza fotografías propias.</p>
       </section>
 
       <section className="archive-section" id="archivo">
