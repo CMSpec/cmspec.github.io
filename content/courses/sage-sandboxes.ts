@@ -1,228 +1,130 @@
 type CourseKey = "algebra-lineal" | "ecuaciones-diferenciales" | "calculo-vectorial";
+type SandboxExample = { title: string; code: string };
 
-type SandboxExample = {
-  title: string;
-  code: string;
-};
-
-const examples: Record<CourseKey, SandboxExample[]> = {
-  "algebra-lineal": [
-    {
-      title: "Prueba con vectores y matrices",
-      code: `A = matrix([[1, 2], [3, 4]])
-v = vector([2, -1])
-print("A =")
-print(A)
-print("v =", v)
-print("A·v =", A*v)`,
-    },
-    {
-      title: "Determinante e inversa",
-      code: `A = matrix(QQ, [[2, 1], [5, 3]])
+const algebra: SandboxExample[] = [
+  ["Prueba con vectores y matrices", `import sympy as sp
+A = sp.Matrix([[1, 2], [3, 4]])
+v = sp.Matrix([2, -1])
+print("A ="); print(A)
+print("v =", list(v))
+print("A·v =", list(A*v))`],
+  ["Determinante e inversa", `import sympy as sp
+A = sp.Matrix([[2, 1], [5, 3]])
 print("det(A) =", A.det())
-print("A inversa =")
-print(A.inverse())
-print("Comprobación:")
-print(A*A.inverse())`,
-    },
-    {
-      title: "Resuelve un sistema lineal",
-      code: `A = matrix(QQ, [[1, 2], [3, -1]])
-b = vector(QQ, [5, 4])
-x = A.solve_right(b)
-print("Solución x =", x)
-print("Comprobación A·x =", A*x)`,
-    },
-    {
-      title: "Independencia y espacio generado",
-      code: `v1 = vector(QQ, [1, 0, 1])
-v2 = vector(QQ, [0, 1, 1])
-v3 = vector(QQ, [1, 1, 2])
-M = matrix([v1, v2, v3])
+print("A inversa ="); print(A.inv())
+print("Comprobación ="); print(A*A.inv())`],
+  ["Resuelve un sistema lineal", `import sympy as sp
+A = sp.Matrix([[1, 2], [3, -1]])
+b = sp.Matrix([5, 4])
+x = A.inv()*b
+print("Solución x =", list(x))
+print("Comprobación A·x =", list(A*x))`],
+  ["Independencia y espacio generado", `import sympy as sp
+M = sp.Matrix([[1,0,1], [0,1,1], [1,1,2]])
 print("Rango =", M.rank())
-print("Base del espacio fila:", M.row_space().basis())`,
-    },
-    {
-      title: "Aplica una transformación lineal",
-      code: `T = matrix([[2, 1], [0, -1]])
-v = vector([3, 2])
-print("v =", v)
-print("T(v) =", T*v)
-print(T)`,
-    },
-    {
-      title: "Calcula coordenadas en otra base",
-      code: `# Las columnas de B son los vectores de la nueva base
-B = matrix(QQ, [[1, 1], [1, -1]])
-v = vector(QQ, [3, 1])
-coordenadas = B.solve_right(v)
-print("[v]_B =", coordenadas)
-print("Reconstrucción:", B*coordenadas)`,
-    },
-  ],
-  "ecuaciones-diferenciales": [
-    {
-      title: "Comprueba una solución separable",
-      code: `var('x')
-y = function('y')(x)
-solucion = desolve(diff(y,x) == x*y, y, ics=[0,1])
-print(solucion)`,
-    },
-    {
-      title: "Resuelve una ecuación lineal",
-      code: `var('x')
-y = function('y')(x)
-print(desolve(diff(y,x) + 2*y == exp(x), y))`,
-    },
-    {
-      title: "Explora un factor integrante",
-      code: `var('x')
-p = 2/x
-mu = exp(integral(p, x)).simplify_full()
-print("Factor integrante:")
-print(mu)`,
-    },
-    {
-      title: "Resuelve una ecuación de Bernoulli",
-      code: `var('x')
-y = function('y')(x)
-print(desolve(diff(y,x) + y == x*y^2, y, contrib_ode=True))`,
-    },
-    {
-      title: "Ecuación de segundo orden",
-      code: `var('x')
-y = function('y')(x)
-print(desolve(diff(y,x,2) - 3*diff(y,x) + 2*y == 0, y))`,
-    },
-    {
-      title: "Raíces de la ecuación característica",
-      code: `var('r')
-polinomio = r^2 - 3*r + 2
-print("Raíces:", solve(polinomio == 0, r))
-print(factor(polinomio))`,
-    },
-    {
-      title: "Una solución particular",
-      code: `var('x')
-y = function('y')(x)
-print(desolve(diff(y,x,2) + y == cos(2*x), y))`,
-    },
-    {
-      title: "Transformada de Laplace",
-      code: `var('t, s')
-f = t^2*exp(-t)
-F = laplace(f, t, s)
-print(F)`,
-    },
-    {
-      title: "Laplace inversa y función escalón",
-      code: `var('t, s')
-F = exp(-2*s)/(s^2 + 1)
-print(inverse_laplace(F, s, t))`,
-    },
-    {
-      title: "Sistema diferencial lineal",
-      code: `A = matrix([[0, 1], [-2, -3]])
-print("Valores propios:", A.eigenvalues())
-print("Vectores propios:")
-print(A.eigenvectors_right())`,
-    },
-    {
-      title: "Aproxima una serie de Fourier",
-      code: `var('x')
-# Serie impar para f(x)=x en (-pi,pi)
-S = sum(2*(-1)^(n+1)*sin(n*x)/n for n in (1..8))
-plot(S, (x, -pi, pi), ymin=-4, ymax=4)`,
-    },
-  ],
-  "calculo-vectorial": [
-    {
-      title: "Opera con vectores en R³",
-      code: `u = vector([1, 2, -1])
-v = vector([2, 0, 3])
-print("u + v =", u+v)
-print("u·v =", u.dot_product(v))
-print("u×v =", u.cross_product(v))`,
-    },
-    {
-      title: "Evalúa una función de varias variables",
-      code: `var('x, y')
-f(x,y) = x^2 + sin(x*y)
-print("f(1,2) =", f(1,2))
-plot3d(f, (x,-2,2), (y,-2,2))`,
-    },
-    {
-      title: "Derivadas parciales",
-      code: `var('x, y')
-f = x^2*y + exp(x*y)
-print(diff(f, x))
-print(diff(f, y))`,
-    },
-    {
-      title: "Gradiente y plano tangente",
-      code: `var('x, y')
-f = x^2 + x*y + y^2
-gradiente = vector([diff(f,x), diff(f,y)])
-print("Gradiente en (1,2):", gradiente(x=1,y=2))`,
-    },
-    {
-      title: "Busca puntos críticos",
-      code: `var('x, y')
-f = x^3 - 3*x + y^2
-criticos = solve([diff(f,x)==0, diff(f,y)==0], [x,y])
-print(criticos)`,
-    },
-    {
-      title: "Curva, velocidad y curvatura",
-      code: `var('t')
-r = vector([cos(t), sin(t), t/3])
-velocidad = diff(r, t)
-print("r'(t) =", velocidad)
-parametric_plot3d(r, (t,0,4*pi))`,
-    },
-    {
-      title: "Integral doble",
-      code: `var('x, y')
-f = x + y
-resultado = integral(integral(f, y, 0, 1), x, 0, 2)
-print("Integral =", resultado)`,
-    },
-    {
-      title: "Cambio a coordenadas polares",
-      code: `var('r, theta')
-f = r^2
-resultado = integral(integral(f*r, r, 0, 1), theta, 0, 2*pi)
-print("Integral sobre el disco =", resultado)`,
-    },
-    {
-      title: "Integral triple",
-      code: `var('x, y, z')
-resultado = integral(integral(integral(x+y+z, z,0,1), y,0,1), x,0,1)
-print("Integral =", resultado)`,
-    },
-    {
-      title: "Campo y potencial",
-      code: `var('x, y')
-phi = x^2*y + y^3
-F = vector([diff(phi,x), diff(phi,y)])
-print("Campo gradiente:", F)
-print(phi)`,
-    },
-    {
-      title: "Comprueba el teorema de Green",
-      code: `var('x, y, r, theta')
-P = -y
-Q = x
-integrando = diff(Q,x) - diff(P,y)
-print("Rotacional escalar =", integrando)
-print("Integral sobre el disco unidad =", integral(integral(integrando*r, r,0,1), theta,0,2*pi))`,
-    },
-  ],
-};
+print("Base del espacio fila:", M.rowspace())`],
+  ["Aplica una transformación lineal", `import sympy as sp
+T = sp.Matrix([[2, 1], [0, -1]])
+v = sp.Matrix([3, 2])
+print("v =", list(v))
+print("T(v) =", list(T*v))`],
+  ["Calcula coordenadas en otra base", `import sympy as sp
+B = sp.Matrix([[1, 1], [1, -1]])
+v = sp.Matrix([3, 1])
+coordenadas = B.inv()*v
+print("[v]_B =", list(coordenadas))
+print("Reconstrucción =", list(B*coordenadas))`],
+].map(([title, code]) => ({ title, code }));
 
+const edoTitles = [
+  "Comprueba una solución separable", "Resuelve una ecuación lineal", "Explora un factor integrante",
+  "Resuelve una ecuación de Bernoulli", "Ecuación de segundo orden", "Raíces de la ecuación característica",
+  "Una solución particular", "Transformada de Laplace", "Laplace inversa y función escalón",
+  "Sistema diferencial lineal", "Aproxima una serie de Fourier",
+];
+const edoCodes = [
+`import sympy as sp
+x = sp.symbols('x'); y = sp.Function('y')
+print(sp.dsolve(sp.diff(y(x),x) - x*y(x), ics={y(0):1}))`,
+`import sympy as sp
+x = sp.symbols('x'); y = sp.Function('y')
+print(sp.dsolve(sp.diff(y(x),x) + 2*y(x) - sp.exp(x)))`,
+`import sympy as sp
+x = sp.symbols('x', positive=True)
+p = 2/x
+print("Factor integrante =", sp.exp(sp.integrate(p,x)))`,
+`import sympy as sp
+x = sp.symbols('x'); y = sp.Function('y')
+print(sp.dsolve(sp.diff(y(x),x) + y(x) - x*y(x)**2))`,
+`import sympy as sp
+x = sp.symbols('x'); y = sp.Function('y')
+print(sp.dsolve(sp.diff(y(x),x,2)-3*sp.diff(y(x),x)+2*y(x)))`,
+`import sympy as sp
+r = sp.symbols('r'); p = r**2-3*r+2
+print("Raíces =", sp.solve(p,r)); print("Factorización =", sp.factor(p))`,
+`import sympy as sp
+x = sp.symbols('x'); y = sp.Function('y')
+print(sp.dsolve(sp.diff(y(x),x,2)+y(x)-sp.cos(2*x)))`,
+`import sympy as sp
+t,s = sp.symbols('t s', positive=True)
+print(sp.laplace_transform(t**2*sp.exp(-t),t,s,noconds=True))`,
+`import sympy as sp
+t,s = sp.symbols('t s', positive=True)
+print(sp.inverse_laplace_transform(sp.exp(-2*s)/(s**2+1),s,t))`,
+`import sympy as sp
+A = sp.Matrix([[0,1],[-2,-3]])
+print("Valores propios =", A.eigenvals())
+print("Vectores propios =", A.eigenvects())`,
+`import sympy as sp
+x,n = sp.symbols('x n')
+S = sum(2*(-1)**(k+1)*sp.sin(k*x)/k for k in range(1,9))
+print("S₈(x) =", sp.simplify(S))`,
+];
+const edo = edoTitles.map((title, index) => ({ title, code: edoCodes[index] }));
+
+const vectorTitles = ["Opera con vectores en R³","Evalúa una función de varias variables","Derivadas parciales","Gradiente y plano tangente","Busca puntos críticos","Curva, velocidad y curvatura","Integral doble","Cambio a coordenadas polares","Integral triple","Campo y potencial","Comprueba el teorema de Green"];
+const vectorCodes = [
+`import sympy as sp
+u=sp.Matrix([1,2,-1]); v=sp.Matrix([2,0,3])
+print("u+v =",list(u+v)); print("u·v =",u.dot(v)); print("u×v =",list(u.cross(v)))`,
+`import sympy as sp
+x,y=sp.symbols('x y'); f=x**2+sp.sin(x*y)
+print("f(1,2) =",f.subs({x:1,y:2}))`,
+`import sympy as sp
+x,y=sp.symbols('x y'); f=x**2*y+sp.exp(x*y)
+print("∂f/∂x =",sp.diff(f,x)); print("∂f/∂y =",sp.diff(f,y))`,
+`import sympy as sp
+x,y=sp.symbols('x y'); f=x**2+x*y+y**2
+g=sp.Matrix([sp.diff(f,x),sp.diff(f,y)])
+print("Gradiente en (1,2) =",list(g.subs({x:1,y:2})))`,
+`import sympy as sp
+x,y=sp.symbols('x y'); f=x**3-3*x+y**2
+print(sp.solve([sp.diff(f,x),sp.diff(f,y)],[x,y]))`,
+`import sympy as sp
+t=sp.symbols('t'); r=sp.Matrix([sp.cos(t),sp.sin(t),t/3])
+print("r'(t) =",list(sp.diff(r,t)))`,
+`import sympy as sp
+x,y=sp.symbols('x y'); f=x+y
+print("Integral =",sp.integrate(f,(y,0,1),(x,0,2)))`,
+`import sympy as sp
+r,theta=sp.symbols('r theta', positive=True)
+print("Integral sobre el disco =",sp.integrate(r**2*r,(r,0,1),(theta,0,2*sp.pi)))`,
+`import sympy as sp
+x,y,z=sp.symbols('x y z')
+print("Integral =",sp.integrate(x+y+z,(z,0,1),(y,0,1),(x,0,1)))`,
+`import sympy as sp
+x,y=sp.symbols('x y'); phi=x**2*y+y**3
+F=sp.Matrix([sp.diff(phi,x),sp.diff(phi,y)])
+print("Campo gradiente =",list(F))`,
+`import sympy as sp
+x,y,r,theta=sp.symbols('x y r theta'); P=-y; Q=x
+rot=sp.diff(Q,x)-sp.diff(P,y)
+print("Rotacional escalar =",rot)
+print("Integral en el disco =",sp.integrate(rot*r,(r,0,1),(theta,0,2*sp.pi)))`,
+];
+const vectorial = vectorTitles.map((title,index)=>({title,code:vectorCodes[index]}));
+
+const examples: Record<CourseKey, SandboxExample[]> = { "algebra-lineal": algebra, "ecuaciones-diferenciales": edo, "calculo-vectorial": vectorial };
 export function getSageSandbox(course: CourseKey, chapterIndex: number, fallbackTitle: string) {
-  return examples[course][chapterIndex] ?? {
-    title: `Explora ${fallbackTitle.toLocaleLowerCase("es")}`,
-    code: "# Escribe aquí tus comandos de SageMath\n2 + 2",
-  };
+  return examples[course][chapterIndex] ?? { title: `Explora ${fallbackTitle.toLocaleLowerCase("es")}`, code: "print(2 + 2)" };
 }
