@@ -2,6 +2,8 @@ import { vectorCalculusCourse } from "../../../content/courses/vector-calculus";
 import { vectorCalculusChapters } from "../../../content/courses/vector-calculus-chapters";
 import CourseIndex from "../_components/CourseIndex";
 import SiteHeader from "../../_components/SiteHeader";
+import SageSandbox from "../_components/SageSandbox";
+import { getSageSandbox } from "../../../content/courses/sage-sandboxes";
 
 export default function VectorCalculusCoursePage() {
   const course = vectorCalculusCourse;
@@ -71,6 +73,7 @@ export default function VectorCalculusCoursePage() {
                       <div className="latex-content" dangerouslySetInnerHTML={{ __html: section.html }} />
                     </section>
                   ))}
+                  <SageSandbox {...getSageSandbox("calculo-vectorial", chapterIndex, chapter.title)} />
                 </article>
               </details>
             ))}

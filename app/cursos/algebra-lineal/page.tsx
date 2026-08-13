@@ -10,6 +10,8 @@ import { SymmetryAnimation, TraceAnimation, TriangularMatricesAnimation } from "
 import CourseIndex from "../_components/CourseIndex";
 import SolutionDisclosures from "./SolutionDisclosures";
 import SiteHeader from "../../_components/SiteHeader";
+import SageSandbox from "../_components/SageSandbox";
+import { getSageSandbox } from "../../../content/courses/sage-sandboxes";
 
 function cleanDefinitionName(html: string) {
   return html
@@ -226,6 +228,7 @@ export default function LinearAlgebraCoursePage() {
                       />
                     </section>
                   ))}
+                  <SageSandbox {...getSageSandbox("algebra-lineal", chapterIndex, chapter.title)} />
                 </article>
               </details>
             ))}
