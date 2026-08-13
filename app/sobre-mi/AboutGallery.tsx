@@ -58,7 +58,7 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
   }
 
   return (
-    <section className="about-gallery" aria-labelledby="about-gallery-title">
+    <section className="about-gallery" id="galeria" aria-labelledby="about-gallery-title">
       <header>
         <p className="about-gallery-index">02 / ÚLTIMAMENTE</p>
         <div>

@@ -2,10 +2,13 @@ import Image from "next/image";
 import { siteContent } from "../content/site";
 import { collections } from "../content/collections";
 import { courseNotes } from "../content/course-library";
+import { aboutGallery } from "../content/about-gallery";
 import SiteHeader from "./_components/SiteHeader";
 
 const notes = courseNotes.filter((note) => note.href !== "/cursos/laboratorio-algebra-lineal");
 const textileNotes = collections.find((collection) => collection.slug === "tejido")!.entries;
+const recentGallery = [aboutGallery[0], aboutGallery[4], aboutGallery[5]];
+const galleryCategories = { bookbinding: "Bookbinding", tejidos: "Tejidos", viajes: "Viajes" } as const;
 
 const labPieces = [
   { number: "01", title: "Vectores", caption: "Escalares, suma y combinaciones", href: "/cursos/laboratorio-algebra-lineal#vectores", visual: "vector" },
@@ -86,6 +89,27 @@ export default function Home() {
             <a href={entry.href} className="flat-entry" key={entry.href}>
               <span className="flat-entry-title">{entry.title}</span>
               <span className="flat-entry-meta"><InteractiveMark /><i aria-hidden="true">↗</i></span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="flat-section flat-recent" id="ultimamente" aria-labelledby="recent-title">
+        <header className="flat-section-heading flat-recent-heading">
+          <div>
+            <h2 id="recent-title">Últimamente</h2>
+            <p>Encuadernaciones, tejidos, viajes y otras cosas que he estado haciendo fuera de la pantalla.</p>
+          </div>
+          <a href="/sobre-mi#galeria">Ver la galería completa <span aria-hidden="true">→</span></a>
+        </header>
+        <div className="flat-recent-grid">
+          {recentGallery.map((entry) => (
+            <a className="flat-recent-card" href="/sobre-mi#galeria" key={entry.src}>
+              <div className="flat-recent-image">
+                <Image src={entry.src} alt={entry.alt} width={900} height={900} />
+              </div>
+              <p>{galleryCategories[entry.category]} · {entry.date}</p>
+              <strong>{entry.title}</strong>
             </a>
           ))}
         </div>
