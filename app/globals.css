@@ -687,8 +687,13 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .latex-content table p { margin: 0; }
 .latex-fallback { display: inline-block; white-space: pre-wrap; color: var(--blue); }
 .course-margin-note { position: sticky; top: 30px; align-self: start; margin-top: 205px; padding-top: 15px; border-top: 3px solid var(--green); }.course-margin-note span { color: var(--olive); font: 9px var(--font-geist-mono); letter-spacing: .14em; }.course-margin-note p { margin: 12px 0 0; color: var(--muted); font: italic 13px/1.55 Georgia, serif; }
-.course-footer { background: var(--ink); color: white; grid-template-columns: 1fr auto; }
-.course-footer a { color: var(--green) !important; }
+.course-footer { min-height: 92px; padding-block: 28px; border-top: 1px solid var(--line); background: #faf9f5; color: var(--ink); grid-template-columns: 1fr auto; }
+.course-footer p { margin: 0; color: var(--muted); }
+.course-footer a { color: var(--ink) !important; }
+.braid-article { padding-bottom: 62px; }
+.braid-article > .braid-prose-section:last-child { padding-bottom: 34px; }
+.course-page .back-to-top { width: 44px; height: 44px; color: var(--ink); background: rgba(250,249,245,.96); border: 1px solid var(--line); box-shadow: 0 6px 18px rgba(18,52,61,.09); }
+.course-page .back-to-top:hover { color: #fff; }
 .edo-course .course-spectrum i:nth-child(1), .edo-course .course-spectrum i:nth-child(3) { background: var(--green); }
 .edo-course .course-kicker { color: var(--olive); }
 .edo-course .course-masthead h1 { font-size: clamp(35px, 4.75vw, 63px); line-height: 1; letter-spacing: -.045em; }
