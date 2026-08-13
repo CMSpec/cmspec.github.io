@@ -1,16 +1,10 @@
 import type { EditorialCollection, EditorialEntry } from "../../content/collections";
+import SiteHeader from "./SiteHeader";
 
 export function BrandHeader({ label, backHref = "/" }: { label: string; backHref?: string }) {
-  return (
-    <header className="course-header">
-      <a className="brand" href="/" aria-label="CMSpec, volver al inicio">
-        <span className="brand-mark" aria-hidden="true"><i /><i /><i /><i /></span>
-        <span>CMSpec</span>
-      </a>
-      <span className="course-publication">COLECCIÓN · {label}</span>
-      <a className="course-back" href={backHref}>{backHref === "/" ? "Volver al espectro" : "Volver a la colección"} ↗</a>
-    </header>
-  );
+  void label;
+  void backHref;
+  return <SiteHeader />;
 }
 
 export function CollectionPage({ collection }: { collection: EditorialCollection }) {

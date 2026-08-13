@@ -210,6 +210,9 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .flat-home .flat-header { max-width: none; border-bottom-color: #dedcd5; }
 .flat-home .flat-header nav { display: flex; }
 .flat-home .flat-header nav a { color: #303030; }
+.global-site-header { position: sticky; top: 0; z-index: 1000; width: 100%; background: rgba(250,249,245,.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.global-site-header nav { display: flex; gap: 28px; font-weight: 520; }
+.global-site-header nav a { color: #303030; }
 .flat-intro,.flat-section,.flat-footer { width: min(1080px,calc(100% - 48px)); margin-inline: auto; }
 .flat-intro { min-height: 510px; padding: 88px 0 100px; display: grid; grid-template-columns: 230px minmax(0,690px); align-items: center; gap: 64px; border-bottom: 1px solid #dedcd5; }
 .flat-intro figure { width: 230px; aspect-ratio: 1; margin: 0; border-radius: 50%; overflow: hidden; background: #eceae4; }

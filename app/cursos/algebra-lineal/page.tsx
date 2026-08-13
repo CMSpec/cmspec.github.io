@@ -9,6 +9,7 @@ import { DotProductAnimation, MatrixAdditionAnimation } from "./MatrixOperations
 import { SymmetryAnimation, TraceAnimation, TriangularMatricesAnimation } from "./MatrixStructureAnimations";
 import CourseIndex from "../_components/CourseIndex";
 import SolutionDisclosures from "./SolutionDisclosures";
+import SiteHeader from "../../_components/SiteHeader";
 
 function cleanDefinitionName(html: string) {
   return html
@@ -179,14 +180,7 @@ export default function LinearAlgebraCoursePage() {
   return (
     <main className="course-page linear-algebra-course">
       <SolutionDisclosures />
-      <header className="course-header">
-        <a className="brand" href="/" aria-label="CMSpec, volver al inicio">
-          <span className="brand-mark" aria-hidden="true"><i /><i /><i /><i /></span>
-          <span>CMSpec</span>
-        </a>
-        <span className="course-publication">APUNTES · ÁLGEBRA LINEAL</span>
-        <a className="course-back" href="/aprender">Todos los apuntes ↗</a>
-      </header>
+      <SiteHeader />
 
       <article className="course-masthead">
         <div className="course-spectrum" aria-hidden="true"><i /><i /><i /><i /></div>

@@ -1,6 +1,7 @@
 import { vectorCalculusCourse } from "../../../content/courses/vector-calculus";
 import { vectorCalculusChapters } from "../../../content/courses/vector-calculus-chapters";
 import CourseIndex from "../_components/CourseIndex";
+import SiteHeader from "../../_components/SiteHeader";
 
 export default function VectorCalculusCoursePage() {
   const course = vectorCalculusCourse;
@@ -16,14 +17,7 @@ export default function VectorCalculusCoursePage() {
 
   return (
     <main className="course-page vector-course">
-      <header className="course-header">
-        <a className="brand" href="/" aria-label="CMSpec, volver al inicio">
-          <span className="brand-mark" aria-hidden="true"><i /><i /><i /><i /></span>
-          <span>CMSpec</span>
-        </a>
-        <span className="course-publication">APUNTES · CÁLCULO VECTORIAL</span>
-        <a className="course-back" href="/aprender">Todos los apuntes ↗</a>
-      </header>
+      <SiteHeader />
 
       <article className="course-masthead">
         <div className="course-spectrum" aria-hidden="true"><i /><i /><i /><i /></div>

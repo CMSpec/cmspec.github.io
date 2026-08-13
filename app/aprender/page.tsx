@@ -1,16 +1,10 @@
 import { courseNotes } from "../../content/course-library";
+import SiteHeader from "../_components/SiteHeader";
 
 export default function LearnPage() {
   return (
     <main className="learn-page">
-      <header className="course-header">
-        <a className="brand" href="/" aria-label="CMSpec, volver al inicio">
-          <span className="brand-mark" aria-hidden="true"><i /><i /><i /><i /></span>
-          <span>CMSpec</span>
-        </a>
-        <span className="course-publication">COLECCIÓN · APRENDER</span>
-        <a className="course-back" href="/">Volver al espectro ↗</a>
-      </header>
+      <SiteHeader />
 
       <section className="learn-masthead">
         <div className="course-spectrum" aria-hidden="true"><i /><i /><i /><i /></div>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { siteContent } from "../content/site";
 import { collections } from "../content/collections";
 import { courseNotes } from "../content/course-library";
+import SiteHeader from "./_components/SiteHeader";
 
 const notes = courseNotes.filter((note) => note.href !== "/cursos/laboratorio-algebra-lineal");
 const textileNotes = collections.find((collection) => collection.slug === "tejido")!.entries;
@@ -18,23 +19,11 @@ function InteractiveMark() {
 }
 
 export default function Home() {
-  const { brand, navigation, about } = siteContent;
+  const { brand, about } = siteContent;
 
   return (
     <main className="home-page flat-home">
-      <header className="site-header flat-header">
-        <a className="brand" href="#inicio" aria-label={`${brand.name}, inicio`}>
-          <span className="brand-mark" aria-hidden="true"><i /><i /><i /><i /></span>
-          <span>{brand.name}</span>
-        </a>
-        <nav aria-label={navigation.ariaLabel}>
-          <a href="#notas">Notas</a>
-          <a href="#laboratorio">Laboratorio</a>
-          <a href="#tejido">Tejido</a>
-          <a href="/sobre-mi">Sobre mí</a>
-        </nav>
-        <a className="header-cta" href="#contacto">Contacto <span aria-hidden="true">↗</span></a>
-      </header>
+      <SiteHeader />
 
       <section className="flat-intro" id="inicio">
         <figure>

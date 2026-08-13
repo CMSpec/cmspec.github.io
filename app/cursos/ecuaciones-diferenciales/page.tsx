@@ -1,6 +1,7 @@
 import { differentialEquationsCourse } from "../../../content/courses/differential-equations";
 import { differentialEquationsChapters } from "../../../content/courses/differential-equations-chapters";
 import CourseIndex from "../_components/CourseIndex";
+import SiteHeader from "../../_components/SiteHeader";
 
 export default function DifferentialEquationsCoursePage() {
   const course = differentialEquationsCourse;
@@ -16,14 +17,7 @@ export default function DifferentialEquationsCoursePage() {
 
   return (
     <main className="course-page edo-course">
-      <header className="course-header">
-        <a className="brand" href="/" aria-label="CMSpec, volver al inicio">
-          <span className="brand-mark" aria-hidden="true"><i /><i /><i /><i /></span>
-          <span>CMSpec</span>
-        </a>
-        <span className="course-publication">APUNTES · ECUACIONES DIFERENCIALES</span>
-        <a className="course-back" href="/aprender">Todos los apuntes ↗</a>
-      </header>
+      <SiteHeader />
 
       <article className="course-masthead">
         <div className="course-spectrum" aria-hidden="true"><i /><i /><i /><i /></div>
