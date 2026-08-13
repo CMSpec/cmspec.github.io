@@ -77,10 +77,6 @@ export default function DifferentialEquationsCoursePage() {
           </div>
         </section>
 
-        <aside className="course-margin-note">
-          <span>CMSpec / 02</span>
-          <p>De una razón de cambio local a una familia completa de trayectorias.</p>
-        </aside>
       </div>
 
       <footer className="course-footer">

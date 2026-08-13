@@ -63,6 +63,10 @@ export default function CourseIndex({
 
   return (
     <aside className={`course-toc${isVisible ? "" : " is-collapsed"}`} aria-label="Índice del curso">
+      <a className="course-notes-back" href="/aprender">
+        <span>VOLVER A NOTAS</span>
+        <i aria-hidden="true">←</i>
+      </a>
       <button
         type="button"
         className="course-toc-toggle"

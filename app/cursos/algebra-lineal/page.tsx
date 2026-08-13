@@ -232,10 +232,6 @@ export default function LinearAlgebraCoursePage() {
           </div>
         </section>
 
-        <aside className="course-margin-note">
-          <span>CMSpec / 01</span>
-          <p>Un espacio para leer, relacionar ideas y explorar la estructura detrás de los cálculos.</p>
-        </aside>
       </div>
 
       <footer className="course-footer">

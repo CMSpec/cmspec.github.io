@@ -77,10 +77,6 @@ export default function VectorCalculusCoursePage() {
           </div>
         </section>
 
-        <aside className="course-margin-note">
-          <span>CMSpec / 03</span>
-          <p>Del cambio local a la geometría y la integración en varias dimensiones.</p>
-        </aside>
       </div>
 
       <footer className="course-footer">
