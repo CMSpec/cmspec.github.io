@@ -168,6 +168,43 @@ input[type="range"] { width: 100%; accent-color: var(--blue); cursor: pointer; }
 .recommended-note { margin: 24px 0 0; color: var(--muted); font: 10px var(--font-geist-mono), monospace; }
 footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-columns: 1fr 1fr 1fr auto; align-items: center; gap: 30px; background: #fff; font-size: 12px; }.footer-brand { font-size: 18px; }.footer-brand .brand-mark { width: 22px; height: 22px; }.footer-brand + p { color: var(--muted); }.footer > a:not(.brand) { color: var(--blue); font-weight: 650; }footer small { color: var(--muted); }
 
+/* Portada: una lectura más serena y personal, inspirada en un archivo matemático. */
+.home-page { background: #fbfaf6; }
+.home-page .site-header { height: 72px; padding-inline: max(24px,calc((100vw - 1080px) / 2)); background: rgba(251,250,246,.94); }
+.home-page .site-header nav { gap: 28px; font-weight: 520; }
+.home-page .hero { width: min(1080px,calc(100% - 48px)); min-height: 625px; margin: 0 auto; grid-template-columns: minmax(0,1.12fr) minmax(360px,.88fr); gap: 70px; padding: 82px 0 92px; overflow: visible; }
+.home-page .hero-copy { align-self: center; }
+.home-page .kicker { margin-bottom: 22px; font-size: 10px; }
+.home-page .hero h1 { max-width: 650px; font-family: Georgia,serif; font-size: clamp(43px,5.1vw,68px); font-weight: 400; line-height: .98; letter-spacing: -.048em; }
+.home-page .hero h1 em { font-size: 1.05em; }
+.home-page .hero-intro { max-width: 610px; margin: 30px 0 0; font-family: Georgia,serif; font-size: clamp(18px,1.55vw,21px); line-height: 1.62; }
+.home-page .spectrum-stage { max-width: 380px; }
+.home-page .spectrum-core { box-shadow: 0 18px 48px rgba(18,52,61,.16); }
+.home-page .spectrum-node { background: rgba(251,250,246,.96); box-shadow: 0 5px 20px rgba(18,52,61,.055); }
+.home-page .stage-cta { min-height: 44px; padding-inline: 18px; font-size: 12px; box-shadow: none; }
+.home-page .spectrum-rule { height: 5px; }
+.home-page .domains-section { padding: 90px max(24px,calc((100vw - 1080px) / 2)) 105px; background: #fff; }
+.home-page .section-heading { grid-template-columns: .36fr .8fr 1fr; gap: 55px; margin-bottom: 48px; }
+.home-page .section-heading h2 { font-size: clamp(40px,4.5vw,60px); }
+.home-page .domain-grid { grid-template-columns: repeat(2,1fr); border: 0; gap: 1px; background: var(--line); }
+.home-page .domain-card { min-height: 245px; padding: 26px 28px; border: 0; background: #fbfbf8; }
+.home-page .domain-card.card-1 { box-shadow: inset 0 5px 0 var(--blue); }.home-page .domain-card.card-2 { box-shadow: inset 0 5px 0 var(--olive); }.home-page .domain-card.card-3 { box-shadow: inset 0 5px 0 var(--green); }.home-page .domain-card.card-4 { box-shadow: inset 0 5px 0 var(--pink); }
+.home-page .domain-card:hover,.home-page .domain-card:focus-visible { transform: translateY(-3px); box-shadow: inset 0 5px 0 currentColor,0 14px 32px rgba(18,52,61,.08); }
+.home-page .card-eyebrow { margin-top: 42px; }
+.home-page .domain-card > p:not(.card-eyebrow) { min-height: 0; max-width: 430px; }
+.home-page .domain-card-link { margin-top: auto; }
+.home-page .recommended-section { padding: 90px max(24px,calc((100vw - 1080px) / 2)) 105px; background: #fbfaf6; }
+.home-page .recommended-section > header { grid-template-columns: .36fr .8fr 1fr; gap: 55px; margin-bottom: 48px; }
+.home-page .recommended-section > header h2 { font-size: clamp(40px,4.5vw,60px); }
+.home-page .recommended-grid { grid-template-columns: repeat(2,1fr); gap: 22px; }
+.home-page .recommended-card { display: grid; grid-template-columns: minmax(145px,.8fr) 1.2fr; }
+.home-page .recommended-image { aspect-ratio: auto; min-height: 285px; }
+.home-page .recommended-copy { border-top: 0; border-left: 5px solid var(--recommended-accent); padding: 27px 24px; }
+.home-page .recommended-copy h3 { min-height: 0; font-size: clamp(26px,2.3vw,34px); }
+.home-page .recommended-copy > p:nth-of-type(2) { min-height: 0; }
+.home-page .archive-section { padding: 90px max(24px,calc((100vw - 1080px) / 2)); }
+.home-page > footer { padding-inline: max(24px,calc((100vw - 1080px) / 2)); }
+
 .learn-page, .course-page { --section-color: var(--green); --section-header-text: var(--ink); --section-edge: color-mix(in srgb, var(--green) 20%, white); }
 .tone-blue { --section-color: var(--blue); --section-header-text: white; --section-edge: color-mix(in srgb, var(--blue) 13%, white); }
 .tone-olive { --section-color: var(--olive); --section-header-text: white; --section-edge: color-mix(in srgb, var(--olive) 15%, white); }
@@ -653,6 +690,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .site-header { grid-template-columns: 1fr auto auto; gap: 18px; }.site-header nav { display: flex; }.site-header nav > a { display: none; }
   .site-index-panel { max-height: calc(100vh - 105px); }.site-index-intro { display: none; }.site-index-grid { grid-template-columns: 1fr; }
   .hero { grid-template-columns: 1fr; padding-top: 65px; }.spectrum-stage { max-width: 445px; margin-top: 25px; }
+  .home-page .hero { width: min(760px,calc(100% - 48px)); grid-template-columns: 1fr; gap: 35px; }.home-page .spectrum-stage { max-width: 390px; }.home-page .section-heading,.home-page .recommended-section > header { grid-template-columns: 1fr 1fr; }.home-page .section-heading > .section-index,.home-page .recommended-section > header > .section-index { grid-column: 1 / -1; }.home-page .recommended-card { grid-template-columns: 1fr; }.home-page .recommended-image { min-height: 220px; aspect-ratio: 1.45; }.home-page .recommended-copy { border-top: 5px solid var(--recommended-accent); border-left: 0; }
   .section-heading { grid-template-columns: 1fr; }.section-heading > p:last-child { max-width: 570px; }
   .domain-grid { grid-template-columns: 1fr 1fr; }.lab-section { grid-template-columns: 1fr; }.lab-intro { max-width: 700px; }
   .archive-section { grid-template-columns: 1fr 1fr; }.archive-section > .section-index { grid-column: 1 / -1; }
@@ -670,6 +708,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .back-to-top { right: 16px; bottom: 16px; width: 42px; height: 42px; }
   .site-header { height: 72px; gap: 10px; padding-left: 18px; padding-right: 18px; }.header-cta { font-size: 0; }.header-cta span { font-size: 18px; }.site-index-menu > summary { font-size: 11px; }.site-index-panel { top: 71px; }.site-index-area { padding-left: 15px; padding-right: 15px; }
   .hero { min-height: auto; padding-top: 52px; }.hero-actions { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .home-page .site-header { height: 68px; }.home-page .hero { width: calc(100% - 48px); padding: 58px 0 72px; }.home-page .hero h1 { font-size: 42px; }.home-page .domains-section,.home-page .recommended-section,.home-page .archive-section { padding-block: 72px; }.home-page .section-heading,.home-page .recommended-section > header { grid-template-columns: 1fr; gap: 20px; }.home-page .section-heading > .section-index,.home-page .recommended-section > header > .section-index { grid-column: auto; }.home-page .domain-grid,.home-page .recommended-grid { grid-template-columns: 1fr; }.home-page .domain-card { min-height: 245px; }
   .spectrum-stage { aspect-ratio: .9; margin: 30px 0 20px; }.spectrum-node { font-size: 0; padding-right: 10px; }.node-1{top:8%;left:0}.node-2{top:18%;right:0}.node-3{bottom:19%;left:0}.node-4{bottom:15%;right:0}.stage-cta{bottom:-3%}
   .domains-section, .lab-section, .archive-section { padding-top: 78px; padding-bottom: 78px; }
   .domain-grid { grid-template-columns: 1fr; }.domain-card { min-height: 330px; }

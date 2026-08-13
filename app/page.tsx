@@ -17,7 +17,7 @@ export default function Home() {
   const { brand, navigation, hero, domains, spectrumSection, archive, recommended } = siteContent;
 
   return (
-    <main>
+    <main className="home-page">
       <header className="site-header">
         <a className="brand" href="#inicio" aria-label={`${brand.name}, inicio`}>
           <span className="brand-mark" aria-hidden="true">
