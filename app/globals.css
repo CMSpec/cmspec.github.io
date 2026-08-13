@@ -548,6 +548,12 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .course-meta div { display: grid; gap: 6px; }.course-meta span { color: inherit; opacity: .72; font: 9px var(--font-geist-mono); letter-spacing: .14em; }.course-meta strong { font-size: 12px; font-weight: 600; }
 .course-article-layout { max-width: 1380px; margin: 0 auto; padding: 95px clamp(24px, 4vw, 65px) 125px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 210px minmax(0, 760px) 180px; justify-content: center; gap: clamp(38px, 5vw, 78px); background: #fff; box-shadow: inset 12px 0 0 var(--section-edge), inset -12px 0 0 var(--section-edge); }
 .course-article-layout:has(.course-toc.is-collapsed) { grid-template-columns: 54px minmax(0, 760px) 180px; }
+.linear-algebra-course .course-article-layout,
+.edo-course .course-article-layout,
+.vector-course .course-article-layout { max-width: 1540px; grid-template-columns: 210px minmax(0,900px) 150px; box-shadow: none; }
+.linear-algebra-course .course-article-layout:has(.course-toc.is-collapsed),
+.edo-course .course-article-layout:has(.course-toc.is-collapsed),
+.vector-course .course-article-layout:has(.course-toc.is-collapsed) { grid-template-columns: 54px minmax(0,980px) 150px; }
 .course-toc { position: sticky; top: 30px; align-self: start; padding-top: 4px; font-size: 20px; }
 .course-toc-toggle { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 9px; margin: 0 0 13px; padding: 7px 0 11px; border: 0; border-bottom: 1px solid var(--line); color: var(--muted); background: transparent; cursor: pointer; text-align: left; font: 700 9px var(--font-geist-mono); letter-spacing: .11em; }.course-toc-toggle i { color: var(--green); font: 700 16px/1 var(--font-geist-mono); }.course-toc.is-collapsed .course-toc-toggle { min-height: 148px; justify-content: flex-start; flex-direction: column-reverse; border-bottom: 0; }.course-toc.is-collapsed .course-toc-toggle span { writing-mode: vertical-rl; transform: rotate(180deg); }.course-toc-disclosure > p { margin: 0 0 10px; padding: 6px 0 12px; color: var(--muted); font: 700 11px var(--font-geist-mono); letter-spacing: .15em; }.course-toc-group > summary::-webkit-details-marker { display: none; }.course-toc-unit i { color: var(--blue); font: 400 17px/1 var(--font-geist-mono); transition: transform .2s ease; }.course-toc-group[open] > .course-toc-unit i { transform: rotate(45deg); }
 .course-toc nav { display: grid; gap: 0; max-height: calc(100vh - 155px); overflow-y: auto; scrollbar-width: thin; }.course-toc-group { padding: 1px 0; }.course-toc-unit { display: grid; grid-template-columns: 30px minmax(0, 1fr) 18px; gap: 8px; align-items: start; padding: 11px 0; color: #49656d; cursor: pointer; list-style: none; font-size: 14px; line-height: 1.35; }.course-toc-unit strong { font-weight: 600; }.course-toc a:hover, .course-toc-unit:hover { color: var(--blue); }.course-toc-unit span { color: var(--blue); font: 11px var(--font-geist-mono); }
@@ -744,6 +750,9 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .about-detail { grid-template-columns: 1fr 1fr; }.about-detail-index { grid-column: 1 / -1; grid-row: 1; }.about-detail-photo { grid-column: 1; grid-row: 2 / span 2; }.about-detail-lead { grid-column: 2; grid-row: 2; }.about-detail-copy { grid-column: 2; grid-row: 3; }.about-gallery > header { grid-template-columns: 1fr 2fr; gap: 45px; }.about-spectrum { grid-template-columns: 1fr 1fr; }.about-spectrum a + a { border-left: 1px solid var(--line); }.about-spectrum a:nth-child(even) { border-left: 0; }.about-spectrum a:nth-child(n+3) { border-top: 0; }
   footer { grid-template-columns: 1fr 1fr; }
   .course-article-layout { grid-template-columns: 180px minmax(0, 760px); }
+  .linear-algebra-course .course-article-layout,
+  .edo-course .course-article-layout,
+  .vector-course .course-article-layout { grid-template-columns: 180px minmax(0,820px); }
   .course-margin-note { display: none; }
   .definition-side-layout, .definition-side-layout-basis { grid-template-columns: 1fr; gap: 42px; }.definition-side-copy .course-visual-example { max-width: 540px; }
   .visual-compendium-section { grid-template-columns: 1fr; gap: 36px; }.visual-compendium-section > header { position: static; max-width: 650px; }
