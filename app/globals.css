@@ -548,11 +548,11 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .course-page:not(.edo-course) .course-deck { font-size: clamp(20px, 2vw, 24px); }
 .course-meta { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid currentColor; padding-top: 20px; gap: 30px; }
 .course-meta div { display: grid; gap: 6px; }.course-meta span { color: inherit; opacity: .72; font: 9px var(--font-geist-mono); letter-spacing: .14em; }.course-meta strong { font-size: 12px; font-weight: 600; }
-.course-article-layout { max-width: 1380px; margin: 0 auto; padding: 95px clamp(24px, 4vw, 65px) 125px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 210px minmax(0, 760px) 180px; justify-content: center; gap: clamp(38px, 5vw, 78px); background: #fff; box-shadow: inset 12px 0 0 var(--section-edge), inset -12px 0 0 var(--section-edge); }
+.course-article-layout { max-width: 1410px; margin: 0 auto; padding: 95px clamp(24px, 4vw, 65px) 125px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 240px minmax(0, 760px) 180px; justify-content: center; gap: clamp(38px, 5vw, 78px); background: #fff; box-shadow: inset 12px 0 0 var(--section-edge), inset -12px 0 0 var(--section-edge); }
 .course-article-layout:has(.course-toc.is-collapsed) { grid-template-columns: 54px minmax(0, 760px) 180px; }
 .linear-algebra-course .course-article-layout,
 .edo-course .course-article-layout,
-.vector-course .course-article-layout { max-width: 1540px; grid-template-columns: 210px minmax(0,900px) 150px; box-shadow: none; }
+.vector-course .course-article-layout { max-width: 1570px; grid-template-columns: 240px minmax(0,900px) 150px; box-shadow: none; }
 .linear-algebra-course .course-article-layout:has(.course-toc.is-collapsed),
 .edo-course .course-article-layout:has(.course-toc.is-collapsed),
 .vector-course .course-article-layout:has(.course-toc.is-collapsed) { grid-template-columns: 54px minmax(0,980px) 150px; }
@@ -756,10 +756,10 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .about-section { grid-template-columns: 1fr 1fr; }.about-section > .section-index { grid-column: 1 / -1; }.recommended-section > header { grid-template-columns: 1fr 1fr; }.recommended-section > header > .section-index { grid-column: 1 / -1; }.recommended-grid { grid-template-columns: 1fr 1fr; }
   .about-detail { grid-template-columns: 1fr 1fr; }.about-detail-index { grid-column: 1 / -1; grid-row: 1; }.about-detail-photo { grid-column: 1; grid-row: 2 / span 2; }.about-detail-lead { grid-column: 2; grid-row: 2; }.about-detail-copy { grid-column: 2; grid-row: 3; }.about-gallery > header { grid-template-columns: 1fr 2fr; gap: 45px; }.about-spectrum { grid-template-columns: 1fr 1fr; }.about-spectrum a + a { border-left: 1px solid var(--line); }.about-spectrum a:nth-child(even) { border-left: 0; }.about-spectrum a:nth-child(n+3) { border-top: 0; }
   footer { grid-template-columns: 1fr 1fr; }
-  .course-article-layout { grid-template-columns: 180px minmax(0, 760px); }
+  .course-article-layout { grid-template-columns: 210px minmax(0, 760px); }
   .linear-algebra-course .course-article-layout,
   .edo-course .course-article-layout,
-  .vector-course .course-article-layout { grid-template-columns: 180px minmax(0,820px); }
+  .vector-course .course-article-layout { grid-template-columns: 210px minmax(0,820px); }
   .course-margin-note { display: none; }
   .definition-side-layout, .definition-side-layout-basis { grid-template-columns: 1fr; gap: 42px; }.definition-side-copy .course-visual-example { max-width: 540px; }
   .visual-compendium-section { grid-template-columns: 1fr; gap: 36px; }.visual-compendium-section > header { position: static; max-width: 650px; }
