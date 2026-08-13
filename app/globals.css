@@ -645,13 +645,10 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .sage-sandbox > header h4 { margin: 0; font: 400 27px/1.1 Georgia,serif; letter-spacing: -.025em; }
 .sage-sandbox > header h4::before { display: none; }
 .sage-sandbox > header span { color: var(--muted); font: 15px/1.5 Georgia,serif; }
-.sage-sandbox-host { min-height: 150px; padding: 24px 26px 28px; background: #fff; }
-.sage-sandbox-status { display: grid; min-height: 94px; margin: 0; place-items: center; color: var(--muted); font: 13px/1.5 var(--font-geist-mono); text-align: center; }
-.sage-sandbox-status.is-error { color: #9a523c; }.sage-sandbox-status a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
-.sage-sandbox .sagecell_input { border-color: var(--line) !important; border-radius: 0 !important; box-shadow: none !important; }
-.sage-sandbox .sagecell_evalButton { min-height: 42px; padding: 8px 18px !important; border: 0 !important; border-radius: 0 !important; color: #fff !important; background: var(--green) !important; font: 700 12px var(--font-geist-mono) !important; cursor: pointer; }
-.sage-sandbox .sagecell_output_elements { font-family: Georgia,serif; }
-@media (max-width: 640px) { .sage-sandbox > header { grid-template-columns: 1fr; }.sage-sandbox > header p { grid-row: auto; }.sage-sandbox-host { padding-inline: 14px; } }
+.sage-sandbox-frame { display: block; width: 100%; height: 430px; border: 0; background: #fff; }
+.sage-sandbox-fallback { margin: 0; padding: 0 26px 20px; color: var(--muted); background: #fff; font: 11px/1.5 var(--font-geist-mono); }
+.sage-sandbox-fallback a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 640px) { .sage-sandbox > header { grid-template-columns: 1fr; }.sage-sandbox > header p { grid-row: auto; }.sage-sandbox-frame { height: 500px; }.sage-sandbox-fallback { padding-inline: 18px; } }
 .chapter-section { padding: 52px 0; border-top: 1px solid var(--line); }
 .chapter-section:first-child { border-top: 0; }
 .chapter-section h4 { margin: 0 0 30px; color: var(--ink); font: 400 clamp(28px, 3vw, 40px) Georgia, serif; letter-spacing: -.025em; }
