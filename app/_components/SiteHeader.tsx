@@ -6,7 +6,7 @@ export default function SiteHeader() {
         <span>CMSpec</span>
       </a>
       <nav aria-label="Navegación principal">
-        <a href="/#notas">Notas</a>
+        <a href="/aprender">Notas</a>
         <a href="/#laboratorio">Laboratorio</a>
         <a href="/#tejido">Tejido</a>
         <a href="/sobre-mi">Sobre mí</a>
