@@ -1,70 +1,70 @@
 "use client";
 
-import { useMemo } from "react";
-
-const SAGECELL_SCRIPT = "https://sagecell.sagemath.org/static/embedded_sagecell.js";
+import { useState } from "react";
 
 type SageSandboxProps = {
   code: string;
   title: string;
 };
 
-function buildIsolatedCell(code: string) {
-  const safeCode = code.replace(/<\/script/gi, "<\\/script");
-
-  return `<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="${SAGECELL_SCRIPT}"></script>
-    <style>
-      :root { color-scheme: light; }
-      * { box-sizing: border-box; }
-      html, body { margin: 0; min-height: 100%; background: white; color: #123942; }
-      body { padding: 20px; font-family: Georgia, serif; }
-      .sagecell_input { border: 1px solid #cad7d7 !important; border-radius: 0 !important; box-shadow: none !important; }
-      .sagecell_evalButton { min-height: 42px; padding: 8px 18px !important; border: 0 !important; border-radius: 0 !important; color: white !important; background: #9fcf6a !important; font: 700 12px ui-monospace, SFMono-Regular, Menlo, monospace !important; cursor: pointer; }
-      .sagecell_output_elements { font-family: Georgia, serif; }
-      .sagecell_messages, .sagecell_sessionTitle { display: none !important; }
-    </style>
-  </head>
-  <body>
-    <div id="sage-cell"><script type="text/x-sage">${safeCode}</script></div>
-    <script>
-      if (window.sagecell) {
-        window.sagecell.makeSagecell({
-          inputLocation: "#sage-cell",
-          evalButtonText: "Ejecutar",
-          languages: ["sage"],
-          linked: false
-        });
-      }
-    </script>
-  </body>
-</html>`;
-}
+type SageServiceResponse = {
+  success?: boolean;
+  stdout?: string;
+};
 
 export default function SageSandbox({ code, title }: SageSandboxProps) {
-  const source = useMemo(() => buildIsolatedCell(code), [code]);
+  const [source, setSource] = useState(code);
+  const [output, setOutput] = useState("La salida aparecerá aquí.");
+  const [status, setStatus] = useState<"idle" | "running" | "error">("idle");
+
+  const execute = async () => {
+    setStatus("running");
+    setOutput("Calculando…");
+
+    try {
+      const response = await fetch("https://sagecell.sagemath.org/service", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+        body: new URLSearchParams({ code: source }),
+      });
+
+      if (!response.ok) throw new Error(`Respuesta ${response.status}`);
+      const result = (await response.json()) as SageServiceResponse;
+      setOutput(result.stdout?.trim() || "El cálculo terminó sin producir una salida de texto. Usa print(...) para mostrar un resultado.");
+      setStatus(result.success === false ? "error" : "idle");
+    } catch {
+      setOutput("El servidor de SageMath no respondió. Tus apuntes siguen disponibles; intenta nuevamente o abre la calculadora completa.");
+      setStatus("error");
+    }
+  };
 
   return (
     <section className="sage-sandbox" aria-labelledby={`sage-${title}`}>
       <header>
         <p>LABORATORIO DE CÁLCULO</p>
         <h4 id={`sage-${title}`}>{title}</h4>
-        <span>Edita los comandos y presiona «Ejecutar». El cálculo se realiza con SageMath.</span>
+        <span>Edita los comandos y presiona «Ejecutar». Usa print(...) para mostrar resultados.</span>
       </header>
 
-      <iframe
-        className="sage-sandbox-frame"
-        loading="lazy"
-        sandbox="allow-scripts allow-forms allow-popups allow-downloads"
-        srcDoc={source}
-        title={`Calculadora SageMath: ${title}`}
-      />
+      <div className="sage-console">
+        <label>
+          <span>COMANDOS</span>
+          <textarea value={source} onChange={(event) => setSource(event.target.value)} spellCheck={false} />
+        </label>
+        <div className="sage-console-actions">
+          <button type="button" onClick={() => void execute()} disabled={status === "running"}>
+            {status === "running" ? "Calculando…" : "Ejecutar"}
+          </button>
+          <button type="button" className="is-secondary" onClick={() => setSource(code)}>Restablecer</button>
+        </div>
+        <div className={`sage-console-output${status === "error" ? " is-error" : ""}`} aria-live="polite">
+          <span>SALIDA</span>
+          <pre>{output}</pre>
+        </div>
+      </div>
+
       <p className="sage-sandbox-fallback">
-        Si la calculadora no carga, puedes abrir <a href="https://sagecell.sagemath.org/" target="_blank" rel="noreferrer">SageMathCell en otra pestaña ↗</a>.
+        Para gráficos y cálculos visuales, abre <a href="https://sagecell.sagemath.org/" target="_blank" rel="noreferrer">SageMathCell completo ↗</a>.
       </p>
     </section>
   );

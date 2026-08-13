@@ -12,7 +12,7 @@ const examples: Record<CourseKey, SandboxExample[]> = {
       code: `A = matrix([[1, 2], [3, 4]])
 v = vector([2, -1])
 print("A =")
-show(A)
+print(A)
 print("v =", v)
 print("A·v =", A*v)`,
     },
@@ -21,9 +21,9 @@ print("A·v =", A*v)`,
       code: `A = matrix(QQ, [[2, 1], [5, 3]])
 print("det(A) =", A.det())
 print("A inversa =")
-show(A.inverse())
+print(A.inverse())
 print("Comprobación:")
-show(A*A.inverse())`,
+print(A*A.inverse())`,
     },
     {
       title: "Resuelve un sistema lineal",
@@ -48,7 +48,7 @@ print("Base del espacio fila:", M.row_space().basis())`,
 v = vector([3, 2])
 print("v =", v)
 print("T(v) =", T*v)
-show(T)`,
+print(T)`,
     },
     {
       title: "Calcula coordenadas en otra base",
@@ -66,13 +66,13 @@ print("Reconstrucción:", B*coordenadas)`,
       code: `var('x')
 y = function('y')(x)
 solucion = desolve(diff(y,x) == x*y, y, ics=[0,1])
-show(solucion)`,
+print(solucion)`,
     },
     {
       title: "Resuelve una ecuación lineal",
       code: `var('x')
 y = function('y')(x)
-show(desolve(diff(y,x) + 2*y == exp(x), y))`,
+print(desolve(diff(y,x) + 2*y == exp(x), y))`,
     },
     {
       title: "Explora un factor integrante",
@@ -80,52 +80,52 @@ show(desolve(diff(y,x) + 2*y == exp(x), y))`,
 p = 2/x
 mu = exp(integral(p, x)).simplify_full()
 print("Factor integrante:")
-show(mu)`,
+print(mu)`,
     },
     {
       title: "Resuelve una ecuación de Bernoulli",
       code: `var('x')
 y = function('y')(x)
-show(desolve(diff(y,x) + y == x*y^2, y, contrib_ode=True))`,
+print(desolve(diff(y,x) + y == x*y^2, y, contrib_ode=True))`,
     },
     {
       title: "Ecuación de segundo orden",
       code: `var('x')
 y = function('y')(x)
-show(desolve(diff(y,x,2) - 3*diff(y,x) + 2*y == 0, y))`,
+print(desolve(diff(y,x,2) - 3*diff(y,x) + 2*y == 0, y))`,
     },
     {
       title: "Raíces de la ecuación característica",
       code: `var('r')
 polinomio = r^2 - 3*r + 2
 print("Raíces:", solve(polinomio == 0, r))
-show(factor(polinomio))`,
+print(factor(polinomio))`,
     },
     {
       title: "Una solución particular",
       code: `var('x')
 y = function('y')(x)
-show(desolve(diff(y,x,2) + y == cos(2*x), y))`,
+print(desolve(diff(y,x,2) + y == cos(2*x), y))`,
     },
     {
       title: "Transformada de Laplace",
       code: `var('t, s')
 f = t^2*exp(-t)
 F = laplace(f, t, s)
-show(F)`,
+print(F)`,
     },
     {
       title: "Laplace inversa y función escalón",
       code: `var('t, s')
 F = exp(-2*s)/(s^2 + 1)
-show(inverse_laplace(F, s, t))`,
+print(inverse_laplace(F, s, t))`,
     },
     {
       title: "Sistema diferencial lineal",
       code: `A = matrix([[0, 1], [-2, -3]])
 print("Valores propios:", A.eigenvalues())
 print("Vectores propios:")
-show(A.eigenvectors_right())`,
+print(A.eigenvectors_right())`,
     },
     {
       title: "Aproxima una serie de Fourier",
@@ -155,8 +155,8 @@ plot3d(f, (x,-2,2), (y,-2,2))`,
       title: "Derivadas parciales",
       code: `var('x, y')
 f = x^2*y + exp(x*y)
-show(diff(f, x))
-show(diff(f, y))`,
+print(diff(f, x))
+print(diff(f, y))`,
     },
     {
       title: "Gradiente y plano tangente",
@@ -206,7 +206,7 @@ print("Integral =", resultado)`,
 phi = x^2*y + y^3
 F = vector([diff(phi,x), diff(phi,y)])
 print("Campo gradiente:", F)
-show(phi)`,
+print(phi)`,
     },
     {
       title: "Comprueba el teorema de Green",
