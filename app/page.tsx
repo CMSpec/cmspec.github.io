@@ -71,7 +71,13 @@ export default function Home() {
                 {piece.visual === "vector" && <><span className="axis-x" /><span className="axis-y" /><b className="arrow-one">→</b><b className="arrow-two">→</b></>}
                 {piece.visual === "matrix" && <><span>1</span><span>2</span><span>0</span><span>3</span><span>4</span><span>5</span><span>0</span><span>2</span><span>6</span></>}
                 {piece.visual === "operation" && <strong>(3, 5, 8) + (1, −2, 4)</strong>}
-                {piece.visual === "basis" && <><span className="basis-a">e₁</span><span className="basis-b">e₂</span><span className="basis-c">v</span></>}
+                {piece.visual === "basis" && (
+                  <div className="linear-thumbnail">
+                    <div className="linear-thumbnail-plane is-before"><i /><span>antes</span></div>
+                    <b aria-hidden="true">→</b>
+                    <div className="linear-thumbnail-plane is-after"><i /><span>después</span></div>
+                  </div>
+                )}
               </div>
               <div className="flat-lab-caption"><span>{piece.number}</span><strong>{piece.title}</strong><p>{piece.caption}</p><InteractiveMark /></div>
             </a>
