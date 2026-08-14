@@ -119,6 +119,76 @@ export const collections: EditorialCollection[] = [
           { title: "La conversación", body: "Este espacio reunirá preguntas abiertas, perspectivas complementarias y aspectos que requieren cautela." },
         ],
       },
+      {
+        number: "03",
+        title: "Cuatro funciones de IA en salud",
+        subtitle: "Interpretar, estimar, redactar y auditar sin confundir sus salidas",
+        description: "Una introducción a los distintos papeles que puede asumir la inteligencia artificial al revisar información de salud, desde ordenar un expediente hasta detectar una discrepancia.",
+        authors: "Camila Muñoz Santander",
+        published: "14 agosto 2026",
+        modified: "14 agosto 2026",
+        href: "/salud/funciones-ia-en-salud",
+        visual: "datos → IA → apoyo",
+        eyebrow: "03 / INTELIGENCIA ARTIFICIAL EN SALUD",
+        introduction: "Hablar de «una IA» puede ocultar tareas muy diferentes. En la evaluación de un expediente, no es lo mismo explicar qué variables influyen, estimar una probabilidad, redactar un resumen o advertir que dos antecedentes no parecen consistentes. Separar esas funciones permite entender qué puede aportar cada herramienta y qué debe seguir revisando una persona.",
+        sections: [
+          {
+            title: "Cuatro preguntas distintas",
+            body: "La IA interpretativa pregunta qué variables influyen y muestra reglas o relaciones revisables. La predictiva estima una probabilidad o prioridad. La generativa organiza texto en resúmenes y cronologías. La auditora señala anomalías o discrepancias que merecen una segunda mirada. Ninguna de estas salidas equivale, por sí sola, a una decisión clínica.",
+          },
+          {
+            title: "Entradas y salidas",
+            body: "El sistema puede recibir documentos, texto extraído, variables clínicas y resultados previos. A partir de ellos produce salidas separadas: una explicación de variables relevantes, una probabilidad con su nivel de confianza, un resumen enlazado a sus fuentes o una alerta acompañada de la evidencia que la originó. Mantenerlas separadas evita que un texto convincente se confunda con una predicción o con una resolución.",
+          },
+          {
+            title: "Usos posibles",
+            body: "Estas herramientas pueden ayudar a ordenar expedientes extensos, reconstruir cronologías, identificar documentos faltantes, priorizar casos para revisión y hacer visibles patrones difíciles de detectar manualmente. Su valor está en preparar y enfocar el trabajo profesional, no en reemplazar la integración del contexto ni el juicio de quien decide.",
+          },
+          {
+            title: "Desafíos que no desaparecen",
+            body: "La calidad de la salida depende de la calidad y representatividad de los datos. Un resumen fluido puede contener errores; una variable importante no demuestra causalidad; y un modelo con buen desempeño promedio puede fallar en ciertos grupos. Por eso deben revisarse calibración, equidad, datos faltantes y cambios en la población a lo largo del tiempo.",
+          },
+          {
+            title: "Una arquitectura híbrida",
+            body: "El proyecto propone combinar reglas de calidad, lectura de documentos, modelos predictivos y herramientas de auditoría, pero entregar sus resultados a un equipo humano. La meta no es automatizar una decisión de alto impacto, sino mejorar su calidad, consistencia, trazabilidad y oportunidad.",
+          },
+        ],
+      },
+      {
+        number: "04",
+        title: "Human-in-the-loop",
+        subtitle: "Supervisión humana para decisiones asistidas por inteligencia artificial",
+        description: "Una mirada a los distintos niveles de intervención humana: validar cada caso, vigilar el sistema mientras opera y conservar la capacidad de corregirlo o detenerlo.",
+        authors: "Camila Muñoz Santander",
+        published: "14 agosto 2026",
+        modified: "14 agosto 2026",
+        href: "/salud/human-in-the-loop",
+        visual: "IA ⇄ persona",
+        eyebrow: "04 / SUPERVISIÓN HUMANA",
+        introduction: "Incluir a una persona en un sistema de inteligencia artificial no consiste solamente en pedir una aprobación al final. El human-in-the-loop define quién revisa cada resultado, quién observa el funcionamiento general y quién tiene autoridad para cambiar las reglas o detener el sistema.",
+        sections: [
+          {
+            title: "Dentro del circuito",
+            body: "Cuando una persona está in the loop, valida el resultado de cada caso antes de que produzca una acción. La IA puede resumir, estimar o alertar; el profesional contrasta las fuentes, incorpora antecedentes que el modelo no conoce y documenta la decisión final.",
+          },
+          {
+            title: "Sobre el circuito",
+            body: "Estar on the loop significa supervisar el sistema mientras opera. No exige revisar manualmente cada cálculo, pero sí observar errores, incidentes, cambios en los datos y diferencias de desempeño entre grupos. La persona responsable debe poder intervenir cuando aparecen señales de deterioro.",
+          },
+          {
+            title: "Al mando del sistema",
+            body: "Human-in-command amplía la mirada hacia la gobernanza: definir para qué se usa la IA, qué fuentes están autorizadas, qué límites no puede traspasar, cómo se audita y bajo qué condiciones debe suspenderse. También obliga a asignar responsabilidades claras.",
+          },
+          {
+            title: "La combinación propuesta",
+            body: "Para una evaluación de alto impacto, el proyecto combina tres niveles: IN en la decisión de cada caso, ON en la vigilancia de la operación y COMMAND en la gobernanza. Dejar a la persona fuera del circuito puede reservarse para tareas administrativas de bajo impacto, no para resolver una evaluación de invalidez.",
+          },
+          {
+            title: "Más que corregir errores",
+            body: "La supervisión humana no solo funciona como respaldo cuando la IA falla. También permite discutir la relevancia clínica de una correlación, reconocer información ausente, considerar circunstancias excepcionales y explicar por qué se aceptó o descartó una recomendación. Esa trazabilidad es parte del resultado, no un agregado posterior.",
+          },
+        ],
+      },
     ],
   },
   {
