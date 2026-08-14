@@ -1,6 +1,29 @@
 import type { EditorialEntry } from "../../content/collections";
 import FanoPlane from "./FanoPlane";
 
+function DobblePreviewLink() {
+  return (
+    <span className="external-preview-link">
+      <a
+        href="https://www.asmodee.es/product/dobble/"
+        target="_blank"
+        rel="noreferrer"
+        aria-describedby="dobble-link-preview"
+      >
+        Dobble <span aria-hidden="true">↗</span>
+      </a>
+      <span className="external-preview-card" id="dobble-link-preview" role="tooltip">
+        <span className="dobble-preview-art" aria-hidden="true">
+          <i /><i /><i /><i />
+        </span>
+        <small>SITIO OFICIAL · ASMODEE</small>
+        <strong>Dobble</strong>
+        <span>55 cartas, 8 símbolos y una coincidencia entre cada par.</span>
+      </span>
+    </span>
+  );
+}
+
 function MapsArticle({ entry }: { entry: EditorialEntry }) {
   return (
     <article className="math-essay">
@@ -74,7 +97,9 @@ function MapsArticle({ entry }: { entry: EditorialEntry }) {
 function DobbleArticle({ entry }: { entry: EditorialEntry }) {
   return (
     <article className="math-essay">
-      <p className="math-essay-lead">{entry.introduction}</p>
+      <p className="math-essay-lead">
+        <DobblePreviewLink />{entry.introduction.slice("Dobble".length)}
+      </p>
       <p>
         Cuando pensamos en las matemáticas de los juegos suele aparecer primero la teoría de juegos, que estudia decisiones, estrategias e incentivos entre participantes. Dobble, sin embargo, plantea otra clase de pregunta. Antes de analizar cómo juega una persona, hay que explicar cómo pudo diseñarse el mazo. Esa tarea pertenece a la combinatoria: el estudio de configuraciones discretas, sus restricciones y las maneras de contar o construirlas.
       </p>
