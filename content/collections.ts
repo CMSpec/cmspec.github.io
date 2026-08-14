@@ -43,7 +43,7 @@ export const collections: EditorialCollection[] = [
         description: "Pasar de la Tierra a una hoja plana obliga a elegir qué conservar y qué deformar; esa elección es matemática, visual y también política.",
         authors: "Camila Muñoz Santander",
         published: "19 julio 2026",
-        modified: "19 julio 2026",
+        modified: "14 agosto 2026",
         href: "/investigacion/mapas-distancias-y-conformidad",
         visual: "S² → ℝ²",
         eyebrow: "01 / GEOMETRÍA & CARTOGRAFÍA",

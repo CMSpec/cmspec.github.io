@@ -1,5 +1,6 @@
 import type { EditorialEntry } from "../../content/collections";
 import FanoPlane from "./FanoPlane";
+import StereographicProjection from "./StereographicProjection";
 
 function DobblePreviewLink() {
   return (
@@ -49,6 +50,27 @@ function MapsArticle({ entry }: { entry: EditorialEntry }) {
         </table>
       </div>
 
+      <h2>Un caso conforme: la proyección estereográfica</h2>
+      <p>
+        Entre estas familias hay una construcción especialmente geométrica. Imaginemos una esfera unitaria atravesada por su plano ecuatorial y elijamos el polo norte como punto de observación. Para cada punto de la esfera trazamos una recta que parte del polo; el lugar donde esa recta corta el plano es su imagen estereográfica. Cerca del polo las imágenes se alejan mucho, mientras el propio polo no alcanza ningún punto finito del plano: se interpreta como el punto en el infinito.
+      </p>
+      <StereographicProjection />
+      <h2>La función y su inversa</h2>
+      <p>
+        En la convención de la exploración, la esfera es S² = &#123;(x,y,z) ∈ ℝ³ : x²+y²+z²=1&#125;, el polo de proyección es N=(0,0,1) y el plano es z=0. Si P=(x,y,z) es distinto de N, la proyección σ queda dada por
+      </p>
+      <div className="math-formula math-formula-stack" role="img" aria-label="Fórmulas de la proyección estereográfica y su inversa">
+        <span>σ(x,y,z) = ( x/(1−z), y/(1−z) ) = (X,Y)</span>
+        <span>σ⁻¹(X,Y) = ( 2X/(ρ²+1), 2Y/(ρ²+1), (ρ²−1)/(ρ²+1) ), &nbsp; ρ²=X²+Y²</span>
+      </div>
+      <p>
+        Las fórmulas provienen de parametrizar la recta que une N con P y exigir que su tercera coordenada sea cero. La inversa muestra que cada punto finito del plano recupera un único punto de la esfera distinto del polo norte. Esta correspondencia conserva ángulos: dos curvas que se cruzan en la esfera mantienen su ángulo al proyectarse. Por eso es conforme, aunque su factor de escala crece al acercarse al polo. Los círculos de la esfera se transforman en círculos del plano, salvo los que pasan por N, que se convierten en rectas.
+      </p>
+      <aside className="math-reading-note">
+        <strong>Una convención entre varias</strong>
+        <p>En cartografía también se usa un plano tangente a la esfera y puede elegirse otro punto de contacto. Las fórmulas cambian por una rotación y una escala, pero la idea permanece: proyectar desde el punto antipodal al plano y conservar los ángulos localmente.</p>
+      </aside>
+
       <h2>Qué significa que un mapa sea conforme</h2>
       <p>
         Una transformación conforme conserva ángulos en una escala local. Cerca de cada punto se comporta como una rotación o reflexión seguida de un cambio de escala: las direcciones relativas se mantienen, aunque el factor de aumento puede variar de un lugar a otro. Por eso una figura muy pequeña conserva aproximadamente su forma, mientras dos continentes alejados pueden aparecer con tamaños relativos muy distintos.
@@ -88,6 +110,7 @@ function MapsArticle({ entry }: { entry: EditorialEntry }) {
         <strong>Para seguir leyendo</strong>
         <a href="https://pubs.usgs.gov/gip/70047422/report.pdf">U.S. Geological Survey: Map Projections</a>
         <a href="https://www.usgs.gov/faqs/how-are-different-map-projections-used">USGS: How are different map projections used?</a>
+        <a href="https://math.mit.edu/~dunkel/Teach/18.04_2019S/notes/1804_Main.pdf">MIT: proyección estereográfica y esfera de Riemann</a>
         <a href="https://doi.org/10.14324/111.444.ai.2022.06">Panos Kratimenos: North isn’t necessarily up</a>
       </div>
     </article>

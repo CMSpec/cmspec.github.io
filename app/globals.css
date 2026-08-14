@@ -425,6 +425,21 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .fano-cards button span { font: 12px var(--font-geist); }.fano-cards button strong { font: 700 12px var(--font-geist-mono); }
 .fano-cards button.is-active { border-color: var(--blue); background: #eaf5f7; color: var(--blue); }
 .fano-caption { margin-top: 22px; }
+.stereo-explorer { margin: 38px 0 48px; padding: 27px; border: 1px solid #cbdfe3; background: #fbfdfd; }
+.stereo-explorer figcaption { display: grid; gap: 8px; margin-bottom: 22px; }
+.stereo-explorer figcaption > span { color: var(--blue); font: 700 10px var(--font-geist-mono); letter-spacing: .12em; }
+.stereo-explorer figcaption strong { color: var(--ink); font: 25px/1.2 Georgia, serif; }
+.stereo-explorer figcaption p { margin: 0; color: #587078; font: 14px/1.55 var(--font-geist); }
+.stereo-canvas { display: block; width: 100%; height: 320px; border-block: 1px solid #d6e5e7; background: #fff; }
+.stereo-controls { display: grid; grid-template-columns: 1fr 1fr auto; gap: 20px; align-items: end; margin-top: 22px; }
+.stereo-controls label { display: grid; gap: 8px; color: #49656d; font: 12px var(--font-geist); }
+.stereo-controls label > span { display: flex; justify-content: space-between; gap: 15px; }
+.stereo-controls label strong { color: var(--blue); font-family: var(--font-geist-mono); }
+.stereo-controls input { width: 100%; accent-color: var(--blue); cursor: pointer; }
+.stereo-controls button { min-width: 86px; min-height: 40px; padding: 8px 15px; border: 1px solid var(--blue); background: #fff; color: var(--blue); font: 700 12px var(--font-geist); cursor: pointer; }
+.stereo-controls button:hover, .stereo-controls button[aria-pressed="true"] { background: var(--blue); color: #fff; }
+.stereo-result { margin: 20px 0 0; padding-top: 18px; border-top: 1px solid #d6e5e7; color: #365761; font: 15px/1.5 var(--font-geist-mono); text-align: center; }
+.stereo-result span { margin-inline: 12px; color: var(--olive); }
 @media (max-width: 720px) {
   .health-essay { font-size: 17px; }
   .health-essay .health-essay-lead { font-size: 20px; }
@@ -433,6 +448,11 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .math-essay .math-essay-lead { font-size: 20px; }
   .fano-layout { grid-template-columns: 1fr; }
   .fano-cards { grid-template-columns: repeat(2,1fr); }
+  .stereo-explorer { padding: 20px; }
+  .stereo-canvas { height: 390px; }
+  .stereo-controls { grid-template-columns: 1fr; }
+  .stereo-controls button { width: 100%; }
+  .stereo-result { font-size: 12px; }
 }
 @media (hover: none) { .external-preview-card { display: none; } }
 
