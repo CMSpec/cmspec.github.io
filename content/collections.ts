@@ -149,6 +149,10 @@ export const collections: EditorialCollection[] = [
             body: "La calidad de la salida depende de la calidad y representatividad de los datos. Un resumen fluido puede contener errores; una variable importante no demuestra causalidad; y un modelo con buen desempeño promedio puede fallar en ciertos grupos. Por eso deben revisarse calibración, equidad, datos faltantes y cambios en la población a lo largo del tiempo.",
           },
           {
+            title: "La escala de la salud pública",
+            body: "A escala poblacional, la IA puede ayudar a reconocer desigualdades, anticipar demanda, ordenar grandes volúmenes de información y dirigir la revisión hacia donde parece más necesaria. Pero una ganancia de eficiencia también puede amplificar sesgos históricos, ocultar realidades locales detrás de un promedio o modificar indirectamente el acceso a prestaciones. La sutileza está en distinguir una asociación de una causa, una prioridad operativa de una necesidad sanitaria y un buen resultado global de un desempeño justo en cada subgrupo.",
+          },
+          {
             title: "Una arquitectura híbrida",
             body: "El proyecto propone combinar reglas de calidad, lectura de documentos, modelos predictivos y herramientas de auditoría, pero entregar sus resultados a un equipo humano. La meta no es automatizar una decisión de alto impacto, sino mejorar su calidad, consistencia, trazabilidad y oportunidad.",
           },
@@ -186,6 +190,10 @@ export const collections: EditorialCollection[] = [
           {
             title: "Más que corregir errores",
             body: "La supervisión humana no solo funciona como respaldo cuando la IA falla. También permite discutir la relevancia clínica de una correlación, reconocer información ausente, considerar circunstancias excepcionales y explicar por qué se aceptó o descartó una recomendación. Esa trazabilidad es parte del resultado, no un agregado posterior.",
+          },
+          {
+            title: "Supervisar efectos colectivos",
+            body: "En salud pública, la revisión no puede limitarse a comprobar casos individuales. También debe observar si el sistema cambia prioridades, distribuye de manera desigual sus errores o perjudica sistemáticamente a una región, edad, sexo, patología u otro grupo relevante. Esto requiere indicadores desagregados, canales para reportar incidentes y participación de profesionales y comunidades capaces de reconocer daños que una métrica general no muestra.",
           },
         ],
       },
