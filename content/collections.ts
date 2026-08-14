@@ -123,14 +123,14 @@ export const collections: EditorialCollection[] = [
         number: "03",
         title: "Cuatro funciones de IA en salud",
         subtitle: "Interpretar, estimar, redactar y auditar sin confundir sus salidas",
-        description: "Una introducción a los distintos papeles que puede asumir la inteligencia artificial al revisar información de salud, desde ordenar un expediente hasta detectar una discrepancia.",
+        description: "Una introducción a los distintos papeles que puede asumir la inteligencia artificial al analizar información clínica y poblacional.",
         authors: "Camila Muñoz Santander",
         published: "14 agosto 2026",
         modified: "14 agosto 2026",
         href: "/salud/funciones-ia-en-salud",
         visual: "datos → IA → apoyo",
         eyebrow: "03 / INTELIGENCIA ARTIFICIAL EN SALUD",
-        introduction: "Hablar de «una IA» puede ocultar tareas muy diferentes. En la evaluación de un expediente, no es lo mismo explicar qué variables influyen, estimar una probabilidad, redactar un resumen o advertir que dos antecedentes no parecen consistentes. Separar esas funciones permite entender qué puede aportar cada herramienta y qué debe seguir revisando una persona.",
+        introduction: "Hablar de «una IA» puede ocultar tareas muy diferentes. No es lo mismo explicar qué variables influyen, estimar una probabilidad, organizar información en un resumen o advertir que ciertos datos no parecen consistentes. Separar esas funciones permite entender qué puede aportar cada herramienta al trabajo en salud y qué debe seguir revisando una persona.",
         sections: [
           {
             title: "Cuatro preguntas distintas",
@@ -138,11 +138,11 @@ export const collections: EditorialCollection[] = [
           },
           {
             title: "Entradas y salidas",
-            body: "El sistema puede recibir documentos, texto extraído, variables clínicas y resultados previos. A partir de ellos produce salidas separadas: una explicación de variables relevantes, una probabilidad con su nivel de confianza, un resumen enlazado a sus fuentes o una alerta acompañada de la evidencia que la originó. Mantenerlas separadas evita que un texto convincente se confunda con una predicción o con una resolución.",
+            body: "El sistema puede recibir documentos, texto extraído, variables clínicas, indicadores poblacionales y resultados previos. A partir de ellos produce salidas separadas: una explicación de variables relevantes, una probabilidad con su nivel de confianza, un resumen enlazado a sus fuentes o una alerta acompañada de la evidencia que la originó. Mantenerlas separadas evita que un texto convincente se confunda con una predicción o con una decisión.",
           },
           {
             title: "Usos posibles",
-            body: "Estas herramientas pueden ayudar a ordenar expedientes extensos, reconstruir cronologías, identificar documentos faltantes, priorizar casos para revisión y hacer visibles patrones difíciles de detectar manualmente. Su valor está en preparar y enfocar el trabajo profesional, no en reemplazar la integración del contexto ni el juicio de quien decide.",
+            body: "Estas herramientas pueden ayudar a organizar registros extensos, reconstruir cronologías, identificar información faltante, priorizar revisiones, anticipar demanda y hacer visibles patrones difíciles de detectar manualmente. Su valor está en preparar y enfocar el trabajo profesional, no en reemplazar la integración del contexto ni el juicio de quien decide.",
           },
           {
             title: "Desafíos que no desaparecen",
@@ -154,7 +154,7 @@ export const collections: EditorialCollection[] = [
           },
           {
             title: "Una arquitectura híbrida",
-            body: "El proyecto propone combinar reglas de calidad, lectura de documentos, modelos predictivos y herramientas de auditoría, pero entregar sus resultados a un equipo humano. La meta no es automatizar una decisión de alto impacto, sino mejorar su calidad, consistencia, trazabilidad y oportunidad.",
+            body: "Una estrategia responsable puede combinar reglas de calidad, lectura de documentos, modelos predictivos y herramientas de auditoría, manteniendo sus salidas diferenciadas y entregándolas a un equipo humano. La meta no es automatizar una decisión de alto impacto, sino mejorar su calidad, consistencia, trazabilidad y oportunidad.",
           },
         ],
       },
@@ -184,8 +184,8 @@ export const collections: EditorialCollection[] = [
             body: "Human-in-command amplía la mirada hacia la gobernanza: definir para qué se usa la IA, qué fuentes están autorizadas, qué límites no puede traspasar, cómo se audita y bajo qué condiciones debe suspenderse. También obliga a asignar responsabilidades claras.",
           },
           {
-            title: "La combinación propuesta",
-            body: "Para una evaluación de alto impacto, el proyecto combina tres niveles: IN en la decisión de cada caso, ON en la vigilancia de la operación y COMMAND en la gobernanza. Dejar a la persona fuera del circuito puede reservarse para tareas administrativas de bajo impacto, no para resolver una evaluación de invalidez.",
+            title: "Combinar niveles de control",
+            body: "En aplicaciones sanitarias de alto impacto conviene combinar tres niveles: IN en la decisión de cada caso, ON en la vigilancia de la operación y COMMAND en la gobernanza. Dejar a la persona fuera del circuito puede reservarse para tareas administrativas de bajo impacto, siempre que existan límites claros y mecanismos para detectar consecuencias inesperadas.",
           },
           {
             title: "Más que corregir errores",
