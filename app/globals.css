@@ -363,6 +363,27 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .editorial-reading-prose .editorial-lead { margin-bottom: 64px; }
 .editorial-reading-prose article > section { padding: 44px 0; }
 .editorial-reading-prose h2 + p { max-width: none; margin-top: 20px; line-height: 1.82; }
+.health-essay { color: #29474f; font: 18px/1.82 Georgia, serif; }
+.health-essay > p { margin: 0 0 28px; }
+.health-essay .health-essay-lead { margin-bottom: 34px; color: #284a52; font-size: 23px; line-height: 1.55; }
+.health-essay h2 { margin: 64px 0 20px; color: var(--ink); font-size: clamp(24px,2.7vw,32px); }
+.health-table-wrap { width: 100%; margin: 32px 0 36px; overflow-x: auto; border: 1px solid #d6ddd7; }
+.health-table { width: 100%; min-width: 680px; border-collapse: collapse; background: #fff; font: 14px/1.55 var(--font-geist); }
+.health-table caption { padding: 14px 16px; background: #f3f3e9; color: #667040; font: 700 10px var(--font-geist-mono); letter-spacing: .12em; text-align: left; text-transform: uppercase; }
+.health-table th, .health-table td { padding: 16px 17px; border-right: 1px solid #e1e5e0; border-bottom: 1px solid #e1e5e0; text-align: left; vertical-align: top; }
+.health-table tr > :last-child { border-right: 0; }
+.health-table tbody tr:last-child > * { border-bottom: 0; }
+.health-table thead th { background: #fafaf6; color: #153640; font-weight: 700; }
+.health-table tbody th { width: 18%; color: #69713d; font-weight: 700; }
+.health-table-balanced tbody th { width: 21%; }
+.health-reading-note { margin: 42px 0; padding: 24px 27px; border-left: 4px solid var(--olive); background: #f7f7ef; }
+.health-reading-note strong { display: block; margin-bottom: 8px; color: #656d36; font: 700 12px var(--font-geist-mono); letter-spacing: .08em; text-transform: uppercase; }
+.health-reading-note p { margin: 0; font-size: 17px; line-height: 1.7; }
+@media (max-width: 720px) {
+  .health-essay { font-size: 17px; }
+  .health-essay .health-essay-lead { font-size: 20px; }
+  .health-table { min-width: 620px; }
+}
 
 .braid-article { max-width: 1120px; margin: 0 auto; padding: 88px clamp(32px, 7vw, 108px) 125px; background: #fff; box-shadow: inset 12px 0 0 var(--section-edge), inset -12px 0 0 var(--section-edge); }
 .braid-article-lead { max-width: 790px; margin: 0 0 64px; color: #385963; font: 27px/1.5 Georgia, serif; }

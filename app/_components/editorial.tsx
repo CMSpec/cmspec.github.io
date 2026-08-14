@@ -1,5 +1,6 @@
 import type { EditorialCollection, EditorialEntry } from "../../content/collections";
 import SiteHeader from "./SiteHeader";
+import HealthEditorialBody from "./HealthEditorialBody";
 
 export function BrandHeader({ label, backHref = "/" }: { label: string; backHref?: string }) {
   void label;
@@ -63,7 +64,7 @@ export function EntryPage({ collection, entry }: { collection: EditorialCollecti
       </article>
       <div className={`editorial-reading${proseLayout ? " editorial-reading-prose" : ""}`}>
         {!proseLayout && <aside className="editorial-entry-index"><span>{entry.number}</span><strong>{entry.visual}</strong></aside>}
-        <article>
+        {proseLayout ? <HealthEditorialBody entry={entry} /> : <article>
           <p className="editorial-lead">{entry.introduction}</p>
           {entry.sections.map((section, index) => (
             <section key={section.title}>
@@ -72,7 +73,7 @@ export function EntryPage({ collection, entry }: { collection: EditorialCollecti
               <p>{section.body}</p>
             </section>
           ))}
-        </article>
+        </article>}
       </div>
       <footer className="course-footer"><p>CMSpec · {collection.title}</p><a href={`/${collection.slug}`}>Todas las entradas ↗</a></footer>
     </main>
