@@ -61,7 +61,7 @@ export default function Home() {
 
       <section className="flat-section flat-lab" id="laboratorio" aria-labelledby="lab-title">
         <header className="flat-section-heading">
-          <h2 id="lab-title">Laboratorio</h2>
+          <h2 id="lab-title"><a href="/laboratorio">Laboratorio</a></h2>
           <p>Demostraciones para mover, probar y observar operaciones de Álgebra Lineal en lugar de ver solamente el resultado.</p>
         </header>
         <div className="flat-lab-gallery">

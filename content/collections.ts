@@ -53,7 +53,7 @@ export const collections: EditorialCollection[] = [
       {
         number: "02",
         title: "La geometría escondida en Dobble",
-        subtitle: "De un juego de memoria a un plano proyectivo finito",
+        subtitle: "De un plano proyectivo a un juego de memoria",
         description: "La regla de encontrar exactamente un símbolo común entre dos cartas conduce a diseños combinatorios, cuerpos finitos y geometría proyectiva.",
         authors: "Camila Muñoz Santander",
         published: "19 julio 2026",

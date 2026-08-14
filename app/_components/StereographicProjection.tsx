@@ -171,7 +171,7 @@ export default function StereographicProjection() {
   }, [angle, projectedX, projectedY]);
 
   return (
-    <figure className="stereo-explorer">
+    <figure className="stereo-explorer" id="proyeccion-estereografica">
       <figcaption>
         <span>EXPLORACIÓN · PROYECCIÓN ESTEREOGRÁFICA</span>
         <strong>Del polo norte al plano</strong>

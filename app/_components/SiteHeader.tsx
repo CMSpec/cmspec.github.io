@@ -54,7 +54,7 @@ export default function SiteHeader() {
             </div>
           </div>
         </details>
-        <a href="/#laboratorio">Laboratorio</a>
+        <a href="/laboratorio">Laboratorio</a>
         <details className="site-index-menu textile-index-menu">
           <summary>Tejido <span aria-hidden="true">⌄</span></summary>
           <div className="site-index-panel textile-index-panel">

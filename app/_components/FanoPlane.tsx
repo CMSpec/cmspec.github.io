@@ -29,7 +29,7 @@ export default function FanoPlane() {
   const selected = new Set<string>(lines[active].points);
 
   return (
-    <figure className="fano-explorer">
+    <figure className="fano-explorer" id="plano-de-fano">
       <figcaption>
         <span>VISUALIZACIÓN · PLANO DE FANO</span>
         <strong>Siete puntos, siete rectas y una coincidencia entre cada par</strong>

@@ -456,6 +456,40 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 }
 @media (hover: none) { .external-preview-card { display: none; } }
 
+.laboratory-masthead { background: #fff; }
+.laboratory-calculator { max-width: 1100px; margin: 0 auto; padding: 78px clamp(24px,6vw,78px) 35px; }
+.official-sage-cell { border: 1px solid #cbdfe3; background: #fff; }
+.official-sage-cell > header { display: grid; grid-template-columns: minmax(150px,.35fr) minmax(0,1fr); gap: 8px 30px; padding: 28px 30px; border-bottom: 5px solid var(--blue); background: #eef7f8; }
+.official-sage-cell > header p { grid-row: 1 / span 2; margin: 2px 0 0; color: var(--blue); font: 700 10px/1.5 var(--font-geist-mono); letter-spacing: .13em; }
+.official-sage-cell > header h2 { margin: 0; color: var(--ink); font: 400 28px/1.15 Georgia,serif; }
+.official-sage-cell > header span { color: #587078; font: 14px/1.5 var(--font-geist); }
+.official-sage-embed { min-height: 190px; padding: 26px 30px; }
+.official-sage-status { margin: -10px 30px 24px; color: var(--muted); font: 12px/1.55 var(--font-geist-mono); }
+.official-sage-status.is-error { padding: 14px; background: #fff5f0; color: #8a513e; }
+.official-sage-status a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+.official-sage-cell > footer { display: flex; justify-content: space-between; gap: 20px; padding: 15px 30px; border-top: 1px solid #dbe6e7; color: var(--muted); font: 11px/1.5 var(--font-geist-mono); }
+.official-sage-cell > footer a { color: var(--blue); }
+.laboratory-repository { max-width: 1100px; margin: 0 auto; padding: 45px clamp(24px,6vw,78px) 110px; }
+.laboratory-area { --lab-accent: var(--blue); padding-top: 70px; }
+.laboratory-area.lab-green { --lab-accent: var(--green); }.laboratory-area.lab-olive { --lab-accent: var(--olive); }.laboratory-area.lab-pink { --lab-accent: #c57a5d; }
+.laboratory-area > header { display: grid; grid-template-columns: 180px minmax(250px,.7fr) minmax(250px,.6fr); gap: 32px; align-items: start; padding: 0 0 38px; border-bottom: 2px solid var(--lab-accent); }
+.laboratory-area > header span { color: var(--lab-accent); font: 700 10px var(--font-geist-mono); letter-spacing: .12em; }
+.laboratory-area > header h2 { margin: 0; color: var(--ink); font: 400 32px/1.05 Georgia,serif; }
+.laboratory-area > header p { margin: 0; color: #587078; font: 14px/1.65 var(--font-geist); }
+.laboratory-entry .note-dates strong { color: #49656d; font: 700 11px/1.4 var(--font-geist); text-transform: none; }
+.laboratory-entry .note-entry-copy > p:first-child { color: var(--lab-accent); }
+.laboratory-entry .note-subtitle { color: var(--lab-accent); }
+.laboratory-visual { min-height: 190px; background: color-mix(in srgb, var(--lab-accent) 8%, white); }
+.laboratory-visual > span { color: var(--lab-accent); font-size: clamp(28px,4vw,45px); }
+.laboratory-visual small { color: #587078; }
+@media (max-width: 760px) {
+  .official-sage-cell > header, .laboratory-area > header { grid-template-columns: 1fr; }
+  .official-sage-cell > header p { grid-row: auto; }
+  .official-sage-embed { padding-inline: 18px; }
+  .official-sage-cell > footer { flex-direction: column; padding-inline: 18px; }
+  .laboratory-area > header { gap: 14px; }
+}
+
 .braid-article { max-width: 1120px; margin: 0 auto; padding: 88px clamp(32px, 7vw, 108px) 125px; background: #fff; box-shadow: inset 12px 0 0 var(--section-edge), inset -12px 0 0 var(--section-edge); }
 .braid-article-lead { max-width: 790px; margin: 0 0 64px; color: #385963; font: 27px/1.5 Georgia, serif; }
 .braid-hero-image { margin: 0 0 94px; }
