@@ -6,6 +6,7 @@ const areas = [
     number: "01", title: "Notas matemáticas", tone: "blue",
     description: "Construcciones geométricas que acompañan las entradas de investigación y permiten mover sus parámetros.",
     entries: [
+      { title: "De rectas a cartas", subtitle: "Planos proyectivos sobre cuerpos finitos", description: "Cambia el cuerpo Fq, elige dos rectas y observa cómo sus puntos se convierten en dos cartas con una única coincidencia.", href: "/investigacion/dobble-y-geometria-proyectiva#cartas-proyectivas", visual: "PG(2,q)", kind: "interactivo" },
       { title: "Proyección estereográfica", subtitle: "Mover un punto entre la esfera y el plano", description: "Modifica colatitud y longitud para seguir la recta de proyección y comparar las coordenadas antes y después.", href: "/investigacion/mapas-distancias-y-conformidad#proyeccion-estereografica", visual: "S² → ℝ²", kind: "interactivo" },
       { title: "Plano de Fano", subtitle: "Siete puntos, siete rectas", description: "Selecciona una recta del plano proyectivo finito y observa los tres puntos que contiene, como modelo reducido del mazo de Dobble.", href: "/investigacion/dobble-y-geometria-proyectiva#plano-de-fano", visual: "p ∈ ℓ", kind: "interactivo" },
     ],

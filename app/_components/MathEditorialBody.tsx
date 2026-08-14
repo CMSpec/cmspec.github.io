@@ -1,5 +1,6 @@
 import type { EditorialEntry } from "../../content/collections";
 import FanoPlane from "./FanoPlane";
+import FiniteProjectiveCards from "./FiniteProjectiveCards";
 import StereographicProjection from "./StereographicProjection";
 
 function DobblePreviewLink() {
@@ -163,6 +164,12 @@ function DobbleArticle({ entry }: { entry: EditorialEntry }) {
           </tbody>
         </table>
       </div>
+
+      <h2>De coordenadas a cartas</h2>
+      <p>
+        La misma construcción puede recorrerse en distintos tamaños. Al elegir un cuerpo finito y dos rectas, la exploración calcula sus puntos, convierte cada recta en una carta y destaca la única coordenada que ambas comparten. En F₂ reaparece el plano de Fano; en F₇ cada carta contiene ocho símbolos y el sistema completo alcanza 57.
+      </p>
+      <FiniteProjectiveCards />
 
       <p>
         El número 57 aparece al contar las clases de triples no nulos: hay 7³−1 triples posibles y cada punto tiene 7−1 representantes escalares, de modo que (7³−1)/(7−1)=57. La construcción completa produciría 57 cartas; el juego comercial clásico contiene 55. Retirar cartas no destruye la propiedad de las restantes: cualquier par todavía proviene de dos rectas que se encuentran en un punto.

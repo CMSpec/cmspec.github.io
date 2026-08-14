@@ -412,6 +412,32 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .fano-explorer figcaption span { color: var(--blue); font: 700 10px var(--font-geist-mono); letter-spacing: .12em; }
 .fano-explorer figcaption strong { color: var(--ink); font: 25px/1.2 Georgia, serif; }
 .fano-explorer figcaption p, .fano-caption { margin: 0; color: #587078; font: 14px/1.55 var(--font-geist); }
+.finite-projective-explorer { margin: 38px 0 48px; padding: 28px; border: 1px solid #cbdfe3; background: #fbfdfd; }
+.finite-projective-explorer > figcaption { display: grid; gap: 8px; margin-bottom: 24px; }
+.finite-projective-explorer > figcaption > span { color: var(--blue); font: 700 10px var(--font-geist-mono); letter-spacing: .12em; }
+.finite-projective-explorer > figcaption strong { color: var(--ink); font: 25px/1.2 Georgia, serif; }
+.finite-projective-explorer > figcaption p { margin: 0; color: #587078; font: 14px/1.55 var(--font-geist); }
+.finite-field-controls { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: end; padding: 18px 0 24px; border-top: 1px solid #d9e6e7; }
+.finite-field-controls small, .finite-line-selectors span { display: block; margin-bottom: 8px; color: #587078; font: 700 9px var(--font-geist-mono); letter-spacing: .1em; }
+.finite-field-buttons { display: flex; gap: 6px; }
+.finite-field-buttons button { min-width: 44px; padding: 8px 10px; border: 1px solid #afc8cd; background: #fff; color: var(--ink); font: 700 13px var(--font-geist); cursor: pointer; }
+.finite-field-buttons button.is-active { border-color: var(--blue); background: var(--blue); color: white; }
+.finite-line-selectors { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.finite-line-selectors select { width: 100%; padding: 9px 32px 9px 10px; border: 1px solid #afc8cd; border-radius: 0; background: white; color: var(--ink); font: 13px var(--font-geist-mono); }
+.finite-projective-stage { display: grid; grid-template-columns: minmax(230px,.72fr) minmax(300px,1fr); gap: 18px; }
+.finite-point-space, .finite-card-pair { padding: 18px; border: 1px solid #d5e3e5; background: white; }
+.finite-point-space > header { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; margin-bottom: 16px; }
+.finite-point-space > header strong { color: var(--ink); font: 20px Georgia,serif; }.finite-point-space > header span { color: #6c7d82; font: 10px var(--font-geist-mono); }
+.finite-affine-grid { display: grid; aspect-ratio: 1; border: 1px solid #dce7e8; background-image: linear-gradient(#edf3f3 1px,transparent 1px),linear-gradient(90deg,#edf3f3 1px,transparent 1px); background-size: calc(100% / var(--q, 7)) calc(100% / var(--q, 7)); }
+.finite-point { position: relative; display: grid; place-items: center; min-width: 0; }.finite-point i { width: 8px; height: 8px; border-radius: 50%; background: #c5d1d3; box-shadow: 0 0 0 3px white; }.finite-point small { display: none; }
+.finite-point.is-line-a i { width: 12px; height: 12px; background: var(--blue); }.finite-point.is-line-b i { width: 12px; height: 12px; background: var(--olive); }.finite-point.is-shared i { width: 15px; height: 15px; background: #d88967; box-shadow: 0 0 0 4px #fae8df; }
+.finite-infinity-row { display: flex; justify-content: space-around; align-items: center; min-height: 48px; margin-top: 10px; padding: 5px; border: 1px dashed #cbdadc; }.finite-infinity-row > strong { color: #75868b; font: 20px Georgia,serif; }.finite-infinity-row .finite-point { min-width: 22px; min-height: 28px; }
+.finite-point-space > p { display: flex; flex-wrap: wrap; gap: 11px; align-items: center; margin: 13px 0 0; color: #64777c; font: 10px var(--font-geist); }.finite-point-space > p i { width: 8px; height: 8px; border-radius: 50%; }.legend-a { background: var(--blue); }.legend-b { background: var(--olive); }.legend-shared { background: #d88967; }
+.finite-card-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-content: start; background: #f9fbfb; }
+.finite-projective-card { border: 1px solid #cbdadd; background: white; }.finite-projective-card > header { padding: 12px; border-bottom: 1px solid #dbe6e7; }.finite-projective-card > header strong, .finite-projective-card > header span { display: block; }.finite-projective-card > header strong { margin-bottom: 4px; font: 18px Georgia,serif; }.finite-projective-card > header span { color: #677a80; font: 10px var(--font-geist-mono); }
+.finite-projective-card > div { display: grid; grid-template-columns: repeat(2,1fr); gap: 7px; padding: 12px; }.finite-projective-card > div > span { display: grid; place-items: center; min-height: 55px; padding: 5px; border-radius: 50%; background: #e8f1f3; color: var(--blue); }.finite-projective-card > div > span:nth-child(3n+2) { background: #eff3df; color: var(--olive); }.finite-projective-card > div > span:nth-child(3n) { background: #f6ebe6; color: #a85f48; }.finite-projective-card > div > span.is-shared { outline: 3px solid #d88967; background: #fae8df; color: #94482f; }.finite-projective-card i { font: 700 15px var(--font-geist); }.finite-projective-card small { font: 8px var(--font-geist-mono); }
+.finite-shared-result { grid-column: 1/-1; display: grid; grid-template-columns: auto auto 1fr; gap: 10px 14px; align-items: center; margin: 2px 0 0; padding: 13px; background: #fae8df; color: #744337; }.finite-shared-result span { font: 700 9px var(--font-geist-mono); letter-spacing: .1em; }.finite-shared-result strong { font: 20px Georgia,serif; }.finite-shared-result small { font: 11px/1.4 var(--font-geist); }
+@media (max-width:720px){.finite-field-controls,.finite-projective-stage { grid-template-columns:1fr; }.finite-line-selectors { grid-template-columns:1fr; }.finite-card-pair { padding:12px; }.finite-projective-explorer { padding:20px; }.finite-shared-result { grid-template-columns:1fr; }}
 .fano-layout { display: grid; grid-template-columns: minmax(280px,1fr) minmax(165px,.55fr); gap: 25px; align-items: center; }
 .fano-board { position: relative; width: 100%; max-width: 420px; aspect-ratio: 1; margin: 0 auto; background: radial-gradient(circle at 50% 55%,#eef6f7 0 2px,transparent 3px), linear-gradient(#fff,#f7fbfb); }
 .fano-line { position: absolute; z-index: 1; height: 2px; background: #9eb9bf; transform-origin: left center; transition: background .2s,height .2s,opacity .2s; }
