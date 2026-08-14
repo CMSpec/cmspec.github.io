@@ -46,6 +46,7 @@ export function CollectionPage({ collection }: { collection: EditorialCollection
 }
 
 export function EntryPage({ collection, entry }: { collection: EditorialCollection; entry: EditorialEntry }) {
+  const proseLayout = collection.slug === "salud";
   return (
     <main className={`course-page editorial-entry tone-${collection.tone}`}>
       <BrandHeader label={collection.label} backHref={`/${collection.slug}`} />
@@ -60,13 +61,13 @@ export function EntryPage({ collection, entry }: { collection: EditorialCollecti
           <div><span>ESTADO</span><strong>Entrada en desarrollo</strong></div>
         </div>
       </article>
-      <div className="editorial-reading">
-        <aside className="editorial-entry-index"><span>{entry.number}</span><strong>{entry.visual}</strong></aside>
+      <div className={`editorial-reading${proseLayout ? " editorial-reading-prose" : ""}`}>
+        {!proseLayout && <aside className="editorial-entry-index"><span>{entry.number}</span><strong>{entry.visual}</strong></aside>}
         <article>
           <p className="editorial-lead">{entry.introduction}</p>
           {entry.sections.map((section, index) => (
             <section key={section.title}>
-              <p>{String(index + 1).padStart(2, "0")}</p>
+              {!proseLayout && <p>{String(index + 1).padStart(2, "0")}</p>}
               <h2>{section.title}</h2>
               <p>{section.body}</p>
             </section>

@@ -157,10 +157,10 @@ export const siteContent = {
         tone: "blue",
       },
       {
-        title: "Explorar datos de salud",
+        title: "Cuatro funciones de IA en salud",
         category: "COLABORACIONES EN SALUD",
-        description: "Preguntas sobre procedencia, calidad y límites antes de resumir un conjunto de datos.",
-        href: "/salud/explorar-datos",
+        description: "Interpretar, estimar, redactar y auditar: usos y sutilezas de la IA aplicada a salud pública.",
+        href: "/salud/funciones-ia-en-salud",
         image: "/images/recommended-health.jpg",
         imageAlt: "Persona trabajando con un computador y un estetoscopio sobre la mesa",
         credit: "Foto provisional: National Cancer Institute · Unsplash",

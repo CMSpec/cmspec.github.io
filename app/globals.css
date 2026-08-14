@@ -358,6 +358,11 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .tone-olive .editorial-reading article > section > p:first-child { color: var(--olive); }.tone-pink .editorial-reading article > section > p:first-child { color: #a85f45; }
 .editorial-reading h2 { font-size: clamp(31px,4vw,47px); }
 .editorial-reading h2 + p { max-width: 650px; margin: 25px 0 0; color: #49656d; font: 18px/1.7 Georgia, serif; }
+.editorial-reading-prose { display: block; max-width: 920px; padding-inline: clamp(28px,7vw,100px); }
+.editorial-reading-prose > article { max-width: 720px; margin: 0 auto; }
+.editorial-reading-prose .editorial-lead { margin-bottom: 64px; }
+.editorial-reading-prose article > section { padding: 44px 0; }
+.editorial-reading-prose h2 + p { max-width: none; margin-top: 20px; line-height: 1.82; }
 
 .braid-article { max-width: 1120px; margin: 0 auto; padding: 88px clamp(32px, 7vw, 108px) 125px; background: #fff; box-shadow: inset 12px 0 0 var(--section-edge), inset -12px 0 0 var(--section-edge); }
 .braid-article-lead { max-width: 790px; margin: 0 0 64px; color: #385963; font: 27px/1.5 Georgia, serif; }
