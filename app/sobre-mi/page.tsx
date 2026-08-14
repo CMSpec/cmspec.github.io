@@ -4,22 +4,19 @@ import { aboutGallery } from "../../content/about-gallery";
 import AboutGallery from "./AboutGallery";
 
 export default function AboutPage() {
-  const { about, brand } = siteContent;
+  const { about } = siteContent;
 
   return (
-    <main className="course-page editorial-entry tone-blue about-page">
+    <main className="learn-page course-library-page about-page tone-blue">
       <BrandHeader label="SOBRE MÍ" backHref="/" />
-      <article className="course-masthead editorial-entry-masthead">
+      <section className="learn-masthead">
         <div className="course-spectrum" aria-hidden="true"><i /><i /><i /><i /></div>
         <p className="course-kicker">{about.index}</p>
         <h1>{about.titleFirstLine}<br />{about.titleSecondLine}</h1>
-        <p className="course-deck">Matemáticas, docencia y exploraciones que conectan distintas partes de un mismo espectro.</p>
-        <div className="course-meta">
-          <div><span>SITIO</span><strong>{brand.name}</strong></div>
-          <div><span>INTERESES</span><strong>Ideas · Visualización · Patrones</strong></div>
-          <div><span>FORMATO</span><strong>Cuaderno abierto</strong></div>
+        <div className="learn-deck">
+          <p>Matemáticas, docencia y exploraciones que conectan distintas partes de un mismo espectro.</p>
         </div>
-      </article>
+      </section>
 
       <section className="about-detail">
         <p className="about-detail-index">UNA PRESENTACIÓN</p>

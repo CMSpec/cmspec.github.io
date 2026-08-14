@@ -63,6 +63,9 @@ nav a:hover, .header-cta:hover { color: var(--blue); }
 .notes-index-panel { width: min(420px,calc(100vw - 32px)); }
 .notes-index-panel .site-index-area-title strong { font-size: 13px; }
 .notes-index-panel .site-index-area > div a { font-size: 11px; }
+.textile-index-panel { width: min(430px,calc(100vw - 32px)); }
+.textile-index-panel .site-index-area { padding-bottom: 12px; }
+.textile-index-panel .site-index-area > div a { font-size: 11px; }
 
 .hero { min-height: 720px; display: grid; grid-template-columns: minmax(0, .94fr) minmax(500px, 1.06fr); align-items: center; gap: 5vw; padding: 76px clamp(24px, 7vw, 108px) 84px; overflow: hidden; }
 .kicker, .section-index { font-family: var(--font-geist-mono), monospace; font-size: 11px; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; }
@@ -319,6 +322,16 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .course-library-page .note-description { max-width: 510px; font-size: 14px; line-height: 1.55; }
 .course-library-page .note-visual { width: 150px; min-height: 150px; padding: 18px; justify-self: center; }
 .course-library-page .note-visual > span { font-size: 27px; }
+.collection-library-page .note-entry-copy h3 { font-size: clamp(25px,2.5vw,32px); }
+.collection-library-page .learn-masthead h1 { font-size: clamp(27px,3vw,32px); }
+.collection-library-page .note-visual > span { font-size: 23px; }
+.collection-library-page.tone-pink .learn-masthead h1,
+.collection-library-page.tone-pink .note-entry-copy h3 { font-size: clamp(21px,2.2vw,24px); }
+.about-page .learn-masthead h1 { font-size: clamp(21px,2.2vw,24px); line-height: 1.08; }
+.about-page .about-detail h2,
+.about-page .about-gallery h2,
+.about-page .about-gallery-card figcaption strong,
+.about-page .about-spectrum strong { font-size: clamp(20px,2.1vw,24px); }
 .learn-colophon { display: grid; grid-template-columns: .55fr 1fr; gap: 8vw; padding: 55px clamp(24px, 7vw, 108px); background: #fff; }
 .learn-colophon span { font: 9px var(--font-geist-mono); letter-spacing: .14em; }.learn-colophon p { max-width: 650px; margin: 0; font: 20px/1.5 Georgia, serif; }
 
@@ -886,5 +899,20 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .editorial-reading,
 .braid-article,
 .course-article-layout { background-color: #fff; box-shadow: none; }
+
+/* Escala editorial: las entradas no superan 32 px; Tejido y Sobre mí, 24 px. */
+.editorial-entry .course-masthead h1,
+.editorial-entry .editorial-reading h2,
+.editorial-entry .braid-prose-section h2 { font-size: clamp(23px,2.8vw,32px); }
+.tone-pink.editorial-entry .course-masthead h1,
+.tone-pink.editorial-entry .braid-prose-section h2,
+.tone-pink.editorial-entry .braid-article-lead,
+.tone-pink.editorial-entry .braid-pullquote,
+.tone-pink.editorial-entry .braid-presentation { font-size: clamp(19px,2.15vw,24px); }
+.about-page .learn-masthead h1,
+.about-page .about-detail h2,
+.about-page .about-gallery h2,
+.about-page .about-gallery-card figcaption strong,
+.about-page .about-spectrum strong { font-size: clamp(20px,2.1vw,24px); }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }

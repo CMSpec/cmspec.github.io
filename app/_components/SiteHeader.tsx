@@ -25,6 +25,8 @@ const noteAreas = [
   },
 ];
 
+const textileEntries = collections.find((collection) => collection.slug === "tejido")!.entries;
+
 export default function SiteHeader() {
   return (
     <header className="site-header flat-header global-site-header">
@@ -53,7 +55,21 @@ export default function SiteHeader() {
           </div>
         </details>
         <a href="/#laboratorio">Laboratorio</a>
-        <a href="/#tejido">Tejido</a>
+        <details className="site-index-menu textile-index-menu">
+          <summary>Tejido <span aria-hidden="true">⌄</span></summary>
+          <div className="site-index-panel textile-index-panel">
+            <section className="site-index-area index-pink">
+              <a className="site-index-area-title" href="/tejido">
+                <span>04</span><strong>Tejido & estructuras</strong><i>↗</i>
+              </a>
+              <div>
+                {textileEntries.map((entry) => (
+                  <a href={entry.href} key={entry.href}>{entry.title}<span>→</span></a>
+                ))}
+              </div>
+            </section>
+          </div>
+        </details>
         <a href="/sobre-mi">Sobre mí</a>
       </nav>
       <a className="header-cta" href="/#contacto">Contacto <span aria-hidden="true">↗</span></a>

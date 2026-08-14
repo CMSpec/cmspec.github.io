@@ -9,7 +9,7 @@ export function BrandHeader({ label, backHref = "/" }: { label: string; backHref
 
 export function CollectionPage({ collection }: { collection: EditorialCollection }) {
   return (
-    <main className={`learn-page editorial-page tone-${collection.tone}`}>
+    <main className={`learn-page course-library-page collection-library-page tone-${collection.tone}`}>
       <BrandHeader label={collection.label} />
       <section className="learn-masthead">
         <div className="course-spectrum" aria-hidden="true"><i /><i /><i /><i /></div>
