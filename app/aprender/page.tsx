@@ -3,7 +3,7 @@ import SiteHeader from "../_components/SiteHeader";
 
 export default function LearnPage() {
   return (
-    <main className="learn-page">
+    <main className="learn-page course-library-page">
       <SiteHeader />
 
       <section className="learn-masthead">

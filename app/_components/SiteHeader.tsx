@@ -1,3 +1,30 @@
+import { collections } from "../../content/collections";
+import { courseNotes } from "../../content/course-library";
+
+const noteAreas = [
+  {
+    number: "01",
+    title: "Matemáticas",
+    href: "/investigacion",
+    tone: "blue",
+    entries: collections.find((collection) => collection.slug === "investigacion")!.entries,
+  },
+  {
+    number: "02",
+    title: "Salud",
+    href: "/salud",
+    tone: "olive",
+    entries: collections.find((collection) => collection.slug === "salud")!.entries,
+  },
+  {
+    number: "03",
+    title: "Aprender",
+    href: "/aprender",
+    tone: "green",
+    entries: courseNotes,
+  },
+];
+
 export default function SiteHeader() {
   return (
     <header className="site-header flat-header global-site-header">
@@ -6,7 +33,25 @@ export default function SiteHeader() {
         <span>CMSpec</span>
       </a>
       <nav aria-label="Navegación principal">
-        <a href="/aprender">Notas</a>
+        <details className="site-index-menu notes-index-menu">
+          <summary>Notas <span aria-hidden="true">⌄</span></summary>
+          <div className="site-index-panel notes-index-panel">
+            <div className="site-index-grid">
+              {noteAreas.map((area) => (
+                <section className={`site-index-area index-${area.tone}`} key={area.href}>
+                  <a className="site-index-area-title" href={area.href}>
+                    <span>{area.number}</span><strong>{area.title}</strong><i>↗</i>
+                  </a>
+                  <div>
+                    {area.entries.map((entry) => (
+                      <a href={entry.href} key={entry.href}>{entry.title}<span>→</span></a>
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </div>
+        </details>
         <a href="/#laboratorio">Laboratorio</a>
         <a href="/#tejido">Tejido</a>
         <a href="/sobre-mi">Sobre mí</a>
