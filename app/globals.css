@@ -379,10 +379,46 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .health-reading-note { margin: 42px 0; padding: 24px 27px; border-left: 4px solid var(--olive); background: #f7f7ef; }
 .health-reading-note strong { display: block; margin-bottom: 8px; color: #656d36; font: 700 12px var(--font-geist-mono); letter-spacing: .08em; text-transform: uppercase; }
 .health-reading-note p { margin: 0; font-size: 17px; line-height: 1.7; }
+.math-essay { color: #29474f; font: 18px/1.82 Georgia, serif; }
+.math-essay > p { margin: 0 0 28px; }
+.math-essay .math-essay-lead { margin-bottom: 34px; color: #284a52; font-size: 23px; line-height: 1.55; }
+.math-essay h2 { margin: 64px 0 20px; color: var(--ink); font-size: clamp(24px,2.7vw,32px); }
+.math-table caption { background: #edf6f7; color: var(--blue); }
+.math-table tbody th { color: var(--blue); }
+.math-formula { margin: 34px 0; padding: 28px; overflow-x: auto; border: 1px solid #cbdfe3; background: #f2f8f9; color: #123f4e; font: italic 28px/1.4 Georgia, serif; text-align: center; }
+.math-formula-stack { display: grid; gap: 14px; font-size: 22px; }
+.math-reading-note { margin: 42px 0; padding: 24px 27px; border-left: 4px solid var(--blue); background: #f1f7f8; }
+.math-reading-note strong { display: block; margin-bottom: 8px; color: var(--blue); font: 700 12px var(--font-geist-mono); letter-spacing: .08em; text-transform: uppercase; }
+.math-reading-note p { margin: 0; font-size: 17px; line-height: 1.7; }
+.essay-sources { display: grid; gap: 10px; margin-top: 62px; padding-top: 25px; border-top: 1px solid var(--line); font: 13px/1.5 var(--font-geist); }
+.essay-sources strong { margin-bottom: 3px; font: 700 10px var(--font-geist-mono); letter-spacing: .12em; text-transform: uppercase; }
+.essay-sources a { width: fit-content; color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+.fano-explorer { margin: 38px 0 46px; padding: 28px; border: 1px solid #cbdfe3; background: #fbfdfd; }
+.fano-explorer figcaption { display: grid; gap: 8px; margin-bottom: 25px; }
+.fano-explorer figcaption span { color: var(--blue); font: 700 10px var(--font-geist-mono); letter-spacing: .12em; }
+.fano-explorer figcaption strong { color: var(--ink); font: 25px/1.2 Georgia, serif; }
+.fano-explorer figcaption p, .fano-caption { margin: 0; color: #587078; font: 14px/1.55 var(--font-geist); }
+.fano-layout { display: grid; grid-template-columns: minmax(280px,1fr) minmax(165px,.55fr); gap: 25px; align-items: center; }
+.fano-board { position: relative; width: 100%; max-width: 420px; aspect-ratio: 1; margin: 0 auto; background: radial-gradient(circle at 50% 55%,#eef6f7 0 2px,transparent 3px), linear-gradient(#fff,#f7fbfb); }
+.fano-line { position: absolute; z-index: 1; height: 2px; background: #9eb9bf; transform-origin: left center; transition: background .2s,height .2s,opacity .2s; }
+.fano-line.is-active { z-index: 2; height: 4px; background: var(--blue); }
+.fano-circle { position: absolute; z-index: 1; left: 27.75%; top: 37.5%; width: 44.5%; aspect-ratio: 1; border: 2px solid #9eb9bf; border-radius: 50%; transition: border-color .2s,border-width .2s; }
+.fano-circle.is-active { z-index: 2; border-width: 4px; border-color: var(--blue); }
+.fano-point { position: absolute; z-index: 3; display: grid; place-items: center; width: 31px; height: 31px; border: 2px solid #9eb9bf; border-radius: 50%; background: #fff; color: #49656d; font: 700 13px var(--font-geist-mono); transform: translate(-50%,-50%); transition: background .2s,color .2s,transform .2s,border-color .2s; }
+.fano-point.is-active { border-color: var(--blue); background: var(--blue); color: #fff; transform: translate(-50%,-50%) scale(1.12); }
+.fano-cards { display: grid; gap: 7px; }
+.fano-cards button { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 42px; padding: 9px 11px; border: 1px solid #d4e1e3; background: #fff; color: #45616a; text-align: left; cursor: pointer; }
+.fano-cards button span { font: 12px var(--font-geist); }.fano-cards button strong { font: 700 12px var(--font-geist-mono); }
+.fano-cards button.is-active { border-color: var(--blue); background: #eaf5f7; color: var(--blue); }
+.fano-caption { margin-top: 22px; }
 @media (max-width: 720px) {
   .health-essay { font-size: 17px; }
   .health-essay .health-essay-lead { font-size: 20px; }
   .health-table { min-width: 620px; }
+  .math-essay { font-size: 17px; }
+  .math-essay .math-essay-lead { font-size: 20px; }
+  .fano-layout { grid-template-columns: 1fr; }
+  .fano-cards { grid-template-columns: repeat(2,1fr); }
 }
 
 .braid-article { max-width: 1120px; margin: 0 auto; padding: 88px clamp(32px, 7vw, 108px) 125px; background: #fff; box-shadow: inset 12px 0 0 var(--section-edge), inset -12px 0 0 var(--section-edge); }

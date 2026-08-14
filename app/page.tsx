@@ -52,7 +52,7 @@ export default function Home() {
               <span className="flat-entry-meta"><InteractiveMark /><i aria-hidden="true">↗</i></span>
             </a>
           ))}
-          <a href="/investigacion/notas-matematicas" className="flat-entry">
+          <a href="/investigacion" className="flat-entry">
             <span className="flat-entry-title">Notas matemáticas</span>
             <span className="flat-entry-meta"><small>investigación</small><i aria-hidden="true">↗</i></span>
           </a>

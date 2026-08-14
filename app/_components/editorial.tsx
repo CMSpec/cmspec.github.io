@@ -1,6 +1,7 @@
 import type { EditorialCollection, EditorialEntry } from "../../content/collections";
 import SiteHeader from "./SiteHeader";
 import HealthEditorialBody from "./HealthEditorialBody";
+import MathEditorialBody from "./MathEditorialBody";
 
 export function BrandHeader({ label, backHref = "/" }: { label: string; backHref?: string }) {
   void label;
@@ -47,7 +48,7 @@ export function CollectionPage({ collection }: { collection: EditorialCollection
 }
 
 export function EntryPage({ collection, entry }: { collection: EditorialCollection; entry: EditorialEntry }) {
-  const proseLayout = collection.slug === "salud";
+  const proseLayout = collection.slug === "salud" || collection.slug === "investigacion";
   return (
     <main className={`course-page editorial-entry tone-${collection.tone}`}>
       <BrandHeader label={collection.label} backHref={`/${collection.slug}`} />
@@ -64,7 +65,7 @@ export function EntryPage({ collection, entry }: { collection: EditorialCollecti
       </article>
       <div className={`editorial-reading${proseLayout ? " editorial-reading-prose" : ""}`}>
         {!proseLayout && <aside className="editorial-entry-index"><span>{entry.number}</span><strong>{entry.visual}</strong></aside>}
-        {proseLayout ? <HealthEditorialBody entry={entry} /> : <article>
+        {collection.slug === "salud" ? <HealthEditorialBody entry={entry} /> : collection.slug === "investigacion" ? <MathEditorialBody entry={entry} /> : <article>
           <p className="editorial-lead">{entry.introduction}</p>
           {entry.sections.map((section, index) => (
             <section key={section.title}>
