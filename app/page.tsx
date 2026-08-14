@@ -48,12 +48,18 @@ export default function Home() {
         <div className="flat-entry-list">
           {notes.map((note) => (
             <a href={note.href} className="flat-entry" key={note.href}>
-              <span className="flat-entry-title">{note.title}</span>
+              <span className="flat-entry-copy">
+                <span className="flat-entry-title">{note.title}</span>
+                <span className="flat-entry-description">{note.description}</span>
+              </span>
               <span className="flat-entry-meta"><InteractiveMark /><i aria-hidden="true">↗</i></span>
             </a>
           ))}
           <a href="/investigacion" className="flat-entry">
-            <span className="flat-entry-title">Notas matemáticas</span>
+            <span className="flat-entry-copy">
+              <span className="flat-entry-title">Notas matemáticas</span>
+              <span className="flat-entry-description">Ensayos sobre geometría, representación y estructuras combinatorias.</span>
+            </span>
             <span className="flat-entry-meta"><small>investigación</small><i aria-hidden="true">↗</i></span>
           </a>
         </div>
@@ -93,7 +99,10 @@ export default function Home() {
         <div className="flat-entry-list">
           {textileNotes.map((entry) => (
             <a href={entry.href} className="flat-entry" key={entry.href}>
-              <span className="flat-entry-title">{entry.title}</span>
+              <span className="flat-entry-copy">
+                <span className="flat-entry-title">{entry.title}</span>
+                <span className="flat-entry-description">{entry.description}</span>
+              </span>
               <span className="flat-entry-meta"><InteractiveMark /><i aria-hidden="true">↗</i></span>
             </a>
           ))}
