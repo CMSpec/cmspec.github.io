@@ -1,149 +1,200 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 const steps = [
-  { short: "Superficie", title: "Una esfera con cuatro bordes" },
+  { short: "Superficie", title: "Una esfera con cuatro componentes de borde" },
   { short: "Curvas", title: "Curvas esenciales alrededor de los orificios" },
   { short: "Giros", title: "Giros de Dehn como movimientos elementales" },
-  { short: "Composición", title: "Los movimientos se componen" },
-  { short: "Sweater", title: "La misma topología toma forma de prenda" },
-];
+  { short: "Composición", title: "Una palabra de transformaciones" },
+] as const;
 
-const curveColors = ["#007797", "#89962f", "#d27e62"];
+const curveColors = [0x007797, 0x89962f, 0xd27e62];
 
-function ellipsePoint(cx: number, cy: number, rx: number, ry: number, angle: number) {
-  return { x: cx + Math.cos(angle) * rx, y: cy + Math.sin(angle) * ry };
+function orientToNormal(object: THREE.Object3D, normal: THREE.Vector3) {
+  object.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), normal.clone().normalize());
 }
 
-function drawArrow(ctx: CanvasRenderingContext2D, x: number, y: number, angle: number, color: string) {
-  ctx.save(); ctx.translate(x, y); ctx.rotate(angle); ctx.fillStyle = color;
-  ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-12, -6); ctx.lineTo(-9, 7); ctx.closePath(); ctx.fill(); ctx.restore();
+function makeBoundary(normal: THREE.Vector3, radius: number) {
+  const group = new THREE.Group();
+  const direction = normal.clone().normalize();
+  const ring = new THREE.Mesh(
+    new THREE.TorusGeometry(radius, 0.055, 18, 80),
+    new THREE.MeshStandardMaterial({ color: 0xd27e62, roughness: 0.42, metalness: 0.04 }),
+  );
+  const opening = new THREE.Mesh(
+    new THREE.CircleGeometry(radius - 0.035, 64),
+    new THREE.MeshStandardMaterial({ color: 0x143941, roughness: 0.8, side: THREE.DoubleSide }),
+  );
+  ring.position.copy(direction.multiplyScalar(1.94));
+  opening.position.copy(ring.position).add(normal.clone().normalize().multiplyScalar(-0.015));
+  orientToNormal(ring, normal);
+  orientToNormal(opening, normal);
+  group.add(opening, ring);
+  return group;
 }
 
-function drawSphere(ctx: CanvasRenderingContext2D, opacity: number) {
-  ctx.save(); ctx.globalAlpha = opacity;
-  const gradient = ctx.createRadialGradient(390, 175, 20, 450, 255, 185);
-  gradient.addColorStop(0, "#fffaf4"); gradient.addColorStop(.58, "#e9d9cd"); gradient.addColorStop(1, "#c89d89");
-  ctx.fillStyle = gradient; ctx.beginPath(); ctx.arc(450, 255, 174, 0, Math.PI * 2); ctx.fill();
-  ctx.strokeStyle = "#815b4d"; ctx.lineWidth = 2; ctx.stroke();
-  const holes = [
-    { x: 450, y: 101, rx: 47, ry: 17 }, { x: 294, y: 244, rx: 18, ry: 43 },
-    { x: 606, y: 244, rx: 18, ry: 43 }, { x: 450, y: 407, rx: 62, ry: 18 },
-  ];
-  holes.forEach((hole) => {
-    const shade = ctx.createRadialGradient(hole.x - 4, hole.y - 4, 2, hole.x, hole.y, Math.max(hole.rx, hole.ry));
-    shade.addColorStop(0, "#173f48"); shade.addColorStop(1, "#082b33"); ctx.fillStyle = shade;
-    ctx.beginPath(); ctx.ellipse(hole.x, hole.y, hole.rx, hole.ry, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = "rgba(255,255,255,.72)"; ctx.lineWidth = 3; ctx.stroke();
+function makeCurve(normal: THREE.Vector3, offset: number, color: number) {
+  const radius = 2.08;
+  const n = normal.clone().normalize();
+  const helper = Math.abs(n.y) < 0.9 ? new THREE.Vector3(0, 1, 0) : new THREE.Vector3(1, 0, 0);
+  const u = new THREE.Vector3().crossVectors(n, helper).normalize();
+  const v = new THREE.Vector3().crossVectors(n, u).normalize();
+  const circleRadius = Math.sqrt(radius * radius - offset * offset);
+  const points = Array.from({ length: 129 }, (_, index) => {
+    const angle = (index / 128) * Math.PI * 2;
+    return n.clone().multiplyScalar(offset)
+      .add(u.clone().multiplyScalar(Math.cos(angle) * circleRadius))
+      .add(v.clone().multiplyScalar(Math.sin(angle) * circleRadius));
   });
-  ctx.restore();
-}
-
-function drawCurve(ctx: CanvasRenderingContext2D, index: number, progress: number, twist: boolean) {
-  const curves = [
-    { cx: 374, cy: 205, rx: 104, ry: 137, start: -.6, label: "α" },
-    { cx: 526, cy: 205, rx: 104, ry: 137, start: Math.PI + .6, label: "β" },
-    { cx: 450, cy: 302, rx: 138, ry: 91, start: .2, label: "γ" },
-  ];
-  const curve = curves[index], color = curveColors[index];
-  ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = twist ? 7 : 5; ctx.lineCap = "round";
-  ctx.setLineDash([Math.max(.01, progress) * 950, 1000]); ctx.beginPath();
-  ctx.ellipse(curve.cx, curve.cy, curve.rx, curve.ry, 0, curve.start, curve.start + Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
-  if (progress > .7) {
-    const point = ellipsePoint(curve.cx, curve.cy, curve.rx, curve.ry, curve.start + 4.7);
-    drawArrow(ctx, point.x, point.y, curve.start + 4.7 + Math.PI / 2, color);
-    ctx.fillStyle = color; ctx.font = "700 22px Georgia"; ctx.fillText(curve.label, point.x + 13, point.y - 10);
-  }
-  ctx.restore();
-}
-
-function drawSweater(ctx: CanvasRenderingContext2D, progress: number) {
-  const ease = progress * progress * (3 - 2 * progress);
-  ctx.save(); ctx.globalAlpha = ease; ctx.translate(450, 260); ctx.scale(.72 + .28 * ease, .72 + .28 * ease);
-  const knit = ctx.createLinearGradient(-300, -180, 280, 220);
-  knit.addColorStop(0, "#e1a487"); knit.addColorStop(.5, "#cf8267"); knit.addColorStop(1, "#b9604c"); ctx.fillStyle = knit;
-  ctx.beginPath(); ctx.moveTo(-78, -170); ctx.bezierCurveTo(-125, -160, -166, -132, -220, -96);
-  ctx.lineTo(-335, 2); ctx.quadraticCurveTo(-356, 23, -337, 46); ctx.lineTo(-287, 89); ctx.quadraticCurveTo(-267, 105, -249, 84);
-  ctx.lineTo(-164, 13); ctx.lineTo(-174, 190); ctx.quadraticCurveTo(-175, 215, -149, 218); ctx.lineTo(149, 218);
-  ctx.quadraticCurveTo(175, 215, 174, 190); ctx.lineTo(164, 13); ctx.lineTo(249, 84); ctx.quadraticCurveTo(267, 105, 287, 89);
-  ctx.lineTo(337, 46); ctx.quadraticCurveTo(356, 23, 335, 2); ctx.lineTo(220, -96); ctx.bezierCurveTo(166, -132, 125, -160, 78, -170); ctx.closePath(); ctx.fill();
-  ctx.strokeStyle = "#864839"; ctx.lineWidth = 3; ctx.stroke();
-  ctx.strokeStyle = "rgba(255,255,255,.24)"; ctx.lineWidth = 2;
-  for (let y = -115; y < 185; y += 25) { ctx.beginPath(); ctx.moveTo(-155, y); ctx.quadraticCurveTo(0, y + 9, 155, y); ctx.stroke(); }
-  const openings = [
-    { x: 0, y: -165, rx: 55, ry: 23, color: curveColors[0] }, { x: -315, y: 55, rx: 35, ry: 16, color: curveColors[1] },
-    { x: 315, y: 55, rx: 35, ry: 16, color: curveColors[1] }, { x: 0, y: 207, rx: 138, ry: 21, color: curveColors[2] },
-  ];
-  openings.forEach((opening) => {
-    ctx.fillStyle = "#fffdf9"; ctx.strokeStyle = opening.color; ctx.lineWidth = 6; ctx.beginPath();
-    ctx.ellipse(opening.x, opening.y, opening.rx, opening.ry, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-  });
-  ctx.restore();
+  const path = new THREE.CatmullRomCurve3(points, true);
+  const tube = new THREE.Mesh(
+    new THREE.TubeGeometry(path, 160, 0.035, 10, true),
+    new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.12, roughness: 0.35 }),
+  );
+  return tube;
 }
 
 export default function MappingClassSweaterLab() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [step, setStep] = useState(0), [playing, setPlaying] = useState(false);
-  const progressRef = useRef(1), frameRef = useRef<number | null>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const [step, setStep] = useState(0);
+  const [playing, setPlaying] = useState(false);
 
-  const render = useCallback((progress = 1) => {
-    const canvas = canvasRef.current; if (!canvas) return;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2), rect = canvas.getBoundingClientRect();
-    canvas.width = Math.round(rect.width * dpr); canvas.height = Math.round(rect.height * dpr);
-    const ctx = canvas.getContext("2d"); if (!ctx) return;
-    ctx.scale((rect.width / 900) * dpr, (rect.height / 500) * dpr); ctx.clearRect(0, 0, 900, 500);
-    ctx.fillStyle = "#fffdf9"; ctx.fillRect(0, 0, 900, 500);
-    ctx.fillStyle = "#12343d"; ctx.font = "700 13px Arial"; ctx.fillText(steps[step].title.toUpperCase(), 28, 35);
-    ctx.fillStyle = "#55727a"; ctx.font = "12px Arial";
-    ctx.fillText(step < 4 ? "Las curvas no son cortes: señalan dónde actúa una deformación." : "Cuello, puños y cintura corresponden a cuatro componentes de borde.", 28, 57);
-    if (step < 4) {
-      drawSphere(ctx, 1);
-      if (step >= 1) { drawCurve(ctx, 0, step === 1 ? progress : 1, step >= 2); drawCurve(ctx, 1, step === 1 ? Math.max(0, progress - .2) : 1, step >= 2); }
-      if (step >= 2) drawCurve(ctx, 2, step === 2 ? progress : 1, true);
-      if (step === 3) {
-        ctx.fillStyle = "rgba(255,253,249,.9)"; ctx.fillRect(620, 388, 244, 70); ctx.strokeStyle = "#d7c6bb"; ctx.strokeRect(620, 388, 244, 70);
-        ctx.fillStyle = "#12343d"; ctx.font = "italic 24px Georgia"; ctx.fillText("Tα · Tβ · Tγ", 673, 422);
-        ctx.fillStyle = "#55727a"; ctx.font = "11px Arial"; ctx.fillText("una palabra de transformaciones", 660, 444);
-      }
-    } else {
-      drawSphere(ctx, 1 - progress);
-      if (progress < .72) { drawCurve(ctx, 0, 1, true); drawCurve(ctx, 1, 1, true); drawCurve(ctx, 2, 1, true); }
-      drawSweater(ctx, progress);
-    }
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xfffdf9);
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+    camera.position.set(5.5, 3.7, 6.5);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    stage.appendChild(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.minDistance = 5;
+    controls.maxDistance = 12;
+    controls.target.set(0, 0, 0);
+
+    scene.add(new THREE.HemisphereLight(0xfff8ef, 0x31535b, 2.4));
+    const key = new THREE.DirectionalLight(0xffffff, 3.1);
+    key.position.set(4, 6, 5);
+    scene.add(key);
+    const fill = new THREE.DirectionalLight(0xf2bca6, 1.2);
+    fill.position.set(-5, -2, 4);
+    scene.add(fill);
+
+    const surface = new THREE.Mesh(
+      new THREE.SphereGeometry(2, 96, 64),
+      new THREE.MeshPhysicalMaterial({ color: 0xe7cdbc, roughness: 0.7, transparent: true, opacity: 0.78, side: THREE.DoubleSide, clearcoat: 0.15 }),
+    );
+    scene.add(surface);
+
+    const boundaries = [
+      [new THREE.Vector3(0, 1, 0), 0.47],
+      [new THREE.Vector3(0, -1, 0), 0.58],
+      [new THREE.Vector3(-1, 0.08, 0), 0.43],
+      [new THREE.Vector3(1, 0.08, 0), 0.43],
+    ] as const;
+    boundaries.forEach(([normal, radius]) => scene.add(makeBoundary(normal, radius)));
+
+    const curves = [
+      makeCurve(new THREE.Vector3(0.58, 0.78, 0.2), 0.2, curveColors[0]),
+      makeCurve(new THREE.Vector3(-0.62, 0.7, 0.35), -0.18, curveColors[1]),
+      makeCurve(new THREE.Vector3(0.05, 0.32, 0.95), 0.12, curveColors[2]),
+    ];
+    curves.forEach((curve) => scene.add(curve));
+
+    const twistBands = curves.map((curve, index) => {
+      const band = curve.clone();
+      band.material = new THREE.MeshBasicMaterial({ color: curveColors[index], transparent: true, opacity: 0.09, wireframe: true });
+      band.scale.setScalar(1.035);
+      scene.add(band);
+      return band;
+    });
+
+    const resize = () => {
+      const { width, height } = stage.getBoundingClientRect();
+      renderer.setSize(width, height, false);
+      camera.aspect = width / Math.max(height, 1);
+      camera.updateProjectionMatrix();
+    };
+    resize();
+    const observer = new ResizeObserver(resize);
+    observer.observe(stage);
+
+    const clock = new THREE.Clock();
+    let frame = 0;
+    const animate = () => {
+      frame = requestAnimationFrame(animate);
+      const time = clock.getElapsedTime();
+      controls.update();
+      curves.forEach((curve, index) => {
+        curve.visible = step >= 1;
+        curve.scale.setScalar(step === 1 ? 0.995 + Math.sin(time * 2 + index) * 0.008 : 1);
+        if (step >= 2) {
+          curve.rotation.x = Math.sin(time * 0.72 + index * 1.7) * 0.1;
+          curve.rotation.y = Math.sin(time * 0.56 + index) * 0.12;
+        } else {
+          curve.rotation.set(0, 0, 0);
+        }
+      });
+      twistBands.forEach((band, index) => {
+        band.visible = step >= 2;
+        band.rotation.x = curves[index].rotation.x;
+        band.rotation.y = curves[index].rotation.y;
+        band.scale.setScalar(1.025 + Math.sin(time * 1.6 + index) * 0.018);
+      });
+      surface.rotation.y = Math.sin(time * 0.18) * 0.035;
+      renderer.render(scene, camera);
+    };
+    animate();
+
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      controls.dispose();
+      scene.traverse((object) => {
+        if (object instanceof THREE.Mesh) {
+          object.geometry.dispose();
+          const materials = Array.isArray(object.material) ? object.material : [object.material];
+          materials.forEach((material) => material.dispose());
+        }
+      });
+      renderer.dispose();
+      renderer.domElement.remove();
+    };
   }, [step]);
 
-  const animateStep = useCallback(() => {
-    if (frameRef.current) cancelAnimationFrame(frameRef.current);
-    const start = performance.now(), duration = step === 4 ? 2200 : 1500;
-    const tick = (now: number) => {
-      const progress = Math.min(1, (now - start) / duration); progressRef.current = progress; render(progress);
-      if (progress < 1) frameRef.current = requestAnimationFrame(tick);
-    };
-    frameRef.current = requestAnimationFrame(tick);
-  }, [render, step]);
-
   useEffect(() => {
-    progressRef.current = 0; animateStep(); const onResize = () => render(progressRef.current); window.addEventListener("resize", onResize);
-    return () => { window.removeEventListener("resize", onResize); if (frameRef.current) cancelAnimationFrame(frameRef.current); };
-  }, [animateStep, render]);
-  useEffect(() => {
-    if (!playing) return; const timer = window.setTimeout(() => {
-      if (step === steps.length - 1) setPlaying(false); else setStep((current) => current + 1);
-    }, step === 4 ? 2700 : 2200); return () => window.clearTimeout(timer);
+    if (!playing) return;
+    const timer = window.setTimeout(() => {
+      if (step === steps.length - 1) setPlaying(false);
+      else setStep((current) => current + 1);
+    }, 2600);
+    return () => window.clearTimeout(timer);
   }, [playing, step]);
 
   return (
-    <section className="mapping-class-lab" aria-labelledby="mapping-class-lab-title">
-      <header><p>EXPLORACIÓN · MAPPING CLASS GROUP</p><h2 id="mapping-class-lab-title">De una esfera perforada a un sweater</h2><p>Recorre curvas esenciales, observa giros de Dehn y reconoce los mismos cuatro bordes cuando la superficie adopta forma de prenda.</p></header>
-      <canvas ref={canvasRef} role="img" aria-label={`Paso ${step + 1}: ${steps[step].title}`} />
+    <section className="mapping-class-lab mapping-class-lab-3d" aria-labelledby="mapping-class-lab-title">
+      <header><p>EXPLORACIÓN 3D · MAPPING CLASS GROUP</p><h2 id="mapping-class-lab-title">Transformaciones de una superficie perforada</h2><p>Rota la escena para observar los cuatro bordes, las curvas esenciales y los giros de Dehn que generan transformaciones de la superficie.</p></header>
+      <div className="mapping-class-three-stage" ref={stageRef} role="img" aria-label={`Escena tridimensional. Paso ${step + 1}: ${steps[step].title}`}>
+        <span className="mapping-class-camera-hint" aria-hidden="true">↻ arrastra para rotar · desplaza para acercar</span>
+        {step === 3 && <span className="mapping-class-word">T<sub>α</sub> · T<sub>β</sub> · T<sub>γ</sub></span>}
+      </div>
       <ol className="mapping-class-steps">{steps.map((item, index) => <li className={index === step ? "is-current" : ""} key={item.short}><button type="button" onClick={() => { setPlaying(false); setStep(index); }} aria-current={index === step ? "step" : undefined}><span>0{index + 1}</span>{item.short}</button></li>)}</ol>
       <div className="mapping-class-controls">
         <button type="button" className="secondary" onClick={() => { setPlaying(false); setStep((current) => Math.max(0, current - 1)); }} disabled={step === 0}>← Anterior</button>
         <button type="button" onClick={() => { if (step === steps.length - 1) setStep(0); setPlaying(true); }}>{step === steps.length - 1 ? "Repetir recorrido" : "Reproducir recorrido"}</button>
         <button type="button" className="secondary" onClick={() => { setPlaying(false); setStep((current) => Math.min(steps.length - 1, current + 1)); }} disabled={step === steps.length - 1}>Siguiente →</button>
       </div>
-      <p className="mapping-class-note"><strong>Lectura matemática.</strong> La esfera con cuatro componentes de borde es un modelo topológico idealizado del sweater: cuello, cintura y dos puños. Un giro de Dehn corta conceptualmente alrededor de una curva cerrada, gira una vuelta y vuelve a pegar; la superficie no se rompe durante la transformación.</p>
+      <p className="mapping-class-note"><strong>Lectura matemática.</strong> Cada curva coloreada representa una curva cerrada esencial. Un giro de Dehn modifica una banda alrededor de ella, completa una vuelta y vuelve a pegarla sin cortar ni cambiar la topología de la superficie.</p>
     </section>
   );
 }

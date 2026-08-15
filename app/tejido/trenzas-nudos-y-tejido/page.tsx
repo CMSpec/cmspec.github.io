@@ -85,7 +85,7 @@ export default function BraidsKnotsKnittingPage() {
             <div><span>02</span><strong>Organizar curvas</strong><p>Describe cómo cambian lazos y arcos, conservando información de intersección y de qué bordes rodean.</p></div>
             <div><span>03</span><strong>Conectar teorías</strong><p>Relaciona trenzas, nudos, geometría hiperbólica, espacios de módulos y fibrados de superficies.</p></div>
           </div>
-          <p>Por eso los orificios no son simples vacíos: generan restricciones y posibilidades. En un sweater idealizado, cuello, puños y cintura distinguen curvas que pueden rodear bordes diferentes. Estudiar cómo se transforman esas curvas revela la estructura global que la prenda comparte con otras superficies.</p>
+          <p>Por eso los orificios no son simples vacíos: generan restricciones y posibilidades. En una superficie perforada, distintas curvas pueden rodear bordes diferentes o separar grupos de orificios. Estudiar cómo se transforman esas curvas revela una parte fundamental de su estructura global.</p>
           <p className="mapping-class-source">Lectura de referencia: <a href="https://academic.oup.com/princeton-scholarship-online/book/41605/chapter-abstract/353393601" target="_blank" rel="noreferrer">Farb y Margalit, <em>Braid Groups</em> ↗</a></p>
         </section>
 
