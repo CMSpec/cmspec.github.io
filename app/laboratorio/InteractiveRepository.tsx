@@ -20,7 +20,7 @@ import BraidWordBuilder from "../tejido/trenzas-nudos-y-tejido/BraidWordBuilder"
 import MappingClassSweaterLab from "../tejido/trenzas-nudos-y-tejido/MappingClassSweaterLab";
 import { sitePath } from "../../lib/site-path";
 
-type LabItem = { title: string; subtitle: string; href: string; render: () => ReactNode };
+type LabItem = { title: string; subtitle: string; href: string; render: () => ReactNode; group?: string };
 type LabArea = { number: string; title: string; tone: string; description: string; items: LabItem[] };
 
 const aiFunctions = [
@@ -54,19 +54,19 @@ const areas: LabArea[] = [
     { title: "Proyección estereográfica 3D", subtitle: "De la esfera al plano", href: "/investigacion/mapas-distancias-y-conformidad#proyeccion-estereografica", render: () => <StereographicProjection /> },
     { title: "Plano de Fano", subtitle: "Siete puntos y siete rectas", href: "/investigacion/dobble-y-geometria-proyectiva#plano-de-fano", render: () => <FanoPlane /> },
   ]},
-  { number: "02", title: "Aprender", tone: "green", description: "Operaciones de álgebra lineal que pueden recorrerse, pausarse o modificar sus parámetros.", items: [
-    { title: "Vector por un escalar", subtitle: "Dirección y longitud", href: "/cursos/algebra-lineal", render: () => <ScalarVectorLab /> },
-    { title: "Suma de vectores", subtitle: "Regla punta con cola", href: "/cursos/algebra-lineal", render: () => <VectorSumLab /> },
-    { title: "Combinaciones lineales", subtitle: "Región generada por dos vectores", href: "/cursos/algebra-lineal", render: () => <VectorCombinationLab /> },
-    { title: "Traza", subtitle: "Sumar la diagonal", href: "/cursos/algebra-lineal", render: () => <TraceAnimation /> },
-    { title: "Matrices triangulares", subtitle: "Regiones superior e inferior", href: "/cursos/algebra-lineal", render: () => <TriangularMatricesAnimation /> },
-    { title: "Simetría y antisimetría", subtitle: "Entradas reflejadas", href: "/cursos/algebra-lineal", render: () => <SymmetryAnimation /> },
-    { title: "Suma de matrices", subtitle: "Entrada por entrada", href: "/cursos/algebra-lineal", render: () => <MatrixAdditionAnimation /> },
-    { title: "Producto por escalar", subtitle: "Cada entrada multiplicada", href: "/cursos/algebra-lineal", render: () => <MatrixScalarAnimation /> },
-    { title: "Producto punto", subtitle: "Coordenada por coordenada", href: "/cursos/algebra-lineal", render: () => <DotProductAnimation /> },
-    { title: "Producto de matrices", subtitle: "Fila por columna", href: "/cursos/algebra-lineal", render: () => <MatrixMultiplicationAnimation /> },
-    { title: "Reducción por filas", subtitle: "Operaciones elementales", href: "/cursos/algebra-lineal", render: () => <RowReductionAnimation /> },
-    { title: "Cambio de base", subtitle: "Dos sistemas de coordenadas", href: "/cursos/algebra-lineal", render: () => <ChangeOfBasis2D /> },
+  { number: "02", title: "Aprender", tone: "green", description: "Visualizaciones geométricas de vectores y demostraciones paso a paso de cálculos con matrices.", items: [
+    { title: "Vector por un escalar", subtitle: "Dirección y longitud", href: "/cursos/algebra-lineal", render: () => <ScalarVectorLab />, group: "Visualizaciones de vectores" },
+    { title: "Suma de vectores", subtitle: "Regla punta con cola", href: "/cursos/algebra-lineal", render: () => <VectorSumLab />, group: "Visualizaciones de vectores" },
+    { title: "Combinaciones lineales", subtitle: "Región generada por dos vectores", href: "/cursos/algebra-lineal", render: () => <VectorCombinationLab />, group: "Visualizaciones de vectores" },
+    { title: "Cambio de base", subtitle: "Dos sistemas de coordenadas", href: "/cursos/algebra-lineal", render: () => <ChangeOfBasis2D />, group: "Visualizaciones de vectores" },
+    { title: "Traza", subtitle: "Sumar la diagonal", href: "/cursos/algebra-lineal", render: () => <TraceAnimation />, group: "Demostraciones de cálculo" },
+    { title: "Matrices triangulares", subtitle: "Regiones superior e inferior", href: "/cursos/algebra-lineal", render: () => <TriangularMatricesAnimation />, group: "Demostraciones de cálculo" },
+    { title: "Simetría y antisimetría", subtitle: "Entradas reflejadas", href: "/cursos/algebra-lineal", render: () => <SymmetryAnimation />, group: "Demostraciones de cálculo" },
+    { title: "Suma de matrices", subtitle: "Entrada por entrada", href: "/cursos/algebra-lineal", render: () => <MatrixAdditionAnimation />, group: "Demostraciones de cálculo" },
+    { title: "Producto por escalar", subtitle: "Cada entrada multiplicada", href: "/cursos/algebra-lineal", render: () => <MatrixScalarAnimation />, group: "Demostraciones de cálculo" },
+    { title: "Producto punto", subtitle: "Coordenada por coordenada", href: "/cursos/algebra-lineal", render: () => <DotProductAnimation />, group: "Demostraciones de cálculo" },
+    { title: "Producto de matrices", subtitle: "Fila por columna", href: "/cursos/algebra-lineal", render: () => <MatrixMultiplicationAnimation />, group: "Demostraciones de cálculo" },
+    { title: "Reducción por filas", subtitle: "Operaciones elementales", href: "/cursos/algebra-lineal", render: () => <RowReductionAnimation />, group: "Demostraciones de cálculo" },
   ]},
   { number: "03", title: "Salud", tone: "olive", description: "Comparadores para explorar funciones de IA y distintas posiciones de la supervisión humana.", items: [
     { title: "Funciones de IA en salud", subtitle: "Entradas, salidas y cautelas", href: "/salud/funciones-ia-en-salud", render: () => <HealthFunctionsExplorer /> },
@@ -88,7 +88,8 @@ const areas: LabArea[] = [
 function LaboratoryArea({ area }: { area: LabArea }) {
   const [active, setActive] = useState(0);
   const item = area.items[active];
-  return <section className={`laboratory-area laboratory-live-area lab-${area.tone}`}><header><span>{area.number} / COLECCIÓN</span><h2>{area.title}</h2><p>{area.description}</p></header><div className="laboratory-live-layout"><nav aria-label={`Exploraciones de ${area.title}`}>{area.items.map((option, index) => <button className={active === index ? "is-active" : ""} onClick={() => setActive(index)} key={option.title}><span>{String(index + 1).padStart(2, "0")}</span><strong>{option.title}</strong><small>{option.subtitle}</small></button>)}</nav><article className="laboratory-live-card"><header><div><span>EXPLORACIÓN {String(active + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.subtitle}</p></div><a href={sitePath(item.href)}>Leer el contexto ↗</a></header><div className="laboratory-live-stage" key={`${area.number}-${active}`}>{item.render()}</div></article></div></section>;
+  const groups = Array.from(new Set(area.items.map((option) => option.group ?? "")));
+  return <section className={`laboratory-area laboratory-live-area lab-${area.tone}`}><header><span>{area.number} / COLECCIÓN</span><h2>{area.title}</h2><p>{area.description}</p></header><div className="laboratory-live-layout"><nav aria-label={`Exploraciones de ${area.title}`}>{groups.map((group) => <div className="laboratory-live-nav-group" key={group || area.title}>{group && <p>{group}</p>}{area.items.map((option, index) => option.group === (group || undefined) && <button className={active === index ? "is-active" : ""} onClick={() => setActive(index)} key={option.title}><span>{String(index + 1).padStart(2, "0")}</span><strong>{option.title}</strong><small>{option.subtitle}</small></button>)}</div>)}</nav><article className="laboratory-live-card"><header><div><span>EXPLORACIÓN {String(active + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.subtitle}</p></div><a href={sitePath(item.href)}>Leer el contexto ↗</a></header><div className="laboratory-live-stage" key={`${area.number}-${active}`}>{item.render()}</div></article></div></section>;
 }
 
 export default function InteractiveRepository() {
