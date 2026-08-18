@@ -87,7 +87,8 @@ function visualElement(name: string) {
     "cambio-de-base": <ChangeOfBasis2D />,
   };
   const visual = visuals[name];
-  return visual ? <div className="movable-course-visual">{visual}</div> : null;
+  const isVectorExploration = name.startsWith("exploracion-vector-");
+  return visual ? <div className={`movable-course-visual${isVectorExploration ? " movable-vector-exploration" : ""}`}>{visual}</div> : null;
 }
 
 function SectionContent({ html }: { html: string }) {
