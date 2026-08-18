@@ -1,0 +1,523 @@
+  \documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Primera Semana\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+\end{picture}
+
+
+\begin{center}
+\huge{Cuarta Semana}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Cálculo Vectorial}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Cálculo Vectorial. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\setlength{\parindent}{2.9cm}- Derivadas de orden superior\\
+\phantom{abefwfewefwfefffw} - Diferencial y gradiente	\\
+\phantom{abefwfewefwfefffw} - Regla de la cadena y derivadas implícitas	\\
+\phantom{abefwfewefwfefffw} - Plano tangente 	\\
+
+
+
+\vspace{6cm}
+
+
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+
+
+
+\begin{center}
+    \Large{\textbf{Derivadas de orden superior}}
+\end{center}
+
+Una vez calculadas las derivadas parciales es posible seguir derivando la función, las derivadas de orden 2 son las siguiente
+
+\begin{align*}
+     \frac{\partial}{\partial x} \left( \frac{\partial f}{\partial x} \right)  &=\frac{\partial^2 f}{\partial x^2} = f_{xx} \\
+   \frac{\partial}{\partial y} \left( \frac{\partial f}{\partial y} \right) &= \frac{\partial^2 f}{\partial y^2} = f_{yy} \\
+   \frac{\partial}{\partial x} \left( \frac{\partial f}{\partial y} \right) &= \frac{\partial^2 f}{\partial y \partial x} = f_{xy} \\
+   \frac{\partial}{\partial y} \left( \frac{\partial f}{\partial x} \right) &= \frac{\partial^2 f}{\partial x \partial y} = f_{yx} \\
+\end{align*}
+
+Básicamente significa derivar múltiples veces la misma función, pero como ahora hay dos variables tnemos cuatro posibilidades. Las definiciones para funciones de tres variables son análogas. \\
+
+\textbf{Ejemplo: } Dada $f(x,y) = e^{xy}+ xy^2$ calcular todas las derivadas de orden 2, tenemos
+
+\begin{align*}
+    f_x &= ye^{xy}+y^2 \\
+    f_y &= xe^{xy}+2xy 
+\end{align*}
+
+Luego
+
+\begin{align*}
+    f_{xx} &= y^2e^{xy} \\
+    f_{xy} &= yxe^{xy}+e^{xy} + 2y \\
+    f_{yy} &=  x^2e^{xy}+2y \\
+    f_{yx} &= xye^{xy} +e^{xy} +2y
+\end{align*}
+
+Podemos notar que $f_{xy} = f_{yx}$, esto no es casualidad, tenemos el siguiente teorema \\
+
+\textbf{Teorema (Schwartz-Clairaut) :} Si $f(x,y)$ es una función tal que las derivadas parciales de segundo orden $f_{xy}$ y $f_{yx}$ son continuas en un disco abierto, entonces
+
+\begin{align*}
+    f_{xy} =f_{yx}
+\end{align*}
+
+En este curso las derivadas parciales cruzadas por lo general van a coincidir, por lo tanto podemos ahorrarnos el cálculo.
+
+
+
+\newpage
+
+
+\begin{center}
+    \Large{\textbf{Diferencial de una función}}
+\end{center}
+
+La definición de derivada direccional no es una buena extensión de lo que es una derivada en los cursos anteriores, por ejemplo, si una función en una variable es derivable en un punto entonces es continua en ese punto, sin embargo, si una función en varias variables es derivable en todas sus direcciones en un punto, no necesariamente es continua en dicho punto. Por ejemplo, podemos tomar
+
+
+\begin{align*}
+f(x,y) = \left\{ \begin{array}{lcc} \frac{xy^2}{x^2+y^4} & si & x \neq 0 \\ \\ 0 & si & x =0 \end{array} \right.
+\end{align*}
+
+Dado $u=(u_1,y_2)$, con $u \neq 0$, tenemos que
+
+\begin{align*}
+    \frac{f((0,0)+hu)-f(0,0)}{h} = \frac{hu_1(hu_2)^2}{h((hu_1)^2)+(hu_2)^4)} = \frac{u_1u_2}{u_1^2+h^2u_2^4}
+\end{align*}
+
+Luego
+
+\begin{align*}
+    D_uf(0,0) = \lim_{h \to 0} \frac{u_1u_2}{u_1^2+h^2u_2^4} = \left\{ \begin{array}{lcc} \frac{u_2^2}{u_1} & si & u_1 \neq 0 \\ \\ 0 & si & u_1 =0 \end{array} \right.
+\end{align*}
+
+Por lo tanto las derivadas direccionales en  $(0,0)$ existen en todas las direcciones, pero la función no es continua en $(0,0)$, si tomamos el camino $(t^2, t)$, entonces
+
+\begin{align*}
+    f(t^2,t) = \frac{y^2y^2}{y^4+y^4} = \frac{1}{2}
+\end{align*}
+
+Y entonces
+
+\begin{align*}
+   \lim_{t \to 0} f(t^2,t) =\frac{1}{2}
+\end{align*}
+
+Por lo tanto si existe el límite en $(0,0)$  debería ser $1/2$, pero se tiene que $f(0,0)=0$. Por lo tanto la función no es continua en $(0,0)$ . \\
+
+Para hacer una mejor extensión usaremos la siguiente definición. \\
+
+
+\textbf{Definición: } Sea $A \subset \mathbb{R}^n$ abierto, y $f: A  \to \mathbb{R}^m$ y sea $x_0 \in A$. Se dice que $f$ es diferenciable en $x_0$ si existe una operación lineal $Df(x_0)$ tal que
+
+\begin{align*}
+    \lim_{x \to 0} \frac{f(x+x_0)-f(x)-Df(x_0)(x)}{|| x ||} = 0
+\end{align*}
+
+En caso de existir, a $Df(x_0)$ se le llama \textbf{diferencial de $f$ en $x_0$} y decimos que la función es diferenciable en $x_0$. Notemos que $Df(x_0)$ NO es un número, es un operador lineal que se evalúa en el punto $x$. Tenemos también el siguiente resultado \\
+
+\textbf{Proposición: } Sea $A \subset \mathbb{R}^n$ abierto, y $f: A  \to \mathbb{R}^m$ y sea $x_0 \in A$, si $f$ es diferenciable en $x_0$, entonces $f$ es continua en $x_0$. \\
+
+
+Como podemos ver, el concepto de diferencial es la extensión más natural de lo que es una derivada en varias variables. Por otra parte, hay una relación muy estrecha entre el diferencial y las derivadas direccionales \\
+
+\textbf{Teorema: } Sea $f: \mathbb{R}^n \to \mathbb{R}^m$ y $x_0 \in \mathbb{R}^n$. Si $f$ es diferenciable en $x_0$, enmtonces existen todas las derivadas direccionales de $f$ en $x_0$ y además para todo $x \in \mathbb{R}^n$, se tiene que
+
+\begin{align*}
+    Df(x_0) (u) = D_uf(x_0)
+\end{align*}
+
+En caso de que el diferencial exista, es muy fácil de calcular. \\
+
+\textbf{Definición:} Dada $F:\mathbb{R}^3 \to \mathbb{R^3}$, dada por $F = (f,g,h)$, y un punto $x_0 \in \mathbb{R}^3$ entonces se define la matriz jacobiana de $f$ en $x_0$ por
+
+\begin{align*}
+    J[f](x_0) = \begin{pmatrix}
+        {f}_x & {f}_y & {f}_z \\
+        {g}_x & {g}_y & {g}_z \\
+        {h}_x & {h}_y & {h}_z \\
+    \end{pmatrix}
+\end{align*}
+
+Se tiene que si $p=(x,y,z)$, entonces
+
+\begin{align*}
+    Df(x_0)(p) = \begin{pmatrix}
+        {f}_x & {f}_y & {f}_z \\
+        {g}_x & {g}_y & {g}_z \\
+        {h}_x & {h}_y & {h}_z \\
+    \end{pmatrix} \begin{pmatrix}
+        x \\
+        y \\
+        z \\
+    \end{pmatrix}
+\end{align*}
+
+Es decir la matriz jacobiana $J[f](x_0)$ corresponde a la matriz del operador lineal $Df(x_0)$. \\
+
+\textbf{Ejemplo: } Tomamos $f(x,y,z) = (3x+2y,y^2, e^{xz})$, entonces
+
+\begin{align*}
+    J[f](x,y,z) = \begin{pmatrix}
+        3 & 2 & 0 \\
+        0 & 2y & 0 \\
+        ze^{zx} & 0 & xe^{xz} \\
+    \end{pmatrix}
+\end{align*}
+
+Si tomamos el punto $(1,1,1)$, entonces
+
+\begin{align*}
+    J[f](1,1,1) = \begin{pmatrix}
+        3 & 2 & 0 \\
+        0 & 2 & 0 \\
+        e & 0 & e \\
+    \end{pmatrix}
+\end{align*}
+
+
+
+Y por lo tanto el diferencial $Df(1,1,1)$ viene dado por
+
+\begin{align*}
+    Df(1,1,1)(x,y,z) &= \begin{pmatrix}
+        3 & 2 & 0 \\
+        0 & 2 & 0 \\
+        e & 0 & e \\
+    \end{pmatrix}\begin{pmatrix}
+        x \\
+        y \\
+        z \\
+    \end{pmatrix} \\
+    &= (3x+2y, 2y,ex+ez )
+\end{align*}
+
+
+\newpage
+
+\begin{center}
+    \Large{\textbf{Gradiente}}
+\end{center}
+
+En caso de tener un campo escalar $f: \mathbb{R}^3 \to \mathbb{R}$, entonces la matriz jacobiana es solo una fila dada por
+
+
+\begin{align*}
+    J[f](x_0) = \begin{pmatrix}
+        {f}_x & {f}_y & {f}_z \\
+    \end{pmatrix}
+\end{align*}
+
+y al operar con un vector cualquiera $(x,y,z)$, entonces el diferencial queda de la forma
+
+\begin{align*}
+    Df(x_0)(p) &= \begin{pmatrix}
+        {f}_x & {f}_y & {f}_z \\
+    \end{pmatrix} \begin{pmatrix}
+        x \\
+        y \\
+        z \\
+    \end{pmatrix} \\
+    &= f_x x + f_y y +f_z z
+\end{align*}
+
+\textbf{Definición:} Dado un campo escalar $f: \mathbb{R}^3 \to \mathbb{R}$ y un putno $x_0$, se define el gradiente de $f$, como el vector
+
+\begin{align*}
+    \nabla f (x_0)= (f_x(x_0),f_y(x_0),f_z(x_0))
+\end{align*}
+
+Y se tiene que
+
+\begin{align*}
+    Df(x_0)(x,y,z) &=  \nabla f (x_0) \cdot (x,y,z)
+\end{align*}
+
+Es decir, el diferencial de $f$ en un punto  es el producto punto entre el gradiente y el punto. Notemos que esto nos permite calcular derivadas direccionales muy facilmente solo calculando el gradiente y haciendo un producto punto\\
+
+El gradiente tiene las siguientes propiedades \\
+
+(1) $\nabla (f+g) = \nabla f +\nabla g$ \\
+(2) $\nabla (\alpha f) = \alpha \nabla f$ donde $\alpha \in \mathbb{R}$ \\
+(3) $\displaystyle \nabla (fg) = g\nabla f + f \nabla g$ \\
+(4) $\displaystyle \nabla \left( \frac{f}{g}\right) = \frac{g \nabla f- f \nabla g}{g^2}$ \\
+
+
+Además tenemos el siguiente teorema. \\
+
+
+\textbf{Proposición:} El gradiente tiene la dirección en la cuál la función crece más rapidamente, es decir la derivada direccional $D_u f(x)$ toma su máximo valor en $|| \nabla f(x)||$ y se alcanza cuando $u$ tiene la misma dirección que $\nabla f(x)$\\
+
+\textit{Demostración:} Es inmediata usando la desigualdad de Cauchy-Schwartz
+
+\newpage
+
+
+\begin{center}
+    \Large{\textbf{Regla de la cadena}}
+\end{center}
+
+Para simplificar los cálculos vamos a reducirnos al caso de dos variables y luego veremos el caso general \\
+
+\textbf{Teorema (Regla de la cadena): } Supongamos que $x=g(s,t)$ e $y= h(s,t)$ (es decir, las variables $x$ e $y$ quedan como funciones de otras dos variables $s$ y $t$) y supongamos que existen $x_t$,$x_s$,$y_t$ e $y_s$. Sea $z =f(x,y) $ función diferenciable en $x$ e $y$, entonces existe $z_t$ y $z_s$ y cumplen que 
+
+\begin{align*}
+    \frac{\partial z}{\partial t} &= \frac{\partial z}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial z}{\partial y} \frac{\partial y}{\partial t}  \\
+    \frac{\partial z}{\partial s} &= \frac{\partial z}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial z}{\partial y} \frac{\partial y}{\partial s}  
+\end{align*}
+
+En caso de que $x=g(t)$ e $y= h(t)$ dependan de una sola variable $t$, entonces
+
+\begin{align*}
+    \frac{d z}{d t} &= \frac{\partial z}{\partial x} \frac{dx}{d t} + \frac{\partial z}{\partial y} \frac{dy}{d t}  
+\end{align*}
+
+En este último caso $\displaystyle \frac{dz}{dt}$ representa la derivada total, es decir, la misma que se vió en el curso de cálculo diferencial \\
+
+\textbf{Ejemplo 1:} Calculemos $\displaystyle \frac{dz}{dt}$ si $z=x^2y^3$ y $x=2t$ e $y=t^2$ \\
+
+\textbf{Solución: }Tendríamos que
+
+\begin{align*}
+    \frac{d z}{d t} &= \frac{\partial z}{\partial x} \frac{dx}{d t} + \frac{\partial z}{\partial y} \frac{dy}{d t}  \\
+    &= 2xy^3\cdot 2 + 3x^2y^2 \cdot 2t \\
+    &= 2(2t)(t^2)^3\cdot 2 + 3(2t)^2(t^2)^2 \cdot 2t \\
+    &= 8t^7 + 24t^7 \\
+    &= 32t^7
+\end{align*}
+
+\textbf{Ejemplo 2:} Calculemos $\displaystyle \frac{\partial z}{\partial u}$ si $z=x^2+y^2$ y $x=u+v$ e $y=uv$ \\
+
+\textbf{Solución: }Tendríamos que
+
+\begin{align*}
+\frac{\partial z}{\partial u} &= \frac{\partial z}{\partial x} \frac{\partial x}{\partial u} + \frac{\partial z}{\partial y} \frac{\partial y}{\partial u}  \\
+&= 2x \cdot 1 + 2y v  \\
+&= 2(u+v) + 2uv^2  \\
+\end{align*}
+
+
+El caso general sería el siguiente \\
+
+\textbf{Teorema (Regla de la cadena): } Sea $z(x_1,x_2,... x_n)$ de tal manera $z_{x_i}$ existe para todo $i$, y además $x_i=f_i(t_1,t_2,..., t_m)$ donde $\frac{\partial x_i}{\partial t_k}$, existen para cualquier $i$ y $k$, entonces 
+
+\begin{align*}
+    \frac{\partial z}{\partial t_i} &= \sum_{k=1}^n \frac{\partial z}{\partial x_k}\frac{\partial x_k}{\partial t_i} 
+\end{align*}
+
+\newpage
+
+\begin{center}
+    \Large{\textbf{Derivadas Implícitas}}
+\end{center}
+
+Supongamos que una la ecuación $F(x,y) =0$ define a $y$ como función de la variable $x$ pero no podemos despejarla de forma explícita. Entonces la regla de la cadena nos permite calcular fácilmente $\displaystyle \frac{dy}{dx}$, tendríamos que
+
+\begin{align*}
+    \frac{\partial F}{\partial x} \frac{dx}{dx} + \frac{\partial F}{\partial y} \frac{dy}{dx} = 0
+\end{align*}
+
+Y por lo tanto
+
+\begin{align*}
+    \frac{dy}{dx} = - \frac{F_x}{F_y}
+\end{align*}
+
+De forma análoga si $F(x,y,z) =0$ define a $z$ como función de $x$ e $y$ $z=f(x,y)$, entonces se cumple que
+
+\begin{align*}
+    \frac{\partial z }{\partial x} &= - \frac{F_x}{F_z} \\
+    \frac{\partial z }{\partial y} &= - \frac{F_y}{F_z} \\
+\end{align*}
+
+
+\textbf{Ejemplo: } Considere $x^2y+e^y\cos(x)=0$ una ecuación que define a $y$ como función de $x$, determine $\displaystyle \frac{dy}{dx}(0,0)$ \\
+
+\textbf{Solución:} En este caso $F(x,y) = x^2y+e^y\cos(x)$, luego
+
+\begin{align*}
+    \frac{dy}{dx} &= -\frac{F_x}{F_y} \\
+    &= -\frac{2xy-e^y\sin(x)}{x^2+e^y\cos(x)} \\
+\end{align*}
+
+Por lo tanto
+
+\begin{align*}
+    \frac{dy}{dx} (0,0) &= 0
+\end{align*}
+
+\newpage
+
+
+\begin{center}
+    \Large{\textbf{Plano tangente}}
+\end{center}
+
+\textbf{Definición: } Dada una superficie  $f: \mathbb{R}^2 \to \mathbb{R}$, se define el plano tangente a la superfice en $(x_0,y_0)$ por
+
+\begin{align*}
+     z=  \nabla f(x_0,y_0) \cdot (x-x_0,y-y_0)+ f(x_0,y_0) 
+\end{align*}
+
+Notemos la analogía con la recta tangente a una función $f(x)$ en un punto $x_0$, en ese caso teníamos la ecuación de la recta tangente
+
+\begin{align*}
+    y = f'(x_0)(x-x_0)+f(x_0)
+\end{align*}
+
+La diferencia es que la derivada se reemplaza por el gradiente y la multiplicación por el producto punto. \\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/gradiente.jpg}
+    \caption{El plano tangente es tangente a la superficie $f(x,y)$, se puede ver como el gradiente es perpendicular al plano tangente}
+    \label{fig:etiqueta}
+\end{figure}
+
+En el caso que la superfice venga dada por la ecuación $f(x,y,z)=0$, entonces la ecuación del plano tangente se puede escribir como
+
+\begin{align*}
+    f_x(x_0,y_0,z_0)(x-x_0) +f_y(x_0,y_0,z_0)(y-y_0) +f_z(x_0,y_0,z_0)(z-z_0) =0
+\end{align*}
+
+\textbf{Nota:} Podemos notar que $\nabla f(x_0,y_0,z_0)$ representa gemoétricamente el vector normal al plano tangente a la superficie en el punto $(x_0,y_0)$. \\
+
+En caso de que la superficie tenga la forma $z=f(x,y)$, hay que considerar $f(x,y)-z=0$ y por lo tanto el vector normal sería $(f_x(x_0,y_0),f_y(x_0,y_0), -1)$. \\
+
+\textbf{Definición: } La recta normal a la superficie $z=f(x,y)$ en el punto $(x_0,y_0)$ viene dada por la ecuación general
+
+\begin{align*}
+\frac{x-x_0}{f_x(x_0,y_0)} = \frac{y-y_0}{f_y(x_0,y_0)} =\frac{z-f(x_0,y_0)}{-1}
+\end{align*}
+
+Si la superficie es de la fomra $f(x,y,z)=0$, entonces la ecuación de la recta sería
+
+\begin{align*}
+\frac{x-x_0}{f_x(x_0,y_0,z_0)} = \frac{y-y_0}{f_y(x_0,y_0,z_0)} =\frac{z-z_0}{f_z(x_0,y_0,z_0)}
+\end{align*}
+
+
+\textbf{Ejemplo:} Calcular el plano tangente y la recta normal a la superfice $f(x,y)=4-x^2-y^2$ en el punto $(1,2)$. \\
+
+\textit{Solución:} Calculamos el gradiente
+
+\begin{align*}
+    \nabla f (x,y)= (-2x,-2y)
+\end{align*}
+
+Lo evaluamos en $(1,2)$
+
+\begin{align*}
+    \nabla f (1,2)= (-2,-4)
+\end{align*}
+
+Por otra parte $f(1,2) = -1$.  Por lo tanto, la ecaución del plano tangente viene dada por
+
+\begin{align*}
+     z &=  (-2,-4) \cdot (x-1,y-2) -1 \\
+     z &=  -2(x-1)-4(y-2) -1 \\
+     z &=  -2x+2-4y+8-1\\
+     z &= -2x-4y+9\\
+\end{align*}
+
+La ecuación de la recta normal sería
+
+\begin{align*}
+\frac{x-1}{-2} = \frac{y-2}{-4} =\frac{z+1}{-1}
+\end{align*}
+
+
+
+
+
+
+
+
+\end{document} 

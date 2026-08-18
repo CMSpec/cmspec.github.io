@@ -6,19 +6,27 @@
     "node": ">=22.13.0"
   },
   "scripts": {
+    "course:import": "node scripts/import-algebra-plastex.mjs",
+    "course:sync": "node scripts/import-algebra-plastex.mjs latex/algebra-lineal",
+    "course:import:edo": "node scripts/import-edo-plastex.mjs",
+    "course:sync:edo": "node scripts/import-edo-plastex.mjs latex/ecuaciones-diferenciales",
+    "course:sync:vector": "node scripts/import-vector-calculus-plastex.mjs latex/calculo-vectorial",
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
     "build": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
+    "build:pages": "GITHUB_PAGES=true NEXT_PUBLIC_BASE_PATH=/CMSpec NEXT_PUBLIC_SITE_URL=https://b8vpk8465h-creator.github.io/CMSpec next build",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
+    "@types/katex": "^0.16.8",
     "drizzle-orm": "0.45.2",
+    "katex": "^0.17.0",
     "next": "16.2.6",
     "react": "19.2.6",
     "react-dom": "19.2.6",
-    "react-loading-skeleton": "3.5.0"
+    "three": "^0.185.1"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.37.1",
@@ -26,6 +34,7 @@
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
+    "@types/three": "^0.185.3",
     "@vitejs/plugin-react": "6.0.2",
     "@vitejs/plugin-rsc": "0.5.26",
     "drizzle-kit": "0.31.10",

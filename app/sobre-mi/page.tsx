@@ -1,0 +1,52 @@
+import { BrandHeader } from "../_components/editorial";
+import { siteContent } from "../../content/site";
+import { aboutGallery } from "../../content/about-gallery";
+import AboutGallery from "./AboutGallery";
+import { sitePath } from "../../lib/site-path";
+
+export default function AboutPage() {
+  const { about } = siteContent;
+
+  return (
+    <main className="learn-page course-library-page about-page tone-blue">
+      <BrandHeader label="SOBRE MÍ" backHref="/" />
+      <section className="learn-masthead">
+        <div className="course-spectrum" aria-hidden="true"><i /><i /><i /><i /></div>
+        <p className="course-kicker">{about.index}</p>
+        <h1>{about.titleFirstLine}<br />{about.titleSecondLine}</h1>
+        <div className="learn-deck">
+          <p>Matemáticas, docencia y exploraciones que conectan distintas partes de un mismo espectro.</p>
+        </div>
+      </section>
+
+      <section className="about-detail">
+        <p className="about-detail-index">UNA PRESENTACIÓN</p>
+        <figure className="about-detail-photo">
+          <img src={sitePath("/images/camila-tejido-y-gatos.jpeg")} alt="Camila con un tejido azul y violeta, acompañada por sus dos gatos" />
+          <figcaption>Tejido y compañía.</figcaption>
+        </figure>
+        <div className="about-detail-lead">
+          <h2>Ideas que se encuentran.</h2>
+          <p>{about.introduction}</p>
+        </div>
+        <div className="about-detail-copy">
+          {about.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          <div className="about-interests" aria-label="Áreas de interés">
+            {about.interests.map((interest) => <span key={interest}>{interest}</span>)}
+          </div>
+        </div>
+      </section>
+
+      <AboutGallery entries={aboutGallery} />
+
+      <section className="about-spectrum" aria-label="Áreas que componen CMSpec">
+        <a href={sitePath("/investigacion")}><span>01</span><strong>Investigación & Math</strong><small>Preguntas, modelos y notas matemáticas.</small></a>
+        <a href={sitePath("/salud")}><span>02</span><strong>Colaboraciones en Salud</strong><small>Análisis y discusión en salud pública.</small></a>
+        <a href={sitePath("/aprender")}><span>03</span><strong>Apuntes y exploración</strong><small>Cursos de pregrado y visualizaciones.</small></a>
+        <a href={sitePath("/tejido")}><span>04</span><strong>Tejido & Estructuras</strong><small>Matemática que también se piensa con las manos.</small></a>
+      </section>
+
+      <footer className="course-footer"><p>CMSpec · Sobre mí</p><a href={sitePath("/")}>Volver al espectro ↗</a></footer>
+    </main>
+  );
+}

@@ -1,0 +1,523 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Primera Semana\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+\end{picture}
+
+
+\begin{center}
+\huge{Novena Semana}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Cálculo Vectorial}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Cálculo Vectorial. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:} 
+\end{center}
+\vspace{0.1cm}
+\begin{center}
+\begin{minipage}{0.5\textwidth}
+\begin{enumerate}
+    \item Integrales Triples
+\end{enumerate}
+\end{minipage}
+\end{center}
+
+
+
+
+\vspace{6cm}
+
+
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+
+\section{Integrales Triples}
+
+As\'i como se hizo con las integrales simples y dolbes se puede geenralizar a\'un m\'as a integrales triples.Los resultados son an\'alogos as\'i que iremos un poco m\'as r\'apido en esta secci\'on\\
+
+Comenzaremos considerando el caso m\'as simple, donde el campos escalar $f (x, y, z)$ est\'a definido en un paralelepipedo:
+
+\begin{align*}
+    B &= \lbrace (x,y,z) \in \mathbb{R}^3 : a\leq x \leq b, c\leq y \leq d, r \leq z\leq s\rbrace \\
+    &= [a,b]\times[c,d]\times[r,s]
+\end{align*}
+
+Para ello vamos a dividir $B$ en subparalelepipedos. Esto se hace dividiendo el intervalo $[a, b]$ en $M$ subintervalos $[x_{i-1}, x_i ]$ de igual amplitud $\Delta x_I = x_i-x_{i-1}$, dividiendo $[c, d]$ en $m$ subintervalos de amplitud $\Delta y_j = y_j-y_{j-1}$ y dividiendo $[r , s]$ en $l$ subintervalos $[z_{i-1},z_i]$ de amplitud $\Delta z_k =z_k-z_{k-1}$. Los planos que pasan por los puntos finales de estos subintervalos paralelos a los planos coordenados dividen el paralelepipedo $B$ en $l\cdot m \cdot n$ subparalelepipedos:
+
+\begin{align*}
+    B_{i,j,k} = [x_{i-1},x_i]\times[y_{i-1},y_i]\times[z_{i-1},z_i]
+\end{align*}
+
+Cada subparalelepipedo tiene volumen $\Delta V_{i,j,k} = \Delta x_i \Delta y_j \Delta z_k$, a esto se le llama \textbf{una partici\'on $P$ del paralelepipedo}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/triples.png}
+    \caption{Partici\'on del paralelepipedo en subparalelepipedos}
+    \label{fig:etiqueta}
+\end{figure}
+
+Ahora definimos
+
+\begin{align*}
+    m_{i,j,k} &= \inf\lbrace f(x,y,z): (x,y,z) \in P_{i,j,k}\rbrace \\
+    M_{i,j,k} &= \sup\lbrace f(x,y,z): (x,y,z) \in P_{i,j,k}\rbrace \\
+\end{align*}
+
+ Se definen la suma inferior y la suma superior como:
+
+ \begin{itemize}
+    \item \textbf{Suma inferior:}
+    \[
+        S(f,P) = \sum_{i=1}^m \sum_{j=1}^n \sum_{k=1}^l \, M_{i,j,k}\Delta x_i \, \Delta y_j \Delta z_k.
+    \]
+    
+    \item \textbf{Suma superior:}
+    \[
+        S(f,P) = \sum_{i=1}^m \sum_{j=1}^n \sum_{k=1}^l \, M_{i,j,k}\Delta x_i \, \Delta y_j \Delta z_k.
+    \]
+\end{itemize}
+
+Definimos la integral triple inferior y la integral doble superior como
+
+\begin{align*}
+    \underline{\iiint_B} f(x,y)\,dV &= \sup \{ s(f,P) : P \text{ partición de } B \}, \\
+    \overline{\iiint_B} f(x,y)\,dV &= \inf \{ S(f,P) : P \text{ partición de } B \}.
+\end{align*}
+
+
+\textbf{Definición: }Se dice que \( f \) es \textbf{Riemann integrable} en \( B \) si:
+
+\[
+    \underline{\iiint_B} f(x,y,z)\,dV = \overline{\iiint_B} f(x,y,z)\,dV.
+\]
+
+En tal caso, se define la \textbf{integral triple de Riemann} de \( f \) sobre \( B \) como:
+
+\[
+    \iiint_B f(x,y,z)\,dV := \underline{\iiint_B} f(x,y,z)\,dV.
+\]
+
+
+Al igual que ocurr\'ia con integrales dobles, tenemos el siguiente resultado\\
+
+\textbf{Proposición:} Sea $f: B \to \mathbb{R}$ función acotada y continua en todo $R$ salvo a lo más en un número finito de superficies suaves (diferenciables), entonces $f$ es Riemann integrable \\
+
+\textbf{Proposición (Propiedades de las integrales triples):} Sean $f,g: B \to \mathbb{R}$ integrables en $B$ y sea $k \in \mathbb{R}$. Entonces \\
+
+a) $\displaystyle \iiint_B kf(x,y,z)+g(x,y,z) \,dV = k\iint_B f(x,y,z)\,dV+ \iiint_B g(x,y,z) \,dV.$ \\ \\
+
+b) Si $f(x,y,z) \leq g(x,y,z) $, $\forall (x,y,z) \in B$, entonces 
+\begin{align*}
+    \displaystyle \iiint_B f(x,y,z)\,dV \leq \iiint_B g(x,y,z) \,dV. 
+\end{align*}
+
+c) $\displaystyle \left|\iiint_B f(x,y,z) \,dV\right| \leq \iiint_B |f(x,y,z)|\,dV$ \\ \\\
+
+Tambi\'en tenemos el teorema de Fubini \\
+
+
+\textbf{Teorema (Fufini para rectángulos):} Sea $f: B \to \mathbb{R}$ integrable, donde $B =[a,b]\times [c,d] \times [r,s]$, entonces:
+
+\begin{align*}
+    \iiint_B f(x,y,z) dV = \int_a^b \int_c^d \int_r^s f(x,y,z)dzdydx
+\end{align*}
+
+\newpage
+
+Veamos ahora como funcionan sobre regiones m\'as generales, consideramos los dos tipos de recintos
+
+\begin{align*}
+    E_{xy} &=\lbrace (x,y,z)\in \mathbb{R} : a\leq x\leq b, g_1(x) \leq y \leq g_2(x), u_1(x,y) \leq z \leq u_2(x,y)\rbrace \\
+    E_{yx} &=\lbrace (x,y,z)\in \mathbb{R} : c\leq y\leq d, h_1(y) \leq y \leq h_2(y), u_1(x,y) \leq z \leq u_2(x,y)\rbrace \\
+\end{align*}
+
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/regiones3d.png}
+    \caption{Tipos de regiones}
+    \label{fig:etiqueta}
+\end{figure}
+
+Las integrales triples asociadas son
+
+\begin{align*}
+    \iiint_{E_{xy}} f(x,y,z) dV &= \int_a^b \int_{g_1(x)}^{g_2(x)} \int_{u_1(x,y)}^{u_2(x,y)} f(x,y,z) dz dy dx \\
+    \iiint_{E_{yx}} f(x,y,z) dV &= \int_c^d \int_{h_1(y)}^{h_2(y)} \int_{u_1(x,y)}^{u_2(x,y)} f(x,y,z) dz dx dy \\
+\end{align*}
+
+
+Hay cuatro tipos m\'as de integrales dobles, estas son
+
+\begin{align*}
+    \iiint_{E_{xz}} f(x,y,z) dydzdx \hspace{0.2cm} \iiint_{E_{zx}} f(x,y,z) dydxdz \\
+    \iiint_{E_{yz}} f(x,y,z) dxdzdy \hspace{0.2cm} \iiint_{E_{zy}} f(x,y,z) dxdydz \\
+\end{align*}
+
+Por el teorema de Fubini sabemos que todas estas seis integrales tienen el mismo valor y son iguales a
+
+\begin{align*}
+    \iiint_E f(x,y,z)dV
+\end{align*}
+
+
+\textbf{Observaci\'on: }Una aplicaci\'on importante de las integrales triples es que si consideramos $f(x,y,z)= 1$, entonces $\displaystyle \iint_E dV$ representa el volumnen de
+
+\newpage
+
+
+\textbf{Ejercicio:} Sea $E$ la regi\'on acotada por la gr\'afica del plano $x+y+z=1$ en el primer octante. Calcule
+
+\begin{align*}
+    \iiint_E z dV
+\end{align*}
+
+
+
+\textbf{Respuesta:} Primero calculamos las intersecciones con los ejes
+
+\begin{itemize}
+    \item Eje \( x \): \( y = 0, z = 0 \Rightarrow x = 1 \)
+    \item Eje \( y \): \( x = 0, z = 0 \Rightarrow y = 1  \)
+    \item Eje \( z \): \( x = 0, y = 0 \Rightarrow z = 1 \)
+\end{itemize}
+
+Por lo tanto, la región \( E \) es un tetraedro con vértices en \( (0,0,0) \), \( (1,0,0) \), \( (0,1,0) \), \( (0,0,1) \). 
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Imagenes/tetraedro.png}
+    \caption{Regi\'on E}
+    \label{fig:etiqueta}
+\end{figure}
+
+Podemos describir $E$ mediante los siguientes límites:
+\[
+\begin{aligned}
+    0 \leq x \leq 1, \\
+    0 \leq y \leq 1 - x, \\
+    0 \leq z \leq 1 - x - y.
+\end{aligned}
+\]
+
+Entonces la integral se convierte en:
+\[
+\iiint_E z \, dV = \int_0^1 \int_0^{1 - x} \int_0^{1 - x - y} z \, dz \, dy \, dx.
+\]
+
+Primero integramos con respecto a $z$:
+\[
+\int_0^{1 - x - y} z \, dz = \left. \frac{1}{2}z^2 \right|_0^{1 - x - y} = \frac{1}{2}(1 - x - y)^2.
+\]
+
+Sustituimos en la integral:
+\[
+\int_0^1 \int_0^{1 - x} \frac{1}{2}(1 - x - y)^2 \, dy \, dx.
+\]
+
+Usamos el cambio de variable $u = 1 - x - y$, por lo tanto $du = -dy$:
+\[
+= \int_0^1 \left[ \frac{1}{2} \int_0^{1 - x} (1 - x - y)^2 \, dy \right] dx 
+= \int_0^1 \left[ \frac{1}{2} \cdot \frac{(1 - x)^3}{3} \right] dx 
+= \int_0^1 \frac{(1 - x)^3}{6} \, dx.
+\]
+
+Finalmente:
+\[
+\int_0^1 \frac{(1 - x)^3}{6} \, dx = \frac{1}{6} \int_0^1 (1 - x)^3 \, dx = \frac{1}{6} \cdot \frac{1}{4} = \frac{1}{24}.
+\]
+
+\[
+\boxed{\iiint_E z \, dV = \frac{1}{24}}
+\]
+
+
+
+\section{Cambio de Variable}
+
+Tambi\'en tenemos el teorema de cambio de variable, no vamos a dar los detalles \\
+
+\textbf{Teorema: } Sea $T: E_{uvw} \to \mathbb{R}^3$ transformaci\'on inyectiva, continua y diferenciable del plano $uvw$ en el plano $xyz$ tal que
+$T (u, v,w) = (x (u, v,w) , y (u, v,w) , z (u, v,w))$. Si
+$f : E_{xyz} \to \mathbb{R}$ es Riemann integrable, entonces:
+
+\begin{align*}
+    \iiint_{E_{xyz}} f(x,y,z) dV = \iiint_{E_{uvw}} f(T(u,v,w))|J(T)|dV
+\end{align*}
+
+Donde $J(T)$ denota el Jacobiano de $T$ dado por 
+
+\begin{align*}
+    J(T) = \frac{\partial(x,y,z)}{\partial(u,v,w)} = \begin{vmatrix}
+        \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v}& \frac{\partial x}{\partial w} \\
+        \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} & \frac{\partial y}{\partial w} \\
+        \frac{\partial z}{\partial u} & \frac{\partial z}{\partial v} & \frac{\partial z}{\partial w}
+    \end{vmatrix}
+\end{align*}
+
+\subsection{Coordenadas cil\'indricas}
+
+Uno de los cambios de variables m\'as conocidos son las coordenadas cil\'indricas
+\begin{align*}
+    x &= r\cos(\theta) \\
+    y &= r\sin(\theta) \\
+    z &= z
+\end{align*}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Imagenes/cilindricas.png}
+    \caption{Representaci\'on gr\'afica de las coordenadas cil\'indricas}
+    \label{fig:etiqueta}
+\end{figure}
+
+O bien la transfromaci\'on $T(r,\theta,z) =(r\cos(\theta), r\sin(\theta),z)$. Esta transformaci\'on es inyectiva para $r \geq 0$ y $0 \leq \theta < 2\pi$. Su jacobiano es
+
+\begin{align*}
+    J(T) = \frac{\partial(x,y,z)}{\partial(u,v,w)} = \begin{vmatrix}
+        \cos(\theta) & -r\sin(\theta)& 0\\
+        \sin(\theta) & r\cos(\theta) & 0 \\
+        0 & 0 & 1
+    \end{vmatrix} = r
+\end{align*}
+
+Con esto, el teorema de cambio de variable nos dice que
+
+\begin{align*}
+    \iiint_{E_{xyz}} f(x,y,z) dV= \iiint_{E_{r\theta z}} f(r\cos(\theta),r\sin(\theta),z)rdV
+\end{align*}
+
+
+
+\textbf{Ejemplo 1:} Calcule el volumen del s\'olido acotado por las regiones $z= x^2+y^2$ y $z=2-x^2-y^2$ \\
+
+\textbf{Respuesta:} El gr\'afico corresponde a la sigueinte imagen
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/Interseccion.png}
+    \caption{Intersecci\'on de las dos superficies}
+    \label{fig:etiqueta}
+\end{figure}
+
+Primero igualamos las ecuaciones de las superficies, tenemos que $z= x^2+y^2$ y por otra parte $z=2-x^2-y^2$, luego
+
+\begin{align*}
+    z &=2-x^2-y^2 \\
+    &=2-(x^2+y^2) \\
+    &=2-z \\
+\end{align*}
+
+Luego
+
+\begin{align*}
+    2z &= 2 \\
+    z &= 1
+\end{align*}
+
+Es decir, la intersecci\'on es un circulo de ecuaci\'on $x^2+y^2=1$, por lo tanto la variable $x$ se mueve entre $1$ y $-1$, la variable $y$ se mueve entre $ -\sqrt{1-x^2}$ y  $ -\sqrt{1-x^2}$ mientras que la variable $z$ se mueve entre $x^2+y^2$ y $2-x^2-y^2$ . Las coordenadas cartesianas para la regi\'on de integraci\'on ser\'an
+
+\begin{align*}
+    E_{x,y} = \lbrace (x,y,z) \in \mathbb{R}^3 : -1 \leq x \leq 1, -\sqrt{1-x^2} \leq y \leq \sqrt{1-x^2}, x^2+y^2 \leq z \leq 2-x^2-y^2\rbrace
+\end{align*}
+
+El volumen ser\'a 
+
+\begin{align*}
+    V = \int_{-1}^1\int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}}\int_{x^2+y^2}^{2-x^2-y^2} dz dy dx
+\end{align*}
+
+Esta integral es muy dif\'icil de calcular a mano. Pero lo que vamos a hacer es pasar a coordenadas cili\'indricas y ah\'i ser\'a todo m\'as f\'acil, en este caso tenemos que $\theta$ se mueve entre 0 y $2\pi$, la variable $r$ entre 0 y 1, mientras que l;a variable $z$ entre  $x^2+y^2$ y $2-x^2-y^2$, pero como $x^2+y^2 = r^2$, entonces la variable $z$ se mueve entre  $r^2$ y $2-r^2$
+
+
+
+Luego
+
+
+\begin{align*}
+    V &= \int_{0}^{2\pi}\int_{0}^{1}\int_{r^2}^{2-r^2} r dz dr d\theta \\
+    &= \int_{0}^{2\pi}\int_{0}^{1} r(2-2r^2)  dr d\theta  \\
+    &= \int_{0}^{2\pi} \left( r^2 -\frac{r^4}{2}\right)\bigg|_0^1 d\theta  \\
+    &= \int_{0}^{2\pi} \frac{1}{2}d\theta  \\
+    &= \pi
+\end{align*}    
+
+Como podemos ver, pasar a coordenadas cil\'indricas hizo el problema mucho m\'as f\'acil \\
+
+\subsection{Coordenadas esf\'ericas}
+
+Otro sistema de coordenadas utilizado en la integraci\'on triple son
+las coordenadas esf\'ericas:
+
+\begin{align*}
+    x &= \rho\cos(\theta)\sin(\phi) \\
+    y &= \rho\sin(\theta)\sin(\phi) \\
+    z &= \rho\cos(\phi)
+\end{align*}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Imagenes/esfericas.png}
+    \caption{Coordenadas esf\'ericas en el espacio}
+    \label{fig:etiqueta}
+\end{figure}
+
+O bien la transfromaci\'on $T(\rho,\theta,\phi) =(\rho\cos(\theta)\sin(\phi), \rho\sin(\theta)\sin(\phi),\rho\cos(\phi))$. Esta transformaci\'on es inyectiva para $\rho \geq 0$, $0 \leq \theta < 2\pi$ y $0 \leq \phi < 2\pi$. Su jacobiano es
+
+\begin{align*}
+    J(T) = \frac{\partial(x,y,z)}{\partial(u,v,w)} = \begin{vmatrix}
+        \cos(\theta)\sin(\phi) & -\rho\sin(\theta)\sin(\phi)& \rho\cos(\theta)\cos(\phi)\\
+        \sin(\theta)\sin(\phi) & \rho\cos(\theta)\sin(\phi) & \rho\sin(\theta)\cos(\phi) \\
+        \cos(\phi) & 0 & -\rho\sin(\phi)
+    \end{vmatrix} = -\rho^2\sin(\phi)
+\end{align*}
+
+Con esto, el teorema de cambio de variable nos dice que
+
+\begin{align*}
+    \iiint_{E_{xyz}} f(x,y,z) dV= \iiint_{E_{r\theta z}} f(\rho\cos(\theta)\sin(\phi),\rho\sin(\theta)\sin(\phi) , \rho\cos(\phi))\rho^2\sin(\phi)dV
+\end{align*}
+
+\textbf{Ejercicio 1:} Calcule el volumen del s\'olido $E$ acotado por lasgr\'aficas de $z=\sqrt{x^2+y^2}$, $z=\sqrt{1-x^2-y^2}$ y $z=\sqrt{9-x^2=y^2}$ \\
+
+\textbf{Respuesta:} La gr\'afica corresponde a  
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/interseccion2.png}
+    \caption{gr\'afico de la regi\'on}
+    \label{fig:etiqueta}
+\end{figure}
+
+vamos a analizar las ecuaciones de las primeras dos superficies, primero las elevamos al cuadrado,  $z^2=x^2+y^2$ y $z^2=1-x^2-y^2$, reemplazando la primera en la segunda, obtenemos $z^2=1-z^2$ o bien $2z^2 = 1$, de donde se deduce que $z=\frac{1}{\sqrt{2}}$ *(pues $z \geq 0$) y por lo tanto  $x^2+y^2 = \frac{1}{2}$.\\
+
+Por otra parte, si hacemos lo mismo con $z^2=x^2+y^2$ y $z^2=9-x^2-y^2$, obtenemos $z = \frac{3}{\sqrt{2}}$ por lo tanto  $x^2+y^2 = \frac{9}{2}$. Considerando que el s\'olido es sim\'etrico respecto al eje $Z$ podemos calcular el volumen en el primer octante y multiplicar por cuatro.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Imagenes/circulito.png}
+    \caption{Proyecci\'on en el plano $XY$}
+    \label{fig:etiqueta}
+\end{figure}
+
+\newpage
+
+
+En coordenadas cartesianas tenemos
+
+\begin{align*}
+    E_{xyz} &= \lbrace (x,y,z) \in \mathbb{R}^3 : 0\leq x \leq \frac{1}{\sqrt{2}}, 0 \leq y \leq \sqrt{\frac{1}{2}-x^2}, \sqrt{1-x^2-y^2} \leq z \leq \sqrt{9-x^2-y^2}    \rbrace \\
+    &\bigcup \lbrace (x,y,z) \in \mathbb{R}^3 : \frac{1}{\sqrt{2}}\leq x \leq \frac{3}{\sqrt{2}}, 0 \leq y \leq \sqrt{\frac{9}{2}-x^2}, \sqrt{x^2+y^2} \leq z \leq \sqrt{9-x^2-y^2}    \rbrace \\
+    &\bigcup \lbrace (x,y,z) \in \mathbb{R}^3 : 0\leq x \leq \frac{1}{\sqrt{2}}, \sqrt{\frac{1}{2}-x^2} \leq y \leq \sqrt{\frac{9}{2}-x^2}, \sqrt{x^2+y^2} \leq z \leq \sqrt{9-x^2-y^2}    \rbrace \\
+\end{align*}
+
+Por lo tanto el volumen de este s\'olido se puede calcular como \\
+
+
+\resizebox{\hsize}{!}{%
+  \begin{minipage}{\hsize}
+    \begin{align*}
+    V &= 4\left( \int_0^{1/\sqrt{2}} \int_0^{\sqrt{1/2-x^2}} \int_{\sqrt{1-x^2-y^2}}^{\sqrt{9-x^2-y^2}} dzdydx + \int_{1/\sqrt{2}}^{3/\sqrt{2}} \int_0^{\sqrt{9/2-x^2}} \int_{\sqrt{x^2+y^2}}^{\sqrt{9-x^2-y^2}} dzdydx  + \int_{0}^{1/\sqrt{2}} \int_{\sqrt{1/2-x^2}}^{\sqrt{9/2-x^2}} \int_{\sqrt{x^2+y^2}}^{\sqrt{9-x^2-y^2}} dzdydx  \right) \\
+    \end{align*}
+  \end{minipage}%
+}
+
+
+Por supuesto, estas integrales son exageradamente complicadas y largas de calcular. Por ello nos vamos a pasar a coordenadas esf\'ericas, en estas coordenadas la regi\'on de integraci\'on viene dada por
+
+
+
+\begin{align*}
+    E_{\rho, \theta, \phi} = \lbrace 0 \leq \theta \leq 2\pi, 0\leq \phi \leq \pi/4,  1\leq \rho \leq 3 \rbrace
+\end{align*}
+
+Por lo tanto
+
+\begin{align*}
+    V &= \int_0^{2\pi} \int_0^{\pi/4} \int_1^3 \rho^2\sin(\phi)d\rho d\phi d\theta \\
+    &= \frac{26}{3}(2-\sqrt{2})\pi \text{ (Ejercicio para el estudiante)}
+\end{align*}
+
+
+
+
+\end{document} 

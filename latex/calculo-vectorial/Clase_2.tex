@@ -1,0 +1,430 @@
+  \documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Primera Semana\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+\end{picture}
+
+
+\begin{center}
+\huge{Segunda Semana}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Cálculo Vectorial}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Cálculo Vectorial. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\setlength{\parindent}{2.9cm}- Funciones en varias variables y dominios \\
+\phantom{abefwfewefwfefffw} - Curvas de nivel	\\
+\phantom{abefwfewefwfefffw} - Parametrizción de curvas	\\
+\phantom{abefwfewefwfefffw} - Bolas abiertas y cerradas	\\
+\phantom{abefwfewefwfefffw} - Límites	\\
+
+
+
+\vspace{6cm}
+
+
+\begin{center}
+\today
+\end{center}
+\begin{center}
+Santiago, Chile
+\end{center}
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+\section{Clasificación de funciones en varias variables}
+
+Una función en varias variables es de la forma $f : A \subseteq \mathbb{R}^n \to \mathbb{R}^m$, vamos a identificar los siguientes tipos de funciones \\
+
+-Si $n> 1$ y $m \geq 1 $, entonces $f : A \subseteq \mathbb{R}^n \to \mathbb{R}$, se llama función escalar, campo escalar o bien función real o de variable real. \\
+
+-Si $n >1 $ y $m > 1$, entonces $f : A \subseteq \mathbb{R}^n \to \mathbb{R}^n$,  se llama campo vectorial. \\
+
+-Si $n=1$ y $m > 1$, entonces $f : A \subseteq \mathbb{R} \to \mathbb{R}^m$ se llama función vectorial. \\
+
+
+
+\textbf{Ejemplos:} La función dada por
+
+\begin{align*}
+    f(x) =(x^2,x+1, x^3)
+\end{align*}
+
+Es una función vectorial. La función dada por
+
+\begin{align*}
+    f(x,y,z) =(x+y,3x+z, z-2y)
+\end{align*}
+
+Es un campo vectorial. Mientras que la función dada por
+
+\begin{align*}
+    f(x,y,z) = 2x+3y+z^2
+\end{align*}
+
+Es una función escalar
+
+\newpage
+
+
+
+\section{Dominios}
+
+
+Al igual que en las funciones que vimos en cursos anteriores, en las funciones de múltiples variables hay que tener cuidado con las siguientes restricciones \\
+
+- El denominador de una fracción \textbf{no puede ser cero} \\
+
+- Lo que está dentro de una raíz de índice par \textbf{no puede ser negativo} \\
+
+- Lo que está dentro de un logaritmo debe ser \textbf{Estrictamente Positivo} \\
+
+Si los valores posibles de las variables no imcumplen ninguna de las restricciones, entonces el dominio de la función son todos los números reales menos la unión de los conjuntos que consisten en los números que incumplen alguna de esas restricciones. \\
+
+
+\textbf{Ejemplo 1 : } Por ejemplo podemos tomar $f: \mathbb{R}^2 \to \mathbb{R}$ dada por $f(x,y) =\sqrt{x^2-y^2}$, tenemos que esta funación está definida cuando $x^2 \geq y^2$ o bien $|x| \geq |y|$ por lo tanto $ -|x| \leq y \leq |x|$. Luego  
+
+\begin{center}
+    Dom$(f) = \lbrace (x,y) \in \mathbb{R}^2 : -|x| < y < |x| \rbrace$
+\end{center}
+
+El dominio se puede graficar si consideramos las funciones $g(x) = -|x|$ y $h(x) = -|x|$, estas funciones ya sabemos graficarlas, tenemos entonces que $g(x) \leq y \leq h(x)$, esto significa que la variable $y$ queda entremedio de estas dos funciones
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/region1.png}
+    \caption{Gráfico del dominio de $f(x,y)$}
+    \label{fig:etiqueta}
+\end{figure}
+
+
+\textbf{Ejemplo 2 : } Podemos tomar $f: \mathbb{R}^3 \to \mathbb{R}$ dada por $f(x,y,z) = x^2+y^2z^3 $, en este caso la función está bien definida siempre por lo tanto
+
+\begin{center}
+    Dom$(f) = \mathbb{R}^3$
+\end{center}
+
+\newpage
+
+
+\textbf{Ejemplo 3 : } Sea $f: \mathbb{R}^2 \to \mathbb{R}$ dada por $ \displaystyle f(x,y) = \frac{1}{x^2-y^2}$, en este caso la no función está bien definida cuando  $x^2=y^2$, es decir $|x|=|y|$, por lo tanto 
+
+\begin{center}
+    Dom$(f) = \mathbb{R} \setminus \lbrace (x,y) \in \mathbb{R}^2 : |x|=|y| \rbrace$
+\end{center}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/dominio2.png}
+    \caption{Gráfico del dominio de $f(x,y)$, en este caso las lineas verdes y rojas no son parte del dominio}
+    \label{fig:etiqueta}
+\end{figure}
+
+En caso de que el codominio de la función tenga múltiples coordenadas hay que ver cada coordenada por separado y el dominio de la función será todos los números reales menos la unión de las restricciones en el codominio por cada coordenada
+
+
+\textbf{Ejemplo 4 : } Sea $f: \mathbb{R}^2 \to \mathbb{R}^2$ dada por $ \displaystyle f(x,y) = \left(  \frac{1}{x^2-y^2}, \frac{1}{x} \right) $. En este caso la primera coordenada es función es $ \frac{1}{x^2-y^2}$ no está definida cuando  $x^2=y^2$, es decir $|x|=|y|$. La segunda coordenada  tampoco está bien definida si $x=0$, por lo tanto 
+
+\begin{center}
+       Dom$(f) = \mathbb{R} \setminus \left( \lbrace (x,y) \in \mathbb{R}^2 : |x|=|y| \rbrace \cup \left\lbrace (x,y) \in \mathbb{R}^2 : x=0 \right\rbrace  \right)$
+\end{center}
+
+\textbf{Ejercicio para el alumno:} Determine el gráfico del dominio de la función 
+
+\newpage
+
+\section{Curvas de nivel}
+
+Para poder hacernos una idea del gráfico de una función escalar, se usa el concepto de curva de nivel, sea $f: \mathbb{R}^n \to \mathbb{R}$, se define la curva de nivel de $f$ en $a$ como
+
+\begin{align*}
+C_f(a)= \lbrace X \in \mathbb{R}^n : f(X) = a \rbrace
+\end{align*}
+
+Cada curva de nivel representa el gráfico en dos dimensiones que obtenemos si cortamos con un plano paralelo al plno $XY$ y que pasa por el punto $z=a$, juntando todos estos gráficos a lo largo del eje $Z$ obtenemos el gráfico de la función. \\
+
+
+
+
+\textbf{Ejemplo 1 : } Sea $f(x,y) = x^2 +y^2$, para $a \in \mathbb{R}$ la curva de nivel es $a= x^2+y^2$, notemos que $a$ solo puede ser mayor o igual que cero pues nunca es negativo, por lo tanto la superficie consiste en circulos de radio $\sqrt{a}$ a lo largo del eje $z$\\
+
+Para entender mejor este concepto dibujamos las distintas curvas de nivel en el plano
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{Imagenes/curvasnivel2.jpg}
+    \caption{Curvas de nivel de $f(x,y) = x^2 +y^2$}
+    \label{fig:etiqueta}
+\end{figure}
+
+Estas curvas al moverlas a lo largo del eje $Z$ generan la superficie
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{Imagenes/curvasnivel1.jpg}
+    \caption{curvas de nivel de $f(x,y) = x^2 +y^2$ a lo largo del eje $Z$}
+    \label{fig:etiqueta}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{Imagenes/curvasnivel3.jpg}
+    \caption{La curvas de nivel generan la superficie}
+    \label{fig:etiqueta}
+\end{figure}
+
+\newpage
+
+
+\textbf{Ejemplo 2 : } Sea $f(x,y) = \sqrt{9-x^2-y^2}$, para $a \in \mathbb{R}$ la curva de nivel es $a= \sqrt{9-x^2-y^2}$, notemos que el maximo que puede tomar $a$ es cuando $x=y=0$, es decir $a=\sqrt{9}=3$, el valor minimo es cuando $x^2+y^2=9$, es decir una circunferencia de radio $3$, notemos que la cuerva de nivel es $a^2= 9-x^2-y^2$, luego $x^2+y^2= 9-a^2$, un circulo. Podemos inferir que la grafica es una semi-esfera de radio 3.
+
+
+
+
+\newpage
+
+\section{Parametrizacion de curvas}
+
+Al igual que una función vectorial una curva parametrizada es una funcion $f: \mathbb{R} \to \mathbb{R}^n$, la diferencia es que en algunas ocaciones no es claro que la función sea una curva y por lo tanto es necesario dejar todo en funcion de un único parámetro, a este proceso se le llama \textbf{parametrización de una curva} \\
+
+
+ La recta determinada por su ecuación general $ \displaystyle \frac{x-1}{2} = \frac{y}{3} = \frac{z-3}{7}$, se puede parametrizar como $f: \mathbb{R} \to \mathbb{R}^3$, dada por
+
+\begin{align*}
+f(t) = \left( 2t+1, 3t, 7t+3\right) 
+\end{align*}
+
+Y en general toda recta $ \displaystyle \frac{x-p_1}{d_1} = \frac{y-p_2}{d_2} = \frac{z-p_3}{d_3}$ se puede parametriza usando la ecuacion parametrica de la recta y se obtiene
+
+
+\begin{align*}
+f(t) = \left( d_1t+p_1, d_2t+p_2, d_3t+p_3\right) 
+\end{align*}
+
+
+
+
+
+
+
+
+\textbf{Ejemplo 2:} La curva que define al circulo $x^2+y^2 = r^2$, se puede parametrizar como
+
+
+\begin{align*}
+f(t) = \left( r\cos(t), r\sen(t) \right) 
+\end{align*}
+
+
+
+Y en general un circulo de radio $r$ centrado en el punto $(a,b) $ se puede parametrizar como
+
+
+\begin{align*}
+f(t) = \left( r\cos(t)+a, r\sen(t)+b \right) 
+\end{align*}
+
+
+\textbf{Ejemplo 3:} Una  elipse de eje mayor $a$, eje menor $b$ y centrada en el punto $(x_0,y_0) $ se puede parametrizar como
+
+
+\begin{align*}
+f(t) = \left( a\cos(t)+x_0, b\sen(t)+y_0 \right) 
+\end{align*}
+
+\textbf{Ejemplo 4:}  Una  hipérbola de ecuación
+
+\begin{align*}
+    \frac{x^2}{a^2}-\frac{y^2}{b^2}=1
+\end{align*}
+
+Se puede parametrizar como
+
+\begin{align*}
+f(t) = \left( a\cosh(t)+x_0, b\senh(t)+y_0 \right) 
+\end{align*}
+
+Donde $\cosh$ y $\senh$ son el coseno y el seno hipebólico respectivamente, aunque esto solo representa la parte derecha de la hipérbola
+
+
+
+\newpage
+
+
+\newpage
+
+\section{Límites}
+
+\subsection{Bolas abiertas y cerradas}
+
+En $\mathbb{R}$ existe el conepto de intervalo abierto $(a,b)$, en $\mathbb{R}^n$, este concepto es reemplazado por la bola abierta de centro $a$ y radio $r$, se define por
+
+\begin{align*}
+B_r(a) = \lbrace x \in \mathbb{R}^n : || x-a || < r \rbrace
+\end{align*}
+
+
+De igual forma se puede definir la bola cerrada
+
+
+\begin{align*}
+\overline{B}_r (a) = \lbrace x \in \mathbb{R}^n : || x-a || \leq r \rbrace
+\end{align*}
+
+
+Esto nos perimte introducir conceptos topologicos en el espacio $\mathbb{R}^n$, tales como conjuntos abiertos y conjuntos cerrados, pero no los vamos a usar mucho en este curso y solo las vamos a utilizar para algunas definiciones \\ 
+
+\textbf{Definición:} Sea $A \subseteq \mathbb{R}^n$, se dice que $A$ es abierto, si para todo $x \in A$ existe un $r > 0$, tal que $B_r(x) \subset A$/ \\
+
+\textbf{Definición:} Sea $C \subseteq \mathbb{R}^n$, se dice que $C$ es cerrado si $C^c$ es abierto. \\
+
+Nuestro objetivo ahora es tomar todos los conceptos de cálculo diferencial para funciones en una sola variable y extenderlos para funciones en varias variables, empezaremos por la definición de límite. \\
+
+
+
+\subsection{Definición de Límite}
+
+La definicion de limite para funciones $\mathbb{R}^m \to \mathbb{R}^n$ se puede hacer de la siguiente forma. \\
+
+\textbf{Definicion: } Sea $\mathbb{R}^m \to \mathbb{R}^n$ y $a \in \mathbb{R}^m$, decimos que $\displaystyle \lim_{x \to a} f(x) = L$ si y solo si $\forall$ $\epsilon > 0$ $\exists$ $\delta >0$ tal que
+si $ 0 < ||x-a|| < \delta$ entonces $||f(x)-L|| < \epsilon$. \\
+
+
+Esta definicion es análoga a la definicion para funciones reales y no la usaremos mucho. Pero daremos un ejemplo\\
+
+\textbf{Ejemplo:} Sea $f(x,y) = (3x,2y)$, vamos a demostrar por definici\'on que
+
+\begin{align*}
+     \lim_{(x,y) \to (1,2)} f(x,y) = (3,4)
+\end{align*}
+
+Sea $\epsilon >0$, queremos encontrar $\delta >0$ tal que si $||(x,y)-(1,2)|| < \delta$ entonces $|| f(x,y)-(3,4)|| < \epsilon$,  ahora bien 
+
+\begin{align*}
+     ||(3x,2y)-(3,4)|| &= ||(3(x-1),2(y-2))|| \\
+                      &\leq  ||(3(x-1),3(y-2))|| \\ 
+     &= 3|| (x-1,y-2)||
+\end{align*}
+
+Por lo tanto basta con tomar $\delta = \epsilon/3$ y se cumple la definici\'on
+
+\newpage
+
+\begin{align*}
+    \Large{\textbf{Límites de funciones vectoriales}}
+\end{align*}
+
+ Para una función vectorial $f: \mathbb{R} \to \mathbb{R}^3$, de la forma $f(x)= (f_1(x),f_2(x),f_3(x))$, entonces simplemente se tiene que
+
+ \begin{align*}
+     \lim_{x \to a} f(x) = \left(\lim_{x \to a} f_1(x), \lim_{x \to a} f_2(x), \lim_{x \to a} f_3(x) \right) 
+ \end{align*}
+
+Es decir, se calculan lo límites coordenada a coordenada. \\
+
+\textbf{Ejemplo: } Si $f(x) = \displaystyle \left( \frac{x^2-1}{x-1}, \frac{\sen(x)}{x}, \frac{x}{\sqrt{x}}\right)$, entonces
+
+\begin{align*}
+    \lim_{x \to 0} f(x) &= \left(\lim_{x \to 0} \frac{x^2-1}{x-1},  \lim_{x \to 0} \frac{\sen(x)}{x}, \lim_{x \to 0} \frac{x}{\sqrt{x}} \right) \\
+    &= (2,1,0)
+\end{align*}
+
+Por esta razón lo límites de curvas parametrizadas no tienen nada nuevo, es lo mismo que se vió en cursos anteriores. \\
+
+
+\textbf{Ejercicios para los alumnos:} Determine los siguientes l\'imites\\
+
+a) $\displaystyle \lim_{x \to 0} \left( \frac{\sin(3x)}{x}, x\sin \left(\frac{1}{x}\right), \frac{\cos(x)-\sin(x)}{\cos(2x)}\right)$ \\
+
+
+b) $\displaystyle \lim_{x \to 0} \left( \frac{e^{7x}-e^{3x}}{x}, \frac{x-\sin(x)}{x+\sin(x)}, \frac{\sqrt{x+1}-1}{x}\right)$ \\
+
+
+\end{document} 
