@@ -54,7 +54,7 @@ function findTheoremStart(
 
 function RowVectorVisual() {
   return (
-    <figure className="course-visual-example">
+    <figure className="course-visual-example row-vector-visual">
       <div>
         <span>EJEMPLO VISUAL · VECTORES</span>
         <h3>De una tabla a un vector fila</h3>
