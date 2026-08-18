@@ -21,20 +21,25 @@ jobs:
       - name: Descargar el repositorio
         uses: actions/checkout@v4
 
+      - name: Preparar pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Preparar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
+          cache: pnpm
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Instalar dependencias
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Generar el sitio estático
-        run: npm run build:pages
+        run: pnpm run build:pages
 
       - name: Empaquetar el sitio
         uses: actions/upload-pages-artifact@v3
