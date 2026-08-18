@@ -113,7 +113,7 @@ export default function MappingClassSweaterLab() {
 
     const twistBands = curves.map((curve, index) => {
       const band = curve.clone();
-      band.material = new THREE.MeshBasicMaterial({ color: curveColors[index], transparent: true, opacity: 0.09, wireframe: true });
+      (band as THREE.Mesh<THREE.BufferGeometry, THREE.Material>).material = new THREE.MeshBasicMaterial({ color: curveColors[index], transparent: true, opacity: 0.09, wireframe: true });
       band.scale.setScalar(1.035);
       scene.add(band);
       return band;

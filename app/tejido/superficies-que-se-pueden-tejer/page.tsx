@@ -1,6 +1,7 @@
 import { BrandHeader } from "../../_components/editorial";
 import { getCollection, getEntry } from "../../../content/collections";
 import { CircleEquationExplorer, CrochetCurvatureExplorer } from "./GeometryCrochetExplorers";
+import { sitePath } from "../../../lib/site-path";
 
 export default function CrochetedSurfacesPage() {
   const collection = getCollection("tejido")!;
@@ -85,7 +86,7 @@ export default function CrochetedSurfacesPage() {
         </section>
       </article>
 
-      <footer className="course-footer"><p>CMSpec · Cuando una superficie se puede tejer</p><a href="/tejido">Todas las entradas ↗</a></footer>
+      <footer className="course-footer"><p>CMSpec · Cuando una superficie se puede tejer</p><a href={sitePath("/tejido")}>Todas las entradas ↗</a></footer>
     </main>
   );
 }

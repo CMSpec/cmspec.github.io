@@ -1,5 +1,6 @@
 import { courseNotes } from "../../content/course-library";
 import SiteHeader from "../_components/SiteHeader";
+import { sitePath } from "../../lib/site-path";
 
 export default function LearnPage() {
   return (
@@ -25,12 +26,12 @@ export default function LearnPage() {
               </div>
               <div className="note-entry-copy">
                 <p>{note.number} / APUNTES DE PREGRADO</p>
-                <h3><a href={note.href}>{note.title}</a></h3>
+                <h3><a href={sitePath(note.href)}>{note.title}</a></h3>
                 <p className="note-subtitle">{note.subtitle}</p>
                 <p className="note-authors">Por {note.authors}</p>
                 <p className="note-description">{note.description}</p>
               </div>
-              <a className="note-visual" href={note.href} aria-label={`Abrir ${note.title}`}>
+              <a className="note-visual" href={sitePath(note.href)} aria-label={`Abrir ${note.title}`}>
                 <span>{note.formula}</span>
                 <small>VISUAL POR INCORPORAR</small>
               </a>

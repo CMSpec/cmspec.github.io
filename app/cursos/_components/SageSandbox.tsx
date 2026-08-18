@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { sitePath } from "../../../lib/site-path";
 
 type SageSandboxProps = {
   code: string;
@@ -19,7 +20,7 @@ export default function SageSandbox({ code, title }: SageSandboxProps) {
     setStatus("running");
     setOutput("Calculando…");
 
-    const worker = workerRef.current ?? new Worker("/pyodide-worker.mjs", { type: "module" });
+    const worker = workerRef.current ?? new Worker(sitePath("/pyodide-worker.mjs"), { type: "module" });
     workerRef.current = worker;
     const id = crypto.randomUUID();
     worker.onmessage = ({ data }: MessageEvent<{ id: string; output: string; error: string }>) => {

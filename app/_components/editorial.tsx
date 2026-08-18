@@ -2,6 +2,7 @@ import type { EditorialCollection, EditorialEntry } from "../../content/collecti
 import SiteHeader from "./SiteHeader";
 import HealthEditorialBody from "./HealthEditorialBody";
 import MathEditorialBody from "./MathEditorialBody";
+import { sitePath } from "../../lib/site-path";
 
 export function BrandHeader({ label, backHref = "/" }: { label: string; backHref?: string }) {
   void label;
@@ -29,12 +30,12 @@ export function CollectionPage({ collection }: { collection: EditorialCollection
               </div>
               <div className="note-entry-copy">
                 <p>{entry.number} / {collection.label}</p>
-                <h3><a href={entry.href}>{entry.title}</a></h3>
+                <h3><a href={sitePath(entry.href)}>{entry.title}</a></h3>
                 <p className="note-subtitle">{entry.subtitle}</p>
                 <p className="note-authors">Por {entry.authors}</p>
                 <p className="note-description">{entry.description}</p>
               </div>
-              <a className="note-visual" href={entry.href} aria-label={`Abrir ${entry.title}`}>
+              <a className="note-visual" href={sitePath(entry.href)} aria-label={`Abrir ${entry.title}`}>
                 <span>{entry.visual}</span><small>ENTRADA · CMSPEC</small>
               </a>
             </article>
@@ -76,7 +77,7 @@ export function EntryPage({ collection, entry }: { collection: EditorialCollecti
           ))}
         </article>}
       </div>
-      <footer className="course-footer"><p>CMSpec · {collection.title}</p><a href={`/${collection.slug}`}>Todas las entradas ↗</a></footer>
+      <footer className="course-footer"><p>CMSpec · {collection.title}</p><a href={sitePath(`/${collection.slug}`)}>Todas las entradas ↗</a></footer>
     </main>
   );
 }

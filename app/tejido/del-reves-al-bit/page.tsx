@@ -1,6 +1,7 @@
 import { BrandHeader } from "../../_components/editorial";
 import { getCollection, getEntry } from "../../../content/collections";
 import { StitchPatternGrid } from "./StitchPatternGrid";
+import { sitePath } from "../../../lib/site-path";
 
 const textileBits = [
   0, 1, 1, 0, 0, 1, 1, 0,
@@ -41,7 +42,7 @@ export default function BinaryTextilesPage() {
 
         <figure className="stitch-comparison-figure" aria-labelledby="stitch-comparison-caption">
           <div className="stitch-comparison-labels" aria-hidden="true"><span>DERECHO</span><span>REVÉS</span></div>
-          <img src="/images/derecho-reves-tejido.png" alt="Comparación ampliada del punto derecho, con columnas de formas en V, y el punto revés, con hileras de pequeños relieves horizontales" />
+          <img src={sitePath("/images/derecho-reves-tejido.png")} alt="Comparación ampliada del punto derecho, con columnas de formas en V, y el punto revés, con hileras de pequeños relieves horizontales" />
           <figcaption id="stitch-comparison-caption">A la izquierda, el derecho forma columnas de «V»; a la derecha, el revés muestra relieves horizontales. Son las dos vistas de una misma estructura tejida.</figcaption>
         </figure>
 
@@ -108,7 +109,7 @@ export default function BinaryTextilesPage() {
         </section>
       </article>
 
-      <footer className="course-footer"><p>CMSpec · Del revés al bit</p><a href="/tejido">Todas las entradas ↗</a></footer>
+      <footer className="course-footer"><p>CMSpec · Del revés al bit</p><a href={sitePath("/tejido")}>Todas las entradas ↗</a></footer>
     </main>
   );
 }

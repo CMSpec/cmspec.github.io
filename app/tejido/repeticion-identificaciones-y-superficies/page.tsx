@@ -1,6 +1,7 @@
 import { BrandHeader } from "../../_components/editorial";
 import { getCollection, getEntry } from "../../../content/collections";
 import { GenusTwoAnimator, QuotientSurfaceAnimator } from "./TopologyAnimations";
+import { sitePath } from "../../../lib/site-path";
 
 const week = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"];
 const stitchMotif = ["D", "D", "R", "R", "D", "R"];
@@ -82,7 +83,7 @@ export default function QuotientPatternsPage() {
         </section>
       </article>
 
-      <footer className="course-footer"><p>CMSpec · Repetir, identificar, representar</p><a href="/tejido">Todas las entradas ↗</a></footer>
+      <footer className="course-footer"><p>CMSpec · Repetir, identificar, representar</p><a href={sitePath("/tejido")}>Todas las entradas ↗</a></footer>
     </main>
   );
 }

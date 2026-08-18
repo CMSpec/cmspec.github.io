@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import type { AboutGalleryCategory, AboutGalleryEntry } from "../../content/about-gallery";
+import { sitePath } from "../../lib/site-path";
 
 const filters: Array<{ value: "todas" | AboutGalleryCategory; label: string }> = [
   { value: "todas", label: "Todas" },
@@ -41,7 +42,7 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
     return (
       <figure className={`about-gallery-card about-gallery-${entry.orientation ?? "landscape"}`} key={`${entry.src}-${entry.title}`}>
         <button type="button" onClick={() => open(entry)} aria-label={`Ampliar ${entry.title}`}>
-          <img src={entry.src} alt={entry.alt} loading="lazy" />
+          <img src={sitePath(entry.src)} alt={entry.alt} loading="lazy" />
           <span aria-hidden="true">↗</span>
         </button>
         <figcaption>
@@ -87,7 +88,7 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
             <figure className="about-gallery-card about-gallery-carousel">
               <div className="about-gallery-carousel-stage">
                 <button type="button" className="about-gallery-carousel-image" onClick={() => open(carouselEntry)} aria-label={`Ampliar ${carouselEntry.title}`}>
-                  <img src={carouselEntry.src} alt={carouselEntry.alt} loading="lazy" />
+                  <img src={sitePath(carouselEntry.src)} alt={carouselEntry.alt} loading="lazy" />
                 </button>
                 <button type="button" className="about-gallery-carousel-arrow is-prev" onClick={() => moveCarousel(-1)} aria-label="Foto anterior">‹</button>
                 <button type="button" className="about-gallery-carousel-arrow is-next" onClick={() => moveCarousel(1)} aria-label="Foto siguiente">›</button>
@@ -119,7 +120,7 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
         {selected && (
           <div>
             <button type="button" className="about-gallery-close" onClick={close} aria-label="Cerrar imagen">×</button>
-            <img src={selected.src} alt={selected.alt} />
+            <img src={sitePath(selected.src)} alt={selected.alt} />
             <footer><span>{categoryLabels[selected.category]} · {selected.date}</span><strong>{selected.title}</strong><p>{selected.caption}</p></footer>
           </div>
         )}

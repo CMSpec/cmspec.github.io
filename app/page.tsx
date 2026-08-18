@@ -4,6 +4,7 @@ import { collections } from "../content/collections";
 import { courseNotes } from "../content/course-library";
 import { aboutGallery } from "../content/about-gallery";
 import SiteHeader from "./_components/SiteHeader";
+import { sitePath } from "../lib/site-path";
 
 const notes = courseNotes.filter((note) => note.href !== "/cursos/laboratorio-algebra-lineal");
 const textileNotes = collections.find((collection) => collection.slug === "tejido")!.entries;
@@ -30,13 +31,13 @@ export default function Home() {
 
       <section className="flat-intro" id="inicio">
         <figure>
-          <Image src="/images/camila-tejido-y-gatos.jpeg" alt="Camila con un tejido azul y violeta, acompañada por sus dos gatos" width={1200} height={1600} priority />
+          <Image src={sitePath("/images/camila-tejido-y-gatos.jpeg")} alt="Camila con un tejido azul y violeta, acompañada por sus dos gatos" width={1200} height={1600} priority />
         </figure>
         <div>
           <p className="flat-kicker">CAMILA MUÑOZ SANTANDER · CMSpec</p>
           <h1>Matemáticas, docencia y estructuras que también se piensan con las manos.</h1>
           <p>{about.introduction} En este sitio reúno apuntes, visualizaciones y escritos sobre matemática, salud pública, tejido y otros intereses.</p>
-          <a href="/sobre-mi">Más sobre mí <span aria-hidden="true">→</span></a>
+          <a href={sitePath("/sobre-mi")}>Más sobre mí <span aria-hidden="true">→</span></a>
         </div>
       </section>
 
@@ -47,7 +48,7 @@ export default function Home() {
         </header>
         <div className="flat-entry-list">
           {notes.map((note) => (
-            <a href={note.href} className="flat-entry" key={note.href}>
+            <a href={sitePath(note.href)} className="flat-entry" key={note.href}>
               <span className="flat-entry-copy">
                 <span className="flat-entry-title">{note.title}</span>
                 <span className="flat-entry-description">{note.description}</span>
@@ -55,7 +56,7 @@ export default function Home() {
               <span className="flat-entry-meta"><InteractiveMark /><i aria-hidden="true">↗</i></span>
             </a>
           ))}
-          <a href="/investigacion" className="flat-entry">
+          <a href={sitePath("/investigacion")} className="flat-entry">
             <span className="flat-entry-copy">
               <span className="flat-entry-title">Notas matemáticas</span>
               <span className="flat-entry-description">Ensayos sobre geometría, representación y estructuras combinatorias.</span>
@@ -67,12 +68,12 @@ export default function Home() {
 
       <section className="flat-section flat-lab" id="laboratorio" aria-labelledby="lab-title">
         <header className="flat-section-heading">
-          <h2 id="lab-title"><a href="/laboratorio">Laboratorio</a></h2>
+          <h2 id="lab-title"><a href={sitePath("/laboratorio")}>Laboratorio</a></h2>
           <p>Demostraciones para mover, probar y observar operaciones de Álgebra Lineal en lugar de ver solamente el resultado.</p>
         </header>
         <div className="flat-lab-gallery">
           {labPieces.map((piece) => (
-            <a href={piece.href} className="flat-lab-piece" key={piece.href}>
+            <a href={sitePath(piece.href)} className="flat-lab-piece" key={piece.href}>
               <div className={`flat-lab-visual visual-${piece.visual}`} aria-hidden="true">
                 {piece.visual === "vector" && <><span className="axis-x" /><span className="axis-y" /><b className="arrow-one">→</b><b className="arrow-two">→</b></>}
                 {piece.visual === "matrix" && <><span>1</span><span>2</span><span>0</span><span>3</span><span>4</span><span>5</span><span>0</span><span>2</span><span>6</span></>}
@@ -98,7 +99,7 @@ export default function Home() {
         </header>
         <div className="flat-entry-list">
           {textileNotes.map((entry) => (
-            <a href={entry.href} className="flat-entry" key={entry.href}>
+            <a href={sitePath(entry.href)} className="flat-entry" key={entry.href}>
               <span className="flat-entry-copy">
                 <span className="flat-entry-title">{entry.title}</span>
                 <span className="flat-entry-description">{entry.description}</span>
@@ -115,13 +116,13 @@ export default function Home() {
             <h2 id="recent-title">Últimamente</h2>
             <p>Encuadernaciones, tejidos, viajes y otras cosas que he estado haciendo fuera de la pantalla.</p>
           </div>
-          <a href="/sobre-mi#galeria">Ver la galería completa <span aria-hidden="true">→</span></a>
+          <a href={sitePath("/sobre-mi#galeria")}>Ver la galería completa <span aria-hidden="true">→</span></a>
         </header>
         <div className="flat-recent-grid">
           {recentGallery.map((entry) => (
-            <a className="flat-recent-card" href="/sobre-mi#galeria" key={entry.src}>
+            <a className="flat-recent-card" href={sitePath("/sobre-mi#galeria")} key={entry.src}>
               <div className="flat-recent-image">
-                <Image src={entry.src} alt={entry.alt} width={900} height={900} />
+                <Image src={sitePath(entry.src)} alt={entry.alt} width={900} height={900} />
               </div>
               <p>{galleryCategories[entry.category]} · {entry.date}</p>
               <strong>{entry.title}</strong>

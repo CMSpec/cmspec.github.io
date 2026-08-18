@@ -1,3 +1,8 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
+import { sitePath } from "../../../lib/site-path";
+
 export type CourseIndexItem = {
   href: string;
   label?: string;
@@ -63,7 +68,7 @@ export default function CourseIndex({
 
   return (
     <aside className={`course-toc${isVisible ? "" : " is-collapsed"}`} aria-label="Índice del curso">
-      <a className="course-notes-back" href="/aprender">
+      <a className="course-notes-back" href={sitePath("/aprender")}>
         <span>VOLVER A NOTAS</span>
         <i aria-hidden="true">←</i>
       </a>
@@ -111,6 +116,3 @@ export default function CourseIndex({
     </aside>
   );
 }
-"use client";
-
-import { useEffect, useMemo, useState } from "react";

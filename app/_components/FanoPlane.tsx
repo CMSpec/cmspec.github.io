@@ -6,7 +6,15 @@ const points = {
   A: [50, 10], B: [15, 82], C: [85, 82], D: [32.5, 46], E: [67.5, 46], F: [50, 82], G: [50, 58],
 } as const;
 
-const lines = [
+type PointName = keyof typeof points;
+type FanoLine = {
+  name: string;
+  points: readonly [PointName, PointName, PointName];
+  segment?: readonly [PointName, PointName];
+  circle?: boolean;
+};
+
+const lines: readonly FanoLine[] = [
   { name: "Carta 1", points: ["A", "D", "B"], segment: ["A", "B"] },
   { name: "Carta 2", points: ["A", "E", "C"], segment: ["A", "C"] },
   { name: "Carta 3", points: ["B", "F", "C"], segment: ["B", "C"] },
@@ -39,7 +47,7 @@ export default function FanoPlane() {
         <div className="fano-board" aria-label="Plano proyectivo finito de orden dos">
           {lines.map((line, index) => line.circle
             ? <i key={line.name} className={`fano-circle${active === index ? " is-active" : ""}`} aria-hidden="true" />
-            : <i key={line.name} className={`fano-line${active === index ? " is-active" : ""}`} style={segmentStyle(line.segment[0], line.segment[1])} aria-hidden="true" />
+            : line.segment && <i key={line.name} className={`fano-line${active === index ? " is-active" : ""}`} style={segmentStyle(line.segment[0], line.segment[1])} aria-hidden="true" />
           )}
           {Object.entries(points).map(([label, [x, y]]) => (
             <span key={label} className={`fano-point${selected.has(label) ? " is-active" : ""}`} style={{ left: `${x}%`, top: `${y}%` }}>

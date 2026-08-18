@@ -2,6 +2,7 @@ import { BrandHeader } from "../_components/editorial";
 import { siteContent } from "../../content/site";
 import { aboutGallery } from "../../content/about-gallery";
 import AboutGallery from "./AboutGallery";
+import { sitePath } from "../../lib/site-path";
 
 export default function AboutPage() {
   const { about } = siteContent;
@@ -21,7 +22,7 @@ export default function AboutPage() {
       <section className="about-detail">
         <p className="about-detail-index">UNA PRESENTACIÓN</p>
         <figure className="about-detail-photo">
-          <img src="/images/camila-tejido-y-gatos.jpeg" alt="Camila con un tejido azul y violeta, acompañada por sus dos gatos" />
+          <img src={sitePath("/images/camila-tejido-y-gatos.jpeg")} alt="Camila con un tejido azul y violeta, acompañada por sus dos gatos" />
           <figcaption>Tejido y compañía.</figcaption>
         </figure>
         <div className="about-detail-lead">
@@ -39,13 +40,13 @@ export default function AboutPage() {
       <AboutGallery entries={aboutGallery} />
 
       <section className="about-spectrum" aria-label="Áreas que componen CMSpec">
-        <a href="/investigacion"><span>01</span><strong>Investigación & Math</strong><small>Preguntas, modelos y notas matemáticas.</small></a>
-        <a href="/salud"><span>02</span><strong>Colaboraciones en Salud</strong><small>Análisis y discusión en salud pública.</small></a>
-        <a href="/aprender"><span>03</span><strong>Apuntes y exploración</strong><small>Cursos de pregrado y visualizaciones.</small></a>
-        <a href="/tejido"><span>04</span><strong>Tejido & Estructuras</strong><small>Matemática que también se piensa con las manos.</small></a>
+        <a href={sitePath("/investigacion")}><span>01</span><strong>Investigación & Math</strong><small>Preguntas, modelos y notas matemáticas.</small></a>
+        <a href={sitePath("/salud")}><span>02</span><strong>Colaboraciones en Salud</strong><small>Análisis y discusión en salud pública.</small></a>
+        <a href={sitePath("/aprender")}><span>03</span><strong>Apuntes y exploración</strong><small>Cursos de pregrado y visualizaciones.</small></a>
+        <a href={sitePath("/tejido")}><span>04</span><strong>Tejido & Estructuras</strong><small>Matemática que también se piensa con las manos.</small></a>
       </section>
 
-      <footer className="course-footer"><p>CMSpec · Sobre mí</p><a href="/">Volver al espectro ↗</a></footer>
+      <footer className="course-footer"><p>CMSpec · Sobre mí</p><a href={sitePath("/")}>Volver al espectro ↗</a></footer>
     </main>
   );
 }

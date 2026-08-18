@@ -3,6 +3,7 @@ import { BrandHeader } from "../../_components/editorial";
 import { getCollection, getEntry } from "../../../content/collections";
 import BraidWordBuilder from "./BraidWordBuilder";
 import MappingClassSweaterLab from "./MappingClassSweaterLab";
+import { sitePath } from "../../../lib/site-path";
 
 export default function BraidsKnotsKnittingPage() {
   const collection = getCollection("tejido")!;
@@ -27,7 +28,7 @@ export default function BraidsKnotsKnittingPage() {
         <p className="braid-article-lead">{entry.introduction}</p>
 
         <figure className="braid-hero-image">
-          <Image src="/images/trenzas-tejido-editorial.png" alt="Tres cordones de colores que se cruzan progresivamente hasta formar una muestra tejida" width={1672} height={941} priority />
+          <Image src={sitePath("/images/trenzas-tejido-editorial.png")} alt="Tres cordones de colores que se cruzan progresivamente hasta formar una muestra tejida" width={1672} height={941} priority />
           <figcaption>Del cruce local de hebras a una estructura que puede leerse paso a paso.</figcaption>
         </figure>
 
@@ -96,7 +97,7 @@ export default function BraidsKnotsKnittingPage() {
         </section>
       </article>
 
-      <footer className="course-footer"><p>CMSpec · Trenzas, nudos y tejido</p><a href="/tejido">Todas las entradas ↗</a></footer>
+      <footer className="course-footer"><p>CMSpec · Trenzas, nudos y tejido</p><a href={sitePath("/tejido")}>Todas las entradas ↗</a></footer>
     </main>
   );
 }

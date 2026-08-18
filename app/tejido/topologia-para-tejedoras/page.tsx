@@ -1,5 +1,6 @@
 import { BrandHeader } from "../../_components/editorial";
 import { getCollection, getEntry } from "../../../content/collections";
+import { sitePath } from "../../../lib/site-path";
 
 export default function TopologyForKnittersPage() {
   const collection = getCollection("tejido")!;
@@ -65,7 +66,7 @@ export default function TopologyForKnittersPage() {
           </div>
           <p>El sweater vuelve más interesante la pregunta. Para una tejedora, el cuello, los puños y la cintura son todos “huecos” por los que algo puede pasar. Matemáticamente conviene distinguir: una cosa es un <em>asa</em> o túnel de la superficie —el género— y otra son sus <em>componentes de borde</em>. Un sweater abierto en cuello, cintura y dos puños tiene cuatro bordes circulares; no por eso tiene género cuatro.</p>
           <p>Esta distinción muestra por qué contar orificios no siempre significa contar lo primero que vemos como abertura. La topología precisa qué clase de orificio está estudiando y qué transformaciones permite.</p>
-          <a className="topology-braid-link" href="/tejido/trenzas-nudos-y-tejido#mapping-class-group">
+          <a className="topology-braid-link" href={sitePath("/tejido/trenzas-nudos-y-tejido#mapping-class-group")}>
             <span>SIGUIENTE PREGUNTA</span>
             <strong>¿Cómo se pueden transformar esos orificios sin cambiar la superficie?</strong>
             <small>Explorar el mapping class group en la entrada sobre trenzas →</small>
@@ -93,7 +94,7 @@ export default function TopologyForKnittersPage() {
         </section>
       </article>
 
-      <footer className="course-footer"><p>CMSpec · Topología para tejedoras</p><a href="/tejido">Todas las entradas ↗</a></footer>
+      <footer className="course-footer"><p>CMSpec · Topología para tejedoras</p><a href={sitePath("/tejido")}>Todas las entradas ↗</a></footer>
     </main>
   );
 }

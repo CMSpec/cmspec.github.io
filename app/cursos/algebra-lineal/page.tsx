@@ -12,6 +12,8 @@ import SolutionDisclosures from "./SolutionDisclosures";
 import SiteHeader from "../../_components/SiteHeader";
 import SageSandbox from "../_components/SageSandbox";
 import { getSageSandbox } from "../../../content/courses/sage-sandboxes";
+import { sitePath } from "../../../lib/site-path";
+import type { ReactElement } from "react";
 
 function cleanDefinitionName(html: string) {
   return html
@@ -59,7 +61,7 @@ function RowVectorVisual() {
         <p>Una fila de datos ordenados puede interpretarse como un vector.</p>
       </div>
       <img
-        src="/images/algebra-lineal/tabla-a-vector-fila.png"
+        src={sitePath("/images/algebra-lineal/tabla-a-vector-fila.png")}
         alt="Una tabla con las columnas A, B y C y los valores 3, 5 y 8 se transforma en el vector fila 3, 5, 8"
         width="1792"
         height="869"
@@ -69,7 +71,7 @@ function RowVectorVisual() {
 }
 
 function visualElement(name: string) {
-  const visuals: Record<string, JSX.Element> = {
+  const visuals: Record<string, ReactElement> = {
     "tabla-vector": <RowVectorVisual />,
     "exploracion-vector-01": <ScalarVectorLab />,
     "exploracion-vector-02": <VectorSumLab />,
@@ -89,7 +91,7 @@ function visualElement(name: string) {
 }
 
 function SectionContent({ html }: { html: string }) {
-  const operations: Array<{ start: number; end: number; element: JSX.Element | null }> = [];
+  const operations: Array<{ start: number; end: number; element: ReactElement | null }> = [];
   const visualMarkerPattern = /(?:<p>\s*)?<span class="cmspec-visual-anchor" data-cmspec-visual="([^"]+)"><\/span>(?:\s*<\/p>)?/g;
 
   for (const match of html.matchAll(visualMarkerPattern)) {

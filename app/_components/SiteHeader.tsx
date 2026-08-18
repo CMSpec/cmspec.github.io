@@ -1,5 +1,6 @@
 import { collections } from "../../content/collections";
 import { courseNotes } from "../../content/course-library";
+import { sitePath } from "../../lib/site-path";
 
 const noteAreas = [
   {
@@ -30,7 +31,7 @@ const textileEntries = collections.find((collection) => collection.slug === "tej
 export default function SiteHeader() {
   return (
     <header className="site-header flat-header global-site-header">
-      <a className="brand" href="/#inicio" aria-label="CMSpec, inicio">
+      <a className="brand" href={sitePath("/#inicio")} aria-label="CMSpec, inicio">
         <span className="brand-mark" aria-hidden="true"><i /><i /><i /><i /></span>
         <span>CMSpec</span>
       </a>
@@ -41,12 +42,12 @@ export default function SiteHeader() {
             <div className="site-index-grid">
               {noteAreas.map((area) => (
                 <section className={`site-index-area index-${area.tone}`} key={area.href}>
-                  <a className="site-index-area-title" href={area.href}>
+                  <a className="site-index-area-title" href={sitePath(area.href)}>
                     <span>{area.number}</span><strong>{area.title}</strong><i>↗</i>
                   </a>
                   <div>
                     {area.entries.map((entry) => (
-                      <a href={entry.href} key={entry.href}>{entry.title}<span>→</span></a>
+                      <a href={sitePath(entry.href)} key={entry.href}>{entry.title}<span>→</span></a>
                     ))}
                   </div>
                 </section>
@@ -54,25 +55,25 @@ export default function SiteHeader() {
             </div>
           </div>
         </details>
-        <a href="/laboratorio">Laboratorio</a>
+        <a href={sitePath("/laboratorio")}>Laboratorio</a>
         <details className="site-index-menu textile-index-menu">
           <summary>Tejido <span aria-hidden="true">⌄</span></summary>
           <div className="site-index-panel textile-index-panel">
             <section className="site-index-area index-pink">
-              <a className="site-index-area-title" href="/tejido">
+              <a className="site-index-area-title" href={sitePath("/tejido")}>
                 <span>04</span><strong>Tejido & estructuras</strong><i>↗</i>
               </a>
               <div>
                 {textileEntries.map((entry) => (
-                  <a href={entry.href} key={entry.href}>{entry.title}<span>→</span></a>
+                  <a href={sitePath(entry.href)} key={entry.href}>{entry.title}<span>→</span></a>
                 ))}
               </div>
             </section>
           </div>
         </details>
-        <a href="/sobre-mi">Sobre mí</a>
+        <a href={sitePath("/sobre-mi")}>Sobre mí</a>
       </nav>
-      <a className="header-cta" href="/#contacto">Contacto <span aria-hidden="true">↗</span></a>
+      <a className="header-cta" href={sitePath("/#contacto")}>Contacto <span aria-hidden="true">↗</span></a>
     </header>
   );
 }

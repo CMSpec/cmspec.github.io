@@ -18,6 +18,7 @@ import { GenusTwoAnimator, QuotientSurfaceAnimator } from "../tejido/repeticion-
 import { CircleEquationExplorer, CrochetCurvatureExplorer } from "../tejido/superficies-que-se-pueden-tejer/GeometryCrochetExplorers";
 import BraidWordBuilder from "../tejido/trenzas-nudos-y-tejido/BraidWordBuilder";
 import MappingClassSweaterLab from "../tejido/trenzas-nudos-y-tejido/MappingClassSweaterLab";
+import { sitePath } from "../../lib/site-path";
 
 type LabItem = { title: string; subtitle: string; href: string; render: () => ReactNode };
 type LabArea = { number: string; title: string; tone: string; description: string; items: LabItem[] };
@@ -87,7 +88,7 @@ const areas: LabArea[] = [
 function LaboratoryArea({ area }: { area: LabArea }) {
   const [active, setActive] = useState(0);
   const item = area.items[active];
-  return <section className={`laboratory-area laboratory-live-area lab-${area.tone}`}><header><span>{area.number} / COLECCIÓN</span><h2>{area.title}</h2><p>{area.description}</p></header><div className="laboratory-live-layout"><nav aria-label={`Exploraciones de ${area.title}`}>{area.items.map((option, index) => <button className={active === index ? "is-active" : ""} onClick={() => setActive(index)} key={option.title}><span>{String(index + 1).padStart(2, "0")}</span><strong>{option.title}</strong><small>{option.subtitle}</small></button>)}</nav><article className="laboratory-live-card"><header><div><span>EXPLORACIÓN {String(active + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.subtitle}</p></div><a href={item.href}>Leer el contexto ↗</a></header><div className="laboratory-live-stage" key={`${area.number}-${active}`}>{item.render()}</div></article></div></section>;
+  return <section className={`laboratory-area laboratory-live-area lab-${area.tone}`}><header><span>{area.number} / COLECCIÓN</span><h2>{area.title}</h2><p>{area.description}</p></header><div className="laboratory-live-layout"><nav aria-label={`Exploraciones de ${area.title}`}>{area.items.map((option, index) => <button className={active === index ? "is-active" : ""} onClick={() => setActive(index)} key={option.title}><span>{String(index + 1).padStart(2, "0")}</span><strong>{option.title}</strong><small>{option.subtitle}</small></button>)}</nav><article className="laboratory-live-card"><header><div><span>EXPLORACIÓN {String(active + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.subtitle}</p></div><a href={sitePath(item.href)}>Leer el contexto ↗</a></header><div className="laboratory-live-stage" key={`${area.number}-${active}`}>{item.render()}</div></article></div></section>;
 }
 
 export default function InteractiveRepository() {

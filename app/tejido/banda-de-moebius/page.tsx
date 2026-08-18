@@ -1,6 +1,7 @@
 import { BrandHeader } from "../../_components/editorial";
 import { getCollection, getEntry } from "../../../content/collections";
 import { MoebiusIdentification, MoebiusWalk } from "./MoebiusExplorers";
+import { sitePath } from "../../../lib/site-path";
 
 export default function MoebiusBandPage() {
   const collection = getCollection("tejido")!;
@@ -82,7 +83,7 @@ export default function MoebiusBandPage() {
         </section>
       </article>
 
-      <footer className="course-footer"><p>CMSpec · Caminar por una banda de Möbius</p><a href="/tejido">Todas las entradas ↗</a></footer>
+      <footer className="course-footer"><p>CMSpec · Caminar por una banda de Möbius</p><a href={sitePath("/tejido")}>Todas las entradas ↗</a></footer>
     </main>
   );
 }
