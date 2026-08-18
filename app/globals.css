@@ -522,6 +522,14 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .laboratory-live-nav-group { display: flex; flex-direction: column; }
 .laboratory-live-nav-group + .laboratory-live-nav-group { margin-top: 18px; }
 .laboratory-live-nav-group > p { margin: 0 8px 6px; color: var(--lab-accent); font: 700 9px/1.35 var(--font-geist-mono); letter-spacing: .1em; text-transform: uppercase; }
+.laboratory-group-panels { display: grid; gap: 34px; padding-top: 30px; }
+.laboratory-group-panel { width: 100%; border: 1px solid #d6e2e3; background: #fff; }
+.laboratory-group-panel > header { display: flex; gap: 18px; align-items: baseline; padding: 18px 20px; border-bottom: 1px solid #d6e2e3; }
+.laboratory-group-panel > header span { color: var(--lab-accent); font: 700 9px var(--font-geist-mono); letter-spacing: .1em; }
+.laboratory-group-panel > header h3 { margin: 0; color: var(--ink); font: 400 21px/1.2 Georgia,serif; }
+.laboratory-group-panel .laboratory-live-layout { grid-template-columns: 258px minmax(0,1fr); gap: 0; padding-top: 0; }
+.laboratory-group-panel .laboratory-live-layout > nav { padding: 20px; }
+.laboratory-group-panel .laboratory-live-card { border: 0; border-left: 1px solid #d6e2e3; }
 .laboratory-live-layout > nav button { display: grid; grid-template-columns: 27px 1fr; gap: 2px 8px; width: 100%; padding: 12px 8px; border: 0; border-left: 2px solid transparent; background: transparent; color: #587078; text-align: left; cursor: pointer; }
 .laboratory-live-layout > nav button:hover { background: #f6f9f8; }
 .laboratory-live-layout > nav button.is-active { border-left-color: var(--lab-accent); background: color-mix(in srgb,var(--lab-accent) 8%,white); color: var(--ink); }
@@ -560,6 +568,9 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .official-sage-cell > footer { flex-direction: column; padding-inline: 18px; }
   .laboratory-area > header { gap: 14px; }
   .laboratory-live-layout { grid-template-columns: 1fr; }
+  .laboratory-group-panel .laboratory-live-layout { grid-template-columns: 1fr; }
+  .laboratory-group-panel .laboratory-live-layout > nav { padding: 14px; }
+  .laboratory-group-panel .laboratory-live-card { border-left: 0; border-top: 1px solid #d6e2e3; }
   .laboratory-live-layout > nav { position: static; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); max-height: none; padding: 0; }
   .laboratory-live-nav-group { display: contents; }
   .laboratory-live-nav-group > p { grid-column: 1/-1; margin-top: 16px; }
