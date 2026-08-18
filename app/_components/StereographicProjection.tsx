@@ -6,6 +6,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 const radians = (degrees: number) => degrees * Math.PI / 180;
 const tidy = (value: number) => Math.abs(value) < 0.005 ? "0.00" : value.toFixed(2);
+const projectionPlaneY = -1;
 
 type SceneParts = {
   point: THREE.Mesh;
@@ -62,8 +63,9 @@ export default function StereographicProjection() {
   const x = Math.sin(angle) * Math.cos(longitude);
   const y = Math.sin(angle) * Math.sin(longitude);
   const z = Math.cos(angle);
-  const projectedX = x / (1 - z);
-  const projectedY = y / (1 - z);
+  const projectionScale = (1 - projectionPlaneY) / (1 - z);
+  const projectedX = projectionScale * x;
+  const projectedY = projectionScale * y;
 
   useEffect(() => {
     if (!playing) return;
@@ -90,7 +92,7 @@ export default function StereographicProjection() {
     controls.dampingFactor = .07;
     controls.minDistance = 3.2;
     controls.maxDistance = 12;
-    controls.target.set(0, .05, 0);
+    controls.target.set(0, -.32, 0);
 
     const ambient = new THREE.HemisphereLight(0xffffff, 0xd5e7e4, 2.1);
     scene.add(ambient);
@@ -100,14 +102,17 @@ export default function StereographicProjection() {
 
     const plane = new THREE.Mesh(
       new THREE.PlaneGeometry(8, 8),
-      new THREE.MeshPhongMaterial({ color: 0xeaf3e5, transparent: true, opacity: .34, side: THREE.DoubleSide, depthWrite: false }),
+      new THREE.MeshPhongMaterial({ color: 0xddebd2, transparent: true, opacity: .25, side: THREE.DoubleSide, depthWrite: false }),
     );
     plane.rotation.x = -Math.PI / 2;
-    plane.position.y = -.012;
+    plane.position.y = projectionPlaneY;
+    plane.renderOrder = 1;
     scene.add(plane);
     const grid = new THREE.GridHelper(8, 16, 0x9fb2a1, 0xdbe6dc);
     (grid.material as THREE.Material).transparent = true;
-    (grid.material as THREE.Material).opacity = .6;
+    (grid.material as THREE.Material).opacity = .5;
+    grid.position.y = projectionPlaneY + .006;
+    grid.renderOrder = 2;
     scene.add(grid);
 
     const sphere = new THREE.Mesh(
@@ -122,8 +127,8 @@ export default function StereographicProjection() {
     );
     scene.add(wire);
 
-    scene.add(new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), new THREE.Vector3(-3.6, .01, 0), 7.2, 0x7e812d, .18, .09));
-    scene.add(new THREE.ArrowHelper(new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, .01, -3.6), 7.2, 0x007d9d, .18, .09));
+    scene.add(new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), new THREE.Vector3(-3.6, projectionPlaneY + .02, 0), 7.2, 0x7e812d, .18, .09));
+    scene.add(new THREE.ArrowHelper(new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, projectionPlaneY + .02, -3.6), 7.2, 0x007d9d, .18, .09));
 
     const north = new THREE.Mesh(new THREE.SphereGeometry(.07, 20, 16), new THREE.MeshPhongMaterial({ color: 0x153640 }));
     north.position.set(0, 1, 0);
@@ -182,7 +187,7 @@ export default function StereographicProjection() {
     const parts = partsRef.current;
     if (!parts) return;
     const pointPosition = new THREE.Vector3(x, z, y);
-    const imagePosition = new THREE.Vector3(projectedX, .015, projectedY);
+    const imagePosition = new THREE.Vector3(projectedX, projectionPlaneY + .025, projectedY);
     parts.point.position.copy(pointPosition);
     parts.image.position.copy(imagePosition);
     parts.pointLabel.position.copy(pointPosition).add(new THREE.Vector3(.13, .19, .08));
@@ -210,7 +215,7 @@ export default function StereographicProjection() {
           aria-label={`Escena tridimensional: el punto P de la esfera se proyecta en el punto p igual a ${tidy(projectedX)}, ${tidy(projectedY)} del plano`}
         />
         <span className="stereo-camera-hint" aria-hidden="true">↻ ARRASTRA PARA GIRAR · SCROLL PARA ACERCAR</span>
-        <div className="stereo-scene-legend" aria-hidden="true"><span><i /> esfera S²</span><span><i /> plano z=0</span><span><i /> recta N—p</span></div>
+        <div className="stereo-scene-legend" aria-hidden="true"><span><i /> esfera S²</span><span><i /> plano transparente z=−1</span><span><i /> recta N—p</span></div>
       </div>
       <div className="stereo-controls">
         <label>
