@@ -522,14 +522,6 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .laboratory-live-nav-group { display: flex; flex-direction: column; }
 .laboratory-live-nav-group + .laboratory-live-nav-group { margin-top: 18px; }
 .laboratory-live-nav-group > p { margin: 0 8px 6px; color: var(--lab-accent); font: 700 9px/1.35 var(--font-geist-mono); letter-spacing: .1em; text-transform: uppercase; }
-.laboratory-group-panels { display: grid; gap: 34px; padding-top: 30px; }
-.laboratory-group-panel { width: 100%; border: 1px solid #d6e2e3; background: #fff; }
-.laboratory-group-panel > header { display: flex; gap: 18px; align-items: baseline; padding: 18px 20px; border-bottom: 1px solid #d6e2e3; }
-.laboratory-group-panel > header span { color: var(--lab-accent); font: 700 9px var(--font-geist-mono); letter-spacing: .1em; }
-.laboratory-group-panel > header h3 { margin: 0; color: var(--ink); font: 400 21px/1.2 Georgia,serif; }
-.laboratory-group-panel .laboratory-live-layout { grid-template-columns: 258px minmax(0,1fr); gap: 0; padding-top: 0; }
-.laboratory-group-panel .laboratory-live-layout > nav { padding: 20px; }
-.laboratory-group-panel .laboratory-live-card { border: 0; border-left: 1px solid #d6e2e3; }
 .laboratory-live-layout > nav button { display: grid; grid-template-columns: 27px 1fr; gap: 2px 8px; width: 100%; padding: 12px 8px; border: 0; border-left: 2px solid transparent; background: transparent; color: #587078; text-align: left; cursor: pointer; }
 .laboratory-live-layout > nav button:hover { background: #f6f9f8; }
 .laboratory-live-layout > nav button.is-active { border-left-color: var(--lab-accent); background: color-mix(in srgb,var(--lab-accent) 8%,white); color: var(--ink); }
@@ -568,9 +560,6 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .official-sage-cell > footer { flex-direction: column; padding-inline: 18px; }
   .laboratory-area > header { gap: 14px; }
   .laboratory-live-layout { grid-template-columns: 1fr; }
-  .laboratory-group-panel .laboratory-live-layout { grid-template-columns: 1fr; }
-  .laboratory-group-panel .laboratory-live-layout > nav { padding: 14px; }
-  .laboratory-group-panel .laboratory-live-card { border-left: 0; border-top: 1px solid #d6e2e3; }
   .laboratory-live-layout > nav { position: static; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); max-height: none; padding: 0; }
   .laboratory-live-nav-group { display: contents; }
   .laboratory-live-nav-group > p { grid-column: 1/-1; margin-top: 16px; }
@@ -880,7 +869,8 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .movable-course-visual { min-width: 0; margin: 34px 0 54px; }
 .movable-course-visual > * { margin-top: 0; margin-bottom: 0; }
 .movable-course-visual .vector-explorations { margin: 0; }
-.movable-vector-exploration { width: 66.667%; margin-inline: auto; }
+.movable-vector-exploration { width: 100%; }
+.movable-vector-exploration > .vector-lab > * { width: 66.667%; margin-inline: auto; }
 .definition-side-layout { display: grid; grid-template-columns: minmax(260px, .78fr) minmax(370px, 1.22fr); align-items: start; gap: 34px; margin: 0 0 72px; }.definition-side-copy { min-width: 0; }.definition-side-visual { min-width: 0; }.definition-side-visual .vector-explorations, .definition-side-visual .basis-r2-lab { margin: 0; }.definition-side-copy .course-visual-example { margin: 42px 0 0; }.definition-side-copy .course-visual-example > div { grid-template-columns: 1fr; padding: 17px; }.definition-side-copy .course-visual-example h3, .definition-side-copy .course-visual-example p { grid-column: 1; grid-row: auto; }.definition-side-copy .course-visual-example span { font-size: 12px; }.definition-side-copy .course-visual-example h3 { font-size: 22px; }
 .definition-side-layout-basis { grid-template-columns: minmax(280px, .82fr) minmax(360px, 1.18fr); }
 .vector-lab, .basis-r2-lab { padding: 0; border: 1px solid var(--line); border-left: 3px solid var(--blue); background: #fffefa; overflow: hidden; }
@@ -1095,7 +1085,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .matrix-addition-stage, .matrix-multiplication-stage { grid-template-columns: 1fr; }.matrix-operator { text-align: center; }.multiplication-matrix-block { width: min(100%, 250px); margin-inline: auto; }.matrix-multiplication-equation { grid-template-columns: 1fr; }.matrix-multiplication-equation strong { grid-column: auto; }.dot-product-vectors { grid-template-columns: 1fr; }.dot-product-stage { padding: 26px 18px; }
   .row-reduction-stage { grid-template-columns: 1fr; padding: 28px 20px; }.row-matrix-block { width: min(100%, 300px); margin-inline: auto; }.row-operation-arrow { min-width: 0; }.row-operation-arrow span { transform: rotate(90deg); }.row-reduction-explanation { grid-template-columns: 1fr; padding: 20px; }.row-reduction-explanation > span { grid-row: auto; }
   .vector-lab-heading { flex-direction: column; }.vector-lab-heading > strong { text-align: left; }.vector-pair-sliders { grid-template-columns: 1fr; gap: 0; }.vector-lab-controls { align-items: flex-start; flex-direction: column; }.vector-lab-controls button { align-self: stretch; }.animation-button-group { width: 100%; }.animation-button-group button { flex: 1; }
-  .movable-vector-exploration { width: 100%; }
+  .movable-vector-exploration > .vector-lab > * { width: 100%; }
   .basis-r2-planes { grid-template-columns: 1fr; }.basis-plane-card { max-width: 360px; margin-inline: auto; }
   .visual-compendium-nav { position: static; grid-template-columns: 1fr 1fr; padding: 0 24px; }.visual-compendium-nav a:nth-child(odd) { border-left: 1px solid var(--line); }.visual-compendium { padding: 20px 24px 80px; }.visual-compendium-section { padding: 65px 0; scroll-margin-top: 0; }
   .trace-animation-stage, .triangular-animation-stage { grid-template-columns: 1fr; }.symmetry-row { grid-template-columns: 1fr; }.trace-animation-stage, .triangular-animation-stage, .symmetry-animation-stage { padding: 26px 18px; }
