@@ -85,16 +85,11 @@ const areas: LabArea[] = [
   ]},
 ];
 
-function LaboratoryPanel({ area, items, label }: { area: LabArea; items: LabItem[]; label?: string }) {
-  const [active, setActive] = useState(0);
-  const item = items[active];
-  return <div className={label ? "laboratory-group-panel" : undefined}>{label && <header><span>APRENDER</span><h3>{label}</h3></header>}<div className="laboratory-live-layout"><nav aria-label={label ?? `Exploraciones de ${area.title}`}><div className="laboratory-live-nav-group">{items.map((option, index) => <button className={active === index ? "is-active" : ""} onClick={() => setActive(index)} key={option.title}><span>{String(index + 1).padStart(2, "0")}</span><strong>{option.title}</strong><small>{option.subtitle}</small></button>)}</div></nav><article className="laboratory-live-card"><header><div><span>EXPLORACIÓN {String(active + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.subtitle}</p></div><a href={sitePath(item.href)}>Leer el contexto ↗</a></header><div className="laboratory-live-stage" key={`${area.number}-${label ?? "all"}-${active}`}>{item.render()}</div></article></div></div>;
-}
-
 function LaboratoryArea({ area }: { area: LabArea }) {
+  const [active, setActive] = useState(0);
+  const item = area.items[active];
   const groups = Array.from(new Set(area.items.map((option) => option.group ?? "")));
-  const grouped = groups.some(Boolean);
-  return <section className={`laboratory-area laboratory-live-area lab-${area.tone}`}><header><span>{area.number} / COLECCIÓN</span><h2>{area.title}</h2><p>{area.description}</p></header>{grouped ? <div className="laboratory-group-panels">{groups.filter(Boolean).map((group) => <LaboratoryPanel area={area} items={area.items.filter((option) => option.group === group)} label={group} key={group} />)}</div> : <LaboratoryPanel area={area} items={area.items} />}</section>;
+  return <section className={`laboratory-area laboratory-live-area lab-${area.tone}`}><header><span>{area.number} / COLECCIÓN</span><h2>{area.title}</h2><p>{area.description}</p></header><div className="laboratory-live-layout"><nav aria-label={`Exploraciones de ${area.title}`}>{groups.map((group) => <div className="laboratory-live-nav-group" key={group || area.title}>{group && <p>{group}</p>}{area.items.map((option, index) => option.group === (group || undefined) && <button className={active === index ? "is-active" : ""} onClick={() => setActive(index)} key={option.title}><span>{String(index + 1).padStart(2, "0")}</span><strong>{option.title}</strong><small>{option.subtitle}</small></button>)}</div>)}</nav><article className="laboratory-live-card"><header><div><span>EXPLORACIÓN {String(active + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.subtitle}</p></div><a href={sitePath(item.href)}>Leer el contexto ↗</a></header><div className="laboratory-live-stage" key={`${area.number}-${active}`}>{item.render()}</div></article></div></section>;
 }
 
 export default function InteractiveRepository() {
