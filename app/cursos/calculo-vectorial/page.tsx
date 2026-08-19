@@ -4,6 +4,7 @@ import CourseIndex from "../_components/CourseIndex";
 import SiteHeader from "../../_components/SiteHeader";
 import SageSandbox from "../_components/SageSandbox";
 import { getSageSandbox } from "../../../content/courses/sage-sandboxes";
+import LevelCurves3D from "./LevelCurves3D";
 
 export default function VectorCalculusCoursePage() {
   const course = vectorCalculusCourse;
@@ -71,6 +72,7 @@ export default function VectorCalculusCoursePage() {
                     >
                       <h4>{section.title}</h4>
                       <div className="latex-content" dangerouslySetInnerHTML={{ __html: section.html }} />
+                      {chapterIndex === 1 && section.title === "Curvas de nivel" ? <LevelCurves3D /> : null}
                     </section>
                   ))}
                   <SageSandbox {...getSageSandbox("calculo-vectorial", chapterIndex, chapter.title)} />
