@@ -75,23 +75,26 @@ function findElementEndById(html: string, id: string) {
 
 const exercise16SageCode = `import sympy as sp
 
-x = sp.symbols("x")
-a, b, c = sp.symbols("a b c")
+m, n = 2, 3
+A = sp.Matrix([[1, 2, 3], [4, 5, 6]])
+Z = sp.zeros(m, n)
+B = sp.ones(m, n)
+I = sp.eye(3)
 
-v = 11 - 9*x + 3*x**2
-v1 = 1 - x
-v2 = 2*x + x**2
-v3 = 5 - x + 3*x**2
-
-# Igualamos los coeficientes de 1, x y x².
-expression = sp.Poly(a*v1 + b*v2 + c*v3 - v, x)
-equations = [sp.Eq(coefficient, 0) for coefficient in expression.all_coeffs()]
-solution = sp.solve(equations, (a, b, c), dict=True)
-
-print("Coeficientes (a, b, c):", solution)
-if solution:
-    check = sp.expand(solution[0][a]*v1 + solution[0][b]*v2 + solution[0][c]*v3)
-    print("Comprobación:", check, "=", v)`;
+print("A =")
+sp.pprint(A)
+print("\\nMatriz nula =")
+sp.pprint(Z)
+print("\\nMatriz de unos =")
+sp.pprint(B)
+print("\\nIdentidad =")
+sp.pprint(I)
+print("\\nTranspuesta de A =")
+sp.pprint(A.T)
+print("\\nA + B =")
+sp.pprint(A + B)
+print("\\n3A =")
+sp.pprint(3*A)`;
 
 function RowVectorVisual() {
   return (
@@ -148,14 +151,14 @@ function SectionContent({ html }: { html: string }) {
     }
   }
 
-  const exercise16End = findElementEndById(html, "unidad-4-a0000000035");
+  const exercise16End = findElementEndById(html, "unidad-1-a0000000048");
   if (exercise16End >= 0) {
     operations.push({
       start: exercise16End,
       end: exercise16End,
       element: (
         <SageSandbox
-          title="Explora el ejercicio 1.6"
+          title="Prueba los comandos del ejercicio 1.6"
           code={exercise16SageCode}
         />
       ),
