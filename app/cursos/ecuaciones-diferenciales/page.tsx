@@ -6,6 +6,27 @@ import SiteHeader from "../../_components/SiteHeader";
 import SageSandbox from "../_components/SageSandbox";
 import { getSageSandbox } from "../../../content/courses/sage-sandboxes";
 import SolutionFamilyLab from "./SolutionFamilyLab";
+import SlopeFieldLab from "./SlopeFieldLab";
+
+function DifferentialSectionContent({ title, html }: { title: string; html: string }) {
+  if (title !== "Soluciones de una ecuación diferencial") {
+    return <div className="latex-content" dangerouslySetInnerHTML={{ __html: html }} />;
+  }
+
+  const explicitSolution = html.indexOf("Solución explícita");
+  const insertionPoint = explicitSolution >= 0 ? html.lastIndexOf("<p", explicitSolution) : -1;
+  if (insertionPoint < 0) {
+    return <div className="latex-content" dangerouslySetInnerHTML={{ __html: html }} />;
+  }
+
+  return (
+    <>
+      <div className="latex-content" dangerouslySetInnerHTML={{ __html: html.slice(0, insertionPoint) }} />
+      <SlopeFieldLab />
+      <div className="latex-content" dangerouslySetInnerHTML={{ __html: html.slice(insertionPoint) }} />
+    </>
+  );
+}
 
 export default function DifferentialEquationsCoursePage() {
   const course = differentialEquationsCourse;
@@ -73,7 +94,7 @@ export default function DifferentialEquationsCoursePage() {
                         id={`${chapter.slug}-seccion-${sectionIndex + 1}`}
                       >
                         <h4>{section.title}</h4>
-                        <div className="latex-content" dangerouslySetInnerHTML={{ __html: section.html }} />
+                        <DifferentialSectionContent title={section.title} html={section.html} />
                       </section>
                     </Fragment>
                   ))}
