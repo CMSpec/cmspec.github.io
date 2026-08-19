@@ -5,6 +5,34 @@ import SiteHeader from "../../_components/SiteHeader";
 import SageSandbox from "../_components/SageSandbox";
 import { getSageSandbox } from "../../../content/courses/sage-sandboxes";
 import LevelCurves3D from "./LevelCurves3D";
+import GradientTangent3D from "./GradientTangent3D";
+import ParametricEllipse from "./ParametricEllipse";
+
+function VectorSectionContent({ html, chapterIndex, title }: { html: string; chapterIndex: number; title: string }) {
+  if (chapterIndex === 1 && title === "Parametrizacion de curvas") {
+    const exampleStart = html.indexOf("Ejemplo 3:");
+    const splitAt = exampleStart >= 0 ? html.indexOf("</div>", exampleStart) : -1;
+    if (splitAt >= 0) {
+      const before = html.slice(0, splitAt + 6);
+      const after = html.slice(splitAt + 6);
+      return (
+        <>
+          <div className="latex-content" dangerouslySetInnerHTML={{ __html: before }} />
+          <ParametricEllipse />
+          <div className="latex-content" dangerouslySetInnerHTML={{ __html: after }} />
+        </>
+      );
+    }
+  }
+
+  return (
+    <>
+      <div className="latex-content" dangerouslySetInnerHTML={{ __html: html }} />
+      {chapterIndex === 1 && title === "Curvas de nivel" ? <LevelCurves3D /> : null}
+      {chapterIndex === 3 && title === "Introducción" ? <GradientTangent3D /> : null}
+    </>
+  );
+}
 
 export default function VectorCalculusCoursePage() {
   const course = vectorCalculusCourse;
@@ -71,8 +99,7 @@ export default function VectorCalculusCoursePage() {
                       key={`${chapter.slug}-${sectionIndex}`}
                     >
                       <h4>{section.title}</h4>
-                      <div className="latex-content" dangerouslySetInnerHTML={{ __html: section.html }} />
-                      {chapterIndex === 1 && section.title === "Curvas de nivel" ? <LevelCurves3D /> : null}
+                      <VectorSectionContent html={section.html} chapterIndex={chapterIndex} title={section.title} />
                     </section>
                   ))}
                   <SageSandbox {...getSageSandbox("calculo-vectorial", chapterIndex, chapter.title)} />

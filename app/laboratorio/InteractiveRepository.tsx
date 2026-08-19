@@ -12,6 +12,8 @@ import { SymmetryAnimation, TraceAnimation, TriangularMatricesAnimation } from "
 import RowReductionAnimation from "../cursos/algebra-lineal/RowReductionAnimation";
 import { ScalarVectorLab, VectorCombinationLab, VectorSumLab } from "../cursos/algebra-lineal/VectorExplorations";
 import LevelCurves3D from "../cursos/calculo-vectorial/LevelCurves3D";
+import GradientTangent3D from "../cursos/calculo-vectorial/GradientTangent3D";
+import ParametricEllipse from "../cursos/calculo-vectorial/ParametricEllipse";
 import { MoebiusIdentification } from "../tejido/banda-de-moebius/MoebiusExplorers";
 import { MoebiusWalk3D } from "../tejido/banda-de-moebius/MoebiusWalk3D";
 import { StitchPatternGrid } from "../tejido/del-reves-al-bit/StitchPatternGrid";
@@ -69,6 +71,8 @@ const areas: LabArea[] = [
     { title: "Producto de matrices", subtitle: "Fila por columna", href: "/cursos/algebra-lineal", render: () => <MatrixMultiplicationAnimation />, group: "Demostraciones de cálculo" },
     { title: "Reducción por filas", subtitle: "Operaciones elementales", href: "/cursos/algebra-lineal", render: () => <RowReductionAnimation />, group: "Demostraciones de cálculo" },
     { title: "Curvas de nivel en 3D", subtitle: "Cortes horizontales de una superficie", href: "/cursos/calculo-vectorial#clase-2-seccion-3", render: () => <LevelCurves3D />, group: "Cálculo vectorial" },
+    { title: "Gradiente y plano tangente", subtitle: "Superficie, plano y dirección normal", href: "/cursos/calculo-vectorial#clase-4-seccion-1", render: () => <GradientTangent3D />, group: "Cálculo vectorial" },
+    { title: "Elipse parametrizada", subtitle: "Una curva que aparece a medida que avanza t", href: "/cursos/calculo-vectorial#clase-2-seccion-4", render: () => <ParametricEllipse />, group: "Cálculo vectorial" },
   ]},
   { number: "03", title: "Salud", tone: "olive", description: "Comparadores para explorar funciones de IA y distintas posiciones de la supervisión humana.", items: [
     { title: "Funciones de IA en salud", subtitle: "Entradas, salidas y cautelas", href: "/salud/funciones-ia-en-salud", render: () => <HealthFunctionsExplorer /> },

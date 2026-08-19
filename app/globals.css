@@ -1033,6 +1033,46 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .level-curves-controls p { grid-column: 1 / -1; margin: 0; color: var(--blue); font: italic 20px/1.35 Georgia, serif; }
 .level-curves-controls p span { padding-inline: 7px; color: var(--muted); }
 
+/* Cálculo vectorial: gradiente, plano tangente y parametrizaciones */
+.gradient-tangent-3d,
+.parametric-ellipse { margin: 48px 0 62px; border: 1px solid var(--line); border-left: 4px solid var(--green); background: #fff; }
+.gradient-tangent-3d figcaption,
+.parametric-ellipse figcaption { display: flex; align-items: flex-start; justify-content: space-between; gap: 28px; padding: 25px 28px 22px; border-bottom: 1px solid var(--line); }
+.gradient-tangent-3d figcaption span,
+.parametric-ellipse figcaption span { display: block; margin-bottom: 9px; color: var(--olive); font: 700 10px/1.3 var(--font-geist-mono); letter-spacing: .12em; }
+.gradient-tangent-3d figcaption h5,
+.parametric-ellipse figcaption h5 { margin: 0; color: var(--ink); font: 400 27px/1.12 Georgia, serif; }
+.gradient-tangent-3d figcaption p,
+.parametric-ellipse figcaption p { max-width: 560px; margin: 11px 0 0; color: var(--muted); font: 16px/1.52 Georgia, serif; }
+.gradient-tangent-3d figcaption > strong,
+.parametric-ellipse figcaption > strong { flex: 0 0 auto; color: var(--blue); font: italic 23px/1.2 Georgia, serif; white-space: nowrap; }
+.gradient-tangent-stage-wrap { position: relative; background: #fff; }
+.gradient-tangent-stage { width: 100%; height: 520px; cursor: grab; touch-action: none; }
+.gradient-tangent-stage:active { cursor: grabbing; }
+.gradient-tangent-stage canvas { display: block; width: 100%; height: 100%; }
+.gradient-tangent-legend { position: absolute; left: 18px; bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px 15px; padding: 9px 11px; color: var(--muted); background: rgba(255,255,255,.9); border: 1px solid var(--line); font: 600 10px/1.2 var(--font-geist-sans); pointer-events: none; }
+.gradient-tangent-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.gradient-tangent-legend i { width: 16px; height: 3px; background: var(--green); }
+.gradient-tangent-legend span:nth-child(2) i,
+.gradient-tangent-legend span:nth-child(3) i { background: var(--blue); }
+.gradient-tangent-legend span:nth-child(4) i { background: var(--olive); }
+.gradient-tangent-formulas { display: flex; justify-content: space-between; gap: 20px; padding: 19px 28px 22px; border-top: 1px solid var(--line); }
+.gradient-tangent-formulas p { margin: 0; color: var(--blue); font: italic 19px/1.35 Georgia, serif; }
+.parametric-ellipse > svg { display: block; width: 100%; height: auto; max-height: 490px; background: linear-gradient(120deg, rgba(221,235,210,.22), rgba(185,221,236,.14)); }
+.parametric-grid line { stroke: #d8e0de; stroke-width: 1; }
+.parametric-axis { stroke: #526b73; stroke-width: 1.8; }
+.parametric-axis-label,
+.parametric-point-label { fill: #35515a; font: italic 18px Georgia, serif; }
+.parametric-ellipse-guide { fill: none; stroke: #aab8b5; stroke-width: 2; stroke-dasharray: 7 7; }
+.parametric-ellipse-trace { fill: none; stroke: var(--blue); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.parametric-radius { stroke: var(--olive); stroke-width: 2; stroke-dasharray: 6 6; }
+.parametric-current-point { fill: #d58f72; stroke: #fff; stroke-width: 3; }
+.parametric-ellipse-controls { display: grid; grid-template-columns: auto minmax(180px,1fr); align-items: center; gap: 12px 20px; padding: 20px 28px 23px; border-top: 1px solid var(--line); }
+.parametric-ellipse-controls label { display: flex; align-items: baseline; gap: 9px; color: var(--muted); font: 600 12px/1.3 var(--font-geist-mono); }
+.parametric-ellipse-controls output { min-width: 36px; color: var(--ink); font-weight: 700; }
+.parametric-ellipse-controls input { width: 100%; accent-color: var(--blue); }
+.parametric-ellipse-controls p { grid-column: 1/-1; margin: 0; color: var(--blue); font: italic 19px/1.35 Georgia, serif; }
+
 /* Repetición, identificaciones y superficies */
 .quotient-article { --section-edge: #f6d4c4; }
 .quotient-article .braid-prose-section > p:not(.braid-section-number) { max-width: 770px; }
@@ -1116,7 +1156,24 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .edo-course .course-masthead h1 { font-size: 32px; }
   .edo-solution-family > header { display: block; padding: 20px; }.edo-solution-family > header strong { display: block; margin-top: 14px; }.edo-solution-family-controls { grid-template-columns: 1fr auto; padding: 18px 20px 8px; }.edo-solution-family-controls input { grid-column: 1 / -1; grid-row: 2; }.edo-solution-family canvas { height: 280px; }.edo-solution-family > p { padding: 16px 20px 20px; }
   .edo-slope-field > header { display: block; padding: 20px; }.edo-slope-field > header strong { display: block; margin-top: 14px; }.edo-slope-field-controls { grid-template-columns: 1fr; padding: 18px 20px 10px; }.edo-slope-field canvas { height: 320px; }.edo-slope-field > p { padding: 16px 20px 20px; }
-  .level-curves-3d figcaption { display: block; padding: 21px 20px; }.level-curves-3d figcaption > strong { display: block; margin-top: 15px; }.level-curves-stage { height: 350px; }.level-curves-camera-hint { top: 10px; right: 10px; font-size: 8px; }.level-curves-legend { right: 10px; left: 10px; bottom: 10px; }.level-curves-controls { grid-template-columns: 1fr; padding: 18px 20px 21px; }.level-curves-controls input { grid-row: 2; }.level-curves-controls p { grid-column: auto; font-size: 17px; }
+  .level-curves-3d figcaption,
+  .gradient-tangent-3d figcaption,
+  .parametric-ellipse figcaption { display: block; padding: 21px 20px; }
+  .level-curves-3d figcaption > strong,
+  .gradient-tangent-3d figcaption > strong,
+  .parametric-ellipse figcaption > strong { display: block; margin-top: 15px; white-space: normal; }
+  .level-curves-stage,
+  .gradient-tangent-stage { height: 350px; }
+  .level-curves-camera-hint { top: 10px; right: 10px; font-size: 8px; }
+  .level-curves-legend,
+  .gradient-tangent-legend { right: 10px; left: 10px; bottom: 10px; }
+  .level-curves-controls,
+  .parametric-ellipse-controls { grid-template-columns: 1fr; padding: 18px 20px 21px; }
+  .level-curves-controls input,
+  .parametric-ellipse-controls input { grid-row: 2; }
+  .level-curves-controls p,
+  .parametric-ellipse-controls p { grid-column: auto; font-size: 17px; }
+  .gradient-tangent-formulas { display: grid; padding: 17px 20px 20px; }
   .learn-masthead { padding: 80px 24px 65px; }.learn-masthead h1 { font-size: 36px; }.learn-deck { margin-top: 42px; }.learn-deck p { font-size: 20px; }
   .notes-library { padding: 70px 24px 85px; }.notes-library > header { grid-template-columns: 1fr; gap: 18px; }.notes-library > header > p:last-child { grid-column: auto; }.note-entry { grid-template-columns: 1fr; gap: 32px; padding: 50px 0; }.note-dates { grid-template-columns: 1fr 1fr; gap: 18px; }.note-visual { grid-column: auto; min-height: 210px; }.learn-colophon { grid-template-columns: 1fr; gap: 22px; }
   .course-library-page .learn-masthead { padding: 55px 24px 48px; }.course-library-page .learn-masthead h1 { font-size: 29px; }.course-library-page .learn-deck { margin-top: 22px; }.course-library-page .learn-deck p { font-size: 15px; }.course-library-page .notes-library { padding-top: 25px; }.course-library-page .note-entry { grid-template-columns: 1fr; gap: 22px; padding: 42px 0; }.course-library-page .note-entry-copy h3 { font-size: 29px; }.course-library-page .note-visual { grid-column: auto; width: 145px; min-height: 145px; justify-self: start; }
