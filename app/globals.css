@@ -996,6 +996,18 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .edo-solution-family-controls output { min-width: 44px; color: var(--ink); }
 .edo-solution-family canvas { display: block; width: 100%; height: 330px; }
 .edo-solution-family > p { margin: 0; padding: 18px 28px 24px; border-top: 1px solid var(--line); color: var(--muted); font: 16px/1.55 Georgia, serif; }
+.edo-slope-field { margin: 46px 0 58px; border: 1px solid var(--line); border-left: 4px solid var(--blue); background: #fff; }
+.edo-slope-field > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 28px; padding: 24px 28px 20px; border-bottom: 1px solid var(--line); }
+.edo-slope-field > header span { display: block; margin-bottom: 8px; color: var(--olive); font: 700 10px/1.3 var(--font-geist-mono); letter-spacing: .12em; }
+.edo-slope-field > header h4 { margin: 0; color: var(--ink); font: 400 27px/1.12 Georgia, serif; }
+.edo-slope-field > header strong { flex: 0 0 auto; color: var(--blue); font: italic 26px/1.2 Georgia, serif; }
+.edo-slope-field-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; padding: 18px 28px 10px; }
+.edo-slope-field-controls label { display: grid; gap: 8px; color: var(--muted); font: 600 12px/1.3 var(--font-geist-mono); }
+.edo-slope-field-controls label span { display: flex; justify-content: space-between; gap: 12px; }
+.edo-slope-field-controls output { color: var(--ink); }
+.edo-slope-field-controls input { width: 100%; accent-color: var(--blue); }
+.edo-slope-field canvas { display: block; width: 100%; height: 400px; cursor: crosshair; touch-action: none; }
+.edo-slope-field > p { margin: 0; padding: 18px 28px 24px; border-top: 1px solid var(--line); color: var(--muted); font: 16px/1.55 Georgia, serif; }
 
 /* Repetición, identificaciones y superficies */
 .quotient-article { --section-edge: #f6d4c4; }
@@ -1079,6 +1091,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .course-masthead { padding: 70px 24px 60px; }.course-masthead h1 { font-size: 64px; }.course-deck { font-size: 20px; }.course-meta { grid-template-columns: 1fr; gap: 15px; }
   .edo-course .course-masthead h1 { font-size: 32px; }
   .edo-solution-family > header { display: block; padding: 20px; }.edo-solution-family > header strong { display: block; margin-top: 14px; }.edo-solution-family-controls { grid-template-columns: 1fr auto; padding: 18px 20px 8px; }.edo-solution-family-controls input { grid-column: 1 / -1; grid-row: 2; }.edo-solution-family canvas { height: 280px; }.edo-solution-family > p { padding: 16px 20px 20px; }
+  .edo-slope-field > header { display: block; padding: 20px; }.edo-slope-field > header strong { display: block; margin-top: 14px; }.edo-slope-field-controls { grid-template-columns: 1fr; padding: 18px 20px 10px; }.edo-slope-field canvas { height: 320px; }.edo-slope-field > p { padding: 16px 20px 20px; }
   .learn-masthead { padding: 80px 24px 65px; }.learn-masthead h1 { font-size: 36px; }.learn-deck { margin-top: 42px; }.learn-deck p { font-size: 20px; }
   .notes-library { padding: 70px 24px 85px; }.notes-library > header { grid-template-columns: 1fr; gap: 18px; }.notes-library > header > p:last-child { grid-column: auto; }.note-entry { grid-template-columns: 1fr; gap: 32px; padding: 50px 0; }.note-dates { grid-template-columns: 1fr 1fr; gap: 18px; }.note-visual { grid-column: auto; min-height: 210px; }.learn-colophon { grid-template-columns: 1fr; gap: 22px; }
   .course-library-page .learn-masthead { padding: 55px 24px 48px; }.course-library-page .learn-masthead h1 { font-size: 29px; }.course-library-page .learn-deck { margin-top: 22px; }.course-library-page .learn-deck p { font-size: 15px; }.course-library-page .notes-library { padding-top: 25px; }.course-library-page .note-entry { grid-template-columns: 1fr; gap: 22px; padding: 42px 0; }.course-library-page .note-entry-copy h3 { font-size: 29px; }.course-library-page .note-visual { grid-column: auto; width: 145px; min-height: 145px; justify-self: start; }
