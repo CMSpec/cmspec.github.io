@@ -27,10 +27,10 @@ export default function SolutionFamilyLab() {
       const padding = { left: 46, right: 24, top: 22, bottom: 36 };
       const plotWidth = width - padding.left - padding.right;
       const plotHeight = height - padding.top - padding.bottom;
-      const xMin = -2;
-      const xMax = 1.35;
-      const yMin = -10;
-      const yMax = 10;
+      const xMin = -2 * Math.PI;
+      const xMax = 2 * Math.PI;
+      const yMin = -5;
+      const yMax = 5;
       const xToCanvas = (x: number) => padding.left + ((x - xMin) / (xMax - xMin)) * plotWidth;
       const yToCanvas = (y: number) => padding.top + ((yMax - y) / (yMax - yMin)) * plotHeight;
 
@@ -40,13 +40,13 @@ export default function SolutionFamilyLab() {
 
       context.strokeStyle = "rgba(15, 56, 67, 0.10)";
       context.lineWidth = 1;
-      for (let x = -2; x <= 1; x += 0.5) {
+      for (let x = -2 * Math.PI; x <= 2 * Math.PI; x += Math.PI / 2) {
         context.beginPath();
         context.moveTo(xToCanvas(x), padding.top);
         context.lineTo(xToCanvas(x), height - padding.bottom);
         context.stroke();
       }
-      for (let y = -10; y <= 10; y += 2) {
+      for (let y = -4; y <= 4; y += 1) {
         context.beginPath();
         context.moveTo(padding.left, yToCanvas(y));
         context.lineTo(width - padding.right, yToCanvas(y));
@@ -69,7 +69,7 @@ export default function SolutionFamilyLab() {
         let started = false;
         for (let index = 0; index <= 260; index += 1) {
           const x = xMin + ((xMax - xMin) * index) / 260;
-          const y = c * Math.exp(x);
+          const y = Math.sin(x) + c;
           if (y < yMin || y > yMax) {
             started = false;
             continue;
@@ -122,7 +122,7 @@ export default function SolutionFamilyLab() {
           <span>EXPLORACIÓN · FAMILIA DE SOLUCIONES</span>
           <h4 id="edo-solution-family-title">Una constante, una curva distinta</h4>
         </div>
-        <strong>y(x) = {constant === 0 ? "0" : `${constant === 1 ? "" : constant === -1 ? "−" : constant}eˣ`}</strong>
+        <strong>y(x) = sin(x) {constant === 0 ? "" : constant > 0 ? `+ ${constant}` : `− ${Math.abs(constant)}`}</strong>
       </header>
 
       <div className="edo-solution-family-controls">
@@ -139,9 +139,9 @@ export default function SolutionFamilyLab() {
         <output htmlFor="solution-constant">c = {constant}</output>
       </div>
 
-      <canvas ref={canvasRef} role="img" aria-label={`Gráfico de la solución y igual a ${constant} por e elevado a x dentro de su familia de soluciones`} />
+      <canvas ref={canvasRef} role="img" aria-label={`Gráfico de la solución y igual a seno de x más ${constant} dentro de su familia de soluciones`} />
       <p>
-        Todas las curvas satisfacen <i>y′ = y</i>. Al fijar el valor inicial <i>y(0) = c</i>, se selecciona una sola curva de la familia.
+        Todas las curvas satisfacen <i>y′ = cos(x)</i>. Al fijar el valor inicial <i>y(0) = c</i>, se selecciona una sola curva de la familia.
       </p>
     </section>
   );
