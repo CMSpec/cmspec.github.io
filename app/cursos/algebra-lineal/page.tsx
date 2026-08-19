@@ -52,6 +52,47 @@ function findTheoremStart(
   return html.search(pattern);
 }
 
+function findElementEndById(html: string, id: string) {
+  const idPosition = html.indexOf(`id="${id}"`);
+  if (idPosition < 0) return -1;
+
+  const start = html.lastIndexOf("<div", idPosition);
+  if (start < 0) return -1;
+
+  const divPattern = /<\/?div\b[^>]*>/g;
+  let depth = 0;
+
+  for (const match of html.slice(start).matchAll(divPattern)) {
+    const tag = match[0];
+    depth += tag.startsWith("</") ? -1 : 1;
+    if (depth === 0 && match.index !== undefined) {
+      return start + match.index + tag.length;
+    }
+  }
+
+  return -1;
+}
+
+const exercise16SageCode = `import sympy as sp
+
+x = sp.symbols("x")
+a, b, c = sp.symbols("a b c")
+
+v = 11 - 9*x + 3*x**2
+v1 = 1 - x
+v2 = 2*x + x**2
+v3 = 5 - x + 3*x**2
+
+# Igualamos los coeficientes de 1, x y x².
+expression = sp.Poly(a*v1 + b*v2 + c*v3 - v, x)
+equations = [sp.Eq(coefficient, 0) for coefficient in expression.all_coeffs()]
+solution = sp.solve(equations, (a, b, c), dict=True)
+
+print("Coeficientes (a, b, c):", solution)
+if solution:
+    check = sp.expand(solution[0][a]*v1 + solution[0][b]*v2 + solution[0][c]*v3)
+    print("Comprobación:", check, "=", v)`;
+
 function RowVectorVisual() {
   return (
     <figure className="course-visual-example row-vector-visual">
@@ -105,6 +146,20 @@ function SectionContent({ html }: { html: string }) {
         element,
       });
     }
+  }
+
+  const exercise16End = findElementEndById(html, "unidad-4-a0000000035");
+  if (exercise16End >= 0) {
+    operations.push({
+      start: exercise16End,
+      end: exercise16End,
+      element: (
+        <SageSandbox
+          title="Explora el ejercicio 1.6"
+          code={exercise16SageCode}
+        />
+      ),
+    });
   }
 
   const replacedSourceExamples = [
