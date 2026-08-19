@@ -50,6 +50,29 @@ function createSurfaceGeometry() {
   return geometry;
 }
 
+function createAxisLabel(text: string, color = "#153640") {
+  const canvas = document.createElement("canvas");
+  canvas.width = 128;
+  canvas.height = 128;
+  const context = canvas.getContext("2d");
+  if (context) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = color;
+    context.font = "italic 700 68px Georgia";
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.fillText(text, 64, 62);
+  }
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  const sprite = new THREE.Sprite(
+    new THREE.SpriteMaterial({ map: texture, transparent: true, depthTest: false }),
+  );
+  sprite.scale.set(0.34, 0.34, 1);
+  sprite.renderOrder = 8;
+  return sprite;
+}
+
 function updateGuides(guides: THREE.LineSegments, radius: number, height: number) {
   const points: THREE.Vector3[] = [];
   for (let index = 0; index < 12; index += 1) {
@@ -173,12 +196,32 @@ export default function LevelCurves3D() {
     );
     scene.add(guides);
 
-    const origin = new THREE.Vector3(-DOMAIN * 1.12, 0.012, -DOMAIN * 1.12);
-    scene.add(
-      new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), origin, DOMAIN * 2.25, 0x153640, 0.16, 0.08),
-      new THREE.ArrowHelper(new THREE.Vector3(0, 0, 1), origin, DOMAIN * 2.25, 0x153640, 0.16, 0.08),
-      new THREE.ArrowHelper(new THREE.Vector3(0, 1, 0), origin, 4.2, 0x153640, 0.16, 0.08),
+    // Three.js usa Y como eje vertical. En la notación matemática de la
+    // visualización, ese eje representa z y el plano horizontal representa xy.
+    const origin = new THREE.Vector3(0, 0.025, 0);
+    const axisLength = DOMAIN * 1.18;
+    const axisMaterial = new THREE.LineBasicMaterial({ color: 0x153640 });
+    const negativeAxes = new THREE.LineSegments(
+      new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(-axisLength, origin.y, 0), origin,
+        new THREE.Vector3(0, origin.y, -axisLength), origin,
+      ]),
+      axisMaterial,
     );
+    scene.add(
+      negativeAxes,
+      new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), origin, axisLength, 0x153640, 0.16, 0.08),
+      new THREE.ArrowHelper(new THREE.Vector3(0, 0, 1), origin, axisLength, 0x153640, 0.16, 0.08),
+      new THREE.ArrowHelper(new THREE.Vector3(0, 1, 0), origin, 3.05, 0x153640, 0.16, 0.08),
+    );
+
+    const xLabel = createAxisLabel("x");
+    xLabel.position.set(axisLength + 0.18, 0.08, 0);
+    const yLabel = createAxisLabel("y");
+    yLabel.position.set(0, 0.08, axisLength + 0.18);
+    const zLabel = createAxisLabel("z");
+    zLabel.position.set(0.08, 3.2, 0);
+    scene.add(xLabel, yLabel, zLabel);
 
     partsRef.current = { cuttingPlane, cuttingFrame, levelCurve, projectedCurve, guides };
 
