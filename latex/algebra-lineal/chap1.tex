@@ -367,28 +367,25 @@ es antisimétrica, pues por la proposici\'on \ref{traspuesta} se tendría que
 \cmspecvisual{exploracion-vector-03}
 
 \begin{ejer}
-Dado los siguientes comandos de \texttt{Octave}, muestre y argumente cada uno de los enunciados anteriores, proponga ejemplos para cada caso:
+Dado los siguientes comandos de \texttt{SageMath}, muestre y argumente cada uno de los enunciados anteriores y proponga ejemplos para cada caso:
 \vspace{0.5cm}
 \begin{center}
 \begin{tabular}{|>{\columncolor[gray]{0.8}} p{5cm}|p{10cm}|}
 \hline
 Comando & Explicación \\ \hline
-\texttt{A=[1,2,3;4,5,6]}&  Define matriz de $2 \times 3$.\\ \hline
-\texttt{A=zeros(m,n)}&  Define matriz nulas $m \times n$.\\ \hline
-\texttt{B=ones(m,n)}&  Define matriz $m \times n$ llena de 1's.\\ \hline
-\texttt{C=rand(m,n)}&  Define matriz $m \times n$ con números decimales al azar entre 0-1.\\ \hline
-\texttt{D=randn(m,n)}&  Define matriz $m \times n$ con números de probabilidad normal $N(0,1)$. \\ \hline
-\texttt{E=randp(p,m,n)} & Define matriz $m \times n$ con números enteros positivos de probabilidad poisson $P(\text{media}=p)$.\\ \hline
-\texttt{I=eye(4,4)}&  Define matriz identidad $4 \times 4$.\\ \hline
-\texttt{A’} & Transpuesta de $A$.\\ \hline
+\texttt{A=matrix([[1,2,3],[4,5,6]])}& Define una matriz de $2 \times 3$.\\ \hline
+\texttt{Z=zero\_matrix(m,n)}& Define la matriz nula de $m \times n$.\\ \hline
+\texttt{B=matrix(m,n,[1]*(m*n))}& Define una matriz de $m \times n$ llena de 1's.\\ \hline
+\texttt{C=random\_matrix(RDF,m,n)}& Define una matriz de $m \times n$ con entradas reales aleatorias.\\ \hline
+\texttt{I=identity\_matrix(4)}& Define la matriz identidad de $4 \times 4$.\\ \hline
+\texttt{A.transpose()} & Devuelve la transpuesta de $A$.\\ \hline
 \texttt{A+B} & Suma de matrices\\ \hline
 \texttt{3*A} & Multiplica el escalar 3 a cada elemento de $A$. \\ \hline
 \texttt{-A} & Matriz inversa aditiva de $A$.\\ \hline
-\texttt{T=trace(A)} & Devuelve el valor de la traza de $A$.\\ \hline
-\texttt{V=diag(A)} & Devuelve en un vector vertical, los elementos de la
+\texttt{T=A.trace()} & Devuelve el valor de la traza de $A$.\\ \hline
+\texttt{V=A.diagonal()} & Devuelve en un vector los elementos de la
 diagonal.\\ \hline
-\texttt{Sum(V) o sum(A)} & Suma las coordenandas de un vector o suma las entradas columna a columna
-de una matriz, entregando un vector.\\ \hline
+\texttt{sum(V)} & Suma las coordenadas del vector $V$.\\ \hline
 \end{tabular}
 \end{center}
 \end{ejer}
