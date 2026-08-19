@@ -1009,6 +1009,30 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .edo-slope-field canvas { display: block; width: 100%; height: 400px; cursor: crosshair; touch-action: none; }
 .edo-slope-field > p { margin: 0; padding: 18px 28px 24px; border-top: 1px solid var(--line); color: var(--muted); font: 16px/1.55 Georgia, serif; }
 
+/* Cálculo vectorial: superficie y curvas de nivel */
+.level-curves-3d { margin: 48px 0 62px; border: 1px solid var(--line); border-left: 4px solid var(--green); background: #fff; }
+.level-curves-3d figcaption { display: flex; align-items: flex-start; justify-content: space-between; gap: 28px; padding: 25px 28px 22px; border-bottom: 1px solid var(--line); }
+.level-curves-3d figcaption span { display: block; margin-bottom: 9px; color: var(--olive); font: 700 10px/1.3 var(--font-geist-mono); letter-spacing: .12em; }
+.level-curves-3d figcaption h5 { margin: 0; color: var(--ink); font: 400 27px/1.12 Georgia, serif; }
+.level-curves-3d figcaption p { max-width: 550px; margin: 11px 0 0; color: var(--muted); font: 16px/1.52 Georgia, serif; }
+.level-curves-3d figcaption > strong { flex: 0 0 auto; color: var(--blue); font: italic 25px/1.2 Georgia, serif; white-space: nowrap; }
+.level-curves-stage-wrap { position: relative; background: #fff; }
+.level-curves-stage { width: 100%; height: 510px; cursor: grab; touch-action: none; }
+.level-curves-stage:active { cursor: grabbing; }
+.level-curves-stage canvas { display: block; width: 100%; height: 100%; }
+.level-curves-camera-hint { position: absolute; top: 14px; right: 16px; padding: 7px 10px; color: var(--muted); background: rgba(255,255,255,.86); border: 1px solid var(--line); font: 700 9px/1.2 var(--font-geist-mono); letter-spacing: .08em; pointer-events: none; }
+.level-curves-legend { position: absolute; left: 18px; bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px 15px; padding: 9px 11px; color: var(--muted); background: rgba(255,255,255,.9); border: 1px solid var(--line); font: 600 10px/1.2 var(--font-geist-sans); pointer-events: none; }
+.level-curves-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.level-curves-legend i { width: 16px; height: 3px; background: var(--green); }
+.level-curves-legend span:nth-child(2) i { background: var(--blue); }
+.level-curves-legend span:nth-child(3) i { background: var(--olive); }
+.level-curves-controls { display: grid; grid-template-columns: auto minmax(180px, 1fr); align-items: center; gap: 12px 20px; padding: 20px 28px 23px; border-top: 1px solid var(--line); }
+.level-curves-controls label { display: flex; align-items: baseline; gap: 8px; color: var(--muted); font: 600 12px/1.3 var(--font-geist-mono); }
+.level-curves-controls output { min-width: 30px; color: var(--ink); font-weight: 700; }
+.level-curves-controls input { width: 100%; accent-color: var(--blue); }
+.level-curves-controls p { grid-column: 1 / -1; margin: 0; color: var(--blue); font: italic 20px/1.35 Georgia, serif; }
+.level-curves-controls p span { padding-inline: 7px; color: var(--muted); }
+
 /* Repetición, identificaciones y superficies */
 .quotient-article { --section-edge: #f6d4c4; }
 .quotient-article .braid-prose-section > p:not(.braid-section-number) { max-width: 770px; }
@@ -1092,6 +1116,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .edo-course .course-masthead h1 { font-size: 32px; }
   .edo-solution-family > header { display: block; padding: 20px; }.edo-solution-family > header strong { display: block; margin-top: 14px; }.edo-solution-family-controls { grid-template-columns: 1fr auto; padding: 18px 20px 8px; }.edo-solution-family-controls input { grid-column: 1 / -1; grid-row: 2; }.edo-solution-family canvas { height: 280px; }.edo-solution-family > p { padding: 16px 20px 20px; }
   .edo-slope-field > header { display: block; padding: 20px; }.edo-slope-field > header strong { display: block; margin-top: 14px; }.edo-slope-field-controls { grid-template-columns: 1fr; padding: 18px 20px 10px; }.edo-slope-field canvas { height: 320px; }.edo-slope-field > p { padding: 16px 20px 20px; }
+  .level-curves-3d figcaption { display: block; padding: 21px 20px; }.level-curves-3d figcaption > strong { display: block; margin-top: 15px; }.level-curves-stage { height: 350px; }.level-curves-camera-hint { top: 10px; right: 10px; font-size: 8px; }.level-curves-legend { right: 10px; left: 10px; bottom: 10px; }.level-curves-controls { grid-template-columns: 1fr; padding: 18px 20px 21px; }.level-curves-controls input { grid-row: 2; }.level-curves-controls p { grid-column: auto; font-size: 17px; }
   .learn-masthead { padding: 80px 24px 65px; }.learn-masthead h1 { font-size: 36px; }.learn-deck { margin-top: 42px; }.learn-deck p { font-size: 20px; }
   .notes-library { padding: 70px 24px 85px; }.notes-library > header { grid-template-columns: 1fr; gap: 18px; }.notes-library > header > p:last-child { grid-column: auto; }.note-entry { grid-template-columns: 1fr; gap: 32px; padding: 50px 0; }.note-dates { grid-template-columns: 1fr 1fr; gap: 18px; }.note-visual { grid-column: auto; min-height: 210px; }.learn-colophon { grid-template-columns: 1fr; gap: 22px; }
   .course-library-page .learn-masthead { padding: 55px 24px 48px; }.course-library-page .learn-masthead h1 { font-size: 29px; }.course-library-page .learn-deck { margin-top: 22px; }.course-library-page .learn-deck p { font-size: 15px; }.course-library-page .notes-library { padding-top: 25px; }.course-library-page .note-entry { grid-template-columns: 1fr; gap: 22px; padding: 42px 0; }.course-library-page .note-entry-copy h3 { font-size: 29px; }.course-library-page .note-visual { grid-column: auto; width: 145px; min-height: 145px; justify-self: start; }
