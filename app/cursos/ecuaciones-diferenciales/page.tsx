@@ -1,9 +1,11 @@
+import { Fragment } from "react";
 import { differentialEquationsCourse } from "../../../content/courses/differential-equations";
 import { differentialEquationsChapters } from "../../../content/courses/differential-equations-chapters";
 import CourseIndex from "../_components/CourseIndex";
 import SiteHeader from "../../_components/SiteHeader";
 import SageSandbox from "../_components/SageSandbox";
 import { getSageSandbox } from "../../../content/courses/sage-sandboxes";
+import SolutionFamilyLab from "./SolutionFamilyLab";
 
 export default function DifferentialEquationsCoursePage() {
   const course = differentialEquationsCourse;
@@ -64,14 +66,16 @@ export default function DifferentialEquationsCoursePage() {
                 </summary>
                 <article className="chapter-article">
                   {chapter.sections.map((section, sectionIndex) => (
-                    <section
-                      className="chapter-section"
-                      id={`${chapter.slug}-seccion-${sectionIndex + 1}`}
-                      key={`${chapter.slug}-${sectionIndex}`}
-                    >
-                      <h4>{section.title}</h4>
-                      <div className="latex-content" dangerouslySetInnerHTML={{ __html: section.html }} />
-                    </section>
+                    <Fragment key={`${chapter.slug}-${sectionIndex}`}>
+                      {chapterIndex === 0 && section.title === "Problemas de valores iniciales" ? <SolutionFamilyLab /> : null}
+                      <section
+                        className="chapter-section"
+                        id={`${chapter.slug}-seccion-${sectionIndex + 1}`}
+                      >
+                        <h4>{section.title}</h4>
+                        <div className="latex-content" dangerouslySetInnerHTML={{ __html: section.html }} />
+                      </section>
+                    </Fragment>
                   ))}
                   <SageSandbox {...getSageSandbox("ecuaciones-diferenciales", chapterIndex, chapter.title)} />
                 </article>
