@@ -76,13 +76,73 @@ const areas: LabArea[] = [
   ]},
 ];
 
-function LaboratoryArea({ area }: { area: LabArea }) {
-  const [active, setActive] = useState(0);
-  const item = area.items[active];
-  const groups = Array.from(new Set(area.items.map((option) => option.group ?? "")));
-  return <section className={`laboratory-area laboratory-live-area lab-${area.tone}`}><header><span>{area.number} / COLECCIÓN</span><h2>{area.title}</h2><p>{area.description}</p></header><div className="laboratory-live-layout"><nav aria-label={`Exploraciones de ${area.title}`}>{groups.map((group) => <div className="laboratory-live-nav-group" key={group || area.title}>{group && <p>{group}</p>}{area.items.map((option, index) => option.group === (group || undefined) && <button className={active === index ? "is-active" : ""} onClick={() => setActive(index)} key={option.title}><span>{String(index + 1).padStart(2, "0")}</span><strong>{option.title}</strong><small>{option.subtitle}</small></button>)}</div>)}</nav><article className="laboratory-live-card"><header><div><span>EXPLORACIÓN {String(active + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.subtitle}</p></div><a href={sitePath(item.href)}>Leer el contexto ↗</a></header><div className="laboratory-live-stage" key={`${area.number}-${active}`}>{item.render()}</div></article></div></section>;
+function sourceForItem(item: LabItem) {
+  if (item.href.includes("dobble-y-geometria-proyectiva")) return "Dobble y geometría proyectiva";
+  if (item.href.includes("mapas-distancias-y-conformidad")) return "Mapas, distancias y conformidad";
+  if (item.href.includes("algebra-lineal")) return "Álgebra lineal";
+  if (item.href.includes("calculo-vectorial")) return "Cálculo vectorial";
+  if (item.href.includes("trenzas-nudos-y-tejido")) return "Trenzas, nudos y tejido";
+  if (item.href.includes("banda-de-moebius")) return "La banda de Möbius";
+  if (item.href.includes("del-reves-al-bit")) return "Del revés al bit";
+  if (item.href.includes("repeticion-identificaciones")) return "Repetición, identificaciones y superficies";
+  if (item.href.includes("superficies-que-se-pueden-tejer")) return "Superficies que se pueden tejer";
+  return "Otras exploraciones";
 }
 
 export default function InteractiveRepository() {
-  return <>{areas.map((area) => <LaboratoryArea area={area} key={area.title} />)}</>;
+  const [active, setActive] = useState({ areaIndex: 0, itemIndex: 0 });
+  const firstSource = sourceForItem(areas[0].items[0]);
+  const [openSources, setOpenSources] = useState<Set<string>>(() => new Set([`0-${firstSource}`]));
+  const activeArea = areas[active.areaIndex];
+  const activeItem = activeArea.items[active.itemIndex];
+  const activeSource = sourceForItem(activeItem);
+
+  function toggleSource(sourceKey: string) {
+    setOpenSources((current) => {
+      const next = new Set(current);
+      if (next.has(sourceKey)) next.delete(sourceKey);
+      else next.add(sourceKey);
+      return next;
+    });
+  }
+
+  return (
+    <section className={`laboratory-indexed-layout lab-${activeArea.tone}`}>
+      <aside className="laboratory-master-index" aria-label="Índice de visualizaciones">
+        <header><span>ÍNDICE DEL LABORATORIO</span><h2>Exploraciones</h2></header>
+        {areas.map((area, areaIndex) => {
+          const sources = Array.from(new Set(area.items.map(sourceForItem)));
+          return (
+            <section className="laboratory-index-area" key={area.title}>
+              <h3><span>{area.number}</span>{area.title}</h3>
+              {sources.map((source) => {
+                const sourceKey = `${areaIndex}-${source}`;
+                const isOpen = openSources.has(sourceKey);
+                return (
+                  <div className="laboratory-index-source" key={sourceKey}>
+                    <button className="laboratory-source-toggle" type="button" aria-expanded={isOpen} onClick={() => toggleSource(sourceKey)}>
+                      <strong>{source}</strong><span aria-hidden="true">{isOpen ? "−" : "+"}</span>
+                    </button>
+                    {isOpen ? <div className="laboratory-source-items">{area.items.map((item, itemIndex) => sourceForItem(item) === source && (
+                      <button type="button" className={active.areaIndex === areaIndex && active.itemIndex === itemIndex ? "is-active" : ""} onClick={() => setActive({ areaIndex, itemIndex })} key={item.title}>
+                        <span>{String(itemIndex + 1).padStart(2, "0")}</span><span><strong>{item.title}</strong><small>{item.subtitle}</small></span>
+                      </button>
+                    ))}</div> : null}
+                  </div>
+                );
+              })}
+            </section>
+          );
+        })}
+      </aside>
+
+      <article className="laboratory-live-card">
+        <header>
+          <div><span>{activeArea.title.toUpperCase()} / {activeSource.toUpperCase()}</span><h3>{activeItem.title}</h3><p>{activeItem.subtitle}</p></div>
+          <a href={sitePath(activeItem.href)}>Leer el contexto ↗</a>
+        </header>
+        <div className="laboratory-live-stage" key={`${active.areaIndex}-${active.itemIndex}`}>{activeItem.render()}</div>
+      </article>
+    </section>
+  );
 }
