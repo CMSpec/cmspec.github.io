@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Primera Semana\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -73,7 +83,7 @@
 \vspace{1cm}
 
 \begin{center}
-	\large{Contenidos:} 
+	\large{Contenidos:}
 \end{center}
 \vspace{0.1cm}
 \begin{center}
@@ -111,13 +121,15 @@
 
 Sea $C$ una curva param\'etrica, dada por $r(t)=(x_1(t),x_2(t),...,x_n(t))$, con $\alpha \leq t \leq \beta$. Existen dos tipos de definiciones para integrales de l\'inea.\\
 
-\textbf{Definici\'on:} Si $f(x_1,x_2,...,x_n)$ es una funci\'on escalar, es decir, $f: \mathbb{R}^n \to \mathbb{R}$, entonces se define la integral de l\'inea de $f$ sobre $C$ como
+\begin{defin}Si $f(x_1,x_2,...,x_n)$ es una funci\'on escalar, es decir, $f: \mathbb{R}^n \to \mathbb{R}$, entonces se define la integral de l\'inea de $f$ sobre $C$ como
+\end{defin}
 
 \begin{align*}
     \int_C f  ds = \int_\alpha^\beta f(x_1(t),x_2(t),...,x_n(t))||r'(t)|| dt
 \end{align*}
 
-\textbf{Definici\'on:} Si $f(x_1,x_2,...,x_n)$ es una funci\'on vectorial, es decir, $f: \mathbb{R}^n \to \mathbb{R}^m$, entonces se define la integral de l\'inea de $f$ sobre $C$ como
+\begin{defin}Si $f(x_1,x_2,...,x_n)$ es una funci\'on vectorial, es decir, $f: \mathbb{R}^n \to \mathbb{R}^m$, entonces se define la integral de l\'inea de $f$ sobre $C$ como
+\end{defin}
 
 \begin{align*}
     \int_C f \cdot dr = \int_\alpha^\beta f(x_1(t),x_2(t),...,x_n(t)) \cdot r'(t) dt
@@ -128,7 +140,7 @@ Se puede demostrar en ambos casos, que el valor de la integral de l\'inea es ind
 
 La raz\'on por la cual hay una diferencia importante en la definici\'on es porque las dos definiciones tienen interpretaciones muy diferentes. \\
 
-La integral de l\'inea de un campo escalar positivo $f(x,y)$ representa el \'area lateral de un lado de la cortina cuya base es $C$ y cuya altura por encima de $(x,y)$ es $f(x,y)$ 
+La integral de l\'inea de un campo escalar positivo $f(x,y)$ representa el \'area lateral de un lado de la cortina cuya base es $C$ y cuya altura por encima de $(x,y)$ es $f(x,y)$
 
 \begin{figure}[h]
     \centering
@@ -145,7 +157,8 @@ Por otra parte, las integrales de l\'inea de los campos vectoriales tienen inter
 
 \newpage
 
-\textbf{Ejemplo 1:} Calcular la integral de línea del campo escalar
+\begin{ejem}Calcular la integral de línea del campo escalar
+\end{ejem}
 \[
 f(x, y) = x^2 + y^2
 \]
@@ -190,7 +203,8 @@ Por \'ltimo calculamos la integral
 
 
 
-\textbf{Ejemplo 2:} Sea el campo vectorial $F(x, y) = (y, x)$.  
+\begin{ejem}Sea el campo vectorial $F(x, y) = (y, x)$.
+\end{ejem}
 Calcular:
 
 \[
@@ -199,7 +213,8 @@ Calcular:
 donde $C$ es el segmento de recta que une $(0, 0)$ con $(1, 1)$. \\
 
 
-\textbf{Respuesta: } Primero hay que parametrizar la curva $C$, tenemos que
+\begin{sol}Primero hay que parametrizar la curva $C$, tenemos que
+\end{sol}
 
 \[
 r(t) = (t, t), \quad 0 \leq t \leq 1
@@ -231,7 +246,8 @@ Por \'ultimo calculamos la integral de l\'inea
 
 
 
-\textbf{Ejercicio para el alumno: } Sea el campo vectorial
+\begin{ejer}Sea el campo vectorial
+\end{ejer}
 \[
 F(x, y) = (x^2 - y,\ xy + 2)
 \]
@@ -241,7 +257,8 @@ Y sea \( C \) el semicírculo superior de radio 1, centrado en el origen, que va
 \int_C F \cdot dr
 \]
 
-\textbf{Ejercicio para el alumno: }  Sea el campo escalar
+\begin{ejer}Sea el campo escalar
+\end{ejer}
 \[
 f(x, y) = x + y
 \]
@@ -257,7 +274,8 @@ Considere la recta \( C \)  que une los puntos \( (0, 0) \) y \( (1, 2) \). Calc
 
 La definici\'on formal de un conjunto simplemente conexo es bastante confusa \\
 
-\textbf{Definici\'on: }Sea $X$ conjunto, $X$ se dice simplemente conexo si para toda aplicaci\'on continua $f:[0,1] \to X$ tal que $f(0)=f(1)=p$, con $p \in X$, existe una apliaci\'on continua $H: [0,1] \times [0,1] \to X$ tal que $H(s,0) =f(s)$ y $H(s,1)=p$. \\
+\begin{defin}Sea $X$ conjunto, $X$ se dice simplemente conexo si para toda aplicaci\'on continua $f:[0,1] \to X$ tal que $f(0)=f(1)=p$, con $p \in X$, existe una apliaci\'on continua $H: [0,1] \times [0,1] \to X$ tal que $H(s,0) =f(s)$ y $H(s,1)=p$. \\
+\end{defin}
 
 La idea intuitiva de esta definici\'on es que se est\'a deformando la funci\'on $f$ de forma continua hasta llegar a un punto.\\
 
@@ -272,7 +290,7 @@ Informalmente, un objeto es simplemente conexo si está formado por una sola pie
 \end{figure}
 
 
-En general no vamos a usar la definici\'on ni tampoco vamos a pedir demostrar cuando un conjunto es simplemente conexo, pero usaremos el concepto en teoremas y resultados. 
+En general no vamos a usar la definici\'on ni tampoco vamos a pedir demostrar cuando un conjunto es simplemente conexo, pero usaremos el concepto en teoremas y resultados.
 
 
 
@@ -283,7 +301,8 @@ En general no vamos a usar la definici\'on ni tampoco vamos a pedir demostrar cu
 
 \subsection{Campos conservativos}
 
-\textbf{Definici\'on: }Sea $F:A \subseteq \mathbb{R}^n \to \mathbb{R}^n$, donde $A$ es un conjunto abierto simplemente conexo , se dice que $F$ es \textbf{conservativo} si existe un campo escalar $f:\mathbb{R}^n \to \mathbb{R}$ tal que
+\begin{defin}Sea $F:A \subseteq \mathbb{R}^n \to \mathbb{R}^n$, donde $A$ es un conjunto abierto simplemente conexo , se dice que $F$ es \textbf{conservativo} si existe un campo escalar $f:\mathbb{R}^n \to \mathbb{R}$ tal que
+\end{defin}
 
 \begin{align*}
     \nabla f = F
@@ -293,7 +312,8 @@ A la funci\'on $f$ tal que $\nabla f = F$, se le llama \textbf{funci\'on potenci
 
 Existen formas muy eficientes para saber si un campo vectorial es conservativo en dos o tres dimensiones. \\
 
-\textbf{Proposici\'on:} Supongamos que $F: A \subseteq \mathbb{R}^2 \to \mathbb{R}^2$, con $A$ simplemente  conexo, $F(x,y)=M(x,y)\hat{\imath}+N(x,y)\hat{\jmath}$, entonces $F$ es conservativo  si y solo si
+\begin{prop}Supongamos que $F: A \subseteq \mathbb{R}^2 \to \mathbb{R}^2$, con $A$ simplemente  conexo, $F(x,y)=M(x,y)\hat{\imath}+N(x,y)\hat{\jmath}$, entonces $F$ es conservativo  si y solo si
+\end{prop}
 
 \begin{align*}
     M_y = N_x
@@ -302,7 +322,8 @@ Existen formas muy eficientes para saber si un campo vectorial es conservativo e
 Para tres dimensiones necesitamos el concepto de rotacional. \\
 
 
-\textbf{Definici\'on :} Sea $F: A \subseteq \mathbb{R}^3 \to \mathbb{R}^3$ , $F(x,y,z)=M(x,y,z)\hat{\imath}+N(x,y,z)\hat{\jmath}+C(x,y,z)\hat{k}$, se define el \textbf{rotacional} de $F$ como
+\begin{defin}Sea $F: A \subseteq \mathbb{R}^3 \to \mathbb{R}^3$ , $F(x,y,z)=M(x,y,z)\hat{\imath}+N(x,y,z)\hat{\jmath}+C(x,y,z)\hat{k}$, se define el \textbf{rotacional} de $F$ como
+\end{defin}
 
 \begin{align*}
     \text{rot} ( F ) &= \begin{vmatrix}
@@ -313,27 +334,32 @@ Para tres dimensiones necesitamos el concepto de rotacional. \\
     &= (C_y-N_z)\hat{\imath}+ (M_z-C_x)\hat{\jmath}+ (N_x-M_y)\hat{k}
 \end{align*}
 
-\textbf{Proposici\'on:} Supongamos que $F: A \subseteq \mathbb{R}^3 \to \mathbb{R}^3$ con $A$ simplemente conexo, $F(x,y,z)=M(x,y,z)\hat{\imath}+N(x,y,z)\hat{\jmath}+C(x,y,z)\hat{k}$, entonces $F$ es conservativo  si y solo si
+\begin{prop}Supongamos que $F: A \subseteq \mathbb{R}^3 \to \mathbb{R}^3$ con $A$ simplemente conexo, $F(x,y,z)=M(x,y,z)\hat{\imath}+N(x,y,z)\hat{\jmath}+C(x,y,z)\hat{k}$, entonces $F$ es conservativo  si y solo si
+\end{prop}
 
 \begin{align*}
     \text{rot} ( F ) = (0,0,0)
 \end{align*}
 
 
-\textbf{Ejemplo 1: } Determinar si el campo $F(x,y) = (6xy^3,9x^2y^2)$ es conservativo o no \\
+\begin{ejem}Determinar si el campo $F(x,y) = (6xy^3,9x^2y^2)$ es conservativo o no \\
+\end{ejem}
 
-\textbf{Respuesta: } Tenemos que $M= 6xy^3$ y $ N = 9x^2y^2$, luego
+\begin{sol}Tenemos que $M= 6xy^3$ y $ N = 9x^2y^2$, luego
+\end{sol}
 
 \begin{align*}
     M_y &= 18xy^2 \\
     N_x &= 18xy^2 \\
 \end{align*}
 
-Por lo tanto el campo es conservativo. \\ 
+Por lo tanto el campo es conservativo. \\
 
-\textbf{Ejemplo 2: } Determinar si el campo $F(x,y,z) = (2xyz^3,x^2z^3, 3x^2yz^2)$ es conservativo o no \\
+\begin{ejem}Determinar si el campo $F(x,y,z) = (2xyz^3,x^2z^3, 3x^2yz^2)$ es conservativo o no \\
+\end{ejem}
 
-\textbf{Respuesta: } Tenemos que $M= 2xyz^3$, $ N = x^2z^3$ y $C=3x^2yz^2 $, luego
+\begin{sol}Tenemos que $M= 2xyz^3$, $ N = x^2z^3$ y $C=3x^2yz^2 $, luego
+\end{sol}
 
 \begin{align*}
      \text{rot} ( F )  &= (C_y-N_z)\hat{\imath}+ (M_z-C_x)\hat{\jmath}+ (N_x-M_y)\hat{k} \\
@@ -348,7 +374,8 @@ Por lo tanto el campo es conservativo
 
 Ahora, si bien podemos determinar cuando un campo es o no conservativo falta poder encontrar la funci\'on $f$ tal que $\nabla f = F$, para ello vamos a usar el siguiente teorema cuya demostraci\'on omitiremos \\
 
-\textbf{Teorema:} Sea $F(x,y,z)$ campo conservativo, considere $C$ la curva parametrizada por $\lambda(t)=(tx,ty,tz)$ con $t \in [0,1]$, consideramos
+\begin{thm}Sea $F(x,y,z)$ campo conservativo, considere $C$ la curva parametrizada por $\lambda(t)=(tx,ty,tz)$ con $t \in [0,1]$, consideramos
+\end{thm}
 
 \begin{align*}
     f(x,y,z) = \int_C F \cdot d\lambda
@@ -358,9 +385,11 @@ Entonces $\nabla f = F$, en otras palabras $f$ es funci\'on potencia de $F$. \\
 
 Este teorema funciona tanto para funciones en dos variables como en tres variables. \\
 
-\textbf{Ejemplo 1:} Sea $F(x,y) =(x+y^2,2xy)$, demuestre que $F$ es conservativo y luego calcule su funci\'on potencia \\
+\begin{ejem}Sea $F(x,y) =(x+y^2,2xy)$, demuestre que $F$ es conservativo y luego calcule su funci\'on potencia \\
+\end{ejem}
 
-\textbf{Respuesta: } Notamos que $M_y=N_x= 2y$ por lo tanto el campo es conservativo, la funci\'on potencia ser\'a
+\begin{sol}Notamos que $M_y=N_x= 2y$ por lo tanto el campo es conservativo, la funci\'on potencia ser\'a
+\end{sol}
 
 \begin{align*}
     \int_C F \cdot d\lambda &= \int_0^1 F(tx,ty) \cdot \lambda'(t)dt \\
@@ -374,9 +403,11 @@ Este teorema funciona tanto para funciones en dos variables como en tres variabl
 Por lo tanto la funci\'on potencia es $f(x,y) = \displaystyle \frac{x^2}{2}+xy^2$
 
 
-\textbf{Ejercicio:} Sea $F(x,y,z) =(3y^2z+ye^x,6xyz+e^x,3xy^2)$, demuestre que $F$ es conservativo y luego calcule su funci\'on potencia \\
+\begin{ejer}Sea $F(x,y,z) =(3y^2z+ye^x,6xyz+e^x,3xy^2)$, demuestre que $F$ es conservativo y luego calcule su funci\'on potencia \\
+\end{ejer}
 
-\textbf{Respuesta:} Tenemos que
+\begin{sol}Tenemos que
+\end{sol}
 
 \begin{align*}
      \text{rot} ( F )  &= (C_y-N_z)\hat{\imath}+ (M_z-C_x)\hat{\jmath}+ (N_x-M_y)\hat{k} \\
@@ -412,7 +443,8 @@ El teorema fundamental de las integrales de linea es an\'alogo al teorema fundam
     \int_C F \cdot dr =  \int_C \nabla f \cdot dr =f(r(b))-f(r(a))
 \end{align*}
 
-\textbf{Ejemplo:} Sea $F(x,y)= (2xy+3,x^2+\cos(y))$, usando el teorema fundamental de las integrales de línea, calcule
+\begin{ejem}Sea $F(x,y)= (2xy+3,x^2+\cos(y))$, usando el teorema fundamental de las integrales de línea, calcule
+\end{ejem}
 
 \begin{align*}
     \int_C F \cdot dr
@@ -420,7 +452,8 @@ El teorema fundamental de las integrales de linea es an\'alogo al teorema fundam
 
 Donde $C$ es cualquier curva suave que va desde el punto $A=(0,0)$, hasta el punto $B=(2,1)$. \\
 
-\textbf{Solución:} No parematrizamos la curva, primero vemos que sea conservativo, tenemos que $M= 2xy+3$ y $N=x^2+\cos(y)$, luego $M_y=N_x=2x$, por lo tanto es conservativo, la función potencia será
+\begin{sol}No parematrizamos la curva, primero vemos que sea conservativo, tenemos que $M= 2xy+3$ y $N=x^2+\cos(y)$, luego $M_y=N_x=2x$, por lo tanto es conservativo, la función potencia será
+\end{sol}
 
 \begin{align*}
     f(x,y) &= \int_0^1 F(tx,ty) \cdot (x,y) dt \\
@@ -441,4 +474,4 @@ Luego por el teorema fundamental de las integrales de línea el valor de la inte
 
 
 
-\end{document} 
+\end{document}

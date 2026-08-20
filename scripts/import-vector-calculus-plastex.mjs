@@ -46,22 +46,17 @@ const preamble = String.raw`\documentclass[12pt]{article}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\bbH}{\mathbb{H}}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 `;
-
-function removeExerciseBlocks(source) {
-  let cleaned = source;
-  const exercisePattern = /\\textbf\{Ejercicios?\b/i;
-
-  while (exercisePattern.test(cleaned)) {
-    const start = cleaned.search(exercisePattern);
-    const remaining = cleaned.slice(start + 1);
-    const nextSection = remaining.search(/\\(?:sub)*section\s*\{/);
-    const end = nextSection >= 0 ? start + 1 + nextSection : cleaned.length;
-    cleaned = `${cleaned.slice(0, start)}${cleaned.slice(end)}`;
-  }
-
-  return cleaned;
-}
 
 function prepareSource(source) {
   const documentStart = source.indexOf("\\begin{document}");
@@ -69,10 +64,8 @@ function prepareSource(source) {
   const contentStart = prepared.indexOf("\\setcounter{page}{1}");
   if (contentStart >= 0) prepared = prepared.slice(contentStart + "\\setcounter{page}{1}".length);
   prepared = prepared.replace(/\\end\{document\}[\s\S]*$/, "");
-  prepared = prepared.replace(/\\section\s*\{(?:Clase de |)ejercicios[^}]*\}[\s\S]*$/i, "");
   prepared = prepared.replace(/\\textbf\{\\large\{(.+)\}\}\s*\\\\/g, "\\section{$1}");
-  prepared = removeExerciseBlocks(prepared)
-    .replace(/\\begin\{ejer\}[\s\S]*?\\end\{ejer\}/g, "")
+  prepared = prepared
     .replace(/\\begin\{picture\}[\s\S]*?\\end\{picture\}/g, "")
     .replace(/\\includegraphics(?:\[[^\]]*\])?\{[^}]+\}/g, "")
     .replace(/\\mathbbm/g, "\\mathbb")

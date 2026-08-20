@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Primera Semana\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -103,7 +113,8 @@
 
 Ahora vamos a extender los  conceptos de extremo local y punto crítico que se vio en cálulo diferencial \\
 
-\textbf{Definición:} Sea $f: A \subseteq \mathbb{R}^n \to \mathbb{R}$, donde $A$ es un conjunto abierto, se dice que $x_0 \in A$ es un \textbf{mínimo local} si existe $r> 0$ tal que para todo $x \in B(x_0,r) \subseteq A$ se tiene $f(x_0) \leq f(x)$. De forma análoga se dice que   $x_0 \in A$ es un \textbf{máximo local} si existe $r> 0$ tal que para todo $x \in B(x_0,r) \subseteq A$ se tiene $f(x_0) \geq f(x)$.  \\
+\begin{defin}Sea $f: A \subseteq \mathbb{R}^n \to \mathbb{R}$, donde $A$ es un conjunto abierto, se dice que $x_0 \in A$ es un \textbf{mínimo local} si existe $r> 0$ tal que para todo $x \in B(x_0,r) \subseteq A$ se tiene $f(x_0) \leq f(x)$. De forma análoga se dice que   $x_0 \in A$ es un \textbf{máximo local} si existe $r> 0$ tal que para todo $x \in B(x_0,r) \subseteq A$ se tiene $f(x_0) \geq f(x)$.  \\
+\end{defin}
 
 
 
@@ -111,14 +122,17 @@ Ahora vamos a extender los  conceptos de extremo local y punto crítico que se v
 Recordemos que en cálculo diferencial para determinar los posibles candidatos a extremos locales de una función $f$ se buscaban los puntos $x$ tales que $f'(x)=0$ y luego se usaba el criterio de la segunda derivada para ver si eran máximos locales o mínimos locales. En este caso usaremos algo análogo \\
 
 
-\textbf{Definición: } Sea $f: A \subseteq \mathbb{R}^n \to \mathbb{R}$, donde $A$ es un conjunto abierto, se dice que $x_0 \in A$ es un \textbf{punto crítico} de $f$ si y sólo si $D f(x_0) = 0$, es decir, si el diferencial de $f$ en $x_0$ es igual a $0$. \\
+\begin{defin}Sea $f: A \subseteq \mathbb{R}^n \to \mathbb{R}$, donde $A$ es un conjunto abierto, se dice que $x_0 \in A$ es un \textbf{punto crítico} de $f$ si y sólo si $D f(x_0) = 0$, es decir, si el diferencial de $f$ en $x_0$ es igual a $0$. \\
+\end{defin}
 
 Notemos que esto es equivalente a que $\nabla f (x_0)= (0,0)$ porque el gradiente corresponde a las coordenadas del operador lineal. \\
 
 
-\textbf{Ejemplo:} Hallar los puntos críticos de $f(x,y) = x^2+2y^2-x+2y $ \\
+\begin{ejem}Hallar los puntos críticos de $f(x,y) = x^2+2y^2-x+2y $ \\
+\end{ejem}
 
-\textbf{Solución:} Calculamos el gradiente 
+\begin{sol}Calculamos el gradiente
+\end{sol}
 
 \begin{align*}
     \nabla f (x,y) = (f_x,f_y) = (2x-1,4y+2)
@@ -126,20 +140,23 @@ Notemos que esto es equivalente a que $\nabla f (x_0)= (0,0)$ porque el gradient
 
 Ahora vemos cuando se hace $(0,0)$, es decir $(2x-1,4y+2)=(0,0)$, luego $2x-1=0$ y $4y+2=0$, de esta forma concluimos que $x=1/2$ e $y=-1/2$, por lo tanto el único punto crítico es $(1/2,-1/2)$. \\
 
-\textbf{Teorema:}  $f: A \subseteq \mathbb{R}^n \to \mathbb{R}$, donde $A$ es un conjunto abierto y $x_0 \in A$, si $x_0$ es un extremo local, entonces es un punto cr\'itico
+\begin{thm}$f: A \subseteq \mathbb{R}^n \to \mathbb{R}$, donde $A$ es un conjunto abierto y $x_0 \in A$, si $x_0$ es un extremo local, entonces es un punto cr\'itico
+\end{thm}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.3\textwidth]{Imagenes/maximo.jpg}
     \caption{Como se puede apreciar un extremo local tiene un plano tangente paralelo al plano $XY$ y por lo tanto su gradiente debe ser $(0,0)$}
     \label{fig:etiqueta}
-\end{figure}  
+\end{figure}
 
 
 
-\textbf{Nota Importante:} No todos los puntos críticos corresponden a extremos locales.\\
+\begin{rmk}No todos los puntos críticos corresponden a extremos locales.\\
+\end{rmk}
 
-\textbf{Definición:} Sea $f: A \subseteq \mathbb{R}^n \to \mathbb{R}$, donde $A$ es un conjunto abierto y sea $x_0 \in A$ es un punto crítico, se dice que $x_0$ es un \textbf{punto silla} si para toda bola abierta $B(x_0,r) \subseteq A$ se tiene que existen puntos $x,y \in B(x_0,r)$ tales que $f(x_0) < f(x)$ y $f(y) < f(x_0)$. \\
+\begin{defin}Sea $f: A \subseteq \mathbb{R}^n \to \mathbb{R}$, donde $A$ es un conjunto abierto y sea $x_0 \in A$ es un punto crítico, se dice que $x_0$ es un \textbf{punto silla} si para toda bola abierta $B(x_0,r) \subseteq A$ se tiene que existen puntos $x,y \in B(x_0,r)$ tales que $f(x_0) < f(x)$ y $f(y) < f(x_0)$. \\
+\end{defin}
 
 En otras palabras los puntos silla son puntos críticos que no son ni máximos ni mínimos locales. \\
 
@@ -147,7 +164,8 @@ En otras palabras los puntos silla son puntos críticos que no son ni máximos n
 
 Para determinar cuando un punto crítico es un máximo o un mínimo necesitamos definir la \textbf{matriz Hessiana}, pero solo lo haremos para funciones de dos variables, es posible extender los sigueintes resultados a más variables pero no lo usaremos en este curso. \\
 
-\textbf{Definición: } Sea $f(x,y)$ función diferenciable en dos variables y sea $x_0$ un punto en el dominio de $f$, definimos la matriz Hessiana como
+\begin{defin}Sea $f(x,y)$ función diferenciable en dos variables y sea $x_0$ un punto en el dominio de $f$, definimos la matriz Hessiana como
+\end{defin}
 
 \begin{align*}
     \mathcal{H}(f,x_0) = \begin{pmatrix}
@@ -161,7 +179,8 @@ Usando esta definición tenemos el sigueinte teorema
 
 
 
-\textbf{Teorema: }Sea $x_0 \in \mathbb{R}^2$ y $f$ función diferenciable con dominio en una bola abierta. Supongamos que $x_0$ es un punto crítico de $f$. Entonces \\
+\begin{thm}Sea $x_0 \in \mathbb{R}^2$ y $f$ función diferenciable con dominio en una bola abierta. Supongamos que $x_0$ es un punto crítico de $f$. Entonces \\
+\end{thm}
 
 a) Si det$(\mathcal{H}(f,x_0)>0)$ y $f_{xx}(x_0)<0$, entonces $f$ tiene un máximo local en $x_0$. \\
 b) Si det$(\mathcal{H}(f,x_0))>0$ y $f_{xx}(x_0)>0$, entonces $f$ tiene un mínimo local en $x_0$. \\
@@ -169,9 +188,11 @@ c) Si det$(\mathcal{H}(f,x_0))<0$ entonces $f$ tiene un punto silla en $x_0$ . \
 
 Este criterío sería como el análogo al criterio de la segunda derivada en cálculo en una variable. veamos un ejemplo.\\
 
-\textbf{Ejemplo:} Hallar y clasificar los puntos críticos de la función $f(x,y) =x^3+y^3-3xy$ \\
+\begin{ejem}Hallar y clasificar los puntos críticos de la función $f(x,y) =x^3+y^3-3xy$ \\
+\end{ejem}
 
-\textbf{Solución: } Calculamos el gradiente
+\begin{sol}Calculamos el gradiente
+\end{sol}
 
 \begin{align*}
     \nabla f (x,y) = (f_x,f_y) = (3x^2-3y,3y^2-3x)
@@ -199,9 +220,11 @@ Luego
 Ahora si evaluamos en $(0,0)$, obtenemos $det(\mathcal{H}(f,(0,0))) =-9 < 0$ y por lo tanto $(0,0)$ es un punto silla. Si evaluamos en $(1,1)$, obtenemos $det(\mathcal{H}(f,(1,1))) =27 > 0$, además $f_{xx}(1,1)= 6 > 0$ y por lo tanto $(1,1)$ es un minimo local. \\ \\
 
 
-\textbf{Ejercicio para los alumnos:} Determine los valores extremos de $f(x,y) = e^x\cos(y)$ \\
+\begin{ejer}Determine los valores extremos de $f(x,y) = e^x\cos(y)$ \\
+\end{ejer}
 
-\textbf{Ejercicio para los alumnos:} Determine la distancia m\'inima entre el origen y la superficie $z^2=x^2y+4$\\
+\begin{ejer}Determine la distancia m\'inima entre el origen y la superficie $z^2=x^2y+4$\\
+\end{ejer}
 
 
 \newpage
@@ -222,9 +245,11 @@ En otras palabras el gradiente de $f$ tiene que tener la misma dirección que el
 
 Esta regla nos permite calcular los extremos condicionados de la función, veamos un ejemplo \\
 
-\textbf{Ejemplo:} Encontrar los valores extremos de la función $f(x,y)= y^2-x^2$ sobre la elipse $x^2+4y^2=4$ \\
+\begin{ejem}Encontrar los valores extremos de la función $f(x,y)= y^2-x^2$ sobre la elipse $x^2+4y^2=4$ \\
+\end{ejem}
 
-\textbf{Solución: } En este caso la restricción es $g(x,y)= x^2+4y^2-4$ y hay que resolver el sistema
+\begin{sol}En este caso la restricción es $g(x,y)= x^2+4y^2-4$ y hay que resolver el sistema
+\end{sol}
 
 \begin{align*}
     \nabla f(x,y) &= \lambda \nabla g(x,y) \\
@@ -274,8 +299,10 @@ En el caso general la regla de los multiplicadores de Lagrange es el siguiente \
 En caso de que los puntos críticos condicionados sean más de dos se puede usar el Hessiano Orlado, para determinar la natrualeza de los extremos, pero no lo veremos en este curso. \\ \\
 
 
-\textbf{Ejercicio para los alumnos: } Determine  los extremos de la funci\'on $f(x,y) = e^{xy}$ con la restricci\'on $x^2+y^2=16$ \\
+\begin{ejer}Determine  los extremos de la funci\'on $f(x,y) = e^{xy}$ con la restricci\'on $x^2+y^2=16$ \\
+\end{ejer}
 
-\textbf{Ejercicio para los alumnos: } Determine  los extremos de la funci\'on $f(x,y,z) = x+y+z$ con la restricci\'on $\frac{1}{x}+\frac{1}{y}+\frac{1}{z} = 1$ \\
+\begin{ejer}Determine  los extremos de la funci\'on $f(x,y,z) = x+y+z$ con la restricci\'on $\frac{1}{x}+\frac{1}{y}+\frac{1}{z} = 1$ \\
+\end{ejer}
 
-\end{document} 
+\end{document}

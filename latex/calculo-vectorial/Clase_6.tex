@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Primera Semana\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -109,7 +119,8 @@ Ahora lo que vamos a hacer es estudiar con mayor detenimiento las funciones veco
 
 \subsection{Derivadas }
 
-\textbf{Definición:} Dada una función vectorial $r: \mathbb{R} \to \mathbb{R}^3$ dada por $r(t) = (r_1(t),r_2(t),r_3(t))$, podemos definir la \textbf{derivada $r'$}, como
+\begin{defin}Dada una función vectorial $r: \mathbb{R} \to \mathbb{R}^3$ dada por $r(t) = (r_1(t),r_2(t),r_3(t))$, podemos definir la \textbf{derivada $r'$}, como
+\end{defin}
 
 
 \begin{align*}
@@ -123,11 +134,12 @@ Es decir, se deriva coordenada a coordenada, esta definición corresponde a la p
     \includegraphics[width=0.5\textwidth]{Imagenes/derivada.png}
     \caption{Intepretación gráfica de $r'(t)$}
     \label{fig:etiqueta}
-\end{figure}  
+\end{figure}
 
 La derivada $r'(t_0)$ representa directamente a un vector tangente a la curva en $t_0$. \\
 
-\textbf{Definición:} Dada una función vectorial $r(t)$ se define el vector tangente unitario a la curva en  $t$ como
+\begin{defin}Dada una función vectorial $r(t)$ se define el vector tangente unitario a la curva en  $t$ como
+\end{defin}
 
 \begin{align*}
     T(t) = \frac{r'(t)}{||r'(t)||}
@@ -141,7 +153,8 @@ Notemos que $T(t)$ es un vector unitario, es decir $||T(t)|| = 1$. La ecuación 
 
 Aunque en realidad se puede usar cualquier vector tangente, no necesariamente el tangente unitario. \\
 
-\textbf{Ejemplo 1: } Sea la curva dada por $r(t) = (t, \sen(t), t^2)$, tenemos que
+\begin{ejem}Sea la curva dada por $r(t) = (t, \sen(t), t^2)$, tenemos que
+\end{ejem}
 
 
 \begin{align*}
@@ -169,7 +182,8 @@ La ecuación vectorial  de la recta tangente a $r(t)$ en el punto $t=0$ viene da
 
 Adicionalmente exiten el vector normal y binormal \\
 
-\textbf{Definición: } Dada una función vectorial $r(t)$ se define el \textbf{vector normal}  unitario a la curva en  $t$ como
+\begin{defin}Dada una función vectorial $r(t)$ se define el \textbf{vector normal}  unitario a la curva en  $t$ como
+\end{defin}
 
 \begin{align*}
     N(t) = \frac{T'(t)}{||T'(t)||}
@@ -200,13 +214,15 @@ Estos vectores nos permiten determinar las ecuaciones del plano normal, el plano
 
 
 
-\textbf{Definici\'on: }Sea $P =(x_0,y_0,z_0)\in \mathbb{R}^3$ un punto de la curva $r(t)$, con $r(t_0) = (x_0,y_0,z_0)$, el \textbf{plano osculador de $r$ en el punto $P$}, es el plano que pasa por el punto $(x_0,y_0,z_0)$ y que tiene por vector normal $B(t_0)$, su ecuaci\'on viene dada por
+\begin{defin}Sea $P =(x_0,y_0,z_0)\in \mathbb{R}^3$ un punto de la curva $r(t)$, con $r(t_0) = (x_0,y_0,z_0)$, el \textbf{plano osculador de $r$ en el punto $P$}, es el plano que pasa por el punto $(x_0,y_0,z_0)$ y que tiene por vector normal $B(t_0)$, su ecuaci\'on viene dada por
+\end{defin}
 
 \begin{align*}
     B(t_0) \cdot ((x,y,z)- (x_0,y_0,z_0)) = 0
 \end{align*}
 
-\textbf{Definici\'on: }Sea $P =(x_0,y_0,z_0)\in \mathbb{R}^3$ un punto de la curva $r(t)$, con $r(t_0) = (x_0,y_0,z_0)$, el \textbf{plano normal de $r$ en el punto $P$}, es el plano que pasa por el punto $(x_0,y_0,z_0)$ y que tiene por vector normal $T(t_0)$, su ecuaci\'on viene dada por
+\begin{defin}Sea $P =(x_0,y_0,z_0)\in \mathbb{R}^3$ un punto de la curva $r(t)$, con $r(t_0) = (x_0,y_0,z_0)$, el \textbf{plano normal de $r$ en el punto $P$}, es el plano que pasa por el punto $(x_0,y_0,z_0)$ y que tiene por vector normal $T(t_0)$, su ecuaci\'on viene dada por
+\end{defin}
 
 \begin{align*}
     T(t_0) \cdot ((x,y,z)- (x_0,y_0,z_0)) = 0
@@ -214,7 +230,8 @@ Estos vectores nos permiten determinar las ecuaciones del plano normal, el plano
 
 
 
-\textbf{Definici\'on: }Sea $P =(x_0,y_0,z_0)\in \mathbb{R}^3$ un punto de la curva $r(t)$, con $r(t_0) = (x_0,y_0,z_0)$, el \textbf{plano rectificante de $r$ en el punto $P$}, es el plano que pasa por el punto $(x_0,y_0,z_0)$ y que tiene por vector normal $N(t_0)$, su ecuaci\'on viene dada por
+\begin{defin}Sea $P =(x_0,y_0,z_0)\in \mathbb{R}^3$ un punto de la curva $r(t)$, con $r(t_0) = (x_0,y_0,z_0)$, el \textbf{plano rectificante de $r$ en el punto $P$}, es el plano que pasa por el punto $(x_0,y_0,z_0)$ y que tiene por vector normal $N(t_0)$, su ecuaci\'on viene dada por
+\end{defin}
 
 \begin{align*}
     N(t_0) \cdot ((x,y,z)- (x_0,y_0,z_0)) = 0
@@ -229,9 +246,11 @@ Estos vectores nos permiten determinar las ecuaciones del plano normal, el plano
 \end{figure}
 
 
-\textbf{Ejercicio:} Sea $r(t) = (\cos(t),\sin(t),t)$, determine el vector tangente, el vector normal y el vector binormal, adem\'as determine las ecuaciones del plano osculador, el plano normal y el plano rectificante en $t=0$. \\
+\begin{ejer}Sea $r(t) = (\cos(t),\sin(t),t)$, determine el vector tangente, el vector normal y el vector binormal, adem\'as determine las ecuaciones del plano osculador, el plano normal y el plano rectificante en $t=0$. \\
+\end{ejer}
 
-\textbf{Respuesta: } Calculamos la derivada de la curva
+\begin{sol}Calculamos la derivada de la curva
+\end{sol}
 
 \[
 r'(t) = (-\sin t, \cos t, 1).
@@ -300,7 +319,7 @@ El plano rectificante tiene como vector normal  $N(0) = (-1, 0, 0)$:
 
 \[
 (-1, 0, 0) \cdot (x - 1, y, z) = 0
-\Rightarrow -(x - 1) = 0 
+\Rightarrow -(x - 1) = 0
 \]
 
 O bien
@@ -348,7 +367,7 @@ Ahora bien, por el teorema del valor medio, para cada $r_k$, existe $c_{k,i} \in
 
 \begin{align*}
     || r(t_{i})-r(t_{i-1})|| &= \sqrt{r_1'(c_{1,i})^2+r_2'(c_{2,i})^2+r_3'(c_{3,i})^2}\Delta t \\
-    &= ||r'(c_i)|| \Delta t 
+    &= ||r'(c_i)|| \Delta t
 \end{align*}
 
 Donde $c_i = (c_{1,i}, c_{2,i}, c_{3,i}) $, luego la suma queda
@@ -363,7 +382,8 @@ Hciendo $\Delta t \to 0$, obtenemos la f\'ormula integral
     L = \int_{t_0}^{t_1} || r'(t)|| dt
 \end{align*}
 
-\textit{Nota:} Esta demostraci\'on no es del todo rigurosa porque la forma en la que hemos llegado a la integral es un poco ambigua, en el sentido de que no deber\'ia conicidir exactamente con la integral de Riemann cl\'asica, sin embargo una demostraci\'on m\'as rigurosa tomar\'ia demasiado tiempo. \\
+\begin{rmk}Esta demostraci\'on no es del todo rigurosa porque la forma en la que hemos llegado a la integral es un poco ambigua, en el sentido de que no deber\'ia conicidir exactamente con la integral de Riemann cl\'asica, sin embargo una demostraci\'on m\'as rigurosa tomar\'ia demasiado tiempo. \\
+\end{rmk}
 
 \textbf{Resultado:} Sea $r: \mathbb{R} \to \mathbb{R}^3$ función vectorial, la longitud de la curva entre $t=a$ y $t=b$ viene dada por
 
@@ -374,12 +394,14 @@ Hciendo $\Delta t \to 0$, obtenemos la f\'ormula integral
 En caso de que se especifiquen los puntos de la curva en lugar de los valores de $a$ y $b$, hay que encontrarlos utilizando la definición de la función. \\
 
 
-\textbf{Ejemplo: } Calcular la longitud de la curva parametrizada por
+\begin{ejem}Calcular la longitud de la curva parametrizada por
+\end{ejem}
 \[
 \vec{r}(t) = \langle \cos(t), \sin(t), t \rangle, \quad \text{para } t \in [0, 2\pi].
 \]
 
-\textbf{Respuesta:} Primero derivamos 
+\begin{sol}Primero derivamos
+\end{sol}
 \[
 r'(t) = ( -\sin(t), \cos(t), 1 )
 \]
@@ -395,7 +417,8 @@ Por lo tanto, la longitud de la curva es:
 L = \int_0^{2\pi} || r'(t) || \, dt = \int_0^{2\pi} \sqrt{2} \, dt = \sqrt{2} \cdot (2\pi - 0) = 2\pi\sqrt{2}.
 \]
 
-\textbf{Ejercicio para los alumnos: } Determinar la longitud de la curva $r(t) = (1,t,t^2)$, entre los puntos $(1,0,0)$ y $(1,1,1)$ \\
+\begin{ejer}Determinar la longitud de la curva $r(t) = (1,t,t^2)$, entre los puntos $(1,0,0)$ y $(1,1,1)$ \\
+\end{ejer}
 
 \textit{Pista: Para calcular la integral considere la sustituci\'on $t=\frac{1}{2}\tan(\theta)$, tambi\'en use que}
 
@@ -408,7 +431,8 @@ L = \int_0^{2\pi} || r'(t) || \, dt = \int_0^{2\pi} \sqrt{2} \, dt = \sqrt{2} \c
 \subsection{Curvatura}
 
 
-\textbf{Definición:} Sea $r: \mathbb{R} \to \mathbb{R}^3$ función vecotrial, la curvatura de $r$ en el punto $t$ se define por
+\begin{defin}Sea $r: \mathbb{R} \to \mathbb{R}^3$ función vecotrial, la curvatura de $r$ en el punto $t$ se define por
+\end{defin}
 
 \begin{align*}
     \tau(t) = \frac{||r'(t) \times r''(t)||}{|| r'(t)||^3}
@@ -421,7 +445,8 @@ L = \int_0^{2\pi} || r'(t) || \, dt = \int_0^{2\pi} \sqrt{2} \, dt = \sqrt{2} \c
 
 Las interpretaciones geométrica es directas del nombre. la curvatura representa que tan pronunciada es la forma en que la funci\'on vectorial se curva en $t$. \\
 
-\textbf{Ejercicio:} Calcular la curvatura de la curva
+\begin{ejer}Calcular la curvatura de la curva
+\end{ejer}
 
 \[
 r(t) = \langle t, t^2, 0 \rangle.
@@ -429,7 +454,8 @@ r(t) = \langle t, t^2, 0 \rangle.
 
 En $t=1$ \\
 
-\textbf{Respuesta:} Tenemos que
+\begin{sol}Tenemos que
+\end{sol}
 
 \[
 \tau(t) = \frac{||r'(t) \times r''(t)||}{||r'(t)||^3}.
@@ -442,7 +468,7 @@ r'(t) = \langle 1, 2t, 0 \rangle, \quad r''(t) = \langle 0, 2, 0 \rangle.
 
 El producto cruz de los vectores es
 \[
-r'(t) \times r''(t) = 
+r'(t) \times r''(t) =
 \begin{vmatrix}
 \mathbf{i} & \mathbf{j} & \mathbf{k} \\
 1 & 2t & 0 \\
@@ -482,4 +508,4 @@ Entonces la curvatura es:
 
 
 
-\end{document} 
+\end{document}

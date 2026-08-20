@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Primera Semana\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -109,7 +119,7 @@ Santiago, Chile
 
 \section{Ecuaciones Diferenciales Exactas}
 
-Ahora vamos a ver nuestro segundo tipo de ecuación diferencial de primer orden. Una ecuación diferencial de primer orden puede ser escrita en su forma diferencial como 
+Ahora vamos a ver nuestro segundo tipo de ecuación diferencial de primer orden. Una ecuación diferencial de primer orden puede ser escrita en su forma diferencial como
 
 \begin{center}
 $M(x,y) dx +N(x,y)dy=0$
@@ -118,7 +128,8 @@ $M(x,y) dx +N(x,y)dy=0$
 Donde tanto $ M$ como $N$ son funciones en dos variables que dependen de $x$ y de $y$. Para dejar una ecuación diferencial en su forma diferencial basta con multiplicar por $dx$ como si fuera un número cualquiera\\
 
 
-\textbf{Definición: } Consideremos una ecuación  en su forma diferencial
+\begin{defin}Consideremos una ecuación  en su forma diferencial
+\end{defin}
 
 \begin{center}
 $M(x,y) dx +N(x,y)dy=0$
@@ -137,23 +148,28 @@ En caso de existir tal función, entonces la solución general de la ecuación d
 \end{align*}
 
 
-\textbf{Ejemplo: }Consideramos la ecuación diferencial $(2xy^2+1)dx + 2x^2ydy=0	$, entonces la función  $f(x,y)=x^2y^2+x$ cumple que $f_x= 2xy^2+1$ y $f_y= 2x^2y$ \\
+\begin{ejem}Consideramos la ecuación diferencial $(2xy^2+1)dx + 2x^2ydy=0	$, entonces la función  $f(x,y)=x^2y^2+x$ cumple que $f_x= 2xy^2+1$ y $f_y= 2x^2y$ \\
+\end{ejem}
 
 
 
 
-\textit{Observación: La familia de soluciones de una ecuación diferencial exacta no está definida por $f(x,y)$, sino por alguna curva de nivel de esta superficie, es decir, $f(x,y)=c$} \\
+\begin{rmk}\\
+\end{rmk}
 
-\textbf{Proposición: }Supongamos que $M(x,y)$ y $N(x,y)$ son continuas y tienen primeras derivadas parciales en una región $D \subset \mathbb{R}^2$. Entonces una condición necesaria y suficiente para que $M(x,y)dx+N(x,y)dy=0$ sea una EDO exacta es que
+\begin{prop}Supongamos que $M(x,y)$ y $N(x,y)$ son continuas y tienen primeras derivadas parciales en una región $D \subset \mathbb{R}^2$. Entonces una condición necesaria y suficiente para que $M(x,y)dx+N(x,y)dy=0$ sea una EDO exacta es que
+\end{prop}
 
 \begin{center}
 $M_y =N_x$
 \end{center}
 
 
-\textbf{Ejemplo: }Sea $(1+e^xy+xe^xy)dx+(xe^x+2)dy=0$. Identifique $M(x,y)$ y $N(x,y)$ y verifique si es exacta. \\
+\begin{ejem}Sea $(1+e^xy+xe^xy)dx+(xe^x+2)dy=0$. Identifique $M(x,y)$ y $N(x,y)$ y verifique si es exacta. \\
+\end{ejem}
 
-\textit{Respuesta: } En este caso $M(x,y)= 1+e^xy+xe^xy$ y $N(x,y)= xe^x+2$. Notamos que
+\begin{sol}En este caso $M(x,y)= 1+e^xy+xe^xy$ y $N(x,y)= xe^x+2$. Notamos que
+\end{sol}
 
 \begin{center}
 $\displaystyle M_y = e^x+xe^x$
@@ -194,14 +210,17 @@ $N(x,y) = \displaystyle \frac{\partial }{\partial y} \int M(x,y)dx +c'(y) $
 
 De esta forma encontramos $c'(y)$, integrando obtenemos $c(y)$ y así $f(x,y)$ queda completamente determinada. \\
 
-\textit{Nota: También se puede empezar por $N(x,y)$ y así la primera constante quedará en función de $x$ y será de la forma $c(x)$.} \\
+\begin{rmk}\\
+\end{rmk}
 
 
 
 
-\textbf{Ejercicio 1: }Resolver $(2x^2+6xy^2)dx+(6x^2y+4y^3)dy=0$\\
+\begin{ejer}Resolver $(2x^2+6xy^2)dx+(6x^2y+4y^3)dy=0$\\
+\end{ejer}
 
-\textbf{Respuesta: } Definimos $M(x,y)= 2x^2+6xy^2$ y $N(x,y)= 6x^2y+4y^3$. Verificamos primero la condición de ecuaciones diferenciales para asegurarnos de que no perdemos el tiempo, tenemos que
+\begin{sol}Definimos $M(x,y)= 2x^2+6xy^2$ y $N(x,y)= 6x^2y+4y^3$. Verificamos primero la condición de ecuaciones diferenciales para asegurarnos de que no perdemos el tiempo, tenemos que
+\end{sol}
 
 \begin{center}
 $\displaystyle \frac{\partial M}{\partial y}= 12xy$,  $\displaystyle \frac{\partial N}{\partial x}= 12xy$
@@ -211,13 +230,13 @@ Por lo tanto es seguro usar el método de EDO exacta. tenemos entonces
 
 \begin{center}
 $\displaystyle \frac{\partial f}{\partial x} = 2x^2+6xy^2$
-\end{center} 
+\end{center}
 
 Luego
 
 \begin{center}
 $f(x,y) = \displaystyle \int 2x^2+6xy^2 dx = \frac{2}{3}x^3+3x^2y^2 +c(y)$
-\end{center} 
+\end{center}
 
 Por otra parte
 
@@ -250,7 +269,7 @@ Reemplazando, obtenemos que
 
 \begin{center}
 $f(x,y) = \displaystyle  \frac{2}{3}x^3+3x^2y^2 + y^4+c$
-\end{center} 
+\end{center}
 
 
 El conjunto solución viene dado por la expresión
@@ -261,9 +280,11 @@ $\displaystyle  \frac{2}{3}x^3+3x^2y^2 + y^4 =c$
 
 
 
-\textbf{Ejercicio 2: }Resolver $y'=\displaystyle \frac{(x+y)^2}{1-2xy-x^2}$ \\
+\begin{ejer}Resolver $y'=\displaystyle \frac{(x+y)^2}{1-2xy-x^2}$ \\
+\end{ejer}
 
-\textbf{Respuesta: }La ecuación es equivalente a
+\begin{sol}La ecuación es equivalente a
+\end{sol}
 
 \begin{center}
 $\displaystyle \frac{dy}{dx} = \frac{(x+y)^2}{1-2xy-x^2}$
@@ -287,13 +308,13 @@ Por lo tanto es seguro usar el método de EDO exacta. tenemos entonces
 
 \begin{center}
 $\displaystyle \frac{\partial f}{\partial x} = x^2+2xy+y^2$
-\end{center} 
+\end{center}
 
 Luego
 
 \begin{center}
 $f(x,y) = \displaystyle  \int x^2+2xy+y^2 dx =\frac{x^3}{3}+x^2y + y^2x	+ c(y)$
-\end{center} 
+\end{center}
 
 Por otra parte
 
@@ -326,7 +347,7 @@ Reemplazando, obtenemos que
 
 \begin{center}
 $f(x,y) = \displaystyle  \frac{x^3}{3}+x^2y + y^2x	-y +c$
-\end{center} 
+\end{center}
 
 
 El conjunto solución viene dado por la expresión
@@ -380,7 +401,7 @@ $\displaystyle \int\frac{dy}{y}=- \int a(x)dx$
 $\displaystyle \ln(y)=- \int a(x)dx +c$
 \end{center}
 
-Por lo tanto 
+Por lo tanto
 
 \begin{center}
 $\displaystyle y= c e^{- \int a(x)dx} $
@@ -406,7 +427,7 @@ Notamos que
 $\displaystyle \frac{d \left( ye^{ \int a(x)dx}\right) }{dx} = e^{ \int a(x)dx}\frac{dy}{dx}+ y a(x)e^{ \int a(x)dx}$
 \end{center}
 
-Por lo tanto 
+Por lo tanto
 
 \begin{center}
 $\displaystyle \frac{d \left( ye^{ \int a(x)dx}\right) }{dx} =e^{ \int a(x)dx}b(x)$
@@ -430,21 +451,24 @@ Luego tenemos la solución general
 $\displaystyle y = e^{ -\int a(x)dx}\left(  \int b(x) e^{ \int a(x)dx} +c  \right) $
 \end{center}
 
-\textbf{Nota: }Al termino  $\displaystyle e^{ \int a(x)dx}$ se le conoce como \textbf{factor integrante} y en general es un término que al multiplicar toda la ecuación diferencial por él nos da una ecuación diferencial conocida. \\
+\begin{rmk}Al termino  $\displaystyle e^{ \int a(x)dx}$ se le conoce como \textbf{factor integrante} y en general es un término que al multiplicar toda la ecuación diferencial por él nos da una ecuación diferencial conocida. \\
+\end{rmk}
 
 
 \begin{center}
 \textbf{\large{Ejercicios}} \\
 \end{center}
 
-\textbf{Ejercicio 1:} Resolver la EDO $\displaystyle y' + \frac{x}{x^2+1} y = 0$ \\
+\begin{ejer}Resolver la EDO $\displaystyle y' + \frac{x}{x^2+1} y = 0$ \\
+\end{ejer}
 
 
-\textit{Respuesta: }Reconocemos que tenemos una ecuación lineal donde $b(x)=0$ y $a(x)= \displaystyle \frac{x}{x^2+1}$ , la solución viene dada por
+\begin{sol}Reconocemos que tenemos una ecuación lineal donde $b(x)=0$ y $a(x)= \displaystyle \frac{x}{x^2+1}$ , la solución viene dada por
+\end{sol}
 
 \begin{align*}
 \displaystyle y &= ce^{-\int a(x)dx} \\
-&= ce^{-\int \frac{x}{x^2+1}dx} 
+&= ce^{-\int \frac{x}{x^2+1}dx}
 \end{align*}
 
 Ahora bien para resolver
@@ -478,10 +502,12 @@ Reemplazando
 
 
 
-\textbf{Ejercicio 2:} Resolver la EDO $\displaystyle y' = y\tan(x)+\cos(x)$ \\
+\begin{ejer}Resolver la EDO $\displaystyle y' = y\tan(x)+\cos(x)$ \\
+\end{ejer}
 
 
-\textit{Respuesta: }Reconocemos que tenemos una ecuación lineal donde $a(x)=-\tan(x)$ y $b(x)= \cos(x)$ , la solución viene dada por
+\begin{sol}Reconocemos que tenemos una ecuación lineal donde $a(x)=-\tan(x)$ y $b(x)= \cos(x)$ , la solución viene dada por
+\end{sol}
 
 
 
@@ -489,7 +515,7 @@ Reemplazando
 $\displaystyle y = e^{ -\int a(x)dx}\left(  \int b(x) e^{ \int a(x)dx} +c  \right) $
 \end{center}
 
-Ahora bien 
+Ahora bien
 
 \begin{align*}
 \displaystyle \int a(x)dx &= \int -\tan(x)dx \\
@@ -519,4 +545,4 @@ De esta forma
 
 
 
-\end{document} 
+\end{document}

@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Semana 4\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -114,7 +124,8 @@ Santiago, Chile
 
 
 
-\textbf{Teorema (Segundo teorema de traslación): }Sea $f: [0,+\infty) \to \mathbb{R}$ continua por trozos y de orden exponencial. Si $a \in \mathbb{R}^+$, entonces
+\begin{thm}[Segundo teorema de traslación]Sea $f: [0,+\infty) \to \mathbb{R}$ continua por trozos y de orden exponencial. Si $a \in \mathbb{R}^+$, entonces
+\end{thm}
 
 \begin{center}
 $\mathcal{L}[u(t-a)f(t-a)](s) =e^{-as}\mathcal{L}[f(t)](s)$
@@ -131,7 +142,8 @@ Por ejemplo $\displaystyle \mathcal{L}[u(t-2)\cos(t-2)](s) =e^{-2s}\mathcal{L}[\
 
 
 
-\textbf{Teorema (Segundo teorema de traslación(Versión transformada inversa)): }Sea $f: [0,+\infty) \to \mathbb{R}$ continua por trozos y de orden exponencial. Si $a \in \mathbb{R}^+$, entonces
+\begin{thm}[Versión transformada inversa]Sea $f: [0,+\infty) \to \mathbb{R}$ continua por trozos y de orden exponencial. Si $a \in \mathbb{R}^+$, entonces
+\end{thm}
 
 \begin{center}
 $\mathcal{L}^{-1}[e^{-as}f(s)](t) =u(t-a)\mathcal{L}^{-1}[f(s)](t-a)$
@@ -158,13 +170,14 @@ y(0)&=0 \\
 y'(0)&=0
 \end{align*}
 
-Donde 
+Donde
 
 \begin{center}
 $f(t) = \left\{ \begin{array}{lcc} 1 & si & 0 \leq t < 3 \\ \\ 2 & si & t \geq 3  \end{array} \right.$
 \end{center}
 
-\textit{Respuesta: } Aplicamos transformada de Laplace, tenemos que
+\begin{sol}Aplicamos transformada de Laplace, tenemos que
+\end{sol}
 
 \begin{align*}
 \mathcal{L}[y''+4y] &=\mathcal{L}[f(t)] \\
@@ -173,7 +186,7 @@ s^2\mathcal{L}[y]-sy(0)-y'(0)+4\mathcal{L}[y] &=\mathcal{L}[f(t)]\\
 \mathcal{L}[y](s^2+4) &=\mathcal{L}[f(t)]
 \end{align*}
 
-Por otra parte, notemos que 
+Por otra parte, notemos que
 
 \begin{center}
 $f(t ) = 1+(2-1)u(t-3)=1+u(t-3)$
@@ -216,7 +229,7 @@ De donde se deduce que $A=1/4$, $B=-1/4$ y $C=0$, luego
 \frac{1}{s(s^2+4)} &= \frac{1}{4s}-\frac{s}{4(s^2+4)} \\
 \end{align*}
 
-Aplicando transformada inversa tenemos	
+Aplicando transformada inversa tenemos
 
 
 \begin{align*}
@@ -229,7 +242,7 @@ Y aplicando el segundo teorema de traslación obtenemos que
 
 \begin{align*}
 \mathcal{L}^{-1}\left[  e^{-3s}\frac{1}{s(s^2+4)}\right]  &= u(t-3)\mathcal{L}^{-1}\left[\frac{1}{4s}-\frac{s}{4(s^2+4)} \right](t-3) \\
-&= u(t-3)\left( \frac{1}{4}- \frac{\cos(4(t-3))}{4} \right) 
+&= u(t-3)\left( \frac{1}{4}- \frac{\cos(4(t-3))}{4} \right)
 \end{align*}
 
 
@@ -242,13 +255,13 @@ Por lo tanto, la ecuación que teníamos
 Se resuelve como
 
 \begin{align*}
-y &= \mathcal{L}^{-1} \left[ \frac{1}{s(s^2+4)}+\frac{e^{-3s}}{s(s^2+4)}\right] 
+y &= \mathcal{L}^{-1} \left[ \frac{1}{s(s^2+4)}+\frac{e^{-3s}}{s(s^2+4)}\right]
 \end{align*}
 
 
 
 \begin{align*}
-y &= \frac{1}{4}-\frac{\cos(2t)}{4} +u(t-3)\left( \frac{1}{4}- \frac{\cos(2(t-3))}{4} \right) 
+y &= \frac{1}{4}-\frac{\cos(2t)}{4} +u(t-3)\left( \frac{1}{4}- \frac{\cos(2(t-3))}{4} \right)
 \end{align*}
 
 O bien
@@ -280,7 +293,8 @@ $y = \left\{ \begin{array}{lcc} \frac{1}{4}-\frac{\cos(2t)}{4} & si &  0\leq t <
 
 El siguiente resultado puede ser demostrado directamente usando la definición de la transformada de Laplace, en este curso no vamos a hacer la demostración. \\
 
-\textbf{Proposición: } Sea $f$ una función de orden exponencial y $n \in \mathbb{N}$, entonces
+\begin{prop}Sea $f$ una función de orden exponencial y $n \in \mathbb{N}$, entonces
+\end{prop}
 
 \begin{align*}
     (-1)^n \frac{d^n}{ds^n} \mathcal{L}[f](s) = \mathcal{L}[t^nf(t)](s)
@@ -293,7 +307,8 @@ Este resultado nos sirve principalmente para calcular transformadas de Laplace d
      \mathcal{L}[tf(t)](s) = -\frac{d}{ds} \mathcal{L}[f](s)
 \end{align*}
 
-\textbf{Ejemplo: } Calculemos la transformada de Laplace de $f(t) =t\sin(at) $, sabemos que 
+\begin{ejem}Calculemos la transformada de Laplace de $f(t) =t\sin(at) $, sabemos que
+\end{ejem}
 
 \begin{align*}
     \mathcal{L}[\sin(at)](s) = \frac{a}{s^2+a^2}
@@ -311,28 +326,30 @@ Por lo tanto
 
 
 \begin{align*}
-    \mathcal{L}[t\sin(at)](s) = \frac{2as}{(s^2+a^2)^2} 
+    \mathcal{L}[t\sin(at)](s) = \frac{2as}{(s^2+a^2)^2}
 \end{align*}
 
 Notemos que esto implica que
 
 \begin{align*}
-    \mathcal{L}^{-1} \left[\frac{s}{(s^2+a^2)^2} \right] = \frac{t\sin(at)}{2a} 
+    \mathcal{L}^{-1} \left[\frac{s}{(s^2+a^2)^2} \right] = \frac{t\sin(at)}{2a}
 \end{align*}
 
 
-\textbf{Ejercicio 1: } Demuestre que
+\begin{ejer}Demuestre que
+\end{ejer}
 
 \begin{align*}
-    \mathcal{L}[t\cos(at)](s) = \frac{s^2-a^2}{(s^2+a^2)^2} 
+    \mathcal{L}[t\cos(at)](s) = \frac{s^2-a^2}{(s^2+a^2)^2}
 \end{align*}
 
 
 
-\textbf{Ejercicio 2: } Demuestre que
+\begin{ejer}Demuestre que
+\end{ejer}
 
 \begin{align*}
-    \mathcal{L}[\sin(at)-at\cos(t)](s) = \frac{2a^3}{(s^2+a^2)^2} 
+    \mathcal{L}[\sin(at)-at\cos(t)](s) = \frac{2a^3}{(s^2+a^2)^2}
 \end{align*}
 
 Y por lo tanto
@@ -349,7 +366,8 @@ Y por lo tanto
 
 Al igual que en la sección anterior, el siguiente resultado puede ser demostrado directamente usando la definición de la transformada de Laplace. \\
 
-\textbf{Proposición: } Sea $f$ una función de orden exponencial, entonces
+\begin{prop}Sea $f$ una función de orden exponencial, entonces
+\end{prop}
 
 \begin{align*}
     \int_s^\infty \mathcal{L}[f(t)] (u) du = \mathcal{L}\left[ \frac{f(t)}{t}\right](s)
@@ -358,7 +376,8 @@ Al igual que en la sección anterior, el siguiente resultado puede ser demostrad
 
 Al igual que en la sección anterior, este resultado nos sirve principalmente para calcular transformadas de Laplace de la forma $\displaystyle \mathcal{L}\left[ \frac{f(t)}{t}\right](s)$. \\
 
-\textbf{Ejemplo: } Calculemos la transformada de Laplace de $f(t) =\displaystyle \frac{\sin(at)}{t}$ con $a>0$, sabemos que 
+\begin{ejem}Calculemos la transformada de Laplace de $f(t) =\displaystyle \frac{\sin(at)}{t}$ con $a>0$, sabemos que
+\end{ejem}
 
 
 \begin{align*}
@@ -368,10 +387,11 @@ Al igual que en la sección anterior, este resultado nos sirve principalmente pa
     &= \frac{\pi}{2}-\arctan\left( \frac{s}{a}\right)
 \end{align*}
 
-\textbf{Ejercicio : } Demuestre que
+\begin{ejer}Demuestre que
+\end{ejer}
 
 \begin{align*}
-    \mathcal{L}\left[ \frac{\cos(at)}{t}\right](s) 
+    \mathcal{L}\left[ \frac{\cos(at)}{t}\right](s)
 \end{align*}
 
 No existe, tiende a infinito
@@ -459,4 +479,4 @@ Que es la solución del sistema de ecuaciones diferenciales.
 
 
 
-\end{document} 
+\end{document}

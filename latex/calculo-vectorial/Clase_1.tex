@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Primera Semana\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -139,7 +149,7 @@ Para los que hayan visto álgebra lineal se tiene que $\mathbb{R}^n$ es un espac
 \end{center}
 
 
-Sean dos vecotres $\overrightarrow{u},\overrightarrow{v} \in \mathbb{R}^n$, donde 
+Sean dos vecotres $\overrightarrow{u},\overrightarrow{v} \in \mathbb{R}^n$, donde
 
 \begin{center}
 $\overrightarrow{u} = (u_1,u_2,... ,u_n)$
@@ -197,11 +207,12 @@ $ 0 \overrightarrow{u} = \alpha \overrightarrow{0} = \overrightarrow{0}$
 \end{center}
 
 \begin{center}
-$ (-1)\overrightarrow{u} = -\overrightarrow{u} $ 
+$ (-1)\overrightarrow{u} = -\overrightarrow{u} $
 \end{center}
 
 
-\textbf{Ejemplo 1: } Sean $\overrightarrow{u}=(1,-3,4)$, $\overrightarrow{v}=(-1,2,-12)$ y $\overrightarrow{w} = (2,4,-17)$. Entonces
+\begin{ejem}Sean $\overrightarrow{u}=(1,-3,4)$, $\overrightarrow{v}=(-1,2,-12)$ y $\overrightarrow{w} = (2,4,-17)$. Entonces
+\end{ejem}
 
 \begin{align*}
 2\overrightarrow{u}-5\overrightarrow{v}+7\overrightarrow{w} &= 2(1,-3,4)-5(-1,2,12)+7(2,4,-17) \\
@@ -210,7 +221,8 @@ $ (-1)\overrightarrow{u} = -\overrightarrow{u} $
 \end{align*}
 
 
-\textbf{Ejemplo 2: } Sean $\overrightarrow{u}=(1, 3, 5)$, $\overrightarrow{v}=(-8,4,3)$. Entonces
+\begin{ejem}Sean $\overrightarrow{u}=(1, 3, 5)$, $\overrightarrow{v}=(-8,4,3)$. Entonces
+\end{ejem}
 
 \begin{align*}
 -4(\overrightarrow{u}+\overrightarrow{v}) &= -4( (1,3,5)+(-8,4,3)) \\
@@ -229,7 +241,7 @@ $ (-1)\overrightarrow{u} = -\overrightarrow{u} $
 \textbf{\large{Producto punto, norma y desigualdad de Cauchy-Schwartz}} \\
 \end{center}
 
-Sean dos vecotres $\overrightarrow{u},\overrightarrow{v} \in \mathbb{R}^n$, donde 
+Sean dos vecotres $\overrightarrow{u},\overrightarrow{v} \in \mathbb{R}^n$, donde
 
 \begin{center}
 $\overrightarrow{u} = (u_1,u_2,... ,u_n)$
@@ -266,7 +278,7 @@ $\overrightarrow{u} \cdot \overrightarrow{v} = ||\overrightarrow{u}|| ||\overrig
 Esta última igualdad fue demostrada en clases a través del teorema del coseno. Notemos que esto también nos permiete extender el concepto de ángulo entre vectores a dimensiones más grandes, en general se tiene que el ángluo entre dos vectores viene dado por
 
 \begin{align*}
-\displaystyle \alpha = \arccos \left( \frac{\overrightarrow{u} \cdot \overrightarrow{v}}{||\overrightarrow{u}|| || \overrightarrow{v}||} \right) 
+\displaystyle \alpha = \arccos \left( \frac{\overrightarrow{u} \cdot \overrightarrow{v}}{||\overrightarrow{u}|| || \overrightarrow{v}||} \right)
 \end{align*}
 
 Mientras que la distancia entre los dos vectores viene dada por
@@ -275,14 +287,16 @@ Mientras que la distancia entre los dos vectores viene dada por
 $d(\overrightarrow{u} ,\overrightarrow{v} ) = || \overrightarrow{u} -\overrightarrow{v} || $
 \end{center}
 
-\textbf{Ejemplo 1: } Sean $\overrightarrow{u} = (5,-2,1)$ y $\overrightarrow{v} = (1,-7,-1) $, luego el producto punto entre los vectores viene dado por
+\begin{ejem}Sean $\overrightarrow{u} = (5,-2,1)$ y $\overrightarrow{v} = (1,-7,-1) $, luego el producto punto entre los vectores viene dado por
+\end{ejem}
 
 \begin{center}
 $\overrightarrow{u} \cdot \overrightarrow{v} = 5 \cdot 1 + -2 \cdot -7 + 1 \cdot -1 = 5+14-1 =18 $
 \end{center}
 
 
-\textbf{Ejemplo 2: } Sean $\overrightarrow{u} = (5,-2,1)$ y $\overrightarrow{v} = (1,-7,-1) $, luego la distancia entre los dos vectores viene dado por
+\begin{ejem}Sean $\overrightarrow{u} = (5,-2,1)$ y $\overrightarrow{v} = (1,-7,-1) $, luego la distancia entre los dos vectores viene dado por
+\end{ejem}
 
 
 \begin{align*}
@@ -291,14 +305,15 @@ d(\overrightarrow{u} ,\overrightarrow{v} ) &= || \overrightarrow{u} -\overrighta
 &= || (4,5,2)|| \\
 &= \sqrt{4^2+5^2+2^2}\\
 &= \sqrt{45} \\
-&= 3\sqrt{5} 
+&= 3\sqrt{5}
 \end{align*}
 
 \newpage
 
 
 
-\textbf{Ejemplo 3: } Sean $\overrightarrow{u} = (4,6,3)$ y $\overrightarrow{v} = (1,1,-1) $, luego el ángulo entre estos dos vectores viene dado por
+\begin{ejem}Sean $\overrightarrow{u} = (4,6,3)$ y $\overrightarrow{v} = (1,1,-1) $, luego el ángulo entre estos dos vectores viene dado por
+\end{ejem}
 
 
 \begin{align*}
@@ -320,20 +335,20 @@ $||\alpha \overrightarrow{u} || = |\alpha| || \overrightarrow{u} ||$
 \end{center}
 
 \begin{center}
-$|| \overrightarrow{u} || \geq 0$ 
+$|| \overrightarrow{u} || \geq 0$
 \end{center}
 
 \begin{center}
-$|| \overrightarrow{u} || = 0 \Leftrightarrow \overrightarrow{u} =\overrightarrow{0} $ 
+$|| \overrightarrow{u} || = 0 \Leftrightarrow \overrightarrow{u} =\overrightarrow{0} $
 \end{center}
 
 \begin{center}
-$|| \overrightarrow{u} + \overrightarrow{v}|| \leq ||\overrightarrow{u}|| +||\overrightarrow{v}|| $ (Desigualdad Triangular) 
+$|| \overrightarrow{u} + \overrightarrow{v}|| \leq ||\overrightarrow{u}|| +||\overrightarrow{v}|| $ (Desigualdad Triangular)
 \end{center}
 
 
 \begin{center}
-$ \overrightarrow{u} \cdot ( \overrightarrow{v} + \overrightarrow{w}) = \overrightarrow{u} \cdot \overrightarrow{v} + \overrightarrow{u} \cdot \overrightarrow{w}$ (Distributividad) 
+$ \overrightarrow{u} \cdot ( \overrightarrow{v} + \overrightarrow{w}) = \overrightarrow{u} \cdot \overrightarrow{v} + \overrightarrow{u} \cdot \overrightarrow{w}$ (Distributividad)
 \end{center}
 
 \begin{center}
@@ -360,9 +375,11 @@ $\overrightarrow{u} \cdot \overrightarrow{v} \leq ||\overrightarrow{u}|| ||\over
 
 
 
-\textbf{Definición: } Dados dos vectores $\overrightarrow{u}, \overrightarrow{v} \in \mathbb{R}^n$ se dice que son \textbf{ortogonales } o \textbf{perpendiculares} si y sólo sí $\overrightarrow{u} \cdot \overrightarrow{v} = 0$ \\
+\begin{defin}Dados dos vectores $\overrightarrow{u}, \overrightarrow{v} \in \mathbb{R}^n$ se dice que son \textbf{ortogonales } o \textbf{perpendiculares} si y sólo sí $\overrightarrow{u} \cdot \overrightarrow{v} = 0$ \\
+\end{defin}
 
-\textbf{Ejemplo: } $\overrightarrow{u}= (-1,1,1)$ y $\overrightarrow{v} = (2,1,1)$, entonces
+\begin{ejem}$\overrightarrow{u}= (-1,1,1)$ y $\overrightarrow{v} = (2,1,1)$, entonces
+\end{ejem}
 
 \begin{center}
 $\overrightarrow{u} \cdot \overrightarrow{v} = -2+1+1=0 $
@@ -391,14 +408,15 @@ $\displaystyle \text{Proy}_{\overrightarrow{u} \to \overrightarrow{v}} = \left( 
 Notemos que $\displaystyle \frac{\overrightarrow{u} \cdot \overrightarrow{v}}{|| \overrightarrow{v}||^2}$ es un número real. \\
 
 
-\textbf{Ejemplo: } Tomando $\overrightarrow{u} =(2,5)$ y $\overrightarrow{v} =(3,4) $, entonces
+\begin{ejem}Tomando $\overrightarrow{u} =(2,5)$ y $\overrightarrow{v} =(3,4) $, entonces
+\end{ejem}
 
 \begin{align*}
 \displaystyle \text{Proy}_{\overrightarrow{u} \to \overrightarrow{v}} &= \left( \frac{\overrightarrow{u} \cdot \overrightarrow{v}}{|| \overrightarrow{v}||^2} \right)  \overrightarrow{v} \\
 &= \left( \frac{(2,5) \cdot (3,4)}{||(3,4)||^2} \right)  (3,4) \\
 &= \frac{6+20}{9+16}   (3,4) \\
 &= \frac{26}{25}   (3,4) \\
-&= \left( \frac{78}{25},\frac{104}{25} \right) 
+&= \left( \frac{78}{25},\frac{104}{25} \right)
 \end{align*}
 
 
@@ -411,7 +429,8 @@ $\overrightarrow{u}= u_1 \hat{\imath} +u_2\hat{\jmath}+u_3\hat{k}$
 
 
 
-\textbf{Definición: } Dados dos vectores $\overrightarrow{u}$ y $\overrightarrow{u}$ en $\mathbb{R}^3$, surge la necesidad de determinar un vector $\overrightarrow{w}$ que sea perpendicular tanto a $\overrightarrow{u}$ como a $\overrightarrow{w}$. Esta definición será escrita sólo para $\mathbb{R}^3$, definimos entonces el \textbf{producto cruz} como
+\begin{defin}Dados dos vectores $\overrightarrow{u}$ y $\overrightarrow{u}$ en $\mathbb{R}^3$, surge la necesidad de determinar un vector $\overrightarrow{w}$ que sea perpendicular tanto a $\overrightarrow{u}$ como a $\overrightarrow{w}$. Esta definición será escrita sólo para $\mathbb{R}^3$, definimos entonces el \textbf{producto cruz} como
+\end{defin}
 
 \begin{center}
 $ \overrightarrow{u} \times \overrightarrow{v} = \begin{vmatrix}
@@ -440,7 +459,8 @@ $||\overrightarrow{u} \times \overrightarrow{v} || =||\overrightarrow{u}||||\ove
 Donde $\alpha$ es el ángulo entre los dos vectores. \\
 
 
-\textbf{Ejemplo: } Sean $\overrightarrow{u} =(1,1,1)$ y $\overrightarrow{v} = (1,-2,-1) $, entonces
+\begin{ejem}Sean $\overrightarrow{u} =(1,1,1)$ y $\overrightarrow{v} = (1,-2,-1) $, entonces
+\end{ejem}
 
 
 \begin{center}
@@ -465,7 +485,7 @@ Dos vectores $\overrightarrow{u} $ y $\overrightarrow{v} $ se dicen \textbf{para
 
 \begin{center}
 $\overrightarrow{u} $ es paralelo a $\overrightarrow{v}$ si y sólo sí $\overrightarrow{u} \times \overrightarrow{v} = \overrightarrow{0}  $
-\end{center} 
+\end{center}
 
 \newpage
 
@@ -489,7 +509,8 @@ El producto cruz cumple con las siguientes propiedades \\
 \end{center}
 
 
-\textbf{Definición:} un vector $u$ se dice unitario si $|| u || =1$ \\
+\begin{defin}un vector $u$ se dice unitario si $|| u || =1$ \\
+\end{defin}
 
 por ejemplo el vector $(1,0)$ es unitario. Dado un vector cualquiera $v$, se puede crear un vector unitario simplemente dividiendo por la norma, generando el vector
 
@@ -541,7 +562,7 @@ $L = \lbrace \overrightarrow{p} + \lambda \overrightarrow{d} : \lambda \in \math
     \label{fig:etiqueta}
 \end{figure}
 
-Usualmente se denota como 
+Usualmente se denota como
 
 
 \begin{center}
@@ -582,7 +603,7 @@ z&= p_3+\lambda d_3 \\
 \end{align*}
 
 
-Esta se conoce como \textbf{Ecuación paramétrica de la recta} y expresa a todas las coordenadas en función de un único parámetro $\lambda$. Notemos que con estas ecuaciones podemos detectar inmediatamente el vector director y el vector posición. En efecto, sea la recta $L$ dada por 
+Esta se conoce como \textbf{Ecuación paramétrica de la recta} y expresa a todas las coordenadas en función de un único parámetro $\lambda$. Notemos que con estas ecuaciones podemos detectar inmediatamente el vector director y el vector posición. En efecto, sea la recta $L$ dada por
 
 
 \begin{align*}
@@ -598,7 +619,7 @@ Podemos detectar que el vector director es $\overrightarrow{d}=(5,-8,1)$ y el ve
 \begin{align*}
 \displaystyle \lambda = \frac{x-p_1}{d_1}  \\
 \lambda = \frac{y-p_2}{d_2} \\
-\lambda = \frac{z-p_3}{d_3} 
+\lambda = \frac{z-p_3}{d_3}
 \end{align*}
 
 De dónde se deduce que
@@ -625,9 +646,11 @@ $\displaystyle D(A,L) = \frac{|| (A-\overrightarrow{p}) \times \overrightarrow{d
 \end{center}
 
 
-\textbf{Ejemplo: } Calcular la distancia entre el punto $A=(1,3,5)$ y la recta $L$ dada por $\displaystyle \frac{x-1}{2} = \frac{y+2}{3}  = z $. \\
+\begin{ejem}Calcular la distancia entre el punto $A=(1,3,5)$ y la recta $L$ dada por $\displaystyle \frac{x-1}{2} = \frac{y+2}{3}  = z $. \\
+\end{ejem}
 
-\textit{Respuesta: }Primero hay que encontrar el vector posición y el vector director de la recta, se tiene que $\overrightarrow{d}=(2,3,1)$ y  $\overrightarrow{p}=(1,-2,0)$. Entonces
+\begin{sol}Primero hay que encontrar el vector posición y el vector director de la recta, se tiene que $\overrightarrow{d}=(2,3,1)$ y  $\overrightarrow{p}=(1,-2,0)$. Entonces
+\end{sol}
 
 \begin{align*}
 \displaystyle D(A,L) &= \frac{|| ((1,3,5)-(1,-2,0)) \times (2,3,1)||}{|| (2,3,1) ||} \\
@@ -653,7 +676,7 @@ $\displaystyle D(A,L) = \frac{|| (A-\overrightarrow{p}) \times \overrightarrow{d
 \textbf{Caso 2: }  $\displaystyle \frac{d_1}{v_1} \neq \frac{d_2}{v_2}$ o bien $\displaystyle \frac{d_2}{v_2} \neq \frac{d_3}{v_3}$ (Los vectores directores  no son paralelos). Entonces hay dos posibilidades \\
 
 
-- 1. 
+- 1.
 
 \begin{center}
 $\displaystyle \begin{vmatrix}
@@ -667,7 +690,7 @@ En este caso las rectas son secantes, es decir se intersectan y su ángulo de in
 
 
 
-- 2. 
+- 2.
 
 \begin{center}
 $\displaystyle \begin{vmatrix}
@@ -680,9 +703,11 @@ p_3-u_3 & d_3 & v_3 \\
 En este caso las rectas  no se intersectan y se dice que las rectas son sesgadas. \\
 
 
-\textbf{Ejemplo:} Consideramos las rectas  $\displaystyle L_1 :  \frac{x-5}{3} = \frac{y+2}{7}  = z+4 $ y $\displaystyle L_2 :  \frac{x-5}{2} = \frac{y-2}{6}  = \frac{z-1}{4} $. Quremos ver que tipo de rectas tenemos. \\
+\begin{ejem}Consideramos las rectas  $\displaystyle L_1 :  \frac{x-5}{3} = \frac{y+2}{7}  = z+4 $ y $\displaystyle L_2 :  \frac{x-5}{2} = \frac{y-2}{6}  = \frac{z-1}{4} $. Quremos ver que tipo de rectas tenemos. \\
+\end{ejem}
 
-\textit{Respuesta: } Tenemos que los vectores directores de cada recta son $\overrightarrow{d}= (3,7,1)$ y $\overrightarrow{v}=(2,6,4)$, como los vectores no son paralelos pues $\displaystyle \frac{3}{2} \neq \frac{7}{6}$. Entonces, es claro que estamos en el caso $2$. Los vectores posición vienen dados por $\overrightarrow{p}=(5,-2,-4)$ y $\overrightarrow{u}=(5,2,1)$. Notamos que
+\begin{sol}Tenemos que los vectores directores de cada recta son $\overrightarrow{d}= (3,7,1)$ y $\overrightarrow{v}=(2,6,4)$, como los vectores no son paralelos pues $\displaystyle \frac{3}{2} \neq \frac{7}{6}$. Entonces, es claro que estamos en el caso $2$. Los vectores posición vienen dados por $\overrightarrow{p}=(5,-2,-4)$ y $\overrightarrow{u}=(5,2,1)$. Notamos que
+\end{sol}
 
 \begin{center}
 $\displaystyle \begin{vmatrix}
@@ -719,9 +744,10 @@ $\displaystyle \Pi : \overrightarrow{p}+\lambda \overrightarrow{d} + t \overrigh
 
 Es decir, al hacer variar $\lambda$ y $t$ obtenemos todos los puntos del plano $\Pi$, a esta ecuación se le conoce como \textbf{Ecuación vectorial del plano}. Entonces, se dice que un plano tiene dos grados de libertad mientras que una recta tiene sólo un grado de libertad. \\
 
-Al vector $\overrightarrow{p}$ se le llama \textbf{vector posición} y a los vectores $\overrightarrow{d}$ y $\overrightarrow{v}$ se les llama \textbf{vectores directores}. \\ 
+Al vector $\overrightarrow{p}$ se le llama \textbf{vector posición} y a los vectores $\overrightarrow{d}$ y $\overrightarrow{v}$ se les llama \textbf{vectores directores}. \\
 
-\textbf{Ejemplo: }Consideramos el plano $\Pi$ generado por los vectores $\overrightarrow{d}=(1,2,3)$ y $\overrightarrow{v}=(-3,4,7)$ y el vector posición $\overrightarrow{p}= (1,0,3)$. Entonces el plano $\Pi$ esta dado por
+\begin{ejem}Consideramos el plano $\Pi$ generado por los vectores $\overrightarrow{d}=(1,2,3)$ y $\overrightarrow{v}=(-3,4,7)$ y el vector posición $\overrightarrow{p}= (1,0,3)$. Entonces el plano $\Pi$ esta dado por
+\end{ejem}
 
 \begin{align*}
 \displaystyle \Pi &: (1,0,3)+\lambda(1,2,3)+t(-3,4,7) \\
@@ -767,7 +793,7 @@ Y concluimos que
 $n_1x+n_2y+n_3z-n_1p_1-n_2p_2-n_3p_3=0$
 \end{center}
 
-La cual se puede dejar de la forma 
+La cual se puede dejar de la forma
 
 \begin{center}
 $Ax+By+Cz+D=0$
@@ -779,9 +805,11 @@ Al vector  $\overrightarrow{n}=(A,B,C)$ se le llama \textbf{vector normal} al pl
 
 
 
-\textbf{Ejemplo:} Calcular la ecuación del plano cuyo vector normal es $\overrightarrow{n}=(1,7,-3)$ y que pasa por el punto $(-3,2,4)$.\\
+\begin{ejem}Calcular la ecuación del plano cuyo vector normal es $\overrightarrow{n}=(1,7,-3)$ y que pasa por el punto $(-3,2,4)$.\\
+\end{ejem}
 
-\textit{Respuesta:} Ya tenemos $A$, $B$ y $C$, estos vienen dados por las coordenadas del vector normal, es decir $A=1$, $B=7$ y $C=-3$, luego la ecuación general es de la forma
+\begin{sol}Ya tenemos $A$, $B$ y $C$, estos vienen dados por las coordenadas del vector normal, es decir $A=1$, $B=7$ y $C=-3$, luego la ecuación general es de la forma
+\end{sol}
 
 \begin{center}
 $x+7y-3z+D=0$
@@ -846,4 +874,4 @@ Con esta fórmula se pueden deducir todas las otras fórmulas, por ejemplo la di
 
 
 
-\end{document} 
+\end{document}

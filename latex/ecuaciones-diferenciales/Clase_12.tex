@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Semana 4\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -110,7 +120,8 @@ Santiago, Chile
 \section{Clase de ejercicios }
 
 
-\textbf{Ejercicio 1: } Encuentra una solución explícita de la siguiente ecuación diferencial de orden 1
+\begin{ejer}Encuentra una solución explícita de la siguiente ecuación diferencial de orden 1
+\end{ejer}
 
 \begin{align*}
     x\frac{dy}{dx}+y=x^2y^3
@@ -118,7 +129,8 @@ Santiago, Chile
 
 Luego resuelva el PVI cuando $y(1)=-1$. \\
 
-\textbf{Solución:} Es una ecuación de Bernoullí, usamos el cambio de variable $z=y^{1-3}=y^{-2}$, luego $z'=-2y^{-3}y'$ o bien $y'= -y^3/2 z'$, reemplazando obtenemos
+\begin{sol}Es una ecuación de Bernoullí, usamos el cambio de variable $z=y^{1-3}=y^{-2}$, luego $z'=-2y^{-3}y'$ o bien $y'= -y^3/2 z'$, reemplazando obtenemos
+\end{sol}
 
 \begin{align*}
     -\frac{xy^3}{2}z'+y=x^2y^3
@@ -181,13 +193,15 @@ Por lo tanto la solución del PVI es
 
 \newpage
 
-\textbf{Ejercicio 2: } Resuelva la siguiente ecuación diferencial \\
+\begin{ejer}Resuelva la siguiente ecuación diferencial \\
+\end{ejer}
 
 \begin{align*}
     (5x+4y)dx+(4x-8y^3)dy=0
 \end{align*}
 
-\textbf{Solución: } Tenemos $M= 5x+4$ y  $N= 4x-8y^3$, luego
+\begin{sol}Tenemos $M= 5x+4$ y  $N= 4x-8y^3$, luego
+\end{sol}
 
 \begin{align*}
     M_y= 4 =N_x
@@ -236,7 +250,8 @@ Por lo tanto la solución de la EDO es
 \newpage
 
 
-\textbf{Ejercicio 3: } Resuelva el siguiente PVI usando coeficientes indeterminados
+\begin{ejer}Resuelva el siguiente PVI usando coeficientes indeterminados
+\end{ejer}
 
 
 \begin{align*}
@@ -245,7 +260,8 @@ Por lo tanto la solución de la EDO es
     y'(0) &= 0
 \end{align*}
 
-\textbf{Solución: } Primero resolvemos la homogenea usando $y=e^{mx}$, obtenemos el polinomio asociado
+\begin{sol}Primero resolvemos la homogenea usando $y=e^{mx}$, obtenemos el polinomio asociado
+\end{sol}
 
 
 
@@ -259,7 +275,7 @@ De donde se deduce que $m_1=1$ y $m_2=-2$, de esta forma la solución de la homo
     y_h= c_1e^x+c_2e^{-2x}
 \end{align*}
 
-La solución particular tiene la forma 
+La solución particular tiene la forma
 
 
 \begin{align*}
@@ -319,14 +335,16 @@ La solución del PVI es
 
 \newpage
 
-\textbf{Ejercicio 4: } Resuelva el siguiente PVI usando variación de parámetros
+\begin{ejer}Resuelva el siguiente PVI usando variación de parámetros
+\end{ejer}
 
 
 \begin{align*}
     y''+9y=\sin(3x)
 \end{align*}
 
-\textbf{Solución: } Primero resolvemos la homogenea usando $y=e^{mx}$, obtenemos el polinomio asociado
+\begin{sol}Primero resolvemos la homogenea usando $y=e^{mx}$, obtenemos el polinomio asociado
+\end{sol}
 
 
 
@@ -346,7 +364,7 @@ Ahora bien, $f(x)=\sin(3x)$, por otra parte
 \begin{align*}
     W(y_1,y_2) &= \begin{vmatrix}
 \cos(3x) & \sen(3x) \\
--3\sen(x) & 3\cos(x) 
+-3\sen(x) & 3\cos(x)
 \end{vmatrix} \\
 &= 3\cos^2(x)+3\sen^2(x) \\
 &= 3
@@ -397,7 +415,8 @@ Luego
 
 \newpage
 
-\textbf{Ejercicio 5: } Resuelva la siguiente ecuación diferencial
+\begin{ejer}Resuelva la siguiente ecuación diferencial
+\end{ejer}
 
 
 \begin{align*}
@@ -406,7 +425,8 @@ Luego
     y'(0) &= 1
 \end{align*}
 
-\textbf{Solución: }  Aplicamos Laplace
+\begin{sol}Aplicamos Laplace
+\end{sol}
 
 \begin{align*}
     \mathcal{L}[y'']-5\mathcal{L}[y']+6\mathcal{L}[y] &=\mathcal{L}[\cos(t)] \\
@@ -416,8 +436,8 @@ Luego
     \mathcal{L}[y](s^2-5s+6) &= \frac{s^2+s+1}{s^2+1} \\
     \mathcal{L}[y] &= \frac{s^2+s+1}{(s^2-5s+6)(s^2+1)} \\
     \mathcal{L}[y] &= \frac{s^2+s+1}{(s-3)(s-2)(s^2+1)} \\
-\end{align*}    
-    
+\end{align*}
+
 Aplicamos fracciones parciales
 
 \begin{align*}
@@ -523,4 +543,4 @@ Por lo tanto
 
 
 
-\end{document} 
+\end{document}

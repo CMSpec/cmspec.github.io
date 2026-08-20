@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Semana 4\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -125,15 +135,17 @@ Sea función $f:\mathbb{R} \to \mathbb{C}$ una función de periodo $T$, se defin
     b_n = \frac{2}{T} \int_0^T \sin \left( \frac{2\pi n t}{T}\right) f(t) dt
 \end{align*}
 
-\textbf{Definición:} Dada una función $f:\mathbb{R} \to \mathbb{C}$ función periódica de periodo $T$, se define la \textbf{serie de  Fourier} de $f$ evaluada en $t$, como
+\begin{defin}Dada una función $f:\mathbb{R} \to \mathbb{C}$ función periódica de periodo $T$, se define la \textbf{serie de  Fourier} de $f$ evaluada en $t$, como
+\end{defin}
 
 \begin{align*}
-  \frac{a_0}{2}+ \sum_{n=1}^\infty a_n\cos \left( \frac{2\pi n}{T} t  \right) +b_n\sin \left( \frac{2\pi n}{T} t  \right) 
+  \frac{a_0}{2}+ \sum_{n=1}^\infty a_n\cos \left( \frac{2\pi n}{T} t  \right) +b_n\sin \left( \frac{2\pi n}{T} t  \right)
 \end{align*}
 
 Se tiene el siguiente teorema  \\
 
-\textbf{Teorema Riemann, Dirichlet: } Sea $f: \mathbb{R} \to \mathbb{C}$ una función periódica con periodo $T$ derivable a trozos en $[0,T]$. Entonces se verifica que \\
+\begin{thm}Sea $f: \mathbb{R} \to \mathbb{C}$ una función periódica con periodo $T$ derivable a trozos en $[0,T]$. Entonces se verifica que \\
+\end{thm}
 
 1.  Para todo $t \in \mathbb{R}$ donde $f$ es continua
 
@@ -144,11 +156,12 @@ Se tiene el siguiente teorema  \\
 2. Si $f$ no es continua en un punto $t$ entonces se verifica que
 
 \begin{align*}
- \frac{a_0}{2}+ \sum_{n=1}^\infty a_n\cos \left( \frac{2\pi n}{T} t  \right) +b_n\sin \left( \frac{2\pi n}{T} t  \right) = \frac{\displaystyle\lim_{x \to t^+}f(x)+\lim_{x \to t^-}f(x) }{2}   
+ \frac{a_0}{2}+ \sum_{n=1}^\infty a_n\cos \left( \frac{2\pi n}{T} t  \right) +b_n\sin \left( \frac{2\pi n}{T} t  \right) = \frac{\displaystyle\lim_{x \to t^+}f(x)+\lim_{x \to t^-}f(x) }{2}
 \end{align*}
 
 
-\textbf{Nota:} Vamos a saltar todos los detalles y demostraciones, ya que no forman parte del propósito de este curso. \\
+\begin{rmk}Vamos a saltar todos los detalles y demostraciones, ya que no forman parte del propósito de este curso. \\
+\end{rmk}
 
 \textbf{Aplicación 1:} Este teorema nos indica que cualquier función periódica derivable a trozos se puede descomponer en sumas de senos y cosenos, lo cual es  útil en aplicaciones como señales. Por ejemplo, supongamos que una señal que llega a un receptor es producto de la superposición de muchas señales, al descomponer esa señal en su serie de Fourier podemos obtener cada señal individual que compone a la señal que llegó. Esto es extremadamente útil en telecomunicaciones. \\
 
@@ -168,7 +181,7 @@ Y escribimos los coeficientes con $n\in \mathbb{Z}$
     c_n = \frac{1}{T} \int_0^T e^{-2\pi i n t/T} f(t) dt
 \end{align*}
 
-Entonces se tiene que 
+Entonces se tiene que
 
 \begin{align*}
     f(t) &= \frac{a_0}{2}+ \sum_{n=1}^\infty a_n\cos \left( \frac{2\pi n}{T} t  \right) +b_n\sin \left( \frac{2\pi n}{T} t  \right) \\
@@ -177,7 +190,8 @@ Entonces se tiene que
 
 Que es una forma alternativa más cómoda de escribir series de Fourier. Veamos un ejemplo importante. \\
 
-\textbf{Ejemplo: } Considere la función $f(t) = t$ para $0\leq t < 1$ y $f(t+1)=f(t)$, es decir, una función periódica de periodo 1. Vamos a calcular su serie de Fourier, tenemos que
+\begin{ejem}Considere la función $f(t) = t$ para $0\leq t < 1$ y $f(t+1)=f(t)$, es decir, una función periódica de periodo 1. Vamos a calcular su serie de Fourier, tenemos que
+\end{ejem}
 
 \begin{align*}
     a_0 &= 2 \int_0^1 t dt \\
@@ -231,10 +245,11 @@ De donde se deduce que
 \sum_{k=1}^\infty \frac{ (-1)^{k+1}}{2k-1} = \frac{\pi}{4}
 \end{align*}
 
-Que es nada mas ni nada menos que la conocida Serie de Leibniz  \\    
+Que es nada mas ni nada menos que la conocida Serie de Leibniz  \\
 
 
-\textbf{NOTA IMPORTANTE: }Las series de Fourier se pueden calcular usando cualquier intervalo de largo igual al periodo de la función, nosotros hemos usado $[0,T]$, pero también podría ser $[-T/2,T/2]$ que también se usa mucho debido a su simetría. Los resultados son los mismos, pero las integrales para calcular los coeficientes se calculan con los nuevos límites dados por el nuevo intervalo, en este caso tendríamos
+\begin{rmk}Las series de Fourier se pueden calcular usando cualquier intervalo de largo igual al periodo de la función, nosotros hemos usado $[0,T]$, pero también podría ser $[-T/2,T/2]$ que también se usa mucho debido a su simetría. Los resultados son los mismos, pero las integrales para calcular los coeficientes se calculan con los nuevos límites dados por el nuevo intervalo, en este caso tendríamos
+\end{rmk}
 
 \begin{align*}
     a_n = \frac{2}{T} \int_{-T/2}^{T/2} \cos \left( \frac{2\pi n t}{T}\right) f(t) dt
@@ -245,17 +260,19 @@ Que es nada mas ni nada menos que la conocida Serie de Leibniz  \\
 \end{align*}
 
 
-\textbf{Ejercicio 1: }Demuestre que la serie de Fourier de la función $f(x)=x$ en el intervalo $(-2,2)$ viene dada por
+\begin{ejer}Demuestre que la serie de Fourier de la función $f(x)=x$ en el intervalo $(-2,2)$ viene dada por
+\end{ejer}
 
 \begin{align*}
-    \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}\sen \left( \frac{n\pi}{2} x\right) 
+    \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}\sen \left( \frac{n\pi}{2} x\right)
 \end{align*}
 
 Y concluya nuevamente la serie de Leibniz. \\
 
 
 
-\textbf{Ejercicio 2: } Demuestre que la serie de Fourier de la función dada por $f(t)=t^2$ en el intervalo $[-\pi,\pi)$ es
+\begin{ejer}Demuestre que la serie de Fourier de la función dada por $f(t)=t^2$ en el intervalo $[-\pi,\pi)$ es
+\end{ejer}
 
 \begin{align*}
     f(t) = \frac{\pi^2}{3} + 4 \sum_{n=1}^\infty \frac{(-1)^n\cos(nx)}{n^2}
@@ -273,7 +290,8 @@ Utilice lo anterior para demostrar que
 
 Una ecuación diferencial parcial (EDP) es una igualdad en la cual la incógnita es una función que depende de más de una variable $u=u(x_1,x_2,...,x_n)$ y en la igualdad aparecen derivadas parciales, que pueden ser de cualquier orden, incluso cruzadas. \\
 
-\textbf{Ejemplo 1:} La ecuación diferencial dada por
+\begin{ejem}La ecuación diferencial dada por
+\end{ejem}
 
 \begin{align*}
     u_x+u_{xy} = 1
@@ -286,7 +304,8 @@ A diferencia de las ecuaciones diferenciales ordinarias, las ecuaciones diferenc
 \textbf{Método de separación de variables:} Sea $u=u(x,t)$ función en dos variables, que además, es la incógnita en una EDP, este método consiste en asumir que $u = M(x)N(t)$, es decir, la función es el producto de dos funciones no nulas, una que depende de $x$ y la otra que depende de $t$, después se intenta separar $M$ y $N$ de tal forma que de un lado de la igualdad quede algo que solo depende de $x$ y del otro lado algo que solo depende de $t$, se concluye que ambos lados deben ser constantes y se resuelve cada EDO por separado. Cabe destacar que este método no siempre es posible de realizar. Veamos un ejemplo para ver como funciona. \\
 
 
-\textbf{Ejemplo: } Consideremos la EDP dada por $u_x+u_t = u$, supongamos que $u= M(x)N(t)$, entonces
+\begin{ejem}Consideremos la EDP dada por $u_x+u_t = u$, supongamos que $u= M(x)N(t)$, entonces
+\end{ejem}
 
 \begin{align*}
     u_x &= N(t)M'(x) \\
@@ -307,7 +326,7 @@ Ahora intentamos separar las variables
     \frac{N'(t)}{N(t)} &=\frac{M(x)-M'(x)}{M(x)}
 \end{align*}
 
-En la última igualdad podemos ver que la parte del lado izquierdo solo depende de $t$ mientras que la parte del lado derecho solo depende de $x$, la única forma que esto sea posible es que ambas sean constantes, luego 
+En la última igualdad podemos ver que la parte del lado izquierdo solo depende de $t$ mientras que la parte del lado derecho solo depende de $x$, la única forma que esto sea posible es que ambas sean constantes, luego
 
 \begin{align*}
     \frac{N'(t)}{N(t)} &=\frac{M(x)-M'(x)}{M(x)}= k
@@ -345,7 +364,8 @@ Cuya solución es $N(t) = c_2 e^{kt}$. De esta forma
 
 Que es la solución dada por el método de separación de variables, aquí $c$ y $k$ son constantes arbitrarias. \\
 
-\textbf{Nota Importante: } En algunos casos es muy importante diferenciar si $k>0$, $k=0$ o $k< 0$, en especial cuando las ecuaciones tienen orden dos, pero en este caso no es necesario. \\ \\
+\begin{rmk}En algunos casos es muy importante diferenciar si $k>0$, $k=0$ o $k< 0$, en especial cuando las ecuaciones tienen orden dos, pero en este caso no es necesario. \\ \\
+\end{rmk}
 
 
 \newpage
@@ -355,7 +375,7 @@ Que es la solución dada por el método de separación de variables, aquí $c$ y
 
 Los problemas de frontera en las EDP son equivalentes a los PVI.  Pero en general son mucho más complicados y las condiciones iniciales son llamadas condiciones de borde o condiciones de frontera, la razón por la que se llaman de esta manera es porque se aplican en los límites donde la función está definida y las condiciones iniciales sueles ser funciones que recorren el borde donde está definida una de las dos variables. Veamos unos ejemplos\\
 
-\textbf{La ecuación del calor:} Sea $u(x,t)$ con $0<t<t_0$ y $a< x < b$, la ecuación del calor viene dada por 
+\textbf{La ecuación del calor:} Sea $u(x,t)$ con $0<t<t_0$ y $a< x < b$, la ecuación del calor viene dada por
 
 \begin{align*}
     u_t-\lambda u_{xx} = 0
@@ -363,7 +383,8 @@ Los problemas de frontera en las EDP son equivalentes a los PVI.  Pero en genera
 
 Donde $\lambda \in \mathbb{R}$. Podemos agregar condiciones de frontera dadas por $u(a,t)= f(t)$, $u(b,t) =g(t)$ y $u(x,0) = h(x)$, donde $f,g$ y $h$ son funciones (podemos notar que siempre elegimos los límites de los intervalos donde las variables están definidas), también se pueden exigir condiciones sobre $u_t(a,t)$ o bien sobre $u_t(b,t)$. Es imposible encontrar una solución general a este tipo de problemas de frontera, los pasos dependen mucho de las funciones $f,g$ y $h$, en algunos casos es necesario recurrir a las series de Fourier y en otros casos no.\\
 
-\textbf{Ejemplo: } Consideremos el problema de frontera dado por
+\begin{ejem}Consideremos el problema de frontera dado por
+\end{ejem}
 
 \begin{align*}
     u_t-4u_{xx} = 0
@@ -384,7 +405,7 @@ Luego tenemos
     \frac{N'}{N} &= 4\frac{M''}{M}
 \end{align*}
 
-De esta forma 
+De esta forma
 
 \begin{align*}
     \frac{N'}{N} &= 4\frac{M''}{M} = k
@@ -480,7 +501,7 @@ También es una solución de la EDP que cumple las dos primeras condiciones de b
 \end{align*}
 
 
-Pero debido a al ejemplo 1 de la sección 1 sabemos que la serie de Fourier de $x-1/2$ en $(0,1)$ es 
+Pero debido a al ejemplo 1 de la sección 1 sabemos que la serie de Fourier de $x-1/2$ en $(0,1)$ es
 
 \begin{align*}
     - \frac{1}{\pi}\sum_{n=1}^\infty \frac{\sin(2\pi n t)}{n}
@@ -511,4 +532,4 @@ Estos ejercicios son muy largos y complicados en general.
 
 
 
-\end{document} 
+\end{document}

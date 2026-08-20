@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Semana 4\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -110,9 +120,11 @@ Santiago, Chile
 Dada una ecuación diferencial de la forma $y'= f(ax+by+c)$, entonces haciendo el cambio de variable $z=ax+by+c$, obtenemos una ecuación de variables separables. Notemos que se tiene $\displaystyle \frac{dy}{dx} = \frac{1}{b} \left( \frac{dz}{dx} -a \right) $\\
 
 
-\textbf{Ejercicio: } Encontrar la solución de la ecuación diferencial $\displaystyle \frac{dy}{dx} =3y-x$ usando sustitución lineal.\\
+\begin{ejer}Encontrar la solución de la ecuación diferencial $\displaystyle \frac{dy}{dx} =3y-x$ usando sustitución lineal.\\
+\end{ejer}
 
-\textit{Respuesta: } Notemos que esta es una ecuación lineal y por lo tanto podríamos resolverla usando la fórmula general, pero en este caso se exige que se use sustitución lineal y por lo tanto vamos a usar ese método. Hacemos el reemplazo $z = 3y-x$, entonces $\displaystyle \frac{dy}{dx} = \frac{1}{3}\left(  \frac{dz}{dx} +1 \right)  $. Luego
+\begin{sol}Notemos que esta es una ecuación lineal y por lo tanto podríamos resolverla usando la fórmula general, pero en este caso se exige que se use sustitución lineal y por lo tanto vamos a usar ese método. Hacemos el reemplazo $z = 3y-x$, entonces $\displaystyle \frac{dy}{dx} = \frac{1}{3}\left(  \frac{dz}{dx} +1 \right)  $. Luego
+\end{sol}
 
 \begin{center}
 $\displaystyle \frac{1}{3} \left( \frac{dz}{dx} +1\right) =z$
@@ -173,13 +185,16 @@ $\displaystyle 3y-x= \frac{ce^{3x}+1}{3}$
 
 
 
-\textbf{Definición: }Una ecuación diferencial es de Bernoulli de grado $n$ si es de la forma $y'+a(x)y=b(x)y^n$. Como podemos ver, se parece a una lineal salvo por el hecho de que $b(x)$ está multiplicado por $y^n$.\\
+\begin{defin}Una ecuación diferencial es de Bernoulli de grado $n$ si es de la forma $y'+a(x)y=b(x)y^n$. Como podemos ver, se parece a una lineal salvo por el hecho de que $b(x)$ está multiplicado por $y^n$.\\
+\end{defin}
 
 \textit{Para resolver una ecuación diferencial de Bernoulli, se aplica el cambio de variable $z=y^{1-n}$ y obtenemos una ED lineal}. \\
 
-\textbf{Ejercicio: } Encontrar la solución de la ecuación diferencial $\displaystyle y'-5y = -\frac{5}{2} x y^3$.\\
+\begin{ejer}Encontrar la solución de la ecuación diferencial $\displaystyle y'-5y = -\frac{5}{2} x y^3$.\\
+\end{ejer}
 
-\textit{Respuesta: } Tenemos una ecuación de Bernoulli de grado 3, por lo tanto tenemos que hacer el cambio de variable $z=y^{1-3}=y^{-2}$ y entonces $\displaystyle \frac{dz}{dx}=  -2 y^{-3}\frac{dy}{dx} $, luego  $\displaystyle \frac{dy}{dx}=  -\frac{y^3}{2}\frac{dz}{dx} $. Reemplazando esto último, obtenemos \\
+\begin{sol}Tenemos una ecuación de Bernoulli de grado 3, por lo tanto tenemos que hacer el cambio de variable $z=y^{1-3}=y^{-2}$ y entonces $\displaystyle \frac{dz}{dx}=  -2 y^{-3}\frac{dy}{dx} $, luego  $\displaystyle \frac{dy}{dx}=  -\frac{y^3}{2}\frac{dz}{dx} $. Reemplazando esto último, obtenemos \\
+\end{sol}
 
 
 
@@ -283,4 +298,4 @@ $\displaystyle y =  \pm \frac{1}{\sqrt{ \left( \frac{x}{2} - \frac{1}{20} +ce^{-
 
 
 
-\end{document} 
+\end{document}

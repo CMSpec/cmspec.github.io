@@ -46,15 +46,23 @@ const preamble = String.raw`\documentclass[12pt]{article}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\bbH}{\mathbb{H}}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 `;
 
 function prepareSource(source) {
   const firstSection = source.search(/\\section\s*\{/);
   let prepared = firstSection >= 0 ? source.slice(firstSection) : source;
   prepared = prepared.replace(/\\end\{document\}[\s\S]*$/, "");
-  prepared = prepared.replace(/\\section\s*\{(?:Clase de |)ejercicios[^}]*\}[\s\S]*$/i, "");
   prepared = prepared
-    .replace(/\\begin\{ejer\}[\s\S]*?\\end\{ejer\}/g, "")
     .replace(/\\mathbbm/g, "\\mathbb")
     .replace(/\\displaystyle\s*\\displaystyle/g, "\\displaystyle")
     .replace(/\\textcolor\{[^}]+\}\{([^}]*)\}/g, "$1")
