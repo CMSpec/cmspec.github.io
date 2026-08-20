@@ -29,31 +29,6 @@ import { sitePath } from "../../lib/site-path";
 type LabItem = { title: string; subtitle: string; href: string; render: () => ReactNode; group?: string };
 type LabArea = { number: string; title: string; tone: string; description: string; items: LabItem[] };
 
-const aiFunctions = [
-  ["Interpretar", "Imágenes, señales o texto clínico", "Hallazgos estructurados", "La ausencia de una marca no equivale a ausencia de enfermedad."],
-  ["Predecir", "Variables históricas y contextuales", "Riesgo o probabilidad", "El riesgo depende de la población y del momento donde se estimó."],
-  ["Generar", "Instrucciones y antecedentes", "Texto, resumen o alternativa", "Una respuesta fluida puede contener afirmaciones no verificadas."],
-  ["Auditar", "Registros de procesos y resultados", "Alertas, diferencias o patrones", "La métrica elegida determina qué desigualdad resulta visible."],
-] as const;
-
-function HealthFunctionsExplorer() {
-  const [active, setActive] = useState(0);
-  const [name, input, output, care] = aiFunctions[active];
-  return <section className="health-lab-tool"><div className="health-lab-tabs">{aiFunctions.map((option, index) => <button className={active === index ? "is-active" : ""} onClick={() => setActive(index)} key={option[0]}>{option[0]}</button>)}</div><div className="health-flow"><p><span>ENTRADA</span>{input}</p><b>→ {name} →</b><p><span>SALIDA</span>{output}</p></div><aside><strong>Cuidado de lectura</strong><p>{care}</p></aside></section>;
-}
-
-const oversight = [
-  ["Human-in-the-loop", "Antes de actuar", "Una persona revisa cada recomendación y decide si se utiliza.", "Puede convertirse en una firma automática si el volumen supera la capacidad humana."],
-  ["Human-on-the-loop", "Durante la operación", "El sistema actúa y una persona supervisa, interviniendo ante señales de riesgo.", "Requiere alertas comprensibles, tiempo para reaccionar y autoridad para detener el proceso."],
-  ["Human-in-command", "Sobre el sistema", "La supervisión define objetivos, límites, responsables y condiciones de retiro.", "Agrega una capa institucional de gobernanza, pero no reemplaza la revisión de casos."],
-] as const;
-
-function HumanOversightExplorer() {
-  const [active, setActive] = useState(0);
-  const [name, moment, role, limit] = oversight[active];
-  return <section className="health-lab-tool"><div className="health-lab-tabs">{oversight.map((option, index) => <button className={active === index ? "is-active" : ""} onClick={() => setActive(index)} key={option[0]}>{option[0]}</button>)}</div><div className="oversight-stage"><span>{moment}</span><h4>{name}</h4><p>{role}</p><aside><strong>Sutileza</strong>{limit}</aside></div></section>;
-}
-
 const areas: LabArea[] = [
   { number: "01", title: "Notas matemáticas", tone: "blue", description: "Construcciones geométricas para manipular directamente las ideas desarrolladas en las entradas.", items: [
     { title: "De rectas a cartas", subtitle: "Planos proyectivos finitos", href: "/investigacion/dobble-y-geometria-proyectiva#cartas-proyectivas", render: () => <FiniteProjectiveCards /> },
@@ -80,11 +55,7 @@ const areas: LabArea[] = [
     { title: "Función como curva", subtitle: "La parábola recorrida como (t,f(t))", href: "/cursos/calculo-vectorial#funcion-cuadratica-parametrizada", render: () => <ParametricFunctionGraph />, group: "Cálculo vectorial" },
     { title: "Derivada direccional", subtitle: "El corte vertical y su recta tangente", href: "/cursos/calculo-vectorial#derivada-direccional-3d", render: () => <DirectionalDerivative3D />, group: "Cálculo vectorial" },
   ]},
-  { number: "03", title: "Salud", tone: "olive", description: "Comparadores para explorar funciones de IA y distintas posiciones de la supervisión humana.", items: [
-    { title: "Funciones de IA en salud", subtitle: "Entradas, salidas y cautelas", href: "/salud/funciones-ia-en-salud", render: () => <HealthFunctionsExplorer /> },
-    { title: "Supervisión humana", subtitle: "Loop, supervisión y gobernanza", href: "/salud/human-in-the-loop", render: () => <HumanOversightExplorer /> },
-  ]},
-  { number: "04", title: "Tejido & estructuras", tone: "pink", description: "Palabras, puntos, identificaciones y superficies para explorar la matemática que aparece al tejer.", items: [
+  { number: "03", title: "Tejido & estructuras", tone: "pink", description: "Palabras, puntos, identificaciones y superficies para explorar la matemática que aparece al tejer.", items: [
     { title: "Palabras en el grupo de trenzas", subtitle: "Generador por generador", href: "/tejido/trenzas-nudos-y-tejido", render: () => <BraidWordBuilder /> },
     { title: "Mapping class group", subtitle: "Lazos alrededor de orificios", href: "/tejido/trenzas-nudos-y-tejido#mapping-class-group", render: () => <MappingClassSweaterLab /> },
     { title: "Construir una banda de Möbius", subtitle: "Media vuelta e identificación", href: "/tejido/banda-de-moebius", render: () => <MoebiusIdentification /> },
