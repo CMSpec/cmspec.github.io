@@ -1075,6 +1075,8 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .parametric-segment-guide { stroke: #aab8b5; stroke-width: 5; stroke-linecap: round; }
 .parametric-segment-trace { stroke: var(--blue); stroke-width: 6; stroke-linecap: round; }
 .parametric-endpoint { fill: var(--olive); stroke: #fff; stroke-width: 3; }
+.parametric-function-guide { stroke: var(--olive); stroke-width: 2; stroke-dasharray: 5 6; }
+.parametric-concept-note { margin: 0; padding: 24px 28px 27px; border-top: 1px solid var(--line); color: var(--ink); font: 18px/1.58 Georgia, serif; }
 
 /* Repetición, identificaciones y superficies */
 .quotient-article { --section-edge: #f6d4c4; }
