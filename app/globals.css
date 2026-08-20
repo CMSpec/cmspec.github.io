@@ -1058,6 +1058,15 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .gradient-tangent-legend span:nth-child(4) i { background: var(--olive); }
 .gradient-tangent-formulas { display: flex; justify-content: space-between; gap: 20px; padding: 19px 28px 22px; border-top: 1px solid var(--line); }
 .gradient-tangent-formulas p { margin: 0; color: var(--blue); font: italic 19px/1.35 Georgia, serif; }
+.riemann-sum-stage { width: 100%; height: 520px; cursor: grab; touch-action: none; }
+.riemann-sum-stage:active { cursor: grabbing; }
+.riemann-sum-stage canvas { display: block; width: 100%; height: 100%; }
+.riemann-sum-controls { display: grid; grid-template-columns: auto minmax(180px,1fr) auto auto; align-items: center; gap: 14px 20px; padding: 20px 28px 23px; border-top: 1px solid var(--line); }
+.riemann-sum-controls label { display: flex; align-items: baseline; gap: 12px; color: var(--muted); font: 600 12px/1.3 var(--font-geist-mono); }
+.riemann-sum-controls output { color: var(--ink); font-weight: 700; }
+.riemann-sum-controls input { width: 100%; accent-color: var(--blue); }
+.riemann-sum-controls p { margin: 0; color: var(--muted); font: 600 12px/1.3 var(--font-geist-mono); }
+.riemann-sum-controls strong { color: var(--blue); font: italic 17px/1.3 Georgia, serif; white-space: nowrap; }
 .directional-derivative-legend span:nth-child(2) i { background: #94c6d8; }
 .directional-derivative-legend span:nth-child(3) i { background: var(--blue); }
 .directional-derivative-legend span:nth-child(4) i { background: var(--olive); }
@@ -1225,7 +1234,8 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .gradient-tangent-3d figcaption > strong,
   .parametric-ellipse figcaption > strong { display: block; margin-top: 15px; white-space: normal; }
   .level-curves-stage,
-  .gradient-tangent-stage { height: 350px; }
+  .gradient-tangent-stage,
+  .riemann-sum-stage { height: 350px; }
   .level-curves-camera-hint { top: 10px; right: 10px; font-size: 8px; }
   .level-curves-legend,
   .gradient-tangent-legend { right: 10px; left: 10px; bottom: 10px; }
@@ -1239,6 +1249,8 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .directional-derivative-controls { grid-template-columns: 1fr; padding: 18px 20px 21px; }
   .directional-derivative-controls input { grid-row: 2; }
   .directional-derivative-controls strong { justify-self: start; font-size: 17px; }
+  .riemann-sum-controls { grid-template-columns: 1fr; padding: 18px 20px 21px; }
+  .riemann-sum-controls strong { white-space: normal; }
   .vector-concept-explorer figcaption { display: block; padding: 21px 20px; }
   .vector-concept-explorer figcaption > strong { display: block; margin-top: 15px; white-space: normal; }
   .vector-concept-controls,
