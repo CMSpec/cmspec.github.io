@@ -65,7 +65,10 @@ export default function ParametricEllipse() {
       </svg>
 
       <div className="parametric-ellipse-controls">
-        <label htmlFor="ellipse-parameter">Parámetro <i>t</i><output>{parameter.toFixed(2)}</output></label>
+        <label htmlFor="ellipse-parameter">
+          <span>PARÁMETRO</span>
+          <output><i>t</i> = {parameter.toFixed(2)}</output>
+        </label>
         <input
           id="ellipse-parameter"
           type="range"
