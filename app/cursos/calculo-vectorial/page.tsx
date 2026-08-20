@@ -9,6 +9,7 @@ import GradientTangent3D from "./GradientTangent3D";
 import ParametricEllipse from "./ParametricEllipse";
 import ParametricSegment from "./ParametricSegment";
 import ParametricFunctionGraph from "./ParametricFunctionGraph";
+import DirectionalDerivative3D from "./DirectionalDerivative3D";
 
 function VectorSectionContent({ html, chapterIndex, title }: { html: string; chapterIndex: number; title: string }) {
   if (chapterIndex === 1 && title === "Parametrizacion de curvas") {
@@ -24,6 +25,22 @@ function VectorSectionContent({ html, chapterIndex, title }: { html: string; cha
           <ParametricSegment />
           <div className="latex-content" dangerouslySetInnerHTML={{ __html: after }} />
           <ParametricFunctionGraph />
+        </>
+      );
+    }
+  }
+
+  if (chapterIndex === 2 && title === "Continuidad") {
+    const directionalEnd = html.indexOf("Esto significa que la pendiente");
+    const splitAt = directionalEnd >= 0 ? html.indexOf("</p>", directionalEnd) : -1;
+    if (splitAt >= 0) {
+      const before = html.slice(0, splitAt + 4);
+      const after = html.slice(splitAt + 4);
+      return (
+        <>
+          <div className="latex-content" dangerouslySetInnerHTML={{ __html: before }} />
+          <DirectionalDerivative3D />
+          <div className="latex-content" dangerouslySetInnerHTML={{ __html: after }} />
         </>
       );
     }
