@@ -8,6 +8,7 @@ import LevelCurves3D from "./LevelCurves3D";
 import GradientTangent3D from "./GradientTangent3D";
 import ParametricEllipse from "./ParametricEllipse";
 import ParametricSegment from "./ParametricSegment";
+import ParametricFunctionGraph from "./ParametricFunctionGraph";
 
 function VectorSectionContent({ html, chapterIndex, title }: { html: string; chapterIndex: number; title: string }) {
   if (chapterIndex === 1 && title === "Parametrizacion de curvas") {
@@ -22,6 +23,7 @@ function VectorSectionContent({ html, chapterIndex, title }: { html: string; cha
           <ParametricEllipse />
           <ParametricSegment />
           <div className="latex-content" dangerouslySetInnerHTML={{ __html: after }} />
+          <ParametricFunctionGraph />
         </>
       );
     }
