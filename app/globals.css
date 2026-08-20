@@ -1083,6 +1083,14 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .lagrange-point.is-extreme { fill: #99c970; stroke: #173d48; }
 .lagrange-grad-f { stroke: #007d9d; stroke-width: 4; }
 .lagrange-grad-g { stroke: #7e812d; stroke-width: 4; }
+.lagrange-parallel { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; background: #fff; }
+.lagrange-view { position: relative; min-width: 0; overflow: hidden; }
+.lagrange-view + .lagrange-view { border-left: 1px solid var(--line); }
+.lagrange-view-label { position: absolute; z-index: 3; top: 14px; left: 15px; padding: 7px 9px; color: var(--muted); background: rgba(255,255,255,.9); border: 1px solid var(--line); font: 700 9px/1.2 var(--font-geist-mono); letter-spacing: .1em; pointer-events: none; }
+.lagrange-3d-stage { width: 100%; height: 410px; cursor: grab; touch-action: none; }
+.lagrange-3d-stage:active { cursor: grabbing; }
+.lagrange-3d-stage canvas { display: block; width: 100%; height: 100%; }
+.lagrange-plane-wrap svg { display: block; width: 100%; height: 410px; background: #fff; }
 .vector-concept-controls { display: grid; grid-template-columns: auto minmax(180px,1fr); align-items: center; gap: 13px 20px; padding: 20px 28px 23px; border-top: 1px solid var(--line); }
 .vector-concept-controls label { display: flex; align-items: baseline; gap: 12px; color: var(--muted); font: 600 12px/1.3 var(--font-geist-mono); }
 .vector-concept-controls output { min-width: 48px; color: var(--ink); font-weight: 700; }
@@ -1121,6 +1129,11 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .parametric-endpoint { fill: var(--olive); stroke: #fff; stroke-width: 3; }
 .parametric-function-guide { stroke: var(--olive); stroke-width: 2; stroke-dasharray: 5 6; }
 .parametric-concept-note { margin: 0; padding: 24px 28px 27px; border-top: 1px solid var(--line); color: var(--ink); font: 18px/1.58 Georgia, serif; }
+
+@media (max-width: 1050px) {
+  .lagrange-parallel { grid-template-columns: 1fr; }
+  .lagrange-view + .lagrange-view { border-left: 0; border-top: 1px solid var(--line); }
+}
 
 /* Repetición, identificaciones y superficies */
 .quotient-article { --section-edge: #f6d4c4; }
