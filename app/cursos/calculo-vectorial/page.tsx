@@ -13,6 +13,7 @@ import DirectionalDerivative3D from "./DirectionalDerivative3D";
 import LagrangeMultiplierExplorer from "./LagrangeMultiplierExplorer";
 import OpenClosedBallsExplorer from "./OpenClosedBallsExplorer";
 import DoubleIntegralRiemann3D from "./DoubleIntegralRiemann3D";
+import GreenTheoremExplorer from "./GreenTheoremExplorer";
 
 function VectorSectionContent({ html, chapterIndex, title }: { html: string; chapterIndex: number; title: string }) {
   if (chapterIndex === 1 && title === "Parametrizacion de curvas") {
@@ -57,6 +58,7 @@ function VectorSectionContent({ html, chapterIndex, title }: { html: string; cha
       {chapterIndex === 3 && title === "Introducción" ? <GradientTangent3D /> : null}
       {chapterIndex === 4 && title === "Extremos condicionados" ? <LagrangeMultiplierExplorer /> : null}
       {chapterIndex === 6 && title === "Integrales dobles sobre rectángulos" ? <DoubleIntegralRiemann3D /> : null}
+      {chapterIndex === 10 && title === "Teorema de Green" ? <GreenTheoremExplorer /> : null}
     </>
   );
 }
