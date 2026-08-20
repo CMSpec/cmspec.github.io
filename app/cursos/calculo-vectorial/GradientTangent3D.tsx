@@ -124,10 +124,15 @@ export default function GradientTangent3D() {
     point.renderOrder = 6;
     scene.add(point);
 
-    // Para z=f(x,y), (-f_x,-f_y,1) es normal al plano tangente.
-    // En (1,2), esta dirección es (2,4,1); la componente vertical se
-    // adapta a la misma escala visual usada por la superficie.
-    const normalDirection = new THREE.Vector3(2, HEIGHT_SCALE, 4).normalize();
+    // El gráfico usa la altura visual Y=s·f(x,z). Por eso el plano renderizado
+    // satisface Y-s(-2X-4Z+9)=0 y su normal es (2s,1,4s).
+    // Esta corrección mantiene la perpendicularidad aunque la altura esté
+    // comprimida para que la superficie quepa cómodamente en la escena.
+    const normalDirection = new THREE.Vector3(
+      2 * HEIGHT_SCALE,
+      1,
+      4 * HEIGHT_SCALE,
+    ).normalize();
     const normal = new THREE.ArrowHelper(normalDirection, pointPosition, 2.15, 0x007d9d, 0.2, 0.1);
     scene.add(normal);
 
