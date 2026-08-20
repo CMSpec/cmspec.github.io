@@ -1067,6 +1067,41 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .directional-derivative-controls input { width: 100%; accent-color: var(--blue); }
 .directional-derivative-controls p { margin: 0; color: var(--muted); font: 600 13px/1.35 var(--font-geist-mono); }
 .directional-derivative-controls strong { justify-self: end; color: var(--blue); font: italic 19px/1.35 Georgia, serif; }
+.vector-concept-explorer { margin: 48px 0 62px; border: 1px solid var(--line); border-left: 4px solid var(--green); background: #fff; }
+.vector-concept-explorer figcaption { display: flex; align-items: flex-start; justify-content: space-between; gap: 28px; padding: 25px 28px 22px; border-bottom: 1px solid var(--line); }
+.vector-concept-explorer figcaption span { display: block; margin-bottom: 9px; color: var(--olive); font: 700 10px/1.3 var(--font-geist-mono); letter-spacing: .12em; }
+.vector-concept-explorer figcaption h5 { margin: 0; color: var(--ink); font: 400 27px/1.12 Georgia, serif; }
+.vector-concept-explorer figcaption p { max-width: 560px; margin: 11px 0 0; color: var(--muted); font: 16px/1.52 Georgia, serif; }
+.vector-concept-explorer figcaption > strong { flex: 0 0 auto; color: var(--blue); font: italic 23px/1.2 Georgia, serif; white-space: nowrap; }
+.vector-concept-explorer > svg { display: block; width: 100%; height: auto; max-height: 530px; background: #fff; cursor: crosshair; }
+.concept-axis { stroke: #587078; stroke-width: 1.6; }
+.concept-label { fill: #35515a; font: italic 17px Georgia, serif; }
+.lagrange-level-muted { stroke: #abcbd3; stroke-width: 1.4; opacity: .5; }
+.lagrange-level-current { stroke: #007d9d; stroke-width: 4; }
+.lagrange-constraint { fill: rgba(221,235,210,.2); stroke: #7e812d; stroke-width: 4; }
+.lagrange-point { fill: #d58f72; stroke: #fff; stroke-width: 3; }
+.lagrange-point.is-extreme { fill: #99c970; stroke: #173d48; }
+.lagrange-grad-f { stroke: #007d9d; stroke-width: 4; }
+.lagrange-grad-g { stroke: #7e812d; stroke-width: 4; }
+.vector-concept-controls { display: grid; grid-template-columns: auto minmax(180px,1fr); align-items: center; gap: 13px 20px; padding: 20px 28px 23px; border-top: 1px solid var(--line); }
+.vector-concept-controls label { display: flex; align-items: baseline; gap: 12px; color: var(--muted); font: 600 12px/1.3 var(--font-geist-mono); }
+.vector-concept-controls output { min-width: 48px; color: var(--ink); font-weight: 700; }
+.vector-concept-controls input { width: 100%; accent-color: var(--blue); }
+.vector-concept-controls > p { margin: 0; color: var(--muted); font: 600 13px/1.35 var(--font-geist-mono); }
+.vector-concept-controls > strong { justify-self: end; color: var(--blue); font: italic 18px/1.35 Georgia, serif; }
+.vector-concept-controls > strong.is-aligned { color: var(--olive); }
+.topology-ball { fill: rgba(185,221,236,.25); stroke: var(--blue); stroke-width: 4; }
+.topology-ball.is-open { stroke-dasharray: 10 8; }
+.topology-center { fill: var(--ink); }
+.topology-radius { stroke: var(--olive); stroke-width: 3; }
+.topology-test-point { fill: #d58f72; stroke: #fff; stroke-width: 3; }
+.topology-test-point.belongs { fill: var(--green); stroke: var(--ink); }
+.balls-controls { grid-template-columns: auto auto minmax(150px,1fr); }
+.balls-mode { display: flex; border: 1px solid var(--line); }
+.balls-mode button { padding: 9px 14px; border: 0; background: #fff; color: var(--muted); font: 700 11px/1.2 var(--font-geist-sans); cursor: pointer; }
+.balls-mode button + button { border-left: 1px solid var(--line); }
+.balls-mode button.is-active { background: var(--blue); color: #fff; }
+.topology-note { margin: 0; padding: 20px 28px 24px; border-top: 1px solid var(--line); color: var(--ink); font: 17px/1.55 Georgia, serif; }
 .parametric-ellipse > svg { display: block; width: 100%; height: auto; max-height: 490px; background: linear-gradient(120deg, rgba(221,235,210,.22), rgba(185,221,236,.14)); }
 .parametric-grid line { stroke: #d8e0de; stroke-width: 1; }
 .parametric-axis { stroke: #526b73; stroke-width: 1.8; }
@@ -1191,6 +1226,13 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .directional-derivative-controls { grid-template-columns: 1fr; padding: 18px 20px 21px; }
   .directional-derivative-controls input { grid-row: 2; }
   .directional-derivative-controls strong { justify-self: start; font-size: 17px; }
+  .vector-concept-explorer figcaption { display: block; padding: 21px 20px; }
+  .vector-concept-explorer figcaption > strong { display: block; margin-top: 15px; white-space: normal; }
+  .vector-concept-controls,
+  .balls-controls { grid-template-columns: 1fr; padding: 18px 20px 21px; }
+  .vector-concept-controls input { grid-row: auto; }
+  .vector-concept-controls > strong { justify-self: start; font-size: 16px; }
+  .topology-note { padding: 18px 20px 21px; font-size: 16px; }
   .learn-masthead { padding: 80px 24px 65px; }.learn-masthead h1 { font-size: 36px; }.learn-deck { margin-top: 42px; }.learn-deck p { font-size: 20px; }
   .notes-library { padding: 70px 24px 85px; }.notes-library > header { grid-template-columns: 1fr; gap: 18px; }.notes-library > header > p:last-child { grid-column: auto; }.note-entry { grid-template-columns: 1fr; gap: 32px; padding: 50px 0; }.note-dates { grid-template-columns: 1fr 1fr; gap: 18px; }.note-visual { grid-column: auto; min-height: 210px; }.learn-colophon { grid-template-columns: 1fr; gap: 22px; }
   .course-library-page .learn-masthead { padding: 55px 24px 48px; }.course-library-page .learn-masthead h1 { font-size: 29px; }.course-library-page .learn-deck { margin-top: 22px; }.course-library-page .learn-deck p { font-size: 15px; }.course-library-page .notes-library { padding-top: 25px; }.course-library-page .note-entry { grid-template-columns: 1fr; gap: 22px; padding: 42px 0; }.course-library-page .note-entry-copy h3 { font-size: 29px; }.course-library-page .note-visual { grid-column: auto; width: 145px; min-height: 145px; justify-self: start; }

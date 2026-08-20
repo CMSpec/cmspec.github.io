@@ -17,6 +17,8 @@ import ParametricEllipse from "../cursos/calculo-vectorial/ParametricEllipse";
 import ParametricSegment from "../cursos/calculo-vectorial/ParametricSegment";
 import ParametricFunctionGraph from "../cursos/calculo-vectorial/ParametricFunctionGraph";
 import DirectionalDerivative3D from "../cursos/calculo-vectorial/DirectionalDerivative3D";
+import LagrangeMultiplierExplorer from "../cursos/calculo-vectorial/LagrangeMultiplierExplorer";
+import OpenClosedBallsExplorer from "../cursos/calculo-vectorial/OpenClosedBallsExplorer";
 import { MoebiusIdentification } from "../tejido/banda-de-moebius/MoebiusExplorers";
 import { MoebiusWalk3D } from "../tejido/banda-de-moebius/MoebiusWalk3D";
 import { StitchPatternGrid } from "../tejido/del-reves-al-bit/StitchPatternGrid";
@@ -54,6 +56,8 @@ const areas: LabArea[] = [
     { title: "Segmento parametrizado", subtitle: "De P a Q con el parámetro entre 0 y 1", href: "/cursos/calculo-vectorial#segmento-parametrizado-interactivo", render: () => <ParametricSegment />, group: "Cálculo vectorial" },
     { title: "Función como curva", subtitle: "La parábola recorrida como (t,f(t))", href: "/cursos/calculo-vectorial#funcion-cuadratica-parametrizada", render: () => <ParametricFunctionGraph />, group: "Cálculo vectorial" },
     { title: "Derivada direccional", subtitle: "El corte vertical y su recta tangente", href: "/cursos/calculo-vectorial#derivada-direccional-3d", render: () => <DirectionalDerivative3D />, group: "Cálculo vectorial" },
+    { title: "Multiplicadores de Lagrange", subtitle: "Gradientes paralelos sobre una restricción", href: "/cursos/calculo-vectorial#multiplicadores-lagrange-interactivo", render: () => <LagrangeMultiplierExplorer />, group: "Cálculo vectorial" },
+    { title: "Bolas y topología", subtitle: "Interior, frontera y exterior", href: "/cursos/calculo-vectorial#bolas-topologia-interactivo", render: () => <OpenClosedBallsExplorer />, group: "Cálculo vectorial" },
   ]},
   { number: "03", title: "Tejido & estructuras", tone: "pink", description: "Palabras, puntos, identificaciones y superficies para explorar la matemática que aparece al tejer.", items: [
     { title: "Palabras en el grupo de trenzas", subtitle: "Generador por generador", href: "/tejido/trenzas-nudos-y-tejido", render: () => <BraidWordBuilder /> },
