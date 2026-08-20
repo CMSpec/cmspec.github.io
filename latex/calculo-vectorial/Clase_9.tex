@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Primera Semana\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -73,7 +83,7 @@
 \vspace{1cm}
 
 \begin{center}
-	\large{Contenidos:} 
+	\large{Contenidos:}
 \end{center}
 \vspace{0.1cm}
 \begin{center}
@@ -146,7 +156,7 @@ Ahora definimos
     \[
         S(f,P) = \sum_{i=1}^m \sum_{j=1}^n \sum_{k=1}^l \, M_{i,j,k}\Delta x_i \, \Delta y_j \Delta z_k.
     \]
-    
+
     \item \textbf{Suma superior:}
     \[
         S(f,P) = \sum_{i=1}^m \sum_{j=1}^n \sum_{k=1}^l \, M_{i,j,k}\Delta x_i \, \Delta y_j \Delta z_k.
@@ -161,7 +171,8 @@ Definimos la integral triple inferior y la integral doble superior como
 \end{align*}
 
 
-\textbf{Definición: }Se dice que \( f \) es \textbf{Riemann integrable} en \( B \) si:
+\begin{defin}Se dice que \( f \) es \textbf{Riemann integrable} en \( B \) si:
+\end{defin}
 
 \[
     \underline{\iiint_B} f(x,y,z)\,dV = \overline{\iiint_B} f(x,y,z)\,dV.
@@ -176,15 +187,17 @@ En tal caso, se define la \textbf{integral triple de Riemann} de \( f \) sobre \
 
 Al igual que ocurr\'ia con integrales dobles, tenemos el siguiente resultado\\
 
-\textbf{Proposición:} Sea $f: B \to \mathbb{R}$ función acotada y continua en todo $R$ salvo a lo más en un número finito de superficies suaves (diferenciables), entonces $f$ es Riemann integrable \\
+\begin{prop}Sea $f: B \to \mathbb{R}$ función acotada y continua en todo $R$ salvo a lo más en un número finito de superficies suaves (diferenciables), entonces $f$ es Riemann integrable \\
+\end{prop}
 
-\textbf{Proposición (Propiedades de las integrales triples):} Sean $f,g: B \to \mathbb{R}$ integrables en $B$ y sea $k \in \mathbb{R}$. Entonces \\
+\begin{prop}[Propiedades de las integrales triples]Sean $f,g: B \to \mathbb{R}$ integrables en $B$ y sea $k \in \mathbb{R}$. Entonces \\
+\end{prop}
 
 a) $\displaystyle \iiint_B kf(x,y,z)+g(x,y,z) \,dV = k\iint_B f(x,y,z)\,dV+ \iiint_B g(x,y,z) \,dV.$ \\ \\
 
-b) Si $f(x,y,z) \leq g(x,y,z) $, $\forall (x,y,z) \in B$, entonces 
+b) Si $f(x,y,z) \leq g(x,y,z) $, $\forall (x,y,z) \in B$, entonces
 \begin{align*}
-    \displaystyle \iiint_B f(x,y,z)\,dV \leq \iiint_B g(x,y,z) \,dV. 
+    \displaystyle \iiint_B f(x,y,z)\,dV \leq \iiint_B g(x,y,z) \,dV.
 \end{align*}
 
 c) $\displaystyle \left|\iiint_B f(x,y,z) \,dV\right| \leq \iiint_B |f(x,y,z)|\,dV$ \\ \\\
@@ -192,7 +205,8 @@ c) $\displaystyle \left|\iiint_B f(x,y,z) \,dV\right| \leq \iiint_B |f(x,y,z)|\,
 Tambi\'en tenemos el teorema de Fubini \\
 
 
-\textbf{Teorema (Fufini para rectángulos):} Sea $f: B \to \mathbb{R}$ integrable, donde $B =[a,b]\times [c,d] \times [r,s]$, entonces:
+\begin{thm}[Fufini para rectángulos]Sea $f: B \to \mathbb{R}$ integrable, donde $B =[a,b]\times [c,d] \times [r,s]$, entonces:
+\end{thm}
 
 \begin{align*}
     \iiint_B f(x,y,z) dV = \int_a^b \int_c^d \int_r^s f(x,y,z)dzdydx
@@ -238,12 +252,14 @@ Por el teorema de Fubini sabemos que todas estas seis integrales tienen el mismo
 \end{align*}
 
 
-\textbf{Observaci\'on: }Una aplicaci\'on importante de las integrales triples es que si consideramos $f(x,y,z)= 1$, entonces $\displaystyle \iint_E dV$ representa el volumnen de
+\begin{rmk}Una aplicaci\'on importante de las integrales triples es que si consideramos $f(x,y,z)= 1$, entonces $\displaystyle \iint_E dV$ representa el volumnen de
+\end{rmk}
 
 \newpage
 
 
-\textbf{Ejercicio:} Sea $E$ la regi\'on acotada por la gr\'afica del plano $x+y+z=1$ en el primer octante. Calcule
+\begin{ejer}Sea $E$ la regi\'on acotada por la gr\'afica del plano $x+y+z=1$ en el primer octante. Calcule
+\end{ejer}
 
 \begin{align*}
     \iiint_E z dV
@@ -251,7 +267,8 @@ Por el teorema de Fubini sabemos que todas estas seis integrales tienen el mismo
 
 
 
-\textbf{Respuesta:} Primero calculamos las intersecciones con los ejes
+\begin{sol}Primero calculamos las intersecciones con los ejes
+\end{sol}
 
 \begin{itemize}
     \item Eje \( x \): \( y = 0, z = 0 \Rightarrow x = 1 \)
@@ -259,7 +276,7 @@ Por el teorema de Fubini sabemos que todas estas seis integrales tienen el mismo
     \item Eje \( z \): \( x = 0, y = 0 \Rightarrow z = 1 \)
 \end{itemize}
 
-Por lo tanto, la región \( E \) es un tetraedro con vértices en \( (0,0,0) \), \( (1,0,0) \), \( (0,1,0) \), \( (0,0,1) \). 
+Por lo tanto, la región \( E \) es un tetraedro con vértices en \( (0,0,0) \), \( (1,0,0) \), \( (0,1,0) \), \( (0,0,1) \).
 
 
 \begin{figure}[h]
@@ -295,8 +312,8 @@ Sustituimos en la integral:
 
 Usamos el cambio de variable $u = 1 - x - y$, por lo tanto $du = -dy$:
 \[
-= \int_0^1 \left[ \frac{1}{2} \int_0^{1 - x} (1 - x - y)^2 \, dy \right] dx 
-= \int_0^1 \left[ \frac{1}{2} \cdot \frac{(1 - x)^3}{3} \right] dx 
+= \int_0^1 \left[ \frac{1}{2} \int_0^{1 - x} (1 - x - y)^2 \, dy \right] dx
+= \int_0^1 \left[ \frac{1}{2} \cdot \frac{(1 - x)^3}{3} \right] dx
 = \int_0^1 \frac{(1 - x)^3}{6} \, dx.
 \]
 
@@ -315,7 +332,8 @@ Finalmente:
 
 Tambi\'en tenemos el teorema de cambio de variable, no vamos a dar los detalles \\
 
-\textbf{Teorema: } Sea $T: E_{uvw} \to \mathbb{R}^3$ transformaci\'on inyectiva, continua y diferenciable del plano $uvw$ en el plano $xyz$ tal que
+\begin{thm}Sea $T: E_{uvw} \to \mathbb{R}^3$ transformaci\'on inyectiva, continua y diferenciable del plano $uvw$ en el plano $xyz$ tal que
+\end{thm}
 $T (u, v,w) = (x (u, v,w) , y (u, v,w) , z (u, v,w))$. Si
 $f : E_{xyz} \to \mathbb{R}$ es Riemann integrable, entonces:
 
@@ -323,7 +341,7 @@ $f : E_{xyz} \to \mathbb{R}$ es Riemann integrable, entonces:
     \iiint_{E_{xyz}} f(x,y,z) dV = \iiint_{E_{uvw}} f(T(u,v,w))|J(T)|dV
 \end{align*}
 
-Donde $J(T)$ denota el Jacobiano de $T$ dado por 
+Donde $J(T)$ denota el Jacobiano de $T$ dado por
 
 \begin{align*}
     J(T) = \frac{\partial(x,y,z)}{\partial(u,v,w)} = \begin{vmatrix}
@@ -367,9 +385,11 @@ Con esto, el teorema de cambio de variable nos dice que
 
 
 
-\textbf{Ejemplo 1:} Calcule el volumen del s\'olido acotado por las regiones $z= x^2+y^2$ y $z=2-x^2-y^2$ \\
+\begin{ejem}Calcule el volumen del s\'olido acotado por las regiones $z= x^2+y^2$ y $z=2-x^2-y^2$ \\
+\end{ejem}
 
-\textbf{Respuesta:} El gr\'afico corresponde a la sigueinte imagen
+\begin{sol}El gr\'afico corresponde a la sigueinte imagen
+\end{sol}
 
 \begin{figure}[h]
     \centering
@@ -399,7 +419,7 @@ Es decir, la intersecci\'on es un circulo de ecuaci\'on $x^2+y^2=1$, por lo tant
     E_{x,y} = \lbrace (x,y,z) \in \mathbb{R}^3 : -1 \leq x \leq 1, -\sqrt{1-x^2} \leq y \leq \sqrt{1-x^2}, x^2+y^2 \leq z \leq 2-x^2-y^2\rbrace
 \end{align*}
 
-El volumen ser\'a 
+El volumen ser\'a
 
 \begin{align*}
     V = \int_{-1}^1\int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}}\int_{x^2+y^2}^{2-x^2-y^2} dz dy dx
@@ -418,7 +438,7 @@ Luego
     &= \int_{0}^{2\pi} \left( r^2 -\frac{r^4}{2}\right)\bigg|_0^1 d\theta  \\
     &= \int_{0}^{2\pi} \frac{1}{2}d\theta  \\
     &= \pi
-\end{align*}    
+\end{align*}
 
 Como podemos ver, pasar a coordenadas cil\'indricas hizo el problema mucho m\'as f\'acil \\
 
@@ -456,9 +476,11 @@ Con esto, el teorema de cambio de variable nos dice que
     \iiint_{E_{xyz}} f(x,y,z) dV= \iiint_{E_{r\theta z}} f(\rho\cos(\theta)\sin(\phi),\rho\sin(\theta)\sin(\phi) , \rho\cos(\phi))\rho^2\sin(\phi)dV
 \end{align*}
 
-\textbf{Ejercicio 1:} Calcule el volumen del s\'olido $E$ acotado por lasgr\'aficas de $z=\sqrt{x^2+y^2}$, $z=\sqrt{1-x^2-y^2}$ y $z=\sqrt{9-x^2=y^2}$ \\
+\begin{ejer}Calcule el volumen del s\'olido $E$ acotado por lasgr\'aficas de $z=\sqrt{x^2+y^2}$, $z=\sqrt{1-x^2-y^2}$ y $z=\sqrt{9-x^2=y^2}$ \\
+\end{ejer}
 
-\textbf{Respuesta:} La gr\'afica corresponde a  
+\begin{sol}La gr\'afica corresponde a
+\end{sol}
 
 
 \begin{figure}[h]
@@ -520,4 +542,4 @@ Por lo tanto
 
 
 
-\end{document} 
+\end{document}

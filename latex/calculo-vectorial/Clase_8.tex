@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Primera Semana\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -73,7 +83,7 @@
 \vspace{1cm}
 
 \begin{center}
-	\large{Contenidos:} 
+	\large{Contenidos:}
 \end{center}
 \vspace{0.1cm}
 \begin{center}
@@ -125,7 +135,7 @@ Con el cambio de variable $x=g(u)$, entonces la nueva integral quedaba
 Esto es lo que se conoce como cambio de variable y solamente se usa la regla de la cadena. Podemos ver que cambian los l\'imites de integraci\'on y adem\'as aparece $g'(u)$ multiplicando. \\
 
 
-En caso de que tengamos dos variables, necesitamos reemplazarlas por otras dos variables. Por ejemplo $x=g(u,v)$ e $y=h(u,v)$, donde $u,v$ ser\'an las nuevas variables. Naturalmente, si la regi\'on encerrada por $x$ e $y$ es $R_{xy}$ en la integral doble original, entonces la nueva regi\'on ser\'a la delimitada por $u$ y $v$ , que llamaremos $R_{u,v}$, de la misma forma como cambian los l\'imites en integrales simples. 
+En caso de que tengamos dos variables, necesitamos reemplazarlas por otras dos variables. Por ejemplo $x=g(u,v)$ e $y=h(u,v)$, donde $u,v$ ser\'an las nuevas variables. Naturalmente, si la regi\'on encerrada por $x$ e $y$ es $R_{xy}$ en la integral doble original, entonces la nueva regi\'on ser\'a la delimitada por $u$ y $v$ , que llamaremos $R_{u,v}$, de la misma forma como cambian los l\'imites en integrales simples.
 
 \begin{figure}[h]
     \centering
@@ -135,18 +145,19 @@ En caso de que tengamos dos variables, necesitamos reemplazarlas por otras dos v
 \end{figure}
 
 
-Pero la pregunta es, qu\'e reemplaza a $g'(u)$?, para responder esta pregunta consideramos la transformaci\'on lineal $T$, como $T(u,v)=(x(u,v),y(u,v))$, entonces 
+Pero la pregunta es, qu\'e reemplaza a $g'(u)$?, para responder esta pregunta consideramos la transformaci\'on lineal $T$, como $T(u,v)=(x(u,v),y(u,v))$, entonces
 
 \begin{align*}
     J(T) = \frac{\partial(x,y)}{\partial(u,v)} = \begin{vmatrix}
         \displaystyle\frac{\partial x}{\partial u} &  \displaystyle\frac{\partial x}{\partial v} \\
-        \displaystyle\frac{\partial y}{\partial u} &  \displaystyle\frac{\partial y}{\partial v} 
+        \displaystyle\frac{\partial y}{\partial u} &  \displaystyle\frac{\partial y}{\partial v}
     \end{vmatrix}
 \end{align*}
 
 este determinante es llamado el jacobiano de cambio de base, el valor absoluto del jacobiano es el que reemplaza a la derivada dentro de la integral.\\
 
-\textbf{Teorema (Cambio de variable):} Sea $T : R_{uv} \subset \mathbb{R}^2 \to R_{xy}\subset \mathbb{R}^2$ una transformaci\'on inyectiva y de clase $C^1$ en el plano $uv$ en el plano $xy$ tal que $T (u, v ) = (x (u, v ) , y (u, v ))$. Si $f : R_{xy} \to \mathbb{R}$ es Riemann integrable, entonces:
+\begin{thm}[Cambio de variable]Sea $T : R_{uv} \subset \mathbb{R}^2 \to R_{xy}\subset \mathbb{R}^2$ una transformaci\'on inyectiva y de clase $C^1$ en el plano $uv$ en el plano $xy$ tal que $T (u, v ) = (x (u, v ) , y (u, v ))$. Si $f : R_{xy} \to \mathbb{R}$ es Riemann integrable, entonces:
+\end{thm}
 
 \begin{align*}
     \iint_{R_{xy}} f(x,y)dA =  \iint_{R_{u,v}} f(u,v) |J(T)|dA
@@ -154,9 +165,11 @@ este determinante es llamado el jacobiano de cambio de base, el valor absoluto d
 
 \newpage
 
-\textbf{Ejercicio 1:} Calcule el valor de $\iint_{R} x+y+1dA$ donde $R$ es la regi\'on acotada por las gr\'aficas de $y-x=1$, $y-x=-1$, $y+x=1$ e $y+x=2$ \\
+\begin{ejer}Calcule el valor de $\iint_{R} x+y+1dA$ donde $R$ es la regi\'on acotada por las gr\'aficas de $y-x=1$, $y-x=-1$, $y+x=1$ e $y+x=2$ \\
+\end{ejer}
 
-\textbf{Respuesta:} Este ejercicio es muy dif\'icil de hacer sin usar cambio de variable, por suerte podemos usar el cambio de variable para hacerlo de forma sencilla. \\
+\begin{sol}Este ejercicio es muy dif\'icil de hacer sin usar cambio de variable, por suerte podemos usar el cambio de variable para hacerlo de forma sencilla. \\
+\end{sol}
 
 El cambio que hay que realizar es $u=y-x$ y $v=y+x$, ahora tenemos que despejar $x$ e $y$ en funci\'on de $u$ y $v$, sumando ambos obtenmos que $y$ y restando obtenemos $x$
 
@@ -192,18 +205,20 @@ Luego $|J(T)| =1/2$, los l\'imites para laa variable $u$ son $-1$ y $1$ mientras
 \end{align*}
 
 
-\textbf{Ejercicio 2:} Calcule el valor de $\displaystyle \iint_{R} \sqrt{\frac{x}{y}}+ \sqrt{xy} dA$ donde $R$ es la regi\'on acotada por las gr\'aficas de $xy=1$, $yx=9$, $y=x$ e $y=4x$ \\
+\begin{ejer}Calcule el valor de $\displaystyle \iint_{R} \sqrt{\frac{x}{y}}+ \sqrt{xy} dA$ donde $R$ es la regi\'on acotada por las gr\'aficas de $xy=1$, $yx=9$, $y=x$ e $y=4x$ \\
+\end{ejer}
 
-\textbf{Respuesta:} Es claro que uno de los cambios de variable que queremos hacer es $u=xy$, el otro cambio no est\'a tan claro, pero si dividimos por que las segundas dos condiciones, obtenemos que $y/x= 1$ e $y/x=4$, por lo tanto el segundo cambio de variable conveniente es $v= y/x$. \\
+\begin{sol}Es claro que uno de los cambios de variable que queremos hacer es $u=xy$, el otro cambio no est\'a tan claro, pero si dividimos por que las segundas dos condiciones, obtenemos que $y/x= 1$ e $y/x=4$, por lo tanto el segundo cambio de variable conveniente es $v= y/x$. \\
+\end{sol}
 
-Despejando $y$ en ambas igualdades tenemos $y=u/x=vx$, luego $x^2=\displaystyle \frac{u}{v}$ y por lo tanto $\displaystyle x =\sqrt{\frac{u}{v}}$, luego $y = \displaystyle vx = \sqrt{uv}$. Entonces 
+Despejando $y$ en ambas igualdades tenemos $y=u/x=vx$, luego $x^2=\displaystyle \frac{u}{v}$ y por lo tanto $\displaystyle x =\sqrt{\frac{u}{v}}$, luego $y = \displaystyle vx = \sqrt{uv}$. Entonces
 
 \begin{align*}
-    \frac{\partial x}{\partial u} = \frac{1}{2\sqrt{uv}} \hspace{0.3cm}   \frac{\partial x}{\partial v} = -\frac{\sqrt{u}}{\sqrt{v^3}} 
+    \frac{\partial x}{\partial u} = \frac{1}{2\sqrt{uv}} \hspace{0.3cm}   \frac{\partial x}{\partial v} = -\frac{\sqrt{u}}{\sqrt{v^3}}
 \end{align*}
 
 \begin{align*}
-    \frac{\partial y}{\partial u} = \frac{\sqrt{}}{2} \hspace{0.3cm}   \frac{\partial x}{\partial v} = -\frac{\sqrt{u}}{\sqrt{v^3}} 
+    \frac{\partial y}{\partial u} = \frac{\sqrt{}}{2} \hspace{0.3cm}   \frac{\partial x}{\partial v} = -\frac{\sqrt{u}}{\sqrt{v^3}}
 \end{align*}
 
 
@@ -211,7 +226,7 @@ Despejando $y$ en ambas igualdades tenemos $y=u/x=vx$, luego $x^2=\displaystyle 
 De esta forma el jacobiano queda
 
 \begin{align*}
-|J| = \left| \frac{\partial(x, y)}{\partial(u, v)} \right| 
+|J| = \left| \frac{\partial(x, y)}{\partial(u, v)} \right|
 = \left|
 \begin{vmatrix}
 \frac{1}{2} u^{-1/2} v^{-1/2} & -\frac{1}{2} u^{1/2} v^{-3/2} \\
@@ -227,7 +242,7 @@ Los nuevos l\'imites var\'ian entre
 
 \begin{align*}
 1 \leq u \leq 9, \\
-1 \leq v \leq 4. 
+1 \leq v \leq 4.
 \end{align*}
 
 La nueva funci\'on a integrar ser\'a
@@ -243,7 +258,7 @@ De esta fomra la integral queda
 
 
 \begin{align*}
-    \iint_R \left( \sqrt{\frac{x}{y}} + \sqrt{xy} \right) dA 
+    \iint_R \left( \sqrt{\frac{x}{y}} + \sqrt{xy} \right) dA
 &= \iint_{R_{uv}} \left( \sqrt{\frac{1}{v}} + \sqrt{u} \right) \cdot \frac{1}{2v} \, du\,dv \\
 &=  \int_{1}^{9} \int_{1}^{4} \left( \frac{v^{-3/2}}{2} + \frac{u^{1/2}}{2v} \right) dv\, du \\
 &=\int_{1}^{9} \left( -v^{-1/2} + \frac{u^{1/2}}{2}\ln(v) \right)\bigg|_1^4 du\\
@@ -294,7 +309,7 @@ Por lo tanto consideramos la transformaci\'on lineal $T: \mathbb{R}^2 \to \mathb
 \begin{align*}
     J(T) &= \begin{vmatrix}
         \cos(\theta) & -r\sin(\theta) \\
-        \sin(\theta) & r\cos(\theta) 
+        \sin(\theta) & r\cos(\theta)
     \end{vmatrix} \\
     &=r
 \end{align*}
@@ -310,13 +325,15 @@ por lo tanto usando el teorema de cambio de variable obtenemos el siguiente resu
 
 
 
-\textbf{Ejercicio 1:} Calcular 
+\begin{ejer}Calcular
+\end{ejer}
 
 \begin{align*}
     \int_0^1 \int_0^{\sqrt{1-x^2}} e^{\sqrt{x^2+y^2}}dydx
 \end{align*}
 
-\textbf{Respuesta:} Aqu\'i nos conviene pasar a coordenadas polares, primero hay que entender la regi\'on de integraci\'on, tenemos que $x$ var\'ia entre 0 y 1 mientras que $y$ var\'ia entre la recta $y=0$ y la curva $y= \sqrt{1-x^2}$, esto corresponde a un cuarto de circunferencia de radio 1
+\begin{sol}Aqu\'i nos conviene pasar a coordenadas polares, primero hay que entender la regi\'on de integraci\'on, tenemos que $x$ var\'ia entre 0 y 1 mientras que $y$ var\'ia entre la recta $y=0$ y la curva $y= \sqrt{1-x^2}$, esto corresponde a un cuarto de circunferencia de radio 1
+\end{sol}
 
 \begin{figure}[h]
     \centering
@@ -329,7 +346,7 @@ Podemos ver que $0 \leq \theta < \pi/2$ y $0 \leq r \leq 1$, adem\'as sabemos qu
 
 
 \begin{align*}
-    \int_0^1 \int_0^{\sqrt{1-x^2}} e^{\sqrt{x^2+y^2}}dydx &= 
+    \int_0^1 \int_0^{\sqrt{1-x^2}} e^{\sqrt{x^2+y^2}}dydx &=
     \int_0^{\pi/2}\int_0^1 re^r dr d\theta \\
     &= \int_0^{\pi/2} (re^r-e^r)\bigg|_0^1 d\theta \\
     &= \int_0^{\pi/2} 1 d\theta \\
@@ -338,13 +355,15 @@ Podemos ver que $0 \leq \theta < \pi/2$ y $0 \leq r \leq 1$, adem\'as sabemos qu
 
 
 
-\textbf{Ejercicio 2:} Calcular 
+\begin{ejer}Calcular
+\end{ejer}
 
 \begin{align*}
     \int_{0}^3 \int_0^{\sqrt{9-x^2}} \arctan\left( \frac{y}{x}\right)dydx
 \end{align*}
 
-\textbf{Respuesta:} Tenemos que $x$ var\'ia entre 0 y 3 mientras que $y$ var\'ia entre la recta $y=0$ y la curva $y= \sqrt{9-x^2}$, esto corresponde a un cuarto de circunferencia de radio 3. \\
+\begin{sol}Tenemos que $x$ var\'ia entre 0 y 3 mientras que $y$ var\'ia entre la recta $y=0$ y la curva $y= \sqrt{9-x^2}$, esto corresponde a un cuarto de circunferencia de radio 3. \\
+\end{sol}
 
 
 
@@ -352,7 +371,7 @@ Podemos ver que $0 \leq \theta < \pi/2$ y $0 \leq r \leq 3$, adem\'as sabemos qu
 
 
 \begin{align*}
-    \ \int_{-3}^3 \int_0^{\sqrt{9-x^2}} \arctan\left( \frac{y}{x}\right)dydx &= 
+    \ \int_{-3}^3 \int_0^{\sqrt{9-x^2}} \arctan\left( \frac{y}{x}\right)dydx &=
     \int_0^{\pi/2}\int_0^3 \theta r dr d\theta \\
     &= \int_0^{\pi/2} \theta \left( \frac{r^2}{2}\right)\bigg|_0^3 d\theta \\
     &= \frac{9}{2}\int_0^{\pi/2} \theta d\theta \\
@@ -379,9 +398,11 @@ Las coordenadas $(\overline{x},\overline{y})$ del centro de masas vienen dadas p
     \overline{y} &= \frac{1}{m} \iint_D y\rho(x,y) dA \\
 \end{align*}
 
-\textbf{Ejercicio:} Determine la masa y el centro de masa  de la l\'amina que ocupa la regi\'on $D$ del primer cuadrante  acotada por $y=x^2$ y la recta $y=1$ y que tiene funci\'on de densidad $\rho(x,y) = xy$ \\
+\begin{ejer}Determine la masa y el centro de masa  de la l\'amina que ocupa la regi\'on $D$ del primer cuadrante  acotada por $y=x^2$ y la recta $y=1$ y que tiene funci\'on de densidad $\rho(x,y) = xy$ \\
+\end{ejer}
 
-\textbf{Respuesta: } La masa ser\'a
+\begin{sol}La masa ser\'a
+\end{sol}
 
 \begin{align*}
     m &= \int_{0}^1\int_{x^2}^1 xy dydx \\
@@ -435,9 +456,11 @@ Corresponden a los momentos de inercia de la l\'amina al rededor del eje $x$ y e
 I_0 =\iint_D (x^2+y^2)\rho(x,y)dA
 \end{align*}
 
-\textbf{Ejercicio:} Determine el momento de inercia del eje $X$ de la l\'amina correspondiente a la regi\'on parab\'olica en el primer cuadrante dada por  $0 \leq y \leq 4-x^2$ si $\rho(x,y) = xy$ \\
+\begin{ejer}Determine el momento de inercia del eje $X$ de la l\'amina correspondiente a la regi\'on parab\'olica en el primer cuadrante dada por  $0 \leq y \leq 4-x^2$ si $\rho(x,y) = xy$ \\
+\end{ejer}
 
-\textbf{Respuesta: } El momento de inercia pedido viene dado por
+\begin{sol}El momento de inercia pedido viene dado por
+\end{sol}
 
 \begin{align*}
     I_x &= \int_{0}^2 \int_0^{4-x^2} xy^3 dy dx \\
@@ -469,9 +492,11 @@ Consideremos la superficie $S$ dada por $z=f(x,y)$ definida sobre una regi\'on  
 \end{align*}
 
 
-\textbf{Ejemplo: } Calcular el \'area de la proci\'on del plano $z=2-x-y$ que esta situada encima del ci\'rculo $x^2+y^2 \leq 1$ en el primer cuadrante \\
+\begin{ejem}Calcular el \'area de la proci\'on del plano $z=2-x-y$ que esta situada encima del ci\'rculo $x^2+y^2 \leq 1$ en el primer cuadrante \\
+\end{ejem}
 
-\textbf{Respuesta: } Dado que \( z = f(x,y)= 2 - x - y \), tenemos
+\begin{sol}Dado que \( z = f(x,y)= 2 - x - y \), tenemos
+\end{sol}
 
 \[
 f_x = -1, \quad f_y = -1
@@ -514,4 +539,4 @@ Entonces el área es
 
 
 
-\end{document} 
+\end{document}

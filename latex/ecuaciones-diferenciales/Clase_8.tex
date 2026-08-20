@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Semana 4\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -234,7 +244,7 @@ $y_1 =  x^{\alpha}\cos(\beta \ln(x))$ y  $ y_2 =x^{\alpha}\sen(\beta \ln(x))$
 \end{center}
 
 
-Por lo tanto la solución general será de la forma 
+Por lo tanto la solución general será de la forma
 
 
 \begin{center}
@@ -248,10 +258,12 @@ Con esto hemos resuleto todos los casos posibles. \\
 
 
 
-\textbf{Ejemplo: }Resolver la ecuación diferencial $x^2y''-3xy'+3y=2x^4e^x$. \\
+\begin{ejem}Resolver la ecuación diferencial $x^2y''-3xy'+3y=2x^4e^x$. \\
+\end{ejem}
 
 
-\textit{Respuesta:} Primero resolvemos la parte homogenea $x^2y''-3xy'+3y =0$, usando $y=x^m$ obtenemos
+\begin{sol}Primero resolvemos la parte homogenea $x^2y''-3xy'+3y =0$, usando $y=x^m$ obtenemos
+\end{sol}
 
 \begin{center}
 $m(m-1)-3m+3=0$
@@ -302,23 +314,23 @@ Ahora para integrar $xe^x$ usamos nuevamente integrales por partes $u= x$ y $dv=
 Por lo tanto
 
 \begin{align*}
-\displaystyle  \int x^2e^x dx  &= x^2e^x -2(xe^x-e^x) 
+\displaystyle  \int x^2e^x dx  &= x^2e^x -2(xe^x-e^x)
 \end{align*}
 
 
 \begin{align*}
-\displaystyle  \int x^2e^x dx  &= x^2e^x -2xe^x+2e^x 
+\displaystyle  \int x^2e^x dx  &= x^2e^x -2xe^x+2e^x
 \end{align*}
 
 
-Por lo tanto 
+Por lo tanto
 
 \begin{align*}
 \displaystyle c_1(x) &= 2xe^x-x^2e^x -2e^x  \\
 \end{align*}
 
 
-Por otra parte 
+Por otra parte
 
 
 \begin{align*}
@@ -437,7 +449,7 @@ Ahora sumando $\displaystyle \frac{a^2}{s^2} \int \sen(at)e^{-st} dt $ a ambos l
 \displaystyle \int \sen(t)e^{-st}dt + \frac{a^2}{s^2} \int \sen(at)e^{-st} dt &= -\frac{\sen(at)e^{-st}}{s} -\frac{a\cos(at)e^{-st}}{s^2} \\
 \end{align*}
 
-O bien 
+O bien
 
 
 \begin{align*}
@@ -453,7 +465,7 @@ O bien
 \displaystyle  \int \sen(at)e^{-st} dt &= \left( -\frac{\sen(at)e^{-st}}{s} -\frac{a\cos(at)e^{-st}}{s^2} \right) \frac{s^2}{a^2+s^2}\\
 \end{align*}
 
-Por lo tanto 
+Por lo tanto
 
 
 \begin{align*}
@@ -509,13 +521,16 @@ $\displaystyle \mathcal{L}[e^{\alpha t}](s) = \frac{1}{s-\alpha}$, $\forall s>\a
 
 La siguiente propiedad es fundamental para calcular transformadas de Laplace\\
 
-\textbf{Teorema: } La transformada de Laplace es una transformación lineal. \\
+\begin{thm}La transformada de Laplace es una transformación lineal. \\
+\end{thm}
 
 Esto significa que la transformada de laplace separa sumas y saca afuera las contantes. \\
 
-\textbf{Ejemplo: } Calcular la transformada de Laplace de $f(t)=1+4t^4+\cos(2t)$. \\
+\begin{ejem}Calcular la transformada de Laplace de $f(t)=1+4t^4+\cos(2t)$. \\
+\end{ejem}
 
-\textit{Respuesta: } Tenemos que
+\begin{sol}Tenemos que
+\end{sol}
 
 \begin{align*}
 \displaystyle \mathcal{L}[1+4t^4+\cos(2t)](s) &= \mathcal{L}[1](s)+ 4 \mathcal{L}[t^4](s)+\mathcal{L}[\cos(2t)](s) \\
@@ -533,22 +548,26 @@ Esto significa que la transformada de laplace separa sumas y saca afuera las con
 \section{Transformada Inversa}
 
 
-\textbf{Definición: }Una función $f$ se dice de orden exponencial si existe $\alpha \in \mathbb{R}$ y $M >0$ tal que	
+\begin{defin}Una función $f$ se dice de orden exponencial si existe $\alpha \in \mathbb{R}$ y $M >0$ tal que
+\end{defin}
 
 \begin{center}
 $\displaystyle |f(t)| < Me^{\alpha t}$  $\forall t>0$
 \end{center}
 
 
-\textbf{Ejemplo: } La función $\cos(x)$ es de orden exponencial pues $|\cos(x)| \leq 1 = 1 \cdot e^{0 t}$, por otra parte la función exponencial $e^{ax}$ también es de orden exponencial pues $|e^{ax}| =e^{ax} \leq 1 \cdot e^{ax}$. Se tiene además que cualquier polinomio es de orden exponencial. \\
+\begin{ejem}La función $\cos(x)$ es de orden exponencial pues $|\cos(x)| \leq 1 = 1 \cdot e^{0 t}$, por otra parte la función exponencial $e^{ax}$ también es de orden exponencial pues $|e^{ax}| =e^{ax} \leq 1 \cdot e^{ax}$. Se tiene además que cualquier polinomio es de orden exponencial. \\
+\end{ejem}
 
 
 
-\textbf{Definición: } Diremos que una función es continua por trozos si tiene a lo más un número finito de discontinuidades. \\
+\begin{defin}Diremos que una función es continua por trozos si tiene a lo más un número finito de discontinuidades. \\
+\end{defin}
 
 Con estas definiciones tenemos el siguiente teorema. \\
 
-\textbf{Teorema: } Sea $f$ función continua a trozos en $(0,\infty)$ y de orden exponencial, entonces existe $\mathcal{L}[f]$. Además, si $g$ es otra función continua a trozos de orden exponecial tal que $\mathcal{L}[f]=\mathcal{L}[g]$, entonces se tiene que $f=g$ \\ \\
+\begin{thm}Sea $f$ función continua a trozos en $(0,\infty)$ y de orden exponencial, entonces existe $\mathcal{L}[f]$. Además, si $g$ es otra función continua a trozos de orden exponecial tal que $\mathcal{L}[f]=\mathcal{L}[g]$, entonces se tiene que $f=g$ \\ \\
+\end{thm}
 
 Este último teorema implica que $\mathcal{L}$ es un funcional lineal inyectivo y por lo tanto existe la inversa $\mathcal{L}^{-1}$ llamamos a esta función la \textbf{Transformada inversa de $f$}. \\
 
@@ -594,7 +613,8 @@ $\displaystyle \mathcal{L}^{-1}\left[ \frac{s}{s^2-k^2} \right] (t) = \cosh(kt)$
 
 La transformada inversa es un transformación lineal al igual que la transformada de Laplace \\
 
-\textbf{Ejemplo: }
+\begin{ejem}
+\end{ejem}
 
 
 \begin{center}
@@ -606,9 +626,11 @@ $\displaystyle \mathcal{L}^{-1}\left[ \frac{1}{s^3} + \frac{5}{s-3}\right](s)= \
 Para calcular la transformada inversa de una fracción se descompone la fracción usando fracciones parciales \\
 
 
-\textbf{Ejemplo 1: } Calcular $\displaystyle \mathcal{L}^{-1}\left[ \frac{s+1}{s^2(s+2)} \right] $. \\
+\begin{ejem}Calcular $\displaystyle \mathcal{L}^{-1}\left[ \frac{s+1}{s^2(s+2)} \right] $. \\
+\end{ejem}
 
-\textit{Respuesta: } Tenemos que usar
+\begin{sol}Tenemos que usar
+\end{sol}
 
 \begin{align*}
 \displaystyle  \frac{s+1}{s^2(s+2)} &= \frac{A}{s}+\frac{B}{s^2}+\frac{C}{s+2} \\
@@ -635,9 +657,11 @@ Por lo tanto
 \end{align*}
 
 
-\textbf{Ejemplo 2: } Calcular $\displaystyle \mathcal{L}^{-1}\left[ \frac{3s+4}{s^2+7} \right] $. \\
+\begin{ejem}Calcular $\displaystyle \mathcal{L}^{-1}\left[ \frac{3s+4}{s^2+7} \right] $. \\
+\end{ejem}
 
-\textit{Respuesta: } En este caso no se usan fracciones parciales porque el denominador no se puede factorizar
+\begin{sol}En este caso no se usan fracciones parciales porque el denominador no se puede factorizar
+\end{sol}
 
 \begin{align*}
 \displaystyle  \frac{3s+4}{s^2+7} = \frac{3s}{s^2+7}  + \frac{4}{s^2+7} \\
@@ -651,7 +675,7 @@ Luego, hay que calcular
 $\displaystyle \mathcal{L}^{-1}\left[ \frac{3s+4}{s^2+7} \right] = 3\displaystyle \mathcal{L}^{-1}\left[ \frac{s}{s^2+7} \right] + 4\displaystyle \mathcal{L}^{-1}\left[ \frac{1}{s^2+7} \right] $
 \end{center}
 
-Notemos que 
+Notemos que
 
 \begin{center}
 $\displaystyle \mathcal{L}^{-1}\left[ \frac{k}{s^2+k^2} \right] (t) = \sen(kt)$
@@ -678,7 +702,8 @@ $\displaystyle \mathcal{L}^{-1}\left[ \frac{3s+4}{s^2+7} \right] = 3 \cos(\sqrt{
 \section{Transformada de una derivada}
 
 
-\textbf{Teorema: }Supongamos que $f$ es continua en $(0,+\infty)$ y que además $f$ es de orden exponencial. Además supongamos que $f'$ es continua por tramos y también de orden exponencial. Entonces
+\begin{thm}Supongamos que $f$ es continua en $(0,+\infty)$ y que además $f$ es de orden exponencial. Además supongamos que $f'$ es continua por tramos y también de orden exponencial. Entonces
+\end{thm}
 
 
 \begin{center}
@@ -700,7 +725,8 @@ $\displaystyle \mathcal{L}[f''(t)](s) = s^2\mathcal{L}[f](s)- sf(0)-f'(0)$
 
 Esto nos permite calcular ciertas transformadas de Laplace \\
 
-\textbf{Ejemplo: } Caclular $\displaystyle \mathcal{L}\left[ \sen^2(at) \right] $. \\
+\begin{ejem}Caclular $\displaystyle \mathcal{L}\left[ \sen^2(at) \right] $. \\
+\end{ejem}
 
 notemos que $\sen^2(a \cdot 0) =0$, además
 
@@ -715,7 +741,7 @@ Luego
 $ \displaystyle \mathcal{L}\left[ (\sen^2(at))'\right]  = a\mathcal{L}\left[ \cos(2at)\right] = \frac{2a^2}{s^2+4a^2} $
 \end{center}
 
-Por lo tanto 
+Por lo tanto
 
 \begin{center}
 $ \displaystyle \mathcal{L}\left[\sen^2(at)\right]  = \frac{2a^2}{s(s^2+4a^2)} $
@@ -728,7 +754,8 @@ $ \displaystyle \mathcal{L}\left[\sen^2(at)\right]  = \frac{2a^2}{s(s^2+4a^2)} $
 
 Al igual que en la sección anterior, el siguiente resultado puede ser demostrado directamente usando la definición de la transformada de Laplace. Pero no vamos a demostrarlo y tampoco lo vamos a usar mucho por lo tanto no daremos ejemplos, tampoco haremos ejercicios\\
 
-\textbf{Proposición: } Sea $f$ una función de orden exponencial, entonces
+\begin{prop}Sea $f$ una función de orden exponencial, entonces
+\end{prop}
 
 \begin{align*}
     \mathcal{L}\left[ \int_0^t f(u)du \right](s) = \frac{\mathcal{L}[f(t)](s)}{s}
@@ -746,4 +773,4 @@ Al igual que en la sección anterior, el siguiente resultado puede ser demostrad
 
 
 
-\end{document} 
+\end{document}

@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Primera Semana\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -119,7 +129,8 @@ Supongamos que tenemos una función vectorial $f:\mathbb{R}^m \to \mathbb{R}$. S
 Es posible demostrar eso por definición pero no lo vamos a hacer. \\
 
 
-\textbf{Ejemplos: } 
+\begin{ejem}
+\end{ejem}
 
 
 
@@ -143,7 +154,8 @@ En el caso de que tengamos una funcion racional $f(X) = \displaystyle \frac{P(X)
 \end{align*}
 
 
-\textbf{Ejemplos: } 
+\begin{ejem}
+\end{ejem}
 
 
 
@@ -163,7 +175,8 @@ El problema ocurre cuando $Q(a) =P(a)= 0$, en este caso hay que recurrir a t\'ec
 
 
 
-\textbf{Ejemplo 1: } 
+\begin{ejem}
+\end{ejem}
 
 
 
@@ -177,7 +190,8 @@ El problema ocurre cuando $Q(a) =P(a)= 0$, en este caso hay que recurrir a t\'ec
 \newpage
 
 
-\textbf{Ejemplo 2: } 
+\begin{ejem}
+\end{ejem}
 
 \begin{align*}
 \displaystyle \lim_{(x,y,z) \to (1,2,0)} \frac{z^2x-yz}{zy} &= \lim_{(x,y,z) \to (1,2,0)} \frac{z(zx-y)}{zy}\\
@@ -201,38 +215,41 @@ Y en general cuando no haya indeterminaciones los limies existen, por ejemplo
 Hay ocaciones en los cuales los limites no existen. Consideremos
 
 \begin{align*}
-\displaystyle \lim_{(x,y) \to (0,0)}  \frac{x}{y} 
+\displaystyle \lim_{(x,y) \to (0,0)}  \frac{x}{y}
 \end{align*}
 
-Vamos a probar que este l\'imite no existe, para poder demostrarlo usaremos los siguientes teoremas \\ 
+Vamos a probar que este l\'imite no existe, para poder demostrarlo usaremos los siguientes teoremas \\
 
 
 
-\textbf{Teorema 1: } Sea $\mathbb{R}^m \to \mathbb{R}^n$ y $a \in \mathbb{R}^m$, en caso de que exista $\displaystyle \lim_{x \to a} f(x) = L$ entonces es único \\ \\
+\begin{thm}Sea $\mathbb{R}^m \to \mathbb{R}^n$ y $a \in \mathbb{R}^m$, en caso de que exista $\displaystyle \lim_{x \to a} f(x) = L$ entonces es único \\ \\
+\end{thm}
 
 
 
 
-\textbf{Teorema 2: } Sea $\mathbb{R}^m \to \mathbb{R}^n$ y $a \in \mathbb{R}^m$, en caso de que exista $\displaystyle \lim_{x \to a} f(x) = L$ entonces dada cualquier curva parametrizada $h(t)$ y $t_0 \in \mathbb{R}$, tal que $ a=h(t_0) $, se debe tener \\
+\begin{thm}Sea $\mathbb{R}^m \to \mathbb{R}^n$ y $a \in \mathbb{R}^m$, en caso de que exista $\displaystyle \lim_{x \to a} f(x) = L$ entonces dada cualquier curva parametrizada $h(t)$ y $t_0 \in \mathbb{R}$, tal que $ a=h(t_0) $, se debe tener \\
+\end{thm}
 
 
 \begin{align*}
-\displaystyle \lim_{x \to a} f(x) = \lim_{t \to t_0} f(h(t_0)) 
+\displaystyle \lim_{x \to a} f(x) = \lim_{t \to t_0} f(h(t_0))
 \end{align*}
 
 
-\textbf{Ejemplo 1: } Vamos demostrar que \\
+\begin{ejem}Vamos demostrar que \\
+\end{ejem}
 
 
 \begin{align*}
-\displaystyle \lim_{(x,y) \to (0,0)}  \frac{x}{y} 
+\displaystyle \lim_{(x,y) \to (0,0)}  \frac{x}{y}
 \end{align*}
 
 NO existe, tomamos $(x,y) = (t^2,t)$, el cual es valido pues para $t=0$ tenemos $(0,0)$, entonces
 
 
 \begin{align*}
-\displaystyle \lim_{(x,y) \to (0,0)}  \frac{x}{y} = \lim_{t \to 0}  \frac{t^2}{t}  = \lim_{t \to 0}  t = 0  
+\displaystyle \lim_{(x,y) \to (0,0)}  \frac{x}{y} = \lim_{t \to 0}  \frac{t^2}{t}  = \lim_{t \to 0}  t = 0
 \end{align*}
 
 
@@ -243,7 +260,7 @@ Por otra parte, tomando $(x,y) = (t,t)$, el cual es valido pues para $t=0$ tenem
 
 
 \begin{align*}
-\displaystyle \lim_{(x,y) \to (0,0)}  \frac{x}{y} = \lim_{t \to 0}  \frac{t}{t}  = 1  
+\displaystyle \lim_{(x,y) \to (0,0)}  \frac{x}{y} = \lim_{t \to 0}  \frac{t}{t}  = 1
 \end{align*}
 
 Podemos ver que el limite no es unico por lo tanto no existe.  \\ \\
@@ -253,27 +270,28 @@ Podemos ver que el limite no es unico por lo tanto no existe.  \\ \\
 \newpage
 
 
-\textbf{Ejemplo 2: } Vamos demostrar que \\
+\begin{ejem}Vamos demostrar que \\
+\end{ejem}
 
 
 \begin{align*}
-\displaystyle \lim_{(x,y) \to (0,0)}  \frac{2xy}{x^2+y^2} 
+\displaystyle \lim_{(x,y) \to (0,0)}  \frac{2xy}{x^2+y^2}
 \end{align*}
 
 NO existe, tomamos $(x,y) = (t,t)$, el cual es valido pues para $t=0$ tenemos $(0,0)$, entonces
 
 
 \begin{align*}
-\displaystyle \lim_{(x,y) \to (0,0)}  \frac{2xy}{x^2+y^2} = \lim_{t \to 0}  \frac{2t^2}{2t^2}  = 1  
+\displaystyle \lim_{(x,y) \to (0,0)}  \frac{2xy}{x^2+y^2} = \lim_{t \to 0}  \frac{2t^2}{2t^2}  = 1
 \end{align*}
 
 
-Por otra parte, tomando $(x,y) = (0,t)$, el cual es v\'alido pues para $t=0$ tenemos $(0,0)$, entonces 
+Por otra parte, tomando $(x,y) = (0,t)$, el cual es v\'alido pues para $t=0$ tenemos $(0,0)$, entonces
 
 
 
 \begin{align*}
-\displaystyle \lim_{(x,y) \to (0,0)}  \frac{2xy}{x^2+y^2}  = \lim_{t \to 0}  \frac{0}{t^2}   = 0  
+\displaystyle \lim_{(x,y) \to (0,0)}  \frac{2xy}{x^2+y^2}  = \lim_{t \to 0}  \frac{0}{t^2}   = 0
 \end{align*}
 
 Podemos ver que el l\'imite no es \'unico por lo tanto no existe. \\ \\ \\
@@ -284,35 +302,39 @@ En caso de que el l\'imite sea en varias dimensiones se hace coordenada a coorde
 
 
 
-\textbf{Ejemplo 3: } En caso de que no haya ninguna indeterminación el cálculo es muy fácil \\
+\begin{ejem}En caso de que no haya ninguna indeterminación el cálculo es muy fácil \\
+\end{ejem}
 
 
 \begin{align*}
-\displaystyle \lim_{(x,y) \to (1,0)}   \left( \frac{ 3x}{y+1} , \frac{x+y}{x}\right)    &=  \left( 1 , 1\right) 
+\displaystyle \lim_{(x,y) \to (1,0)}   \left( \frac{ 3x}{y+1} , \frac{x+y}{x}\right)    &=  \left( 1 , 1\right)
 \end{align*}
 
 Otra forma de resolver indeterminaciones es usando el teorema del Sandwich \\
 
-\textbf{Teorema del Sandwich:} Sea $f: \mathbb{R}^n \to \mathbb{R}$ y sean $g(x)$ y $h(x)$ funciones tales que $g(x) \leq f(x) \leq h(x)$ $\forall x \in \mathbb{R}^n$. Supongamos adem\'as que $\displaystyle \lim_{x \to a} g(x) = \lim_{x \to a} h(x) = L$, es decir, los l\'imites existen y son iguales, entonces $\displaystyle\lim_{x \to a} f(x)$ existe y
+\begin{thm}Sea $f: \mathbb{R}^n \to \mathbb{R}$ y sean $g(x)$ y $h(x)$ funciones tales que $g(x) \leq f(x) \leq h(x)$ $\forall x \in \mathbb{R}^n$. Supongamos adem\'as que $\displaystyle \lim_{x \to a} g(x) = \lim_{x \to a} h(x) = L$, es decir, los l\'imites existen y son iguales, entonces $\displaystyle\lim_{x \to a} f(x)$ existe y
+\end{thm}
 
 \begin{align*}
     \lim_{x \to a} f(x) = L
 \end{align*}
 
-\textbf{Ejemplo:} Determinar
+\begin{ejem}Determinar
+\end{ejem}
 
 \begin{align*}
     \lim_{(x,y) \to (0,0)} \frac{|\sin(x)\sin(y)|}{|x|+|y|}
 \end{align*}
 
-\textbf{Respuesta:} Recordamos que $|\sin(x)| \leq x$, luego
+\begin{sol}Recordamos que $|\sin(x)| \leq x$, luego
+\end{sol}
 
 
 \begin{align*}
     0 \leq \frac{|\sin(x)\sin(y)|}{|x|+|y|} \leq \frac{|xy|}{|x|+|y|}
 \end{align*}
 
-Ahora bien, se sabe que $(|x|+|y|)^2 = |x|^2+2|x||y|+|y|^2 \geq 2|x||y|$, luego 
+Ahora bien, se sabe que $(|x|+|y|)^2 = |x|^2+2|x||y|+|y|^2 \geq 2|x||y|$, luego
 
 \begin{align*}
     2\frac{|x||y|}{|x|+|y|} \leq |x|+|y|
@@ -336,7 +358,8 @@ Pero entonces nuevamente por el teorema del sandwich se tiene que
     \lim_{(x,y) \to (0,0)} \frac{|\sin(x)\sin(y)|}{|x|+|y|} = 0
 \end{align*}
 
-\textbf{Ejercicio para el alumno: }Usando el teorema del sandwich, determine el siguiente l\'imite
+\begin{ejer}Usando el teorema del sandwich, determine el siguiente l\'imite
+\end{ejer}
 
 \begin{align*}
     \lim_{(x,y) \to (0,0)} \frac{|\sin(x^2+y^2)|}{\sqrt{x^2+y^2}}
@@ -369,7 +392,8 @@ Para que el límite exista no puede depender del angulo $\theta$ \\ \\
 
 
 
-\textbf{Ejemplo 1: } Vamos a calcular \\
+\begin{ejem}Vamos a calcular \\
+\end{ejem}
 
 
 \begin{align*}
@@ -404,7 +428,8 @@ Sea $f : A \subseteq \mathbb{R}^m \to \mathbb{R}^n$, se dice que es continua en 
 
 Ademas, $f$ es continua si $f$ es continua en todo punto de su dominio. En general la mayor\'ia de las funciones que vamos a estudiar en este curso son continuas pero hay casos en los cuales hay dicontinuidades\ \\
 
-\textbf{Ejemplo :} Sea $f$ dada por
+\begin{ejem}Sea $f$ dada por
+\end{ejem}
 
 \begin{align*}
 f(x,y) = \left\{ \begin{array}{lcc} \frac{x^2\sen^2(y)}{x^2+y^2} & si & (x,y) \neq (0,0) \\ \\ 0 & si & (x,y) =(0,0) \end{array} \right.
@@ -441,7 +466,8 @@ Por lo tanto $f$ si es continua. \\ \\
 
 Es posible extender la definición de derivada en una dimensión a derivadas en varias variables, la diferencia es que en una dimensión solo podemos movernos en una dirección, mientras que en $n>1$ dimensiones podemos movernos en infinitas direcciones, asumimos que $n > 1$. \\
 
-\textbf{Definición:} Dada una función $f: \mathbb{R}^n \to \mathbb{R}$ Se define la derivada direccional  en el punto $a$ y en la dirección $u $, como
+\begin{defin}Dada una función $f: \mathbb{R}^n \to \mathbb{R}$ Se define la derivada direccional  en el punto $a$ y en la dirección $u $, como
+\end{defin}
 
 \begin{align*}
     D_u f (a) = \lim_{ h \to 0 } \frac{f(a+hu)-f(a)}{h}
@@ -460,7 +486,8 @@ La derivada direccional tiene la misma interpretacción geométrica que la deriv
 
 
 
-\textbf{Ejemplo:} Sea $f(x,y) = x^2+y^2$ y $u=(1,1)$, calculemos $D_u f (1,0)$, tenemos que
+\begin{ejem}Sea $f(x,y) = x^2+y^2$ y $u=(1,1)$, calculemos $D_u f (1,0)$, tenemos que
+\end{ejem}
 
 
 \begin{align*}
@@ -522,4 +549,4 @@ b) $\displaystyle f(x,y,z) = x^{yz}$ \\
 c) $\displaystyle f(x,y,z) = xy+z$ \\
 
 
-\end{document} 
+\end{document}

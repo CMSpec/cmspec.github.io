@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Semana 4\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -127,9 +137,11 @@ Con $g(x) \neq 0$, en otras palabras una ecuación diferencial NO homogenea con 
 
 
 
-\textbf{Ejercicio 1: } Resolver $y''-4y=12x$. \\
+\begin{ejer}Resolver $y''-4y=12x$. \\
+\end{ejer}
 
-\textit{Respuesta: } Primero resolvemos la parte homogenea, es decir $y''-4y=0$, si reemplazamos por $e^{mx}$, obtenemos la ecuación $m^2-4=0$, que tiene dos raíces ditintas $m=2$ y $m=-2$, luego la solución general de la homogena es
+\begin{sol}Primero resolvemos la parte homogenea, es decir $y''-4y=0$, si reemplazamos por $e^{mx}$, obtenemos la ecuación $m^2-4=0$, que tiene dos raíces ditintas $m=2$ y $m=-2$, luego la solución general de la homogena es
+\end{sol}
 
 \begin{center}
 $c_1e^{2x}+c_2e^{-2x}$
@@ -159,9 +171,11 @@ En caso de que $g(x)$ sea una combinación de multiplicaciones y sumas de estas 
 
 
 
-\textbf{Ejercicio 2: } Resolver $y''-2y'-3y=4x-5+6xe^{2x}$. \\
+\begin{ejer}Resolver $y''-2y'-3y=4x-5+6xe^{2x}$. \\
+\end{ejer}
 
-\textit{Respuesta: } Empecemos por la solución particular, en este caso $g(x)= 4x+5+6xe^{2x}$, por una parte para $4x+5$ necesitamos algo del estilo $Ax+B$. Ahora bien, en caso de $6xe^{2x}$, como tenemos una ecuación diferencial de orden 2, tenemos que calcular sus dos primeras derivadas, la primera derivada da $6e^{2x}++12xe^{2x}$ y su segunda derivada da $24e^{2x} +24xe^{2x}$, vemos que hay dos tipos de términos $e^{2x}$ y $xe^{2x}$, por lo tanto necesitamos algo del estilo $Ce^{2x}+Dxe^{2x}$. entonces $y_p$ debe ser de la forma
+\begin{sol}Empecemos por la solución particular, en este caso $g(x)= 4x+5+6xe^{2x}$, por una parte para $4x+5$ necesitamos algo del estilo $Ax+B$. Ahora bien, en caso de $6xe^{2x}$, como tenemos una ecuación diferencial de orden 2, tenemos que calcular sus dos primeras derivadas, la primera derivada da $6e^{2x}++12xe^{2x}$ y su segunda derivada da $24e^{2x} +24xe^{2x}$, vemos que hay dos tipos de términos $e^{2x}$ y $xe^{2x}$, por lo tanto necesitamos algo del estilo $Ce^{2x}+Dxe^{2x}$. entonces $y_p$ debe ser de la forma
+\end{sol}
 
 \begin{center}
 $y_p= Ax+B+Ce^{2x}+Dxe^{2x}$
@@ -232,9 +246,11 @@ $y= \displaystyle c_1e^{-x}+c_2e^{3x} -\frac{4}{3}x + \frac{23}{9} -\frac{4}{3}e
 
 El método de coeficientes indeterminados puede fallar en un caso en particular, y es cuando la función $f(x)$ es linealmente dependiente con alguna de las soluciones de la ecuación homogenea \\
 
-\textbf{Ejemplo} Resolver la EDO $y''-5y'+6y=5e^{2x}$ usando el método de coeficientes indeterminados \\
+\begin{ejem}Resolver la EDO $y''-5y'+6y=5e^{2x}$ usando el método de coeficientes indeterminados \\
+\end{ejem}
 
-\textbf{Solución:} Intentemos usar el método y veamos que pasa, en este caso la solución particular sería de la forma $y_p = Ae^{2x}$, derivando dos veces tenemos $y_p'=2Ae^{2x}$ e $y_p'' = 4Ae^{2x}$. Reemplazando en la ecuación original obtenemos
+\begin{sol}Intentemos usar el método y veamos que pasa, en este caso la solución particular sería de la forma $y_p = Ae^{2x}$, derivando dos veces tenemos $y_p'=2Ae^{2x}$ e $y_p'' = 4Ae^{2x}$. Reemplazando en la ecuación original obtenemos
+\end{sol}
 
 \begin{align*}
     4Ae^{2x}-5(2Ae^{2x})+6Ae^{2x} &=5e^{2x} \\
@@ -244,7 +260,7 @@ El método de coeficientes indeterminados puede fallar en un caso en particular,
 
 Como podemos ver el método falla completamente, esto es debido a que una de las soluciones de la parte homogénea es $y_1=e^{2x}$ que es un múltiplo escalar de $5e^{2x}$, la otra solución es $y_2=e^{3x}$. \\
 
-Para poder solucionar este problema basta con multiplicar la expresión $Ae^x$ por un polinomio, la solución particular nos queda de la forma $y_p =p(x)e^{2x}$. En este caso nos conviene multiplicar por $x$,  entonces la solución particular es de la forma 
+Para poder solucionar este problema basta con multiplicar la expresión $Ae^x$ por un polinomio, la solución particular nos queda de la forma $y_p =p(x)e^{2x}$. En este caso nos conviene multiplicar por $x$,  entonces la solución particular es de la forma
 
 \begin{align*}
     y_p= Axe^{2x}
@@ -279,7 +295,8 @@ De donde se deduce que $A=-5$. Por lo tanto la solución es
     y=c_1e^{2x}+c_2e^{3x}-5xe^x
 \end{align*}
 
-\textbf{Ejercicio:}  Resolver la EDO $y''-2y'+y=6xe^{x}$ usando el método de coeficientes indeterminados \\
+\begin{ejer}Resolver la EDO $y''-2y'+y=6xe^{x}$ usando el método de coeficientes indeterminados \\
+\end{ejer}
 
 
 
@@ -312,7 +329,7 @@ Derivando obtenemos
 $y_p'= c_1'y_1+ c_1y_1'+c_2'y_2 +c_2y_2'$
 \end{center}
 
-Para simplificar  vamos a considerar $c_1'y_1+c_2'y_2=0$, de esta forma 
+Para simplificar  vamos a considerar $c_1'y_1+c_2'y_2=0$, de esta forma
 
 \begin{center}
 $y_p'=  c_1y_1'+c_2y_2'$
@@ -340,7 +357,7 @@ $c_1' y_1'+ c_1y_1''+ c_2'y_2' + c_2y_2''+p(x)(c_1y_1'+c_2y_2')+q(x)(c_1y_1+c_2y
 $c_1' y_1'+ c_2'y_2' + c_1(y_1'' + p(x)y_1' +q(x)y_1) + c_2(y_2'' + p(x)y_2' +q(x)y_2)=f(x)$
 \end{center}
 
-Pero como $y_1$ e $y_2$ son soluciones de la homogenea entonces $y_1'' + p(x)y_1' +q(x)y_1 = 0$ y $y_2'' + p(x)y_2' +q(x)y_2 =0$. Por lo tanto concluimos que 
+Pero como $y_1$ e $y_2$ son soluciones de la homogenea entonces $y_1'' + p(x)y_1' +q(x)y_1 = 0$ y $y_2'' + p(x)y_2' +q(x)y_2 =0$. Por lo tanto concluimos que
 
 
 \begin{center}
@@ -388,9 +405,11 @@ $\displaystyle y= c_1y_2 +c_2y_2 + y_1\int \frac{-y_2(x)f(x)}{W(y_1,y_2)} +y_2 \
 \newpage
 
 
-\textbf{Ejemplo: } Resolver $y'' +y = \sec^2(x)$. \\
+\begin{ejem}Resolver $y'' +y = \sec^2(x)$. \\
+\end{ejem}
 
-\textit{Respuesta: } Primero resolvemos la homogenea $y''+y'=0$, tomando $y=e^{mx}$ obtenemos $m^2+1=0$, las soluciones son $m_1=i$ y $m_2=-i$, la solución es  $y_1 = \cos(x)$ y $y_2 =\sen(x)$. \\
+\begin{sol}Primero resolvemos la homogenea $y''+y'=0$, tomando $y=e^{mx}$ obtenemos $m^2+1=0$, las soluciones son $m_1=i$ y $m_2=-i$, la solución es  $y_1 = \cos(x)$ y $y_2 =\sen(x)$. \\
+\end{sol}
 
 Suponemos que la solución particular es de la forma $y_p= c_1(x)y_1 +c_2(x)y_2$. Primero calculamos $W(y_1,y_1)$, entonces
 
@@ -428,4 +447,4 @@ $y= \displaystyle c_1\cos(x) +c_2\sen(x) - \cos(x)\sec(x)+ \sen(x) \ln(\sec(x)+\
 
 
 
-\end{document} 
+\end{document}

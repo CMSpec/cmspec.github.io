@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Semana 4\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -111,7 +121,7 @@ Santiago, Chile
 Supongamos que la EDO $M(x,y)dx+N(x,y)dy=0$ no es exacta, podemos asumir que existe una función $\omega(x,y)$ tal que al multiplicar la EDO por $\omega(x,y)$ la ecuación resultante
 
 \begin{center}
-$\omega(x,y) M(x,y)dx+\omega(x,y) N(x,y)dy=0$ 
+$\omega(x,y) M(x,y)dx+\omega(x,y) N(x,y)dy=0$
 \end{center}
 
 es exacta. Para trabajar utilizaremos la notación de Euler $f_x =\displaystyle \frac{\partial f}{\partial x}$. Para que la ecuación sea exacta necesitamos que
@@ -168,14 +178,17 @@ $\displaystyle  \frac{d\omega}{ds}= \omega\frac{M_x-N_y}{M+N}$
 
 Donde $\omega$ queda en función de $s=x-y$. Existen más ocaciones en las cuales se puede calcular el factor integrante de forma eficiente, pero hay que tratar cada una de esos casos de forma individual. \\ \\
 
-\textbf{Nota Importante: } Hay muchos más tipos de factores integrantes que van a aparecer en las ayudantías, aquí solo hemos menocionado unos cuantos. \\
+\begin{rmk}Hay muchos más tipos de factores integrantes que van a aparecer en las ayudantías, aquí solo hemos menocionado unos cuantos. \\
+\end{rmk}
 
 
-\textbf{Ejercicio: }Resolver $x^2y^2dx+ (x^3y+y+3)dy=0$. \\
+\begin{ejer}Resolver $x^2y^2dx+ (x^3y+y+3)dy=0$. \\
+\end{ejer}
 
 \textit{Pista: Encuentre el factor integrante asuminedo que dependerá sólo de $y$, en este caso la ecuación del factor integrante viene dada por  $\displaystyle  \frac{d\omega}{dy}=  \omega \frac{N_x-M_y}{M}$ } \\
 
-\textbf{Respuesta: } Tenemos que $M(x,y)= x^2y^2$ y $N(x,y)= x^3+y+3$. La ecuación diferencial del factor integrante viene dada por
+\begin{sol}Tenemos que $M(x,y)= x^2y^2$ y $N(x,y)= x^3+y+3$. La ecuación diferencial del factor integrante viene dada por
+\end{sol}
 
 
 \begin{center}
@@ -228,7 +241,7 @@ Luego
 $\displaystyle f(x,y) = \int x^2y^3 dx = \frac{x^3y^3}{3} +c(y)$
 \end{center}
 
-Por otra parte, sabemos que 
+Por otra parte, sabemos que
 
 \begin{center}
 $\displaystyle \frac{\partial f}{\partial y} = N(x,y)= x^3y^2+y^2+3y$
@@ -284,9 +297,11 @@ $\displaystyle \frac{x^3y^3}{3} +  \frac{y^3}{3} +\frac{3}{2}y^2 =c $.
 
 
 
-\textbf{Definición: }Una función $f(x,y)$ se dice homogenea si cumple que $f(tx,ty)=t^nf(x,y)$ para todo $t \in \mathbb{R}$. \\
+\begin{defin}Una función $f(x,y)$ se dice homogenea si cumple que $f(tx,ty)=t^nf(x,y)$ para todo $t \in \mathbb{R}$. \\
+\end{defin}
 
-\textbf{Ejemplo: }Todos los polinomios en dos variables tales que cada término tenga el mismo grado como por ejemplo $x^2-xy$, $x^3+xy^2 +x^2y$ o bien $x+y$, son homogeneos. \\
+\begin{ejem}Todos los polinomios en dos variables tales que cada término tenga el mismo grado como por ejemplo $x^2-xy$, $x^3+xy^2 +x^2y$ o bien $x+y$, son homogeneos. \\
+\end{ejem}
 
 Los polinomios que no tienen todos sus coeficientes del mismo grado no son homogeneos por ejemplo $x+y+2$ no es homogenea porque el término $2$ tiene grado cero, tampoco es homogenea la ecuación $x^3 +xy +y^2x$, porque el término $xy$ tiene grado 2 mientras que el término $x^3$ tiene grado 3. \\
 
@@ -294,7 +309,8 @@ Los polinomios que no tienen todos sus coeficientes del mismo grado no son homog
 
 
 
-\textbf{Definición: }Una función ecuación diferencial de la forma $M(x,y)dx +N(x,y)dy=0$ se dice homogenea si y sólo sí $M$ y $N$ son homogeneas del mismo grado. \\
+\begin{defin}Una función ecuación diferencial de la forma $M(x,y)dx +N(x,y)dy=0$ se dice homogenea si y sólo sí $M$ y $N$ son homogeneas del mismo grado. \\
+\end{defin}
 
 
 \textbf{Resultado:} \textit{Dada una Ecuación diferencial homogenea $M(x,y)dx +N(x,y)dy=0$, haciendo el cambio de variable $y=zx$, la ecuación diferencial se transforma en una ecuación de variables separables}\\
@@ -303,9 +319,11 @@ Los polinomios que no tienen todos sus coeficientes del mismo grado no son homog
 Notemos que al hacer el cambio de variable $y=zx$, entonces se tiene que $\displaystyle \frac{dy}{dx}= z+x\frac{dz}{dx}$. \\
 
 
-\textbf{Ejercicio: } Encontrar la solución de la ecuación diferencial $\displaystyle xy^2\frac{dy}{dx} =y^3-x^3$.\\
+\begin{ejer}Encontrar la solución de la ecuación diferencial $\displaystyle xy^2\frac{dy}{dx} =y^3-x^3$.\\
+\end{ejer}
 
-\textit{Respuesta: }Notemos que es una ED homogenea de grado 3, haciendo el cambio de variable $y=zx$, entonces  $\displaystyle \frac{dy}{dx}= z+x\frac{dz}{dx}$, reemplazando
+\begin{sol}Notemos que es una ED homogenea de grado 3, haciendo el cambio de variable $y=zx$, entonces  $\displaystyle \frac{dy}{dx}= z+x\frac{dz}{dx}$, reemplazando
+\end{sol}
 
 \begin{center}
 $\displaystyle  x(zx)^2 \left(  z+x\frac{dz}{dx} \right) =(zx)^3-x^3 $
@@ -361,4 +379,4 @@ Que es la solución implícita del la ED inicial.
 
 
 
-\end{document} 
+\end{document}

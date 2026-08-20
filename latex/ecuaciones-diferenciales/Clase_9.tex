@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Semana 4\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -116,9 +126,11 @@ Santiago, Chile
 
 Para resolver una ecuación diferencial usando transformadas de Laplace se usa el siguiente método \\
 
-\textbf{Ejemplo 1: } Resolver $y'+2y=4t$ con la condición inicial $y(0)=3$, usando transformadas de Laplace.  \\
+\begin{ejem}Resolver $y'+2y=4t$ con la condición inicial $y(0)=3$, usando transformadas de Laplace.  \\
+\end{ejem}
 
-\textit{Respuesta: } Primero aplicamos la transformada de Laplace  a ambos lados
+\begin{sol}Primero aplicamos la transformada de Laplace  a ambos lados
+\end{sol}
 
 \begin{center}
 $\displaystyle \mathcal{L}[y'+2y]= \mathcal{L}[4t]$
@@ -176,9 +188,11 @@ $\displaystyle y = -1+2t+4e^{-2t} $
 \end{center}
 
 
-\textbf{Ejemplo 2: } Resolver $y''+3y=0$  con las condiciones iniciales $y(0)=1$ y $y'(0)=2$, usando transformadas de Laplace.  \\
+\begin{ejem}Resolver $y''+3y=0$  con las condiciones iniciales $y(0)=1$ y $y'(0)=2$, usando transformadas de Laplace.  \\
+\end{ejem}
 
-\textit{Respuesta: } Primero aplicamos la transformada de Laplace  a ambos lados
+\begin{sol}Primero aplicamos la transformada de Laplace  a ambos lados
+\end{sol}
 
 \begin{center}
 $\displaystyle \mathcal{L}[y''+3y]= \mathcal{L}[0]$
@@ -230,7 +244,8 @@ $\displaystyle y = \cos(\sqrt{3} t) +  \frac{2}{\sqrt{3}}\sen(\sqrt{3}t)$
 \section{Primer teorema de traslación}
 
 
-\textbf{Teorema (Primer teorema de traslación):} Sea $f: [0,\infty) \to \mathbb{R}$ continua por tramos y de orden exponencial. Si $a\in \mathbb{R}$, entonces
+\begin{thm}[Primer teorema de traslación]Sea $f: [0,\infty) \to \mathbb{R}$ continua por tramos y de orden exponencial. Si $a\in \mathbb{R}$, entonces
+\end{thm}
 
 \begin{center}
 $\displaystyle \mathcal{L}[e^{at}f(t)](s) = \mathcal{L}[f(t)](s-a)$
@@ -254,7 +269,8 @@ $\displaystyle \mathcal{L}[e^{5t}\cos(t)](s) = \mathcal{L}[\cos(t)](s-5) = \frac
 
 \textit{Ejemplo:} Calcular $\mathcal{L}[e^{-4t}t^4](s)$. \\
 
-\textit{Respuesta: } Tenemos que
+\begin{sol}Tenemos que
+\end{sol}
 
 
 \begin{center}
@@ -263,7 +279,8 @@ $\displaystyle \mathcal{L}[e^{-4t}t^4](s) = \mathcal{L}[t^4](s-(-4)) = \mathcal{
 
 Esta propiedad también puede ser usada para calcular transformadas inversas \\
 
-\textbf{Teorema (Primer teorema de traslación (Versión transformada inversa)):} Sea $f: [0,\infty) \to \mathbb{R}$ continua por tramos y de orden exponencial. Si $a\in \mathbb{R}$, entonces
+\begin{thm}[Versión transformada inversa]Sea $f: [0,\infty) \to \mathbb{R}$ continua por tramos y de orden exponencial. Si $a\in \mathbb{R}$, entonces
+\end{thm}
 
 \begin{center}
 $\displaystyle \mathcal{L}^{-1}[f(s-a)](t) = e^{ta}\mathcal{L}^{-1}[f(s)](t)$
@@ -272,7 +289,8 @@ $\displaystyle \mathcal{L}^{-1}[f(s-a)](t) = e^{ta}\mathcal{L}^{-1}[f(s)](t)$
 
 \textit{Ejemplo:} Calcular $\displaystyle \mathcal{L}^{-1} \left[ \frac{1}{(s+1)^2} \right](t)$. \\
 
-\textit{Respuesta: } Sabemos que
+\begin{sol}Sabemos que
+\end{sol}
 
 
 \begin{center}
@@ -289,7 +307,8 @@ $\displaystyle \mathcal{L}^{-1} \left[ \frac{1}{(s+1)^2} \right](t) = e^{-t}t$
 
 \textit{Ejemplo:} Caclular $\displaystyle \mathcal{L}^{-1} \left[ \frac{1}{(s-3)^2+4} \right](t)$. \\
 
-\textit{Respuesta: } Sabemos que
+\begin{sol}Sabemos que
+\end{sol}
 
 
 \begin{center}
@@ -310,7 +329,8 @@ $\displaystyle \mathcal{L}^{-1} \left[ \frac{1}{(s-3)^2+4} \right](t) = \frac{1}
 \section{Función de Heaviside}
 
 
-\textbf{Definición: }La función de Heaviside $u_{t_0}(t) = u(t-t_0)$ se define como
+\begin{defin}La función de Heaviside $u_{t_0}(t) = u(t-t_0)$ se define como
+\end{defin}
 
 \begin{equation*}
 u(t-t_0) =
@@ -352,7 +372,8 @@ $\displaystyle \mathcal{L}[u(t-t_0)](s) = \frac{e^{-st_0}}{s}$
 \end{center}
 
 
-\textbf{Ejemplo: }Caclular la transformada de laplace de la siguiente función
+\begin{ejem}Caclular la transformada de laplace de la siguiente función
+\end{ejem}
 
 
 
@@ -366,7 +387,8 @@ f(t) =
 \end{cases}
 \end{equation*}
 
-\textit{Respuesta: } El valor $-1$ se deja aparte, el segundo valor será $4-(-1)=5$ y el tercer valor será $7-4=3$. En cuanto a los valores de los intervalos, estos son los mismos que los de $f$, es decir $5$ y $12$, luego
+\begin{sol}El valor $-1$ se deja aparte, el segundo valor será $4-(-1)=5$ y el tercer valor será $7-4=3$. En cuanto a los valores de los intervalos, estos son los mismos que los de $f$, es decir $5$ y $12$, luego
+\end{sol}
 
 \begin{center}
 $f(t) = -1+5u(t-5)+3u(t-12)$
@@ -388,7 +410,7 @@ Por lo tanto
 
 
 
-\end{document} 
+\end{document}
 
 
 

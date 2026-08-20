@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Semana 4\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -113,7 +123,8 @@ Santiago, Chile
 
 
 
-\textbf{Definición: }Recordemos que un problema de valor inicial (PVI) de orden $n$ es una ecuación diferencial de la forma
+\begin{defin}Recordemos que un problema de valor inicial (PVI) de orden $n$ es una ecuación diferencial de la forma
+\end{defin}
 
 
 \begin{align*}
@@ -125,12 +136,14 @@ y^{(n-1)}(x_{n-1}) &=y_{n-1}
 \end{align*}
 
 
-\textbf{Ejemplo: } La ecuación diferencial $y''+3x^2\sen(y)-3y^2y' =0$ con las condiciones $y(0)=1$ e $y'(0)=0$ es un PVI de orden 2. \\
+\begin{ejem}La ecuación diferencial $y''+3x^2\sen(y)-3y^2y' =0$ con las condiciones $y(0)=1$ e $y'(0)=0$ es un PVI de orden 2. \\
+\end{ejem}
 
 
-Una solución de un problema de valores iniciales es una función $y$ que cumple todas las condiciones pedidas. \\ 
+Una solución de un problema de valores iniciales es una función $y$ que cumple todas las condiciones pedidas. \\
 
-\textbf{Ejemplo: } $y(x)= 3e^{2x} +e^{-2x}-3x$  es solución del PVI
+\begin{ejem}$y(x)= 3e^{2x} +e^{-2x}-3x$  es solución del PVI
+\end{ejem}
 
 
 \begin{align*}
@@ -140,7 +153,8 @@ y'(0) &=1 \\
 \end{align*}
 
 
-\textbf{Definición: } Una ecuación diferencial de orden $n$ se dice lineal si es de la forma
+\begin{defin}Una ecuación diferencial de orden $n$ se dice lineal si es de la forma
+\end{defin}
 
 
 \begin{align*}
@@ -150,7 +164,8 @@ a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)}+ ... + a_2(x)y''+a_1(x)y' +a_0(x)y =g(x)
 Todas las ecuaciones lineales que vimos durante la primera parte de este curso son ecuaciones diferenciales lineales de primer orden o de orden 1. \\
 
 
-\textbf{Definición: }  Una ecuación diferencial lineal de orden $n$ se dice \textbf{homog\'enea} si $g(x)=0$, es decir, si es de la forma
+\begin{defin}Una ecuación diferencial lineal de orden $n$ se dice \textbf{homog\'enea} si $g(x)=0$, es decir, si es de la forma
+\end{defin}
 
 \begin{align*}
 a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)}+ ... + a_2(x)y''+a_1(x)y' +a_0(x)y =0
@@ -168,23 +183,26 @@ Esta definición es completamente distinta a la dada anteriormente durante la pr
 
 El siguiente teorema nos ayuda a entender como se comportan las ecuaciones diferenciales lineales homog\'eneas de orden $n$ \\
 
-\textbf{Teorema: } Sea $a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)}+ ... +a_0(x)y =0$ una ecuación diferencial lineal homog\'enea. Consideramos $S$ el conjunto solución de esta ecuación diferencial, entonces $S$ es un espacio vectorial finitamente generado sobre $\mathbb{R}$ y además  dim$(S) = n$. \\
+\begin{thm}Sea $a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)}+ ... +a_0(x)y =0$ una ecuación diferencial lineal homog\'enea. Consideramos $S$ el conjunto solución de esta ecuación diferencial, entonces $S$ es un espacio vectorial finitamente generado sobre $\mathbb{R}$ y además  dim$(S) = n$. \\
+\end{thm}
 
 
-En otras palabras, si encontramos $n$ soluciones $y_1,y_2, ... , y_n$  de la ecuación diferencial inicial que sean l.i, entonces todas las soluciones son de la forma 
+En otras palabras, si encontramos $n$ soluciones $y_1,y_2, ... , y_n$  de la ecuación diferencial inicial que sean l.i, entonces todas las soluciones son de la forma
 
 \begin{center}
 $y = c_1y_1+c_2y_2+ ...+ c_n y_n$
 \end{center}
 
-\textbf{Ejemplo 1: } Tenemos que la ecuación diferencial homog\'enea $y'''+6y''+11y'-6y =0$ tiene como soluciones $e^x$, $e^{2x}$ y $e^{3x}$. Luego, la solución general de la ecuación diferencial es de la forma
+\begin{ejem}Tenemos que la ecuación diferencial homog\'enea $y'''+6y''+11y'-6y =0$ tiene como soluciones $e^x$, $e^{2x}$ y $e^{3x}$. Luego, la solución general de la ecuación diferencial es de la forma
+\end{ejem}
 
 \begin{center}
 $y = c_1e^x +c_2e^{2x}+c_3e^{3x}$
 \end{center}
 
 
-\textbf{Ejemplo 2: } Tenemos que la ecuación diferencial homog\'enea $y''-4y =0$ tiene como soluciones $e^{2x}$ y $e^{-2x}$. Luego, la solución general de la ecuación diferencial es de la forma
+\begin{ejem}Tenemos que la ecuación diferencial homog\'enea $y''-4y =0$ tiene como soluciones $e^{2x}$ y $e^{-2x}$. Luego, la solución general de la ecuación diferencial es de la forma
+\end{ejem}
 
 \begin{center}
 $y = c_1e^{2x} +c_2e^{-2x}$
@@ -193,7 +211,8 @@ $y = c_1e^{2x} +c_2e^{-2x}$
 Ahora bien, para poder resolver una ecuación diferencial no homog\'enea, tenemos el siguiente teorema. \\
 
 
-\textbf{Teorema: } Sea $a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)}+ ... +a_0(x)y =g(x)$ una ecuación diferencial lineal No homog\'enea. Consideramos la ecuación homog\'enea $a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)}+ ... +a_0(x)y =0$ con sus soluciones $y_1,y_2,... , y_n$ y además supongamos que tenemos una solución particular $y_p$ de la ecuación no homog\'enea. Entonces toda solución de la ecuación no homog\'enea es de la forma
+\begin{thm}Sea $a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)}+ ... +a_0(x)y =g(x)$ una ecuación diferencial lineal No homog\'enea. Consideramos la ecuación homog\'enea $a_n(x)y^{(n)} + a_{n-1}(x)y^{(n-1)}+ ... +a_0(x)y =0$ con sus soluciones $y_1,y_2,... , y_n$ y además supongamos que tenemos una solución particular $y_p$ de la ecuación no homog\'enea. Entonces toda solución de la ecuación no homog\'enea es de la forma
+\end{thm}
 
 \begin{center}
 $y= c_1y_1+c_2y_2+... +c_ny_n +y_p$
@@ -201,7 +220,8 @@ $y= c_1y_1+c_2y_2+... +c_ny_n +y_p$
 
 En otras palabras, para encontrar la solución general de una ecuación diferencial no homog\'enea, sólo hay que resolver la parte homog\'enea asociada y encontrar una solución particular $y_p$ de la ecuación diferencial no homog\'enea. El gran desafío consiste en encontrar dicha solución particular. \\
 
-\textbf{Ejemplo : } Tenemos que la ecuación diferencial  no homog\'enea $y''-4y =12x$ tiene como solución particular $y_p(x)= -3x$. Además la ecuación homog\'enea $y''-4y =0$ tiene como soluciones $e^{2x}$ y $e^{-2x}$. Luego, la solución general de la ecuación diferencial es de la forma
+\begin{ejem}Tenemos que la ecuación diferencial  no homog\'enea $y''-4y =12x$ tiene como solución particular $y_p(x)= -3x$. Además la ecuación homog\'enea $y''-4y =0$ tiene como soluciones $e^{2x}$ y $e^{-2x}$. Luego, la solución general de la ecuación diferencial es de la forma
+\end{ejem}
 
 \begin{center}
 $y = c_1e^{2x} +c_2e^{-2x} -3x$
@@ -228,22 +248,24 @@ f_1^{(n-1)} & f_2^{(n-1)} & ... & f_n^{(n-1)} \\
 \end{matrix} \right|$
 \end{center}
 
-\textbf{Teorema: } Un conjunto de funciones $f_1,f_2,... ,f_n$ es l.i si y sólo si $W(f_1,f_2,..., f_n) \neq 0$. \\
+\begin{thm}Un conjunto de funciones $f_1,f_2,... ,f_n$ es l.i si y sólo si $W(f_1,f_2,..., f_n) \neq 0$. \\
+\end{thm}
 
-\textbf{Ejemplo: }Tenemos las funciones $e^{2x}$ y $e^{-2x}$, veamos que son l.i, calculamos su Wronskiano
+\begin{ejem}Tenemos las funciones $e^{2x}$ y $e^{-2x}$, veamos que son l.i, calculamos su Wronskiano
+\end{ejem}
 
 \begin{center}
 $W(e^{2x},e^{-2x}) = \left| \begin{matrix}
 e^{2x} & e^{-2x} \\
 2e^{2x} & -2e^{-2x} \\
 \end{matrix} \right|$
-\end{center} 
+\end{center}
 
 Luego
 
 \begin{center}
 $W(e^{2x},e^{-2x}) =e^{2x}(-2e^{-2x}) -2e^{2x}e^{-2x} = -2-2 =-4 \neq 0$
-\end{center} 
+\end{center}
 
 Por lo tanto $e^{2x}$ y $e^{-2x}$ son l.i
 
@@ -254,9 +276,11 @@ Por lo tanto $e^{2x}$ y $e^{-2x}$ son l.i
 
 En caso de que una ecuación diferencial de segundo orden sea del estilo $F(y'',y')=0$, entonces podemos reducir la ecuación a una ecuación diferencial de primer orden haciendo el cambio de variable $z=y'$, entonces $z'=y''$.\\
 
-\textbf{Ejemplo: } Resolver $y''+y'=0$. \\
+\begin{ejem}Resolver $y''+y'=0$. \\
+\end{ejem}
 
-\textit{Solución: }Hacemos el cambio de variable $z=y'$, la nueva ecuación queda
+\begin{sol}Hacemos el cambio de variable $z=y'$, la nueva ecuación queda
+\end{sol}
 
 \begin{center}
 $z'+z = 0$
@@ -322,9 +346,11 @@ $\displaystyle y_2 =y_1 \int \frac{e^{-\int b(x)dx}}{y_1^2} dx$
 
 Es fácil demostrar que esta segunda solución es linealmente independiente con la primera solución. \\
 
-\textbf{Ejercicio: } Sea la ecuación diferencial $x^2y''-3xy'+4y=0$ y asuma que $y_1=x^2$ es una solución de la ecuación diferencial, encuentre a la solución general de la ecuación diferencial. \\
+\begin{ejer}Sea la ecuación diferencial $x^2y''-3xy'+4y=0$ y asuma que $y_1=x^2$ es una solución de la ecuación diferencial, encuentre a la solución general de la ecuación diferencial. \\
+\end{ejer}
 
-\textit{Respuesta: } Para usar la fórmula primero es necesario dejar la ecuación diferencial en el formato mostrado anteriormente, entonces tenemos que dividir por $x^2$ y obtenemos
+\begin{sol}Para usar la fórmula primero es necesario dejar la ecuación diferencial en el formato mostrado anteriormente, entonces tenemos que dividir por $x^2$ y obtenemos
+\end{sol}
 
 \begin{center}
 $$\displaystyle y''-\frac{3}{x} y'+\frac{4}{x^2} y=0$$
@@ -337,8 +363,8 @@ Notamos que en este caso $b(x)= \displaystyle \frac{-3}{x}$. Entonces la segunda
  &= x^2 \int \frac{e^{3\ln(x)}}{(x^2)^2} dx \\
   &= x^2 \int \frac{e^{\ln(x^{3})}}{x^4} dx \\
 &= x^2 \int \frac{x^{3}}{x^4} dx \\
-&= x^2 \int \frac{1}{x} dx \\  
-&= x^2 \ln(x) \\  
+&= x^2 \int \frac{1}{x} dx \\
+&= x^2 \ln(x) \\
 \end{align*}
 
 Por lo tanto la solución general será
@@ -347,4 +373,4 @@ Por lo tanto la solución general será
 $y = c_1 x^2+c_2x^2\ln(x)$
 \end{center}
 
-\end{document} 
+\end{document}

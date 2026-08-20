@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Primera Semana\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -124,11 +134,12 @@ Una vez calculadas las derivadas parciales es posible seguir derivando la funci�
 
 Básicamente significa derivar múltiples veces la misma función, pero como ahora hay dos variables tnemos cuatro posibilidades. Las definiciones para funciones de tres variables son análogas. \\
 
-\textbf{Ejemplo: } Dada $f(x,y) = e^{xy}+ xy^2$ calcular todas las derivadas de orden 2, tenemos
+\begin{ejem}Dada $f(x,y) = e^{xy}+ xy^2$ calcular todas las derivadas de orden 2, tenemos
+\end{ejem}
 
 \begin{align*}
     f_x &= ye^{xy}+y^2 \\
-    f_y &= xe^{xy}+2xy 
+    f_y &= xe^{xy}+2xy
 \end{align*}
 
 Luego
@@ -142,7 +153,8 @@ Luego
 
 Podemos notar que $f_{xy} = f_{yx}$, esto no es casualidad, tenemos el siguiente teorema \\
 
-\textbf{Teorema (Schwartz-Clairaut) :} Si $f(x,y)$ es una función tal que las derivadas parciales de segundo orden $f_{xy}$ y $f_{yx}$ son continuas en un disco abierto, entonces
+\begin{thm}[Schwartz-Clairaut]Si $f(x,y)$ es una función tal que las derivadas parciales de segundo orden $f_{xy}$ y $f_{yx}$ son continuas en un disco abierto, entonces
+\end{thm}
 
 \begin{align*}
     f_{xy} =f_{yx}
@@ -195,7 +207,8 @@ Por lo tanto si existe el límite en $(0,0)$  debería ser $1/2$, pero se tiene 
 Para hacer una mejor extensión usaremos la siguiente definición. \\
 
 
-\textbf{Definición: } Sea $A \subset \mathbb{R}^n$ abierto, y $f: A  \to \mathbb{R}^m$ y sea $x_0 \in A$. Se dice que $f$ es diferenciable en $x_0$ si existe una operación lineal $Df(x_0)$ tal que
+\begin{defin}Sea $A \subset \mathbb{R}^n$ abierto, y $f: A  \to \mathbb{R}^m$ y sea $x_0 \in A$. Se dice que $f$ es diferenciable en $x_0$ si existe una operación lineal $Df(x_0)$ tal que
+\end{defin}
 
 \begin{align*}
     \lim_{x \to 0} \frac{f(x+x_0)-f(x)-Df(x_0)(x)}{|| x ||} = 0
@@ -203,12 +216,14 @@ Para hacer una mejor extensión usaremos la siguiente definición. \\
 
 En caso de existir, a $Df(x_0)$ se le llama \textbf{diferencial de $f$ en $x_0$} y decimos que la función es diferenciable en $x_0$. Notemos que $Df(x_0)$ NO es un número, es un operador lineal que se evalúa en el punto $x$. Tenemos también el siguiente resultado \\
 
-\textbf{Proposición: } Sea $A \subset \mathbb{R}^n$ abierto, y $f: A  \to \mathbb{R}^m$ y sea $x_0 \in A$, si $f$ es diferenciable en $x_0$, entonces $f$ es continua en $x_0$. \\
+\begin{prop}Sea $A \subset \mathbb{R}^n$ abierto, y $f: A  \to \mathbb{R}^m$ y sea $x_0 \in A$, si $f$ es diferenciable en $x_0$, entonces $f$ es continua en $x_0$. \\
+\end{prop}
 
 
 Como podemos ver, el concepto de diferencial es la extensión más natural de lo que es una derivada en varias variables. Por otra parte, hay una relación muy estrecha entre el diferencial y las derivadas direccionales \\
 
-\textbf{Teorema: } Sea $f: \mathbb{R}^n \to \mathbb{R}^m$ y $x_0 \in \mathbb{R}^n$. Si $f$ es diferenciable en $x_0$, enmtonces existen todas las derivadas direccionales de $f$ en $x_0$ y además para todo $x \in \mathbb{R}^n$, se tiene que
+\begin{thm}Sea $f: \mathbb{R}^n \to \mathbb{R}^m$ y $x_0 \in \mathbb{R}^n$. Si $f$ es diferenciable en $x_0$, enmtonces existen todas las derivadas direccionales de $f$ en $x_0$ y además para todo $x \in \mathbb{R}^n$, se tiene que
+\end{thm}
 
 \begin{align*}
     Df(x_0) (u) = D_uf(x_0)
@@ -216,7 +231,8 @@ Como podemos ver, el concepto de diferencial es la extensión más natural de lo
 
 En caso de que el diferencial exista, es muy fácil de calcular. \\
 
-\textbf{Definición:} Dada $F:\mathbb{R}^3 \to \mathbb{R^3}$, dada por $F = (f,g,h)$, y un punto $x_0 \in \mathbb{R}^3$ entonces se define la matriz jacobiana de $f$ en $x_0$ por
+\begin{defin}Dada $F:\mathbb{R}^3 \to \mathbb{R^3}$, dada por $F = (f,g,h)$, y un punto $x_0 \in \mathbb{R}^3$ entonces se define la matriz jacobiana de $f$ en $x_0$ por
+\end{defin}
 
 \begin{align*}
     J[f](x_0) = \begin{pmatrix}
@@ -242,7 +258,8 @@ Se tiene que si $p=(x,y,z)$, entonces
 
 Es decir la matriz jacobiana $J[f](x_0)$ corresponde a la matriz del operador lineal $Df(x_0)$. \\
 
-\textbf{Ejemplo: } Tomamos $f(x,y,z) = (3x+2y,y^2, e^{xz})$, entonces
+\begin{ejem}Tomamos $f(x,y,z) = (3x+2y,y^2, e^{xz})$, entonces
+\end{ejem}
 
 \begin{align*}
     J[f](x,y,z) = \begin{pmatrix}
@@ -308,7 +325,8 @@ y al operar con un vector cualquiera $(x,y,z)$, entonces el diferencial queda de
     &= f_x x + f_y y +f_z z
 \end{align*}
 
-\textbf{Definición:} Dado un campo escalar $f: \mathbb{R}^3 \to \mathbb{R}$ y un putno $x_0$, se define el gradiente de $f$, como el vector
+\begin{defin}Dado un campo escalar $f: \mathbb{R}^3 \to \mathbb{R}$ y un putno $x_0$, se define el gradiente de $f$, como el vector
+\end{defin}
 
 \begin{align*}
     \nabla f (x_0)= (f_x(x_0),f_y(x_0),f_z(x_0))
@@ -333,7 +351,8 @@ El gradiente tiene las siguientes propiedades \\
 Además tenemos el siguiente teorema. \\
 
 
-\textbf{Proposición:} El gradiente tiene la dirección en la cuál la función crece más rapidamente, es decir la derivada direccional $D_u f(x)$ toma su máximo valor en $|| \nabla f(x)||$ y se alcanza cuando $u$ tiene la misma dirección que $\nabla f(x)$\\
+\begin{prop}El gradiente tiene la dirección en la cuál la función crece más rapidamente, es decir la derivada direccional $D_u f(x)$ toma su máximo valor en $|| \nabla f(x)||$ y se alcanza cuando $u$ tiene la misma dirección que $\nabla f(x)$\\
+\end{prop}
 
 \textit{Demostración:} Es inmediata usando la desigualdad de Cauchy-Schwartz
 
@@ -346,24 +365,27 @@ Además tenemos el siguiente teorema. \\
 
 Para simplificar los cálculos vamos a reducirnos al caso de dos variables y luego veremos el caso general \\
 
-\textbf{Teorema (Regla de la cadena): } Supongamos que $x=g(s,t)$ e $y= h(s,t)$ (es decir, las variables $x$ e $y$ quedan como funciones de otras dos variables $s$ y $t$) y supongamos que existen $x_t$,$x_s$,$y_t$ e $y_s$. Sea $z =f(x,y) $ función diferenciable en $x$ e $y$, entonces existe $z_t$ y $z_s$ y cumplen que 
+\begin{thm}[Regla de la cadena]Supongamos que $x=g(s,t)$ e $y= h(s,t)$ (es decir, las variables $x$ e $y$ quedan como funciones de otras dos variables $s$ y $t$) y supongamos que existen $x_t$,$x_s$,$y_t$ e $y_s$. Sea $z =f(x,y) $ función diferenciable en $x$ e $y$, entonces existe $z_t$ y $z_s$ y cumplen que
+\end{thm}
 
 \begin{align*}
     \frac{\partial z}{\partial t} &= \frac{\partial z}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial z}{\partial y} \frac{\partial y}{\partial t}  \\
-    \frac{\partial z}{\partial s} &= \frac{\partial z}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial z}{\partial y} \frac{\partial y}{\partial s}  
+    \frac{\partial z}{\partial s} &= \frac{\partial z}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial z}{\partial y} \frac{\partial y}{\partial s}
 \end{align*}
 
 En caso de que $x=g(t)$ e $y= h(t)$ dependan de una sola variable $t$, entonces
 
 \begin{align*}
-    \frac{d z}{d t} &= \frac{\partial z}{\partial x} \frac{dx}{d t} + \frac{\partial z}{\partial y} \frac{dy}{d t}  
+    \frac{d z}{d t} &= \frac{\partial z}{\partial x} \frac{dx}{d t} + \frac{\partial z}{\partial y} \frac{dy}{d t}
 \end{align*}
 
 En este último caso $\displaystyle \frac{dz}{dt}$ representa la derivada total, es decir, la misma que se vió en el curso de cálculo diferencial \\
 
-\textbf{Ejemplo 1:} Calculemos $\displaystyle \frac{dz}{dt}$ si $z=x^2y^3$ y $x=2t$ e $y=t^2$ \\
+\begin{ejem}Calculemos $\displaystyle \frac{dz}{dt}$ si $z=x^2y^3$ y $x=2t$ e $y=t^2$ \\
+\end{ejem}
 
-\textbf{Solución: }Tendríamos que
+\begin{sol}Tendríamos que
+\end{sol}
 
 \begin{align*}
     \frac{d z}{d t} &= \frac{\partial z}{\partial x} \frac{dx}{d t} + \frac{\partial z}{\partial y} \frac{dy}{d t}  \\
@@ -373,9 +395,11 @@ En este último caso $\displaystyle \frac{dz}{dt}$ representa la derivada total,
     &= 32t^7
 \end{align*}
 
-\textbf{Ejemplo 2:} Calculemos $\displaystyle \frac{\partial z}{\partial u}$ si $z=x^2+y^2$ y $x=u+v$ e $y=uv$ \\
+\begin{ejem}Calculemos $\displaystyle \frac{\partial z}{\partial u}$ si $z=x^2+y^2$ y $x=u+v$ e $y=uv$ \\
+\end{ejem}
 
-\textbf{Solución: }Tendríamos que
+\begin{sol}Tendríamos que
+\end{sol}
 
 \begin{align*}
 \frac{\partial z}{\partial u} &= \frac{\partial z}{\partial x} \frac{\partial x}{\partial u} + \frac{\partial z}{\partial y} \frac{\partial y}{\partial u}  \\
@@ -386,10 +410,11 @@ En este último caso $\displaystyle \frac{dz}{dt}$ representa la derivada total,
 
 El caso general sería el siguiente \\
 
-\textbf{Teorema (Regla de la cadena): } Sea $z(x_1,x_2,... x_n)$ de tal manera $z_{x_i}$ existe para todo $i$, y además $x_i=f_i(t_1,t_2,..., t_m)$ donde $\frac{\partial x_i}{\partial t_k}$, existen para cualquier $i$ y $k$, entonces 
+\begin{thm}[Regla de la cadena]Sea $z(x_1,x_2,... x_n)$ de tal manera $z_{x_i}$ existe para todo $i$, y además $x_i=f_i(t_1,t_2,..., t_m)$ donde $\frac{\partial x_i}{\partial t_k}$, existen para cualquier $i$ y $k$, entonces
+\end{thm}
 
 \begin{align*}
-    \frac{\partial z}{\partial t_i} &= \sum_{k=1}^n \frac{\partial z}{\partial x_k}\frac{\partial x_k}{\partial t_i} 
+    \frac{\partial z}{\partial t_i} &= \sum_{k=1}^n \frac{\partial z}{\partial x_k}\frac{\partial x_k}{\partial t_i}
 \end{align*}
 
 \newpage
@@ -418,9 +443,11 @@ De forma análoga si $F(x,y,z) =0$ define a $z$ como función de $x$ e $y$ $z=f(
 \end{align*}
 
 
-\textbf{Ejemplo: } Considere $x^2y+e^y\cos(x)=0$ una ecuación que define a $y$ como función de $x$, determine $\displaystyle \frac{dy}{dx}(0,0)$ \\
+\begin{ejem}Considere $x^2y+e^y\cos(x)=0$ una ecuación que define a $y$ como función de $x$, determine $\displaystyle \frac{dy}{dx}(0,0)$ \\
+\end{ejem}
 
-\textbf{Solución:} En este caso $F(x,y) = x^2y+e^y\cos(x)$, luego
+\begin{sol}En este caso $F(x,y) = x^2y+e^y\cos(x)$, luego
+\end{sol}
 
 \begin{align*}
     \frac{dy}{dx} &= -\frac{F_x}{F_y} \\
@@ -440,10 +467,11 @@ Por lo tanto
     \Large{\textbf{Plano tangente}}
 \end{center}
 
-\textbf{Definición: } Dada una superficie  $f: \mathbb{R}^2 \to \mathbb{R}$, se define el plano tangente a la superfice en $(x_0,y_0)$ por
+\begin{defin}Dada una superficie  $f: \mathbb{R}^2 \to \mathbb{R}$, se define el plano tangente a la superfice en $(x_0,y_0)$ por
+\end{defin}
 
 \begin{align*}
-     z=  \nabla f(x_0,y_0) \cdot (x-x_0,y-y_0)+ f(x_0,y_0) 
+     z=  \nabla f(x_0,y_0) \cdot (x-x_0,y-y_0)+ f(x_0,y_0)
 \end{align*}
 
 Notemos la analogía con la recta tangente a una función $f(x)$ en un punto $x_0$, en ese caso teníamos la ecuación de la recta tangente
@@ -467,11 +495,13 @@ En el caso que la superfice venga dada por la ecuación $f(x,y,z)=0$, entonces l
     f_x(x_0,y_0,z_0)(x-x_0) +f_y(x_0,y_0,z_0)(y-y_0) +f_z(x_0,y_0,z_0)(z-z_0) =0
 \end{align*}
 
-\textbf{Nota:} Podemos notar que $\nabla f(x_0,y_0,z_0)$ representa gemoétricamente el vector normal al plano tangente a la superficie en el punto $(x_0,y_0)$. \\
+\begin{rmk}Podemos notar que $\nabla f(x_0,y_0,z_0)$ representa gemoétricamente el vector normal al plano tangente a la superficie en el punto $(x_0,y_0)$. \\
+\end{rmk}
 
 En caso de que la superficie tenga la forma $z=f(x,y)$, hay que considerar $f(x,y)-z=0$ y por lo tanto el vector normal sería $(f_x(x_0,y_0),f_y(x_0,y_0), -1)$. \\
 
-\textbf{Definición: } La recta normal a la superficie $z=f(x,y)$ en el punto $(x_0,y_0)$ viene dada por la ecuación general
+\begin{defin}La recta normal a la superficie $z=f(x,y)$ en el punto $(x_0,y_0)$ viene dada por la ecuación general
+\end{defin}
 
 \begin{align*}
 \frac{x-x_0}{f_x(x_0,y_0)} = \frac{y-y_0}{f_y(x_0,y_0)} =\frac{z-f(x_0,y_0)}{-1}
@@ -484,9 +514,11 @@ Si la superficie es de la fomra $f(x,y,z)=0$, entonces la ecuación de la recta 
 \end{align*}
 
 
-\textbf{Ejemplo:} Calcular el plano tangente y la recta normal a la superfice $f(x,y)=4-x^2-y^2$ en el punto $(1,2)$. \\
+\begin{ejem}Calcular el plano tangente y la recta normal a la superfice $f(x,y)=4-x^2-y^2$ en el punto $(1,2)$. \\
+\end{ejem}
 
-\textit{Solución:} Calculamos el gradiente
+\begin{sol}Calculamos el gradiente
+\end{sol}
 
 \begin{align*}
     \nabla f (x,y)= (-2x,-2y)
@@ -520,4 +552,4 @@ La ecuación de la recta normal sería
 
 
 
-\end{document} 
+\end{document}

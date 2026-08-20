@@ -14,14 +14,32 @@ import LagrangeMultiplierExplorer from "./LagrangeMultiplierExplorer";
 import OpenClosedBallsExplorer from "./OpenClosedBallsExplorer";
 import DoubleIntegralRiemann3D from "./DoubleIntegralRiemann3D";
 import GreenTheoremExplorer from "./GreenTheoremExplorer";
+import SolutionDisclosures from "../algebra-lineal/SolutionDisclosures";
+
+function findElementEndAt(html: string, start: number) {
+  const divPattern = /<\/?div\b[^>]*>/g;
+  let depth = 0;
+
+  for (const match of html.slice(start).matchAll(divPattern)) {
+    depth += match[0].startsWith("</") ? -1 : 1;
+    if (depth === 0 && match.index !== undefined) return start + match.index + match[0].length;
+  }
+
+  return -1;
+}
+
+function findNthTheoremEnd(html: string, className: string, occurrence: number) {
+  const starts = [...html.matchAll(new RegExp(`<div class="${className}[^\"]*"`, "g"))];
+  const start = starts[occurrence - 1]?.index;
+  return start === undefined ? -1 : findElementEndAt(html, start);
+}
 
 function VectorSectionContent({ html, chapterIndex, title }: { html: string; chapterIndex: number; title: string }) {
   if (chapterIndex === 1 && title === "Parametrizacion de curvas") {
-    const exampleStart = html.indexOf("Ejemplo 3:");
-    const splitAt = exampleStart >= 0 ? html.indexOf("</div>", exampleStart) : -1;
+    const splitAt = findNthTheoremEnd(html, "ejem_thmwrapper", 3);
     if (splitAt >= 0) {
-      const before = html.slice(0, splitAt + 6);
-      const after = html.slice(splitAt + 6);
+      const before = html.slice(0, splitAt);
+      const after = html.slice(splitAt);
       return (
         <>
           <div className="latex-content" dangerouslySetInnerHTML={{ __html: before }} />
@@ -78,6 +96,7 @@ export default function VectorCalculusCoursePage() {
   return (
     <main className="course-page vector-course">
       <SiteHeader />
+      <SolutionDisclosures />
 
       <article className="course-masthead">
         <div className="course-spectrum" aria-hidden="true"><i /><i /><i /><i /></div>

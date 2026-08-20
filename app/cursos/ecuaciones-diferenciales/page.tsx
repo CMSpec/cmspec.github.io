@@ -7,6 +7,7 @@ import SageSandbox from "../_components/SageSandbox";
 import { getSageSandbox } from "../../../content/courses/sage-sandboxes";
 import SolutionFamilyLab from "./SolutionFamilyLab";
 import SlopeFieldLab from "./SlopeFieldLab";
+import SolutionDisclosures from "../algebra-lineal/SolutionDisclosures";
 
 function DifferentialSectionContent({ title, html }: { title: string; html: string }) {
   if (title !== "Soluciones de una ecuación diferencial") {
@@ -43,6 +44,7 @@ export default function DifferentialEquationsCoursePage() {
   return (
     <main className="course-page edo-course">
       <SiteHeader />
+      <SolutionDisclosures />
 
       <article className="course-masthead">
         <div className="course-spectrum" aria-hidden="true"><i /><i /><i /><i /></div>

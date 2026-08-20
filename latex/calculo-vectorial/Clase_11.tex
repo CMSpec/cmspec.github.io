@@ -35,15 +35,25 @@
 \newcommand{\bbH}{\mathbb{H}}
 
 
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lemma}[thm]{Lema}
+\newtheorem{cor}[thm]{Corolario}
 \theoremstyle{definition}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{defin}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Solución}
+\newtheorem{rmk}[thm]{Observación}
 \author{Marcos Morales}
 \affil{Universidad Finis Terrae}
 \title{Primera Semana\\}
 
 
 
-	
+
 
 
 \begin{document}
@@ -73,7 +83,7 @@
 \vspace{1cm}
 
 \begin{center}
-	\large{Contenidos:} 
+	\large{Contenidos:}
 \end{center}
 \vspace{0.1cm}
 \begin{center}
@@ -108,20 +118,25 @@
 
 \section{Definiciones}
 
-\textbf{Definición:} Una curva $C$ parametrizada por $r(t)$ con $a \leq t \leq b$, se dice \textbf{cerrada}, si su punto inicial es igual al punto final, es decir $r(a)=r(b)$, si $F$ es un campo vectorial, entonces la integral de línea sobre \textbf{curva cerrada} $C$, se denota por
+\begin{defin}Una curva $C$ parametrizada por $r(t)$ con $a \leq t \leq b$, se dice \textbf{cerrada}, si su punto inicial es igual al punto final, es decir $r(a)=r(b)$, si $F$ es un campo vectorial, entonces la integral de línea sobre \textbf{curva cerrada} $C$, se denota por
+\end{defin}
 
 \begin{align*}
     \oint_C F \cdot dr
 \end{align*}
 
-\textbf{Nota:} Una integral de línea sobre una curva cerrada es el mismo concepto que integral de línea normal, solo que se elige una notación distinta debido a la relevancia que tienen las curvas cerradas. \\
+\begin{rmk}Una integral de línea sobre una curva cerrada es el mismo concepto que integral de línea normal, solo que se elige una notación distinta debido a la relevancia que tienen las curvas cerradas. \\
+\end{rmk}
 
-\textbf{Ejemplo:} La circunferencia $C$ es una curva cerrada, una parametrización es por ejemplo $r(t)=(\cos(t),\sin(t))$, $0 \leq t \leq 2\pi$ \\
+\begin{ejem}La circunferencia $C$ es una curva cerrada, una parametrización es por ejemplo $r(t)=(\cos(t),\sin(t))$, $0 \leq t \leq 2\pi$ \\
+\end{ejem}
 
 
-\textbf{Definición:} Una curva $C$ se dice que está \textbf{orientada positivamente} si su parametrización $r(t)$, recorre la curva en dirección contraria a las agujas del reloj. \\
+\begin{defin}Una curva $C$ se dice que está \textbf{orientada positivamente} si su parametrización $r(t)$, recorre la curva en dirección contraria a las agujas del reloj. \\
+\end{defin}
 
-\textbf{Nota:} La definición formal de orientación positiva es complicada y no forma parte de este curso.
+\begin{rmk}La definición formal de orientación positiva es complicada y no forma parte de este curso.
+\end{rmk}
 
 
 
@@ -133,7 +148,8 @@
 
 Ahora estamos listos para establecer el teorema de Green \\
 
-\textbf{Teorema de Green: } Sea $C$ una curva suave a trozos, cerrada y orientada positivamente y sea $F=(M,N)$ donde $M$y $N$ tienen derivadas parciales continuas en una región abierta que contiene a la región $R$ limitada por $C$, entonces
+\begin{thm}Sea $C$ una curva suave a trozos, cerrada y orientada positivamente y sea $F=(M,N)$ donde $M$y $N$ tienen derivadas parciales continuas en una región abierta que contiene a la región $R$ limitada por $C$, entonces
+\end{thm}
 
 
 \begin{align*}
@@ -145,9 +161,11 @@ Note que si $F$ es conservativo entonces necesariamente $ \displaystyle \oint_C 
 
 
 
-\textbf{Ejemplo 1:} Empleando el Teorema de Green determine el área de la región limitada por la hipocicloide dada en forma paramétrica por $r(t) =(\cos^3(t),\sin^3(t))$, $0 \leq t \leq 2\pi$ \\
+\begin{ejem}Empleando el Teorema de Green determine el área de la región limitada por la hipocicloide dada en forma paramétrica por $r(t) =(\cos^3(t),\sin^3(t))$, $0 \leq t \leq 2\pi$ \\
+\end{ejem}
 
-\textbf{Solución: } Tenemos que el área será
+\begin{sol}Tenemos que el área será
+\end{sol}
 
 \begin{align*}
     \iint_R 1 dA
@@ -181,4 +199,4 @@ Donde $R$ es la región limitada por la hipocicloide, para poder usar Green nece
 
 
 
-\end{document} 
+\end{document}
