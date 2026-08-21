@@ -23,6 +23,7 @@ import DoubleIntegralRiemann3D from "../cursos/calculo-vectorial/DoubleIntegralR
 import GreenTheoremExplorer from "../cursos/calculo-vectorial/GreenTheoremExplorer";
 import LineIntegralPathsExplorer from "../cursos/calculo-vectorial/LineIntegralPathsExplorer";
 import JacobianChangeExplorer from "../cursos/calculo-vectorial/JacobianChangeExplorer";
+import CoordinateSystems3D from "../cursos/calculo-vectorial/CoordinateSystems3D";
 import SolutionFamilyLab from "../cursos/ecuaciones-diferenciales/SolutionFamilyLab";
 import SlopeFieldLab from "../cursos/ecuaciones-diferenciales/SlopeFieldLab";
 import { MoebiusIdentification } from "../tejido/banda-de-moebius/MoebiusExplorers";
@@ -67,6 +68,7 @@ const areas: LabArea[] = [
     { title: "Bolas y topología", subtitle: "Interior, frontera y exterior", href: "/cursos/calculo-vectorial#bolas-topologia-interactivo", render: () => <OpenClosedBallsExplorer />, group: "Cálculo vectorial" },
     { title: "Integral doble", subtitle: "Sumas de Riemann y volumen", href: "/cursos/calculo-vectorial#integral-doble-riemann-3d", render: () => <DoubleIntegralRiemann3D />, group: "Cálculo vectorial" },
     { title: "Cambio de variable", subtitle: "Deformación y factor jacobiano", href: "/cursos/calculo-vectorial#cambio-variable-jacobiano-interactivo", render: () => <JacobianChangeExplorer />, group: "Cálculo vectorial" },
+    { title: "Coordenadas cilíndricas y esféricas", subtitle: "Radio, ángulos y altura en 3D", href: "/cursos/calculo-vectorial#coordenadas-cilindricas-esfericas-3d", render: () => <CoordinateSystems3D />, group: "Cálculo vectorial" },
     { title: "Integrales de línea", subtitle: "Trabajo y dependencia del camino", href: "/cursos/calculo-vectorial#integral-linea-campos-interactivo", render: () => <LineIntegralPathsExplorer />, group: "Cálculo vectorial" },
     { title: "Teorema de Green", subtitle: "Del borde al interior", href: "/cursos/calculo-vectorial#teorema-green-interactivo", render: () => <GreenTheoremExplorer />, group: "Cálculo vectorial" },
     { title: "Familia de soluciones", subtitle: "La constante C selecciona una curva", href: "/cursos/ecuaciones-diferenciales", render: () => <SolutionFamilyLab />, group: "Ecuaciones diferenciales" },

@@ -1155,6 +1155,14 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .path-buttons { display: flex; grid-column: 1 / -1; }
 .jacobian-source-grid path { fill: none; stroke: #a7b77b; stroke-width: 1.5; }.jacobian-target-grid path { fill: none; stroke: #86b7c4; stroke-width: 1.6; }
 .jacobian-map-arrow { fill: none; stroke: var(--ink); stroke-width: 2.5; }.jacobian-source-cell { fill: rgba(213,143,114,.4); stroke: #a85f43; stroke-width: 2; }.jacobian-target-cell { fill: rgba(153,201,112,.5); stroke: #677827; stroke-width: 2.5; }.jacobian-point { fill: var(--ink); }
+.coordinate-systems-stage-wrap { background: #fff; }
+.coordinate-systems-stage { width: 100%; height: 500px; cursor: grab; touch-action: none; }
+.coordinate-systems-stage:active { cursor: grabbing; }
+.coordinate-systems-stage canvas { display: block; width: 100%; height: 100%; }
+.coordinate-controls { display: grid; grid-template-columns: auto minmax(180px,1fr); align-items: center; gap: 13px 20px; padding: 20px 28px 23px; border-top: 1px solid var(--line); }
+.coordinate-controls label { display: flex; gap: 12px; color: var(--muted); font: 600 12px/1.3 var(--font-geist-mono); }
+.coordinate-controls output { min-width: 48px; color: var(--ink); font-weight: 700; }.coordinate-controls input { width: 100%; accent-color: var(--blue); }
+.coordinate-controls p { margin: 0; color: var(--muted); font: 600 12px/1.3 var(--font-geist-mono); }.coordinate-controls strong { justify-self: end; color: var(--blue); font: italic 18px/1.35 Georgia,serif; }
 .directional-derivative-legend span:nth-child(2) i { background: #94c6d8; }
 .directional-derivative-legend span:nth-child(3) i { background: var(--blue); }
 .directional-derivative-legend span:nth-child(4) i { background: var(--olive); }
@@ -1434,6 +1442,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .level-curves-stage-wrap,
   .gradient-tangent-stage-wrap,
   .lagrange-parallel,
+  .coordinate-systems-stage-wrap,
   .mapping-class-three-stage,
   .moebius-three-stage {
     width: 50%;
