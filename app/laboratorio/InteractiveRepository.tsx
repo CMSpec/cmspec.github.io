@@ -31,15 +31,16 @@ import MappingClassSweaterLab from "../tejido/trenzas-nudos-y-tejido/MappingClas
 import { sitePath } from "../../lib/site-path";
 
 type LabItem = { title: string; subtitle: string; href: string; render: () => ReactNode; group?: string };
-type LabArea = { number: string; title: string; tone: string; description: string; items: LabItem[] };
+export type LaboratoryAreaId = "matematicas" | "apuntes" | "tejido";
+type LabArea = { id: LaboratoryAreaId; number: string; title: string; tone: string; description: string; items: LabItem[] };
 
 const areas: LabArea[] = [
-  { number: "01", title: "Notas matemáticas", tone: "blue", description: "Construcciones geométricas para manipular directamente las ideas desarrolladas en las entradas.", items: [
+  { id: "matematicas", number: "01", title: "Matemáticas", tone: "blue", description: "Construcciones geométricas para manipular directamente las ideas desarrolladas en las entradas.", items: [
     { title: "De rectas a cartas", subtitle: "Planos proyectivos finitos", href: "/investigacion/dobble-y-geometria-proyectiva#cartas-proyectivas", render: () => <FiniteProjectiveCards /> },
     { title: "Proyección estereográfica 3D", subtitle: "De la esfera al plano", href: "/investigacion/mapas-distancias-y-conformidad#proyeccion-estereografica", render: () => <StereographicProjection /> },
     { title: "Plano de Fano", subtitle: "Siete puntos y siete rectas", href: "/investigacion/dobble-y-geometria-proyectiva#plano-de-fano", render: () => <FanoPlane /> },
   ]},
-  { number: "02", title: "Aprender", tone: "green", description: "Visualizaciones geométricas de vectores y demostraciones paso a paso de cálculos con matrices.", items: [
+  { id: "apuntes", number: "02", title: "Apuntes", tone: "green", description: "Visualizaciones geométricas de vectores y demostraciones paso a paso de cálculos con matrices.", items: [
     { title: "Vector por un escalar", subtitle: "Dirección y longitud", href: "/cursos/algebra-lineal", render: () => <ScalarVectorLab />, group: "Visualizaciones de vectores" },
     { title: "Suma de vectores", subtitle: "Regla punta con cola", href: "/cursos/algebra-lineal", render: () => <VectorSumLab />, group: "Visualizaciones de vectores" },
     { title: "Combinaciones lineales", subtitle: "Región generada por dos vectores", href: "/cursos/algebra-lineal", render: () => <VectorCombinationLab />, group: "Visualizaciones de vectores" },
@@ -63,7 +64,7 @@ const areas: LabArea[] = [
     { title: "Integral doble", subtitle: "Sumas de Riemann y volumen", href: "/cursos/calculo-vectorial#integral-doble-riemann-3d", render: () => <DoubleIntegralRiemann3D />, group: "Cálculo vectorial" },
     { title: "Teorema de Green", subtitle: "Del borde al interior", href: "/cursos/calculo-vectorial#teorema-green-interactivo", render: () => <GreenTheoremExplorer />, group: "Cálculo vectorial" },
   ]},
-  { number: "03", title: "Tejido & estructuras", tone: "pink", description: "Palabras, puntos, identificaciones y superficies para explorar la matemática que aparece al tejer.", items: [
+  { id: "tejido", number: "03", title: "Tejido & estructuras", tone: "pink", description: "Palabras, puntos, identificaciones y superficies para explorar la matemática que aparece al tejer.", items: [
     { title: "Palabras en el grupo de trenzas", subtitle: "Generador por generador", href: "/tejido/trenzas-nudos-y-tejido", render: () => <BraidWordBuilder /> },
     { title: "Mapping class group", subtitle: "Lazos alrededor de orificios", href: "/tejido/trenzas-nudos-y-tejido#mapping-class-group", render: () => <MappingClassSweaterLab /> },
     { title: "Construir una banda de Möbius", subtitle: "Media vuelta e identificación", href: "/tejido/banda-de-moebius", render: () => <MoebiusIdentification /> },
@@ -89,11 +90,12 @@ function sourceForItem(item: LabItem) {
   return "Otras exploraciones";
 }
 
-export default function InteractiveRepository() {
+export default function InteractiveRepository({ areaId }: { areaId?: LaboratoryAreaId }) {
+  const visibleAreas = areaId ? areas.filter((area) => area.id === areaId) : areas;
   const [active, setActive] = useState({ areaIndex: 0, itemIndex: 0 });
-  const firstSource = sourceForItem(areas[0].items[0]);
+  const firstSource = sourceForItem(visibleAreas[0].items[0]);
   const [openSources, setOpenSources] = useState<Set<string>>(() => new Set([`0-${firstSource}`]));
-  const activeArea = areas[active.areaIndex];
+  const activeArea = visibleAreas[active.areaIndex];
   const activeItem = activeArea.items[active.itemIndex];
   const activeSource = sourceForItem(activeItem);
 
@@ -110,7 +112,7 @@ export default function InteractiveRepository() {
     <section className={`laboratory-indexed-layout lab-${activeArea.tone}`}>
       <aside className="laboratory-master-index" aria-label="Índice de visualizaciones">
         <header><span>ÍNDICE DEL LABORATORIO</span><h2>Exploraciones</h2></header>
-        {areas.map((area, areaIndex) => {
+        {visibleAreas.map((area, areaIndex) => {
           const sources = Array.from(new Set(area.items.map(sourceForItem)));
           return (
             <section className="laboratory-index-area" key={area.title}>

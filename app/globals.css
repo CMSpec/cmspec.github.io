@@ -493,6 +493,25 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 
 .laboratory-masthead { background: #fff; }
 .laboratory-calculator { max-width: 1100px; margin: 0 auto; padding: 78px clamp(24px,6vw,78px) 35px; }
+.laboratory-collection-entry { --lab-accent: var(--blue); }
+.laboratory-collection-entry.lab-green { --lab-accent: var(--green); }
+.laboratory-collection-entry.lab-pink { --lab-accent: #c57a5d; }
+.laboratory-collection-entry .note-dates strong { color: var(--lab-accent); font: 700 13px/1.4 var(--font-geist-mono); }
+.laboratory-collection-entry .note-entry-copy > p:first-child,
+.laboratory-collection-entry .note-subtitle { color: var(--lab-accent); }
+.laboratory-collection-entry { color: inherit; text-decoration: none; cursor: pointer; }
+.laboratory-collection-entry:hover .note-entry-copy h3 { color: var(--lab-accent); }
+.laboratory-collection-entry:hover .laboratory-collection-visual { transform: translateY(-4px); }
+.laboratory-collection-visual { background: color-mix(in srgb,var(--lab-accent) 9%,white); }
+.laboratory-collection-visual > span { color: var(--lab-accent); }
+.laboratory-home-calculator { padding-top: 65px; padding-bottom: 85px; }
+.laboratory-home-calculator > header { display: grid; grid-template-columns: 130px minmax(220px,.65fr) minmax(280px,1fr); gap: 28px; align-items: start; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.laboratory-home-calculator > header span { color: var(--blue); font: 700 9px/1.4 var(--font-geist-mono); letter-spacing: .12em; }
+.laboratory-home-calculator > header h2 { margin: 0; color: var(--ink); font: 400 28px/1.08 Georgia,serif; }
+.laboratory-home-calculator > header p { margin: 0; color: var(--muted); font: 14px/1.6 var(--font-geist); }
+.laboratory-back-link { display: inline-flex; margin-top: 26px; padding: 10px 14px; border: 1px solid var(--line); color: var(--ink); font: 700 11px/1.2 var(--font-geist); text-decoration: none; }
+.laboratory-back-link:hover { border-color: var(--blue); color: var(--blue); }
+.laboratory-collection-page .laboratory-repository { padding-top: 64px; }
 .official-sage-cell { border: 1px solid #cbdfe3; background: #fff; }
 .official-sage-cell > header { display: grid; grid-template-columns: minmax(150px,.35fr) minmax(0,1fr); gap: 8px 30px; padding: 28px 30px; border-bottom: 5px solid var(--blue); background: #eef7f8; }
 .official-sage-cell > header p { grid-row: 1 / span 2; margin: 2px 0 0; color: var(--blue); font: 700 10px/1.5 var(--font-geist-mono); letter-spacing: .13em; }
@@ -580,6 +599,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .oversight-stage > p { max-width: 620px; color: #48616a; font: 15px/1.6 var(--font-geist); }
 .oversight-stage aside { margin-top: 20px; }.oversight-stage aside strong { margin-right: 8px; color: var(--olive); }
 @media (max-width: 760px) {
+  .laboratory-home-calculator > header { grid-template-columns: 1fr; gap: 10px; }
   .official-sage-cell > header, .laboratory-area > header { grid-template-columns: 1fr; }
   .official-sage-cell > header p { grid-row: auto; }
   .official-sage-embed { padding-inline: 18px; }
