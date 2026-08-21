@@ -127,6 +127,35 @@ export default function SolutionFamilyLab() {
         context.fill();
       });
 
+      const initialPointX = xToCanvas(0);
+      const initialPointY = yToCanvas(constant);
+      context.fillStyle = "#ffffff";
+      context.beginPath();
+      context.arc(initialPointX, initialPointY, 8, 0, Math.PI * 2);
+      context.fill();
+      context.strokeStyle = "#047b9a";
+      context.lineWidth = 3;
+      context.stroke();
+      context.fillStyle = "#047b9a";
+      context.beginPath();
+      context.arc(initialPointX, initialPointY, 3.2, 0, Math.PI * 2);
+      context.fill();
+
+      context.font = "600 12px ui-monospace, SFMono-Regular, Menlo, monospace";
+      context.fillStyle = "#047b9a";
+      context.fillText(`y(0) = ${constant}`, initialPointX + 11, initialPointY - 10);
+
+      const curveLabelX = Math.PI / 2;
+      const curveLabelY = Math.sin(curveLabelX) + constant;
+      const curveLabel = `y = sin(x) ${constant === 0 ? "" : constant > 0 ? `+ ${constant}` : `− ${Math.abs(constant)}`}`.trim();
+      const curveLabelCanvasX = xToCanvas(curveLabelX) + 8;
+      const curveLabelCanvasY = Math.max(padding.top + 16, Math.min(height - padding.bottom - 8, yToCanvas(curveLabelY) - 9));
+      const curveLabelWidth = context.measureText(curveLabel).width;
+      context.fillStyle = "rgba(255, 255, 255, 0.90)";
+      context.fillRect(curveLabelCanvasX - 4, curveLabelCanvasY - 13, curveLabelWidth + 8, 18);
+      context.fillStyle = "#047b9a";
+      context.fillText(curveLabel, curveLabelCanvasX, curveLabelCanvasY);
+
       context.fillStyle = "#48646c";
       context.font = "12px ui-monospace, SFMono-Regular, Menlo, monospace";
       context.fillText("x", width - padding.right - 3, yToCanvas(0) - 8);
@@ -155,7 +184,7 @@ export default function SolutionFamilyLab() {
 
       <div className="edo-solution-family-controls">
         <div className="edo-solution-family-control-row">
-          <label htmlFor="solution-constant">Constante c</label>
+          <label htmlFor="solution-constant">Valor inicial y(0)</label>
           <input
             id="solution-constant"
             type="range"
@@ -165,7 +194,7 @@ export default function SolutionFamilyLab() {
             value={constant}
             onChange={(event) => setConstant(Number(event.target.value))}
           />
-          <output htmlFor="solution-constant">c = {constant}</output>
+          <output htmlFor="solution-constant">y(0) = {constant}</output>
         </div>
         <div className="edo-solution-family-control-row">
           <label htmlFor="slope-position">Comparar en x</label>
@@ -183,11 +212,14 @@ export default function SolutionFamilyLab() {
         <p className="edo-shared-slope" aria-live="polite">
           Pendiente común: <strong>y′({evaluationX.toFixed(1)}) = cos({evaluationX.toFixed(1)}) = {sharedSlope.toFixed(2)}</strong>
         </p>
+        <p className="edo-selected-solution" aria-live="polite">
+          <span aria-hidden="true" /> La curva azul es la única que pasa por <strong>(0, {constant})</strong> y satisface el valor inicial.
+        </p>
       </div>
 
       <canvas ref={canvasRef} role="img" aria-label={`Familia de soluciones seno de x más c con tangentes paralelas en x igual a ${evaluationX.toFixed(1)} y pendiente ${sharedSlope.toFixed(2)}`} />
       <p>
-        Mueve <i>x</i> para recorrer la familia. Los segmentos dibujados en cada curva siempre quedan paralelos porque sumar <i>c</i> desplaza la solución verticalmente, pero no cambia su derivada: todas satisfacen <i>y′ = cos(x)</i>.
+        Cambia el valor inicial para seleccionar otra solución de la familia. Mueve <i>x</i> para comparar sus pendientes: los segmentos siempre quedan paralelos porque sumar <i>c</i> desplaza la curva verticalmente, pero no cambia su derivada.
       </p>
     </section>
   );
