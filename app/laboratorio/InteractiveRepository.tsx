@@ -25,6 +25,7 @@ import LineIntegralPathsExplorer from "../cursos/calculo-vectorial/LineIntegralP
 import JacobianChangeExplorer from "../cursos/calculo-vectorial/JacobianChangeExplorer";
 import CoordinateSystems3D from "../cursos/calculo-vectorial/CoordinateSystems3D";
 import FrenetFrame3D from "../cursos/calculo-vectorial/FrenetFrame3D";
+import CrossProductPlane3D from "../cursos/calculo-vectorial/CrossProductPlane3D";
 import SolutionFamilyLab from "../cursos/ecuaciones-diferenciales/SolutionFamilyLab";
 import SlopeFieldLab from "../cursos/ecuaciones-diferenciales/SlopeFieldLab";
 import { MoebiusIdentification } from "../tejido/banda-de-moebius/MoebiusExplorers";
@@ -67,6 +68,7 @@ const areas: LabArea[] = [
     { title: "Derivada direccional", subtitle: "El corte vertical y su recta tangente", href: "/cursos/calculo-vectorial#derivada-direccional-3d", render: () => <DirectionalDerivative3D />, group: "Cálculo vectorial" },
     { title: "Multiplicadores de Lagrange", subtitle: "Gradientes paralelos sobre una restricción", href: "/cursos/calculo-vectorial#multiplicadores-lagrange-interactivo", render: () => <LagrangeMultiplierExplorer />, group: "Cálculo vectorial" },
     { title: "Curvatura y triedro de Frenet", subtitle: "Tangente, normal, binormal y planos asociados", href: "/cursos/calculo-vectorial#curvatura-triedro-frenet-3d", render: () => <FrenetFrame3D />, group: "Cálculo vectorial" },
+    { title: "Producto cruz y ecuación del plano", subtitle: "Dos direcciones, un plano y su vector normal", href: "/cursos/calculo-vectorial#producto-cruz-plano-3d", render: () => <CrossProductPlane3D />, group: "Cálculo vectorial" },
     { title: "Bolas y topología", subtitle: "Interior, frontera y exterior", href: "/cursos/calculo-vectorial#bolas-topologia-interactivo", render: () => <OpenClosedBallsExplorer />, group: "Cálculo vectorial" },
     { title: "Integral doble", subtitle: "Sumas de Riemann y volumen", href: "/cursos/calculo-vectorial#integral-doble-riemann-3d", render: () => <DoubleIntegralRiemann3D />, group: "Cálculo vectorial" },
     { title: "Cambio de variable", subtitle: "Deformación y factor jacobiano", href: "/cursos/calculo-vectorial#cambio-variable-jacobiano-interactivo", render: () => <JacobianChangeExplorer />, group: "Cálculo vectorial" },

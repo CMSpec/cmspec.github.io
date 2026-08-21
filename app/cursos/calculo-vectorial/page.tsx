@@ -18,6 +18,7 @@ import LineIntegralPathsExplorer from "./LineIntegralPathsExplorer";
 import JacobianChangeExplorer from "./JacobianChangeExplorer";
 import CoordinateSystems3D from "./CoordinateSystems3D";
 import FrenetFrame3D from "./FrenetFrame3D";
+import CrossProductPlane3D from "./CrossProductPlane3D";
 import SolutionDisclosures from "../algebra-lineal/SolutionDisclosures";
 
 function findElementEndAt(html: string, start: number) {
@@ -75,6 +76,7 @@ function VectorSectionContent({ html, chapterIndex, title }: { html: string; cha
   return (
     <>
       <div className="latex-content" dangerouslySetInnerHTML={{ __html: html }} />
+      {chapterIndex === 0 && title === "Ecuación del plano" ? <CrossProductPlane3D /> : null}
       {chapterIndex === 1 && title === "Curvas de nivel" ? <LevelCurves3D /> : null}
       {chapterIndex === 1 && title === "Bolas abiertas y cerradas" ? <OpenClosedBallsExplorer /> : null}
       {chapterIndex === 3 && title === "Introducción" ? <GradientTangent3D /> : null}
