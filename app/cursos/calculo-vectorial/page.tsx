@@ -19,6 +19,7 @@ import JacobianChangeExplorer from "./JacobianChangeExplorer";
 import CoordinateSystems3D from "./CoordinateSystems3D";
 import FrenetFrame3D from "./FrenetFrame3D";
 import CrossProductPlane3D from "./CrossProductPlane3D";
+import TripleIntegral3D from "./TripleIntegral3D";
 import SolutionDisclosures from "../algebra-lineal/SolutionDisclosures";
 
 function findElementEndAt(html: string, start: number) {
@@ -85,6 +86,7 @@ function VectorSectionContent({ html, chapterIndex, title }: { html: string; cha
       {chapterIndex === 6 && title === "Integrales dobles sobre rectángulos" ? <DoubleIntegralRiemann3D /> : null}
       {chapterIndex === 7 && title === "Cambio de variable" ? <JacobianChangeExplorer /> : null}
       {chapterIndex === 8 && title === "Coordenadas esféricas" ? <CoordinateSystems3D /> : null}
+      {chapterIndex === 8 && title === "Integrales Triples" ? <TripleIntegral3D /> : null}
       {chapterIndex === 9 && title === "Integrales de Línea" ? <LineIntegralPathsExplorer /> : null}
       {chapterIndex === 10 && title === "Teorema de Green" ? <GreenTheoremExplorer /> : null}
     </>
