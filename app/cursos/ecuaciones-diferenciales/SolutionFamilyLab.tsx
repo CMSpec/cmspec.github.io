@@ -6,6 +6,7 @@ const FAMILY_VALUES = [-3, -2, -1, 0, 1, 2, 3];
 
 export default function SolutionFamilyLab() {
   const [constant, setConstant] = useState(1);
+  const [evaluationX, setEvaluationX] = useState(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -91,29 +92,56 @@ export default function SolutionFamilyLab() {
       });
       drawCurve(constant, "#047b9a", 3.5);
 
-      const pointX = xToCanvas(0);
-      const pointY = yToCanvas(constant);
-      context.fillStyle = "#efad8e";
+      const sharedSlope = Math.cos(evaluationX);
+      const tangentHalfWidth = 0.55;
+      const guideX = xToCanvas(evaluationX);
+
+      context.save();
+      context.setLineDash([4, 5]);
+      context.strokeStyle = "rgba(4, 123, 154, 0.28)";
+      context.lineWidth = 1;
       context.beginPath();
-      context.arc(pointX, pointY, 5.5, 0, Math.PI * 2);
-      context.fill();
-      context.strokeStyle = "#0f3843";
-      context.lineWidth = 1.5;
+      context.moveTo(guideX, padding.top);
+      context.lineTo(guideX, height - padding.bottom);
       context.stroke();
+      context.restore();
+
+      FAMILY_VALUES.forEach((value) => {
+        const pointYValue = Math.sin(evaluationX) + value;
+        const isActive = value === constant;
+        const tangentStartX = evaluationX - tangentHalfWidth;
+        const tangentEndX = evaluationX + tangentHalfWidth;
+        const tangentStartY = pointYValue - sharedSlope * tangentHalfWidth;
+        const tangentEndY = pointYValue + sharedSlope * tangentHalfWidth;
+
+        context.strokeStyle = isActive ? "#ef8f68" : "rgba(133, 145, 48, 0.78)";
+        context.lineWidth = isActive ? 3.4 : 2.1;
+        context.beginPath();
+        context.moveTo(xToCanvas(tangentStartX), yToCanvas(tangentStartY));
+        context.lineTo(xToCanvas(tangentEndX), yToCanvas(tangentEndY));
+        context.stroke();
+
+        context.fillStyle = isActive ? "#ef8f68" : "#859130";
+        context.beginPath();
+        context.arc(guideX, yToCanvas(pointYValue), isActive ? 5.2 : 3.4, 0, Math.PI * 2);
+        context.fill();
+      });
 
       context.fillStyle = "#48646c";
       context.font = "12px ui-monospace, SFMono-Regular, Menlo, monospace";
       context.fillText("x", width - padding.right - 3, yToCanvas(0) - 8);
       context.fillText("y", xToCanvas(0) + 9, padding.top + 4);
       context.fillStyle = "#0f3843";
-      context.fillText(`(0, ${constant})`, pointX + 10, pointY - 9);
+      context.fillText(`x = ${evaluationX.toFixed(1)}`, Math.min(guideX + 8, width - 86), height - padding.bottom + 23);
     };
 
     draw();
     const observer = new ResizeObserver(draw);
     observer.observe(canvas);
     return () => observer.disconnect();
-  }, [constant]);
+  }, [constant, evaluationX]);
+
+  const sharedSlope = Math.cos(evaluationX);
 
   return (
     <section className="edo-solution-family" aria-labelledby="edo-solution-family-title">
@@ -126,22 +154,40 @@ export default function SolutionFamilyLab() {
       </header>
 
       <div className="edo-solution-family-controls">
-        <label htmlFor="solution-constant">Constante c</label>
-        <input
-          id="solution-constant"
-          type="range"
-          min="-3"
-          max="3"
-          step="1"
-          value={constant}
-          onChange={(event) => setConstant(Number(event.target.value))}
-        />
-        <output htmlFor="solution-constant">c = {constant}</output>
+        <div className="edo-solution-family-control-row">
+          <label htmlFor="solution-constant">Constante c</label>
+          <input
+            id="solution-constant"
+            type="range"
+            min="-3"
+            max="3"
+            step="1"
+            value={constant}
+            onChange={(event) => setConstant(Number(event.target.value))}
+          />
+          <output htmlFor="solution-constant">c = {constant}</output>
+        </div>
+        <div className="edo-solution-family-control-row">
+          <label htmlFor="slope-position">Comparar en x</label>
+          <input
+            id="slope-position"
+            type="range"
+            min={-2 * Math.PI}
+            max={2 * Math.PI}
+            step="0.1"
+            value={evaluationX}
+            onChange={(event) => setEvaluationX(Number(event.target.value))}
+          />
+          <output htmlFor="slope-position">x = {evaluationX.toFixed(1)}</output>
+        </div>
+        <p className="edo-shared-slope" aria-live="polite">
+          Pendiente común: <strong>y′({evaluationX.toFixed(1)}) = cos({evaluationX.toFixed(1)}) = {sharedSlope.toFixed(2)}</strong>
+        </p>
       </div>
 
-      <canvas ref={canvasRef} role="img" aria-label={`Gráfico de la solución y igual a seno de x más ${constant} dentro de su familia de soluciones`} />
+      <canvas ref={canvasRef} role="img" aria-label={`Familia de soluciones seno de x más c con tangentes paralelas en x igual a ${evaluationX.toFixed(1)} y pendiente ${sharedSlope.toFixed(2)}`} />
       <p>
-        Todas las curvas satisfacen <i>y′ = cos(x)</i>. Al fijar el valor inicial <i>y(0) = c</i>, se selecciona una sola curva de la familia.
+        Mueve <i>x</i> para recorrer la familia. Los segmentos dibujados en cada curva siempre quedan paralelos porque sumar <i>c</i> desplaza la solución verticalmente, pero no cambia su derivada: todas satisfacen <i>y′ = cos(x)</i>.
       </p>
     </section>
   );
