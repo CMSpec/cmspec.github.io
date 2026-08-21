@@ -17,6 +17,7 @@ import GreenTheoremExplorer from "./GreenTheoremExplorer";
 import LineIntegralPathsExplorer from "./LineIntegralPathsExplorer";
 import JacobianChangeExplorer from "./JacobianChangeExplorer";
 import CoordinateSystems3D from "./CoordinateSystems3D";
+import FrenetFrame3D from "./FrenetFrame3D";
 import SolutionDisclosures from "../algebra-lineal/SolutionDisclosures";
 
 function findElementEndAt(html: string, start: number) {
@@ -78,6 +79,7 @@ function VectorSectionContent({ html, chapterIndex, title }: { html: string; cha
       {chapterIndex === 1 && title === "Bolas abiertas y cerradas" ? <OpenClosedBallsExplorer /> : null}
       {chapterIndex === 3 && title === "Introducción" ? <GradientTangent3D /> : null}
       {chapterIndex === 4 && title === "Extremos condicionados" ? <LagrangeMultiplierExplorer /> : null}
+      {chapterIndex === 5 && title === "Curvatura" ? <FrenetFrame3D /> : null}
       {chapterIndex === 6 && title === "Integrales dobles sobre rectángulos" ? <DoubleIntegralRiemann3D /> : null}
       {chapterIndex === 7 && title === "Cambio de variable" ? <JacobianChangeExplorer /> : null}
       {chapterIndex === 8 && title === "Coordenadas esféricas" ? <CoordinateSystems3D /> : null}
