@@ -1435,14 +1435,14 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   }
 
   .edo-solution-family canvas {
-    width: 50%;
-    height: 230px;
+    width: 70%;
+    height: 300px;
     margin-inline: auto;
   }
 
   .edo-slope-field canvas {
-    width: 50%;
-    height: 200px;
+    width: 70%;
+    height: 300px;
     margin-inline: auto;
   }
 
