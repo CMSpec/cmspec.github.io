@@ -21,6 +21,8 @@ import LagrangeMultiplierExplorer from "../cursos/calculo-vectorial/LagrangeMult
 import OpenClosedBallsExplorer from "../cursos/calculo-vectorial/OpenClosedBallsExplorer";
 import DoubleIntegralRiemann3D from "../cursos/calculo-vectorial/DoubleIntegralRiemann3D";
 import GreenTheoremExplorer from "../cursos/calculo-vectorial/GreenTheoremExplorer";
+import SolutionFamilyLab from "../cursos/ecuaciones-diferenciales/SolutionFamilyLab";
+import SlopeFieldLab from "../cursos/ecuaciones-diferenciales/SlopeFieldLab";
 import { MoebiusIdentification } from "../tejido/banda-de-moebius/MoebiusExplorers";
 import { MoebiusWalk3D } from "../tejido/banda-de-moebius/MoebiusWalk3D";
 import { StitchPatternGrid } from "../tejido/del-reves-al-bit/StitchPatternGrid";
@@ -63,6 +65,8 @@ const areas: LabArea[] = [
     { title: "Bolas y topología", subtitle: "Interior, frontera y exterior", href: "/cursos/calculo-vectorial#bolas-topologia-interactivo", render: () => <OpenClosedBallsExplorer />, group: "Cálculo vectorial" },
     { title: "Integral doble", subtitle: "Sumas de Riemann y volumen", href: "/cursos/calculo-vectorial#integral-doble-riemann-3d", render: () => <DoubleIntegralRiemann3D />, group: "Cálculo vectorial" },
     { title: "Teorema de Green", subtitle: "Del borde al interior", href: "/cursos/calculo-vectorial#teorema-green-interactivo", render: () => <GreenTheoremExplorer />, group: "Cálculo vectorial" },
+    { title: "Familia de soluciones", subtitle: "La constante C selecciona una curva", href: "/cursos/ecuaciones-diferenciales", render: () => <SolutionFamilyLab />, group: "Ecuaciones diferenciales" },
+    { title: "Campo de pendientes", subtitle: "De la información local a una solución", href: "/cursos/ecuaciones-diferenciales", render: () => <SlopeFieldLab />, group: "Ecuaciones diferenciales" },
   ]},
   { id: "tejido", number: "03", title: "Tejido & estructuras", tone: "pink", description: "Palabras, puntos, identificaciones y superficies para explorar la matemática que aparece al tejer.", items: [
     { title: "Palabras en el grupo de trenzas", subtitle: "Generador por generador", href: "/tejido/trenzas-nudos-y-tejido", render: () => <BraidWordBuilder /> },
@@ -82,6 +86,7 @@ function sourceForItem(item: LabItem) {
   if (item.href.includes("mapas-distancias-y-conformidad")) return "Mapas, distancias y conformidad";
   if (item.href.includes("algebra-lineal")) return "Álgebra lineal";
   if (item.href.includes("calculo-vectorial")) return "Cálculo vectorial";
+  if (item.href.includes("ecuaciones-diferenciales")) return "Ecuaciones diferenciales";
   if (item.href.includes("trenzas-nudos-y-tejido")) return "Trenzas, nudos y tejido";
   if (item.href.includes("banda-de-moebius")) return "La banda de Möbius";
   if (item.href.includes("del-reves-al-bit")) return "Del revés al bit";
