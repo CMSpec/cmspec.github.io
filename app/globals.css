@@ -1371,4 +1371,65 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .about-page .about-gallery-card figcaption strong,
 .about-page .about-spectrum strong { font-size: clamp(20px,2.1vw,24px); }
 
+/*
+ * Escala de lectura para planos y escenas espaciales.
+ * El marco editorial, los controles y las explicaciones conservan todo el ancho;
+ * solamente el dibujo matemático se reduce y se centra. En móvil vuelve al ancho
+ * completo para que ejes, etiquetas y controles sigan siendo legibles.
+ */
+@media (min-width: 721px) {
+  .vector-lab > .vector-plane,
+  .geometry-lab > canvas,
+  .moebius-lab > canvas,
+  .topology-canvas {
+    width: 50%;
+    margin-inline: auto;
+  }
+
+  .basis-r2-planes,
+  .level-curves-stage-wrap,
+  .gradient-tangent-stage-wrap,
+  .lagrange-parallel,
+  .stereo-scene-wrap,
+  .mapping-class-three-stage,
+  .moebius-three-stage {
+    width: 50%;
+    margin-inline: auto;
+  }
+
+  .vector-concept-explorer > svg,
+  .parametric-ellipse > svg,
+  .green-theorem-explorer > svg {
+    width: 50%;
+    margin-inline: auto;
+  }
+
+  .edo-solution-family canvas {
+    width: 50%;
+    height: 165px;
+    margin-inline: auto;
+  }
+
+  .edo-slope-field canvas {
+    width: 50%;
+    height: 200px;
+    margin-inline: auto;
+  }
+
+  .level-curves-stage { height: 255px; }
+  .gradient-tangent-stage,
+  .riemann-sum-stage { height: 260px; }
+  .lagrange-3d-stage,
+  .lagrange-plane-wrap svg { height: 205px; }
+  .stereo-scene-wrap { height: 215px; }
+  .mapping-class-three-stage { height: 250px; }
+  .moebius-three-stage { height: 280px; }
+  .topology-canvas { height: 195px; }
+  .geometry-lab > canvas { height: 175px; }
+  .crochet-lab > canvas { height: 205px; }
+  .moebius-lab > canvas { height: 205px; }
+  .walking-lab > canvas { height: 270px; }
+  .fano-board { max-width: 210px; }
+}
+
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
