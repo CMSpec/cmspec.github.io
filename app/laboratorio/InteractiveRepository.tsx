@@ -21,6 +21,8 @@ import LagrangeMultiplierExplorer from "../cursos/calculo-vectorial/LagrangeMult
 import OpenClosedBallsExplorer from "../cursos/calculo-vectorial/OpenClosedBallsExplorer";
 import DoubleIntegralRiemann3D from "../cursos/calculo-vectorial/DoubleIntegralRiemann3D";
 import GreenTheoremExplorer from "../cursos/calculo-vectorial/GreenTheoremExplorer";
+import LineIntegralPathsExplorer from "../cursos/calculo-vectorial/LineIntegralPathsExplorer";
+import JacobianChangeExplorer from "../cursos/calculo-vectorial/JacobianChangeExplorer";
 import SolutionFamilyLab from "../cursos/ecuaciones-diferenciales/SolutionFamilyLab";
 import SlopeFieldLab from "../cursos/ecuaciones-diferenciales/SlopeFieldLab";
 import { MoebiusIdentification } from "../tejido/banda-de-moebius/MoebiusExplorers";
@@ -64,6 +66,8 @@ const areas: LabArea[] = [
     { title: "Multiplicadores de Lagrange", subtitle: "Gradientes paralelos sobre una restricción", href: "/cursos/calculo-vectorial#multiplicadores-lagrange-interactivo", render: () => <LagrangeMultiplierExplorer />, group: "Cálculo vectorial" },
     { title: "Bolas y topología", subtitle: "Interior, frontera y exterior", href: "/cursos/calculo-vectorial#bolas-topologia-interactivo", render: () => <OpenClosedBallsExplorer />, group: "Cálculo vectorial" },
     { title: "Integral doble", subtitle: "Sumas de Riemann y volumen", href: "/cursos/calculo-vectorial#integral-doble-riemann-3d", render: () => <DoubleIntegralRiemann3D />, group: "Cálculo vectorial" },
+    { title: "Cambio de variable", subtitle: "Deformación y factor jacobiano", href: "/cursos/calculo-vectorial#cambio-variable-jacobiano-interactivo", render: () => <JacobianChangeExplorer />, group: "Cálculo vectorial" },
+    { title: "Integrales de línea", subtitle: "Trabajo y dependencia del camino", href: "/cursos/calculo-vectorial#integral-linea-campos-interactivo", render: () => <LineIntegralPathsExplorer />, group: "Cálculo vectorial" },
     { title: "Teorema de Green", subtitle: "Del borde al interior", href: "/cursos/calculo-vectorial#teorema-green-interactivo", render: () => <GreenTheoremExplorer />, group: "Cálculo vectorial" },
     { title: "Familia de soluciones", subtitle: "La constante C selecciona una curva", href: "/cursos/ecuaciones-diferenciales", render: () => <SolutionFamilyLab />, group: "Ecuaciones diferenciales" },
     { title: "Campo de pendientes", subtitle: "De la información local a una solución", href: "/cursos/ecuaciones-diferenciales", render: () => <SlopeFieldLab />, group: "Ecuaciones diferenciales" },

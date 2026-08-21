@@ -14,6 +14,8 @@ import LagrangeMultiplierExplorer from "./LagrangeMultiplierExplorer";
 import OpenClosedBallsExplorer from "./OpenClosedBallsExplorer";
 import DoubleIntegralRiemann3D from "./DoubleIntegralRiemann3D";
 import GreenTheoremExplorer from "./GreenTheoremExplorer";
+import LineIntegralPathsExplorer from "./LineIntegralPathsExplorer";
+import JacobianChangeExplorer from "./JacobianChangeExplorer";
 import SolutionDisclosures from "../algebra-lineal/SolutionDisclosures";
 
 function findElementEndAt(html: string, start: number) {
@@ -76,6 +78,8 @@ function VectorSectionContent({ html, chapterIndex, title }: { html: string; cha
       {chapterIndex === 3 && title === "Introducción" ? <GradientTangent3D /> : null}
       {chapterIndex === 4 && title === "Extremos condicionados" ? <LagrangeMultiplierExplorer /> : null}
       {chapterIndex === 6 && title === "Integrales dobles sobre rectángulos" ? <DoubleIntegralRiemann3D /> : null}
+      {chapterIndex === 7 && title === "Cambio de variable" ? <JacobianChangeExplorer /> : null}
+      {chapterIndex === 9 && title === "Integrales de Línea" ? <LineIntegralPathsExplorer /> : null}
       {chapterIndex === 10 && title === "Teorema de Green" ? <GreenTheoremExplorer /> : null}
     </>
   );
