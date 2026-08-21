@@ -1429,7 +1429,6 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .crochet-lab > canvas { height: 205px; }
   .moebius-lab > canvas { height: 205px; }
   .walking-lab > canvas { height: 270px; }
-  .fano-board { max-width: 210px; }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
