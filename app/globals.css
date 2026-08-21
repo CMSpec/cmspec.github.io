@@ -1416,10 +1416,14 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .level-curves-stage-wrap,
   .gradient-tangent-stage-wrap,
   .lagrange-parallel,
-  .stereo-scene-wrap,
   .mapping-class-three-stage,
   .moebius-three-stage {
     width: 50%;
+    margin-inline: auto;
+  }
+
+  .stereo-scene-wrap {
+    width: 75%;
     margin-inline: auto;
   }
 
@@ -1447,7 +1451,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .riemann-sum-stage { height: 260px; }
   .lagrange-3d-stage,
   .lagrange-plane-wrap svg { height: 205px; }
-  .stereo-scene-wrap { height: 215px; }
+  .stereo-scene-wrap { height: 330px; }
   .mapping-class-three-stage { height: 250px; }
   .moebius-three-stage { height: 280px; }
   .topology-canvas { height: 195px; }
