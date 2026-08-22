@@ -215,8 +215,8 @@ export default function StereographicProjection() {
           aria-label={`Escena tridimensional: el punto P de la esfera se proyecta en el punto p igual a ${tidy(projectedX)}, ${tidy(projectedY)} del plano`}
         />
         <span className="stereo-camera-hint" aria-hidden="true">↻ ARRASTRA PARA GIRAR · SCROLL PARA ACERCAR</span>
-        <div className="stereo-scene-legend" aria-hidden="true"><span><i /> esfera S²</span><span><i /> plano transparente z=−1</span><span><i /> recta N—p</span></div>
       </div>
+      <div className="stereo-scene-legend" aria-hidden="true"><span><i /> esfera S²</span><span><i /> plano transparente z=−1</span><span><i /> recta N—p</span></div>
       <div className="stereo-controls">
         <label>
           <span>Colatitud θ <strong>{theta.toFixed(0)}°</strong></span>
