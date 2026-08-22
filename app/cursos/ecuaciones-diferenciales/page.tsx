@@ -8,6 +8,7 @@ import { getSageSandbox } from "../../../content/courses/sage-sandboxes";
 import SolutionFamilyLab from "./SolutionFamilyLab";
 import SlopeFieldLab from "./SlopeFieldLab";
 import PhaseLineLab from "./PhaseLineLab";
+import EulerMethodLab from "./EulerMethodLab";
 import SolutionDisclosures from "../algebra-lineal/SolutionDisclosures";
 
 function DifferentialSectionContent({ title, html }: { title: string; html: string }) {
@@ -100,6 +101,7 @@ export default function DifferentialEquationsCoursePage() {
                         <h4>{section.title}</h4>
                         <DifferentialSectionContent title={section.title} html={section.html} />
                       </section>
+                      {chapterIndex === 0 && section.title === "Problemas de valores iniciales" ? <EulerMethodLab /> : null}
                     </Fragment>
                   ))}
                   <SageSandbox {...getSageSandbox("ecuaciones-diferenciales", chapterIndex, chapter.title)} />

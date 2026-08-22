@@ -31,6 +31,7 @@ import MultivariableLimit3D from "../cursos/calculo-vectorial/MultivariableLimit
 import SolutionFamilyLab from "../cursos/ecuaciones-diferenciales/SolutionFamilyLab";
 import SlopeFieldLab from "../cursos/ecuaciones-diferenciales/SlopeFieldLab";
 import PhaseLineLab from "../cursos/ecuaciones-diferenciales/PhaseLineLab";
+import EulerMethodLab from "../cursos/ecuaciones-diferenciales/EulerMethodLab";
 import { MoebiusIdentification } from "../tejido/banda-de-moebius/MoebiusExplorers";
 import { MoebiusWalk3D } from "../tejido/banda-de-moebius/MoebiusWalk3D";
 import { StitchPatternGrid } from "../tejido/del-reves-al-bit/StitchPatternGrid";
@@ -83,6 +84,7 @@ const areas: LabArea[] = [
     { title: "Familia de soluciones", subtitle: "La constante C selecciona una curva", href: "/cursos/ecuaciones-diferenciales", render: () => <SolutionFamilyLab />, group: "Ecuaciones diferenciales" },
     { title: "Campo de pendientes", subtitle: "De la información local a una solución", href: "/cursos/ecuaciones-diferenciales", render: () => <SlopeFieldLab />, group: "Ecuaciones diferenciales" },
     { title: "Recta de fase", subtitle: "Equilibrios estables e inestables", href: "/cursos/ecuaciones-diferenciales#clase-1-seccion-4", render: () => <PhaseLineLab />, group: "Ecuaciones diferenciales" },
+    { title: "Método de Euler", subtitle: "Pendientes, pasos y error", href: "/cursos/ecuaciones-diferenciales#clase-1-seccion-3", render: () => <EulerMethodLab />, group: "Ecuaciones diferenciales" },
   ]},
   { id: "tejido", number: "03", title: "Tejido & estructuras", tone: "pink", description: "Palabras, puntos, identificaciones y superficies para explorar la matemática que aparece al tejer.", items: [
     { title: "Palabras en el grupo de trenzas", subtitle: "Generador por generador", href: "/tejido/trenzas-nudos-y-tejido", render: () => <BraidWordBuilder /> },
