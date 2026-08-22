@@ -7,6 +7,7 @@ import SageSandbox from "../_components/SageSandbox";
 import { getSageSandbox } from "../../../content/courses/sage-sandboxes";
 import SolutionFamilyLab from "./SolutionFamilyLab";
 import SlopeFieldLab from "./SlopeFieldLab";
+import PhaseLineLab from "./PhaseLineLab";
 import SolutionDisclosures from "../algebra-lineal/SolutionDisclosures";
 
 function DifferentialSectionContent({ title, html }: { title: string; html: string }) {
@@ -91,6 +92,7 @@ export default function DifferentialEquationsCoursePage() {
                   {chapter.sections.map((section, sectionIndex) => (
                     <Fragment key={`${chapter.slug}-${sectionIndex}`}>
                       {chapterIndex === 0 && section.title === "Problemas de valores iniciales" ? <SolutionFamilyLab /> : null}
+                      {chapterIndex === 0 && section.title === "Ecuaciones Diferenciales de Variables Separables" ? <PhaseLineLab /> : null}
                       <section
                         className="chapter-section"
                         id={`${chapter.slug}-seccion-${sectionIndex + 1}`}
