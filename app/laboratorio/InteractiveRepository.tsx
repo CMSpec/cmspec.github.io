@@ -33,6 +33,7 @@ import SlopeFieldLab from "../cursos/ecuaciones-diferenciales/SlopeFieldLab";
 import PhaseLineLab from "../cursos/ecuaciones-diferenciales/PhaseLineLab";
 import EulerMethodLab from "../cursos/ecuaciones-diferenciales/EulerMethodLab";
 import DampedOscillatorLab from "../cursos/ecuaciones-diferenciales/DampedOscillatorLab";
+import HeavisideLaplaceLab from "../cursos/ecuaciones-diferenciales/HeavisideLaplaceLab";
 import { MoebiusIdentification } from "../tejido/banda-de-moebius/MoebiusExplorers";
 import { MoebiusWalk3D } from "../tejido/banda-de-moebius/MoebiusWalk3D";
 import { StitchPatternGrid } from "../tejido/del-reves-al-bit/StitchPatternGrid";
@@ -87,6 +88,7 @@ const areas: LabArea[] = [
     { title: "Recta de fase", subtitle: "Equilibrios estables e inestables", href: "/cursos/ecuaciones-diferenciales#clase-1-seccion-4", render: () => <PhaseLineLab />, group: "Ecuaciones diferenciales" },
     { title: "Método de Euler", subtitle: "Pendientes, pasos y error", href: "/cursos/ecuaciones-diferenciales#clase-1-seccion-3", render: () => <EulerMethodLab />, group: "Ecuaciones diferenciales" },
     { title: "Oscilador amortiguado", subtitle: "Movimiento, tiempo y retrato de fase", href: "/cursos/ecuaciones-diferenciales#clase-6-seccion-1", render: () => <DampedOscillatorLab />, group: "Ecuaciones diferenciales" },
+    { title: "Heaviside y Laplace", subtitle: "De una señal por tramos a factores exponenciales", href: "/cursos/ecuaciones-diferenciales#clase-9-seccion-3", render: () => <HeavisideLaplaceLab />, group: "Ecuaciones diferenciales" },
   ]},
   { id: "tejido", number: "03", title: "Tejido & estructuras", tone: "pink", description: "Palabras, puntos, identificaciones y superficies para explorar la matemática que aparece al tejer.", items: [
     { title: "Palabras en el grupo de trenzas", subtitle: "Generador por generador", href: "/tejido/trenzas-nudos-y-tejido", render: () => <BraidWordBuilder /> },
