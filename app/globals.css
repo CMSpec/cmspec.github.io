@@ -1090,6 +1090,21 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .edo-euler-controls p strong { color: var(--ink); }
 .edo-euler-method canvas { display: block; width: 100%; height: 390px; }
 .edo-euler-method > p { margin: 0; padding: 18px 28px 24px; border-top: 1px solid var(--line); color: var(--muted); font: 16px/1.55 Georgia, serif; }
+.edo-damped-oscillator { margin: 46px 0 58px; border: 1px solid var(--line); border-left: 4px solid var(--olive); background: #fff; }
+.edo-damped-oscillator > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 28px; padding: 24px 28px 20px; border-bottom: 1px solid var(--line); }
+.edo-damped-oscillator > header span { display: block; margin-bottom: 8px; color: var(--olive); font: 700 10px/1.3 var(--font-geist-mono); letter-spacing: .12em; }
+.edo-damped-oscillator > header h4 { margin: 0; color: var(--ink); font: 400 27px/1.12 Georgia, serif; }
+.edo-damped-oscillator > header strong { flex: 0 0 auto; color: var(--blue); font: italic 24px/1.2 Georgia, serif; }
+.edo-damped-controls { display: grid; grid-template-columns: 1fr 1fr auto; align-items: end; gap: 22px; padding: 18px 28px 12px; }
+.edo-damped-controls label { display: grid; grid-template-columns: 1fr auto; gap: 8px 14px; color: var(--muted); font: 600 12px/1.3 var(--font-geist-mono); }
+.edo-damped-controls input { grid-column: 1 / -1; width: 100%; accent-color: var(--blue); }
+.edo-damped-controls output { color: var(--ink); text-align: right; }
+.edo-damped-controls button { min-height: 40px; padding: 8px 18px; border: 1px solid var(--blue); background: #fff; color: var(--blue); font: 700 12px var(--font-geist); cursor: pointer; }
+.edo-damped-controls button:hover,.edo-damped-controls button[aria-pressed="true"] { background: var(--blue); color: #fff; }
+.edo-damped-regime { padding: 8px 28px 14px; color: var(--muted); font: 12px/1.4 var(--font-geist-mono); }
+.edo-damped-regime strong { color: var(--ink); }
+.edo-damped-oscillator canvas { display: block; width: 100%; height: 500px; }
+.edo-damped-oscillator > p { margin: 0; padding: 18px 28px 24px; border-top: 1px solid var(--line); color: var(--muted); font: 16px/1.55 Georgia, serif; }
 
 /* Cálculo vectorial: superficie y curvas de nivel */
 .level-curves-3d { margin: 48px 0 62px; border: 1px solid var(--line); border-left: 4px solid var(--green); background: #fff; }
@@ -1372,6 +1387,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .edo-slope-field > header { display: block; padding: 20px; }.edo-slope-field > header strong { display: block; margin-top: 14px; }.edo-slope-field-controls { grid-template-columns: 1fr; padding: 18px 20px 10px; }.edo-slope-field canvas { height: 320px; }.edo-slope-field > p { padding: 16px 20px 20px; }
   .edo-phase-line > header { display: block; padding: 20px; }.edo-phase-line > header strong { display: block; margin-top: 14px; }.edo-phase-line-controls { display: grid; padding: 18px 20px 10px; }.edo-phase-line-controls label { grid-template-columns: 1fr auto; }.edo-phase-line-controls input { grid-column: 1 / -1; grid-row: 2; }.edo-phase-line canvas { height: 320px; }.edo-phase-line > p { padding: 16px 20px 20px; }
   .edo-euler-method > header { display: block; padding: 20px; }.edo-euler-method > header strong { display: block; margin-top: 14px; }.edo-euler-controls { display: grid; padding: 18px 20px 10px; }.edo-euler-controls label { grid-template-columns: 1fr auto; }.edo-euler-controls input { grid-column: 1 / -1; grid-row: 2; }.edo-euler-method canvas { height: 320px; }.edo-euler-method > p { padding: 16px 20px 20px; }
+  .edo-damped-oscillator > header { display: block; padding: 20px; }.edo-damped-oscillator > header strong { display: block; margin-top: 14px; }.edo-damped-controls { grid-template-columns: 1fr; padding: 18px 20px 10px; }.edo-damped-controls button { width: 100%; }.edo-damped-regime { padding-inline: 20px; }.edo-damped-oscillator canvas { height: 420px; }.edo-damped-oscillator > p { padding: 16px 20px 20px; }
   .level-curves-3d figcaption,
   .gradient-tangent-3d figcaption,
   .parametric-ellipse figcaption { display: block; padding: 21px 20px; }

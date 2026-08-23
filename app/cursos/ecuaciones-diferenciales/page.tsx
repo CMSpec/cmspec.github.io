@@ -9,6 +9,7 @@ import SolutionFamilyLab from "./SolutionFamilyLab";
 import SlopeFieldLab from "./SlopeFieldLab";
 import PhaseLineLab from "./PhaseLineLab";
 import EulerMethodLab from "./EulerMethodLab";
+import DampedOscillatorLab from "./DampedOscillatorLab";
 import SolutionDisclosures from "../algebra-lineal/SolutionDisclosures";
 
 function DifferentialSectionContent({ title, html }: { title: string; html: string }) {
@@ -92,6 +93,7 @@ export default function DifferentialEquationsCoursePage() {
                 <article className="chapter-article">
                   {chapter.sections.map((section, sectionIndex) => (
                     <Fragment key={`${chapter.slug}-${sectionIndex}`}>
+                      {chapterIndex === 5 && section.title === "Ecuaciones Lineales Homogéneas con coeficientes constantes" ? <DampedOscillatorLab /> : null}
                       {chapterIndex === 0 && section.title === "Problemas de valores iniciales" ? <SolutionFamilyLab /> : null}
                       {chapterIndex === 0 && section.title === "Ecuaciones Diferenciales de Variables Separables" ? <PhaseLineLab /> : null}
                       <section
