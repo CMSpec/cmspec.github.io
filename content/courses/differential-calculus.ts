@@ -3,7 +3,7 @@ export type DifferentialBlock =
   | { kind: "formula"; tex: string }
   | { kind: "definition" | "theorem" | "example" | "exercise" | "solution" | "remark"; title: string; text: string; tex?: string };
 
-export type DifferentialSection = { title: string; blocks: DifferentialBlock[]; visual?: "secant" | "epsilon-delta" };
+export type DifferentialSection = { title: string; blocks: DifferentialBlock[]; visual?: "secant" | "epsilon-delta" | "function-map" | "function-slider" };
 
 export const differentialCalculusCourse = {
   title: "Cálculo Diferencial",
@@ -19,6 +19,7 @@ export const differentialCalculusChapters: Array<{ number: string; slug: string;
     sections: [
       {
         title: "La idea de función",
+        visual: "function-map",
         blocks: [
           { kind: "p", text: "Una función describe una regla que asigna a cada elemento del dominio un único elemento del conjunto de llegada. Escribimos $f:A\\to B$ y $x\\mapsto f(x)$." },
           { kind: "definition", title: "Dominio, recorrido y gráfica", text: "El dominio contiene los valores donde la regla está definida. El recorrido reúne las imágenes efectivamente alcanzadas. La gráfica es el conjunto de puntos $(x,f(x))$.", tex: "\\operatorname{Graf}(f)=\\{(x,y)\\in\\mathbb R^2:y=f(x)\\}" },
@@ -28,6 +29,7 @@ export const differentialCalculusChapters: Array<{ number: string; slug: string;
       },
       {
         title: "Funciones elementales y transformaciones",
+        visual: "function-slider",
         blocks: [
           { kind: "p", text: "Las funciones constante, identidad, afín, cuadrática, raíz, valor absoluto, parte entera y definidas por tramos forman un repertorio básico. Trasladar y escalar sus gráficas permite reconocer familias completas." },
           { kind: "formula", tex: "g(x)=A f(x-B)+C" },
