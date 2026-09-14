@@ -156,14 +156,14 @@ export default function LinePlanePreview3D({ points, vectors }: { points: [numbe
         <span><i className="is-line" /> Recta r</span>
         <span><i className="is-point" /> Punto P</span>
         <span><i className="is-plane" /> Plano buscado</span>
-        <span><i className="is-moving" /> Punto móvil Q</span>
+        <span><i className="is-moving" /> Q = r(T), para el T seleccionado</span>
         {points && <span><i /> Tus puntos A y B</span>}
         {vectors && <><span><i style={{ background: "#7155b5" }} /> u = A − P</span><span><i style={{ background: "#d47721" }} /> v = B − P</span></>}
       </div>
       <label className="line-plane-slider">
-        <span>Mueve Q sobre la recta</span>
+        <span>Selecciona T · Q = r(T)</span>
         <input type="range" min="-2" max="2" step="0.05" value={parameter} onChange={(event) => setParameter(Number(event.target.value))} />
-        <output>t = {parameter.toFixed(2)}</output>
+        <output>T = {parameter.toFixed(2)}</output>
       </label>
       <p className="line-plane-prompt">Observa: ¿qué dos direcciones contenidas en el plano podrías construir con los elementos visibles?</p>
     </section>
