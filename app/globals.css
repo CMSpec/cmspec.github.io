@@ -1628,7 +1628,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .exercise-masthead-stats { display: flex; gap: 14px 34px; flex-wrap: wrap; margin-top: 48px; padding-top: 20px; border-top: 1px solid #1d2720; font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
 .exercise-masthead-stats strong { margin-right: 5px; font-family: Georgia,serif; font-size: 22px; font-weight: 400; }
 .exercise-library { padding: 55px 6vw 100px; background: #d9e5d7; }
-.exercise-filters { display: grid; grid-template-columns: minmax(180px,260px) minmax(220px,340px) 1fr; gap: 18px; align-items: end; margin-bottom: 42px; }
+.exercise-filters { display: grid; grid-template-columns: minmax(180px,1fr) minmax(160px,.8fr) minmax(210px,1.2fr) auto; gap: 18px; align-items: end; margin-bottom: 42px; }
 .exercise-filters label { display: grid; gap: 7px; }
 .exercise-filters label span { font-size: 10px; font-weight: 700; letter-spacing: .13em; }
 .exercise-filters select { width: 100%; padding: 13px 42px 13px 14px; border: 1px solid #1d2720; border-radius: 0; background: transparent; color: inherit; font: inherit; }

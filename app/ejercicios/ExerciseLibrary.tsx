@@ -7,10 +7,13 @@ import { sitePath } from "../../lib/site-path";
 const difficulties: Array<ExerciseDifficulty | "Todos"> = ["Todos", "Inicial", "Intermedio", "Desafío"];
 
 export default function ExerciseLibrary({ exercises }: { exercises: Exercise[] }) {
+  const [course, setCourse] = useState("Todos");
   const [difficulty, setDifficulty] = useState<ExerciseDifficulty | "Todos">("Todos");
   const [topic, setTopic] = useState("Todos");
+  const courses = useMemo(() => ["Todos", ...new Set(exercises.map((exercise) => exercise.course))], [exercises]);
   const topics = useMemo(() => ["Todos", ...new Set(exercises.map((exercise) => exercise.topic))], [exercises]);
   const visible = exercises.filter((exercise) =>
+    (course === "Todos" || exercise.course === course) &&
     (difficulty === "Todos" || exercise.difficulty === difficulty) &&
     (topic === "Todos" || exercise.topic === topic),
   );
@@ -18,6 +21,12 @@ export default function ExerciseLibrary({ exercises }: { exercises: Exercise[] }
   return (
     <>
       <div className="exercise-filters" aria-label="Filtros de ejercicios">
+        <label>
+          <span>CURSO</span>
+          <select value={course} onChange={(event) => setCourse(event.target.value)}>
+            {courses.map((value) => <option key={value}>{value}</option>)}
+          </select>
+        </label>
         <label>
           <span>DIFICULTAD</span>
           <select value={difficulty} onChange={(event) => setDifficulty(event.target.value as ExerciseDifficulty | "Todos")}>
