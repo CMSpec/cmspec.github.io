@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
-export default function LinePlanePreview3D({ points, vectors }: { points: [number[], number[]] | null; vectors: [number[], number[]] | null }) {
+export default function LinePlanePreview3D({ points, vectors, normal }: { points: [number[], number[]] | null; vectors: [number[], number[]] | null; normal: number[] | null }) {
   const stageRef = useRef<HTMLDivElement>(null);
   const movingPointRef = useRef<THREE.Mesh | null>(null);
   const [parameter, setParameter] = useState(0.5);
@@ -98,6 +98,12 @@ export default function LinePlanePreview3D({ points, vectors }: { points: [numbe
       scene.add(arrow);
     });
 
+    if (normal) {
+      const magnitude = Math.hypot(...normal);
+      const direction = new THREE.Vector3(...normal.map(value => value / magnitude));
+      scene.add(new THREE.ArrowHelper(direction, outsidePoint, 3.5, 0x2161c2, 0.5, 0.25));
+    }
+
     (vectors ? [] : selectedPoints).forEach((pointOnLine) => {
       const connection = new THREE.Line(new THREE.BufferGeometry().setFromPoints([outsidePoint, pointOnLine]), new THREE.LineDashedMaterial({ color: 0x53665d, dashSize: 0.16, gapSize: 0.11, transparent: true, opacity: 0.78 }));
       connection.computeLineDistances();
@@ -138,7 +144,7 @@ export default function LinePlanePreview3D({ points, vectors }: { points: [numbe
       renderer.dispose();
       renderer.domElement.remove();
     };
-  }, [points, vectors]);
+  }, [points, vectors, normal]);
 
   useEffect(() => {
     parameterRef.current = parameter;
@@ -158,6 +164,7 @@ export default function LinePlanePreview3D({ points, vectors }: { points: [numbe
         <span><i className="is-plane" /> Plano buscado</span>
         <span><i className="is-moving" /> Q = r(T), para el T seleccionado</span>
         {points && <span><i /> Tus puntos A y B</span>}
+        {normal && <span><i style={{ background: "#2161c2" }} /> Normal n = ({normal.join(", ")}) · longitud visual ajustada</span>}
         {vectors && <><span><i style={{ background: "#7155b5" }} /> u = A − P</span><span><i style={{ background: "#d47721" }} /> v = B − P</span></>}
       </div>
       <label className="line-plane-slider">

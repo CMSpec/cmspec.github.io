@@ -74,9 +74,8 @@ function LinePointsCheckpoint({ onPointsChange }: { onPointsChange: (points: Poi
   );
 }
 
-function PlaneVectorsCheckpoint({ points }: { points: PointPair | null }) {
+function PlaneVectorsCheckpoint({ points, vectors, setVectors }: { points: PointPair | null; vectors: PointPair | null; setVectors: (vectors: PointPair | null) => void }) {
   const [values, setValues] = useState<string[][]>([["", "", ""], ["", "", ""]]);
-  const [vectors, setVectors] = useState<PointPair | null>(null);
   const [message, setMessage] = useState("");
   const check = () => {
     if (!points) return;
@@ -106,12 +105,50 @@ function PlaneVectorsCheckpoint({ points }: { points: PointPair | null }) {
       <button type="button" disabled={!points} onClick={check}>Comprobar vectores</button>
       {message && <p role="status" className={`checkpoint-feedback ${vectors ? "is-valid" : "is-invalid"}`}>{message}</p>}
     </div>
-    <LinePlanePreview3D points={points} vectors={vectors} />
   </>;
+}
+
+function NormalCheckpoint({ vectors, onNormalChange }: { vectors: PointPair | null; onNormalChange: (normal: number[] | null) => void }) {
+  const [values, setValues] = useState(["", "", ""]);
+  const [feedback, setFeedback] = useState<{ valid: boolean; message: string } | null>(null);
+  const check = () => {
+    if (!vectors) return;
+    if (values.some(value => !value.trim() || !Number.isFinite(Number(value)))) {
+      setFeedback({ valid: false, message: "Completa las tres coordenadas con números." });
+      return;
+    }
+    const normal = values.map(Number);
+    const magnitude = Math.hypot(...normal);
+    if (!magnitude || !Number.isFinite(magnitude)) {
+      setFeedback({ valid: false, message: "El vector normal debe ser distinto del vector cero y tener coordenadas finitas." });
+      return;
+    }
+    const unit = normal.map(value => value / magnitude);
+    const perpendicular = vectors.every(vector => {
+      const length = Math.hypot(...vector);
+      return Math.abs(vector.reduce((sum, value, index) => sum + value / length * unit[index], 0)) < 1e-6;
+    });
+    if (!perpendicular) {
+      setFeedback({ valid: false, message: "Revisa el cálculo: el producto escalar del vector normal con cada uno de tus dos vectores debe ser cero." });
+      return;
+    }
+    onNormalChange(normal);
+    setFeedback({ valid: true, message: "¡Correcto! El vector es perpendicular al plano. La flecha parte de P y muestra su dirección y sentido, con longitud ajustada para visualizarla." });
+  };
+  return <div className="line-points-checkpoint">
+    <div className="checkpoint-heading"><span>PASO GUIADO · VECTOR NORMAL</span><h3>Calcula un vector perpendicular al plano</h3><p>{vectors ? `Usa el producto cruz de u = (${vectors[0].join(", ")}) y v = (${vectors[1].join(", ")}). También se acepta cualquier múltiplo no nulo del vector normal.` : "Primero comprueba los dos vectores de la pista 2."}</p></div>
+    <div className="point-entry-grid"><fieldset disabled={!vectors}><legend>Vector normal n</legend><span aria-hidden="true">(</span>
+      {values.map((value, index) => <label key={index}><span>{["x", "y", "z"][index]}</span><input type="number" step="any" value={value} aria-label={`${["x", "y", "z"][index]} del vector normal`} onChange={event => { setValues(values.map((entry, i) => i === index ? event.target.value : entry)); setFeedback(null); onNormalChange(null); }} /></label>)}
+      <span aria-hidden="true">)</span></fieldset></div>
+    <button type="button" disabled={!vectors} onClick={check}>Comprobar vector perpendicular</button>
+    {feedback && <p role="status" className={`checkpoint-feedback ${feedback.valid ? "is-valid" : "is-invalid"}`}>{feedback.message}</p>}
+  </div>;
 }
 
 export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
   const [points, setPoints] = useState<PointPair | null>(null);
+  const [vectors, setVectors] = useState<PointPair | null>(null);
+  const [normal, setNormal] = useState<number[] | null>(null);
   const storageKey = `cmspec-exercise-${exercise.slug}`;
   const readProgress = () => {
     if (typeof window === "undefined") return {};
@@ -171,8 +208,10 @@ export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
                 </button>
                 {index < openHints && <p>{hint}</p>}
               </div>
-              {exercise.slug === "plano-que-contiene-una-recta" && index === 0 && openHints >= 1 && <LinePointsCheckpoint onPointsChange={setPoints} />}
-              {exercise.slug === "plano-que-contiene-una-recta" && index === 1 && openHints >= 2 && <PlaneVectorsCheckpoint key={JSON.stringify(points)} points={points} />}
+              {exercise.slug === "plano-que-contiene-una-recta" && index === 0 && openHints >= 1 && <LinePointsCheckpoint onPointsChange={value => { setPoints(value); setVectors(null); setNormal(null); }} />}
+              {exercise.slug === "plano-que-contiene-una-recta" && index === 1 && openHints >= 2 && <PlaneVectorsCheckpoint key={JSON.stringify(points)} points={points} vectors={vectors} setVectors={value => { setVectors(value); setNormal(null); }} />}
+              {exercise.slug === "plano-que-contiene-una-recta" && index === 2 && openHints >= 3 && <NormalCheckpoint key={JSON.stringify(vectors)} vectors={vectors} onNormalChange={setNormal} />}
+              {exercise.slug === "plano-que-contiene-una-recta" && ((index === 1 && openHints === 2) || (index === 2 && openHints >= 3)) && <LinePlanePreview3D points={points} vectors={vectors} normal={normal} />}
             </div>
           ))}
         </section>
