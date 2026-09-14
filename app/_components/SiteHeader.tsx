@@ -55,6 +55,7 @@ export default function SiteHeader() {
             </div>
           </div>
         </details>
+        <a href={sitePath("/ejercicios")}>Ejercitación</a>
         <a href={sitePath("/laboratorio")}>Laboratorio</a>
         <details className="site-index-menu textile-index-menu">
           <summary>Tejido <span aria-hidden="true">⌄</span></summary>

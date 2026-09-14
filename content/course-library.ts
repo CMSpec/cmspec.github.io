@@ -34,6 +34,17 @@ export const courseNotes = [
   },
   {
     number: "04",
+    title: "Cálculo Diferencial",
+    description: "Funciones, límites, derivadas, reglas de cálculo, curvas paramétricas y aplicaciones.",
+    subtitle: "De la variación promedio al cambio instantáneo",
+    authors: "Camila Muñoz Santander",
+    published: "14 septiembre 2026",
+    modified: "14 septiembre 2026",
+    href: "/cursos/calculo-diferencial",
+    formula: "f′(a)",
+  },
+  {
+    number: "05",
     title: "Laboratorio de Álgebra Lineal",
     description: "Animaciones para explorar vectores, matrices, operaciones, reducción por filas y cambios de base.",
     subtitle: "Una colección visual para observar cada operación paso a paso",

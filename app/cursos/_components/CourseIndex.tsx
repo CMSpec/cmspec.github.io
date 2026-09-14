@@ -38,7 +38,7 @@ export default function CourseIndex({
         const targets = trackedHrefs
           .filter((href) => href.startsWith("#"))
           .map((href) => ({ href, element: document.getElementById(href.slice(1)) }))
-          .filter((target): target is { href: string; element: HTMLElement } => Boolean(target.element));
+          .filter((target): target is { href: string; element: HTMLElement } => Boolean(target.element?.getClientRects().length));
 
         if (!targets.length) return;
         const readingLine = 190;

@@ -13,6 +13,7 @@ export default function LearnPage() {
         <h1>Aprender</h1>
         <div className="learn-deck">
           <p>Una biblioteca de ideas matemáticas para leer con calma, conectar conceptos y volver a consultar.</p>
+          <a className="learn-practice-link" href={sitePath("/ejercicios")}>Practicar con ejercicios <span aria-hidden="true">→</span></a>
         </div>
       </section>
 
