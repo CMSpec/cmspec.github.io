@@ -39,7 +39,7 @@ export const exercises: Exercise[] = [
     ],
     hints: [
       "El plano queda determinado por P y dos puntos distintos de la recta.",
-      "Usa t = 0 y t = 1; resta P a cada punto para obtener dos vectores contenidos en el plano.",
+      "Resta P a cada uno de los puntos que elegiste para obtener dos vectores contenidos en el plano.",
       "El producto cruz de esos vectores entrega un vector normal. Para la perpendicularidad, compáralo con el vector director dado.",
     ],
     solution: [
