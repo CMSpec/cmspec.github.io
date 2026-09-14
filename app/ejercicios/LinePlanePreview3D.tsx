@@ -50,7 +50,7 @@ export default function LinePlanePreview3D({ points, vectors }: { points: [numbe
     camera.position.copy(controls.target).add(new THREE.Vector3(9, 7, 10).multiplyScalar(extent / 5));
     controls.maxDistance = Math.max(24, extent * 6);
 
-    const planeGeometry = new THREE.PlaneGeometry(extent * 2, 8);
+    const planeGeometry = new THREE.PlaneGeometry(extent * 2.2, 11);
     const planeMaterial = new THREE.MeshPhysicalMaterial({
       color: 0xb7d4ca,
       transparent: true,
