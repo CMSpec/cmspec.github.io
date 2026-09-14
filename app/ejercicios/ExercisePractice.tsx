@@ -6,8 +6,9 @@ import { sitePath } from "../../lib/site-path";
 import LinePlanePreview3D from "./LinePlanePreview3D";
 
 type PointValues = [string, string, string];
+type PointPair = [number[], number[]];
 
-function LinePointsCheckpoint() {
+function LinePointsCheckpoint({ onPointsChange }: { onPointsChange: (points: PointPair | null) => void }) {
   const [firstPoint, setFirstPoint] = useState<PointValues>(["", "", ""]);
   const [secondPoint, setSecondPoint] = useState<PointValues>(["", "", ""]);
   const [feedback, setFeedback] = useState<{ valid: boolean; message: string } | null>(null);
@@ -17,6 +18,7 @@ function LinePointsCheckpoint() {
     next[coordinate] = value;
     setPoint(next);
     setFeedback(null);
+    onPointsChange(null);
   };
 
   const checkPoints = () => {
@@ -42,6 +44,7 @@ function LinePointsCheckpoint() {
     const tA = pointA[0] - 2;
     const tB = pointB[0] - 2;
     setFeedback({ valid: true, message: `Bien: ambos puntos están en la recta y corresponden a t = ${tA} y t = ${tB}.` });
+    onPointsChange([pointA, pointB]);
   };
 
   return (
@@ -71,7 +74,44 @@ function LinePointsCheckpoint() {
   );
 }
 
+function PlaneVectorsCheckpoint({ points }: { points: PointPair | null }) {
+  const [values, setValues] = useState<string[][]>([["", "", ""], ["", "", ""]]);
+  const [vectors, setVectors] = useState<PointPair | null>(null);
+  const [message, setMessage] = useState("");
+  const check = () => {
+    if (!points) return;
+    if (values.flat().some((value) => !value.trim() || !Number.isFinite(Number(value)))) {
+      setMessage("Completa las seis coordenadas con números.");
+      return;
+    }
+    const origin = [1, 2, 0];
+    const incorrect = values.map((vector, i) => vector.some((value, j) => Math.abs(Number(value) - (points[i][j] - origin[j])) > 1e-6));
+    if (incorrect.some(Boolean)) {
+      setMessage(`Revisa ${incorrect[0] && incorrect[1] ? "ambas restas" : incorrect[0] ? "la resta A − P" : "la resta B − P"}: resta las coordenadas de P a las del punto correspondiente, en el mismo orden.`);
+      return;
+    }
+    setVectors(values.map((vector) => vector.map(Number)) as PointPair);
+    setMessage("¡Correcto! Ambos vectores parten de P y llegan a tus puntos de la recta. Ahora están dibujados en el plano.");
+  };
+  return <>
+    <div className="line-points-checkpoint">
+      <div className="checkpoint-heading"><span>PASO GUIADO · VECTORES</span><h3>Escribe los dos vectores que encontraste</h3><p>{points ? `A = (${points[0].join(", ")}), B = (${points[1].join(", ")}) y P = (1, 2, 0). Calcula u = A − P y v = B − P.` : "Primero escribe y comprueba tus dos puntos en la pista 1."}</p></div>
+      <div className="point-entry-grid">
+        {values.map((vector, i) => <fieldset key={i} disabled={!points}>
+          <legend>{i === 0 ? "Vector u = A − P" : "Vector v = B − P"}</legend><span aria-hidden="true">(</span>
+          {vector.map((value, j) => <label key={j}><span>{["x", "y", "z"][j]}</span><input type="number" step="any" value={value} aria-label={`${["x", "y", "z"][j]} del vector ${i === 0 ? "u" : "v"}`} onChange={(event) => { setValues(values.map((row, r) => row.map((entry, c) => r === i && c === j ? event.target.value : entry))); setVectors(null); setMessage(""); }} /></label>)}
+          <span aria-hidden="true">)</span>
+        </fieldset>)}
+      </div>
+      <button type="button" disabled={!points} onClick={check}>Comprobar vectores</button>
+      {message && <p role="status" className={`checkpoint-feedback ${vectors ? "is-valid" : "is-invalid"}`}>{message}</p>}
+    </div>
+    <LinePlanePreview3D points={points} vectors={vectors} />
+  </>;
+}
+
 export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
+  const [points, setPoints] = useState<PointPair | null>(null);
   const storageKey = `cmspec-exercise-${exercise.slug}`;
   const readProgress = () => {
     if (typeof window === "undefined") return {};
@@ -131,8 +171,8 @@ export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
                 </button>
                 {index < openHints && <p>{hint}</p>}
               </div>
-              {exercise.slug === "plano-que-contiene-una-recta" && index === 0 && openHints >= 1 && <LinePointsCheckpoint />}
-              {exercise.slug === "plano-que-contiene-una-recta" && index === 1 && openHints >= 2 && <LinePlanePreview3D />}
+              {exercise.slug === "plano-que-contiene-una-recta" && index === 0 && openHints >= 1 && <LinePointsCheckpoint onPointsChange={setPoints} />}
+              {exercise.slug === "plano-que-contiene-una-recta" && index === 1 && openHints >= 2 && <PlaneVectorsCheckpoint key={JSON.stringify(points)} points={points} />}
             </div>
           ))}
         </section>

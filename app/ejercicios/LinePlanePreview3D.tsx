@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
-export default function LinePlanePreview3D() {
+export default function LinePlanePreview3D({ points, vectors }: { points: [number[], number[]] | null; vectors: [number[], number[]] | null }) {
   const stageRef = useRef<HTMLDivElement>(null);
   const movingPointRef = useRef<THREE.Mesh | null>(null);
   const [parameter, setParameter] = useState(0.5);
+  const parameterRef = useRef(0.5);
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -43,8 +44,13 @@ export default function LinePlanePreview3D() {
     const planeNormal = new THREE.Vector3().crossVectors(lineDirection, secondPlaneDirection).normalize();
     const planeBasisX = lineDirection.clone().normalize();
     const planeBasisY = new THREE.Vector3().crossVectors(planeNormal, planeBasisX).normalize();
+    const selectedPoints = points ? points.map((point) => new THREE.Vector3(...point)) : [];
+    const extent = Math.max(5, ...selectedPoints.map((point) => point.distanceTo(lineOrigin) + 2));
+    camera.far = Math.max(100, extent * 15);
+    camera.position.copy(controls.target).add(new THREE.Vector3(9, 7, 10).multiplyScalar(extent / 5));
+    controls.maxDistance = Math.max(24, extent * 6);
 
-    const planeGeometry = new THREE.PlaneGeometry(9, 7);
+    const planeGeometry = new THREE.PlaneGeometry(extent * 2, 8);
     const planeMaterial = new THREE.MeshPhysicalMaterial({
       color: 0xb7d4ca,
       transparent: true,
@@ -60,8 +66,8 @@ export default function LinePlanePreview3D() {
     scene.add(plane);
 
     const linePoints = [
-      lineOrigin.clone().addScaledVector(lineDirection, -2.6),
-      lineOrigin.clone().addScaledVector(lineDirection, 2.6),
+      lineOrigin.clone().addScaledVector(planeBasisX, -extent),
+      lineOrigin.clone().addScaledVector(planeBasisX, extent),
     ];
     const line = new THREE.Line(
       new THREE.BufferGeometry().setFromPoints(linePoints),
@@ -82,13 +88,18 @@ export default function LinePlanePreview3D() {
     };
 
     makePoint(outsidePoint, 0xd45d3c, 0.2);
-    makePoint(lineOrigin, 0x20352c);
-    makePoint(lineOrigin.clone().add(lineDirection), 0x20352c);
-    movingPointRef.current = makePoint(lineOrigin.clone().addScaledVector(lineDirection, 0.5), 0xf1b44c, 0.19);
+    selectedPoints.forEach((point) => makePoint(point, 0x20352c));
+    movingPointRef.current = makePoint(lineOrigin.clone().addScaledVector(lineDirection, parameterRef.current), 0xf1b44c, 0.19);
 
-    const connectionMaterial = new THREE.LineDashedMaterial({ color: 0x53665d, dashSize: 0.16, gapSize: 0.11, transparent: true, opacity: 0.78 });
-    [lineOrigin, lineOrigin.clone().add(lineDirection)].forEach((pointOnLine) => {
-      const connection = new THREE.Line(new THREE.BufferGeometry().setFromPoints([outsidePoint, pointOnLine]), connectionMaterial.clone());
+    vectors?.forEach((coordinates, index) => {
+      const vector = new THREE.Vector3(...coordinates);
+      const length = vector.length();
+      const arrow = new THREE.ArrowHelper(vector.clone().normalize(), outsidePoint, length, index === 0 ? 0x7155b5 : 0xd47721, Math.min(0.45, length * 0.18), Math.min(0.24, length * 0.1));
+      scene.add(arrow);
+    });
+
+    (vectors ? [] : selectedPoints).forEach((pointOnLine) => {
+      const connection = new THREE.Line(new THREE.BufferGeometry().setFromPoints([outsidePoint, pointOnLine]), new THREE.LineDashedMaterial({ color: 0x53665d, dashSize: 0.16, gapSize: 0.11, transparent: true, opacity: 0.78 }));
       connection.computeLineDistances();
       scene.add(connection);
     });
@@ -127,9 +138,10 @@ export default function LinePlanePreview3D() {
       renderer.dispose();
       renderer.domElement.remove();
     };
-  }, []);
+  }, [points, vectors]);
 
   useEffect(() => {
+    parameterRef.current = parameter;
     movingPointRef.current?.position.set(2 + parameter, -1, 3 - 2 * parameter);
   }, [parameter]);
 
@@ -145,6 +157,8 @@ export default function LinePlanePreview3D() {
         <span><i className="is-point" /> Punto P</span>
         <span><i className="is-plane" /> Plano buscado</span>
         <span><i className="is-moving" /> Punto móvil Q</span>
+        {points && <span><i /> Tus puntos A y B</span>}
+        {vectors && <><span><i style={{ background: "#7155b5" }} /> u = A − P</span><span><i style={{ background: "#d47721" }} /> v = B − P</span></>}
       </div>
       <label className="line-plane-slider">
         <span>Mueve Q sobre la recta</span>
