@@ -4,6 +4,72 @@ import { useEffect, useState } from "react";
 import type { Exercise } from "../../content/exercises";
 import { sitePath } from "../../lib/site-path";
 
+type PointValues = [string, string, string];
+
+function LinePointsCheckpoint() {
+  const [firstPoint, setFirstPoint] = useState<PointValues>(["", "", ""]);
+  const [secondPoint, setSecondPoint] = useState<PointValues>(["", "", ""]);
+  const [feedback, setFeedback] = useState<{ valid: boolean; message: string } | null>(null);
+
+  const updatePoint = (point: PointValues, setPoint: (value: PointValues) => void, coordinate: number, value: string) => {
+    const next = [...point] as PointValues;
+    next[coordinate] = value;
+    setPoint(next);
+    setFeedback(null);
+  };
+
+  const checkPoints = () => {
+    const values = [...firstPoint, ...secondPoint];
+    if (values.some((value) => value.trim() === "" || !Number.isFinite(Number(value)))) {
+      setFeedback({ valid: false, message: "Completa las seis coordenadas con números." });
+      return;
+    }
+
+    const pointA = firstPoint.map(Number);
+    const pointB = secondPoint.map(Number);
+    const tolerance = 1e-6;
+    const isOnLine = ([x, y, z]: number[]) => Math.abs(y + 1) < tolerance && Math.abs(z - (7 - 2 * x)) < tolerance;
+    if (!isOnLine(pointA) || !isOnLine(pointB)) {
+      setFeedback({ valid: false, message: "Al menos uno de los puntos no pertenece a la recta. Busca un valor de t y evalúa las tres coordenadas." });
+      return;
+    }
+    if (pointA.every((value, index) => Math.abs(value - pointB[index]) < tolerance)) {
+      setFeedback({ valid: false, message: "El punto pertenece a la recta, pero necesitas elegir dos puntos distintos." });
+      return;
+    }
+
+    const tA = pointA[0] - 2;
+    const tB = pointB[0] - 2;
+    setFeedback({ valid: true, message: `Bien: ambos puntos están en la recta y corresponden a t = ${tA} y t = ${tB}.` });
+  };
+
+  return (
+    <div className="line-points-checkpoint">
+      <div className="checkpoint-heading"><span>PASO GUIADO</span><h3>Escribe dos puntos distintos de la recta</h3><p>Elige dos valores de <i>t</i> y evalúa cada coordenada de <i>r(t)</i>.</p></div>
+      <div className="point-entry-grid">
+        {[
+          { label: "Punto A", point: firstPoint, setPoint: setFirstPoint },
+          { label: "Punto B", point: secondPoint, setPoint: setSecondPoint },
+        ].map(({ label, point, setPoint }) => (
+          <fieldset key={label}>
+            <legend>{label}</legend>
+            <span aria-hidden="true">(</span>
+            {(["x", "y", "z"] as const).map((coordinate, index) => (
+              <label key={coordinate}>
+                <span>{coordinate}</span>
+                <input type="number" step="any" value={point[index]} onChange={(event) => updatePoint(point, setPoint, index, event.target.value)} aria-label={`${coordinate} de ${label}`} />
+              </label>
+            ))}
+            <span aria-hidden="true">)</span>
+          </fieldset>
+        ))}
+      </div>
+      <button type="button" onClick={checkPoints}>Comprobar puntos</button>
+      {feedback && <p className={`checkpoint-feedback${feedback.valid ? " is-valid" : " is-invalid"}`} role="status">{feedback.message}</p>}
+    </div>
+  );
+}
+
 export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
   const storageKey = `cmspec-exercise-${exercise.slug}`;
   const readProgress = () => {
@@ -57,11 +123,14 @@ export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
             <span>{openHints} / {exercise.hints.length}</span>
           </div>
           {exercise.hints.map((hint, index) => (
-            <div className={`hint-row${index < openHints ? " is-open" : ""}`} key={hint}>
-              <button type="button" onClick={() => setOpenHints(Math.max(openHints, index + 1))} aria-expanded={index < openHints}>
-                <span>Pista {index + 1}</span><i aria-hidden="true">{index < openHints ? "−" : "+"}</i>
-              </button>
-              {index < openHints && <p>{hint}</p>}
+            <div key={hint}>
+              <div className={`hint-row${index < openHints ? " is-open" : ""}`}>
+                <button type="button" onClick={() => setOpenHints(Math.max(openHints, index + 1))} aria-expanded={index < openHints}>
+                  <span>Pista {index + 1}</span><i aria-hidden="true">{index < openHints ? "−" : "+"}</i>
+                </button>
+                {index < openHints && <p>{hint}</p>}
+              </div>
+              {exercise.slug === "plano-que-contiene-una-recta" && index === 0 && openHints >= 1 && <LinePointsCheckpoint />}
             </div>
           ))}
         </section>
