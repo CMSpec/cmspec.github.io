@@ -3,7 +3,7 @@ export type DifferentialBlock =
   | { kind: "formula"; tex: string }
   | { kind: "definition" | "theorem" | "example" | "exercise" | "solution" | "remark"; title: string; text: string; tex?: string };
 
-export type DifferentialSection = { title: string; blocks: DifferentialBlock[]; visual?: "secant" };
+export type DifferentialSection = { title: string; blocks: DifferentialBlock[]; visual?: "secant" | "epsilon-delta" };
 
 export const differentialCalculusCourse = {
   title: "Cálculo Diferencial",
@@ -52,6 +52,7 @@ export const differentialCalculusChapters: Array<{ number: string; slug: string;
     sections: [
       {
         title: "Aproximarse a un punto",
+        visual: "epsilon-delta",
         blocks: [
           { kind: "p", text: "El límite describe el valor al que se aproxima una función cuando $x$ se acerca a un punto, sin exigir que la función esté definida allí." },
           { kind: "definition", title: "Definición formal", text: "Decimos que $f(x)$ tiende a $L$ cuando $x$ tiende a $a$ si podemos hacer $f(x)$ tan cercano a $L$ como queramos tomando $x$ suficientemente cerca de $a$.", tex: "\\forall \\varepsilon>0\\;\\exists\\delta>0:\\;0<|x-a|<\\delta\\Rightarrow|f(x)-L|<\\varepsilon" },

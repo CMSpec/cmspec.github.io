@@ -4,6 +4,7 @@ import CourseIndex from "../_components/CourseIndex";
 import SolutionDisclosures from "../algebra-lineal/SolutionDisclosures";
 import { differentialCalculusChapters, differentialCalculusCourse, type DifferentialBlock } from "../../../content/courses/differential-calculus";
 import DerivativeSecantExplorer from "./DerivativeSecantExplorer";
+import EpsilonDeltaExplorer from "./EpsilonDeltaExplorer";
 
 function Math({ tex, display = false }: { tex: string; display?: boolean }) {
   return <span className={display ? "course-math" : "course-inline-math"} dangerouslySetInnerHTML={{ __html: katex.renderToString(tex, { displayMode: display, output: "mathml", throwOnError: false }) }} />;
@@ -66,6 +67,7 @@ export default function DifferentialCalculusPage() {
                     <section className="chapter-section" id={`${chapter.slug}-seccion-${sectionIndex + 1}`} key={section.title}>
                       <h4>{section.title}</h4>
                       <div className="latex-content">{section.blocks.map((block, blockIndex) => <CourseBlock block={block} key={blockIndex} />)}</div>
+                      {section.visual === "epsilon-delta" && <EpsilonDeltaExplorer />}
                       {section.visual === "secant" && <DerivativeSecantExplorer />}
                     </section>
                   ))}
