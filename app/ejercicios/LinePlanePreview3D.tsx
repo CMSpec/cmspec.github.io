@@ -161,10 +161,11 @@ export default function LinePlanePreview3D({ points, vectors }: { points: [numbe
         {vectors && <><span><i style={{ background: "#7155b5" }} /> u = A − P</span><span><i style={{ background: "#d47721" }} /> v = B − P</span></>}
       </div>
       <label className="line-plane-slider">
-        <span>Selecciona T · Q = r(T)</span>
-        <input type="range" min="-2" max="2" step="0.05" value={parameter} onChange={(event) => setParameter(Number(event.target.value))} />
+        <span>Selecciona T</span>
+        <input type="range" min="-2" max="2" step="0.05" value={parameter} aria-describedby="line-parameter-explanation" onChange={(event) => setParameter(Number(event.target.value))} />
         <output>T = {parameter.toFixed(2)}</output>
       </label>
+      <p id="line-parameter-explanation">Para el T seleccionado, el punto correspondiente es Q = r(T). Al variar T en todos los números reales, se recorren todos los puntos de la recta. Este deslizador muestra el tramo entre T = −2 y T = 2.</p>
       <p className="line-plane-prompt">Observa: ¿qué dos direcciones contenidas en el plano podrías construir con los elementos visibles?</p>
     </section>
   );
