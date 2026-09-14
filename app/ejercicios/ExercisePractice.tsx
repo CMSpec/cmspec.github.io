@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { Exercise } from "../../content/exercises";
 import { sitePath } from "../../lib/site-path";
+import LinePlanePreview3D from "./LinePlanePreview3D";
 
 type PointValues = [string, string, string];
 
@@ -131,6 +132,7 @@ export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
                 {index < openHints && <p>{hint}</p>}
               </div>
               {exercise.slug === "plano-que-contiene-una-recta" && index === 0 && openHints >= 1 && <LinePointsCheckpoint />}
+              {exercise.slug === "plano-que-contiene-una-recta" && index === 1 && openHints >= 2 && <LinePlanePreview3D />}
             </div>
           ))}
         </section>
