@@ -166,9 +166,12 @@ export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
   }, [completed, draft, storageKey]);
 
   return (
-    <div className="practice-layout">
+    <div className={`practice-layout${exercise.slug === "plano-que-contiene-una-recta" && openHints >= 2 ? " has-fixed-preview" : ""}`}>
       <aside className="practice-context">
         <a href={sitePath("/ejercicios")}>← Todos los ejercicios</a>
+        {exercise.slug === "plano-que-contiene-una-recta" && openHints >= 2 && <LinePlanePreview3D points={points} vectors={vectors} normal={normal} />}
+        <details className="practice-theory" open={!(exercise.slug === "plano-que-contiene-una-recta" && openHints >= 2)}>
+        <summary>Materia relacionada y datos del ejercicio</summary>
         <p>ANTES DE COMENZAR</p>
         <h2>Materia relacionada</h2>
         <nav>
@@ -181,6 +184,7 @@ export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
           <div><dt>Tiempo sugerido</dt><dd>{exercise.estimatedTime}</dd></div>
           <div><dt>Origen</dt><dd>{exercise.collection}</dd></div>
         </dl>
+        </details>
       </aside>
 
       <article className="practice-sheet">
@@ -211,7 +215,6 @@ export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
               {exercise.slug === "plano-que-contiene-una-recta" && index === 0 && openHints >= 1 && <LinePointsCheckpoint onPointsChange={value => { setPoints(value); setVectors(null); setNormal(null); }} />}
               {exercise.slug === "plano-que-contiene-una-recta" && index === 1 && openHints >= 2 && <PlaneVectorsCheckpoint key={JSON.stringify(points)} points={points} vectors={vectors} setVectors={value => { setVectors(value); setNormal(null); }} />}
               {exercise.slug === "plano-que-contiene-una-recta" && index === 2 && openHints >= 3 && <NormalCheckpoint key={JSON.stringify(vectors)} vectors={vectors} onNormalChange={setNormal} />}
-              {exercise.slug === "plano-que-contiene-una-recta" && ((index === 1 && openHints === 2) || (index === 2 && openHints >= 3)) && <LinePlanePreview3D points={points} vectors={vectors} normal={normal} />}
             </div>
           ))}
         </section>
