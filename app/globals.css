@@ -1652,6 +1652,28 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 
 .exercise-detail-page { background: #f3f0e7; }
 .practice-layout { display: grid; grid-template-columns: minmax(230px,320px) minmax(0,850px); gap: clamp(35px,7vw,110px); max-width: 1280px; margin: 0 auto; padding: 105px 5vw 110px; }
+.intro-source-links { display:flex; flex-wrap:wrap; gap:12px 24px; padding:16px 0 25px; font:12px/1.5 var(--font-geist-mono); }
+.intro-course a { text-underline-offset:4px; }
+.intro-practice { margin:28px 0 38px; padding:24px; background:#f0f5ec; border-left:3px solid #698750; }
+.intro-practice > p { font:17px/1.65 Georgia,serif; }
+.intro-practice details { margin-top:12px; border-top:1px solid #ccd6c4; padding-top:12px; }
+.intro-practice summary { cursor:pointer; font:700 12px/1.5 var(--font-geist-mono); }
+.intro-practice details p { font:17px/1.65 Georgia,serif; }
+.intro-explorer { margin:25px 0; padding:22px; background:#edf4f3; border:1px solid #c7d7d4; }
+.intro-explorer h5 { margin:0 0 18px; font:24px/1.3 Georgia,serif; }
+.intro-explorer p { font:15px/1.6 Georgia,serif; }
+.intro-controls { display:flex; flex-wrap:wrap; gap:20px; margin-bottom:20px; }
+.intro-controls label { display:flex; align-items:center; gap:8px; font:14px/1.5 var(--font-geist-mono); }
+.intro-table-scroll { overflow-x:auto; }
+.intro-explorer table { border-collapse:collapse; width:100%; min-width:360px; text-align:center; }
+.intro-explorer caption { text-align:left; font-size:12px; padding-bottom:12px; }
+.intro-explorer td,.intro-explorer th { padding:10px; border-bottom:1px solid #b9ceca; }
+.intro-explorer tr.is-selected { background:#244d56; color:white; }
+.intro-angle { display:grid; gap:12px; font:14px var(--font-geist-mono); }
+.intro-angle input { width:100%; accent-color:#254b56; }
+.intro-editorial-note { margin-top:45px; padding:24px 0; border-top:1px solid var(--line); font:15px/1.7 Georgia,serif; }
+.intro-editorial-note h3 { font:26px Georgia,serif; }
+@media(max-width:600px) { .intro-practice,.intro-explorer { padding:17px; } .intro-course .course-math { overflow-x:auto; } }
 .practice-context { position: sticky; top: 92px; align-self: start; }
 .practice-theory > summary { cursor:pointer; font-size:12px; padding:12px 0; }
 .practice-layout:not(.has-fixed-preview) .practice-theory > summary { display:none; }

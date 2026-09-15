@@ -1,5 +1,16 @@
 export const courseNotes = [
   {
+    number: "06",
+    title: "Introducción a las Matemáticas",
+    description: "Lógica, ecuaciones, inecuaciones, funciones, trigonometría y vectores, con ejercicios guiados.",
+    subtitle: "Fundamentos para entrar al cálculo y al álgebra lineal",
+    authors: "CMSpec · Material de clases",
+    published: "15 septiembre 2026",
+    modified: "15 septiembre 2026",
+    href: "/cursos/introduccion-matematicas",
+    formula: "x → f(x)",
+  },
+  {
     number: "01",
     title: "Álgebra Lineal",
     description: "Vectores, matrices, sistemas, espacios vectoriales, transformaciones y cambios de base.",
