@@ -1652,6 +1652,8 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 
 .exercise-detail-page { background: #f3f0e7; }
 .practice-layout { display: grid; grid-template-columns: minmax(230px,320px) minmax(0,850px); gap: clamp(35px,7vw,110px); max-width: 1280px; margin: 0 auto; padding: 105px 5vw 110px; }
+.intro-course .course-article-layout { max-width:1030px; grid-template-columns:minmax(0,900px); }
+@media(min-width:601px) { .intro-course .course-masthead { padding-left:calc(clamp(230px,19vw,290px) + 30px); padding-right:30px; } .intro-course .course-article-layout { max-width:none; margin-left:clamp(230px,19vw,290px); } }
 .intro-source-links { display:flex; flex-wrap:wrap; gap:12px 24px; padding:16px 0 25px; font:12px/1.5 var(--font-geist-mono); }
 .intro-course a { text-underline-offset:4px; }
 .intro-practice { margin:28px 0 38px; padding:24px; background:#f0f5ec; border-left:3px solid #698750; }
