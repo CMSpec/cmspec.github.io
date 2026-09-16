@@ -3,6 +3,7 @@ import katex from "katex";
 import SiteHeader from "../../_components/SiteHeader";
 import CourseIndex from "../_components/CourseIndex";
 import { introductoryChapters } from "../../../content/courses/introductory-mathematics";
+import { handwrittenNotes, handwrittenNoteCount } from "../../../content/courses/introductory-handwritten-notes";
 import { sitePath } from "../../../lib/site-path";
 import { FunctionNotationDiagram } from "../calculo-diferencial/FunctionConceptExplorers";
 import { LogicExplorer, UnitCircleExplorer } from "./IntroExplorers";
@@ -29,6 +30,7 @@ export default function IntroductoryMathematicsPage() {
       <section className="course-reader" aria-labelledby="intro-reader-title">
         <header className="reader-heading"><p>APRENDER DESDE LOS FUNDAMENTOS</p><h2 id="intro-reader-title">Del lenguaje a las ideas.</h2><p>Una adaptación de las clases de lógica, ecuaciones, inecuaciones, funciones, trigonometría y vectores. Cada unidad reúne conceptos, ejemplos y ejercicios con ayuda progresiva.</p></header>
         <div className="differential-visual-note"><span>RUTA DE APRENDIZAJE</span><strong>comprender → representar → resolver → comprobar</strong><p>Lee la idea, explora un ejemplo y ensaya una respuesta propia. Las pistas y las soluciones se abren por separado.</p></div>
+        <aside className="intro-manuscript-intro"><h3>También están las explicaciones escritas a mano</h3><p>{handwrittenNoteCount} apuntes de clase adaptados a texto, junto al tema que explican. Abre cada desarrollo para seguir el razonamiento y consultar la página manuscrita. Las correcciones y los pasos completados se indican explícitamente; no es una transcripción literal de todos los trazos.</p></aside>
         <div className="reading-chapters">{introductoryChapters.map((chapter,i)=><details className={`reading-chapter chapter-tone-${i%4+1}`} id={`lectura-intro-${i+1}`} key={chapter.slug} open={i===0}>
           <summary><span>{String(i+1).padStart(2,"0")}</span><h3>{chapter.title}</h3><i aria-hidden="true">+</i></summary>
           <article className="chapter-article">
@@ -37,6 +39,10 @@ export default function IntroductoryMathematicsPage() {
               <h4>{section.title}</h4>
               <div className="latex-content">{section.blocks.map((block,k)=><div className={`${styles[block.kind]}_thmwrapper`} key={k}><div className={`${styles[block.kind]}_thmheading`}><span>{names[block.kind]}</span><span> · {block.title}</span></div><div className={`${styles[block.kind]}_thmcontent`}><p><MathText text={block.text}/></p>{block.tex && <div className="course-math" dangerouslySetInnerHTML={{__html:katex.renderToString(block.tex,{displayMode:true,output:"mathml",throwOnError:true})}}/>}</div></div>)}</div>
               {section.visual === "functions" && <FunctionNotationDiagram/>}{section.visual === "logic" && <LogicExplorer/>}{section.visual === "circle" && <UnitCircleExplorer/>}
+              {chapter.annotated && handwrittenNotes[`${chapter.slug}-${j+1}`] && <div className="intro-handwritten-notes"><p className="practice-label">APUNTES DE CLASE · DEL MANUSCRITO AL RAZONAMIENTO</p>{handwrittenNotes[`${chapter.slug}-${j+1}`].map((note)=><details className="intro-handwritten-note" key={note.title}>
+                <summary><span>{note.title}</span><span className="intro-note-action">Ver desarrollo</span></summary>
+                <div className="intro-note-body"><ol>{note.steps.map((step,l)=><li key={l}><MathText text={step}/></li>)}</ol>{note.correction && <p className="intro-note-correction"><strong>Nota de la adaptación: </strong>{note.correction}</p>}<a aria-label={`Consultar el manuscrito: ${note.title}, página ${note.pages[0]}`} href={`${sitePath(`/cursos/introduccion-matematicas/${chapter.annotated}`)}#page=${note.pages[0]}`} target="_blank" rel="noreferrer">Ver manuscrito · {note.pages[0]===note.pages[1]?`p. ${note.pages[0]}`:`pp. ${note.pages[0]}–${note.pages[1]}`} del PDF ↗</a></div>
+              </details>)}</div>}
               <div className="intro-practice"><p className="practice-label">PRÁCTICA · {i+1}.{j+1}</p><p><MathText text={section.exercise}/></p><details><summary>Ver pista</summary><p><MathText text={section.hint}/></p></details><details><summary>Ver solución</summary><p><MathText text={section.solution}/></p></details></div>
             </section>)}
           </article>

@@ -1734,3 +1734,23 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
   .practice-layout { padding-inline: 22px; }.practice-context { display: block; }.practice-context dl { margin-top: 34px; }
   .practice-sheet > header > p { margin-bottom: 30px; }.practice-section-heading { align-items: start; }
 }
+.intro-manuscript-intro {
+  margin: 1.5rem 0 2rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid #8a663d;
+  background: #faf6ee;
+  line-height: 1.7;
+}
+.intro-manuscript-intro h3 { margin: 0 0 .5rem; font-size: 1.15rem; }
+.intro-manuscript-intro p { margin: 0; }
+.intro-handwritten-notes { margin: 1.75rem 0; }
+.intro-handwritten-note { border: 1px solid #ddd5c7; border-radius: 6px; margin: .65rem 0; background: #fffdf8; }
+.intro-handwritten-note > summary { cursor: pointer; padding: 1rem 1.15rem; line-height: 1.5; }
+.intro-handwritten-note > summary > span:first-child { font-weight: 600; }
+.intro-note-action { display: block; margin: .25rem 0 0 1rem; font-size: .78rem; color: #6d5a40; }
+.intro-handwritten-note[open] .intro-note-action { display: none; }
+.intro-note-body { padding: 0 1.15rem 1.25rem; line-height: 1.8; overflow-wrap: anywhere; }
+.intro-note-body ol { padding-left: 1.5rem; list-style: decimal; }
+.intro-note-body li { padding-left: .3rem; margin: .8rem 0; }
+.intro-note-body a { font-size: .85rem; text-underline-offset: 3px; }
+.intro-note-correction { border-left: 3px solid #a77638; padding: .75rem 1rem; background: #f4ecd9; font-size: .9rem; }
