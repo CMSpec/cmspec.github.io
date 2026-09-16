@@ -1,6 +1,6 @@
 export type IntroBlock = { kind: "definition" | "example" | "remark"; title: string; text: string; tex?: string };
 export type IntroSection = { title: string; blocks: IntroBlock[]; exercise: string; hint: string; solution: string; visual?: "functions" | "circle" | "logic" };
-export type IntroChapter = { title: string; slug: string; source: string; annotated?: string; sections: IntroSection[] };
+export type IntroChapter = { title: string; slug: string; sections: IntroSection[] };
 const block = (kind: IntroBlock["kind"], title: string, text: string, tex?: string): IntroBlock => ({ kind, title, text, tex });
 const d = (title: string, text: string, tex?: string) => block("definition", title, text, tex);
 const e = (title: string, text: string, tex?: string) => block("example", title, text, tex);
@@ -8,7 +8,7 @@ const r = (title: string, text: string, tex?: string) => block("remark", title, 
 const tex = String.raw;
 
 export const introductoryChapters: IntroChapter[] = [
-  { title: "Lógica y lenguaje matemático", slug: "logica", source: "Logica.pdf", sections: [
+  { title: "Lógica y lenguaje matemático", slug: "logica", sections: [
     { title: "Proposiciones y conectivos", visual: "logic", blocks: [
       d("Una afirmación con valor de verdad", "Una proposición es una afirmación que puede ser verdadera o falsa. Una pregunta no es una proposición. La frase «x es par» necesita un valor de x o un cuantificador para tener un valor de verdad."),
       d("Combinar afirmaciones", tex`La negación $\neg p$ cambia el valor de verdad; $p\land q$ exige que ambas sean verdaderas; $p\lor q$ exige al menos una. La disyunción matemática es inclusiva: admite que ambas sean verdaderas.`),
@@ -28,7 +28,7 @@ export const introductoryChapters: IntroChapter[] = [
       r("El orden importa", tex`$\forall x\in\mathbb R\ \exists y\in\mathbb R:y>x$ es verdadera: sirve $y=x+1$. En cambio, $\exists y\in\mathbb R\ \forall x\in\mathbb R:y>x$ es falsa: no existe un real mayor que todos los demás.`),
     ], exercise: tex`Niega $\forall x\in A\ \exists y\in A:y>x$.`, hint: "Intercambia cada cuantificador sin cambiar su orden y niega la desigualdad.", solution: tex`$\exists x\in A\ \forall y\in A:y\le x$. Existe un elemento de A que es mayor o igual que todos los demás.` },
   ] },
-  { title: "Ecuaciones y modelos algebraicos", slug: "ecuaciones", source: "Ecuaciones.pdf", annotated: "Ecuaciones_1.pdf", sections: [
+  { title: "Ecuaciones y modelos algebraicos", slug: "ecuaciones", sections: [
     { title: "Igualdades, incógnitas y restricciones", blocks: [
       d("Resolver una ecuación", "Consiste en encontrar todos los valores del dominio que hacen verdadera una igualdad. Puede no haber soluciones, haber una o varias, o cumplirse para todo el dominio."),
       d("Ecuaciones lineales", tex`Para $ax+b=0$, si $a\ne0$ la solución es $x=-b/a$. Si $a=0$, hay que distinguir $b=0$ (todos los valores) de $b\ne0$ (ninguno).`),
@@ -52,7 +52,7 @@ export const introductoryChapters: IntroChapter[] = [
       r("Construir un modelo", "Define la incógnita y sus unidades; traduce cada cantidad; escribe la relación; resuelve; comprueba que la respuesta tenga sentido en el contexto."),
     ], exercise: "En el curso A hay el doble de estudiantes que en C. Si pasan 8 de A a C, ambos cursos quedan con la misma cantidad. ¿Cuántos había en cada curso?", hint: "Llama x a la cantidad inicial en C. En A había 2x.", solution: tex`$2x-8=x+8$, por lo que $x=16$. Inicialmente había 32 estudiantes en A y 16 en C. Después del cambio quedan 24 en cada uno.` },
   ] },
-  { title: "Inecuaciones e intervalos", slug: "inecuaciones", source: "Inecuaciones.pdf", annotated: "Inecuaciones_1.pdf", sections: [
+  { title: "Inecuaciones e intervalos", slug: "inecuaciones", sections: [
     { title: "Orden y conjuntos solución", blocks: [
       d("Intervalos", tex`$(a,b)$ contiene los reales con $a<x<b$; $[a,b]$ incluye los extremos. Un paréntesis excluye y un corchete incluye. Los infinitos nunca se incluyen. La unión $\cup$ reúne alternativas; la intersección $\cap$ exige ambas condiciones.`),
       d("Operar desigualdades", "Sumar la misma cantidad conserva el orden. Multiplicar o dividir por un número positivo conserva el signo; por uno negativo lo invierte."),
@@ -74,7 +74,7 @@ export const introductoryChapters: IntroChapter[] = [
       r("No multiplicar a ciegas", "Multiplicar por un denominador de signo desconocido puede cambiar el sentido de la desigualdad. El estudio de signos evita perder casos."),
     ], exercise: tex`Resuelve $\dfrac{x-2}{x+1}\ge0$.`, hint: "Estudia los intervalos separados por −1 y 2. Decide por separado qué ocurre en cada extremo.", solution: tex`El cociente es positivo en $(-\infty,-1)$ y $(2,\infty)$; vale cero en 2 y no existe en −1. Solución: $(-\infty,-1)\cup[2,\infty)$.` },
   ] },
-  { title: "Funciones y sus gráficas", slug: "funciones", source: "funciones.pdf", annotated: "funciones-comentarios.pdf", sections: [
+  { title: "Funciones y sus gráficas", slug: "funciones", sections: [
     { title: "Regla, dominio y recorrido", visual: "functions", blocks: [
       d("Una salida por entrada", tex`Una función $f:A\to B$ asigna a cada $x\in A$ exactamente un valor $f(x)\in B$. A es el dominio; B, el conjunto de llegada. El recorrido contiene solamente las salidas que se alcanzan.`),
       r("Leer una gráfica", "Una relación es función de x si ninguna recta vertical corta su gráfica en más de un punto. Una circunferencia completa no cumple esta condición."),
@@ -96,7 +96,7 @@ export const introductoryChapters: IntroChapter[] = [
       e("Un modelo exponencial", tex`Si $N(t)=N_0e^{kt}$, entonces $N(0)=N_0$. Un k positivo describe crecimiento y uno negativo decrecimiento. La razón $N(t+1)/N(t)=e^k$ es constante.`),
     ], exercise: tex`Encuentra el dominio, el corte horizontal y la inversa de $f(x)=\log_2(x)-1$.`, hint: "Para el corte horizontal impón f(x) = 0; para la inversa, despeja x usando la definición de logaritmo.", solution: tex`Dominio $(0,\infty)$; corte en $(2,0)$. De $y+1=\log_2 x$ resulta $x=2^{y+1}$. Entonces $f^{-1}(x)=2^{x+1}$, con dominio $\mathbb R$ y recorrido $(0,\infty)$.` },
   ] },
-  { title: "Trigonometría", slug: "trigonometria", source: "F_Trigonometrica.pdf", annotated: "F.-Trigonometrica-comentarios-.pdf", sections: [
+  { title: "Trigonometría", slug: "trigonometria", sections: [
     { title: "Ángulos, radianes y triángulos", blocks: [
       d("Medir una rotación", tex`Una vuelta completa equivale a $360^\circ=2\pi$ radianes. Si un arco tiene longitud s y el radio es r, su ángulo en radianes es $s/r$. El sentido antihorario es positivo.`),
       d("Razones de un ángulo agudo", "En un triángulo rectángulo, seno es cateto opuesto dividido por hipotenusa; coseno es adyacente dividido por hipotenusa; tangente es opuesto dividido por adyacente."),
@@ -126,7 +126,7 @@ export const introductoryChapters: IntroChapter[] = [
       r("Elegir una herramienta", "Si conoces un par lado–ángulo opuesto, considera la ley de senos. Si conoces dos lados y su ángulo comprendido, usa la ley de cosenos. Revisa si los datos permiten más de un triángulo."),
     ], exercise: tex`Dos lados miden 3 y 4 y forman un ángulo de $60^\circ$. ¿Cuánto mide el tercero?`, hint: "Aplica la ley de cosenos con el ángulo comprendido.", solution: tex`$a^2=3^2+4^2-2\cdot3\cdot4\cos60^\circ=13$. El tercer lado mide $\sqrt{13}$.` },
   ] },
-  { title: "Vectores en el plano y el espacio", slug: "vectores", source: "Vectores.pdf", annotated: "Vectores-comentarios.pdf", sections: [
+  { title: "Vectores en el plano y el espacio", slug: "vectores", sections: [
     { title: "Puntos, desplazamientos y magnitud", blocks: [
       d("Del punto inicial al final", tex`Un vector describe un desplazamiento. Si parte en $P=(x_1,y_1)$ y termina en $Q=(x_2,y_2)$, sus componentes son $Q-P=(x_2-x_1,y_2-y_1)$. Trasladarlo sin cambiar dirección, sentido ni longitud representa el mismo vector.`),
       d("Norma", "La longitud se calcula mediante Pitágoras.", tex`\|(a,b)\|=\sqrt{a^2+b^2},\qquad \|(a,b,c)\|=\sqrt{a^2+b^2+c^2}`),

@@ -1,0 +1,61 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import test from "node:test";
+import katex from "katex";
+import { introductoryChapters } from "../content/courses/introductory-mathematics.ts";
+import { introductoryAlgebraExtension } from "../content/courses/introductory-algebra-extension.ts";
+import { handwrittenNotes, handwrittenNoteCount } from "../content/courses/introductory-handwritten-notes.ts";
+
+const chapters = [...introductoryChapters, ...introductoryAlgebraExtension];
+
+test("el curso tiene 12 unidades, 57 prácticas completas y anclas únicas", () => {
+  assert.equal(chapters.length, 12);
+  assert.equal(chapters.flatMap(c => c.sections).length, 57);
+  assert.equal(new Set(chapters.map(c => c.slug)).size, chapters.length);
+  for (const chapter of chapters) {
+    for (const section of chapter.sections) {
+      for (const key of ["title", "exercise", "hint", "solution"]) assert.ok(section[key]?.trim());
+      assert.ok(section.blocks.length >= 2);
+    }
+  }
+  for (const section of introductoryAlgebraExtension.flatMap(c => c.sections)) assert.ok(section.blocks.length >= 3);
+});
+
+test("todas las fórmulas se pueden renderizar y los delimitadores están balanceados", () => {
+  const texts = chapters.flatMap(c => c.sections.flatMap(s => [s.exercise, s.hint, s.solution, ...s.blocks.map(b => b.text)]));
+  texts.push(...Object.values(handwrittenNotes).flatMap(notes => notes.flatMap(n => n.steps)));
+  for (const text of texts) {
+    assert.equal((text.match(/\$/g) ?? []).length % 2, 0, text);
+    for (const match of text.matchAll(/\$([^$]+)\$/g)) katex.renderToString(match[1], { throwOnError: true });
+  }
+  for (const block of chapters.flatMap(c => c.sections.flatMap(s => s.blocks))) {
+    if (block.tex) katex.renderToString(block.tex, { throwOnError: true });
+  }
+});
+
+test("se conservan las explicaciones previas y corresponden a secciones existentes", () => {
+  const anchors = new Set(chapters.flatMap(c => c.sections.map((_, i) => `${c.slug}-${i + 1}`)));
+  assert.equal(handwrittenNoteCount, 46);
+  for (const key of Object.keys(handwrittenNotes)) assert.ok(anchors.has(key), key);
+});
+
+test("la página publicada no ofrece referencias ni enlaces a PDF", () => {
+  const html = readFileSync(new URL("../out/cursos/introduccion-matematicas/index.html", import.meta.url), "utf8");
+  assert.doesNotMatch(html, /\.pdf(?:["#?]|&quot;)|\bPDF\b|Consultar el manuscrito|Ver manuscrito|Apuntes ampliados/);
+  assert.equal((html.match(/class="intro-handwritten-note"/g) ?? []).length, 46);
+  assert.equal((html.match(/class="intro-practice"/g) ?? []).length, 57);
+  for (const chapter of chapters) {
+    for (let i = 1; i <= chapter.sections.length; i++) assert.ok(html.includes(`id="intro-${chapter.slug}-${i}"`));
+  }
+});
+
+test("cálculos numéricos de los ejemplos nuevos", () => {
+  assert.equal(Array.from({ length: 19 }, (_, k) => 3 * (k + 7) - 2).reduce((a, b) => a + b), 874);
+  assert.equal(Array.from({ length: 43 }, (_, k) => 7 * (k + 15)).reduce((a, b) => a + b), 10836);
+  assert.equal(Array.from({ length: 8 }, (_, k) => 6 * 2 ** k).reduce((a, b) => a + b), 1530);
+  for (const x of [-5, -3, 0, 1, 3, 5]) {
+    assert.equal((x*x+2*x-1)*(x*x-3*x+11)-37*x+14, x**4-x**3+4*x*x-12*x+3);
+    assert.equal((2*x+1)*(x*x-x-1), 2*x**3-x*x-3*x-1);
+    assert.equal((x-2)*(x*x+2*x-1), x**3-5*x+2);
+  }
+});

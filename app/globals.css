@@ -1654,7 +1654,6 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .practice-layout { display: grid; grid-template-columns: minmax(230px,320px) minmax(0,850px); gap: clamp(35px,7vw,110px); max-width: 1280px; margin: 0 auto; padding: 105px 5vw 110px; }
 .intro-course .course-article-layout { max-width:1030px; grid-template-columns:minmax(0,900px); }
 @media(min-width:601px) { .intro-course .course-masthead { padding-left:calc(clamp(230px,19vw,290px) + 30px); padding-right:30px; } .intro-course .course-article-layout { max-width:none; margin-left:clamp(230px,19vw,290px); } }
-.intro-source-links { display:flex; flex-wrap:wrap; gap:12px 24px; padding:16px 0 25px; font:12px/1.5 var(--font-geist-mono); }
 .intro-course a { text-underline-offset:4px; }
 .intro-practice { margin:28px 0 38px; padding:24px; background:#f0f5ec; border-left:3px solid #698750; }
 .intro-practice > p { font:17px/1.65 Georgia,serif; }
@@ -1743,6 +1742,7 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 }
 .intro-manuscript-intro h3 { margin: 0 0 .5rem; font-size: 1.15rem; }
 .intro-manuscript-intro p { margin: 0; }
+.intro-manuscript-intro p + p { margin-top: .8rem; }
 .intro-handwritten-notes { margin: 1.75rem 0; }
 .intro-handwritten-note { border: 1px solid #ddd5c7; border-radius: 6px; margin: .65rem 0; background: #fffdf8; }
 .intro-handwritten-note > summary { cursor: pointer; padding: 1rem 1.15rem; line-height: 1.5; }
@@ -1752,5 +1752,4 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .intro-note-body { padding: 0 1.15rem 1.25rem; line-height: 1.8; overflow-wrap: anywhere; }
 .intro-note-body ol { padding-left: 1.5rem; list-style: decimal; }
 .intro-note-body li { padding-left: .3rem; margin: .8rem 0; }
-.intro-note-body a { font-size: .85rem; text-underline-offset: 3px; }
 .intro-note-correction { border-left: 3px solid #a77638; padding: .75rem 1rem; background: #f4ecd9; font-size: .9rem; }
