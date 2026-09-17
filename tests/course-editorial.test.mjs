@@ -7,6 +7,6 @@ test("los apuntes se leen sin referencias a clases o manuscritos", () => {
     const html = readFileSync(`out/cursos/${course}/index.html`, "utf8");
     const text = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
       .replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
-    assert.doesNotMatch(text, /\bclases\b|\bclase\b(?!\s+C\s*1)|manuscrit[oa]s?|pizarra/i, course);
+    assert.doesNotMatch(text, /\bclases\b|\bclase\b(?!\s+C\s*1)|manuscrit[oa]s?|pizarra|\bse (?:vio|vió) en\b/i, course);
   }
 });

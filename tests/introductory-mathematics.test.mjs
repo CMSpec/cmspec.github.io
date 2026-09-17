@@ -5,6 +5,7 @@ import katex from "katex";
 import { introductoryChapters } from "../content/courses/introductory-mathematics.ts";
 import { introductoryAlgebraExtension } from "../content/courses/introductory-algebra-extension.ts";
 import { handwrittenNotes, handwrittenNoteCount } from "../content/courses/introductory-handwritten-notes.ts";
+import { sourceDevelopments } from "../content/courses/introductory-source-developments.ts";
 
 const chapters = [...introductoryChapters, ...introductoryAlgebraExtension];
 
@@ -56,6 +57,7 @@ test("el curso tiene 12 unidades, 64 prácticas completas y anclas únicas", () 
 test("todas las fórmulas se pueden renderizar y los delimitadores están balanceados", () => {
   const texts = chapters.flatMap(c => c.sections.flatMap(s => [s.exercise, s.hint, s.solution, ...s.blocks.map(b => b.text)]));
   texts.push(...Object.values(handwrittenNotes).flatMap(notes => notes.flatMap(n => n.steps)));
+  texts.push(...Object.values(sourceDevelopments).flatMap(notes => notes.flatMap(n => n.steps)));
   for (const text of texts) {
     assert.equal((text.match(/\$/g) ?? []).length % 2, 0, text);
     for (const match of text.matchAll(/\$([^$]+)\$/g)) katex.renderToString(match[1], { throwOnError: true });
@@ -63,6 +65,58 @@ test("todas las fórmulas se pueden renderizar y los delimitadores están balanc
   for (const block of chapters.flatMap(c => c.sections.flatMap(s => s.blocks))) {
     if (block.tex) katex.renderToString(block.tex, { throwOnError: true });
   }
+});
+
+test("los desarrollos ampliados conservan su referencia editorial sin publicar documentos", () => {
+  const anchors = new Set(chapters.flatMap(c => c.sections.map((_, i) => `${c.slug}-${i + 1}`)));
+  const html = readFileSync(new URL("../out/cursos/introduccion-matematicas/index.html", import.meta.url), "utf8");
+  const all = Object.values(sourceDevelopments).flat();
+  assert.ok(all.length >= 40);
+  for (const [key, developments] of Object.entries(sourceDevelopments)) {
+    assert.ok(anchors.has(key), key);
+    assert.equal(new Set(developments.map(d => d.title)).size, developments.length);
+    for (const d of developments) {
+      assert.ok(d.source.endsWith(".pdf"));
+      assert.ok(d.pages[0] >= 1 && d.pages[1] >= d.pages[0]);
+      assert.ok(d.steps.length >= 4, d.title);
+      assert.ok(html.includes(d.title), d.title);
+      assert.ok(!html.includes(d.source), d.source);
+    }
+  }
+  assert.equal((html.match(/class="intro-handwritten-note intro-source-development"/g) ?? []).length, all.length);
+  for (let i = 1; i <= 6; i++) assert.ok(sourceDevelopments[`induccion-sumatorias-${i}`]);
+  assert.match(sourceDevelopments["induccion-sumatorias-1"][0].title, /3ⁿ−1/);
+  assert.ok(sourceDevelopments["induccion-sumatorias-2"][0].steps.length >= 10);
+  assert.ok(sourceDevelopments["trigonometria-3"].some(d => d.title.includes("Prostaféresis")));
+});
+
+test("comprobaciones de los desarrollos recuperados", () => {
+  for (let n = 1; n <= 12; n++) {
+    assert.equal((3 ** n - 1) % 2, 0);
+    const N = BigInt(n);
+    assert.equal((11n ** N - 8n ** N) % 3n, 0n);
+    assert.ok(3 ** n > n * n);
+    const a = (3 ** (n + 1) - 3) / (3 ** (n + 1) - 1);
+    const next = (3 ** (n + 2) - 3) / (3 ** (n + 2) - 1);
+    assert.ok(Math.abs(3 / (4 - a) - next) < 1e-12);
+  }
+  assert.equal(1470 * 465, 683550);
+  assert.equal(3 * 42 * 43 * 85 / 6, 76755);
+  assert.equal(180 - 396 + 30 * (1036 / 5), 6000);
+  for (const x of [-5, -4, -2, 0, 2, 4, 7]) {
+    assert.equal(Math.abs(Math.abs(x + 1) - 2) === 1, [-4, -2, 0, 2].includes(x));
+    assert.equal(4*x**4-4*x**3-5*x*x+x+1, 4*(x-.5)*(x+.5)*(x*x-x-1));
+    assert.equal(2*x**3-13*x*x+26*x-10, (x*x-6*x+10)*(2*x-1));
+    assert.equal(10*x*x-8*x-9, 3*(x-2)*(2*x-1)+(x+3)*(2*x-1)+2*(x+3)*(x-2));
+    assert.equal(x**4-10*x*x+3*x+1, (x*x-6)*(x*x-4)+3*x-23);
+  }
+  for (const angle of [0, .2, 1, 2, 3, 4]) {
+    const x = -41/5 + 4*Math.cos(angle), y = 12/5*Math.sin(angle);
+    assert.ok(Math.abs(Math.hypot(x+5,y)/(Math.abs(5*x+16)/5)-4/5) < 1e-12);
+  }
+  assert.equal(126*3/32, 189/16);
+  assert.equal(-126/48, -21/8);
+  assert.equal(84/216, 7/18);
 });
 
 test("se conservan las explicaciones previas y corresponden a secciones existentes", () => {

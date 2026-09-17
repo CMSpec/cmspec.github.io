@@ -38,7 +38,7 @@ export const introductoryAlgebraExtension: IntroChapter[] = [
   { title: "Inducción, sucesiones y sumatorias", slug: "induccion-sumatorias", sections: [
     s("Principio de inducción matemática", [
       d("Del primer caso a todos los siguientes", t`Para demostrar P(n) para todo entero $n\ge n_0$, verifica P($n_0$). Luego, para un k arbitrario con $k\ge n_0$, supone P(k) y demuestra P(k+1). La base inicia la cadena y el paso inductivo permite continuarla.`),
-      e("Divisibilidad paso a paso", t`Probemos que $11^n-8^n$ es divisible por 3 para $n\ge1$. Base: $11-8=3$. Hipótesis: $11^k-8^k=3m$ para algún entero m. Entonces $11^{k+1}-8^{k+1}=8(11^k-8^k)+3\cdot11^k=3(8m+11^k)$. Esto prueba el siguiente caso.`),
+      e("El primer ejemplo: paridad", t`Queremos probar que $3^n-1$ es par para todo $n\ge1$. El primer caso es $3-1=2$. Si $3^k-1=2m$, separar $3=2+1$ permite escribir $3^{k+1}-1=2\cdot3^k+(3^k-1)=2(3^k+m)$. El desarrollo completo distingue la base, la hipótesis y el objetivo antes de concluir.`),
       r("No suponer lo que se quiere probar", "La hipótesis es P(k), no P(k+1). Comprobar varios números sirve para conjeturar, pero no reemplaza la demostración para un k arbitrario."),
     ], t`Demuestra por inducción que $1+3+\cdots+(2n-1)=n^2$ para $n\ge1$.`, t`Al pasar de k a k+1 se agrega $2k+1$.`, t`Base: $1=1^2$. Si los primeros k impares suman $k^2$, al agregar el siguiente resulta $k^2+2k+1=(k+1)^2$. Así se cumple para todo $n\ge1$.`),
     s("Sucesiones explícitas y por recurrencia", [
