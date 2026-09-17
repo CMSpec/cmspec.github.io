@@ -4,8 +4,9 @@ import SiteHeader from "../../_components/SiteHeader";
 import CourseIndex from "../_components/CourseIndex";
 import { introductoryChapters } from "../../../content/courses/introductory-mathematics";
 import { introductoryAlgebraExtension } from "../../../content/courses/introductory-algebra-extension";
-import { handwrittenNotes, handwrittenNoteCount } from "../../../content/courses/introductory-handwritten-notes";
+import { handwrittenNotes } from "../../../content/courses/introductory-handwritten-notes";
 import { sourceDevelopments } from "../../../content/courses/introductory-source-developments";
+import { introductoryOpenings } from "../../../content/courses/introductory-openings";
 import { sitePath } from "../../../lib/site-path";
 import { FunctionNotationDiagram } from "../calculo-diferencial/FunctionConceptExplorers";
 import { LogicExplorer, UnitCircleExplorer } from "./IntroExplorers";
@@ -20,7 +21,6 @@ const names = {definition:"Definición",example:"Ejemplo",remark:"Observación"}
 const styles = {definition:"defin",example:"ejem",remark:"rmk"};
 const chapters = [...introductoryChapters, ...introductoryAlgebraExtension];
 const practiceCount = chapters.reduce((total, chapter) => total + chapter.sections.length, 0);
-const developmentCount = handwrittenNoteCount + Object.values(sourceDevelopments).reduce((sum, items) => sum + items.length, 0);
 export default function IntroductoryMathematicsPage() {
   const units = chapters.map((chapter,i)=>({number:String(i+1).padStart(2,"0"),title:chapter.title,href:`#lectura-intro-${i+1}`,items:chapter.sections.map((section,j)=>({title:section.title,href:`#intro-${chapter.slug}-${j+1}`}))}));
   return <main className="course-page intro-course">
@@ -37,18 +37,20 @@ export default function IntroductoryMathematicsPage() {
       <section className="course-reader" aria-labelledby="intro-reader-title">
         <header className="reader-heading"><p>APRENDER DESDE LOS FUNDAMENTOS</p><h2 id="intro-reader-title">Del lenguaje a las ideas.</h2><p>Un curso de fundamentos y álgebra, con conceptos, ejemplos desarrollados y ejercicios con ayuda progresiva. Todo el contenido se estudia aquí mismo.</p></header>
         <div className="differential-visual-note"><span>RUTA DE APRENDIZAJE</span><strong>comprender → representar → resolver → comprobar</strong><p>Lee la idea, explora un ejemplo y ensaya una respuesta propia. Las pistas y las soluciones se abren por separado.</p></div>
-        <aside className="intro-manuscript-intro"><h3>Explicaciones paso a paso</h3><p>{developmentCount} desarrollos complementarios integrados junto a los conceptos. Ábrelos para seguir el razonamiento sin salir del curso. Cada desarrollo incluye los pasos intermedios y las comprobaciones necesarias.</p><p>Las unidades 7 a 12 amplían el recorrido con los nuevos temas. Puedes estudiar conjuntos después de lógica; inducción y progresiones después de ecuaciones; complejos después de trigonometría; y geometría analítica después de funciones y vectores.</p></aside>
+        <aside className="intro-manuscript-intro"><h3>Leer el razonamiento completo</h3><p>Las introducciones, los comentarios y los pasos intermedios forman parte de la lectura. Solo las pistas y las soluciones de las prácticas se abren por separado.</p><p>Puedes estudiar conjuntos después de lógica; inducción y progresiones después de ecuaciones; complejos después de trigonometría; y geometría analítica después de funciones y vectores.</p></aside>
         <div className="reading-chapters">{chapters.map((chapter,i)=><details className={`reading-chapter chapter-tone-${i%4+1}`} id={`lectura-intro-${i+1}`} key={chapter.slug} open={i===0}>
           <summary><span>{String(i+1).padStart(2,"0")}</span><h3>{chapter.title}</h3><i aria-hidden="true">+</i></summary>
           <article className="chapter-article">
             {chapter.sections.map((section,j)=><section className="chapter-section" id={`intro-${chapter.slug}-${j+1}`} key={section.title}>
               <h4>{section.title}</h4>
-              <div className="latex-content">{section.blocks.map((block,k)=><div className={`${styles[block.kind]}_thmwrapper`} key={k}><div className={`${styles[block.kind]}_thmheading`}><span>{names[block.kind]}</span><span> · {block.title}</span></div><div className={`${styles[block.kind]}_thmcontent`}><p><MathText text={block.text}/></p>{block.tex && <div className="course-math" dangerouslySetInnerHTML={{__html:katex.renderToString(block.tex,{displayMode:true,output:"mathml",throwOnError:true})}}/>}</div></div>)}</div>
-              {sourceDevelopments[`${chapter.slug}-${j+1}`] && <div className="intro-handwritten-notes"><p className="practice-label">DESARROLLOS COMPLETOS</p>{sourceDevelopments[`${chapter.slug}-${j+1}`].map(development => <details className="intro-handwritten-note intro-source-development" key={development.title}>
-                <summary><span>{development.title}</span><span className="intro-note-action">Ver desarrollo</span></summary>
-                <div className="intro-note-body"><ol>{development.steps.map((step, index) => <li key={index}><MathText text={step}/></li>)}</ol></div>
-              </details>)}</div>}
-              {section.visual === "functions" && <FunctionNotationDiagram/>}{section.visual === "logic" && <LogicExplorer/>}{section.visual === "circle" && <UnitCircleExplorer/>}
+              {introductoryOpenings[`${chapter.slug}-${j+1}`] && <div className="intro-source-opening">{introductoryOpenings[`${chapter.slug}-${j+1}`].paragraphs.map((paragraph,k)=><p key={k}><MathText text={paragraph}/></p>)}</div>}
+              {section.visual === "functions" && <FunctionNotationDiagram/>}
+              <div className="latex-content">{section.blocks.filter(block=>!introductoryOpenings[`${chapter.slug}-${j+1}`]?.replaces.includes(block.title)).map((block,k)=><div className={`${styles[block.kind]}_thmwrapper`} key={k}><div className={`${styles[block.kind]}_thmheading`}><span>{names[block.kind]}</span><span> · {block.title}</span></div><div className={`${styles[block.kind]}_thmcontent`}><p><MathText text={block.text}/></p>{block.tex && <div className="course-math" dangerouslySetInnerHTML={{__html:katex.renderToString(block.tex,{displayMode:true,output:"mathml",throwOnError:true})}}/>}</div></div>)}</div>
+              {sourceDevelopments[`${chapter.slug}-${j+1}`] && <div className="intro-handwritten-notes">{sourceDevelopments[`${chapter.slug}-${j+1}`].map(development => <section className="intro-handwritten-note intro-source-development" key={development.title}>
+                <h5>{development.title}</h5>
+                <div className="intro-note-body">{development.steps.map((step, index) => <p key={index}><MathText text={step}/></p>)}</div>
+              </section>)}</div>}
+              {section.visual === "logic" && <LogicExplorer/>}{section.visual === "circle" && <UnitCircleExplorer/>}
               {chapter.slug === "polinomios" && section.title === "División larga y división sintética" && <><SyntheticDivisionExplorer/>
                 <aside className="synthetic-observations" aria-label="Observaciones sobre la división sintética">
                   <h5>Observaciones sobre la división sintética</h5>
@@ -61,10 +63,10 @@ export default function IntroductoryMathematicsPage() {
                 </aside>
               </>}
               {(section.visual === "complex-plane" || section.visual === "complex-geometry" || section.visual === "complex-roots") && <ComplexDiagrams variant={section.visual}/>}
-              {handwrittenNotes[`${chapter.slug}-${j+1}`] && <div className="intro-handwritten-notes"><p className="practice-label">EXPLICACIONES · PASO A PASO</p>{handwrittenNotes[`${chapter.slug}-${j+1}`].map((note)=><details className="intro-handwritten-note" key={note.title}>
-                <summary><span>{note.title}</span><span className="intro-note-action">Ver desarrollo</span></summary>
-                <div className="intro-note-body"><ol>{note.steps.map((step,l)=><li key={l}><MathText text={step}/></li>)}</ol>{note.correction && <p className="intro-note-correction"><strong>Nota de la adaptación: </strong>{note.correction}</p>}</div>
-              </details>)}</div>}
+              {handwrittenNotes[`${chapter.slug}-${j+1}`] && <div className="intro-handwritten-notes">{handwrittenNotes[`${chapter.slug}-${j+1}`].map((note)=><section className="intro-handwritten-note" key={note.title}>
+                <h5>{note.title}</h5>
+                <div className="intro-note-body">{note.steps.map((step,l)=><p key={l}><MathText text={step}/></p>)}{note.correction && <p className="intro-note-correction"><strong>Observación: </strong>{note.correction}</p>}</div>
+              </section>)}</div>}
               <div className="intro-practice"><p className="practice-label">PRÁCTICA · {i+1}.{j+1}</p><p><MathText text={section.exercise}/></p><details><summary>Ver pista</summary><p><MathText text={section.hint}/></p></details><details><summary>Ver solución</summary><p><MathText text={section.solution}/></p></details></div>
             </section>)}
           </article>

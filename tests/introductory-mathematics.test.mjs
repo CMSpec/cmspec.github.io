@@ -6,8 +6,28 @@ import { introductoryChapters } from "../content/courses/introductory-mathematic
 import { introductoryAlgebraExtension } from "../content/courses/introductory-algebra-extension.ts";
 import { handwrittenNotes, handwrittenNoteCount } from "../content/courses/introductory-handwritten-notes.ts";
 import { sourceDevelopments } from "../content/courses/introductory-source-developments.ts";
+import { introductoryOpenings } from "../content/courses/introductory-openings.ts";
 
 const chapters = [...introductoryChapters, ...introductoryAlgebraExtension];
+
+test("las introducciones recuperadas preceden la teoría y sustituyen sus resúmenes", () => {
+  const html = readFileSync(new URL("../out/cursos/introduccion-matematicas/index.html", import.meta.url), "utf8");
+  assert.equal(Object.keys(introductoryOpenings).length, 11);
+  for (const [key, opening] of Object.entries(introductoryOpenings)) {
+    const start = html.indexOf(`id="intro-${key}"`);
+    assert.ok(start >= 0, key);
+    const end = html.indexOf('class="intro-practice"', start);
+    const section = html.slice(start, end);
+    assert.ok(section.indexOf('class="intro-source-opening"') < section.indexOf('class="latex-content"'), key);
+    assert.ok(opening.paragraphs.length >= 3);
+    for (const title of opening.replaces) assert.ok(!section.includes(` · ${title}`), title);
+  }
+  for (const phrase of ["El hielo flota en el agua", "función proposicional", "Estudiaremos geometría usando el álgebra", "final menos inicial", "preimagen"]) assert.ok(html.includes(phrase), phrase);
+  assert.doesNotMatch(html, /<details class="intro-handwritten-note/);
+  assert.doesNotMatch(html, /Ver desarrollo|Ábrelos para seguir/);
+  assert.equal((html.match(/<section class="intro-handwritten-note/g) ?? []).length, 95);
+  assert.ok(html.includes("Ver pista") && html.includes("Ver solución"));
+});
 
 test("la práctica de división sintética es distinta de la animación y verifica el resto", () => {
   const section = chapters.find(c => c.slug === "polinomios").sections[1];
@@ -58,6 +78,7 @@ test("todas las fórmulas se pueden renderizar y los delimitadores están balanc
   const texts = chapters.flatMap(c => c.sections.flatMap(s => [s.exercise, s.hint, s.solution, ...s.blocks.map(b => b.text)]));
   texts.push(...Object.values(handwrittenNotes).flatMap(notes => notes.flatMap(n => n.steps)));
   texts.push(...Object.values(sourceDevelopments).flatMap(notes => notes.flatMap(n => n.steps)));
+  texts.push(...Object.values(introductoryOpenings).flatMap(opening => opening.paragraphs));
   for (const text of texts) {
     assert.equal((text.match(/\$/g) ?? []).length % 2, 0, text);
     for (const match of text.matchAll(/\$([^$]+)\$/g)) katex.renderToString(match[1], { throwOnError: true });

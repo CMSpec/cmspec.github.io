@@ -1744,12 +1744,15 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .intro-manuscript-intro p { margin: 0; }
 .intro-manuscript-intro p + p { margin-top: .8rem; }
 .intro-handwritten-notes { margin: 1.75rem 0; }
-.intro-handwritten-note { border: 1px solid #ddd5c7; border-radius: 6px; margin: .65rem 0; background: #fffdf8; }
+.intro-handwritten-note { margin: 2rem 0; padding-top: 1.25rem; border-top: 1px solid #ddd5c7; }
+.intro-handwritten-note > h5 { margin: 0 0 1rem; font: 600 1.1rem/1.5 Georgia, serif; }
+.intro-source-opening { margin: 1.25rem 0 2rem; line-height: 1.85; overflow-wrap: anywhere; }
+.intro-source-opening p + p, .intro-note-body p + p { margin-top: 1rem; }
 .intro-handwritten-note > summary { cursor: pointer; padding: 1rem 1.15rem; line-height: 1.5; }
 .intro-handwritten-note > summary > span:first-child { font-weight: 600; }
 .intro-note-action { display: block; margin: .25rem 0 0 1rem; font-size: .78rem; color: #6d5a40; }
 .intro-handwritten-note[open] .intro-note-action { display: none; }
-.intro-note-body { padding: 0 1.15rem 1.25rem; line-height: 1.8; overflow-wrap: anywhere; }
+.intro-note-body { line-height: 1.8; overflow-wrap: anywhere; }
 .intro-note-body ol { padding-left: 1.5rem; list-style: decimal; }
 .intro-note-body li { padding-left: .3rem; margin: .8rem 0; }
 .intro-note-correction { border-left: 3px solid #a77638; padding: .75rem 1rem; background: #f4ecd9; font-size: .9rem; }
