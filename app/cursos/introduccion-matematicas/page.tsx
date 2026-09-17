@@ -13,6 +13,7 @@ import { LogicExplorer, UnitCircleExplorer } from "./IntroExplorers";
 import { ComplexDiagrams } from "./ComplexDiagrams";
 import SyntheticDivisionExplorer from "./SyntheticDivisionExplorer";
 import SummationDefinitionDiagram from "./SummationDefinitionDiagram";
+import PartialFractionsGuide from "./PartialFractionsGuide";
 
 export const metadata: Metadata = { title: "Introducción a las Matemáticas | CMSpec", description: "Lógica, conjuntos, ecuaciones, funciones, trigonometría, vectores, inducción, sumatorias, complejos, polinomios y geometría analítica. Teoría y ejercicios guiados dentro del curso." };
 function MathText({text}: {text:string}) {
@@ -51,6 +52,7 @@ export default function IntroductoryMathematicsPage() {
                 <h5>{development.title}</h5>
                 <div className="intro-note-body">{development.steps.map((step, index) => <p key={index}><MathText text={step}/></p>)}</div>
               </section>)}</div>}
+              {chapter.slug === "polinomios" && j === 6 && <PartialFractionsGuide/>}
               {section.visual === "logic" && <LogicExplorer/>}{section.visual === "circle" && <UnitCircleExplorer/>}
               {chapter.slug === "polinomios" && section.title === "División larga y división sintética" && <><SyntheticDivisionExplorer/>
                 <aside className="synthetic-observations" aria-label="Observaciones sobre la división sintética">

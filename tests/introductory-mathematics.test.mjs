@@ -7,8 +7,26 @@ import { introductoryAlgebraExtension } from "../content/courses/introductory-al
 import { handwrittenNotes, handwrittenNoteCount } from "../content/courses/introductory-handwritten-notes.ts";
 import { sourceDevelopments } from "../content/courses/introductory-source-developments.ts";
 import { introductoryOpenings } from "../content/courses/introductory-openings.ts";
+import { partialFractionCases, partialFractionExercises } from "../content/courses/partial-fractions-guide.ts";
 
 const chapters = [...introductoryChapters, ...introductoryAlgebraExtension];
+
+test("la guía adjunta conserva los cuatro casos y los 17 ejercicios en orden", () => {
+  assert.equal(partialFractionCases.length, 4);
+  assert.equal(partialFractionExercises.length, 17);
+  for (const tex of [...partialFractionCases.map(c => c.tex), ...partialFractionExercises]) {
+    assert.doesNotThrow(() => katex.renderToString(tex, { throwOnError: true }));
+  }
+  assert.equal(partialFractionExercises[0], String.raw`\frac{3x+7}{x^2-x-6}`);
+  assert.equal(partialFractionExercises[16], String.raw`\frac{7x+8}{(x^2+4)^2(x-3)}`);
+  const html = readFileSync(new URL("../out/cursos/introduccion-matematicas/index.html", import.meta.url), "utf8");
+  const start = html.indexOf('id="intro-polinomios-7"');
+  const end = html.indexOf('class="intro-practice"', start);
+  const section = html.slice(start, end);
+  assert.ok(section.includes("Guía: Fracciones parciales"));
+  assert.ok(section.includes("divide primero"));
+  assert.equal((section.match(/aria-label="Ejercicio \d+"/g) ?? []).length, 17);
+});
 
 test("la definición de sumatoria incluye aclaraciones con flechas y vista móvil", () => {
   const html = readFileSync(new URL("../out/cursos/introduccion-matematicas/index.html", import.meta.url), "utf8");
