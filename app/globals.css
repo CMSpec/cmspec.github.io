@@ -1759,3 +1759,17 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .intro-complex-figure svg text { font: 14px sans-serif; fill: currentColor; }
 .intro-complex-figure figcaption { font-size: .9rem; line-height: 1.6; margin-top: .5rem; }
 .intro-complex-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; }
+.synthetic-explorer svg { display: block; width: 100%; max-width: 680px; margin: 1rem auto; overflow: visible; }
+.synthetic-explorer svg text { fill: currentColor; font: 26px Georgia, serif; text-anchor: middle; }
+.synthetic-explorer svg .synthetic-label { font: 16px sans-serif; }
+.synthetic-explorer svg .synthetic-active { fill: #007190; font-weight: 700; }
+.synthetic-explanation { min-height: 5em; padding: 1rem; border-left: 3px solid #007190; background: #edf6f5; }
+.synthetic-controls { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.synthetic-controls button, .synthetic-controls select { padding: .65rem .85rem; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--ink); font: inherit; }
+.synthetic-controls button { cursor: pointer; }
+.synthetic-controls button:disabled { opacity: .45; cursor: default; }
+.synthetic-controls button:focus-visible, .synthetic-controls select:focus-visible { outline: 3px solid #007190; outline-offset: 3px; }
+.synthetic-result { margin-top: 1rem; padding: 1rem; border: 1px solid #557c73; border-radius: 8px; }
+.synthetic-new { animation: synthetic-appear .55s ease-out both; }
+@keyframes synthetic-appear { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .synthetic-new { animation: none; } }
