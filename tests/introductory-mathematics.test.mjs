@@ -10,6 +10,16 @@ import { introductoryOpenings } from "../content/courses/introductory-openings.t
 
 const chapters = [...introductoryChapters, ...introductoryAlgebraExtension];
 
+test("la definición de sumatoria incluye aclaraciones con flechas y vista móvil", () => {
+  const html = readFileSync(new URL("../out/cursos/introduccion-matematicas/index.html", import.meta.url), "utf8");
+  const start = html.indexOf('id="intro-induccion-sumatorias-3"');
+  const end = html.indexOf('class="intro-practice"', start);
+  const section = html.slice(start, end);
+  assert.equal((section.match(/class="summation-definition-diagram"/g) ?? []).length, 1);
+  for (const phrase of ["summation-diagram-wide", "summation-diagram-narrow", "índice inicial", "índice final", "argumento de suma", "último término", "url(#sum-arrow-wide)", "url(#sum-arrow-narrow)"]) assert.ok(section.includes(phrase), phrase);
+  assert.ok(section.indexOf('class="summation-definition-diagram"') < section.indexOf("Cómo leer cada parte del símbolo"));
+});
+
 test("sucesiones y sumatorias conservan la secuencia conceptual del documento", () => {
   const unit = chapters.find(c => c.slug === "induccion-sumatorias");
   assert.deepEqual(unit.sections[1].blocks.map(b => b.title), [

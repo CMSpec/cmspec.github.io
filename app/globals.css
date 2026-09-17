@@ -1748,6 +1748,18 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .intro-handwritten-note > h5 { margin: 0 0 1rem; font: 600 1.1rem/1.5 Georgia, serif; }
 .intro-source-opening { margin: 1.25rem 0 2rem; line-height: 1.85; overflow-wrap: anywhere; }
 .intro-source-opening p + p, .intro-note-body p + p { margin-top: 1rem; }
+.summation-definition-diagram { margin: 1.5rem 0; padding: .5rem; background: #fbfcf6; border: 1px solid #dce4cc; border-radius: 8px; }
+.summation-definition-diagram svg { display: block; width: 100%; height: auto; }
+.summation-definition-diagram .summation-diagram-narrow { display: none; }
+.summation-symbols { font-family: Georgia, "Times New Roman", serif; fill: #1d353a; }
+.summation-labels { font: 17px system-ui, sans-serif; fill: #496324; }
+.summation-arrows { fill: none; stroke: #6c853f; stroke-width: 1.8; }
+.summation-definition-diagram marker path { fill: none; stroke: #6c853f; stroke-width: 1.4; }
+.summation-definition-diagram figcaption { margin: .5rem; font-size: .9rem; line-height: 1.6; }
+@media (max-width: 600px) {
+  .summation-definition-diagram .summation-diagram-wide { display: none; }
+  .summation-definition-diagram .summation-diagram-narrow { display: block; }
+}
 .intro-handwritten-note > summary { cursor: pointer; padding: 1rem 1.15rem; line-height: 1.5; }
 .intro-handwritten-note > summary > span:first-child { font-weight: 600; }
 .intro-note-action { display: block; margin: .25rem 0 0 1rem; font-size: .78rem; color: #6d5a40; }

@@ -12,6 +12,7 @@ import { FunctionNotationDiagram } from "../calculo-diferencial/FunctionConceptE
 import { LogicExplorer, UnitCircleExplorer } from "./IntroExplorers";
 import { ComplexDiagrams } from "./ComplexDiagrams";
 import SyntheticDivisionExplorer from "./SyntheticDivisionExplorer";
+import SummationDefinitionDiagram from "./SummationDefinitionDiagram";
 
 export const metadata: Metadata = { title: "Introducción a las Matemáticas | CMSpec", description: "Lógica, conjuntos, ecuaciones, funciones, trigonometría, vectores, inducción, sumatorias, complejos, polinomios y geometría analítica. Teoría y ejercicios guiados dentro del curso." };
 function MathText({text}: {text:string}) {
@@ -45,7 +46,7 @@ export default function IntroductoryMathematicsPage() {
               <h4>{section.title}</h4>
               {introductoryOpenings[`${chapter.slug}-${j+1}`] && <div className="intro-source-opening">{introductoryOpenings[`${chapter.slug}-${j+1}`].paragraphs.map((paragraph,k)=><p key={k}><MathText text={paragraph}/></p>)}</div>}
               {section.visual === "functions" && <FunctionNotationDiagram/>}
-              <div className="latex-content">{section.blocks.filter(block=>!introductoryOpenings[`${chapter.slug}-${j+1}`]?.replaces.includes(block.title)).map((block,k)=><div className={`${styles[block.kind]}_thmwrapper`} key={k}><div className={`${styles[block.kind]}_thmheading`}><span>{names[block.kind]}</span><span> · {block.title}</span></div><div className={`${styles[block.kind]}_thmcontent`}><p><MathText text={block.text}/></p>{block.tex && <div className="course-math" dangerouslySetInnerHTML={{__html:katex.renderToString(block.tex,{displayMode:true,output:"mathml",throwOnError:true})}}/>}</div></div>)}</div>
+              <div className="latex-content">{section.blocks.filter(block=>!introductoryOpenings[`${chapter.slug}-${j+1}`]?.replaces.includes(block.title)).map((block,k)=><div className={`${styles[block.kind]}_thmwrapper`} key={k}><div className={`${styles[block.kind]}_thmheading`}><span>{names[block.kind]}</span><span> · {block.title}</span></div><div className={`${styles[block.kind]}_thmcontent`}><p><MathText text={block.text}/></p>{chapter.slug === "induccion-sumatorias" && j === 2 && k === 0 ? <SummationDefinitionDiagram/> : block.tex && <div className="course-math" dangerouslySetInnerHTML={{__html:katex.renderToString(block.tex,{displayMode:true,output:"mathml",throwOnError:true})}}/>}</div></div>)}</div>
               {sourceDevelopments[`${chapter.slug}-${j+1}`] && <div className="intro-handwritten-notes">{sourceDevelopments[`${chapter.slug}-${j+1}`].map(development => <section className="intro-handwritten-note intro-source-development" key={development.title}>
                 <h5>{development.title}</h5>
                 <div className="intro-note-body">{development.steps.map((step, index) => <p key={index}><MathText text={step}/></p>)}</div>
