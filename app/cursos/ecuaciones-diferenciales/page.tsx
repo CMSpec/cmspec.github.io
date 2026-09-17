@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { differentialEquationsCourse } from "../../../content/courses/differential-equations";
 import { differentialEquationsChapters } from "../../../content/courses/differential-equations-chapters";
 import CourseIndex from "../_components/CourseIndex";
@@ -94,23 +93,18 @@ export default function DifferentialEquationsCoursePage() {
                 </summary>
                 <article className="chapter-article">
                   {chapter.sections.map((section, sectionIndex) => (
-                    <Fragment key={`${chapter.slug}-${sectionIndex}`}>
+                    <section className="chapter-section" id={`${chapter.slug}-seccion-${sectionIndex + 1}`} key={`${chapter.slug}-${sectionIndex}`}>
+                      <h4>{section.title}</h4>
                       {chapterIndex === 5 && section.title === "Ecuaciones Lineales Homogéneas con coeficientes constantes" ? <DampedOscillatorLab /> : null}
                       {chapterIndex === 8 && section.title === "Función de Heaviside" ? <HeavisideLaplaceLab /> : null}
                       {chapterIndex === 10 && section.title === "Series de Fourier" ? <FourierSeriesLab /> : null}
                       {chapterIndex === 0 && section.title === "Problemas de valores iniciales" ? <SolutionFamilyLab /> : null}
                       {chapterIndex === 0 && section.title === "Ecuaciones Diferenciales de Variables Separables" ? <PhaseLineLab /> : null}
-                      <section
-                        className="chapter-section"
-                        id={`${chapter.slug}-seccion-${sectionIndex + 1}`}
-                      >
-                        <h4>{section.title}</h4>
                         <DifferentialSectionContent title={section.title} html={section.html} />
-                      </section>
                       {chapterIndex === 0 && section.title === "Problemas de valores iniciales" ? <EulerMethodLab /> : null}
-                    </Fragment>
+                      {sectionIndex === chapter.sections.length - 1 && <SageSandbox {...getSageSandbox("ecuaciones-diferenciales", chapterIndex, chapter.title)} />}
+                    </section>
                   ))}
-                  <SageSandbox {...getSageSandbox("ecuaciones-diferenciales", chapterIndex, chapter.title)} />
                 </article>
               </details>
             ))}

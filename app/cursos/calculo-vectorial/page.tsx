@@ -162,9 +162,9 @@ export default function VectorCalculusCoursePage() {
                     >
                       <h4>{section.title}</h4>
                       <VectorSectionContent html={section.html} chapterIndex={chapterIndex} title={section.title} />
+                      {sectionIndex === chapter.sections.length - 1 && <SageSandbox {...getSageSandbox("calculo-vectorial", chapterIndex, chapter.title)} />}
                     </section>
                   ))}
-                  <SageSandbox {...getSageSandbox("calculo-vectorial", chapterIndex, chapter.title)} />
                 </article>
               </details>
             ))}

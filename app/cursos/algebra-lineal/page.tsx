@@ -15,30 +15,6 @@ import { getSageSandbox } from "../../../content/courses/sage-sandboxes";
 import { sitePath } from "../../../lib/site-path";
 import type { ReactElement } from "react";
 
-function cleanDefinitionName(html: string) {
-  return html
-    .replace(/<annotation[\s\S]*?<\/annotation>/g, "")
-    .replace(/<[^>]+>/g, "")
-    .replace(/&times;/g, "×")
-    .replace(/&nbsp;|&#xA0;/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function getDefinitionIndex(html: string) {
-  const selectedEntries = [...html.matchAll(/<span class="cmspec-index-anchor" id="([^"]+)" data-cmspec-index-title="([^"]+)"><\/span>/g)]
-    .map((match) => ({ id: match[1], label: "·", name: cleanDefinitionName(match[2]) }));
-
-  if (selectedEntries.length > 0) return selectedEntries;
-
-  return html.split('<div class="defin_thmwrapper').slice(1).flatMap((block) => {
-    const id = block.match(/id="([^"]+)"/)?.[1];
-    const label = block.match(/<span class="defin_thmlabel">\s*([^<]+)<\/span>/)?.[1]?.trim();
-    const nameHtml = block.match(/<b class="bfseries">([\s\S]*?)<\/b>/)?.[1];
-    const name = nameHtml ? cleanDefinitionName(nameHtml) : "";
-    return id && label && name ? [{ id, label, name }] : [];
-  });
-}
 
 function findTheoremStart(
   html: string,
@@ -226,17 +202,13 @@ function SectionContent({ html }: { html: string }) {
 
 export default function LinearAlgebraCoursePage() {
   const course = linearAlgebraCourse;
-  const definitionsByUnit = linearAlgebraChapters.map((chapter) =>
-    getDefinitionIndex(chapter.sections.map((section) => section.html).join("")),
-  );
   const indexUnits = course.units.map((unit, index) => ({
     number: unit.number,
     title: unit.title,
     href: `#lectura-unidad-${index + 1}`,
-    items: definitionsByUnit[index].map((definition) => ({
-      href: `#${definition.id}`,
-      label: definition.label,
-      title: definition.name,
+    items: linearAlgebraChapters[index].sections.map((section, sectionIndex) => ({
+      href: `#${linearAlgebraChapters[index].slug}-seccion-${sectionIndex + 1}`,
+      title: section.title,
     })),
   }));
 
@@ -282,14 +254,14 @@ export default function LinearAlgebraCoursePage() {
                 </summary>
                 <article className="chapter-article">
                   {chapter.sections.map((section, sectionIndex) => (
-                    <section className="chapter-section" key={`${chapter.slug}-${sectionIndex}`}>
+                    <section className="chapter-section" id={`${chapter.slug}-seccion-${sectionIndex + 1}`} key={`${chapter.slug}-${sectionIndex}`}>
                       <h4>{section.title}</h4>
                       <SectionContent
                         html={section.html}
                       />
+                      {sectionIndex === chapter.sections.length - 1 && <SageSandbox {...getSageSandbox("algebra-lineal", chapterIndex, chapter.title)} />}
                     </section>
                   ))}
-                  <SageSandbox {...getSageSandbox("algebra-lineal", chapterIndex, chapter.title)} />
                 </article>
               </details>
             ))}

@@ -1773,3 +1773,44 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .synthetic-new { animation: synthetic-appear .55s ease-out both; }
 @keyframes synthetic-appear { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { .synthetic-new { animation: none; } }
+/* A course opens on its syllabus; only the selected mini-chapter is shown. */
+.course-page .course-article-layout:has(.course-topic-index) { display: block; max-width: 1120px; margin-inline: auto; padding-top: 45px; }
+.course-page:has(.course-topic-index) .course-masthead { padding-left: clamp(24px,6vw,80px); padding-right: clamp(24px,6vw,80px); }
+.course-article-layout:has(.course-topic-index) > .course-reader { display: none; }
+.course-article-layout.is-reading-topic > .course-reader { display: block; max-width: 850px; margin: 0 auto; }
+.is-reading-topic .course-reader > :not(.reading-chapters) { display: none; }
+.is-reading-topic .reading-chapter > summary { display: none; }
+.is-reading-topic .reading-chapter { border: 0; margin: 0; }
+.is-reading-topic .chapter-article { padding: 0; }
+.is-reading-topic .chapter-article > :not(.chapter-section) { display: none; }
+.is-reading-topic .reading-chapter.is-last-topic .chapter-article > :not(.chapter-section) { display: block; }
+.course-article-layout [hidden] { display: none !important; }
+.course-topic-index { display: block; width: 100%; min-width: 0; font-weight: 400; scroll-margin-top: 110px; }
+.course-article-layout:has(.course-topic-index) { scroll-margin-top: 95px; }
+.topic-index-heading h2:focus, .is-reading-topic .chapter-section h4:focus { outline: none; }
+.topic-back, .topic-reading-bar a { color: var(--blue); font-weight: 600; }
+.topic-index-heading { margin: 32px 0; }
+.topic-index-heading > p:first-child { color: var(--muted); font: 11px var(--font-geist-mono); letter-spacing: .12em; }
+.topic-index-heading h2 { font: 38px/1.15 Georgia,serif; margin: 12px 0; }
+.topic-index-heading p { color: var(--muted); line-height: 1.6; }
+.topic-unit-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; align-items: start; }
+.topic-unit-card { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.topic-unit-card > header { display: flex; align-items: baseline; gap: 14px; padding: 22px; background: var(--paper); border-bottom: 1px solid var(--line); }
+.topic-unit-card > header > span { color: var(--blue); font: 14px var(--font-geist-mono); }
+.topic-unit-card h3 { margin: 0; font: 23px/1.3 Georgia,serif; }
+.topic-unit-card ol { list-style: none; padding: 6px 20px; margin: 0; }
+.topic-unit-card li + li { border-top: 1px solid var(--line); }
+.topic-unit-card li a { display: grid; grid-template-columns: 42px minmax(0,1fr) 18px; gap: 10px; align-items: baseline; padding: 16px 0; font: 16px/1.5 Georgia,serif; text-decoration: none; }
+.topic-unit-card a:hover { color: var(--blue); background: #f2f7f6; }
+.topic-number { color: var(--muted); font: 11px var(--font-geist-mono); }
+.topic-index-note { margin-top: 28px; color: var(--muted); line-height: 1.7; }
+.topic-reading-bar { max-width: 850px; margin: 0 auto 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; }
+.topic-reading-bar span { color: var(--muted); }
+.topic-pagination { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 48px 0 20px; padding-top: 25px; border-top: 1px solid var(--line); }
+.topic-pagination a { display: flex; flex-direction: column; gap: 10px; padding: 20px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; line-height: 1.5; }
+.topic-pagination small { font: 11px var(--font-geist-mono); color: var(--muted); }
+.topic-pagination .topic-next { background: #edf6f5; border-color: #9ebeb8; }
+.topic-pagination a:hover { border-color: var(--blue); }
+.course-topic-index a:focus-visible, .topic-pagination a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.is-reading-topic .chapter-section h4, .topic-index-heading h2 { scroll-margin-top: 115px; }
+@media (max-width: 700px) { .topic-unit-grid, .topic-pagination { grid-template-columns: 1fr; } .topic-unit-card > header { padding: 18px; } .topic-reading-bar { flex-direction: column; } }
