@@ -1814,3 +1814,6 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .course-topic-index a:focus-visible, .topic-pagination a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 .is-reading-topic .chapter-section h4, .topic-index-heading h2 { scroll-margin-top: 115px; }
 @media (max-width: 700px) { .topic-unit-grid, .topic-pagination { grid-template-columns: 1fr; } .topic-unit-card > header { padding: 18px; } .topic-reading-bar { flex-direction: column; } }
+.synthetic-copy { animation: synthetic-copy-down .9s ease-in-out both; }
+@keyframes synthetic-copy-down { from { opacity: .2; transform: translateY(-115px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .synthetic-copy { animation: none; } }
