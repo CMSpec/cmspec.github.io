@@ -8,11 +8,6 @@ const collectionCopy: Record<LaboratoryAreaId, { number: string; title: string; 
     title: "Matemáticas",
     description: "Proyecciones y construcciones geométricas vinculadas con las notas matemáticas.",
   },
-  apuntes: {
-    number: "02",
-    title: "Apuntes",
-    description: "Visualizaciones y demostraciones interactivas reunidas desde los cursos de pregrado.",
-  },
   tejido: {
     number: "03",
     title: "Tejido & estructuras",

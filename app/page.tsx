@@ -6,16 +6,16 @@ import { aboutGallery } from "../content/about-gallery";
 import SiteHeader from "./_components/SiteHeader";
 import { sitePath } from "../lib/site-path";
 
-const notes = courseNotes.filter((note) => note.href !== "/cursos/laboratorio-algebra-lineal");
+const notes = courseNotes;
 const textileNotes = collections.find((collection) => collection.slug === "tejido")!.entries;
 const recentGallery = [aboutGallery[0], aboutGallery[4], aboutGallery[5]];
 const galleryCategories = { bookbinding: "Bookbinding", tejidos: "Tejidos", viajes: "Viajes" } as const;
 
 const labPieces = [
-  { number: "01", title: "Vectores", caption: "Escalares, suma y combinaciones", href: "/cursos/laboratorio-algebra-lineal#vectores", visual: "vector" },
-  { number: "02", title: "Matrices", caption: "Traza, regiones y simetría", href: "/cursos/laboratorio-algebra-lineal#estructura", visual: "matrix" },
-  { number: "03", title: "Operaciones", caption: "Productos y cálculos paso a paso", href: "/cursos/laboratorio-algebra-lineal#operaciones", visual: "operation" },
-  { number: "04", title: "Transformaciones", caption: "Reducción por filas y cambio de base", href: "/cursos/laboratorio-algebra-lineal#transformaciones", visual: "basis" },
+  { number: "01", title: "Vectores", caption: "Escalares, suma y combinaciones", href: "/laboratorio/algebra-lineal#vectores", visual: "vector" },
+  { number: "02", title: "Matrices", caption: "Traza, regiones y simetría", href: "/laboratorio/algebra-lineal#estructura", visual: "matrix" },
+  { number: "03", title: "Operaciones", caption: "Productos y cálculos paso a paso", href: "/laboratorio/algebra-lineal#operaciones", visual: "operation" },
+  { number: "04", title: "Transformaciones", caption: "Reducción por filas y cambio de base", href: "/laboratorio/algebra-lineal#transformaciones", visual: "basis" },
 ] as const;
 
 function InteractiveMark() {

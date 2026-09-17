@@ -4,37 +4,6 @@ import { useState, type ReactNode } from "react";
 import FanoPlane from "../_components/FanoPlane";
 import FiniteProjectiveCards from "../_components/FiniteProjectiveCards";
 import StereographicProjection from "../_components/StereographicProjection";
-import ChangeOfBasis2D from "../cursos/algebra-lineal/ChangeOfBasis2D";
-import MatrixMultiplicationAnimation from "../cursos/algebra-lineal/MatrixMultiplicationAnimation";
-import { DotProductAnimation, MatrixAdditionAnimation } from "../cursos/algebra-lineal/MatrixOperationsAnimations";
-import MatrixScalarAnimation from "../cursos/algebra-lineal/MatrixScalarAnimation";
-import { SymmetryAnimation, TraceAnimation, TriangularMatricesAnimation } from "../cursos/algebra-lineal/MatrixStructureAnimations";
-import RowReductionAnimation from "../cursos/algebra-lineal/RowReductionAnimation";
-import { ScalarVectorLab, VectorCombinationLab, VectorSumLab } from "../cursos/algebra-lineal/VectorExplorations";
-import LevelCurves3D from "../cursos/calculo-vectorial/LevelCurves3D";
-import GradientTangent3D from "../cursos/calculo-vectorial/GradientTangent3D";
-import ParametricEllipse from "../cursos/calculo-vectorial/ParametricEllipse";
-import ParametricSegment from "../cursos/calculo-vectorial/ParametricSegment";
-import ParametricFunctionGraph from "../cursos/calculo-vectorial/ParametricFunctionGraph";
-import DirectionalDerivative3D from "../cursos/calculo-vectorial/DirectionalDerivative3D";
-import LagrangeMultiplierExplorer from "../cursos/calculo-vectorial/LagrangeMultiplierExplorer";
-import OpenClosedBallsExplorer from "../cursos/calculo-vectorial/OpenClosedBallsExplorer";
-import DoubleIntegralRiemann3D from "../cursos/calculo-vectorial/DoubleIntegralRiemann3D";
-import GreenTheoremExplorer from "../cursos/calculo-vectorial/GreenTheoremExplorer";
-import LineIntegralPathsExplorer from "../cursos/calculo-vectorial/LineIntegralPathsExplorer";
-import JacobianChangeExplorer from "../cursos/calculo-vectorial/JacobianChangeExplorer";
-import CoordinateSystems3D from "../cursos/calculo-vectorial/CoordinateSystems3D";
-import FrenetFrame3D from "../cursos/calculo-vectorial/FrenetFrame3D";
-import CrossProductPlane3D from "../cursos/calculo-vectorial/CrossProductPlane3D";
-import TripleIntegral3D from "../cursos/calculo-vectorial/TripleIntegral3D";
-import MultivariableLimit3D from "../cursos/calculo-vectorial/MultivariableLimit3D";
-import SolutionFamilyLab from "../cursos/ecuaciones-diferenciales/SolutionFamilyLab";
-import SlopeFieldLab from "../cursos/ecuaciones-diferenciales/SlopeFieldLab";
-import PhaseLineLab from "../cursos/ecuaciones-diferenciales/PhaseLineLab";
-import EulerMethodLab from "../cursos/ecuaciones-diferenciales/EulerMethodLab";
-import DampedOscillatorLab from "../cursos/ecuaciones-diferenciales/DampedOscillatorLab";
-import HeavisideLaplaceLab from "../cursos/ecuaciones-diferenciales/HeavisideLaplaceLab";
-import FourierSeriesLab from "../cursos/ecuaciones-diferenciales/FourierSeriesLab";
 import { MoebiusIdentification } from "../tejido/banda-de-moebius/MoebiusExplorers";
 import { MoebiusWalk3D } from "../tejido/banda-de-moebius/MoebiusWalk3D";
 import { StitchPatternGrid } from "../tejido/del-reves-al-bit/StitchPatternGrid";
@@ -45,7 +14,7 @@ import MappingClassSweaterLab from "../tejido/trenzas-nudos-y-tejido/MappingClas
 import { sitePath } from "../../lib/site-path";
 
 type LabItem = { title: string; subtitle: string; href: string; render: () => ReactNode; group?: string };
-export type LaboratoryAreaId = "matematicas" | "apuntes" | "tejido";
+export type LaboratoryAreaId = "matematicas" | "tejido";
 type LabArea = { id: LaboratoryAreaId; number: string; title: string; tone: string; description: string; items: LabItem[] };
 
 const areas: LabArea[] = [
@@ -53,44 +22,6 @@ const areas: LabArea[] = [
     { title: "De rectas a cartas", subtitle: "Planos proyectivos finitos", href: "/investigacion/dobble-y-geometria-proyectiva#cartas-proyectivas", render: () => <FiniteProjectiveCards /> },
     { title: "Proyección estereográfica 3D", subtitle: "De la esfera al plano", href: "/investigacion/mapas-distancias-y-conformidad#proyeccion-estereografica", render: () => <StereographicProjection /> },
     { title: "Plano de Fano", subtitle: "Siete puntos y siete rectas", href: "/investigacion/dobble-y-geometria-proyectiva#plano-de-fano", render: () => <FanoPlane /> },
-  ]},
-  { id: "apuntes", number: "02", title: "Apuntes", tone: "green", description: "Visualizaciones geométricas de vectores y demostraciones paso a paso de cálculos con matrices.", items: [
-    { title: "Vector por un escalar", subtitle: "Dirección y longitud", href: "/cursos/algebra-lineal", render: () => <ScalarVectorLab />, group: "Visualizaciones de vectores" },
-    { title: "Suma de vectores", subtitle: "Regla punta con cola", href: "/cursos/algebra-lineal", render: () => <VectorSumLab />, group: "Visualizaciones de vectores" },
-    { title: "Combinaciones lineales", subtitle: "Región generada por dos vectores", href: "/cursos/algebra-lineal", render: () => <VectorCombinationLab />, group: "Visualizaciones de vectores" },
-    { title: "Cambio de base", subtitle: "Dos sistemas de coordenadas", href: "/cursos/algebra-lineal", render: () => <ChangeOfBasis2D />, group: "Visualizaciones de vectores" },
-    { title: "Traza", subtitle: "Sumar la diagonal", href: "/cursos/algebra-lineal", render: () => <TraceAnimation />, group: "Demostraciones de cálculo" },
-    { title: "Matrices triangulares", subtitle: "Regiones superior e inferior", href: "/cursos/algebra-lineal", render: () => <TriangularMatricesAnimation />, group: "Demostraciones de cálculo" },
-    { title: "Simetría y antisimetría", subtitle: "Entradas reflejadas", href: "/cursos/algebra-lineal", render: () => <SymmetryAnimation />, group: "Demostraciones de cálculo" },
-    { title: "Suma de matrices", subtitle: "Entrada por entrada", href: "/cursos/algebra-lineal", render: () => <MatrixAdditionAnimation />, group: "Demostraciones de cálculo" },
-    { title: "Producto por escalar", subtitle: "Cada entrada multiplicada", href: "/cursos/algebra-lineal", render: () => <MatrixScalarAnimation />, group: "Demostraciones de cálculo" },
-    { title: "Producto punto", subtitle: "Coordenada por coordenada", href: "/cursos/algebra-lineal", render: () => <DotProductAnimation />, group: "Demostraciones de cálculo" },
-    { title: "Producto de matrices", subtitle: "Fila por columna", href: "/cursos/algebra-lineal", render: () => <MatrixMultiplicationAnimation />, group: "Demostraciones de cálculo" },
-    { title: "Reducción por filas", subtitle: "Operaciones elementales", href: "/cursos/algebra-lineal", render: () => <RowReductionAnimation />, group: "Demostraciones de cálculo" },
-    { title: "Curvas de nivel en 3D", subtitle: "Cortes horizontales de una superficie", href: "/cursos/calculo-vectorial#clase-2-seccion-3", render: () => <LevelCurves3D />, group: "Cálculo vectorial" },
-    { title: "Gradiente y plano tangente", subtitle: "Superficie, plano y dirección normal", href: "/cursos/calculo-vectorial#clase-4-seccion-1", render: () => <GradientTangent3D />, group: "Cálculo vectorial" },
-    { title: "Elipse parametrizada", subtitle: "Una curva que aparece a medida que avanza t", href: "/cursos/calculo-vectorial#clase-2-seccion-4", render: () => <ParametricEllipse />, group: "Cálculo vectorial" },
-    { title: "Segmento parametrizado", subtitle: "De P a Q con el parámetro entre 0 y 1", href: "/cursos/calculo-vectorial#segmento-parametrizado-interactivo", render: () => <ParametricSegment />, group: "Cálculo vectorial" },
-    { title: "Función como curva", subtitle: "La parábola recorrida como (t,f(t))", href: "/cursos/calculo-vectorial#funcion-cuadratica-parametrizada", render: () => <ParametricFunctionGraph />, group: "Cálculo vectorial" },
-    { title: "Derivada direccional", subtitle: "El corte vertical y su recta tangente", href: "/cursos/calculo-vectorial#derivada-direccional-3d", render: () => <DirectionalDerivative3D />, group: "Cálculo vectorial" },
-    { title: "Multiplicadores de Lagrange", subtitle: "Gradientes paralelos sobre una restricción", href: "/cursos/calculo-vectorial#multiplicadores-lagrange-interactivo", render: () => <LagrangeMultiplierExplorer />, group: "Cálculo vectorial" },
-    { title: "Curvatura y triedro de Frenet", subtitle: "Tangente, normal, binormal y planos asociados", href: "/cursos/calculo-vectorial#curvatura-triedro-frenet-3d", render: () => <FrenetFrame3D />, group: "Cálculo vectorial" },
-    { title: "Producto cruz y ecuación del plano", subtitle: "Dos direcciones, un plano y su vector normal", href: "/cursos/calculo-vectorial#producto-cruz-plano-3d", render: () => <CrossProductPlane3D />, group: "Cálculo vectorial" },
-    { title: "Integral triple", subtitle: "Sumas de Riemann dentro de una región espacial", href: "/cursos/calculo-vectorial#integral-triple-riemann-3d", render: () => <TripleIntegral3D />, group: "Cálculo vectorial" },
-    { title: "Límites por distintos caminos", subtitle: "Cuándo acercarse por otra dirección cambia el resultado", href: "/cursos/calculo-vectorial#limites-caminos-3d", render: () => <MultivariableLimit3D />, group: "Cálculo vectorial" },
-    { title: "Bolas y topología", subtitle: "Interior, frontera y exterior", href: "/cursos/calculo-vectorial#bolas-topologia-interactivo", render: () => <OpenClosedBallsExplorer />, group: "Cálculo vectorial" },
-    { title: "Integral doble", subtitle: "Sumas de Riemann y volumen", href: "/cursos/calculo-vectorial#integral-doble-riemann-3d", render: () => <DoubleIntegralRiemann3D />, group: "Cálculo vectorial" },
-    { title: "Cambio de variable", subtitle: "Deformación y factor jacobiano", href: "/cursos/calculo-vectorial#cambio-variable-jacobiano-interactivo", render: () => <JacobianChangeExplorer />, group: "Cálculo vectorial" },
-    { title: "Coordenadas cilíndricas y esféricas", subtitle: "Radio, ángulos y altura en 3D", href: "/cursos/calculo-vectorial#coordenadas-cilindricas-esfericas-3d", render: () => <CoordinateSystems3D />, group: "Cálculo vectorial" },
-    { title: "Integrales de línea", subtitle: "Trabajo y dependencia del camino", href: "/cursos/calculo-vectorial#integral-linea-campos-interactivo", render: () => <LineIntegralPathsExplorer />, group: "Cálculo vectorial" },
-    { title: "Teorema de Green", subtitle: "Del borde al interior", href: "/cursos/calculo-vectorial#teorema-green-interactivo", render: () => <GreenTheoremExplorer />, group: "Cálculo vectorial" },
-    { title: "Familia de soluciones", subtitle: "La constante C selecciona una curva", href: "/cursos/ecuaciones-diferenciales", render: () => <SolutionFamilyLab />, group: "Ecuaciones diferenciales" },
-    { title: "Campo de pendientes", subtitle: "De la información local a una solución", href: "/cursos/ecuaciones-diferenciales", render: () => <SlopeFieldLab />, group: "Ecuaciones diferenciales" },
-    { title: "Recta de fase", subtitle: "Equilibrios estables e inestables", href: "/cursos/ecuaciones-diferenciales#clase-1-seccion-4", render: () => <PhaseLineLab />, group: "Ecuaciones diferenciales" },
-    { title: "Método de Euler", subtitle: "Pendientes, pasos y error", href: "/cursos/ecuaciones-diferenciales#clase-1-seccion-3", render: () => <EulerMethodLab />, group: "Ecuaciones diferenciales" },
-    { title: "Oscilador amortiguado", subtitle: "Movimiento, tiempo y retrato de fase", href: "/cursos/ecuaciones-diferenciales#clase-6-seccion-1", render: () => <DampedOscillatorLab />, group: "Ecuaciones diferenciales" },
-    { title: "Heaviside y Laplace", subtitle: "De una señal por tramos a factores exponenciales", href: "/cursos/ecuaciones-diferenciales#clase-9-seccion-3", render: () => <HeavisideLaplaceLab />, group: "Ecuaciones diferenciales" },
-    { title: "Series de Fourier", subtitle: "Construir una función sumando armónicos", href: "/cursos/ecuaciones-diferenciales#clase-11-seccion-1", render: () => <FourierSeriesLab />, group: "Ecuaciones diferenciales" },
   ]},
   { id: "tejido", number: "03", title: "Tejido & estructuras", tone: "pink", description: "Palabras, puntos, identificaciones y superficies para explorar la matemática que aparece al tejer.", items: [
     { title: "Palabras en el grupo de trenzas", subtitle: "Generador por generador", href: "/tejido/trenzas-nudos-y-tejido", render: () => <BraidWordBuilder /> },

@@ -15,9 +15,9 @@ const collections = [
   {
     number: "02",
     slug: "apuntes",
-    title: "Apuntes",
+    title: "Laboratorios de cursos",
     subtitle: "Conceptos que se pueden mover",
-    description: "Vectores, matrices, superficies, derivadas e integrales reunidos desde los cursos de pregrado.",
+    description: "Álgebra lineal, cálculo diferencial y vectorial, ecuaciones diferenciales e introducción a las matemáticas, con un mismo formato visual.",
     formula: "Ax = b",
     tone: "green",
   },
