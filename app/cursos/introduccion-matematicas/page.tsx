@@ -43,7 +43,17 @@ export default function IntroductoryMathematicsPage() {
               <h4>{section.title}</h4>
               <div className="latex-content">{section.blocks.map((block,k)=><div className={`${styles[block.kind]}_thmwrapper`} key={k}><div className={`${styles[block.kind]}_thmheading`}><span>{names[block.kind]}</span><span> · {block.title}</span></div><div className={`${styles[block.kind]}_thmcontent`}><p><MathText text={block.text}/></p>{block.tex && <div className="course-math" dangerouslySetInnerHTML={{__html:katex.renderToString(block.tex,{displayMode:true,output:"mathml",throwOnError:true})}}/>}</div></div>)}</div>
               {section.visual === "functions" && <FunctionNotationDiagram/>}{section.visual === "logic" && <LogicExplorer/>}{section.visual === "circle" && <UnitCircleExplorer/>}
-              {chapter.slug === "polinomios" && section.title === "División larga y división sintética" && <SyntheticDivisionExplorer/>}
+              {chapter.slug === "polinomios" && section.title === "División larga y división sintética" && <><SyntheticDivisionExplorer/>
+                <aside className="synthetic-observations" aria-label="Observaciones sobre la división sintética">
+                  <h5>Observaciones sobre la división sintética</h5>
+                  <ol>
+                    <li><strong>El divisor debe tener grado 1.</strong><p>El método mostrado se aplica directamente a divisores de la forma <MathText text={String.raw`$x-a$`}/>. No usamos esta tabla para un divisor de grado 2 o mayor. Si el divisor es lineal pero su coeficiente principal no es 1, hay que ajustar el procedimiento.</p></li>
+                    <li><strong>El resto siempre es un número, incluido el cero.</strong><p>Por el algoritmo de la división, el resto es cero o tiene grado menor que el divisor. Como el divisor tiene grado 1, el resto no puede contener términos con x: es una constante. En la animación, el resto es 7.</p></li>
+                    <li><strong>La fila inferior permite leer el cociente.</strong><p>El último número es el resto; todos los anteriores son los coeficientes del cociente, en orden de potencias decrecientes. Si el dividendo tiene grado n ≥ 1, el cociente tiene grado n − 1. Aquí, de <MathText text={String.raw`$2,1,6\mid7$`}/> obtenemos <MathText text={String.raw`$q(x)=2x^2+x+6$`}/>: grado 2, uno menos que el grado 3 del dividendo.</p></li>
+                    <li><strong>¿Qué obtenemos al evaluar el polinomio en 2?</strong><p>El algoritmo de la división nos dice que <MathText text={String.raw`$p(x)=(x-2)q(x)+7$`}/>. Sustituimos x por 2 en esta igualdad:</p><p className="synthetic-evaluation"><MathText text={String.raw`$p(2)=(2-2)q(2)+7=0\cdot q(2)+7=7$.`}/></p><p>El término que contiene al cociente desaparece. Por eso <strong>p(2) es exactamente el resto de dividir por x − 2</strong>. En general, si <MathText text={String.raw`$p(x)=(x-a)q(x)+r$`}/>, entonces <MathText text={String.raw`$p(a)=r$`}/>: este es el teorema del resto.</p></li>
+                  </ol>
+                </aside>
+              </>}
               {(section.visual === "complex-plane" || section.visual === "complex-geometry" || section.visual === "complex-roots") && <ComplexDiagrams variant={section.visual}/>}
               {handwrittenNotes[`${chapter.slug}-${j+1}`] && <div className="intro-handwritten-notes"><p className="practice-label">EXPLICACIONES DE CLASE · PASO A PASO</p>{handwrittenNotes[`${chapter.slug}-${j+1}`].map((note)=><details className="intro-handwritten-note" key={note.title}>
                 <summary><span>{note.title}</span><span className="intro-note-action">Ver desarrollo</span></summary>

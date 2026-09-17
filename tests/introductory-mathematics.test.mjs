@@ -8,6 +8,18 @@ import { handwrittenNotes, handwrittenNoteCount } from "../content/courses/intro
 
 const chapters = [...introductoryChapters, ...introductoryAlgebraExtension];
 
+test("la práctica de división sintética es distinta de la animación y verifica el resto", () => {
+  const section = chapters.find(c => c.slug === "polinomios").sections[1];
+  assert.match(section.exercise, /3x\^3-5x\+4/);
+  assert.match(section.hint, /3,0,-5,4/);
+  assert.match(section.solution, /p\(-2\)=-10/);
+  for (const x of [-3, -2, 0, 1, 4]) assert.equal(3*x**3-5*x+4, (x+2)*(3*x*x-6*x+7)-10);
+  assert.equal(2*2**3-3*2**2+4*2-5, 7);
+  const html = readFileSync(new URL("../out/cursos/introduccion-matematicas/index.html", import.meta.url), "utf8");
+  assert.ok(html.indexOf('class="synthetic-observations"') > html.indexOf('class="intro-explorer synthetic-explorer"'));
+  assert.match(html, /p\(2\) es exactamente el resto/);
+});
+
 test("complejos conserva el inicio y los desarrollos de las clases", () => {
   const complex = chapters.find(c => c.slug === "complejos");
   assert.equal(complex.sections.length, 11);
