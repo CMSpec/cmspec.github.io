@@ -30,7 +30,7 @@ test("complejos conserva el inicio y los desarrollos de las clases", () => {
   assert.ok(opening.indexOf("ax+b=0") < opening.indexOf("x^2=2"));
   assert.ok(opening.indexOf("x^2=2") < opening.indexOf("ax^2+bx+c=0"));
   const all = JSON.stringify(complex);
-  for (const phrase of ["NO lleva i", "forman un cuerpo", "1–4.", "5–8.", "9. Positividad", "10. Módulo", "11–13.", "14. Las componentes", "15. Desigualdad", "paso inductivo", "raíces cúbicas de i", "Precisión sobre arctan"]) assert.ok(all.includes(phrase), phrase);
+  for (const phrase of ["NO lleva i", "forman un cuerpo", "1–4.", "5–8.", "9. Positividad", "10. Módulo", "11–13.", "14. Las componentes", "15. Desigualdad", "Demostración por inducción", "raíces cúbicas de i", "Precisión sobre arctan"]) assert.ok(all.includes(phrase), phrase);
   assert.equal(complex.sections.filter(s => s.visual).length, 3);
   for (let k = 0; k < 3; k++) {
     const angle = (Math.PI / 2 + 2 * k * Math.PI) / 3;

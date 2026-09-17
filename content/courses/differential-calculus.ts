@@ -10,7 +10,7 @@ export const differentialCalculusCourse = {
   author: "Camila Muñoz Santander",
   eyebrow: "CURSO DE PREGRADO · APUNTES",
   introduction: "Un recorrido desde las funciones y los límites hasta la derivada, sus técnicas y sus aplicaciones.",
-  note: "Curso elaborado a partir de los apuntes y ejercicios manuscritos de la autora.",
+  note: "Conceptos, ejemplos resueltos y ejercicios para estudiar cálculo diferencial paso a paso.",
 } as const;
 
 export const differentialCalculusChapters: Array<{ number: string; slug: string; title: string; sections: DifferentialSection[] }> = [

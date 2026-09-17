@@ -5,8 +5,8 @@ export const differentialEquationsCourse = {
   eyebrow: "CURSO DE PREGRADO · APUNTES",
   introduction:
     "Un recorrido desde las ecuaciones de primer orden hasta transformadas de Laplace, series de Fourier y problemas de frontera.",
-  note: "Esta edición reúne las clases teóricas del curso. Las guías, controles, evaluaciones y clases dedicadas exclusivamente a ejercicios se mantienen fuera de la lectura.",
+  note: "Estudia las ecuaciones diferenciales mediante definiciones, métodos y ejemplos resueltos, organizados por temas.",
   readerTitle: "Ecuaciones diferenciales",
   readerDescription:
-    "Abre una clase para consultar definiciones, métodos, ejemplos y desarrollos matemáticos.",
+    "Abre un tema para consultar definiciones, métodos, ejemplos y desarrollos matemáticos.",
 } as const;

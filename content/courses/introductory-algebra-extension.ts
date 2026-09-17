@@ -31,7 +31,7 @@ export const introductoryAlgebraExtension: IntroChapter[] = [
     s("Cardinalidad y problemas de encuestas", [
       d("Contar sin duplicar", t`Para conjuntos finitos, $|A|$ es su número de elementos. La parte común se cuenta dos veces al sumar $|A|+|B|$, por eso $|A\cup B|=|A|+|B|-|A\cap B|$. También $|A^c|=|U|-|A|$.`),
       d("Tres conjuntos", "Sumamos los tamaños individuales, restamos las intersecciones de a dos y recuperamos la triple intersección.", t`|A\cup B\cup C|=|A|+|B|+|C|-|A\cap B|-|A\cap C|-|B\cap C|+|A\cap B\cap C|`),
-      e("Desarrollo de clase: dos revistas", t`En una encuesta de 50 personas, sean a las que leen solo A, b ambas, c solo B y d ninguna. Si $b=2a=3c=4d$, entonces $b/2+b+b/3+b/4=50$. Multiplicando por 12 queda $25b=600$: $b=24$, $a=12$, $c=8$, $d=6$. Leen A un total de $a+b=36$, no solo 12.`),
+      e("Ejemplo resuelto: dos revistas", t`En una encuesta de 50 personas, sean a las que leen solo A, b ambas, c solo B y d ninguna. Si $b=2a=3c=4d$, entonces $b/2+b+b/3+b/4=50$. Multiplicando por 12 queda $25b=600$: $b=24$, $a=12$, $c=8$, $d=6$. Leen A un total de $a+b=36$, no solo 12.`),
       r("Exactamente y al menos", "En tres conjuntos, llena primero la intersección triple. «A y B» incluye a quienes también están en C; «solo A y B» los excluye. «Al menos uno» es la unión; «ninguno», su complemento."),
     ], "De 80 personas, 45 practican A, 32 practican B y 12 ambos. ¿Cuántas practican exactamente uno y cuántas ninguno?", "Calcula primero la unión. Para exactamente uno resta la intersección de cada grupo.", t`La unión tiene $45+32-12=65$ personas. Exactamente uno: $(45-12)+(32-12)=53$. Ninguno: $80-65=15$.`),
   ] },
@@ -44,7 +44,7 @@ export const introductoryAlgebraExtension: IntroChapter[] = [
     s("Sucesiones explícitas y por recurrencia", [
       d("Una entrada natural, un término", t`Una sucesión real es una función de los naturales a los reales. Escribimos $a_n$ para el término de índice n. En una fórmula explícita se calcula directamente; una recurrencia lo relaciona con términos anteriores y necesita valores iniciales.`),
       e("Alternancia", t`Si $a_n=(-1)^n2^n$ para $n\ge1$, sus primeros términos son $-2,4,-8,16$. El signo alterna y el valor absoluto se duplica.`),
-      e("Recurrencia de la clase", t`Con $a_1=3/4$ y $a_{n+1}=3/(4-a_n)$, obtenemos $a_2=12/13$ y $a_3=39/40$. La fórmula $a_n=(3^{n+1}-3)/(3^{n+1}-1)$ reproduce estos valores y se prueba por inducción sustituyéndola en la recurrencia.`),
+      e("Una sucesión definida por recurrencia", t`Con $a_1=3/4$ y $a_{n+1}=3/(4-a_n)$, obtenemos $a_2=12/13$ y $a_3=39/40$. La fórmula $a_n=(3^{n+1}-3)/(3^{n+1}-1)$ reproduce estos valores y se prueba por inducción sustituyéndola en la recurrencia.`),
       r("Revisar que esté definida", "Si una recurrencia tiene denominadores o raíces, comprueba sus restricciones en cada paso. También hay que precisar si la sucesión comienza en índice 0 o 1."),
     ], t`Si $b_1=2$ y $b_{n+1}=3b_n+1$, calcula $b_2,b_3,b_4$.`, "Usa el término recién calculado en el paso siguiente.", t`$b_2=7$, $b_3=22$ y $b_4=67$. No se sustituye n por el valor anterior: se sustituye $b_n$.`),
     s("Notación sigma y propiedades", [
@@ -103,7 +103,7 @@ export const introductoryAlgebraExtension: IntroChapter[] = [
     ], t`Calcula $(x^2+1)(3x^2+x+1)$ e indica su grado.`, "Multiplica cada término del primer factor por cada término del segundo y reúne potencias iguales.", t`Resulta $3x^4+x^3+4x^2+x+1$, de grado 4.`),
     s("División larga y división sintética", [
       d("Algoritmo de la división", t`Para polinomios p y g con $g\ne0$, existen únicos q y r tales que $p=gq+r$, donde r es cero o $\deg r<\deg g$. Ordena los términos y escribe ceros para las potencias ausentes.`),
-      e("División larga de clase", t`Al dividir $x^4-x^3+4x^2-12x+3$ por $x^2+2x-1$, el cociente es $x^2-3x+11$ y el resto $-37x+14$. Se comprueba multiplicando divisor por cociente y sumando el resto.`),
+      e("División larga de polinomios", t`Al dividir $x^4-x^3+4x^2-12x+3$ por $x^2+2x-1$, el cociente es $x^2-3x+11$ y el resto $-37x+14$. Se comprueba multiplicando divisor por cociente y sumando el resto.`),
       d("División sintética por x−a", t`Baja el primer coeficiente; multiplícalo por a y súmalo al siguiente. Repite. El último número es el resto y los anteriores son los coeficientes del cociente. Para dividir por $x+2$, se usa $a=-2$, no 2.`),
     ], t`Divide $p(x)=3x^3-5x+4$ por $x+2$ mediante división sintética. Identifica el cociente y el resto, y deduce el valor de $p(-2)$ sin sustituir en el polinomio original.`, t`Escribe $x+2=x-(-2)$: debes usar $a=-2$. Falta el término en $x^2$, así que sus coeficientes son $3,0,-5,4$. Para evaluar, usa $p(x)=(x+2)q(x)+r$.`, t`Bajamos 3. Multiplicamos $3(-2)=-6$ y sumamos $0-6=-6$. Luego $(-6)(-2)=12$ y $-5+12=7$. Finalmente $7(-2)=-14$ y $4-14=-10$. La fila final es $3,-6,7,-10$: $q(x)=3x^2-6x+7$ y $r=-10$. Por tanto, $p(x)=(x+2)(3x^2-6x+7)-10$. Al evaluar en −2, el factor $x+2$ se anula, así que $p(-2)=-10$.`),
     s("Teorema del resto y del factor", [
@@ -120,7 +120,7 @@ export const introductoryAlgebraExtension: IntroChapter[] = [
     s("Teorema fundamental y factorización en R y C", [
       d("Contar todas las raíces", t`Todo polinomio complejo de grado n positivo tiene exactamente n raíces en $\mathbb C$, contadas con multiplicidad. Se factoriza como $a_n\prod_{j=1}^{n}(x-z_j)$. Esto no afirma que todas las raíces sean reales ni distintas.`),
       d("Conjugadas y factores reales", t`Si los coeficientes son reales y z es raíz, también lo es $\overline z$, con la misma multiplicidad. El producto $(x-z)(x-\overline z)=x^2-2\operatorname{Re}(z)x+|z|^2$ tiene coeficientes reales.`),
-      e("Desarrollo de clase", t`Si sabemos que 3−i es raíz de $2x^3-13x^2+26x-10$, también lo es 3+i. Su factor real es $x^2-6x+10$. Al dividir queda $2x-1$. En $\mathbb R$: $(x^2-6x+10)(2x-1)$; en $\mathbb C$: $(x-(3-i))(x-(3+i))(2x-1)$.`),
+      e("Ejemplo resuelto", t`Si sabemos que 3−i es raíz de $2x^3-13x^2+26x-10$, también lo es 3+i. Su factor real es $x^2-6x+10$. Al dividir queda $2x-1$. En $\mathbb R$: $(x^2-6x+10)(2x-1)$; en $\mathbb C$: $(x-(3-i))(x-(3+i))(2x-1)$.`),
     ], t`Factoriza $x^4-1$ completamente en $\mathbb R$ y en $\mathbb C$.`, "Usa diferencia de cuadrados dos veces y resuelve x²+1=0 en los complejos.", t`En $\mathbb R$: $(x-1)(x+1)(x^2+1)$. En $\mathbb C$: $(x-1)(x+1)(x-i)(x+i)$.`),
     s("Fracciones parciales: preparación y factores lineales", [
       d("Primero dividir y factorizar", t`Para descomponer $N(x)/D(x)$, con $D\ne0$, primero haz división si $\deg N\ge\deg D$. Después factoriza D. La descomposición se realiza sobre la fracción propia restante y conserva las exclusiones del denominador original.`),
@@ -158,7 +158,7 @@ export const introductoryAlgebraExtension: IntroChapter[] = [
     s("Parábola: foco, directriz y vértice", [
       d("Equidistancia entre un punto y una recta", t`Una parábola reúne los puntos a igual distancia del foco y de la directriz. Con vértice (h,k), la forma vertical es $(x-h)^2=4p(y-k)$, con $p\ne0$. Su foco es (h,k+p) y su directriz $y=k-p$.`),
       d("Orientación horizontal", t`Para $(y-k)^2=4p(x-h)$, el foco es (h+p,k) y la directriz $x=h-p$. El signo de p indica derecha o izquierda; en la forma vertical, arriba o abajo. La distancia del vértice al foco es $|p|$.`),
-      e("Desarrollo de clase", t`$2x=y^2+8y+22$ se reescribe $(y+4)^2=2(x-3)$. Entonces $4p=2$, $p=1/2$, el vértice es (3,−4), el foco (7/2,−4) y la directriz $x=5/2$. Abre a la derecha.`),
+      e("Ejemplo resuelto", t`$2x=y^2+8y+22$ se reescribe $(y+4)^2=2(x-3)$. Entonces $4p=2$, $p=1/2$, el vértice es (3,−4), el foco (7/2,−4) y la directriz $x=5/2$. Abre a la derecha.`),
     ], t`Halla la parábola con vértice $(-4,2)$ y directriz $y=5$.`, "Usa k−p=5 para encontrar p y observa hacia dónde abre.", t`$2-p=5$ da $p=-3$. La ecuación es $(x+4)^2=-12(y-2)$, con foco $(-4,-1)$; abre hacia abajo.`),
     s("Elipse y excentricidad", [
       d("Suma de distancias constante", t`Una elipse reúne los puntos cuya suma de distancias a dos focos es $2a$. Usamos a como semieje mayor y b como semieje menor, con $a\ge b>0$. La distancia del centro a cada foco es $c=\sqrt{a^2-b^2}$.`),

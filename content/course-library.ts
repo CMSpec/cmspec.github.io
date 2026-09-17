@@ -4,7 +4,7 @@ export const courseNotes = [
     title: "Introducción a las Matemáticas",
     description: "Fundamentos, conjuntos, inducción, sumatorias, complejos, polinomios y geometría analítica, con ejercicios guiados.",
     subtitle: "Fundamentos para entrar al cálculo y al álgebra lineal",
-    authors: "CMSpec · Material de clases",
+    authors: "CMSpec · Apuntes",
     published: "15 septiembre 2026",
     modified: "16 septiembre 2026",
     href: "/cursos/introduccion-matematicas",

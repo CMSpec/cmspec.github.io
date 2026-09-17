@@ -35,7 +35,7 @@ export default function IntroductoryMathematicsPage() {
       <section className="course-reader" aria-labelledby="intro-reader-title">
         <header className="reader-heading"><p>APRENDER DESDE LOS FUNDAMENTOS</p><h2 id="intro-reader-title">Del lenguaje a las ideas.</h2><p>Un curso de fundamentos y álgebra, con conceptos, ejemplos desarrollados y ejercicios con ayuda progresiva. Todo el contenido se estudia aquí mismo.</p></header>
         <div className="differential-visual-note"><span>RUTA DE APRENDIZAJE</span><strong>comprender → representar → resolver → comprobar</strong><p>Lee la idea, explora un ejemplo y ensaya una respuesta propia. Las pistas y las soluciones se abren por separado.</p></div>
-        <aside className="intro-manuscript-intro"><h3>Explicaciones de clase, paso a paso</h3><p>{handwrittenNoteCount} desarrollos complementarios integrados junto a los conceptos. Ábrelos para seguir el razonamiento sin salir del curso. Las correcciones y los pasos completados se indican explícitamente.</p><p>Las unidades 7 a 12 amplían el recorrido con los nuevos temas. Puedes estudiar conjuntos después de lógica; inducción y progresiones después de ecuaciones; complejos después de trigonometría; y geometría analítica después de funciones y vectores.</p></aside>
+        <aside className="intro-manuscript-intro"><h3>Explicaciones paso a paso</h3><p>{handwrittenNoteCount} desarrollos complementarios integrados junto a los conceptos. Ábrelos para seguir el razonamiento sin salir del curso. Cada desarrollo incluye los pasos intermedios y las comprobaciones necesarias.</p><p>Las unidades 7 a 12 amplían el recorrido con los nuevos temas. Puedes estudiar conjuntos después de lógica; inducción y progresiones después de ecuaciones; complejos después de trigonometría; y geometría analítica después de funciones y vectores.</p></aside>
         <div className="reading-chapters">{chapters.map((chapter,i)=><details className={`reading-chapter chapter-tone-${i%4+1}`} id={`lectura-intro-${i+1}`} key={chapter.slug} open={i===0}>
           <summary><span>{String(i+1).padStart(2,"0")}</span><h3>{chapter.title}</h3><i aria-hidden="true">+</i></summary>
           <article className="chapter-article">
@@ -55,7 +55,7 @@ export default function IntroductoryMathematicsPage() {
                 </aside>
               </>}
               {(section.visual === "complex-plane" || section.visual === "complex-geometry" || section.visual === "complex-roots") && <ComplexDiagrams variant={section.visual}/>}
-              {handwrittenNotes[`${chapter.slug}-${j+1}`] && <div className="intro-handwritten-notes"><p className="practice-label">EXPLICACIONES DE CLASE · PASO A PASO</p>{handwrittenNotes[`${chapter.slug}-${j+1}`].map((note)=><details className="intro-handwritten-note" key={note.title}>
+              {handwrittenNotes[`${chapter.slug}-${j+1}`] && <div className="intro-handwritten-notes"><p className="practice-label">EXPLICACIONES · PASO A PASO</p>{handwrittenNotes[`${chapter.slug}-${j+1}`].map((note)=><details className="intro-handwritten-note" key={note.title}>
                 <summary><span>{note.title}</span><span className="intro-note-action">Ver desarrollo</span></summary>
                 <div className="intro-note-body"><ol>{note.steps.map((step,l)=><li key={l}><MathText text={step}/></li>)}</ol>{note.correction && <p className="intro-note-correction"><strong>Nota de la adaptación: </strong>{note.correction}</p>}</div>
               </details>)}</div>}
@@ -63,7 +63,7 @@ export default function IntroductoryMathematicsPage() {
             </section>)}
           </article>
         </details>)}</div>
-        <section className="intro-editorial-note"><h3>Sobre el curso</h3><p>Los conceptos y ejercicios de las clases están reorganizados y desarrollados para estudiar en esta página. Se revisan las fórmulas, las restricciones de dominio y las respuestas, señalando las correcciones necesarias.</p><p>Bibliografía de las clases: <cite>Álgebra e Introducción al Cálculo</cite>, Irene F. Mikenberg; <cite>Precálculo. Matemáticas para el Cálculo</cite>, James Stewart; y <cite>Álgebra</cite>, Ximena Carreño Campos y Ximena Cruz Schmidt.</p><h3>Para continuar</h3><p><a href={sitePath("/cursos/calculo-diferencial")}>Cálculo Diferencial →</a> · <a href={sitePath("/cursos/algebra-lineal")}>Álgebra Lineal →</a></p></section>
+        <section className="intro-editorial-note"><h3>Sobre el curso</h3><p>El curso presenta conceptos, ejemplos resueltos y ejercicios para estudiar de forma autónoma. Los desarrollos explican cada paso y destacan las restricciones de dominio y la comprobación de los resultados.</p><p>Bibliografía: <cite>Álgebra e Introducción al Cálculo</cite>, Irene F. Mikenberg; <cite>Precálculo. Matemáticas para el Cálculo</cite>, James Stewart; y <cite>Álgebra</cite>, Ximena Carreño Campos y Ximena Cruz Schmidt.</p><h3>Para continuar</h3><p><a href={sitePath("/cursos/calculo-diferencial")}>Cálculo Diferencial →</a> · <a href={sitePath("/cursos/algebra-lineal")}>Álgebra Lineal →</a></p></section>
       </section>
     </div>
     <footer className="course-footer"><p>CMSpec · Un espectro de intereses</p><a href="mailto:camila.mspec@gmail.com">camila.mspec@gmail.com ↗</a></footer>
