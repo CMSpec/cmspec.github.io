@@ -417,8 +417,7 @@ export const sourceDevelopments: Record<string, SourceDevelopment[]> = {
     ] },
   ],
   "induccion-sumatorias-2": [
-    { title: "De una cadena de igualdades a una fórmula explícita", source: "Induccion-y-sumatorias/Induccion-y-sumatorias.pdf", pages: [8,12], steps: [
-      t`Una sucesión es una función $a:\mathbb N\to\mathbb R$; $a(n)=a_n$ es un término y $(a_n)=(a_1,a_2,\ldots)$ es la sucesión. Por ejemplo, $a_n=(-1)^n2^n$ da $a_1=-2$, $a_2=4$, $a_3=-8$.`,
+    { title: "De una cadena de igualdades a una fórmula explícita", source: "Induccion-y-sumatorias/Induccion-y-sumatorias.pdf", pages: [9,12], steps: [
       t`Considera ahora $4=3/a_1=a_1+3/a_2=a_2+3/a_3=\cdots=a_k+3/a_{k+1}$. De $4=3/a_1$ sale $a_1=3/4$.`,
       t`De $4=a_k+3/a_{k+1}$ despejamos $3/a_{k+1}=4-a_k$ y por tanto $a_{k+1}=3/(4-a_k)$.`,
       t`Así, $a_2=3/(4-3/4)=3/(13/4)=12/13$. Después $a_3=3/(4-12/13)=3/(40/13)=39/40$.`,
@@ -433,12 +432,13 @@ export const sourceDevelopments: Record<string, SourceDevelopment[]> = {
   ],
   "induccion-sumatorias-3": [
     { title: "Leer, distribuir y separar una sumatoria", source: "Induccion-y-sumatorias/Induccion-y-sumatorias.pdf", pages: [13,16], steps: [
-      t`En $\sum_{i=1}^n a_i$, el símbolo $\sum$ indica suma; $i$ es el índice, 1 el índice inicial, n el final y $a_i$ el término que se evalúa en cada índice. El último término es $a_n$, no necesariamente el número n.`,
-      t`Por ejemplo, $\sum_{i=1}^3(7i-3)=(7\cdot1-3)+(7\cdot2-3)+(7\cdot3-3)=4+11+18=33$.`,
+      t`Sean $(a_i)_{i\in\mathbb N}$ y $(b_i)_{i\in\mathbb N}$ sucesiones reales, y $c\in\mathbb R$ una constante. Las propiedades siguientes se entienden desarrollando las sumas: así vemos qué operaciones permiten reunir o separar términos.`,
       t`Para una constante c, $\sum_{i=1}^n ca_i=ca_1+\cdots+ca_n=c(a_1+\cdots+a_n)=c\sum_{i=1}^n a_i$.`,
       t`Asimismo, $\sum_{i=1}^n(a_i\pm b_i)=(a_1\pm b_1)+\cdots+(a_n\pm b_n)=\sum_{i=1}^n a_i\pm\sum_{i=1}^n b_i$.`,
-      t`Una constante se suma tantas veces como índices haya: $\sum_{i=1}^n c=nc$, y en general $\sum_{i=p}^q c=(q-p+1)c$.`,
+      t`Una constante se suma tantas veces como índices haya: $\sum_{i=1}^n c=c+c+\cdots+c=nc$, y en general $\sum_{i=p}^q c=(q-p+1)c$. Por ejemplo, $\sum_{i=3}^7 4=5\cdot4=20$: hay cinco términos, no siete.`,
       t`Si $1\le m\le n$, separar la lista de términos da $\sum_{i=1}^n a_i=\sum_{i=1}^m a_i+\sum_{i=m+1}^n a_i$. Por tanto, $\sum_{i=m+1}^n a_i=\sum_{i=1}^n a_i-\sum_{i=1}^m a_i$. El término de índice m no se cuenta dos veces.`,
+      t`También podemos cambiar el índice sin cambiar los términos sumados. Con $j=i+r$, obtenemos $\sum_{i=p}^q a_i=\sum_{j=p+r}^{q+r}a_{j-r}$. Con $j=i-r$, obtenemos $\sum_{i=p}^q a_i=\sum_{j=p-r}^{q-r}a_{j+r}$. Cambiamos simultáneamente los límites y el argumento; en ambos casos el primer término sigue siendo $a_p$ y el último, $a_q$.`,
+      t`Estas reglas permiten separar sumas y restas o sacar factores constantes. No permiten, en general, escribir la suma de productos como el producto de las sumas. Cambiar solamente la letra del índice tampoco cambia la suma: es una variable local de esa expresión.`,
     ] },
   ],
   "induccion-sumatorias-4": [

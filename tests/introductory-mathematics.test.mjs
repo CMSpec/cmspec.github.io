@@ -10,6 +10,30 @@ import { introductoryOpenings } from "../content/courses/introductory-openings.t
 
 const chapters = [...introductoryChapters, ...introductoryAlgebraExtension];
 
+test("sucesiones y sumatorias conservan la secuencia conceptual del documento", () => {
+  const unit = chapters.find(c => c.slug === "induccion-sumatorias");
+  assert.deepEqual(unit.sections[1].blocks.map(b => b.title), [
+    "Una sucesión real es una función", "La sucesión y su término general",
+    "Calcular los primeros tres términos", "Definir una sucesión por recurrencia",
+  ]);
+  assert.match(unit.sections[1].blocks[0].tex, /a\(n\)=a_n/);
+  assert.match(unit.sections[1].blocks[1].text, /sucesión completa/);
+  assert.match(unit.sections[2].blocks[0].text, /número finito de términos de una sucesión/);
+  const html = readFileSync(new URL("../out/cursos/introduccion-matematicas/index.html", import.meta.url), "utf8");
+  const start = html.indexOf('id="intro-induccion-sumatorias-2"');
+  const end = html.indexOf('class="intro-practice"', start);
+  const section = html.slice(start, end);
+  let previous = -1;
+  for (const title of [...unit.sections[1].blocks.map(b => b.title), "De una cadena de igualdades a una fórmula explícita"]) {
+    const at = section.indexOf(title);
+    assert.ok(at > previous, title);
+    previous = at;
+  }
+  assert.equal(section.split("Una sucesión real es una función").length - 1, 1);
+  const properties = sourceDevelopments["induccion-sumatorias-3"][0].steps.join(" ");
+  for (const phrase of ["sucesiones reales", "cinco términos", "primer término sigue siendo", "simultáneamente"]) assert.ok(properties.includes(phrase), phrase);
+});
+
 test("las introducciones recuperadas preceden la teoría y sustituyen sus resúmenes", () => {
   const html = readFileSync(new URL("../out/cursos/introduccion-matematicas/index.html", import.meta.url), "utf8");
   assert.equal(Object.keys(introductoryOpenings).length, 11);
