@@ -17,7 +17,9 @@ test("la práctica de división sintética es distinta de la animación y verifi
   assert.equal(2*2**3-3*2**2+4*2-5, 7);
   const html = readFileSync(new URL("../out/cursos/introduccion-matematicas/index.html", import.meta.url), "utf8");
   assert.ok(html.indexOf('class="synthetic-observations"') > html.indexOf('class="intro-explorer synthetic-explorer"'));
-  assert.match(html, /p\(2\) es exactamente el resto/);
+  assert.match(html, /Esta coincidencia es un hecho general que explicaremos en el siguiente tema/);
+  const observations = html.slice(html.indexOf('class="synthetic-observations"'), html.indexOf('</aside>', html.indexOf('class="synthetic-observations"')));
+  assert.doesNotMatch(observations, /teorema del resto/i);
 });
 
 test("complejos conserva el inicio y los desarrollos de las clases", () => {
