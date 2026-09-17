@@ -2,6 +2,17 @@ import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 import test from "node:test";
 
+test("los cursos usan sin y no el comando no compatible sen", () => {
+  for (const course of ["calculo-vectorial", "ecuaciones-diferenciales"]) {
+    const html = readFileSync(`out/cursos/${course}/index.html`, "utf8");
+    assert.doesNotMatch(html, /\\sen(?![a-zA-Z])/);
+    assert.match(html, /<mi>sin<\/mi>/);
+    for (const file of readdirSync(`latex/${course}`).filter(name => name.endsWith(".tex"))) {
+      assert.doesNotMatch(readFileSync(`latex/${course}/${file}`, "utf8"), /\\sen(?![a-zA-Z])/);
+    }
+  }
+});
+
 test("los ejercicios no se presentan como controles ni exámenes", () => {
   const exercisePages = ["out/ejercicios/index.html", ...readdirSync("out/ejercicios", { withFileTypes: true }).filter(entry => entry.isDirectory()).map(entry => `out/ejercicios/${entry.name}/index.html`)];
   for (const path of [...exercisePages, "out/cursos/ecuaciones-diferenciales/index.html"]) {

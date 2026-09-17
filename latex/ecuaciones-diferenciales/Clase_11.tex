@@ -198,7 +198,7 @@ Que es una forma alternativa más cómoda de escribir series de Fourier. Veamos 
      &= 1
 \end{align*}
 
-Por otra parte, recordando que $\sen(2\pi n) =0$ y $\cos(2\pi n) =1$ para $ n\in \mathbb{N}$, se tiene
+Por otra parte, recordando que $\sin(2\pi n) =0$ y $\cos(2\pi n) =1$ para $ n\in \mathbb{N}$, se tiene
 
 \begin{align*}
     a_n &= 2 \int_0^1 \cos(2\pi n t)t dt \\
@@ -264,7 +264,7 @@ Que es nada mas ni nada menos que la conocida Serie de Leibniz  \\
 \end{ejer}
 
 \begin{align*}
-    \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}\sen \left( \frac{n\pi}{2} x\right)
+    \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}\sin \left( \frac{n\pi}{2} x\right)
 \end{align*}
 
 Y concluya nuevamente la serie de Leibniz. \\
@@ -438,7 +438,7 @@ Si $k=0$, entonces
 Si $k<0$, digamos $k=-\alpha^2$, entonces
 
 \begin{align*}
-    M(x) = c_1\cos(\alpha x)+c_2\sen(\alpha x)
+    M(x) = c_1\cos(\alpha x)+c_2\sin(\alpha x)
 \end{align*}
 
 Sin las condiciones de borde la solución queda como tres posibilidades
@@ -446,7 +446,7 @@ Sin las condiciones de borde la solución queda como tres posibilidades
 \begin{align*}
     u_1(x,t) &= ce^{\alpha^2t}(c_1e^{\alpha x}+c_2e^{-\alpha x}) \\
     u_2(x,t) &= ce^{kt}(c_1+c_2x) \\
-    u_3(x,t) &= ce^{-\alpha^2t}(c_1\cos(\alpha x)+c_2\sen(\alpha x))
+    u_3(x,t) &= ce^{-\alpha^2t}(c_1\cos(\alpha x)+c_2\sin(\alpha x))
 \end{align*}
 
 Estas serían las soluciones dadas por el método de separación de variables, pero no son todas las posibles. Además, hay que agregar las condiciones de borde. \\
@@ -471,10 +471,10 @@ Nuevamente, podemos ver que $c_1=c_2=0$ y entonces $u=0$. Nuestra única esperan
 
 \begin{align*}
     u(0,t) &= ce^{-\alpha^2t}(c_1)=0 \\
-    u(1,t) &= ce^{-\alpha^2t}(c_2\sen(\alpha)) =0\\
+    u(1,t) &= ce^{-\alpha^2t}(c_2\sin(\alpha)) =0\\
 \end{align*}
 
-De la primera igualdad se deduce que $c_1=0$. Notemos que en la última igualdad tenemos $c_2=0$ o bien $\sen(\alpha)=0$, pero $c_2=0$ no nos sirve, por lo tanto, elegimos $\sen(\alpha) =0 $ y entonces se concluye que
+De la primera igualdad se deduce que $c_1=0$. Notemos que en la última igualdad tenemos $c_2=0$ o bien $\sin(\alpha)=0$, pero $c_2=0$ no nos sirve, por lo tanto, elegimos $\sin(\alpha) =0 $ y entonces se concluye que
 
 \begin{align*}
     \alpha = n \pi
@@ -483,21 +483,21 @@ De la primera igualdad se deduce que $c_1=0$. Notemos que en la última igualdad
 con $ n\in \mathbb{Z} $ y la solución nos queda de la forma
 
 \begin{align*}
-    u(x,t) &= ce^{-n^2\pi^2t}\sen(n\pi x)
+    u(x,t) &= ce^{-n^2\pi^2t}\sin(n\pi x)
 \end{align*}
 
-Sigue sin cumplirse que $u(x,0)=x-1/2$, de hecho $u(x,0)=c\sen(n\pi x)$ Ahora bien, podemos notar que para cada $n \in \mathbb{Z}$ se tiene una solución diferente, y como tenemos una EDP lineal, si sumamos una cantidad numerable de soluciones seguimos obteniendo una solución (este es un teorema que no vamos a demostrar). De esta forma, tomado solo los valores pares obtenemos quela función
+Sigue sin cumplirse que $u(x,0)=x-1/2$, de hecho $u(x,0)=c\sin(n\pi x)$ Ahora bien, podemos notar que para cada $n \in \mathbb{Z}$ se tiene una solución diferente, y como tenemos una EDP lineal, si sumamos una cantidad numerable de soluciones seguimos obteniendo una solución (este es un teorema que no vamos a demostrar). De esta forma, tomado solo los valores pares obtenemos quela función
 
 
 \begin{align*}
-    u(x,t) &= \sum_{n=1}^{\infty}c_ne^{-4n^2\pi^2t}\sen(2n\pi x)
+    u(x,t) &= \sum_{n=1}^{\infty}c_ne^{-4n^2\pi^2t}\sin(2n\pi x)
 \end{align*}
 
 También es una solución de la EDP que cumple las dos primeras condiciones de borde. Aquí  cada $c_n$ corresponde a una constante que depende de $n$. Ahora bien $u(x,0) = x-1/2$, por lo tanto,
 
 
 \begin{align*}
-    x -\frac{1}{2}&= \sum_{n=1}^{\infty}c_n\sen(2n\pi x)
+    x -\frac{1}{2}&= \sum_{n=1}^{\infty}c_n\sin(2n\pi x)
 \end{align*}
 
 
@@ -510,7 +510,7 @@ Pero debido a al ejemplo 1 de la sección 1 sabemos que la serie de Fourier de $
 Por lo tanto, necesitamos que
 
 \begin{align*}
-    - \frac{1}{\pi}\sum_{n=1}^\infty \frac{\sin(2\pi n t)}{n}&= \sum_{n=1}^{\infty}c_n\sen(2n\pi x)
+    - \frac{1}{\pi}\sum_{n=1}^\infty \frac{\sin(2\pi n t)}{n}&= \sum_{n=1}^{\infty}c_n\sin(2n\pi x)
 \end{align*}
 
 Concluimos que
@@ -524,7 +524,7 @@ Concluimos que
 Y con esto demostramos que la solución del problema de frontera es
 
 \begin{align*}
-    u(x,t) = -\sum_{n=1}^\infty \frac{1}{\pi n}e^{-4n^2\pi^2t}\sen(2n\pi x)
+    u(x,t) = -\sum_{n=1}^\infty \frac{1}{\pi n}e^{-4n^2\pi^2t}\sin(2n\pi x)
 \end{align*}
 
 Estos ejercicios son muy largos y complicados en general.

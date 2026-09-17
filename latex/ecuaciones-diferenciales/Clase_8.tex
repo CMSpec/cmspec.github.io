@@ -240,7 +240,7 @@ $\displaystyle m_2 = \alpha - \beta i$
 Realizando los mismos pasos que se usaron en las ecuaciones de coeficientes constantes, obtenemos las soluciones
 
 \begin{center}
-$y_1 =  x^{\alpha}\cos(\beta \ln(x))$ y  $ y_2 =x^{\alpha}\sen(\beta \ln(x))$
+$y_1 =  x^{\alpha}\cos(\beta \ln(x))$ y  $ y_2 =x^{\alpha}\sin(\beta \ln(x))$
 \end{center}
 
 
@@ -248,7 +248,7 @@ Por lo tanto la solución general será de la forma
 
 
 \begin{center}
-$y = c_1 x^{\alpha}\cos(\beta \ln(x)) +c_2 x^{\alpha}\sen(\beta \ln(x)) $
+$y = c_1 x^{\alpha}\cos(\beta \ln(x)) +c_2 x^{\alpha}\sin(\beta \ln(x)) $
 \end{center}
 
 
@@ -412,65 +412,65 @@ Por lo tanto
 
 
 
-Tomamos ahora $f(t) = \sen(at)$, entonces
+Tomamos ahora $f(t) = \sin(at)$, entonces
 
 \begin{align*}
-\displaystyle \mathcal{L}[\sen(at)](s) &= \int_0^\infty 1 \cdot \sen(at)e^{-st} dt \\
-&= \lim_{A \to \infty} \int_0^A \sen(at)e^{-st}  dt \\
+\displaystyle \mathcal{L}[\sin(at)](s) &= \int_0^\infty 1 \cdot \sin(at)e^{-st} dt \\
+&= \lim_{A \to \infty} \int_0^A \sin(at)e^{-st}  dt \\
 \end{align*}
 
-Vamos a calcular $\displaystyle \int \sen(at)e^{-st}dt$, tomamos $u=\sen(at)$ y $dv=e^{-st}dt$, entonces $du=a\cos(at)dt$ y $v=\displaystyle -\frac{1}{s}e^{-st}$, luego
+Vamos a calcular $\displaystyle \int \sin(at)e^{-st}dt$, tomamos $u=\sin(at)$ y $dv=e^{-st}dt$, entonces $du=a\cos(at)dt$ y $v=\displaystyle -\frac{1}{s}e^{-st}$, luego
 
 \begin{align*}
-\displaystyle \int \sen(t)e^{-st}dt &= -\frac{\sen(at)e^{-st}}{s}- \int -\frac{1}{s}e^{-st} a\cos(at)dt \\
-&= -\frac{\sen(at)e^{-st}}{s}+ \frac{a}{s} \int \cos(at)e^{-st} dt\\
+\displaystyle \int \sin(t)e^{-st}dt &= -\frac{\sin(at)e^{-st}}{s}- \int -\frac{1}{s}e^{-st} a\cos(at)dt \\
+&= -\frac{\sin(at)e^{-st}}{s}+ \frac{a}{s} \int \cos(at)e^{-st} dt\\
 \end{align*}
 
-Vamos a calcular $\displaystyle \int \cos(at)e^{-st}dt$, tomamos $u=\cos(at)$ y $dv=e^{-st}dt$, entonces $du=-a\sen(at)dt$ y $v=\displaystyle -\frac{1}{s}e^{-st}$, luego
+Vamos a calcular $\displaystyle \int \cos(at)e^{-st}dt$, tomamos $u=\cos(at)$ y $dv=e^{-st}dt$, entonces $du=-a\sin(at)dt$ y $v=\displaystyle -\frac{1}{s}e^{-st}$, luego
 
 
 
 \begin{align*}
-\displaystyle \int \cos(at)e^{-st}dt &= -\frac{\cos(at)e^{-st}}{s}- \int (-\sen(at))\frac{-1}{s} e^{-st} adt \\
-&= -\frac{\cos(at)e^{-st}}{s}- \frac{a}{s} \int \sen(at)e^{-st} dt\\
+\displaystyle \int \cos(at)e^{-st}dt &= -\frac{\cos(at)e^{-st}}{s}- \int (-\sin(at))\frac{-1}{s} e^{-st} adt \\
+&= -\frac{\cos(at)e^{-st}}{s}- \frac{a}{s} \int \sin(at)e^{-st} dt\\
 \end{align*}
 
 Reemplazando
 
 \begin{align*}
-\displaystyle \int \sen(t)e^{-st}dt &= -\frac{\cos(at)e^{-st}}{s}- \int -\frac{1}{s}e^{-st} a\cos(at)dt \\
-&= -\frac{\sen(at)e^{-st}}{s}+ \frac{a}{s} \left( -\frac{\cos(at)e^{-st}}{s}- \frac{a}{s} \int \sen(at)e^{-st} dt \right)  \\
-&= -\frac{\sen(at)e^{-st}}{s}+  -\frac{a\cos(at)e^{-st}}{s^2}- \frac{a^2}{s^2} \int \sen(at)e^{-st} dt \\
+\displaystyle \int \sin(t)e^{-st}dt &= -\frac{\cos(at)e^{-st}}{s}- \int -\frac{1}{s}e^{-st} a\cos(at)dt \\
+&= -\frac{\sin(at)e^{-st}}{s}+ \frac{a}{s} \left( -\frac{\cos(at)e^{-st}}{s}- \frac{a}{s} \int \sin(at)e^{-st} dt \right)  \\
+&= -\frac{\sin(at)e^{-st}}{s}+  -\frac{a\cos(at)e^{-st}}{s^2}- \frac{a^2}{s^2} \int \sin(at)e^{-st} dt \\
 \end{align*}
 
-Ahora sumando $\displaystyle \frac{a^2}{s^2} \int \sen(at)e^{-st} dt $ a ambos lados obtenemos
+Ahora sumando $\displaystyle \frac{a^2}{s^2} \int \sin(at)e^{-st} dt $ a ambos lados obtenemos
 
 \begin{align*}
-\displaystyle \int \sen(t)e^{-st}dt + \frac{a^2}{s^2} \int \sen(at)e^{-st} dt &= -\frac{\sen(at)e^{-st}}{s} -\frac{a\cos(at)e^{-st}}{s^2} \\
+\displaystyle \int \sin(t)e^{-st}dt + \frac{a^2}{s^2} \int \sin(at)e^{-st} dt &= -\frac{\sin(at)e^{-st}}{s} -\frac{a\cos(at)e^{-st}}{s^2} \\
 \end{align*}
 
 O bien
 
 
 \begin{align*}
-\displaystyle  \int \sen(at)e^{-st} dt  \left( 1+ \frac{a^2}{s^2}\right) &= -\frac{\sen(at)e^{-st}}{s} -\frac{a\cos(at)e^{-st}}{s^2} \\
+\displaystyle  \int \sin(at)e^{-st} dt  \left( 1+ \frac{a^2}{s^2}\right) &= -\frac{\sin(at)e^{-st}}{s} -\frac{a\cos(at)e^{-st}}{s^2} \\
 \end{align*}
 
 \begin{align*}
-\displaystyle  \int \sen(at)e^{-st} dt  \left( \frac{a^2+s^2}{s^2}\right) &= -\frac{\sen(at)e^{-st}}{s}  -\frac{a\cos(at)e^{-st}}{s^2} \\
+\displaystyle  \int \sin(at)e^{-st} dt  \left( \frac{a^2+s^2}{s^2}\right) &= -\frac{\sin(at)e^{-st}}{s}  -\frac{a\cos(at)e^{-st}}{s^2} \\
 \end{align*}
 
 
 \begin{align*}
-\displaystyle  \int \sen(at)e^{-st} dt &= \left( -\frac{\sen(at)e^{-st}}{s} -\frac{a\cos(at)e^{-st}}{s^2} \right) \frac{s^2}{a^2+s^2}\\
+\displaystyle  \int \sin(at)e^{-st} dt &= \left( -\frac{\sin(at)e^{-st}}{s} -\frac{a\cos(at)e^{-st}}{s^2} \right) \frac{s^2}{a^2+s^2}\\
 \end{align*}
 
 Por lo tanto
 
 
 \begin{align*}
-\displaystyle \mathcal{L}[\sen(t)](s) &= \lim_{A \to \infty} \int_0^A \sen(t)e^{-st}  dt \\
-&= \lim_{A \to \infty} \left( \left( -\frac{\sen(at)e^{-st}}{s} -\frac{a\cos(at)e^{-st}}{s^2} \right) \frac{s^2}{a^2+s^2}\right) \bigg|_0^A \\
+\displaystyle \mathcal{L}[\sin(t)](s) &= \lim_{A \to \infty} \int_0^A \sin(t)e^{-st}  dt \\
+&= \lim_{A \to \infty} \left( \left( -\frac{\sin(at)e^{-st}}{s} -\frac{a\cos(at)e^{-st}}{s^2} \right) \frac{s^2}{a^2+s^2}\right) \bigg|_0^A \\
 &= \frac{a}{a^2+s^2}
 \end{align*}
 
@@ -478,7 +478,7 @@ Por lo tanto
 En resumen
 
 \begin{align*}
-\displaystyle \mathcal{L}[\sen(at)](s) &= \frac{a}{a^2+s^2}
+\displaystyle \mathcal{L}[\sin(at)](s) &= \frac{a}{a^2+s^2}
 \end{align*}
 
 
@@ -511,7 +511,7 @@ $\displaystyle \mathcal{L}[e^{\alpha t}](s) = \frac{1}{s-\alpha}$, $\forall s>\a
 \end{center}
 
 \begin{align*}
-\displaystyle \mathcal{L}[\sen(at)](s) &= \frac{a}{a^2+s^2}, \forall s>0
+\displaystyle \mathcal{L}[\sin(at)](s) &= \frac{a}{a^2+s^2}, \forall s>0
 \end{align*}
 
 \begin{align*}
@@ -589,7 +589,7 @@ $\displaystyle \mathcal{L}^{-1}\left[ \frac{1}{s-a} \right] (t) = e^{at}$
 
 
 \begin{center}
-$\displaystyle \mathcal{L}^{-1}\left[ \frac{k}{s^2+k^2} \right] (t) = \sen(kt)$
+$\displaystyle \mathcal{L}^{-1}\left[ \frac{k}{s^2+k^2} \right] (t) = \sin(kt)$
 \end{center}
 
 
@@ -678,7 +678,7 @@ $\displaystyle \mathcal{L}^{-1}\left[ \frac{3s+4}{s^2+7} \right] = 3\displaystyl
 Notemos que
 
 \begin{center}
-$\displaystyle \mathcal{L}^{-1}\left[ \frac{k}{s^2+k^2} \right] (t) = \sen(kt)$
+$\displaystyle \mathcal{L}^{-1}\left[ \frac{k}{s^2+k^2} \right] (t) = \sin(kt)$
 \end{center}
 
 
@@ -693,7 +693,7 @@ Por lo tanto tomando $k = \sqrt{7}$, tenemos que $k^2=7$, luego
 
 
 \begin{center}
-$\displaystyle \mathcal{L}^{-1}\left[ \frac{3s+4}{s^2+7} \right] = 3 \cos(\sqrt{7}t) + \frac{4}{\sqrt{7}}\sen(\sqrt{7}t) $
+$\displaystyle \mathcal{L}^{-1}\left[ \frac{3s+4}{s^2+7} \right] = 3 \cos(\sqrt{7}t) + \frac{4}{\sqrt{7}}\sin(\sqrt{7}t) $
 \end{center}
 
 
@@ -725,26 +725,26 @@ $\displaystyle \mathcal{L}[f''(t)](s) = s^2\mathcal{L}[f](s)- sf(0)-f'(0)$
 
 Esto nos permite calcular ciertas transformadas de Laplace \\
 
-\begin{ejem}Caclular $\displaystyle \mathcal{L}\left[ \sen^2(at) \right] $. \\
+\begin{ejem}Caclular $\displaystyle \mathcal{L}\left[ \sin^2(at) \right] $. \\
 \end{ejem}
 
-notemos que $\sen^2(a \cdot 0) =0$, además
+notemos que $\sin^2(a \cdot 0) =0$, además
 
 \begin{center}
-$(\sen^2(at))' = 2a\cos(at)\sen(at) = a\cos(2at)$
+$(\sin^2(at))' = 2a\cos(at)\sin(at) = a\cos(2at)$
 \end{center}
 
 Luego
 
 
 \begin{center}
-$ \displaystyle \mathcal{L}\left[ (\sen^2(at))'\right]  = a\mathcal{L}\left[ \cos(2at)\right] = \frac{2a^2}{s^2+4a^2} $
+$ \displaystyle \mathcal{L}\left[ (\sin^2(at))'\right]  = a\mathcal{L}\left[ \cos(2at)\right] = \frac{2a^2}{s^2+4a^2} $
 \end{center}
 
 Por lo tanto
 
 \begin{center}
-$ \displaystyle \mathcal{L}\left[\sen^2(at)\right]  = \frac{2a^2}{s(s^2+4a^2)} $
+$ \displaystyle \mathcal{L}\left[\sin^2(at)\right]  = \frac{2a^2}{s(s^2+4a^2)} $
 \end{center}
 
 

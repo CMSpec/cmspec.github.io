@@ -131,7 +131,7 @@ Con $g(x) \neq 0$, en otras palabras una ecuación diferencial NO homogenea con 
 
 1- En caso de que $g(x)= 6x^2+3x+5$, tenemos que asumir que $y_p= Ax^2+Bx+C$, y en general en caso de que sea un polinomio de grado $n$ tenemos que asumir que $y_p = A_1x^n+A_2x^{n-1}+.. +A_1x +A_0$. Luego tenemos que reemplazar en la ecuación diferencial inicial y encontrar los coeficientes para que se cumpla la igualdad. \\
 
-2- Si $g(x)=\alpha\sen(\omega x)$ o bien $g(x)=\alpha\cos(\omega x)$ con $\alpha \in \mathbb{R}$, entonces hay que asumir $y_p= A\sen(\omega x)+B\cos(\omega x)$. \\
+2- Si $g(x)=\alpha\sin(\omega x)$ o bien $g(x)=\alpha\cos(\omega x)$ con $\alpha \in \mathbb{R}$, entonces hay que asumir $y_p= A\sin(\omega x)+B\cos(\omega x)$. \\
 
 3- Si $g(x)= \alpha e^{kx}$ donde $k,\alpha \in\mathbb{R}$, entonces hay que asumir $y_p= Ae^{kx}$. \\
 
@@ -266,7 +266,7 @@ Para poder solucionar este problema basta con multiplicar la expresión $Ae^x$ p
     y_p= Axe^{2x}
 \end{align*}
 
-No vamos a demostrar por qué esto funciona, simplemente reemplazando en la ecuación original por  $y_p =p(x)e^{2x}$ nos damos cuenta que $p(x)=x$. Este polinomio funciona para $f(x)=e^{m x}$, $f(x) = \sen(\beta x)$ y $f(x)= \cos(\beta x)$, en caso de que $f(x)=xe^{mx}$ el polinomio que nos sirve es $p(x)=x^2$ y con esto cubrimos todos los casos, obivamente esto hay que hacerlo siempre y cuando $f(x)$ sea linealmente dependiente con $y_1$ o bien con $y_2$, en caso contrario no es necesario hacer esto (las soluciones que aparecen en ecuaciones homogéneas de coeficientes constantes vistas en la sección anterior). \\
+No vamos a demostrar por qué esto funciona, simplemente reemplazando en la ecuación original por  $y_p =p(x)e^{2x}$ nos damos cuenta que $p(x)=x$. Este polinomio funciona para $f(x)=e^{m x}$, $f(x) = \sin(\beta x)$ y $f(x)= \cos(\beta x)$, en caso de que $f(x)=xe^{mx}$ el polinomio que nos sirve es $p(x)=x^2$ y con esto cubrimos todos los casos, obivamente esto hay que hacerlo siempre y cuando $f(x)$ sea linealmente dependiente con $y_1$ o bien con $y_2$, en caso contrario no es necesario hacer esto (las soluciones que aparecen en ecuaciones homogéneas de coeficientes constantes vistas en la sección anterior). \\
 
 
 Volvamos al ejercicio, tenemos que
@@ -408,13 +408,13 @@ $\displaystyle y= c_1y_2 +c_2y_2 + y_1\int \frac{-y_2(x)f(x)}{W(y_1,y_2)} +y_2 \
 \begin{ejem}Resolver $y'' +y = \sec^2(x)$. \\
 \end{ejem}
 
-\begin{sol}Primero resolvemos la homogenea $y''+y'=0$, tomando $y=e^{mx}$ obtenemos $m^2+1=0$, las soluciones son $m_1=i$ y $m_2=-i$, la solución es  $y_1 = \cos(x)$ y $y_2 =\sen(x)$. \\
+\begin{sol}Primero resolvemos la homogenea $y''+y'=0$, tomando $y=e^{mx}$ obtenemos $m^2+1=0$, las soluciones son $m_1=i$ y $m_2=-i$, la solución es  $y_1 = \cos(x)$ y $y_2 =\sin(x)$. \\
 \end{sol}
 
 Suponemos que la solución particular es de la forma $y_p= c_1(x)y_1 +c_2(x)y_2$. Primero calculamos $W(y_1,y_1)$, entonces
 
 \begin{center}
-$\displaystyle W(y_1,y_2) = y_1y_2'-y_2y_1' = \cos^2(x)+\sen^2(x) =1$
+$\displaystyle W(y_1,y_2) = y_1y_2'-y_2y_1' = \cos^2(x)+\sin^2(x) =1$
 \end{center}
 
 
@@ -422,7 +422,7 @@ Usando la fórmula directamente obtenemos que
 
 
 \begin{center}
-$c_1(x) = \displaystyle \int -\sen(x) \frac{1}{\cos^2(x)} dx = \int -\tan(x)\sec(x)dx = -\sec(x)$
+$c_1(x) = \displaystyle \int -\sin(x) \frac{1}{\cos^2(x)} dx = \int -\tan(x)\sec(x)dx = -\sec(x)$
 \end{center}
 
 
@@ -434,7 +434,7 @@ Por lo tanto la solución general es
 
 
 \begin{center}
-$y= \displaystyle c_1\cos(x) +c_2\sen(x) - \cos(x)\sec(x)+ \sen(x) \ln(\sec(x)+\tan(x)) $
+$y= \displaystyle c_1\cos(x) +c_2\sin(x) - \cos(x)\sec(x)+ \sin(x) \ln(\sec(x)+\tan(x)) $
 \end{center}
 
 \newpage

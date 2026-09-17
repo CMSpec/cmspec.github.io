@@ -231,11 +231,11 @@ En este caso las soluciones son imaginarias $e^{(\alpha + \beta i)x}$ y $e^{(\al
 
 
 \begin{center}
-$e^{(\alpha + \beta i)x} =e^{\alpha x}\cos(\beta x)+ e^{\alpha}\sen(\beta x)i$
+$e^{(\alpha + \beta i)x} =e^{\alpha x}\cos(\beta x)+ e^{\alpha}\sin(\beta x)i$
 \end{center}
 
 \begin{center}
-$e^{(\alpha - \beta i)x} = e^{\alpha x}\cos(\beta x) - e^{\alpha x}\sen(\beta x)i$
+$e^{(\alpha - \beta i)x} = e^{\alpha x}\cos(\beta x) - e^{\alpha x}\sin(\beta x)i$
 \end{center}
 
 Podemos generar las nuevas soluciones
@@ -246,14 +246,14 @@ $y_1 = \displaystyle \frac{e^{(\alpha + \beta i)x}+ e^{(\alpha - \beta i)x} }{2}
 \end{center}
 
 \begin{center}
-$y_2 = \displaystyle \frac{e^{(\alpha + \beta i)x}- e^{(\alpha - \beta i)x} }{2i} = e^{\alpha x}\sen(\beta x)$
+$y_2 = \displaystyle \frac{e^{(\alpha + \beta i)x}- e^{(\alpha - \beta i)x} }{2i} = e^{\alpha x}\sin(\beta x)$
 \end{center}
 
 Que son soluciones reales. Por lo tanto la solución general viene dada por
 
 
 \begin{center}
-$y=c_1e^{\alpha x}\cos(\beta x)+c_2e^{\alpha x}\sen(\beta x)$
+$y=c_1e^{\alpha x}\cos(\beta x)+c_2e^{\alpha x}\sin(\beta x)$
 \end{center}
 
 
@@ -293,13 +293,13 @@ $y_1 = e^{0x} \cos(\omega x) = \cos(\omega x)$
 \end{center}
 
 \begin{center}
-$y_2 = e^{0x} \sen(\omega x) = \sen(\omega x)$
+$y_2 = e^{0x} \sin(\omega x) = \sin(\omega x)$
 \end{center}
 
 Por lo tanto, la solución general es
 
 \begin{center}
-$y= c_1\cos(\omega x) + c_2 \sen(\omega x)$
+$y= c_1\cos(\omega x) + c_2 \sin(\omega x)$
 \end{center}
 
 
@@ -311,7 +311,7 @@ $y= c_1\cos(\omega x) + c_2 \sen(\omega x)$
 \item Resuelva la siguiente ecuación diferencial de primer orden
 
 \begin{align*}
-  \frac{dy}{dx} &= -\frac{y\cos(x)+2x}{\sen(x)+\cos(y)}
+  \frac{dy}{dx} &= -\frac{y\cos(x)+2x}{\sin(x)+\cos(y)}
 \end{align*}
 
 
@@ -319,25 +319,25 @@ $y= c_1\cos(\omega x) + c_2 \sen(\omega x)$
 \end{sol}
 
 \begin{align*}
-  (y\cos(x)+2x) dx+(\sen(x)+\cos(y) )dy &= 0
+  (y\cos(x)+2x) dx+(\sin(x)+\cos(y) )dy &= 0
 \end{align*}
 Derivando parcialmente
 \begin{align*}
-  \frac{\partial }{\partial x}(\sen(x)+\cos(y)) &= \cos(x) =\frac{\partial }{\partial y}(y\cos(x)+2x),
+  \frac{\partial }{\partial x}(\sin(x)+\cos(y)) &= \cos(x) =\frac{\partial }{\partial y}(y\cos(x)+2x),
 \end{align*}
 verificamos que la ecuaci\'on es exacta. Integrando
 \begin{align*}
-  f(x,y)=\int y\cos(x)+2x dx&= y\sen(x)+x^2+c(y)
+  f(x,y)=\int y\cos(x)+2x dx&= y\sin(x)+x^2+c(y)
 \end{align*}
 para encontrar $c(y)$
 \begin{align*}
-  \frac{\partial }{\partial y} ( y\sen(x)+x^2+c(y))&=\sen(x)+c'(y)= \sen(x)+\cos(y)\\
+  \frac{\partial }{\partial y} ( y\sin(x)+x^2+c(y))&=\sin(x)+c'(y)= \sin(x)+\cos(y)\\
   c'(y)&=\cos(y)\\
-    c(y)&=\sen(y)\\
+    c(y)&=\sin(y)\\
 \end{align*}
 Por lo que
 \begin{align*}
-  f(x,y)= y\sen(x)+x^2+\sen(y)=c
+  f(x,y)= y\sin(x)+x^2+\sin(y)=c
 \end{align*}
 \item Resuelva la siguiente ecuación diferencial de primer orden
 \[x^2y^2 dx+(x^3y+y+3)dy=0\]

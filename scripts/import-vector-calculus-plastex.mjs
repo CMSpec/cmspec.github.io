@@ -66,6 +66,7 @@ function prepareSource(source) {
   prepared = prepared.replace(/\\end\{document\}[\s\S]*$/, "");
   prepared = prepared.replace(/\\textbf\{\\large\{(.+)\}\}\s*\\\\/g, "\\section{$1}");
   prepared = prepared
+    .replace(/\\sen(?![a-zA-Z])/g, "\\sin")
     .replace(/\\begin\{picture\}[\s\S]*?\\end\{picture\}/g, "")
     .replace(/\\includegraphics(?:\[[^\]]*\])?\{[^}]+\}/g, "")
     .replace(/\\mathbbm/g, "\\mathbb")

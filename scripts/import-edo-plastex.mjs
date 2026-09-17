@@ -63,6 +63,7 @@ function prepareSource(source) {
   let prepared = firstSection >= 0 ? source.slice(firstSection) : source;
   prepared = prepared.replace(/\\end\{document\}[\s\S]*$/, "");
   prepared = prepared
+    .replace(/\\sen(?![a-zA-Z])/g, "\\sin")
     .replace(/\\mathbbm/g, "\\mathbb")
     .replace(/\\displaystyle\s*\\displaystyle/g, "\\displaystyle")
     .replace(/\\textcolor\{[^}]+\}\{([^}]*)\}/g, "$1")

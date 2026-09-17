@@ -379,12 +379,12 @@ Pero entonces nuevamente por el teorema del sandwich se tiene que
 
 
 
-Para funciones $f: \mathbb{R}^2 \to \mathbb{R}$ se puede hacer uso de cambio a coordenadas polares $x = \rho \cos(\theta)$ y $y = \rho \sen(\theta)$ y entonces si el limite existe
+Para funciones $f: \mathbb{R}^2 \to \mathbb{R}$ se puede hacer uso de cambio a coordenadas polares $x = \rho \cos(\theta)$ y $y = \rho \sin(\theta)$ y entonces si el limite existe
 
 
 
 \begin{align*}
-\displaystyle \lim_{(x,y) \to (0,0)}   f(x,y)   &=  \lim_{\rho \to 0} f(\rho \cos(\theta), \rho \sen(\theta))
+\displaystyle \lim_{(x,y) \to (0,0)}   f(x,y)   &=  \lim_{\rho \to 0} f(\rho \cos(\theta), \rho \sin(\theta))
 \end{align*}
 
 Para que el límite exista no puede depender del angulo $\theta$ \\ \\
@@ -397,17 +397,17 @@ Para que el límite exista no puede depender del angulo $\theta$ \\ \\
 
 
 \begin{align*}
-\displaystyle \lim_{(x,y) \to (0,0)}   \frac{x^2\sen(x^2+y^2)}{\sqrt{x^2+y^2}}  &=  \lim_{\rho \to 0}  \frac{\rho^2 \cos^2(\theta)\sen(\rho^2)}{\rho} \\
-&=  \lim_{\rho \to 0}  \rho \cos^2(\theta)\sen(\rho^2) \\
+\displaystyle \lim_{(x,y) \to (0,0)}   \frac{x^2\sin(x^2+y^2)}{\sqrt{x^2+y^2}}  &=  \lim_{\rho \to 0}  \frac{\rho^2 \cos^2(\theta)\sin(\rho^2)}{\rho} \\
+&=  \lim_{\rho \to 0}  \rho \cos^2(\theta)\sin(\rho^2) \\
 \end{align*}
 
-Ahora bien indpendiente del angulo $\theta$ el limite siempre es cero porque las funcions $\sen$ y $\cos$ estan acotadas, luego
+Ahora bien indpendiente del angulo $\theta$ el limite siempre es cero porque las funcions $\sin$ y $\cos$ estan acotadas, luego
 
 
 
 \begin{align*}
-\displaystyle \lim_{(x,y) \to (0,0)}   \frac{x^2\sen(x^2+y^2)}{\sqrt{x^2+y^2}}  &=  \lim_{\rho \to 0}  \frac{\rho^2 \cos^2(\theta)\sen(\rho^2)}{\rho} \\
-&=  \lim_{\rho \to 0}  \rho \cos^2(\theta)\sen(\rho^2) \\
+\displaystyle \lim_{(x,y) \to (0,0)}   \frac{x^2\sin(x^2+y^2)}{\sqrt{x^2+y^2}}  &=  \lim_{\rho \to 0}  \frac{\rho^2 \cos^2(\theta)\sin(\rho^2)}{\rho} \\
+&=  \lim_{\rho \to 0}  \rho \cos^2(\theta)\sin(\rho^2) \\
 &= 0
 \end{align*}
 
@@ -432,14 +432,14 @@ Ademas, $f$ es continua si $f$ es continua en todo punto de su dominio. En gener
 \end{ejem}
 
 \begin{align*}
-f(x,y) = \left\{ \begin{array}{lcc} \frac{x^2\sen^2(y)}{x^2+y^2} & si & (x,y) \neq (0,0) \\ \\ 0 & si & (x,y) =(0,0) \end{array} \right.
+f(x,y) = \left\{ \begin{array}{lcc} \frac{x^2\sin^2(y)}{x^2+y^2} & si & (x,y) \neq (0,0) \\ \\ 0 & si & (x,y) =(0,0) \end{array} \right.
 \end{align*}
 
 Para verificar que es continua solo tenemos que preocuparnos del punto $(0,0)$, ahora bien
 
 
 \begin{align*}
-\lim_{(x,y) \to (0,0)} f(x,y) &= \lim_{(x,y) \to (0,0)} \frac{x^2\sen^2(y)}{x^2+y^2} \\
+\lim_{(x,y) \to (0,0)} f(x,y) &= \lim_{(x,y) \to (0,0)} \frac{x^2\sin^2(y)}{x^2+y^2} \\
 \end{align*}
 
 
@@ -447,9 +447,9 @@ Para calcular el limite hacemos el cambio a polares y obtenemos
 
 
 \begin{align*}
-\lim_{(x,y) \to (0,0)} f(x,y) &= \lim_{(x,y) \to (0,0)} \frac{x^2\sen^2(y)}{x^2+y^2} \\
-&= \lim_{\rho \to 0} \frac{\rho^2 \cos^2(\theta)\sen^2(\rho \sen(\theta))}{\rho^2} \\
-&= \lim_{\rho \to 0} \cos^2(\theta)\sen^2(\rho \sen(\theta)) \\
+\lim_{(x,y) \to (0,0)} f(x,y) &= \lim_{(x,y) \to (0,0)} \frac{x^2\sin^2(y)}{x^2+y^2} \\
+&= \lim_{\rho \to 0} \frac{\rho^2 \cos^2(\theta)\sin^2(\rho \sin(\theta))}{\rho^2} \\
+&= \lim_{\rho \to 0} \cos^2(\theta)\sin^2(\rho \sin(\theta)) \\
 &=0
 \end{align*}
 
@@ -537,7 +537,7 @@ Porque tanto $y$ como $z$ son constantes y por lo tanto es como estar multiplica
 porque como $y$ y $z$ son contantes, al derivar nos queda cero. Si derivamos $h(x,y,z) = e^{xz}+\cos(x+y)$, obtenemos
 
 \begin{align*}
-   \frac{\partial h}{\partial x} = ze^{xz}-\sen(x+y)
+   \frac{\partial h}{\partial x} = ze^{xz}-\sin(x+y)
 \end{align*}
 
 \textbf{Actividad: } Calcular las tres derivadas parciales de las siguientes funciones\\
