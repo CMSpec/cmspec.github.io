@@ -8,6 +8,7 @@ import { handwrittenNotes, handwrittenNoteCount } from "../../../content/courses
 import { sitePath } from "../../../lib/site-path";
 import { FunctionNotationDiagram } from "../calculo-diferencial/FunctionConceptExplorers";
 import { LogicExplorer, UnitCircleExplorer } from "./IntroExplorers";
+import { ComplexDiagrams } from "./ComplexDiagrams";
 
 export const metadata: Metadata = { title: "Introducción a las Matemáticas | CMSpec", description: "Lógica, conjuntos, ecuaciones, funciones, trigonometría, vectores, inducción, sumatorias, complejos, polinomios y geometría analítica. Teoría y ejercicios guiados dentro del curso." };
 function MathText({text}: {text:string}) {
@@ -41,6 +42,7 @@ export default function IntroductoryMathematicsPage() {
               <h4>{section.title}</h4>
               <div className="latex-content">{section.blocks.map((block,k)=><div className={`${styles[block.kind]}_thmwrapper`} key={k}><div className={`${styles[block.kind]}_thmheading`}><span>{names[block.kind]}</span><span> · {block.title}</span></div><div className={`${styles[block.kind]}_thmcontent`}><p><MathText text={block.text}/></p>{block.tex && <div className="course-math" dangerouslySetInnerHTML={{__html:katex.renderToString(block.tex,{displayMode:true,output:"mathml",throwOnError:true})}}/>}</div></div>)}</div>
               {section.visual === "functions" && <FunctionNotationDiagram/>}{section.visual === "logic" && <LogicExplorer/>}{section.visual === "circle" && <UnitCircleExplorer/>}
+              {(section.visual === "complex-plane" || section.visual === "complex-geometry" || section.visual === "complex-roots") && <ComplexDiagrams variant={section.visual}/>}
               {handwrittenNotes[`${chapter.slug}-${j+1}`] && <div className="intro-handwritten-notes"><p className="practice-label">EXPLICACIONES DE CLASE · PASO A PASO</p>{handwrittenNotes[`${chapter.slug}-${j+1}`].map((note)=><details className="intro-handwritten-note" key={note.title}>
                 <summary><span>{note.title}</span><span className="intro-note-action">Ver desarrollo</span></summary>
                 <div className="intro-note-body"><ol>{note.steps.map((step,l)=><li key={l}><MathText text={step}/></li>)}</ol>{note.correction && <p className="intro-note-correction"><strong>Nota de la adaptación: </strong>{note.correction}</p>}</div>

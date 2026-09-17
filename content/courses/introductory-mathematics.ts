@@ -1,5 +1,5 @@
 export type IntroBlock = { kind: "definition" | "example" | "remark"; title: string; text: string; tex?: string };
-export type IntroSection = { title: string; blocks: IntroBlock[]; exercise: string; hint: string; solution: string; visual?: "functions" | "circle" | "logic" };
+export type IntroSection = { title: string; blocks: IntroBlock[]; exercise: string; hint: string; solution: string; visual?: "functions" | "circle" | "logic" | "complex-plane" | "complex-geometry" | "complex-roots" };
 export type IntroChapter = { title: string; slug: string; sections: IntroSection[] };
 const block = (kind: IntroBlock["kind"], title: string, text: string, tex?: string): IntroBlock => ({ kind, title, text, tex });
 const d = (title: string, text: string, tex?: string) => block("definition", title, text, tex);

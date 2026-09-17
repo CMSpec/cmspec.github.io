@@ -1,4 +1,5 @@
 import type { IntroBlock, IntroChapter, IntroSection } from "./introductory-mathematics";
+import { introductoryComplexNumbers } from "./introductory-complex-numbers.ts";
 
 // Temario contrastado con documents.zip; desarrollo autocontenido para la web.
 const t = String.raw;
@@ -93,29 +94,7 @@ export const introductoryAlgebraExtension: IntroChapter[] = [
       e("Sumar coeficientes", t`Al poner $a=b=1$ se obtiene $\sum_{k=0}^{n}\binom nk=2^n$. Con $a=1$, $b=-1$ y $n\ge1$, la suma alternada es cero.`),
     ], t`Encuentra el coeficiente de $x^3$ en $(2x-1)^5$.`, "En el término general, el exponente de x es 5−k. Igualarlo a 3 determina k.", t`$k=2$. El término es $\binom52(2x)^3(-1)^2=80x^3$; el coeficiente pedido es 80.`),
   ] },
-  { title: "Números complejos", slug: "complejos", sections: [
-    s("Forma algebraica y plano de Argand", [
-      d("Ampliar los números reales", t`Definimos i por $i^2=-1$. Un número complejo tiene forma $z=a+bi$ con a y b reales. Su parte real es a y su parte imaginaria es b, no bi. Dos complejos son iguales cuando coinciden ambas partes.`),
-      d("Representación y operaciones", t`z se representa por el punto (a,b). Sumamos por componentes y multiplicamos distribuyendo, con $i^2=-1$: $(a+bi)(c+di)=(ac-bd)+(ad+bc)i$. Las potencias de i se repiten cada cuatro: $i,-1,-i,1$.`),
-      e("Una cuadrática sin raíces reales", t`$x^2-2x+5=0$ tiene discriminante $-16$. En los complejos, sus soluciones son $(2\pm4i)/2=1\pm2i$. No desaparecen las soluciones: cambia el conjunto en que las buscamos.`),
-    ], t`Calcula $(2-3i)(1+2i)$ e $i^{27}$.`, "Distribuye los cuatro productos. Para la potencia, divide el exponente por 4 y mira el resto.", t`$2+4i-3i-6i^2=8+i$. Como $27=4\cdot6+3$, $i^{27}=i^3=-i$.`),
-    s("Conjugado, módulo y división", [
-      d("Reflexión y longitud", t`Para $z=a+bi$, su conjugado es $\overline z=a-bi$ y su módulo $|z|=\sqrt{a^2+b^2}$. Conjugar refleja respecto del eje real; el módulo mide la distancia al origen. Además, $z\overline z=|z|^2$.`),
-      d("Dividir usando el conjugado", t`Para $w\ne0$, $z/w=z\overline w/|w|^2$. El denominador se vuelve real. También $|zw|=|z||w|$, $|\overline z|=|z|$ y $|z+w|\le|z|+|w|$.`),
-      e("Separar condiciones", t`Si $z-\overline z=24i$ y $|z|=13$, escribimos $z=x+iy$. La primera condición da $2iy=24i$, luego y=12. La segunda da $x^2+144=169$, de modo que $z=5+12i$ o $z=-5+12i$.`),
-    ], t`Escribe $\frac{3+i}{1-2i}$ en forma algebraica.`, "Multiplica numerador y denominador por 1+2i.", t`El numerador es $(3+i)(1+2i)=1+7i$ y el denominador vale 5. Resultado: $1/5+(7/5)i$.`),
-    s("Forma polar y argumento", [
-      d("Módulo y ángulo", t`Para $z\ne0$, podemos escribir $z=r(\cos\theta+i\sin\theta)=r\operatorname{cis}\theta$, con $r=|z|>0$. Los argumentos difieren en múltiplos de $2\pi$. Aquí elegimos el representante en $[0,2\pi)$. El cero no tiene argumento definido.`),
-      r("Arctan no decide el cuadrante", t`La igualdad $\tan\theta=b/a$ no basta para elegir el argumento. Revisa los signos de a y b; si $a=0$, usa directamente el eje imaginario. Para $z=-3+\sqrt3i$, $r=2\sqrt3$ y $\theta=5\pi/6$.`),
-      d("Multiplicar y dividir", t`$(r\operatorname{cis}\alpha)(s\operatorname{cis}\beta)=rs\operatorname{cis}(\alpha+\beta)$. Para dividir, con $s>0$, se dividen los módulos y se restan los argumentos. La notación exponencial es $re^{i\theta}$, con $e^{i\theta}=\cos\theta+i\sin\theta$.`),
-    ], t`Escribe $1+\sqrt3i$ en forma polar y calcula su cuadrado usando esa forma.`, "El módulo vale 2 y el número está en el primer cuadrante.", t`$z=2\operatorname{cis}(\pi/3)$. Su cuadrado es $4\operatorname{cis}(2\pi/3)=-2+2\sqrt3i$.`),
-    s("De Moivre, potencias y raíces", [
-      d("Elevar en forma polar", t`Para n entero, $(r\operatorname{cis}\theta)^n=r^n\operatorname{cis}(n\theta)$, con $r>0$. La fórmula multiplica el ángulo por n, no eleva seno y coseno por separado.`),
-      d("Todas las raíces n-ésimas", "Si z es no nulo y n es un entero positivo, sus n raíces distintas son:", t`w_k=\sqrt[n]{r}\operatorname{cis}\left(\frac{\theta+2k\pi}{n}\right),\qquad k=0,\ldots,n-1`),
-      e("Raíces cúbicas de i", t`Como $i=\operatorname{cis}(\pi/2)$, los argumentos son $\pi/6$, $5\pi/6$ y $3\pi/2$. Las raíces son $\sqrt3/2+i/2$, $-\sqrt3/2+i/2$ y $-i$. Están separadas por $2\pi/3$ y forman un triángulo equilátero.`),
-      r("No olvidar casos", t`Para n mayor que 2, las raíces de un complejo no nulo forman un polígono regular. Si z=0, la única raíz es 0. Una raíz principal no representa todas las soluciones de $w^n=z$.`),
-    ], t`Encuentra las cuatro soluciones de $w^4=16$.`, "Escribe 16 con módulo 16 y argumento 0; usa k=0,1,2,3.", t`Cada raíz tiene módulo 2 y los argumentos son $0,\pi/2,\pi,3\pi/2$. Las soluciones son $2,2i,-2,-2i$.`),
-  ] },
+  introductoryComplexNumbers,
   { title: "Polinomios y fracciones parciales", slug: "polinomios", sections: [
     s("Definición, grado y operaciones", [
       d("Potencias enteras no negativas", t`Un polinomio tiene forma $p(x)=a_0+a_1x+\cdots+a_nx^n$. Si $a_n\ne0$, su grado es n, su coeficiente principal $a_n$ y su término independiente $a_0$. $1/x$ y $\sqrt x$ no son polinomios en x.`),

@@ -8,9 +8,27 @@ import { handwrittenNotes, handwrittenNoteCount } from "../content/courses/intro
 
 const chapters = [...introductoryChapters, ...introductoryAlgebraExtension];
 
-test("el curso tiene 12 unidades, 57 prácticas completas y anclas únicas", () => {
+test("complejos conserva el inicio y los desarrollos de las clases", () => {
+  const complex = chapters.find(c => c.slug === "complejos");
+  assert.equal(complex.sections.length, 11);
+  assert.match(complex.sections[0].title, /Ecuaciones/);
+  const opening = JSON.stringify(complex.sections[0].blocks);
+  assert.ok(opening.indexOf("ax+b=0") < opening.indexOf("x^2=2"));
+  assert.ok(opening.indexOf("x^2=2") < opening.indexOf("ax^2+bx+c=0"));
+  const all = JSON.stringify(complex);
+  for (const phrase of ["NO lleva i", "forman un cuerpo", "1–4.", "5–8.", "9. Positividad", "10. Módulo", "11–13.", "14. Las componentes", "15. Desigualdad", "paso inductivo", "raíces cúbicas de i", "Precisión sobre arctan"]) assert.ok(all.includes(phrase), phrase);
+  assert.equal(complex.sections.filter(s => s.visual).length, 3);
+  for (let k = 0; k < 3; k++) {
+    const angle = (Math.PI / 2 + 2 * k * Math.PI) / 3;
+    assert.ok(Math.abs(Math.cos(3 * angle)) < 1e-12);
+    assert.ok(Math.abs(Math.sin(3 * angle) - 1) < 1e-12);
+  }
+  assert.ok(Math.abs(64 * Math.cos(5 * Math.PI / 4) + 32 * Math.sqrt(2)) < 1e-12);
+});
+
+test("el curso tiene 12 unidades, 64 prácticas completas y anclas únicas", () => {
   assert.equal(chapters.length, 12);
-  assert.equal(chapters.flatMap(c => c.sections).length, 57);
+  assert.equal(chapters.flatMap(c => c.sections).length, 64);
   assert.equal(new Set(chapters.map(c => c.slug)).size, chapters.length);
   for (const chapter of chapters) {
     for (const section of chapter.sections) {
@@ -43,7 +61,7 @@ test("la página publicada no ofrece referencias ni enlaces a PDF", () => {
   const html = readFileSync(new URL("../out/cursos/introduccion-matematicas/index.html", import.meta.url), "utf8");
   assert.doesNotMatch(html, /\.pdf(?:["#?]|&quot;)|\bPDF\b|Consultar el manuscrito|Ver manuscrito|Apuntes ampliados/);
   assert.equal((html.match(/class="intro-handwritten-note"/g) ?? []).length, 46);
-  assert.equal((html.match(/class="intro-practice"/g) ?? []).length, 57);
+  assert.equal((html.match(/class="intro-practice"/g) ?? []).length, 64);
   for (const chapter of chapters) {
     for (let i = 1; i <= chapter.sections.length; i++) assert.ok(html.includes(`id="intro-${chapter.slug}-${i}"`));
   }

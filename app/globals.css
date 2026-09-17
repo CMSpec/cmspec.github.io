@@ -1753,3 +1753,9 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .intro-note-body ol { padding-left: 1.5rem; list-style: decimal; }
 .intro-note-body li { padding-left: .3rem; margin: .8rem 0; }
 .intro-note-correction { border-left: 3px solid #a77638; padding: .75rem 1rem; background: #f4ecd9; font-size: .9rem; }
+/* Diagrams transcribed from the complex-number classes. */
+.intro-complex-figure { margin: 1.5rem 0; padding: 1rem; border: 1px solid #d8d1df; border-radius: 12px; }
+.intro-complex-figure svg { display: block; width: 100%; max-width: 440px; height: auto; margin: auto; }
+.intro-complex-figure svg text { font: 14px sans-serif; fill: currentColor; }
+.intro-complex-figure figcaption { font-size: .9rem; line-height: 1.6; margin-top: .5rem; }
+.intro-complex-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; }
