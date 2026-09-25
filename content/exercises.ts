@@ -1,3 +1,5 @@
+import { additionalCourseExercises } from "./additional-course-exercises.ts";
+
 export type ExerciseDifficulty = "Inicial" | "Intermedio" | "Desafío";
 
 export type Exercise = {
@@ -211,6 +213,7 @@ export const exercises: Exercise[] = [
     finalAnswer: "El campo tiene potencial φ(x,y) = xe^(2y) + y; la integral vale e⁵ + 1.",
     commonMistake: "Calcular directamente una integral larga después de haber probado que el campo es conservativo.",
   },
+  ...additionalCourseExercises,
 ];
 
 export function getExercise(slug: string) {

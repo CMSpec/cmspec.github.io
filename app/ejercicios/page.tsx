@@ -14,7 +14,7 @@ export default function ExercisesPage() {
         <div className="exercise-masthead-stats">
           <span><strong>{exercises.length}</strong> ejercicios</span>
           <span><strong>3</strong> pistas por problema</span>
-          <span><strong>1</strong> colección en crecimiento</span>
+          <span><strong>{new Set(exercises.map(exercise => exercise.courseSlug)).size}</strong> cursos</span>
         </div>
       </section>
       <section className="exercise-library" aria-label="Biblioteca de ejercicios">

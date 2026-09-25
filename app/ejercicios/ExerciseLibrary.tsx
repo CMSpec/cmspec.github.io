@@ -11,7 +11,7 @@ export default function ExerciseLibrary({ exercises }: { exercises: Exercise[] }
   const [difficulty, setDifficulty] = useState<ExerciseDifficulty | "Todos">("Todos");
   const [topic, setTopic] = useState("Todos");
   const courses = useMemo(() => ["Todos", ...new Set(exercises.map((exercise) => exercise.course))], [exercises]);
-  const topics = useMemo(() => ["Todos", ...new Set(exercises.map((exercise) => exercise.topic))], [exercises]);
+  const topics = useMemo(() => ["Todos", ...new Set(exercises.filter(exercise => course === "Todos" || exercise.course === course).map(exercise => exercise.topic))], [exercises, course]);
   const visible = exercises.filter((exercise) =>
     (course === "Todos" || exercise.course === course) &&
     (difficulty === "Todos" || exercise.difficulty === difficulty) &&
@@ -23,7 +23,7 @@ export default function ExerciseLibrary({ exercises }: { exercises: Exercise[] }
       <div className="exercise-filters" aria-label="Filtros de ejercicios">
         <label>
           <span>CURSO</span>
-          <select value={course} onChange={(event) => setCourse(event.target.value)}>
+          <select value={course} onChange={(event) => { setCourse(event.target.value); setTopic("Todos"); }}>
             {courses.map((value) => <option key={value}>{value}</option>)}
           </select>
         </label>
@@ -49,7 +49,7 @@ export default function ExerciseLibrary({ exercises }: { exercises: Exercise[] }
               <span>{exercise.number}</span>
               <span>{exercise.difficulty}</span>
             </div>
-            <p>{exercise.collection}</p>
+            <p>{exercise.course} · {exercise.collection}</p>
             <h2><a href={sitePath(`/ejercicios/${exercise.slug}`)}>{exercise.title}</a></h2>
             <div className="exercise-card-meta">
               <span>{exercise.topic}</span><span>{exercise.estimatedTime}</span>
