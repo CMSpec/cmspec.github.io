@@ -4,14 +4,14 @@ import test from "node:test";
 import katex from "katex";
 import { exercises, getExercise } from "../content/exercises.ts";
 import { additionalCourseExercises } from "../content/additional-course-exercises.ts";
+import { overleafExercises } from "../content/overleaf-exercises.ts";
 
 test("todos los ejercicios tienen LaTeX válido en enunciados, pistas y soluciones", () => {
   for (const slug of ["lineal-inversa-dos-por-dos", "lineal-sistema-por-eliminacion", "diferencial-continuidad-por-tramos"]) {
     assert.ok(getExercise(slug).statement.some(text => text.includes("$$")), `Falta fórmula en bloque: ${slug}`);
   }
   for (const exercise of exercises) {
-    assert.ok(exercise.statement.some(text => text.includes("$")), exercise.slug);
-    assert.ok(exercise.finalAnswer.includes("$"), exercise.slug);
+    if (!exercise.slug.startsWith("practica-")) assert.ok(exercise.finalAnswer.includes("$"), exercise.slug);
     const texts = [...exercise.statement, ...exercise.hints, ...exercise.solution.map(step => step.body), exercise.finalAnswer, exercise.commonMistake];
     for (const text of texts) {
       const plain = text.replace(/(\$\$[\s\S]+?\$\$|\$[^$\n]+?\$)/g, part => {
@@ -23,21 +23,23 @@ test("todos los ejercicios tienen LaTeX válido en enunciados, pistas y solucion
       assert.ok(!/[²³⁻√κρ∇φμ]/u.test(plain), `Fórmula fuera de LaTeX: ${plain}`);
     }
     const html = readFileSync(`out/ejercicios/${exercise.slug}/index.html`, "utf8");
-    assert.ok(html.includes('<math'), `Fórmula no renderizada: ${exercise.slug}`);
+    if (exercise.statement.some(text=>text.includes("$"))) assert.ok(html.includes('<math'), `Fórmula no renderizada: ${exercise.slug}`);
     assert.ok(!html.includes('katex-error'), exercise.slug);
   }
 });
 
 test("Ejercitación incluye los cinco cursos sin alterar los seis ejercicios originales", () => {
   assert.deepEqual([...new Set(exercises.map(e => e.courseSlug))].sort(), ["algebra-lineal", "calculo-diferencial", "calculo-vectorial", "ecuaciones-diferenciales", "introduccion-matematicas"]);
-  assert.equal(exercises.length, 14);
+  assert.equal(exercises.length, 14 + overleafExercises.length);
   assert.equal(new Set(exercises.map(e => e.slug)).size, exercises.length);
   assert.equal(new Set(exercises.map(e => e.number)).size, exercises.length);
   assert.equal(exercises[0].slug, "plano-que-contiene-una-recta");
-  assert.equal(exercises.filter(e => e.courseSlug === "calculo-vectorial").length, 6);
+  assert.equal(exercises.slice(0,14).filter(e => e.courseSlug === "calculo-vectorial").length, 6);
   for (const e of exercises) {
-    assert.equal(e.hints.length, 3);
-    assert.ok(e.statement.length && e.solution.length && e.finalAnswer && e.commonMistake);
+    if (!e.slug.startsWith("practica-")) {
+      assert.equal(e.hints.length, 3);
+      assert.ok(e.statement.length && e.solution.length && e.finalAnswer && e.commonMistake);
+    }
     assert.equal(getExercise(e.slug), e);
     const html = readFileSync(`out/ejercicios/${e.slug}/index.html`, "utf8");
     assert.ok(html.includes(e.title), e.slug);
@@ -46,7 +48,7 @@ test("Ejercitación incluye los cinco cursos sin alterar los seis ejercicios ori
 
 test("los nuevos enlaces de teoría apuntan a minicapítulos existentes", () => {
   const library = readFileSync("out/ejercicios/index.html", "utf8");
-  for (const e of additionalCourseExercises) {
+  for (const e of [...additionalCourseExercises,...overleafExercises]) {
     assert.ok(library.includes(e.course));
     for (const link of e.relatedTheory) {
       const [path, anchor] = link.href.split("#");

@@ -1,6 +1,7 @@
 import { additionalCourseExercises } from "./additional-course-exercises.ts";
+import { overleafExercises } from "./overleaf-exercises.ts";
 
-export type ExerciseDifficulty = "Inicial" | "Intermedio" | "Desafío";
+export type ExerciseDifficulty = "Inicial" | "Intermedio" | "Desafío" | "Sin clasificar";
 
 export type Exercise = {
   slug: string;
@@ -18,6 +19,7 @@ export type Exercise = {
   solution: Array<{ title?: string; body: string }>;
   finalAnswer: string;
   commonMistake: string;
+  sourceCredit?: string;
 };
 
 export const exercises: Exercise[] = [
@@ -214,6 +216,7 @@ export const exercises: Exercise[] = [
     commonMistake: "Calcular directamente una integral larga después de haber probado que el campo es conservativo.",
   },
   ...additionalCourseExercises,
+  ...overleafExercises,
 ];
 
 export function getExercise(slug: string) {

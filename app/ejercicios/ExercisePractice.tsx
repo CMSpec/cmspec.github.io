@@ -198,9 +198,10 @@ export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
         <section className="practice-statement" aria-labelledby="statement-title">
           <p className="practice-label" id="statement-title">ENUNCIADO</p>
           {exercise.statement.map((paragraph) => <p key={paragraph}><ExerciseMath text={paragraph}/></p>)}
+          {exercise.sourceCredit && <small>{exercise.sourceCredit}</small>}
         </section>
 
-        <section className="practice-hints" aria-labelledby="hints-title">
+        {exercise.hints.length > 0 && <section className="practice-hints" aria-labelledby="hints-title">
           <div className="practice-section-heading">
             <div><p className="practice-label">PISTAS PROGRESIVAS</p><h2 id="hints-title">Avanza sin revelar todo</h2></div>
             <span>{openHints} / {exercise.hints.length}</span>
@@ -218,16 +219,16 @@ export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
               {exercise.slug === "plano-que-contiene-una-recta" && index === 2 && openHints >= 3 && <NormalCheckpoint key={JSON.stringify(vectors)} vectors={vectors} onNormalChange={setNormal} />}
             </div>
           ))}
-        </section>
+        </section>}
 
         <section className="practice-draft" aria-labelledby="draft-title">
           <p className="practice-label">TU DESARROLLO</p>
-          <h2 id="draft-title">Escribe una idea antes de comparar</h2>
+          <h2 id="draft-title">{exercise.solution.length ? "Escribe una idea antes de comparar" : "Desarrolla tu solución"}</h2>
           <textarea value={draft} onChange={(event) => setDraft(event.target.value)} placeholder="Anota aquí tu estrategia, cálculos o respuesta…" />
           <small>Tu borrador se guarda solamente en este dispositivo.</small>
         </section>
 
-        <section className="practice-solution" aria-labelledby="solution-title">
+        {exercise.solution.length > 0 ? <section className="practice-solution" aria-labelledby="solution-title">
           <button type="button" className="solution-toggle" onClick={() => setSolutionOpen((open) => !open)} aria-expanded={solutionOpen}>
             <span><small>CUANDO ESTÉS LISTA/O</small><strong id="solution-title">{solutionOpen ? "Ocultar solución" : "Ver solución completa"}</strong></span>
             <i aria-hidden="true">{solutionOpen ? "−" : "+"}</i>
@@ -240,11 +241,11 @@ export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
                   <div>{step.title && <h3>{step.title}</h3>}<p><ExerciseMath text={step.body}/></p></div>
                 </div>
               ))}
-              <div className="final-answer"><span>RESPUESTA FINAL</span><strong><ExerciseMath text={exercise.finalAnswer}/></strong></div>
-              <div className="common-mistake"><span>OJO CON ESTO</span><p><ExerciseMath text={exercise.commonMistake}/></p></div>
+              {exercise.finalAnswer && <div className="final-answer"><span>RESPUESTA FINAL</span><strong><ExerciseMath text={exercise.finalAnswer}/></strong></div>}
+              {exercise.commonMistake && <div className="common-mistake"><span>OJO CON ESTO</span><p><ExerciseMath text={exercise.commonMistake}/></p></div>}
             </div>
           )}
-        </section>
+        </section> : <p className="practice-availability">Ejercicio para resolver. Todavía no hay una solución guiada publicada; puedes consultar la materia relacionada y guardar tu desarrollo aquí.</p>}
 
         <button type="button" className={`complete-exercise${completed ? " is-complete" : ""}`} onClick={() => setCompleted((value) => !value)}>
           <span aria-hidden="true">{completed ? "✓" : "○"}</span>{completed ? "Ejercicio completado" : "Marcar como completado"}
