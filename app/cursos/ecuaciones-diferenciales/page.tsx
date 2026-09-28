@@ -1,6 +1,7 @@
 import { differentialEquationsCourse } from "../../../content/courses/differential-equations";
 import { differentialEquationsChapters } from "../../../content/courses/differential-equations-chapters";
 import CourseIndex from "../_components/CourseIndex";
+import SectionPractice from "../_components/SectionPractice";
 import SiteHeader from "../../_components/SiteHeader";
 import SageSandbox from "../_components/SageSandbox";
 import { getSageSandbox } from "../../../content/courses/sage-sandboxes";
@@ -103,6 +104,7 @@ export default function DifferentialEquationsCoursePage() {
                         <DifferentialSectionContent title={section.title} html={section.html} />
                       {chapterIndex === 0 && section.title === "Problemas de valores iniciales" ? <EulerMethodLab /> : null}
                       {sectionIndex === chapter.sections.length - 1 && <SageSandbox {...getSageSandbox("ecuaciones-diferenciales", chapterIndex, chapter.title)} />}
+                      <SectionPractice course="ecuaciones-diferenciales" chapter={chapter.slug} index={sectionIndex} />
                     </section>
                   ))}
                 </article>

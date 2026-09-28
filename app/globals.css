@@ -1751,6 +1751,12 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .topic-exercise-button { display: inline-flex; align-items: center; gap: 1rem; margin-top: 2rem; padding: .9rem 1.3rem; background: var(--blue); color: white; border-radius: 8px; font-weight: 600; text-decoration: none; }
 .topic-exercise-button:hover { filter: brightness(.9); }
 .topic-exercise-button:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+.section-practice { margin-top: 2rem; padding: 1.5rem; border: 1px solid #cbdfe3; border-left: 4px solid var(--blue); border-radius: 8px; background: #f2f8f9; font: 1.05rem/1.65 Georgia,serif; }
+.section-practice > p { margin: 0 0 1rem; }
+.section-practice details { border-top: 1px solid #cbdfe3; padding-top: .7rem; margin-top: .7rem; }
+.section-practice summary { cursor: pointer; color: var(--blue); font: 600 .95rem/1.5 sans-serif; }
+.section-practice summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+.section-practice details p { margin: .8rem 0 0; }
 .exercise-math-inline { display: inline-block; max-width: 100%; overflow-x: auto; vertical-align: middle; padding: .35rem .15rem; }
 .exercise-math-display { display: block; max-width: 100%; overflow-x: auto; padding: 1rem .25rem; text-align: center; }
 .exercise-math-inline math mtd,.exercise-math-display math mtd { padding: .18em .3em; }

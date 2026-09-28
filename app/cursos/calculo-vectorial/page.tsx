@@ -1,6 +1,7 @@
 import { vectorCalculusCourse } from "../../../content/courses/vector-calculus";
 import { vectorCalculusChapters } from "../../../content/courses/vector-calculus-chapters";
 import CourseIndex from "../_components/CourseIndex";
+import SectionPractice from "../_components/SectionPractice";
 import SiteHeader from "../../_components/SiteHeader";
 import SageSandbox from "../_components/SageSandbox";
 import { getSageSandbox } from "../../../content/courses/sage-sandboxes";
@@ -163,6 +164,7 @@ export default function VectorCalculusCoursePage() {
                       <h4>{section.title}</h4>
                       <VectorSectionContent html={section.html} chapterIndex={chapterIndex} title={section.title} />
                       {sectionIndex === chapter.sections.length - 1 && <SageSandbox {...getSageSandbox("calculo-vectorial", chapterIndex, chapter.title)} />}
+                      <SectionPractice course="calculo-vectorial" chapter={chapter.slug} index={sectionIndex} />
                     </section>
                   ))}
                 </article>

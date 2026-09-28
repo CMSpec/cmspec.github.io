@@ -1,6 +1,7 @@
 import katex from "katex";
 import SiteHeader from "../../_components/SiteHeader";
 import CourseIndex from "../_components/CourseIndex";
+import SectionPractice from "../_components/SectionPractice";
 import SolutionDisclosures from "../algebra-lineal/SolutionDisclosures";
 import { differentialCalculusChapters, differentialCalculusCourse, type DifferentialBlock } from "../../../content/courses/differential-calculus";
 import DerivativeSecantExplorer from "./DerivativeSecantExplorer";
@@ -72,6 +73,7 @@ export default function DifferentialCalculusPage() {
                       {section.visual === "function-slider" && <FunctionInputExplorer />}
                       {section.visual === "epsilon-delta" && <EpsilonDeltaExplorer />}
                       {section.visual === "secant" && <DerivativeSecantExplorer />}
+                      <SectionPractice course="calculo-diferencial" chapter={chapter.slug} index={sectionIndex} />
                     </section>
                   ))}
                 </article>

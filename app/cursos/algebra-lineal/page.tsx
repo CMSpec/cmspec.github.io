@@ -8,6 +8,7 @@ import ChangeOfBasis2D from "./ChangeOfBasis2D";
 import { DotProductAnimation, MatrixAdditionAnimation } from "./MatrixOperationsAnimations";
 import { SymmetryAnimation, TraceAnimation, TriangularMatricesAnimation } from "./MatrixStructureAnimations";
 import CourseIndex from "../_components/CourseIndex";
+import SectionPractice from "../_components/SectionPractice";
 import SolutionDisclosures from "./SolutionDisclosures";
 import SiteHeader from "../../_components/SiteHeader";
 import SageSandbox from "../_components/SageSandbox";
@@ -260,6 +261,7 @@ export default function LinearAlgebraCoursePage() {
                         html={section.html}
                       />
                       {sectionIndex === chapter.sections.length - 1 && <SageSandbox {...getSageSandbox("algebra-lineal", chapterIndex, chapter.title)} />}
+                      <SectionPractice course="algebra-lineal" chapter={chapter.slug} index={sectionIndex} />
                     </section>
                   ))}
                 </article>
