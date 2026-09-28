@@ -1,8 +1,32 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
+import katex from "katex";
 import { exercises, getExercise } from "../content/exercises.ts";
 import { additionalCourseExercises } from "../content/additional-course-exercises.ts";
+
+test("todos los ejercicios tienen LaTeX válido en enunciados, pistas y soluciones", () => {
+  for (const slug of ["lineal-inversa-dos-por-dos", "lineal-sistema-por-eliminacion", "diferencial-continuidad-por-tramos"]) {
+    assert.ok(getExercise(slug).statement.some(text => text.includes("$$")), `Falta fórmula en bloque: ${slug}`);
+  }
+  for (const exercise of exercises) {
+    assert.ok(exercise.statement.some(text => text.includes("$")), exercise.slug);
+    assert.ok(exercise.finalAnswer.includes("$"), exercise.slug);
+    const texts = [...exercise.statement, ...exercise.hints, ...exercise.solution.map(step => step.body), exercise.finalAnswer, exercise.commonMistake];
+    for (const text of texts) {
+      const plain = text.replace(/(\$\$[\s\S]+?\$\$|\$[^$\n]+?\$)/g, part => {
+        const display = part.startsWith("$$");
+        assert.doesNotThrow(() => katex.renderToString(part.slice(display ? 2 : 1, display ? -2 : -1), { displayMode: display, throwOnError: true, strict: "error", trust: false }), `${exercise.slug}: ${part}`);
+        return "";
+      });
+      assert.ok(!plain.includes("$"), `Delimitador sin cerrar: ${exercise.slug}`);
+      assert.ok(!/[²³⁻√κρ∇φμ]/u.test(plain), `Fórmula fuera de LaTeX: ${plain}`);
+    }
+    const html = readFileSync(`out/ejercicios/${exercise.slug}/index.html`, "utf8");
+    assert.ok(html.includes('<math'), `Fórmula no renderizada: ${exercise.slug}`);
+    assert.ok(!html.includes('katex-error'), exercise.slug);
+  }
+});
 
 test("Ejercitación incluye los cinco cursos sin alterar los seis ejercicios originales", () => {
   assert.deepEqual([...new Set(exercises.map(e => e.courseSlug))].sort(), ["algebra-lineal", "calculo-diferencial", "calculo-vectorial", "ecuaciones-diferenciales", "introduccion-matematicas"]);

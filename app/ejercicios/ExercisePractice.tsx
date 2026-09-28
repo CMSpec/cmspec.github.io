@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { Exercise } from "../../content/exercises";
 import { sitePath } from "../../lib/site-path";
 import LinePlanePreview3D from "./LinePlanePreview3D";
+import ExerciseMath from "./ExerciseMath";
 
 type PointValues = [string, string, string];
 type PointPair = [number[], number[]];
@@ -196,7 +197,7 @@ export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
 
         <section className="practice-statement" aria-labelledby="statement-title">
           <p className="practice-label" id="statement-title">ENUNCIADO</p>
-          {exercise.statement.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          {exercise.statement.map((paragraph) => <p key={paragraph}><ExerciseMath text={paragraph}/></p>)}
         </section>
 
         <section className="practice-hints" aria-labelledby="hints-title">
@@ -210,7 +211,7 @@ export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
                 <button type="button" onClick={() => setOpenHints(Math.max(openHints, index + 1))} aria-expanded={index < openHints}>
                   <span>Pista {index + 1}</span><i aria-hidden="true">{index < openHints ? "−" : "+"}</i>
                 </button>
-                {index < openHints && <p>{hint}</p>}
+                {index < openHints && <p><ExerciseMath text={hint}/></p>}
               </div>
               {exercise.slug === "plano-que-contiene-una-recta" && index === 0 && openHints >= 1 && <LinePointsCheckpoint onPointsChange={value => { setPoints(value); setVectors(null); setNormal(null); }} />}
               {exercise.slug === "plano-que-contiene-una-recta" && index === 1 && openHints >= 2 && <PlaneVectorsCheckpoint key={JSON.stringify(points)} points={points} vectors={vectors} setVectors={value => { setVectors(value); setNormal(null); }} />}
@@ -236,11 +237,11 @@ export default function ExercisePractice({ exercise }: { exercise: Exercise }) {
               {exercise.solution.map((step, index) => (
                 <div className="solution-step" key={step.body}>
                   <span>{String(index + 1).padStart(2, "0")}</span>
-                  <div>{step.title && <h3>{step.title}</h3>}<p>{step.body}</p></div>
+                  <div>{step.title && <h3>{step.title}</h3>}<p><ExerciseMath text={step.body}/></p></div>
                 </div>
               ))}
-              <div className="final-answer"><span>RESPUESTA FINAL</span><strong>{exercise.finalAnswer}</strong></div>
-              <div className="common-mistake"><span>OJO CON ESTO</span><p>{exercise.commonMistake}</p></div>
+              <div className="final-answer"><span>RESPUESTA FINAL</span><strong><ExerciseMath text={exercise.finalAnswer}/></strong></div>
+              <div className="common-mistake"><span>OJO CON ESTO</span><p><ExerciseMath text={exercise.commonMistake}/></p></div>
             </div>
           )}
         </section>

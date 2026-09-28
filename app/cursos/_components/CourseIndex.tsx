@@ -62,10 +62,10 @@ export default function CourseIndex({ note, units }: { note?: string; units: Cou
         </section>)}</div>
         {note && <p className="topic-index-note">{note}</p>}
       </>}
-    {selection && createPortal(<nav className="topic-pagination" aria-label="Continuar el curso">
+    {selection && createPortal(<><a className="topic-exercise-button" href={sitePath("/ejercicios")}>Ir a Ejercitación <span aria-hidden="true">→</span></a><nav className="topic-pagination" aria-label="Continuar el curso">
       {previous ? <a href={previous.href}><small>← ANTERIOR</small><span>{previous.title}</span></a> : <a href="#temario"><small>← VOLVER</small><span>Temario del curso</span></a>}
       {next ? <a className="topic-next" href={next.href}><small>SIGUIENTE →</small><span>{next.title}</span></a> : <a className="topic-next" href="#temario"><small>FIN DEL RECORRIDO ✓</small><span>Volver al temario →</span></a>}
-    </nav>, selection.element)}
+    </nav></>, selection.element)}
     <noscript><p>Activa JavaScript para navegar por minicapítulos. Sin JavaScript puedes abrir las unidades que aparecen debajo.</p><style>{".course-article-layout:has(.course-topic-index) > .course-reader { display: block !important; }"}</style></noscript>
   </nav>;
 }

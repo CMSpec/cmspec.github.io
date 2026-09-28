@@ -1748,6 +1748,13 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .intro-handwritten-note > h5 { margin: 0 0 1rem; font: 600 1.1rem/1.5 Georgia, serif; }
 .intro-source-opening { margin: 1.25rem 0 2rem; line-height: 1.85; overflow-wrap: anywhere; }
 .intro-source-opening p + p, .intro-note-body p + p { margin-top: 1rem; }
+.topic-exercise-button { display: inline-flex; align-items: center; gap: 1rem; margin-top: 2rem; padding: .9rem 1.3rem; background: var(--blue); color: white; border-radius: 8px; font-weight: 600; text-decoration: none; }
+.topic-exercise-button:hover { filter: brightness(.9); }
+.topic-exercise-button:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+.exercise-math-inline { display: inline-block; max-width: 100%; overflow-x: auto; vertical-align: middle; padding: .35rem .15rem; }
+.exercise-math-display { display: block; max-width: 100%; overflow-x: auto; padding: 1rem .25rem; text-align: center; }
+.exercise-math-inline math mtd,.exercise-math-display math mtd { padding: .18em .3em; }
+.exercise-math-display math { margin-inline: auto; }
 .partial-fractions-guide { margin: 2rem 0; padding-top: 1.5rem; border-top: 2px solid var(--line); line-height: 1.8; }
 .partial-fractions-guide > h5 { font: 1.5rem/1.3 Georgia, serif; margin-bottom: 1rem; }
 .partial-fractions-guide h6 { font-size: 1.05rem; margin: 1.5rem 0 .75rem; }
