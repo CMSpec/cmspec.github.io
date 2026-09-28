@@ -6,7 +6,7 @@ import { overleafGuidance } from "../content/overleaf-guidance.ts";
 
 test("solo se publican candidatos revisados, sin respuestas filtradas en el enunciado",()=>{
   const reviewed=JSON.parse(readFileSync("content/overleaf-reviewed.json","utf8"));
-  assert.equal(overleafExercises.length,186);
+  assert.equal(overleafExercises.length,187);
   for(const e of overleafExercises) {
     assert.ok(reviewed[e.slug.split("-").at(-1)]);
     assert.doesNotMatch(e.statement.join(" "),/Solución\s*:|\b(?:puntaje|examen|control|solemne|profesor|matlab)\b|XX puntos|\[X pts\]/i,e.slug);
@@ -23,6 +23,15 @@ test("solo se publican candidatos revisados, sin respuestas filtradas en el enun
     }
   }
   assert.equal(overleafExercises.filter(e=>e.solution.length>0).length,Object.keys(overleafGuidance).length);
+});
+
+test("las intersecciones de pares/impares y simétricas/antisimétricas son el subespacio cero",()=>{
+  for(const hash of ["90598d462af1","99bb1ba17d3e"]) {
+    const e=overleafExercises.find(e=>e.slug.endsWith(hash));
+    assert.ok(e);
+    assert.ok(e.statement.join(" ").includes("W_1\\cap W_2=\\{0_V\\}"));
+    assert.ok(!e.statement.join(" ").includes("\\emptyset"));
+  }
 });
 
 test("el material de ecuaciones diferenciales se clasifica por contenido y no por el ZIP",()=>{

@@ -159,6 +159,11 @@ for(const source of sources) {
       const key=joined.replace(/\s+/g,"");
       const hash=createHash("sha256").update(key).digest("hex").slice(0,12);
       if(!reviewed[hash])throw Error("Pendiente de revisión editorial: contexto, notación o validez matemática");
+      // Corrección solicitada: la intersección es el subespacio cero, no el conjunto vacío.
+      if(reviewed[hash].zeroIntersection) {
+        statement=statement.map(text=>text.replace(/\\emptyset\b/g,"\\{0_V\\}"));
+        statement.push("Aquí $0_V$ denota el vector cero del espacio $V$.");
+      }
       statement=statement.map(text=>text.replace(/\([Xx]+ puntos\)/g,"").replace(/\\operatorname\{\s*sen\}/g,"\\sin").replace(/\\operatorname\{cotg\}|\\cotg\b/g,"\\cot").replace(/\?`/g,"¿").replace(/Encuentre en núcleo/g,"Encuentre el núcleo").trim());
       if(seen.has(hash)){audit.push({...ref,status:"duplicado",duplicateOf:seen.get(hash)});return;}
       const {course,topic,anchor}=classify(source,joined);

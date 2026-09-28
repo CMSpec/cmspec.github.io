@@ -2543,8 +2543,36 @@ export const overleafExercises: Exercise[] = [
     "commonMistake": ""
   },
   {
-    "slug": "practica-algebra-lineal-72f8065547a3",
+    "slug": "practica-algebra-lineal-90598d462af1",
     "number": "110",
+    "course": "Álgebra Lineal",
+    "courseSlug": "algebra-lineal",
+    "collection": "Ejercicios",
+    "title": "Espacios vectoriales · 3",
+    "topic": "Espacios vectoriales",
+    "difficulty": "Sin clasificar",
+    "estimatedTime": "A tu ritmo",
+    "statement": [
+      "Sea $V$ el $\\mathbb{R}-$ espacio vectorial $\\mathcal{F}(\\mathbb{R})$ . Sean",
+      "$$\\begin{aligned} W_1&=\\{f\\in V\\colon f(t)=f(-t) \\text{ para todo }t \\in \\mathbb{R}\\},\\\\ W_2&=\\{f\\in V\\colon f(t)=-f(-t) \\text{ para todo }t \\in \\mathbb{R}\\} \\end{aligned}$$",
+      "subespacios de $V$ .",
+      "Muestre que $W_1\\cap W_2=\\{0_V\\}$ y todo $v\\in V$ se escribe como $w_1+w_2$ con $w_1\\in W_1$ y $w_2\\in W_2$ .",
+      "Aquí $0_V$ denota el vector cero del espacio $V$."
+    ],
+    "relatedTheory": [
+      {
+        "label": "Espacios vectoriales",
+        "href": "/cursos/algebra-lineal#unidad-4-seccion-3"
+      }
+    ],
+    "hints": [],
+    "solution": [],
+    "finalAnswer": "",
+    "commonMistake": ""
+  },
+  {
+    "slug": "practica-algebra-lineal-72f8065547a3",
+    "number": "111",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -2568,7 +2596,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-65390ff0e2c5",
-    "number": "111",
+    "number": "112",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -2592,11 +2620,11 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-de0dd553dbfd",
-    "number": "112",
+    "number": "113",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
-    "title": "Espacios vectoriales · 3",
+    "title": "Espacios vectoriales · 4",
     "topic": "Espacios vectoriales",
     "difficulty": "Sin clasificar",
     "estimatedTime": "A tu ritmo",
@@ -2617,18 +2645,19 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-99bb1ba17d3e",
-    "number": "113",
+    "number": "114",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
-    "title": "Espacios vectoriales · 4",
+    "title": "Espacios vectoriales · 5",
     "topic": "Espacios vectoriales",
     "difficulty": "Sin clasificar",
     "estimatedTime": "A tu ritmo",
     "statement": [
       "Sea $V$ el $\\mathbb{R}-$ espacio vectorial $\\mathcal{M}_n(\\mathbb{R})$ . Sea",
       "$$\\begin{aligned} W_1&=\\{A\\in \\mathcal{M}_n(\\mathbb{R})\\colon A=A^t\\},\\\\ W_2&=\\{A\\in \\mathcal{M}_n(\\mathbb{R})\\colon -A=A^t\\}, \\end{aligned}$$",
-      "subespacios de $V$ . Muestre que $W_1\\cap W_2=\\emptyset$ y todo $v\\in V$ se escribe como $w_1+w_2$ con $w_1\\in W_1$ y $w_2\\in W_2$ ."
+      "subespacios de $V$ . Muestre que $W_1\\cap W_2=\\{0_V\\}$ y todo $v\\in V$ se escribe como $w_1+w_2$ con $w_1\\in W_1$ y $w_2\\in W_2$ .",
+      "Aquí $0_V$ denota el vector cero del espacio $V$."
     ],
     "relatedTheory": [
       {
@@ -2643,7 +2672,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-01d99ff5eb2f",
-    "number": "114",
+    "number": "115",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -2667,7 +2696,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-7f4fc57e5dc9",
-    "number": "115",
+    "number": "116",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -2695,11 +2724,11 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-2361c5fac7c4",
-    "number": "116",
+    "number": "117",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
-    "title": "Espacios vectoriales · 5",
+    "title": "Espacios vectoriales · 6",
     "topic": "Espacios vectoriales",
     "difficulty": "Sin clasificar",
     "estimatedTime": "A tu ritmo",
@@ -2719,11 +2748,11 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-fc97eefba495",
-    "number": "117",
+    "number": "118",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
-    "title": "Espacios vectoriales · 6",
+    "title": "Espacios vectoriales · 7",
     "topic": "Espacios vectoriales",
     "difficulty": "Sin clasificar",
     "estimatedTime": "A tu ritmo",
@@ -2743,11 +2772,11 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-7e00d326c51c",
-    "number": "118",
+    "number": "119",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
-    "title": "Espacios vectoriales · 7",
+    "title": "Espacios vectoriales · 8",
     "topic": "Espacios vectoriales",
     "difficulty": "Sin clasificar",
     "estimatedTime": "A tu ritmo",
@@ -2769,7 +2798,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-817e1b3cd571",
-    "number": "119",
+    "number": "120",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -2797,7 +2826,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-4c34761ee9b0",
-    "number": "120",
+    "number": "121",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -2824,7 +2853,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-a3c3241958d8",
-    "number": "121",
+    "number": "122",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -2848,7 +2877,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-4de2d981d74f",
-    "number": "122",
+    "number": "123",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -2874,7 +2903,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-81fbcc690fdc",
-    "number": "123",
+    "number": "124",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -2901,7 +2930,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-3043a2956474",
-    "number": "124",
+    "number": "125",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -2933,7 +2962,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-f0cac312ea44",
-    "number": "125",
+    "number": "126",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -2965,7 +2994,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-a8a1c80a7f3c",
-    "number": "126",
+    "number": "127",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -2991,7 +3020,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-e8373bf6693c",
-    "number": "127",
+    "number": "128",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -3018,7 +3047,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-69c1f1ff963e",
-    "number": "128",
+    "number": "129",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -3042,7 +3071,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-cd49bd42536d",
-    "number": "129",
+    "number": "130",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -3074,7 +3103,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-cf3a9b181ffb",
-    "number": "130",
+    "number": "131",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -3106,7 +3135,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-49c0ea56aa4b",
-    "number": "131",
+    "number": "132",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -3133,7 +3162,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-4e633a156f71",
-    "number": "132",
+    "number": "133",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3159,7 +3188,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-8b24181746d3",
-    "number": "133",
+    "number": "134",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3183,7 +3212,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-fa3f94e00490",
-    "number": "134",
+    "number": "135",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3207,7 +3236,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-1a73c47958de",
-    "number": "135",
+    "number": "136",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3233,7 +3262,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-47e32d6cd43b",
-    "number": "136",
+    "number": "137",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3257,7 +3286,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-fd592a0bcfe5",
-    "number": "137",
+    "number": "138",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3281,7 +3310,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-4ac098d97f17",
-    "number": "138",
+    "number": "139",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3308,7 +3337,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-05f92038a429",
-    "number": "139",
+    "number": "140",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3335,7 +3364,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-80a4f5d339a1",
-    "number": "140",
+    "number": "141",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3367,7 +3396,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-938df7613ee7",
-    "number": "141",
+    "number": "142",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3397,7 +3426,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-c6c7dda530b3",
-    "number": "142",
+    "number": "143",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3421,7 +3450,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-a1f7296f7eae",
-    "number": "143",
+    "number": "144",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3445,7 +3474,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-6725a8822eb7",
-    "number": "144",
+    "number": "145",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3471,7 +3500,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-12adf7e08243",
-    "number": "145",
+    "number": "146",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3495,7 +3524,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-2f264b1ece76",
-    "number": "146",
+    "number": "147",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3519,7 +3548,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-6b1ccaa9695e",
-    "number": "147",
+    "number": "148",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3543,7 +3572,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-01fc90b37ad8",
-    "number": "148",
+    "number": "149",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3570,7 +3599,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-a9ce301e3cc8",
-    "number": "149",
+    "number": "150",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3596,7 +3625,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-8857864f484a",
-    "number": "150",
+    "number": "151",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3620,7 +3649,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-05761fde9f6e",
-    "number": "151",
+    "number": "152",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3644,7 +3673,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-1494be279af4",
-    "number": "152",
+    "number": "153",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3668,7 +3697,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-505737f7c9ca",
-    "number": "153",
+    "number": "154",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3695,7 +3724,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-3087328e4d84",
-    "number": "154",
+    "number": "155",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3719,7 +3748,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-f0c250500f75",
-    "number": "155",
+    "number": "156",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3743,7 +3772,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-d1f82d585ac5",
-    "number": "156",
+    "number": "157",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3767,7 +3796,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-7ec53692de0c",
-    "number": "157",
+    "number": "158",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3794,7 +3823,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-065597daf6f6",
-    "number": "158",
+    "number": "159",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3818,7 +3847,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-ab09d0720b60",
-    "number": "159",
+    "number": "160",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3848,7 +3877,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-8caca28938b7",
-    "number": "160",
+    "number": "161",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3880,7 +3909,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-5d22f5939d25",
-    "number": "161",
+    "number": "162",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3904,7 +3933,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-ed0b30db81e6",
-    "number": "162",
+    "number": "163",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3936,7 +3965,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-f1bfced50854",
-    "number": "163",
+    "number": "164",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3964,7 +3993,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-517266d4e3d6",
-    "number": "164",
+    "number": "165",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -3988,7 +4017,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-4e27cbea56d9",
-    "number": "165",
+    "number": "166",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -4012,7 +4041,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-1ec206390441",
-    "number": "166",
+    "number": "167",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -4036,7 +4065,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-45441e72664f",
-    "number": "167",
+    "number": "168",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -4061,7 +4090,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-32dee0cf5bcb",
-    "number": "168",
+    "number": "169",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -4093,7 +4122,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-b1262eeea1e9",
-    "number": "169",
+    "number": "170",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -4120,7 +4149,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-c5c7a53172b9",
-    "number": "170",
+    "number": "171",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -4144,7 +4173,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-125283c2c5a2",
-    "number": "171",
+    "number": "172",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -4171,7 +4200,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-bbee04920b7e",
-    "number": "172",
+    "number": "173",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -4200,7 +4229,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-cc838a6b8fe0",
-    "number": "173",
+    "number": "174",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -4228,7 +4257,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-ac9e99f143b0",
-    "number": "174",
+    "number": "175",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -4254,7 +4283,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-ac54adff0df4",
-    "number": "175",
+    "number": "176",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -4284,7 +4313,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-f109560db92e",
-    "number": "176",
+    "number": "177",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -4309,7 +4338,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-diferencial-d99da5117b8d",
-    "number": "177",
+    "number": "178",
     "course": "Cálculo Diferencial",
     "courseSlug": "calculo-diferencial",
     "collection": "Ejercicios",
@@ -4334,7 +4363,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-527dda0d9e09",
-    "number": "178",
+    "number": "179",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4359,7 +4388,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-vectorial-fa667c9f19bf",
-    "number": "179",
+    "number": "180",
     "course": "Cálculo Vectorial",
     "courseSlug": "calculo-vectorial",
     "collection": "Ejercicios",
@@ -4392,7 +4421,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-calculo-vectorial-e3c66ff2a5a6",
-    "number": "180",
+    "number": "181",
     "course": "Cálculo Vectorial",
     "courseSlug": "calculo-vectorial",
     "collection": "Ejercicios",
@@ -4416,7 +4445,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-ecuaciones-diferenciales-a7fd891e48f6",
-    "number": "181",
+    "number": "182",
     "course": "Ecuaciones Diferenciales",
     "courseSlug": "ecuaciones-diferenciales",
     "collection": "Ejercicios",
@@ -4441,7 +4470,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-ecuaciones-diferenciales-dee435a0acde",
-    "number": "182",
+    "number": "183",
     "course": "Ecuaciones Diferenciales",
     "courseSlug": "ecuaciones-diferenciales",
     "collection": "Ejercicios",
@@ -4467,11 +4496,11 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-0c23076adfdd",
-    "number": "183",
+    "number": "184",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
-    "title": "Espacios vectoriales · 8",
+    "title": "Espacios vectoriales · 9",
     "topic": "Espacios vectoriales",
     "difficulty": "Sin clasificar",
     "estimatedTime": "A tu ritmo",
@@ -4491,7 +4520,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-a71638d77679",
-    "number": "184",
+    "number": "185",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4516,7 +4545,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-d74edbc81655",
-    "number": "185",
+    "number": "186",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4541,7 +4570,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-1633a2dde987",
-    "number": "186",
+    "number": "187",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4566,7 +4595,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-8917e5680648",
-    "number": "187",
+    "number": "188",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4590,7 +4619,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-e9479b235635",
-    "number": "188",
+    "number": "189",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4618,7 +4647,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-f978f5e1c7a4",
-    "number": "189",
+    "number": "190",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4643,7 +4672,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-699b1cbe734a",
-    "number": "190",
+    "number": "191",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4669,7 +4698,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-3430e6ac803a",
-    "number": "191",
+    "number": "192",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4693,7 +4722,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-126e057b59c7",
-    "number": "192",
+    "number": "193",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4719,7 +4748,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-f85d7d4fa0fa",
-    "number": "193",
+    "number": "194",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4747,7 +4776,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-f59520620f52",
-    "number": "194",
+    "number": "195",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4772,7 +4801,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-bd8f2e9e97b3",
-    "number": "195",
+    "number": "196",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4797,7 +4826,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-e19a4d0c17b6",
-    "number": "196",
+    "number": "197",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4822,7 +4851,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-2794d92c1160",
-    "number": "197",
+    "number": "198",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4847,7 +4876,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-d5216b5380d2",
-    "number": "198",
+    "number": "199",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4872,7 +4901,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-b6cb7ed19395",
-    "number": "199",
+    "number": "200",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
@@ -4897,7 +4926,7 @@ export const overleafExercises: Exercise[] = [
   },
   {
     "slug": "practica-algebra-lineal-e79d87e1520a",
-    "number": "200",
+    "number": "201",
     "course": "Álgebra Lineal",
     "courseSlug": "algebra-lineal",
     "collection": "Ejercicios",
