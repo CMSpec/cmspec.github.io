@@ -1,9 +1,18 @@
 import type { Exercise } from "./exercises";
+import { trigonometryGuidance } from "./trigonometry-guidance.ts";
+import { calculusGuidance } from "./calculus-guidance.ts";
+import { linearGuidance } from "./linear-guidance.ts";
+import { introGuidance } from "./intro-guidance.ts";
 
 // Ayudas y soluciones redactadas para la web; no se atribuyen a las fuentes.
 export const overleafGuidance: Record<string, Partial<Exercise>> = {
+  ...trigonometryGuidance,
+  ...calculusGuidance,
+  ...linearGuidance,
+  ...introGuidance,
   "106c4d922912": {
     title: "Un cociente de potencias complejas", difficulty: "Inicial",
+    topic: "Números complejos", relatedTheory: [{label:"Números complejos",href:"/cursos/introduccion-matematicas#intro-complejos-1"}],
     hints: [String.raw`Recuerda que $i^2=-1$ y $i^3=-i$.`, String.raw`Desarrolla $(1+i)^3$.`, String.raw`Comprueba si el numerador es un múltiplo de $1-i$.`],
     solution: [{body:String.raw`$(1+i)^2=2i$, luego $(1+i)^3=-2+2i=-2(1-i)$. El denominador es $1+i^3=1-i\ne0$, así que el cociente es $-2$.`}], finalAnswer: "$-2$.",
   },
@@ -39,11 +48,13 @@ export const overleafGuidance: Record<string, Partial<Exercise>> = {
   },
   "cd49bd42536d": {
     title:"Rango a partir de las imágenes posibles",difficulty:"Inicial",
+    topic:"Transformaciones lineales", relatedTheory:[{label:"Transformaciones lineales",href:"/cursos/algebra-lineal#unidad-5-seccion-2"}],
     hints:[String.raw`Describe todos los posibles valores de $(-x,z,0)$.`,String.raw`Las primeras dos componentes pueden elegirse libremente.`,String.raw`Encuentra una base del plano de salida.`],
     solution:[{body:String.raw`La imagen es $\{(a,b,0):a,b\in\mathbb R\}$. Los vectores $(1,0,0)$ y $(0,1,0)$ forman una base de ese espacio, cuya dimensión es $2$.`}],finalAnswer:String.raw`$\operatorname{rango}(T)=2$.`,
   },
   "cf3a9b181ffb": {
     title:"Inyectividad y núcleo",difficulty:"Inicial",
+    topic:"Transformaciones lineales", relatedTheory:[{label:"Transformaciones lineales",href:"/cursos/algebra-lineal#unidad-5-seccion-2"}],
     hints:[String.raw`Una transformación lineal es inyectiva si su núcleo contiene solo el vector cero.`,String.raw`Resuelve $x-y=0$.`,String.raw`Compara las imágenes de $(0,0)$ y $(1,1)$.`],
     solution:[{body:String.raw`$T(x,y)=0$ cuando $x=y$. Así $\ker T=\operatorname{span}\{(1,1)\}$ no es trivial. En particular, $T(0,0)=T(1,1)=(0,0)$ aunque los puntos son distintos.`}],finalAnswer:"No es inyectiva.",
   },

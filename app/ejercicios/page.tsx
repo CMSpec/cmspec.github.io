@@ -10,7 +10,7 @@ export default function ExercisesPage() {
         <div className="course-spectrum" aria-hidden="true"><i /><i /><i /><i /></div>
         <p className="course-kicker">CMSPEC / APRENDER HACIENDO</p>
         <h1>Ejercitación</h1>
-        <p>Ejercicios organizados por curso y tema, con enlaces a los apuntes. Elige prácticas con solución guiada o enunciados para resolver por tu cuenta.</p>
+        <p>Ejercicios organizados por curso y tema, con pistas, soluciones y enlaces a los apuntes. Practica a tu ritmo o genera una prueba de cinco ejercicios con tres niveles de dificultad.</p>
         <div className="exercise-masthead-stats">
           <span><strong>{exercises.length}</strong> ejercicios</span>
           <span><strong>{exercises.filter(exercise=>exercise.solution.length>0).length}</strong> con solución</span>
