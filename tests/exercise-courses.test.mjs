@@ -5,6 +5,7 @@ import katex from "katex";
 import { exercises, getExercise } from "../content/exercises.ts";
 import { additionalCourseExercises } from "../content/additional-course-exercises.ts";
 import { overleafExercises } from "../content/overleaf-exercises.ts";
+import { separateExercises } from "../content/split-exercises.ts";
 
 test("todos los ejercicios tienen LaTeX válido en enunciados, pistas y soluciones", () => {
   for (const slug of ["lineal-inversa-dos-por-dos", "lineal-sistema-por-eliminacion", "diferencial-continuidad-por-tramos"]) {
@@ -30,7 +31,7 @@ test("todos los ejercicios tienen LaTeX válido en enunciados, pistas y solucion
 
 test("Ejercitación incluye los cinco cursos sin alterar los seis ejercicios originales", () => {
   assert.deepEqual([...new Set(exercises.map(e => e.courseSlug))].sort(), ["algebra-lineal", "calculo-diferencial", "calculo-vectorial", "ecuaciones-diferenciales", "introduccion-matematicas"]);
-  assert.equal(exercises.length, 14 + overleafExercises.length);
+  assert.equal(exercises.length, 14 + separateExercises(overleafExercises).length);
   assert.equal(new Set(exercises.map(e => e.slug)).size, exercises.length);
   assert.equal(new Set(exercises.map(e => e.number)).size, exercises.length);
   assert.equal(exercises[0].slug, "plano-que-contiene-una-recta");

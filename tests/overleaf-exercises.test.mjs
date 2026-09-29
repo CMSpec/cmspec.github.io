@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import { overleafExercises } from "../content/overleaf-exercises.ts";
 import { overleafGuidance } from "../content/overleaf-guidance.ts";
+import { splitPlans } from "../content/split-exercises.ts";
 
 test("solo se publican candidatos revisados, sin respuestas filtradas en el enunciado",()=>{
   const reviewed=JSON.parse(readFileSync("content/overleaf-reviewed.json","utf8"));
@@ -12,6 +13,11 @@ test("solo se publican candidatos revisados, sin respuestas filtradas en el enun
     assert.doesNotMatch(e.statement.join(" "),/Solución\s*:|\b(?:puntaje|examen|control|solemne|profesor|matlab)\b|XX puntos|\[X pts\]/i,e.slug);
     assert.ok(e.statement.every(p=>p.trim()));
     const html=readFileSync(`out/ejercicios/${e.slug}/index.html`,"utf8").replace(/<script\b[^>]*>[\s\S]*?<\/script>/g,"");
+    if(splitPlans[e.slug.split("-").at(-1)]) {
+      assert.ok(html.includes("Ejercicios separados"));
+      assert.ok(html.includes(`${e.slug}-parte-1`));
+      continue;
+    }
     if(e.solution.length===0) {
       assert.ok(html.includes("Todavía no hay una solución guiada publicada"),e.slug);
       assert.ok(!html.includes("Ver solución completa"),e.slug);

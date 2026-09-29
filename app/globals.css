@@ -1632,6 +1632,10 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .exercise-masthead-stats { display: flex; gap: 14px 34px; flex-wrap: wrap; margin-top: 48px; padding-top: 20px; border-top: 1px solid #1d2720; font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
 .exercise-masthead-stats strong { margin-right: 5px; font-family: Georgia,serif; font-size: 22px; font-weight: 400; }
 .exercise-library { padding: 55px 6vw 100px; background: #d9e5d7; }
+.exercise-group-links { min-height: 100vh; padding-top: 130px; }
+.exercise-group-links h1 { font: 400 clamp(32px,5vw,56px)/1.15 Georgia,serif; margin-bottom: 24px; }
+.exercise-group-links ul { display: grid; gap: 16px; margin: 28px 0; }
+.exercise-group-links a { text-decoration: underline; text-underline-offset: 4px; }
 .exercise-filters { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; align-items: end; margin-bottom: 42px; }
 .exercise-load-more { display:block; margin:2rem auto 0; padding:1rem 1.5rem; border:1px solid var(--ink); background:transparent; color:var(--ink); cursor:pointer; font:inherit; }
 .practice-availability { margin-block:2rem; padding:1rem; border-left:3px solid var(--blue); line-height:1.6; }

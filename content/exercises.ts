@@ -1,5 +1,6 @@
 import { additionalCourseExercises } from "./additional-course-exercises.ts";
 import { overleafExercises } from "./overleaf-exercises.ts";
+import { separateExercises, splitPlans } from "./split-exercises.ts";
 
 export type ExerciseDifficulty = "Inicial" | "Intermedio" | "Desafío" | "Sin clasificar";
 
@@ -216,8 +217,13 @@ export const exercises: Exercise[] = [
     commonMistake: "Calcular directamente una integral larga después de haber probado que el campo es conservativo.",
   },
   ...additionalCourseExercises,
-  ...overleafExercises,
+  ...separateExercises(overleafExercises),
 ];
+
+export const exerciseGroups = overleafExercises.filter(e => splitPlans[e.slug.split("-").at(-1)!]);
+export function getExerciseParts(slug: string) {
+  return exercises.filter(e=>e.slug.startsWith(`${slug}-parte-`));
+}
 
 export function getExercise(slug: string) {
   return exercises.find((exercise) => exercise.slug === slug);
