@@ -17,6 +17,14 @@ const categoryLabels: Record<AboutGalleryCategory, string> = {
   viajes: "Viajes",
 };
 
+function GalleryCaption({ text }: { text: string }) {
+  return <>{text.split(/(chiyogami)/i).map((part, index) =>
+    /^chiyogami$/i.test(part)
+      ? <a key={index} href="https://www.instagram.com/rekao1905/" target="_blank" rel="noopener noreferrer" title="Papel de Osaka · @rekao1905 en Instagram">{part}</a>
+      : part
+  )}</>;
+}
+
 export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[] }) {
   const [filter, setFilter] = useState<"todas" | AboutGalleryCategory>("todas");
   const [selected, setSelected] = useState<AboutGalleryEntry | null>(null);
@@ -48,7 +56,7 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
         <figcaption>
           <p>{categoryLabels[entry.category]} · {entry.date}</p>
           <strong>{entry.title}</strong>
-          <span>{entry.caption}</span>
+          <span><GalleryCaption text={entry.caption} /></span>
         </figcaption>
       </figure>
     );
@@ -100,7 +108,7 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
               <figcaption>
                 <p>{categoryLabels[carouselDescription.category]} · {carouselDescription.date}</p>
                 <strong>{carouselDescription.title}</strong>
-                <span>{carouselDescription.caption}</span>
+                <span><GalleryCaption text={carouselDescription.caption} /></span>
               </figcaption>
             </figure>
           )}
@@ -121,7 +129,7 @@ export default function AboutGallery({ entries }: { entries: AboutGalleryEntry[]
           <div>
             <button type="button" className="about-gallery-close" onClick={close} aria-label="Cerrar imagen">×</button>
             <img src={sitePath(selected.src)} alt={selected.alt} />
-            <footer><span>{categoryLabels[selected.category]} · {selected.date}</span><strong>{selected.title}</strong><p>{selected.caption}</p></footer>
+            <footer><span>{categoryLabels[selected.category]} · {selected.date}</span><strong>{selected.title}</strong><p><GalleryCaption text={selected.caption} /></p></footer>
           </div>
         )}
       </dialog>
