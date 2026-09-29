@@ -6,8 +6,9 @@ import { generatePracticeTest, testAvailability, testLevels, testPool, testQuota
 import { sitePath } from "../../lib/site-path";
 import ExerciseMath from "./ExerciseMath";
 
-export default function PracticeTest({ exercises, course }: { exercises: Exercise[]; course: string }) {
-  const [open, setOpen] = useState(false);
+export default function PracticeTest({ exercises }: { exercises: Exercise[] }) {
+  const [course, setCourse] = useState("Todos");
+  const courses = [...new Set(exercises.map(exercise => exercise.course))];
   const [selected, setSelected] = useState<string[]>([]);
   const [questions, setQuestions] = useState<Exercise[]>([]);
   const [version, setVersion] = useState(0);
@@ -17,10 +18,15 @@ export default function PracticeTest({ exercises, course }: { exercises: Exercis
   const ready = selected.length > 0 && testLevels.every(level => counts[level] >= testQuota[level]);
   function changeTopics(next: string[]) { setSelected(next); setQuestions([]); }
   return <section className="practice-test" aria-label="Generador de pruebas">
-    <button type="button" className="practice-test-toggle" aria-expanded={open} aria-controls="practice-test-builder" onClick={() => setOpen(value => !value)}>
-      Crear una prueba de 5 ejercicios <span aria-hidden="true">{open ? "−" : "+"}</span>
-    </button>
-    {open && <div id="practice-test-builder">
+    <div className="exercise-filters" aria-label="Curso para la prueba">
+      <label><span>CURSO</span>
+        <select value={course} onChange={event => { setCourse(event.target.value); changeTopics([]); }}>
+          <option value="Todos">Todos los cursos</option>
+          {courses.map(name => <option key={name} value={name}>{name}</option>)}
+        </select>
+      </label>
+    </div>
+    <div id="practice-test-builder">
       <p>Selecciona uno o varios temas del curso elegido. La prueba combina <strong>1 inicial, 2 intermedios y 2 desafíos</strong>, sin repetir ejercicios. Cada ejercicio puede incluir varios incisos.</p>
       <p>Solo se incluyen ejercicios con dificultad revisada, pistas y solución. Se eligen entre los temas marcados; no necesariamente aparecerán todos.</p>
       <fieldset><legend>Temas para la prueba</legend>
@@ -60,6 +66,6 @@ export default function PracticeTest({ exercises, course }: { exercises: Exercis
           </details>
         </article>)}
       </section>}
-    </div>}
+    </div>
   </section>;
 }

@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import type { Exercise, ExerciseDifficulty } from "../../content/exercises";
 import { sitePath } from "../../lib/site-path";
-import PracticeTest from "./PracticeTest";
 
 const difficultyOrder: Array<ExerciseDifficulty | "Todos"> = ["Todos", "Inicial", "Intermedio", "Desafío", "Sin clasificar"];
 
@@ -47,7 +46,6 @@ export default function ExerciseLibrary({ exercises }: { exercises: Exercise[] }
         <p role="status" aria-live="polite" aria-atomic="true"><strong>{visible.length}</strong> {visible.length === 1 ? "ejercicio" : "ejercicios"}</p>
       </div>
 
-      <PracticeTest key={course} exercises={exercises} course={course} />
       <div className="exercise-grid">
         {visible.slice(0,limit).map((exercise) => (
           <article className="exercise-card" key={exercise.slug}>

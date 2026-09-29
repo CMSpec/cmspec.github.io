@@ -1,6 +1,7 @@
 import SiteHeader from "../_components/SiteHeader";
 import { exercises } from "../../content/exercises";
 import ExerciseLibrary from "./ExerciseLibrary";
+import { sitePath } from "../../lib/site-path";
 
 export default function ExercisesPage() {
   return (
@@ -9,7 +10,10 @@ export default function ExercisesPage() {
       <section className="exercise-masthead">
         <div className="course-spectrum" aria-hidden="true"><i /><i /><i /><i /></div>
         <p className="course-kicker">CMSPEC / APRENDER HACIENDO</p>
-        <h1>Ejercitación</h1>
+        <div className="exercise-title-row">
+          <h1>Ejercitación</h1>
+          <a className="exercise-create-test" href={sitePath("/ejercicios/prueba")}>Crear una prueba <span aria-hidden="true">↗</span></a>
+        </div>
         <p>Ejercicios organizados por curso y tema, con pistas, soluciones y enlaces a los apuntes. Practica a tu ritmo o genera una prueba de cinco ejercicios con tres niveles de dificultad.</p>
         <div className="exercise-masthead-stats">
           <span><strong>{exercises.length}</strong> ejercicios</span>
