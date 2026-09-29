@@ -20,7 +20,7 @@ const categoryLabels: Record<AboutGalleryCategory, string> = {
 function GalleryCaption({ text }: { text: string }) {
   return <>{text.split(/(chiyogami)/i).map((part, index) =>
     /^chiyogami$/i.test(part)
-      ? <a key={index} href="https://www.instagram.com/rekao1905/" target="_blank" rel="noopener noreferrer" title="Papel de Osaka · @rekao1905 en Instagram">{part}</a>
+      ? <a className="chiyogami-link" key={index} href="https://www.instagram.com/rekao1905/" target="_blank" rel="noopener noreferrer" title="Papel de Osaka · @rekao1905 en Instagram">{part} (Osaka · Instagram ↗)</a>
       : part
   )}</>;
 }
