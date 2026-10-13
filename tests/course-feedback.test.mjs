@@ -29,10 +29,11 @@ test("el correo identifica el tema actual y conserva acentos, símbolos y ancla"
 });
 
 for (const slug of ["introduccion-matematicas", "algebra-lineal", "calculo-diferencial", "calculo-vectorial", "ecuaciones-diferenciales"]) {
-  test(`${slug}: botón de correcciones disponible en el temario sin JavaScript`, () => {
+  test(`${slug}: botón de correcciones visible bajo el título sin JavaScript`, () => {
     const $ = load(readFileSync(new URL(`../out/cursos/${slug}/index.html`, import.meta.url), "utf8"));
-    const button = $(".course-topic-index .course-feedback-button");
+    const button = $(".course-masthead h1 + .course-feedback .course-feedback-button");
     assert.equal(button.length, 1);
+    assert.equal($(".course-topic-index .course-feedback-button").length, 0);
     assert.match(button.text(), /¿Encontraste algún error\?/);
     assert.match(button.text(), /Ayúdanos a mejorar estos apuntes/);
     const mail = new URL(button.attr("href"));

@@ -8,6 +8,7 @@ import ChangeOfBasis2D from "./ChangeOfBasis2D";
 import { DotProductAnimation, MatrixAdditionAnimation } from "./MatrixOperationsAnimations";
 import { SymmetryAnimation, TraceAnimation, TriangularMatricesAnimation } from "./MatrixStructureAnimations";
 import CourseIndex from "../_components/CourseIndex";
+import CourseFeedback from "../_components/CourseFeedback";
 import SectionPractice from "../_components/SectionPractice";
 import SolutionDisclosures from "./SolutionDisclosures";
 import SiteHeader from "../../_components/SiteHeader";
@@ -222,6 +223,7 @@ export default function LinearAlgebraCoursePage() {
         <div className="course-spectrum" aria-hidden="true"><i /><i /><i /><i /></div>
         <p className="course-kicker">{course.eyebrow}</p>
         <h1>{course.title}</h1>
+        <CourseFeedback course={{ title: course.title, slug: "algebra-lineal" }} />
         <p className="course-deck">{course.introduction}</p>
         <div className="course-meta">
           <div><span>AUTORA</span><strong>{course.author}</strong></div>

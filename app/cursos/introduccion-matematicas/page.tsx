@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import katex from "katex";
 import SiteHeader from "../../_components/SiteHeader";
 import CourseIndex from "../_components/CourseIndex";
+import CourseFeedback from "../_components/CourseFeedback";
 import { introductoryChapters } from "../../../content/courses/introductory-mathematics";
 import { introductoryAlgebraExtension } from "../../../content/courses/introductory-algebra-extension";
 import { handwrittenNotes } from "../../../content/courses/introductory-handwritten-notes";
@@ -31,6 +32,7 @@ export default function IntroductoryMathematicsPage() {
       <div className="course-spectrum" aria-hidden="true"><i/><i/><i/><i/></div>
       <p className="course-kicker">CURSO INTRODUCTORIO · FUNDAMENTOS Y PRECÁLCULO</p>
       <h1>Introducción a las Matemáticas</h1>
+      <CourseFeedback course={{ title: "Introducción a las Matemáticas", slug: "introduccion-matematicas" }} />
       <p className="course-deck">Aprender a leer, representar y resolver. Lógica y funciones, conjuntos y sumatorias, números complejos y geometría: una base para entrar al cálculo y al álgebra lineal.</p>
       <div className="course-download">
         <a href={sitePath("/descargas/introduccion-matematicas.pdf")} download>↓ Descargar curso completo · PDF</a>

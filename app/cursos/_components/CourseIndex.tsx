@@ -58,7 +58,6 @@ export default function CourseIndex({ course, note, units }: { course: CourseFee
       <>
         <a className="topic-back" href={sitePath("/aprender")}>← Todos los cursos</a>
         <header className="topic-index-heading"><p>ELIGE POR DÓNDE EMPEZAR</p><h2>Temario del curso</h2><p>{units.length} unidades · {topics.length} minicapítulos. Abre un tema y avanza a tu ritmo.</p></header>
-        <CourseFeedback course={course} />
         <div className="topic-unit-grid">{units.map(unit => <section className="topic-unit-card" key={unit.href}>
           <header><span>{unit.number}</span><h3>{unit.title}</h3></header>
           <ol>{(unit.items?.length ? unit.items : [unit]).map((item, i) => <li key={item.href}><a href={item.href}><span className="topic-number">{unit.number}.{i + 1}</span><span>{item.title}</span><span aria-hidden="true">→</span></a></li>)}</ol>

@@ -1,6 +1,7 @@
 import { differentialEquationsCourse } from "../../../content/courses/differential-equations";
 import { differentialEquationsChapters } from "../../../content/courses/differential-equations-chapters";
 import CourseIndex from "../_components/CourseIndex";
+import CourseFeedback from "../_components/CourseFeedback";
 import SectionPractice from "../_components/SectionPractice";
 import SiteHeader from "../../_components/SiteHeader";
 import SageSandbox from "../_components/SageSandbox";
@@ -55,6 +56,7 @@ export default function DifferentialEquationsCoursePage() {
         <div className="course-spectrum" aria-hidden="true"><i /><i /><i /><i /></div>
         <p className="course-kicker">{course.eyebrow}</p>
         <h1>{course.title}</h1>
+        <CourseFeedback course={{ title: course.title, slug: "ecuaciones-diferenciales" }} />
         <p className="course-deck">{course.introduction}</p>
         <div className="course-meta">
           <div><span>AUTORÍA</span><strong>{course.authors}</strong></div>
