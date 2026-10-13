@@ -41,6 +41,16 @@ export default function SyntheticDivisionExplorer() {
   const x = (column: number) => 170 + column * 110;
   const descriptionId = useId();
   return <div className="intro-explorer synthetic-explorer">
+    <div className="course-print-only">
+      <h5>División sintética, paso a paso</h5>
+      <p>Dividimos 2x³ − 3x² + 4x − 5 por x − 2. La tabla completa es:</p>
+      <table><thead><tr><th>a = 2</th>{coefficients.map((value, i) => <th key={i}>{fmt(value)}</th>)}</tr></thead>
+        <tbody><tr><th>Productos</th>{products.map((value, i) => <td key={i}>{i ? fmt(value) : ""}</td>)}</tr>
+          <tr><th>Resultados</th>{results.map((value, i) => <td key={i}>{fmt(value)}</td>)}</tr></tbody>
+      </table>
+      <ol>{explanations.slice(1).map((text, i) => <li key={i}>{text}</li>)}</ol>
+      <p>2x³ − 3x² + 4x − 5 = (x − 2)(2x² + x + 6) + 7.</p>
+    </div>
     <h5>División sintética, paso a paso</h5>
     <p>Dividimos <strong>2x³ − 3x² + 4x − 5</strong> por <strong>x − 2</strong>. Primero copiamos los coeficientes y ubicamos a; después: bajar → multiplicar → sumar.</p>
     <svg viewBox="0 0 580 430" role="img" aria-label={`División sintética. Paso ${step} de ${lastStep}.`} aria-describedby={descriptionId}>

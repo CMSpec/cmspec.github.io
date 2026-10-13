@@ -1,5 +1,32 @@
 # vinext-starter
 
+## Descarga del curso introductorio en GitHub Pages
+
+El botón de Introducción a las Matemáticas descarga `/descargas/introduccion-matematicas.pdf`.
+El PDF se genera en cada publicación a partir del HTML completo del curso, no de los
+minicapítulos visibles en el navegador. Conserva las introducciones y notas, y coloca
+las pistas y soluciones de las 64 prácticas al final. No incluye el banco independiente
+de Ejercitación. Los gráficos interactivos tienen representaciones estáticas y enlaces.
+
+Preparación local (Node.js >=22.13, pnpm 10):
+
+```bash
+pnpm install --frozen-lockfile
+pnpm exec playwright install chromium
+pnpm run build:pages
+pnpm run test:pdf
+```
+
+`build:pages` compila el sitio y genera el PDF en `out/descargas/`. Fuera de CI deja una
+copia en `output/pdf/` para revisión. Para regenerar solo el documento después de una
+compilación, usa `pnpm run build:pdf`. No edites ni subas los archivos generados: edita
+el contenido del curso y publica normalmente. GitHub Actions instala Chromium y
+comprueba la integridad del documento antes de desplegar.
+
+La transformación está en `scripts/course-document.mjs`; la maquetación, en
+`scripts/course-document.css`. La versión impresa de la división sintética usa los
+mismos coeficientes y pasos que la animación.
+
 A clean full-stack starter running on
 [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
 Drizzle support.

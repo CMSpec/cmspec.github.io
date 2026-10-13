@@ -32,6 +32,10 @@ export default function IntroductoryMathematicsPage() {
       <p className="course-kicker">CURSO INTRODUCTORIO · FUNDAMENTOS Y PRECÁLCULO</p>
       <h1>Introducción a las Matemáticas</h1>
       <p className="course-deck">Aprender a leer, representar y resolver. Lógica y funciones, conjuntos y sumatorias, números complejos y geometría: una base para entrar al cálculo y al álgebra lineal.</p>
+      <div className="course-download">
+        <a href={sitePath("/descargas/introduccion-matematicas.pdf")} download>↓ Descargar curso completo · PDF</a>
+        <p>Lectura sin conexión, con índice, ejercicios y ayudas al final. Descarga libre, sin correo.</p>
+      </div>
       <div className="course-meta"><div><span>COLECCIÓN</span><strong>CMSpec · Aprender</strong></div><div><span>CONTENIDO</span><strong>{chapters.length} unidades · {practiceCount} prácticas guiadas</strong></div><div><span>PUNTO DE PARTIDA</span><strong>Aritmética y operaciones con fracciones</strong></div></div>
     </article>
     <div className="course-article-layout">

@@ -1901,3 +1901,9 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .about-page a.chiyogami-link { color: #24647a; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
 .about-page a.chiyogami-link:hover { color: #163f4d; }
 .about-page a.chiyogami-link:focus-visible { outline: 2px solid #24647a; outline-offset: 4px; }
+.course-print-only { display: none; }
+.course-download { margin: 28px 0; }
+.course-download a { display: inline-block; padding: 15px 22px; background: #12343d; color: white; text-decoration: none; font-size: 16px; line-height: 1.4; }
+.course-download a:hover { background: #24647a; }
+.course-download a:focus-visible { outline: 3px solid #837e31; outline-offset: 4px; }
+.course-download p { max-width: 600px; margin: 10px 0; font-size: 14px; line-height: 1.5; }

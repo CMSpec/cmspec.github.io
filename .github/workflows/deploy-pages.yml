@@ -38,8 +38,16 @@ jobs:
       - name: Instalar dependencias
         run: pnpm install --frozen-lockfile
 
+      - name: Preparar el generador de PDF
+        run: pnpm exec playwright install --with-deps chromium
+
       - name: Generar el sitio estático
+        env:
+          CI: true
         run: pnpm run build:pages
+
+      - name: Verificar el documento del curso
+        run: pnpm run test:pdf
 
       - name: Empaquetar el sitio
         uses: actions/upload-pages-artifact@v3

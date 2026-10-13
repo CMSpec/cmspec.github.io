@@ -198,9 +198,11 @@ test("se conservan las explicaciones previas y corresponden a secciones existent
   for (const key of Object.keys(handwrittenNotes)) assert.ok(anchors.has(key), key);
 });
 
-test("la página publicada no ofrece referencias ni enlaces a PDF", () => {
+test("la lectura permanece en la web y solo se ofrece la descarga unificada", () => {
   const html = readFileSync(new URL("../out/cursos/introduccion-matematicas/index.html", import.meta.url), "utf8");
-  assert.doesNotMatch(html, /\.pdf(?:["#?]|&quot;)|\bPDF\b|Consultar el manuscrito|Ver manuscrito|Apuntes ampliados/);
+  assert.doesNotMatch(html, /Consultar el manuscrito|Ver manuscrito|Apuntes ampliados/);
+  const pdfLinks = [...html.matchAll(/href="([^"]+\.pdf)"/g)].map(match => match[1]);
+  assert.deepEqual(pdfLinks, ["/descargas/introduccion-matematicas.pdf"]);
   assert.equal((html.match(/class="intro-handwritten-note"/g) ?? []).length, 46);
   assert.equal((html.match(/class="intro-practice"/g) ?? []).length, 64);
   for (const chapter of chapters) {

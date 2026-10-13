@@ -42,4 +42,6 @@ tsconfig.tsbuildinfo
 /.wrangler/
 /outputs/
 /work/
+/output/pdf/
+/tmp/pdfs/
 /.venv-plastex/
