@@ -9,6 +9,7 @@ import { DotProductAnimation, MatrixAdditionAnimation } from "./MatrixOperations
 import { SymmetryAnimation, TraceAnimation, TriangularMatricesAnimation } from "./MatrixStructureAnimations";
 import CourseIndex from "../_components/CourseIndex";
 import CourseFeedback from "../_components/CourseFeedback";
+import CourseDownload from "../_components/CourseDownload";
 import SectionPractice from "../_components/SectionPractice";
 import SolutionDisclosures from "./SolutionDisclosures";
 import SiteHeader from "../../_components/SiteHeader";
@@ -225,6 +226,7 @@ export default function LinearAlgebraCoursePage() {
         <h1>{course.title}</h1>
         <CourseFeedback course={{ title: course.title, slug: "algebra-lineal" }} />
         <p className="course-deck">{course.introduction}</p>
+        <CourseDownload slug="algebra-lineal" />
         <div className="course-meta">
           <div><span>AUTORA</span><strong>{course.author}</strong></div>
           <div><span>COLECCIÓN</span><strong>CMSpec · Aprender</strong></div>

@@ -20,7 +20,7 @@ li { margin-bottom: 2mm; } ul,ol { padding-left: 6mm; }
 .toc { break-after: page; }
 .toc-unit { break-inside: avoid; }
 .toc ol { list-style: none; padding: 0; }
-.toc li { margin: 1.5mm 0; font-size: 10pt; }
+.toc li { margin: 1mm 0; font-size: 10pt; }
 .toc h3 { margin-top: 5mm; }
 .toc a { text-decoration: none; }
 .reading-intro,.document-chapter,.answer-key,.bibliography { break-before: page; }
@@ -37,6 +37,7 @@ li { margin-bottom: 2mm; } ul,ol { padding-left: 6mm; }
 .answer h4 { font-size: 10pt; margin: 4mm 0 2mm; text-transform: capitalize; }
 .course-math { margin: 4mm 0; text-align: center; break-inside: avoid; }
 .katex { font-size: 1.03em; }
+.katex svg { margin: 0; max-height: none; }
 .katex-display { margin: 0; }
 table { border-collapse: collapse; width: 100%; margin: 4mm 0; font-size: 10pt; break-inside: avoid; }
 td,th { border: 1px solid #a8bfc4; padding: 2mm; text-align: center; }
@@ -71,3 +72,21 @@ svg { display: block; width: 100%; height: auto; max-height: 95mm; margin: 3mm a
 .summation-labels { fill: #435c27; font: 17px Arial,sans-serif; }
 .summation-arrows { fill: none; stroke: #6c853f; stroke-width: 1.8; }
 .summation-definition-diagram marker path { fill: none; stroke: #6c853f; stroke-width: 1.4; }
+/* Shared print layout for the other four courses. */
+.section-practice { border-left: 2px solid #8b955b; padding: 3mm 4mm; margin: 4mm 0; background: #f5f7ef; break-inside: avoid; }
+.document-explorer { margin: 6mm 0; padding: 4mm; border: 1px solid #cbd8dc; break-inside: avoid; }
+.document-explorer header, .document-explorer figcaption { break-after: avoid; }
+.document-explorer h3, .document-explorer h4, .document-explorer h5 { margin: 2mm 0 3mm; font-size: 12pt; }
+.document-static-label { font: bold 8pt Arial,sans-serif; color: #53666c; margin-bottom: 3mm; }
+.document-online-figure { margin: 4mm 0; padding: 3mm; background: #eef4f5; font-size: 10pt; }
+.document-explorer label { display: block; margin: 1mm 0; }
+.document-explorer output { margin-left: 2mm; }
+.document-explorer [class$="-legend"] { display: flex; flex-wrap: wrap; gap: 3mm; margin: 2mm 0; font-size: 9pt; }
+.document-explorer svg { break-inside: avoid; }
+.centered { text-align: center; margin: 4mm 0; break-inside: avoid; }
+img { display: block; max-width: 100%; height: auto; max-height: 120mm; object-fit: contain; margin: 4mm auto; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; padding: 3mm; background: #f5f7f8; font: 8pt/1.5 monospace; }
+code { font-family: monospace; }
+.latex-content ol.enumerate-alpha { list-style-type: lower-alpha; }
+.latex-content li > p:last-child { margin-bottom: 0; }
+.latex-content .sol_thmcontent { display: block; }

@@ -2,6 +2,7 @@ import katex from "katex";
 import SiteHeader from "../../_components/SiteHeader";
 import CourseIndex from "../_components/CourseIndex";
 import CourseFeedback from "../_components/CourseFeedback";
+import CourseDownload from "../_components/CourseDownload";
 import SectionPractice from "../_components/SectionPractice";
 import SolutionDisclosures from "../algebra-lineal/SolutionDisclosures";
 import { differentialCalculusChapters, differentialCalculusCourse, type DifferentialBlock } from "../../../content/courses/differential-calculus";
@@ -51,6 +52,7 @@ export default function DifferentialCalculusPage() {
         <h1>{differentialCalculusCourse.title}</h1>
         <CourseFeedback course={{ title: differentialCalculusCourse.title, slug: "calculo-diferencial" }} />
         <p className="course-deck">{differentialCalculusCourse.introduction}</p>
+        <CourseDownload slug="calculo-diferencial" />
         <div className="course-meta">
           <div><span>AUTORA</span><strong>{differentialCalculusCourse.author}</strong></div>
           <div><span>COLECCIÓN</span><strong>CMSpec · Aprender</strong></div>

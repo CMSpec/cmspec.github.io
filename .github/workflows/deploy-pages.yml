@@ -46,7 +46,7 @@ jobs:
           CI: true
         run: pnpm run build:pages
 
-      - name: Verificar el documento del curso
+      - name: Verificar los documentos de los cursos
         run: pnpm run test:pdf
 
       - name: Verificar los enlaces para reportar errores

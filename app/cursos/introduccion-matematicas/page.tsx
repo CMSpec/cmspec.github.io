@@ -3,6 +3,7 @@ import katex from "katex";
 import SiteHeader from "../../_components/SiteHeader";
 import CourseIndex from "../_components/CourseIndex";
 import CourseFeedback from "../_components/CourseFeedback";
+import CourseDownload from "../_components/CourseDownload";
 import { introductoryChapters } from "../../../content/courses/introductory-mathematics";
 import { introductoryAlgebraExtension } from "../../../content/courses/introductory-algebra-extension";
 import { handwrittenNotes } from "../../../content/courses/introductory-handwritten-notes";
@@ -34,10 +35,7 @@ export default function IntroductoryMathematicsPage() {
       <h1>Introducción a las Matemáticas</h1>
       <CourseFeedback course={{ title: "Introducción a las Matemáticas", slug: "introduccion-matematicas" }} />
       <p className="course-deck">Aprender a leer, representar y resolver. Lógica y funciones, conjuntos y sumatorias, números complejos y geometría: una base para entrar al cálculo y al álgebra lineal.</p>
-      <div className="course-download">
-        <a href={sitePath("/descargas/introduccion-matematicas.pdf")} download>↓ Descargar curso completo · PDF</a>
-        <p>Lectura sin conexión, con índice, ejercicios y ayudas al final. Descarga libre, sin correo.</p>
-      </div>
+      <CourseDownload slug="introduccion-matematicas" />
       <div className="course-meta"><div><span>COLECCIÓN</span><strong>CMSpec · Aprender</strong></div><div><span>CONTENIDO</span><strong>{chapters.length} unidades · {practiceCount} prácticas guiadas</strong></div><div><span>PUNTO DE PARTIDA</span><strong>Aritmética y operaciones con fracciones</strong></div></div>
     </article>
     <div className="course-article-layout">

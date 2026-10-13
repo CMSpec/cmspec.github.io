@@ -2,6 +2,7 @@ import { vectorCalculusCourse } from "../../../content/courses/vector-calculus";
 import { vectorCalculusChapters } from "../../../content/courses/vector-calculus-chapters";
 import CourseIndex from "../_components/CourseIndex";
 import CourseFeedback from "../_components/CourseFeedback";
+import CourseDownload from "../_components/CourseDownload";
 import SectionPractice from "../_components/SectionPractice";
 import SiteHeader from "../../_components/SiteHeader";
 import SageSandbox from "../_components/SageSandbox";
@@ -120,6 +121,7 @@ export default function VectorCalculusCoursePage() {
         <h1>{course.title}</h1>
         <CourseFeedback course={{ title: course.title, slug: "calculo-vectorial" }} />
         <p className="course-deck">{course.introduction}</p>
+        <CourseDownload slug="calculo-vectorial" />
         <div className="course-meta">
           <div><span>AUTORÍA</span><strong>{course.authors}</strong></div>
           <div><span>COLECCIÓN</span><strong>CMSpec · Aprender</strong></div>

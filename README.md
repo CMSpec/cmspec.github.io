@@ -1,12 +1,17 @@
 # vinext-starter
 
-## Descarga del curso introductorio en GitHub Pages
+## Descarga automática de los cinco cursos en GitHub Pages
 
-El botón de Introducción a las Matemáticas descarga `/descargas/introduccion-matematicas.pdf`.
-El PDF se genera en cada publicación a partir del HTML completo del curso, no de los
-minicapítulos visibles en el navegador. Conserva las introducciones y notas, y coloca
-las pistas y soluciones de las 64 prácticas al final. No incluye el banco independiente
-de Ejercitación. Los gráficos interactivos tienen representaciones estáticas y enlaces.
+Cada curso ofrece «Descargar curso completo · PDF» en su cabecera. Están disponibles
+Introducción a las Matemáticas, Álgebra Lineal, Cálculo Diferencial, Cálculo Vectorial y
+Ecuaciones Diferenciales en `/descargas/<slug-del-curso>.pdf`.
+
+Los PDFs se generan en cada publicación a partir del HTML completo de cada curso,
+no de los minicapítulos visibles en el navegador ni de copias de los apuntes originales.
+Conservan introducciones, notas, fórmulas, demostraciones y ejemplos; las pistas y
+soluciones de las prácticas de cierre quedan al final. No incluyen el banco independiente
+de Ejercitación. Se conservan los diagramas estáticos y se enlazan los modelos 3D y
+laboratorios interactivos a su tema en la web. Las imágenes y fuentes quedan embebidas.
 
 Preparación local (Node.js >=22.13, pnpm 10):
 
@@ -17,11 +22,14 @@ pnpm run build:pages
 pnpm run test:pdf
 ```
 
-`build:pages` compila el sitio y genera el PDF en `out/descargas/`. Fuera de CI deja una
-copia en `output/pdf/` para revisión. Para regenerar solo el documento después de una
+`build:pages` compila el sitio y genera los cinco PDFs en `out/descargas/`. Fuera de CI deja
+copias en `output/pdf/` para revisión. Para regenerar los documentos después de una
 compilación, usa `pnpm run build:pdf`. No edites ni subas los archivos generados: edita
-el contenido del curso y publica normalmente. GitHub Actions instala Chromium y
-comprueba la integridad del documento antes de desplegar.
+el contenido del curso y publica normalmente (commit y push a `main`). Guardar un
+archivo local sin publicarlo no cambia la web ni los PDFs públicos. GitHub Actions
+instala Chromium y comprueba todos los documentos antes de desplegar. El manifiesto
+`out/descargas/manifest.json` registra la huella del HTML de origen y del PDF generado;
+las pruebas detectan documentos desactualizados y contenido o fórmulas perdidos.
 
 La transformación está en `scripts/course-document.mjs`; la maquetación, en
 `scripts/course-document.css`. La versión impresa de la división sintética usa los

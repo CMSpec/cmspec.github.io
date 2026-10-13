@@ -15,7 +15,7 @@
     "build": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
     "build:pages": "GITHUB_PAGES=true NEXT_PUBLIC_BASE_PATH= NEXT_PUBLIC_SITE_URL=https://cmspec.github.io next build && node scripts/build-course-pdfs.mjs",
     "build:pdf": "node scripts/build-course-pdfs.mjs",
-    "test:pdf": "node --experimental-strip-types --test tests/course-document.test.mjs",
+    "test:pdf": "node --experimental-strip-types --test tests/course-document.test.mjs tests/course-pdfs.test.mjs",
     "test:feedback": "node --experimental-strip-types --test tests/course-feedback.test.mjs",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
