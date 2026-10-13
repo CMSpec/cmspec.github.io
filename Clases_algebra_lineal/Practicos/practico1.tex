@@ -1,0 +1,270 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathdots, mathrsfs, dsfont,systeme}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,   
+    citecolor=blue,
+    urlcolor=cyan,
+    pdftitle={Algebra lineal},
+    pdfpagemode=FullScreen,
+    }
+\usepackage{amscd}
+\usepackage{nomencl}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{amssymb}
+\usepackage{blkarray}
+\usepackage{multicol}
+\usepackage[a4paper,margin=1cm,footskip=.5cm]{geometry}
+\usepackage[all]{xy}
+\usepackage{pst-node}
+\usepackage{subfigure}
+%\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\Rn}{\mathbb{R}^n}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ns}{NS}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\Pdiv}{PDiv}
+\DeclareMathOperator{\ddiv}{div}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\CaDiv}{CaDiv}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\CH}{CH}
+\DeclareMathOperator{\IM}{Im}
+\DeclareMathOperator{\Pf}{Pf}
+\DeclareMathOperator{\Gl}{GL}
+\DeclareMathOperator{\Sl}{SL}
+\DeclareMathOperator{\St}{St}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\nul}{nul}
+\DeclareMathOperator{\ran}{ran}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\bbH}{\mathbb{H}}
+\setlength{\parindent}{0pt}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.0in}
+\setlength{\topmargin}{0in}
+\setlength{\oddsidemargin}{0in}
+\newtheoremstyle{exampstyle}
+  {\topsep} % Space above
+  {\topsep} % Space below
+  {\itshape} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {.} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning `normal')
+\theoremstyle{exampstyle}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposici\'on}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corolario}
+\theoremstyle{definition}
+\newtheorem{thme}{Expected Theorem}
+
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{conj}{Conjecture}
+\newtheorem{defin}[thm]{Definici\'on}
+
+\newtheoremstyle{break}%
+{}{}%
+{}{}%
+{\bfseries}{}% % Note that final punctuation is omitted.
+{\newline}{}
+\theoremstyle{break}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Soluci\'on}
+\newtheorem{rmk}[thm]{Observaci\'on}
+\numberwithin{equation}{section}
+\newcommand{\gb}[1]{\operatorname{\textbf {#1}}}
+\hypersetup{linkcolor=black}
+\title{\'Algebra Lineal}
+\author{Prof. Sebasti\'an Cea \\Prof. Camila Muñoz\\
+}
+\date{}
+\pagestyle{fancy}
+
+\lhead{\includegraphics[width = 4cm]{UFT.png}}
+\setlength{\headsep}{0.6in}
+\newcolumntype{a}{ >{\columncolor{yellow}} c }
+
+\fancyhead[RO,LE]{Prof: S. Cea.\\
+Prof: C. Muñoz.\\
+01/2023}}
+
+
+
+\begin{document}
+%\maketitle
+%\newpage
+
+\begin{minipage}[r]{15cm}
+
+
+\end{minipage}
+
+\begin{center}
+\Large{\textbf{\'Algebra Lineal\\Pr\'actico 1  }}
+\end{center}
+\section{Comandos}
+A continuación encontrará una tabla con algunos de los comandos básicos de Octave o Mathlab en el contexto del álgebra lineal.
+\begin{center}
+
+\begin{tabular}{|>{\columncolor[gray]{0.8}} p{5cm}|p{10cm}|}
+\hline
+Comando & Acción \\ \hline
+\texttt{A=[1,2,3;4,5,6]}&  Define matriz de $2 \times 3$
+$\begin{pmatrix}1& 2& 3 \\4&5&6\end{pmatrix}\\ \hline
+\texttt{A=zeros(m,n)}&  Define matriz nulas $m \times n$.\\ \hline
+\texttt{B=ones(m,n)}&  Define matriz $m \times n$ llena de 1's.\\ \hline
+\texttt{C=rand(m,n)}&  Define matriz $m \times n$ con números decimales al azar entre 0-1.\\ \hline
+\texttt{D=randn(m,n)}&  Define matriz $m \times n$ con números de probabilidad normal $N(0,1)$. \\ \hline
+\texttt{E=randp(p,m,n)} & Define matriz $m \times n$ con números enteros positivos de probabilidad poisson $P(\text{media}=p)$.\\ \hline
+\texttt{I=eye(4,4)}&  Define matriz identidad $4 \times 4$.\\ \hline
+\texttt{A’} & Transpuesta de $A$.\\ \hline
+\texttt{A+B} & Suma de matrices\\ \hline
+\texttt{3*A} & Multiplica el escalar 3 a cada elemento de $A$. \\ \hline
+\texttt{-A} & Matriz inversa aditiva de $A$.\\ \hline
+\texttt{T=trace(A)} & Devuelve el valor de la traza de $A$.\\ \hline
+\texttt{V=diag(A)} & Devuelve en un vector vertical, los elementos de la
+diagonal.\\ \hline
+\texttt{Sum(V) o sum(A)} & Suma las coordenandas de un vector o suma las entradas columna a columna
+de una matriz, entregando un vector.\\ \hline
+\texttt{[m,n]=size(A)}&  Asigna en $m$ y $n$ las dimensiones de $A$.\\ \hline
+\texttt{A*B}&  Multiplicación de matrices.\\ \hline
+\texttt{A*B}&  Realiza solo una multiplicación entre elementos $A$ con $B$, con la misma posición.\\ \hline
+\texttt{A.+2}&  Suma 2 a cada elemento de $A$.\\ \hline
+\texttt{inv(A)}&  Inversa de $A$. \\ \hline
+\texttt{A/B} & Equivalente a: $A*$inv$(B)$.\\ \hline
+\end{tabular}
+\end{center}
+
+\section{Ejercicios}
+\begin{enumerate}
+    \item Determine la matriz de $4\times 3$ tal que $a_{ij}=i-j$.
+    \item De un ejemplo de una matriz $A=(a_{ij})$ tal que $a_{ij}=a_{ji}$ para todo $i$ y para todo $j$.
+    \item Construya la matriz $A = (a_{ij})$ de $3 \times 4$, donde
+\[a_{ij}=\left\{\begin{array}{ll}
+    i & \text{ si } i\leq j, \\
+    i+j & \text{ si } i>j
+\end{array}\right.\]
+\item Escriba por extensi\'on las matrices $A=(a_{ij})$ de orden $3\times 3$ definidas por
+\begin{enumerate}
+    \item $a_{ij}=2i-j$.
+    \item $a_{ij}=\min\{i,j\}.$
+    \item $a_{ij}=5i-3j.$
+%    \item $a_{ij}$
+    \item $a_{ij}=\left\{\begin{array}{ll}
+    i^2 & \text{ si } i\leq j, \\
+    i+j & \text{ si } i>j
+\end{array}\right.$
+    \item $a_{ij}=\left\{\begin{array}{ll}
+    i/j & \text{ si } i\leq j, \\
+    2i+j & \text{ si } i>j
+\end{array}\right.$
+\end{enumerate}
+Finalmente, compruebe lo obtenido usando Octave o Mathlab.
+\item Calcule a mano la traza de las matrices definidas en el ítem anterior, luego compruebe usando Octave o Mathlab.
+
+\item Encuentre los n\'umeros reales $x,y,z,u,v$ y $w$ tales que se cumple la igualdad
+\[\begin{pmatrix}
+   -1& x& x-y \\
+  u&3&-1
+\end{pmatrix}=\begin{pmatrix}
+   z& 4& 7 \\
+  2&x+v&u+w
+\end{pmatrix}\]
+
+    \item Calcule
+    \begin{enumerate}
+        \item $\begin{pmatrix} 1 \\ 3 \\ 2 \end{pmatrix}+\begin{pmatrix} 0 \\ 6 \\ 1 \end{pmatrix}$
+        \item $5 \begin{pmatrix} 1 \\ 3 \\ 2 \end{pmatrix} - 3 \begin{pmatrix} 4 \\ 2 \\ 0 \end{pmatrix}$
+        \item $\begin{pmatrix} 1 & 1 \\ 3 & 1 \end{pmatrix} + 5 \begin{pmatrix} 2 & 0 \\ 1 & 1 \end{pmatrix}$
+        \item $2\begin{pmatrix} 1 & 1 & 1 \\ 3 & 1 & 5 \end{pmatrix} - \begin{pmatrix} 0 & 2 & 2 \\ 1 & 1 & 0 \end{pmatrix}$
+        \item $\begin{pmatrix} 1 & 1 \\ 3 & 1 \end{pmatrix} \begin{pmatrix} 5 \\ 1 \end{pmatrix}$
+        \item $\begin{pmatrix} 1 & 1 & 1 \\ 2 & 0 & 4 \\ 0 & 2 & 1 \end{pmatrix} \begin{pmatrix} 1 \\ 3 \\ 1 \end{pmatrix}$
+    \end{enumerate}
+\end{enumerate}
+
+\section{Guía}
+
+\begin{enumerate}
+
+    
+    \item Vamos a deducir la fórmula de multiplicación de una matriz a un vector de forma intuitiva.
+    \begin{enumerate}
+        \item Calcule $\begin{pmatrix} 1 & 1 \\ 2 & 5 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ y $\begin{pmatrix} 1 & 1 \\ 2 & 5 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix}$
+        \item Mas generalmente, calcule $\begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ y $\begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix}$. Observe que esto da las columnas de la matriz.
+        \item Considere ahora $A= \begin{pmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{pmatrix}$. Observe de los cáculos $A \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}$, $A \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}$ y $A \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}$ se obtienen las columnas de la matriz.
+        \item Esto es general. Consideremos en $\Rn$ los vectores $\hat{e_k}$, que tienen $1$ en la posición $k$ y ceros en las otras. Para una matriz $A$ de $m \times n$, demuestre que $A \hat{e_k}$ corresponde a la $k$-ésima columna de $A$.
+        \item El conjunto de estos vectores $\{ \hat{e_1}, \dots , \hat{e_n} \}$ se llama \textit{base canónica de } $\Rn$. Usted ha probado que 
+        \begin{center}
+            Las columnas de una matriz indican a donde lleva cada vector canónico.
+        \end{center}
+        Muestre que todo vector $x \in \Rn$ es suma y ponderación de vectores canónicos.
+        \item Utilice la linealidad de una matriz $A(x+ \lambda y) = Ax + \lambda Ay$ y el punto anterior, para demostrar que $$\begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} =x \begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} + y \begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix}$$
+        \item Deduzca la fórmula de multiplicación de matriz por vector.
+    \end{enumerate}
+
+    \item Muestre que la suma de vectores en una recta (que pasa por el origen) en $\Rn$, sigue estando en la misma recta
+
+    \item Muestre que para matrices $A$ y $B$ de tamaño $n \times n$, tenemos $\texttt{tr}(A+B)=\texttt{tr}(A)+\texttt{tr}(B)$.
+    
+    \item Matrices Diagonales
+    \begin{enumerate}
+        \item Calcule $\begin{pmatrix} 2 & 0 \\ 0 & 3 \end{pmatrix} \begin{pmatrix} 1 \\ 5 \end{pmatrix}$. Mas generalmente, calcule $\begin{pmatrix} a & 0 \\ 0 & d \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}$.
+        \item Calcule $\begin{pmatrix} a_1 & 0 & \dots & 0 \\ 0 & a_2 & \dots & 0 \\ & & \ddots & \\ 0 & 0 & \dots & a_n \end{pmatrix} \begin{pmatrix} x_1 \\  x_2  \\  \vdots \\ x_n \end{pmatrix}$
+        \item Visualize la acción de $\begin{pmatrix} 2 & 0 \\ 0 & 3 \end{pmatrix}$ en el espacio. 
+        \item Calcule $\begin{pmatrix} a & 0 \\ 0 & b \end{pmatrix}\begin{pmatrix} c & 0 \\ 0 & d \end{pmatrix}= \begin{pmatrix} ac & 0 \\ 0 & bd \end{pmatrix}$. Use esto para calcular $\begin{pmatrix} a & 0 \\ 0 & b \end{pmatrix}^n$. ¿Pasa igual para 
+        $\begin{pmatrix} a_1 & 0 & \dots & 0 \\ 0 & a_2 & \dots & 0 \\ & & \ddots & \\ 0 & 0 & \dots & a_n \end{pmatrix}^n$?
+        \item Muestre que las matrices diagonales conmutan entre si.
+        \item Se sabe que la matriz $T=\begin{pmatrix} 1 & 1 & 2 \\ 0 & 1 & 0 \\ 2 & 0 & 1 \end{pmatrix}= S D S^{-1}$, con $S=\begin{pmatrix} -1 & 0 & 1 \\ 0 & -2 & 0 \\ 1 & 1 & 1 \end{pmatrix}$ y $D= \begin{pmatrix} -1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 3 \end{pmatrix}$. Calcule $T^{51}$. 
+        
+        \textbf{Hint.} Observe que $T^2=SDS^{-1}SDS^{-1}=SD^2S^{-1}$, pruebe que $T^3=SD^3S^{-1}$, ¿Puede identificar un patrón?
+        
+    \end{enumerate}
+
+    \item Si $0\text{ºC}$ corresponden a $32\text{ºF}$, entonces $0\text{ºC}=0\text{ºC}+0\text{ºC}=32\text{ºF}+32\text{ºF}=64\text{ºF}$, lo cual implica que $32=64$. Refute esta afirmación.
+\end{enumerate}
+
+%\LaTeX \, es un sistema computacional de composición de texto. Por sus características y posibilidades se ha convertido en el estándar de facto para la escritura de textos científicos que contengan simbología matemática.
+
+%Este taller busca dar un espacio para discutir sobre \LaTeX. En primera instancia se dará algunos básicos  y se mostrarán las características y posibilidades que tiene \LaTeX. Por ejemplo, presentaciones, tesis, póster, etc. 
+
+\end{document}

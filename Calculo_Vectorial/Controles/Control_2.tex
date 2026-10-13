@@ -1,0 +1,245 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+
+\fancyhead[L]{\includegraphics[scale=0.5]{UFT.png}}
+
+\begin{document}
+
+\begin{center}
+    \Large{\textbf{Soluciones}}
+\end{center}
+
+\setlength{\parindent}{0cm}
+
+
+\textbf{Ejercicio 1:} Encuentre los máximos locales, mínimos locales y puntos silla de la función
+
+\begin{align*}
+    f(x,y) &=  \frac{x^2y^2-8x+y}{xy}\\
+\end{align*}
+
+\textbf{Solución: } Notamos que
+
+\begin{align*}
+    \frac{x^2y^2-8x+y}{xy} &= \frac{x^2y^2}{xy}-\frac{8x}{xy}+\frac{y}{xy} \\
+    &= xy-\frac{8}{y}+\frac{1}{x}
+\end{align*}
+
+Calculamos el gradiente
+
+
+\begin{align*}
+    \nabla(f) = \left( y-\frac{1}{x^2}, x+\frac{8}{y^2} \right)
+\end{align*}
+
+Luego $\nabla(f)= (0,0)$, implica
+
+\begin{align*}
+     y-\frac{1}{x^2} &= 0 \\
+     x+\frac{8}{y^2} &= 0
+\end{align*}
+
+De la primera ecuación, obtenemos que $\displaystyle y = \frac{1}{x^2}$, reemplazando en la segunda
+
+
+\begin{align*}
+    x+\frac{8}{\left(\frac{1}{x^2}\right)^2} &= 0 \\
+    x+8x^4 &= 0 \\
+    x(1+8x^3) &= 0
+\end{align*}
+
+De donde se deduce que $x=0$ o bien $1+8x^3=0$, pero $x=0$ es imposible pues $y=1/x^2$, luego la única opción posible es $1+8x^3=0$, de donde se concluye que
+
+\begin{align*}
+    x^3 &= -\frac{1}{8} \\
+    x & = -\frac{1}{2}
+\end{align*}
+
+De esta forma 
+
+\begin{align*}
+    y=4
+\end{align*}
+
+Por lo tanto el punto crítico es $(-1/2, 4)$. Calculamos el Hessiano
+
+\begin{align*}
+    H(x,y) = \begin{vmatrix}
+        \frac{2}{x^3} & 1 \\
+        1  &  -\frac{16}{y^3}
+    \end{vmatrix}
+\end{align*}
+
+Evaluamos en $(-1/2, 4)$
+
+\begin{align*}
+    H(-1/2,4) = \begin{vmatrix}
+        -16 & 1 \\
+        1  &  -\frac{1}{4}
+    \end{vmatrix} = 4-1 =3
+\end{align*}
+
+Notamos que $-16 < 0$ mientras que $ H(-1/2,4)  > 0$, concluimos que $(-1/2,4)$ es un máximo local
+
+
+
+
+
+
+
+\newpage
+
+
+
+\textbf{Ejercicio 2:} Utilice los multiplicadores de Lagrange para encontrar los valores extremos de la función $f(x,y)=e^{xy}$ , con la restricción $x^2+y^2=16$ \\
+
+\textbf{Solución: }Consideramos $g(x,y)= x^2+y^2-16$, tenemos que resolver $\nabla f = \lambda \nabla g$, es decir
+
+\begin{align*}
+    (ye^{xy},xe^{xy}) &= \lambda(2x,2y)
+\end{align*}
+
+Luego
+
+\begin{align*}
+    ye^{xy} &= 2\lambda x \\
+    xe^{xy} &= 2\lambda y \\
+\end{align*}
+
+Dividimos las ecuaciones
+
+
+\begin{align*}
+   \frac{y}{x} &= \frac{x}{y}
+\end{align*}
+
+Luego $x^2=y^2$, reemplazamos en $x^2+y^2=16$ y obtenemos $2x^2=16$, luego $x^2=8$ y por lo tanto
+
+\begin{align*}
+    x=\pm 2\sqrt{2}
+\end{align*}
+
+De la misma forma para cada valor de $x$, obtenemos $y= \pm\sqrt{2}$. Por lo tanto tenemos cuatro extremos $(2\sqrt{2},2\sqrt{2})$, $(2\sqrt{2}, - 2\sqrt{2})$, $(-2\sqrt{2},2\sqrt{2})$ y $(-2\sqrt{2},-2\sqrt{2})$
+
+
+
+
+
+\newpage
+
+\textbf{Ejercicio 3:} \\
+
+a) Sea $R$ la región triangular del plano cuyos vértices son los puntos de coordenadas $(0,0)$, $(1,1)$ y $(0,1)$. Exprese el área de la región $R$ usando integrales dobles, en los órdenes $dydx$ y $dxdy$ \\
+
+b)  Calcule el área de la superficie $f(x,y)= 3x+y^2$, que se encuentra encima de la región $R$. \\
+
+\textbf{Solución: } a) Las integrales quedan de la forma
+
+\begin{align*}
+    \int_0^1\int_x^1 dydx 
+\end{align*}
+
+\begin{align*}
+    \int_0^1\int_0^y dxdy 
+\end{align*}
+
+b)  Tenemos que $f_x=3$ y $f_y=2y$, luego queremos calcular
+
+\begin{align*}
+    A = \iint_R \sqrt{10+4y^2}dA
+\end{align*}
+
+Para ello usamos la integral de la forma $dxdy$
+
+
+\begin{align*}
+    A &= \int_0^1\int_0^y   \sqrt{10+4y^2}dxdy \\
+    &= \int_0^1  y\sqrt{10+4y^2}dy \\
+\end{align*}
+
+Ahora usamos la sustitución $u=10+4y^2$ luego $dy=\frac{du}{8}$, luego tenemos
+
+
+\begin{align*}
+    A &= \frac{1}{8}\int_10^14 \sqrt{u}du \\
+    &= \frac{1}{8}\int_10^14 \sqrt{u}du \\
+    &= \frac{1}{8} \frac{2x^{3/2}}{3} \bigg|_{10}^{14} \\
+    &= \frac{14\sqrt{14}-10\sqrt{10}}{12}
+\end{align*}
+
+
+\newpage
+
+\textbf{Ejercicio 4:} Calcular
+
+\begin{align*}
+    \iint_V (2zx^2+2zy^2)dxdydz
+\end{align*}
+
+Donde $V$ es el volumen del sólido exterior a la hoja superior del cono $z=\sqrt{x^2+y^2}$ e interior al cilindro $x^2+y^2=1$, con $z \geq 0$ \\
+
+\textbf{Solución: } Observando el dibujo y pasando a cilíndircas obtenemos que
+
+\begin{align*}
+    V &= \int_0^{2\pi}\int_0^1\int_0^{r} 2z(r^3\cos^2(\theta)+r^2\sin^2(\theta))dzdrd\theta \\
+    &= \int_0^{2\pi}\int_0^1 r^3 \int_0^{r} 2zdzdrd\theta \\
+    &= \int_0^{2\pi}\int_0^1 r^5drd\theta \\
+    &= \int_0^{2\pi} \frac{1}{6}d\theta \\
+    &= \frac{1}{6}2\pi \\
+    &= \frac{\pi}{3}
+\end{align*}
+
+
+
+
+\end{document}

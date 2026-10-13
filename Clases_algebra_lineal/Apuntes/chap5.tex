@@ -1,0 +1,120 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Transformaciones Lineales}
+En esta unidad, estudiaremos un tipo de funciones vectoriales; esto es, funciones que se aplican a vectores de un cierto espacio vectorial para obtener vectores de otro espacio o del mismo.
+
+Concretamente, estudiaremos funciones $F: V\to W$, que al transformar un vector de $V$ en otro de $W$ respetan una correspondencia entre las operatorias de ambos espacios vectoriales.
+
+\begin{defin}
+Consideremos dos espacios vectoriales $V$ y $W$ sobre $K$. Se define una
+Transformación Lineal $T$ de $ V$ en $W$, como una función $T:V\to W$ tal que
+\begin{enumerate}
+    \item $T(v+w)=T(v)+T(w)$,
+    \item $T(\alpha v)=\alpha T(v)$,
+\end{enumerate}
+para todo $v,w\in V$, para todo $\alpha \in K$.
+\end{defin}
+
+Note que en toda Transformaci\'on lineal, la imagen del vector nulo de $V$, será el vector nulo de $W$: $T(0_V)=0_W$.
+
+Las dos condiciones de la definición, respecto de la adición y de la ponderación,
+pueden abreviarse en una sola: Una Transformaci\'on lineal respeta las combinaciones lineales, en particular $T(\alpha v+\beta w)=\alpha T(v)+\beta T(w)$.
+
+
+Veremos más adelante, que toda T.L. definida de $\R^n$ en $\R^m$, se puede
+identificar con (y representar por) una matriz $A\in M_{m\times n}$, que llamaremos Matriz asociada a esa T.L., o Matriz de Transformación para la T.L.
+
+Una transformaci\'on lineal queda completamente determinada por sus valores en la base del espacio vectorial de partida.
+
+\begin{thm}
+Sean $V$ y $W$ dos espacios vectoriales. Consideremos una base ordenada $B=\{b_i\}_{i=1}^{n}$
+en el espacio $V$ y un conjunto $S =\{w_i\}_{i=1}^{n}$ de vectores cualesquiera en $W$. Existe una única transformación lineal $T$, de $ V$ en $ W$, tal que $T(b_j) =w_j$, para cada $j$ variando de 1 a $n$.
+\end{thm}
+
+\subsection{Núcleo e Imagen de una T.L.}
+Para caracterizar a $T:V \to W$, son fundamentales dos
+conjuntos de vectores relacionados con $T$, el primero es subconjunto del espacio vectorial de partida $V$ y el otro del espacio vectorial de llegada $W$. Ambos llegarán a ser subespacios de sus
+respectivos espacios vectoriales y facilitarán las formas de describir y conocer a la T.L.
+
+\begin{defin}
+Es el subconjunto de vectores de $V$ cuya imagen según $T$ es $0_W$.
+También se le llama N\'ucleo de $T$ o Kernel de $T$. Se
+anotará $\ker T$.
+\[\ker T = \{v\in V / T(v) = 0_W\}.\]
+
+El subconjunto de vectores de $W$ que son imagen de algún
+vector de $V$, según $T$ se conoce como la imagen de $T$. Se le
+anotará $\IM T$.
+
+\[\IM T = \{w\in W / \text{ existe }v\in V \text{ tal que }T(v) = w\}.\]
+
+El conjunto $\ker T$ es subespacio de $V$ y $\IM T$ es subespacio de $W$. Se definen la nulidad de $T$ como la dimensión del Núcleo y rango de $T$ como la dimensión de la Imagen.
+Y se anotan: $\nul T = \dim(\ker T)$ y $\ran T = \dim(\IM T )$.
+\end{defin}
+
+\begin{thm}
+Sean $V$ y $W$ espacios vectoriales, $\dim V$ finita. Para toda transformaci\'on lineal $T:V \to W$, se tiene que  $\nul T + \ran T = \dim V$.
+\end{thm}
+
+Teoremas Adicionales de Núcleo e Imagen:
+\begin{enumerate}[(a)]
+    \item Inyectividad de $T$: Si $T:V \to W$ es tal que $\ker T = \{0_V\}$, entonces $T$ es Inyectiva. Se dice que define un Monomorfismo de $V$ en $W$.
+
+Note que $\ran T = \dim V$. Sólo tendremos Inyectividad cuando $\dim V \leq \dim W$.
+\item Epiyectividad de $T$: Si $T:V\to W$ es tal que $\IM T = W$, entonces $T$ es Epiyectiva. Note
+que en tal caso, $\nul T + \dim W = \dim V$. Sólo tendremos Epiyectividad cuando $\dim W \leq \dim V$.
+
+\item Biyectividad de $T$: $T:V \to W$ será Biyectiva cuando sea Inyectiva y Epiyectiva, es decir, cuando $\ker T = \{0_V\}$ e $\IM T  = W$.
+
+Luego, habrá Biyectividad, sólo cuando $\dim W = \dim V$. Diremos que existe un Isomorfismo de $V$ con $W$.
+
+
+
+\end{enumerate}
+
+\begin{thm}
+Todo espacio vectorial sobre $K$ de dimensión finita $n$ es isomorfo a $K^n$.
+\end{thm}
+
+ Definimos como $L(V,W) = {T:V\to W/ T \text{ transfomaci\'on lineal de } V \text{ en } W}$. 
+\begin{thm}
+Sean $F\in L(U,V)$ y $G\in L(V,W)$, con $U,V$ y $W$ espacios vectoriales sobre $K$.
+Luego, la función $G\circ F$, definida como $(G\circ F)(v) = G(F(v))$ es una transfomaci\'on lineal de $U$ en $W$.
+\end{thm}
+
+
+\begin{thm}
+$L(V,W)$ es isomorfo con las matrices del tipo $M_{m\times n}$, si $V$ y $W$ son finitos, con $\dim V = n$ y $\dim W = m$.
+En este contexto, la composici\'on de transformaciones lineales se puede pensar como el producto de las matrices asociadas.
+\end{thm}
+
+

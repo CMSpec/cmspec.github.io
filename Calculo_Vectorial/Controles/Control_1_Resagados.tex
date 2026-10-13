@@ -1,0 +1,253 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+
+\fancyhead[L]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+
+\thispagestyle{fancy}
+\vspace*{1cm}
+
+\begin{minipage}[r]{12cm}
+    \begin{flushright}
+\begin{tikzpicture}
+\draw[green, very thick] (0,0) rectangle (3,2);
+\end{tikzpicture}
+    \end{flushright}
+\end{minipage}
+
+\begin{center}
+\Large{\textbf{Control 1\\ Cálculo Vectorial\\ }}
+\end{center}
+\vspace{1cm}
+\begin{minipage}[r]{15cm}
+\begin{flushleft}
+
+Fecha: 10 de septiembre 2025 \\%
+Duración: 120 minutos  \\
+
+\end{flushleft}
+\end{minipage}
+\vspace{2cm}
+\begin{center}
+\Large{\textbf{Facultad de Ingeniería}}
+\end{center}
+\vspace{1cm}
+\setlength{\parindent}{0cm}
+“Es deber de cada alumno mantener una actitud moral y éticamente intachable en el transcurso de toda evaluación” \\
+
+En caso de que un alumno sea sorprendido en actitudes deshonestas ya sea intentando o
+dejándose copiar, será calificado con la nota mínima (1.0) y perderá toda posibilidad de
+eliminar dicha nota. Esta conducta quedará archivada como antecedente en su carpeta y podrá
+constituir causal de eliminación. Asimismo, está \textbf{prohibido salir de la sala, usar o tener
+teléfonos celulares (en bolsillos o sobre las mesas)} o cualquier tipo de aparato electrónico,
+tales como audífonos, smartwatch, entre otros, a no ser que el profesor lo autorice.\\
+
+
+Escala al $60\%$ \\
+
+Puntaje para un 4.0: 36 puntos
+
+
+\vspace{3cm}
+\makebox[12cm]{\textbf{Nombre Alumno}:\ \hrulefill} 
+\newpage
+\thispagestyle{empty}
+
+\setlength{\parindent}{0cm}
+
+\textbf{Ejercicio 1 \textbf{(12 puntos)}:} Responda las siguientes preguntas \\
+
+
+a) Determine la ecuación general del plano que pasa por el punto $(1,1,1)$ y que contiene a la recta de ecuación vectorial $L_1: (2,0,1)+t(1,-1,2)$. \\
+
+\ 
+
+c) Demuestre que el plano  encontrado en a) es paralelo a la recta $L_1$ de ecuación general 
+
+\begin{align*}
+    \frac{x-1}{3} = \frac{1-y}{3} =\frac{2z+3}{5}
+\end{align*}
+
+
+\newpage
+
+
+\phantom{xc}
+
+
+\newpage
+
+\textbf{Ejercicio 2 \textbf{(12 puntos)}:} Calcule los siguientes límites, en caso de no existir demuéstrelo \\
+
+a) $\displaystyle \lim_{(x,y) \to (0,0)} \frac{x^2y}{\sqrt{x^2+y^2}}$ \\
+
+
+b) $\displaystyle \lim_{(x,y) \to (3,3)} \frac{9x^2-y^4}{3x-y^2}$ \\
+
+c) $\displaystyle \lim_{(x,y) \to (0,0)} \frac{x^3-3x^2y}{(x^2+y^2)^{3/2}}$ \\ \\ \\
+
+\newpage
+
+
+\phantom{xc}
+
+\newpage
+
+
+\textbf{Ejercicio 3 \textbf{(12 puntos)}:} Considere el cilindro $x^2+y^2=16$ y el plano $2x-3y+z=4$, encuentre una parametrización $r(t)$ de la intersección de estas dos superfices, luego demuestre que $r(0)$ es perpendicular a la recta $L$ de ecuación
+
+\begin{align*}
+    \frac{x-1}{2} = \frac{1-y}{5} = \frac{3z-2}{6}
+\end{align*}
+
+\newpage
+
+
+\phantom{xc}
+
+
+\newpage
+
+
+\textbf{Ejercicio 4 \textbf{(12 puntos)}:} Considere la función dada por 
+
+\begin{align*}
+    f(x,y) = \ln(x^2-y)
+\end{align*}
+
+a) Determine el dominio de $f$ y luego grafíquelo. \\
+
+b) Determine la curva de nivel $C_0(f)$ y grafíquela.
+
+
+\newpage
+
+
+\phantom{xc}
+
+\newpage
+
+\textbf{Ejercicio 5 \textbf{(12 puntos)}:} Sea $\alpha \in \mathbb{R}$, considere la función
+
+\begin{align*}
+    u(x,y) = e^{-\alpha y} \sin(2x)
+\end{align*}
+
+Demuestre que $u$ satisface 
+
+\begin{align*}
+    u_y-\alpha u_{xx} =0
+\end{align*}
+
+
+
+
+\newpage
+
+\phantom{xc}
+
+\newpage
+
+\begin{center}
+\textbf{Formulario}
+\end{center}
+
+\bigskip
+
+\textbf{1. Longitud entre dos vectores $v$ y $w$} \\[1mm]
+
+
+ 
+\[
+d(v,w) = || v-w||
+\]
+
+Ángulo entre dos vectores
+
+
+\[
+\theta = \arccos\left( \frac{v \cdot w}{||v|| ||w||}\right)
+\]
+
+- Ecuación vectorial de la recta con vector posicicón $p$ y vector director $d$ 
+\[
+L : p+tv, \text{ con } t\in \mathbb{R}
+\]
+
+\bigskip
+
+\textbf{2. Ecuación general del plano} \\[1mm]
+
+
+\[
+Ax+By+Cz+D=0
+\]
+
+con $n=(A,B,C)$. \\
+
+
+
+
+\textbf{Coordenadas Polares}
+
+\begin{align*}
+    x&= r\cos(\theta) \\
+    y&=r\sin(\theta)
+\end{align*}
+
+
+
+\end{document}

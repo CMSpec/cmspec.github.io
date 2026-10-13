@@ -1,0 +1,111 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+\title{Laboratorio 1}
+\date{}
+\fancyhead[L]{Universidad Finis Terrae \\ Facultad de Ingeniería \\ Algebra Lineal \\ 2do semestre de 2023}
+\fancyhead[R]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\textbf{Marco Teórico:}
+\vspace{0.2 cm}
+
+Mensajes sin codificar pueden estar compuestos de letras o caracteres, pero típicamente consisten de 
+$m$-tuplas binarias. 
+
+Estos mensajes se codifican en palabras de un código, que son $n$-tuplas binarias, a través de un mecanismo llamado codificador. 
+
+El mensaje es transmitido y luego decodificado. 
+
+Consideraremos la aparición de errores durante la transmisión. Un error ocurre si hay un cambio en uno o más bits de la palabra del código. 
+
+Un protocolo decodificador es un método que ya sea convierte $n$-tupla arbitraria recibida en un mensaje decodificado coherente o da un mensaje de error para esa $n$-tupla. Si el mensaje recibido es una palabra del código (una de las $n$-tuplas permitidas), entonces el mensaje decodificado debe ser el mensaje que fue codificado en la palabra del código. Para tuplas recibidas que no están en el código, el protocolo dará una indicación de error, o, si somos más astutos, tratará de corregir el error y reconstruir el mensaje original. Nuestro objetivo es transmitir mensajes libres de errores de la forma más barata y rápida posible.
+
+\begin{itemize}
+
+\end{itemize}
+
+\textbf{Problema a resolver:}
+\vspace{0.2 cm}
+
+
+
+
+\begin{enumerate}
+
+\end{enumerate}
+
+
+\textbf{Aspectos formales del Laboratorio}
+{\bf{Grupos de Trabajo}:} Los grupos de trabajo estarán conformados por 3 o 4 estudiantes y
+deben ser aprobados por el profesor. Se penalizarán las modificaciones posteriores de
+estos grupos y cualquier problema que se le presente al profesor relacionado con los
+mismos.
+\vspace*{.5cm}
+
+Todas las entregas se deben realizar en el portal e-Finis en los buzones habilitados para
+tal efecto, no se aceptan trabajos enviados por correo. 
+
+\vspace*{.5cm}
+
+\noindent{\bf{Formato de Entrega}}
+Se deben entregar los documentos en PDF (en caso contrario no se corregirá el informe)
+en formato \LaTeX  con el formato entregado por su profesor.
+
+
+
+{\bf{NOTA}}
+La copia y/o plagio serán sancionados de acuerdo a lo estipulado en el Reglamento de la
+Universidad.
+\end{document}

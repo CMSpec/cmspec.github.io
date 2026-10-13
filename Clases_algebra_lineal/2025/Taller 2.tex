@@ -1,0 +1,516 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}[1]{\mathbb{R}^{#1}}
+
+
+
+
+\title{Taller 2}
+\date{}
+\fancyhead[R]{Universidad Finis Terrae \\ Facultad de Ingeniería \\ Algebra Lineal \\ 1er semestre de 2025}
+\fancyhead[L]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}
+
+
+    \item Considere el conjunto $\{ ( 0 , 0 , \alpha ), ( 2 , \alpha, 1) , (\alpha , 2 , 1 )\}$.
+    \begin{enumerate}
+        \item   Determine para qu\'e valores de $\alpha$ el conjunto es li\-neal\-mente dependiente.
+        \item 
+ Si $\alpha=2$, determine la dimensión del espacio generado. Luego determine las coordenadas de $ ( -4/3 , -4/3 , 3)$ en $<  ( 0 , 0 , \alpha ) , (\alpha , 2 , 1 )>$.
+    \end{enumerate}
+
+\textbf{Solución:}
+
+
+\begin{enumerate}
+    \item Determinar para qué valores de $\alpha$ el conjunto es linealmente dependiente}
+
+Los vectores serán linealmente dependientes si el determinante de la matriz formada por ellos como columnas es cero:
+
+\[
+A = \begin{bmatrix}
+0 & 2 & \alpha \\
+0 & \alpha & 2 \\
+\alpha & 1 & 1 \\
+\end{bmatrix}
+\]
+
+
+
+Calculamos el determinante:
+
+\begin{align*}
+\det(A) &= 
+\begin{vmatrix}
+0 & 2 & \alpha \\
+0 & \alpha & 2 \\
+\alpha & 1 & 1 \\
+\end{vmatrix}
+= 0 - 2 
+\begin{vmatrix}
+0 & 2 \\
+\alpha & 1 \\
+\end{vmatrix}
++ \alpha 
+\begin{vmatrix}
+0 & \alpha \\
+\alpha & 1 \\
+\end{vmatrix} \\
+&= -2(0 \cdot 1 - \alpha \cdot 2) + \alpha (0 \cdot 1 - \alpha \cdot \alpha) \\
+&= -2(-2\alpha) + \alpha (-\alpha^2) = 4\alpha - \alpha^3 \\
+&= \alpha(4 - \alpha^2)
+\end{align*}
+
+Por lo tanto, el conjunto es linealmente dependiente cuando:
+
+\[
+\alpha(4 - \alpha^2) = 0 \quad \Rightarrow \quad \boxed{\alpha = 0,\ \alpha = \pm 2}
+\]
+
+\item Sustituyendo $\alpha = 2$, los vectores son:
+
+\[
+\vec{v}_1 = (0, 0, 2), \quad \vec{v}_2 = (2, 2, 1)
+\]
+
+Verificamos si son linealmente independientes. Supongamos que existe una combinación lineal nula:
+
+\[
+a(0, 0, 2) + b(2, 2, 1) = (0, 0, 0)
+\Rightarrow (2b, 2b, 2a + b) = (0, 0, 0)
+\]
+
+Resolviendo:
+
+\begin{align*}
+2b &= 0 \Rightarrow b = 0 \\
+2a + b &= 0 \Rightarrow 2a = 0 \Rightarrow a = 0
+\end{align*}
+
+Como la única solución es la trivial, los vectores son linealmente independientes. Equivalentemente, el primer vector, no es múltiplo del segundo, por que los vectores son li. Por lo tanto, el espacio generado por $\vec{v}_1$ y $\vec{v}_2$ tiene dimensión 2. 
+Para las coordenadas de $\left( -\dfrac{4}{3},\ -\dfrac{4}{3},\ 3 \right)$ en la base $\langle (0, 0, 2),\ (2, 2, 1) \rangle$
+
+Buscamos escalares $a, b$ tales que:
+
+\[
+a(0, 0, 2) + b(2, 2, 1) = \left(-\dfrac{4}{3},\ -\dfrac{4}{3},\ 3\right)
+\]
+
+Componente a componente:
+
+\begin{align*}
+2b &= -\dfrac{4}{3} \Rightarrow b = -\dfrac{2}{3} \\
+2a + b &= 3 \Rightarrow 2a = 3 - b = 3 + \dfrac{2}{3} = \dfrac{11}{3} \Rightarrow a = \dfrac{11}{6}
+\end{align*}
+
+Por lo tanto, las coordenadas del vector en la base dada son:
+
+\[
+\boxed{
+\left( \dfrac{11}{6},\ -\dfrac{2}{3} \right)
+}
+\]
+
+\end{enumerate}
+
+\item Sea $A$ una matriz cuadrada de orden $n$ y $\lambda $ un escalar en $\mathbb{R}$. Pruebe que el conjunto
+\[S=\{v\in \mathbb{R}^n \colon Av=\lambda v\},\]
+es un subespacio de $\mathbb{R}^n$.
+
+\textbf{Solución:}
+
+
+
+\textbf{1. Contiene al vector cero:}
+
+\[
+A \cdot 0 = \lambda \cdot 0 = 0 \quad \Rightarrow \quad 0 \in S
+\]
+
+\textbf{2. Cerrado bajo combinaciones lineales:}
+
+Sean $u, v \in S$ y $a, b \in \mathbb{R}$. Como $Au = \lambda u$ y $Av = \lambda v$, entonces:
+
+\[
+A(au + bv) = aAu + bAv = a\lambda u + b\lambda v = \lambda(au + bv)
+\Rightarrow au + bv \in S
+\]
+
+\bigskip
+
+\textbf{Conclusión:} El conjunto $S$ cumple las condiciones de subespacio vectorial. Por lo tanto,
+
+\[
+\boxed{S \text{ es un subespacio de } \mathbb{R}^n}
+\]
+
+
+
+\item Para el subespacio de $P_2[\mathbb{R}]$ definido por
+\[H=\{ax^2+bx+c\in P_2[\mathbb{R}]\colon b=0 \wedge 2a-c=0 \}\]
+
+\begin{enumerate}
+\item Demuestre que es un subespacio vectorial de $P_2[\mathbb{R}]$.
+    \item Encuentre una base de $H$ y su dimensi\'on.
+\end{enumerate}
+\textbf{Solución:}
+\begin{enumerate}
+    \item Demostrar que $H$ es un subespacio de $P_2[\mathbb{R}]$.
+
+Un polinomio $p(x) = ax^2 + bx + c$ pertenece a $H$ si y solo si $b = 0$ y $c = 2a$. Por lo tanto, todo polinomio en $H$ es de la forma:
+
+\[
+p(x) = ax^2 + 0x + 2a = a(x^2 + 2)
+\]
+
+Entonces:
+\begin{itemize}
+    \item \textbf{Cero vector:} Si $a = 0$, entonces $p(x) = 0 \in H$.
+    \item \textbf{Cerrado bajo suma:} Si $p(x) = a(x^2 + 2)$ y $q(x) = a'(x^2 + 2)$, entonces
+    \[
+    p(x) + q(x) = (a + a')(x^2 + 2) \in H
+    \]
+    \item \textbf{Cerrado bajo escalares:} Si $\lambda \in \mathbb{R}$, entonces
+    \[
+    \lambda p(x) = \lambda a(x^2 + 2) \in H
+    \]
+\end{itemize}
+
+Por lo tanto,
+\[
+\boxed{H \text{ es un subespacio vectorial de } P_2[\mathbb{R}]}
+\]
+
+\item Base y dimensión de $H$
+
+Todo elemento de $H$ tiene la forma:
+
+\[
+p(x) = a(x^2 + 2)
+\]
+
+Por lo tanto, el conjunto $\{x^2 + 2\}$ genera $H$ y es linealmente independiente.
+
+\[
+\text{Base de } H: \quad \boxed{ \{ x^2 + 2 \} }
+\]
+
+\[
+\text{Dimensión de } H: \quad \boxed{1}
+\]
+
+
+\end{enumerate}
+
+
+\item Determine si el siguiente conjunto es linealmente dependiente o independiente en el $\mathbb{R}-$ espacio vectorial $M_{2}(\mathbb{R})$.
+
+\[\left\{\begin{pmatrix} -2 & 1 \\ 1 & 0 \end{pmatrix},\begin{pmatrix} 1 & -1 \\ 0 & 2 \end{pmatrix},\begin{pmatrix} -1 & 0 \\ 1 & 2 \end{pmatrix},\begin{pmatrix} 0 & -3 \\ 1 & 2 \end{pmatrix}\right\}. \]
+\textbf{Solución:}
+Buscamos escalares \( c_1, c_2, c_3, c_4 \in \mathbb{R} \) tales que:
+
+\[
+c_1 \begin{pmatrix} -2 & 1 \\ 1 & 0 \end{pmatrix} + 
+c_2 \begin{pmatrix} 1 & -1 \\ 0 & 2 \end{pmatrix} +
+c_3 \begin{pmatrix} -1 & 0 \\ 1 & 2 \end{pmatrix} + 
+c_4 \begin{pmatrix} 0 & -3 \\ 1 & 2 \end{pmatrix}
+= \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}
+\]
+
+Esto genera el siguiente sistema de ecuaciones al igualar entrada por entrada:
+
+\[
+\begin{cases}
+-2c_1 + c_2 - c_3 = 0 &  \\
+c_1 - c_2 + 0c_3 - 3c_4 = 0 &  \\
+c_1 + 0c_2 + c_3 + c_4 = 0 &  \\
+0c_1 + 2c_2 + 2c_3 + 2c_4 = 0 & 
+\end{cases}
+\]
+
+Construimos una matriz asociada al sistema:
+
+\[
+A = 
+\begin{pmatrix}
+-2 & 1 & -1 & 0 \\
+1 & -1 & 0 & -3 \\
+1 & 0 & 1 & 1 \\
+0 & 2 & 2 & 2
+\end{pmatrix}
+\]
+\textbf{Observación:}Si apilamos las entradas de cada matriz por filas:
+
+\[
+\begin{pmatrix} -2 & 1 \\ 1 & 0 \end{pmatrix} \mapsto \begin{pmatrix} -2 \\ 1 \\ 1 \\ 0 \end{pmatrix}, \quad
+\begin{pmatrix} 1 & -1 \\ 0 & 2 \end{pmatrix} \mapsto \begin{pmatrix} 1 \\ -1 \\ 0 \\ 2 \end{pmatrix},
+\]
+\[
+\begin{pmatrix} -1 & 0 \\ 1 & 2 \end{pmatrix} \mapsto \begin{pmatrix} -1 \\ 0 \\ 1 \\ 2 \end{pmatrix}, \quad
+\begin{pmatrix} 0 & -3 \\ 1 & 2 \end{pmatrix} \mapsto \begin{pmatrix} 0 \\ -3 \\ 1 \\ 2 \end{pmatrix}
+\]
+obtenemos la misma matriz que al desarrollar el sistema de ecuaciones, pero hay que ser consistentes con el orden.
+
+Calculando el determinante de la matriz \( A \) para verificar si los vectores columna son linealmente independientes:
+
+\[
+\det(A) = 
+\begin{vmatrix}
+-2 & 1 & -1 & 0 \\
+1 & -1 & 0 & -3 \\
+1 & 0 & 1 & 1 \\
+0 & 2 & 2 & 2
+\end{vmatrix}=0
+\]h
+
+Lo cual implica que el conjunto es \textbf{linealmente dependiente}.
+
+
+\item Considere la siguiente matriz
+\[    A=\begin{pmatrix} 1 &2 & 1 \\ 0 & -1 & -2 \\ 0 & 0 & 3 \end{pmatrix}.\]
+\begin{enumerate}
+    \item Encuentre los valores propios de $A$.
+    \item Determine si es diagonalizable, en caso positivo, encuentre la matriz diagonal.
+\end{enumerate}
+
+\textbf{Solución:}
+
+\begin{enumerate}
+    \item 
+
+ Para encontrar los valores propios, debemos resolver la ecuación característica:
+    \[
+    \det(A - \lambda I) = 0
+    \]
+    Calculamos:
+    \[
+    A - \lambda I = 
+    \begin{pmatrix}
+    1 - \lambda & 2 & 1 \\
+    0 & -1 - \lambda & -2 \\
+    0 & 0 & 3 - \lambda
+    \end{pmatrix}
+    \]
+
+    El determinante es:
+    \[
+    \det(A - \lambda I) = 
+    \begin{vmatrix}
+    1 - \lambda & 2 & 1 \\
+    0 & -1 - \lambda & -2 \\
+    0 & 0 & 3 - \lambda
+    \end{vmatrix}
+    \]
+
+    \textbf{Observación:} \( A - \lambda I \) es triangular superior, por lo que su determinante es el producto de las entradas diagonales:
+    \[
+    \det(A - \lambda I) = (1 - \lambda)(-1 - \lambda)(3 - \lambda)
+    \]
+
+    Entonces, el polinomio característico es:
+    \[
+    p(\lambda) = (1 - \lambda)(-1 - \lambda)(3 - \lambda)
+    \]
+
+    Los valores propios son las raíces del polinomio característico:
+    \[
+    \lambda_1 = 1, \quad \lambda_2 = -1, \quad \lambda_3 = 3
+    \]
+
+    \item Dado que los valores propios son \textbf{distintos}, entonces \( A \) es diagonalizable. Procedemos a encontrar una base de vectores propios para formar la matriz \( P \).
+
+    \subsubsection*{Valor propio \( \lambda = 1 \)}
+
+    Resolvemos:
+    \[
+    (A - I)\vec{v} = 0
+    \Rightarrow
+    \begin{pmatrix}
+    0 & 2 & 1 \\
+    0 & -2 & -2 \\
+    0 & 0 & 2
+    \end{pmatrix}
+    \begin{pmatrix}
+    x \\ y \\ z
+    \end{pmatrix}
+    = \vec{0}
+    \]
+
+    De la tercera fila: \( 2z = 0 \Rightarrow z = 0 \)  
+    Segunda fila: \( -2y = 0 \Rightarrow y = 0 \)  
+    Primera fila: \( 0 = 0 \Rightarrow \) libre
+Luego,
+\[E_{1}=\{(x,0,0)\colon x\in \mathbb{R}\}=<(1,0,0)>.\]
+    Entonces, el vector propio asociado a \( \lambda = 1 \) es:
+    \[
+    \vec{v}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+    \]
+
+    \subsubsection*{Valor propio \( \lambda = -1 \)}
+
+    \[
+    (A + I)\vec{v} = 0
+    \Rightarrow
+    \begin{pmatrix}
+    2 & 2 & 1 \\
+    0 & 0 & -2 \\
+    0 & 0 & 4
+    \end{pmatrix}
+    \begin{pmatrix}
+    x \\ y \\ z
+    \end{pmatrix}
+    = \vec{0}
+    \]
+
+    Tercera fila: \( 4z = 0 \Rightarrow z = 0 \)  
+    Segunda fila: \( -2z = 0 \Rightarrow \) satisfecha  
+    Primera fila: \( 2x + 2y = 0 \Rightarrow x = -y \)
+Luego,
+\[E_{1}=\{(-y,y,0)\colon y\in \mathbb{R}\}=<(-1,1,0)>.\]
+    Vector propio:
+    \[
+    \vec{v}_2 = \begin{pmatrix} -1 \\ 1 \\ 0 \end{pmatrix}
+    \]
+
+    \subsubsection*{Valor propio \( \lambda = 3 \)}
+
+    \[
+    (A - 3I)\vec{v} = 0
+    \Rightarrow
+    \begin{pmatrix}
+    -2 & 2 & 1 \\
+    0 & -4 & -2 \\
+    0 & 0 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+    x \\ y \\ z
+    \end{pmatrix}
+    = \vec{0}
+    \]
+
+    Segunda fila: \( -4y -2z = 0 \Rightarrow 2y + z = 0 \Rightarrow y = -\frac{z}{2} \)  
+    
+    Primera fila: \( -2x + 2y + z = 0 \Rightarrow -2x + 2(-\frac{z}{2}) + z = -2x - z + z = -2x = 0 \Rightarrow x = 0 \)
+Luego,
+\[E_{3}=\{(0,-1/2z,z)\colon z\in \mathbb{R}\}=<(0,-1/2,1)>.\]
+    Tomando \( z = 2 \Rightarrow y = -1 \)
+
+    Vector propio:
+    \[
+    \vec{v}_3 = \begin{pmatrix} 0 \\ -1 \\ 2 \end{pmatrix}
+    \]
+
+
+
+    La matriz \( P \) tiene como columnas los vectores propios:
+
+    \[
+    P = \begin{pmatrix}
+    1 & -1 & 0 \\
+    0 & 1 & -1 \\
+    0 & 0 & 2
+    \end{pmatrix}, \quad
+    D = \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & -1 & 0 \\
+    0 & 0 & 3
+    \end{pmatrix}
+    \]
+
+    Satisfaciendo:
+    \[
+    A = P D P^{-1}
+    \]
+
+    \textbf{Conclusión:} \( A \) es diagonalizable, con:
+    \[
+    \boxed{
+    D = \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & -1 & 0 \\
+    0 & 0 & 3
+    \end{pmatrix}, \quad
+    P = \begin{pmatrix}
+    1 & -1 & 0 \\
+    0 & 1 & -1 \\
+    0 & 0 & 2
+    \end{pmatrix}
+    }
+    \]
+\end{enumerate}
+%\end{enumerate}
+\item Sean $v,w \in \mathbb{R}^n$, $w\neq 0$ y $ k = \dfrac{<v,w>}{\|w\|^2}.$ Pruebe que $v-kw$ y $w$ son ortogonales.
+
+
+\textbf{Solución:}
+Utilizamos las propiedades del producto punto:
+\[
+\langle v - kw, w \rangle = \langle v, w \rangle - k \langle w, w \rangle.
+\]
+
+Recordando que \( \langle w, w \rangle = \|w\|^2 \), sustituimos el valor de \( k \):
+\[
+\langle v - kw, w \rangle = \langle v, w \rangle - \left( \frac{\langle v, w \rangle}{\|w\|^2} \right) \cdot \|w\|^2.
+\]
+
+Simplificando:
+\[
+\langle v - kw, w \rangle = \langle v, w \rangle - \langle v, w \rangle = 0.
+\]
+
+\textbf{Conclusión:}  
+Los vectores \( v - kw \) y \( w \) son ortogonales.
+
+\[
+\boxed{ \langle v - kw, w \rangle = 0 }
+\]
+\end{enumerate}
+
+\end{document}

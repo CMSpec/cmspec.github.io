@@ -1,0 +1,83 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}[1]{\mathbb{R}^{#1}}
+
+
+
+
+\title{Taller 2}
+\date{}
+\fancyhead[R]{Universidad Finis Terrae \\ Facultad de Ingeniería \\ Algebra Lineal \\ 2do semestre de 2024}
+\fancyhead[L]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\begin{enumerate}
+
+\item Considere las matrices de rotación $$R_\theta = \begin{pmatrix}
+    \cos{\theta} & - \sin{\theta} \\ \sin{\theta} & \cos{\theta}
+\end{pmatrix}$$
+Calcule el producto $ R_\theta \cdot R_\alpha $ y compruebe que esto es igual a $R_{\theta + \alpha}$. Puede usar para esto las fórmulas del seno y coseno de una suma de ángulos.
+
+\item Determine si las siguientes matrices son invertibles. En caso de serlo, calcule su inversa. Recuerde anotar explícitamente sus cálculos.
+\begin{enumerate}
+    \item $A= \begin{pmatrix} 1 & 0  \\ 4 & -1  \end{pmatrix} $
+    \item $B= \begin{pmatrix} 1 & -1 \\ 2 & 2  \end{pmatrix} $
+\end{enumerate}
+
+\item Considere las matrices $ A= \begin{pmatrix} 2 & -1  \\ 0 & 1  \end{pmatrix} $, $B= \begin{pmatrix} 0 & 2  \\ 0 & 2  \end{pmatrix}$, $C= \begin{pmatrix} 2 & -2  \\ 0 & -1  \end{pmatrix}$. Encuentre una matriz $X$ que satisfaga que
+$$ XA-(B+CX^t)^t=2B $$
+\item 
+\begin{enumerate}
+\item Calcule $\begin{pmatrix} a & 0 \\ 0 & b \end{pmatrix}\begin{pmatrix} c & 0 \\ 0 & d \end{pmatrix}= \begin{pmatrix} ac & 0 \\ 0 & bd \end{pmatrix}$. Use esto para calcular $\begin{pmatrix} a & 0 \\ 0 & b \end{pmatrix}^n$. Ahora calcule 
+        $$\begin{pmatrix} a_1 & 0 & \dots & 0 \\ 0 & a_2 & \dots & 0 \\ & & \ddots & \\ 0 & 0 & \dots & a_n \end{pmatrix}^n$$
+%        \item Muestre que las matrices diagonales conmutan entre sí.
+        \item Se sabe que la matriz $T=\begin{pmatrix} 1 & 1 & 2 \\ 0 & 1 & 0 \\ 2 & 0 & 1 \end{pmatrix}= S D S^{-1}$, con $S=\begin{pmatrix} -1 & 0 & 1 \\ 0 & -2 & 0 \\ 1 & 1 & 1 \end{pmatrix}$ y $D= \begin{pmatrix} -1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 3 \end{pmatrix}$. Calcule $T^{2}$ y luego $T^{2024}$. 
+\end{enumerate}
+\end{enumerate}
+\end{document}

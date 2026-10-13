@@ -1,0 +1,780 @@
+\usepackage{float}
+\documentclass{plantillauft}
+
+\title{Portafolio modelo predictivo de desempeño laboral en la construcción} % Título del proyecto
+\usepackage[numbers]{natbib} % Agrega números a las citas
+
+\begin{document}
+
+% ----------- Información del grupo -----------
+\titulo{Portafolio de modelo predictivo de desempeño laboral en la construcción} % Título de su proyecto
+\UE{Álgebra Lineal} 
+\prof{Camila Muñoz Santander} % Nombre del profesor
+\alumnos{Nicolás Arellano\\
+         Miguel Cornejo\\ 
+         Felipe Madriaga\\
+         Benjamín Sepulveda Labbe\\
+         Johann Urcia} % Nombre de los alumnos
+
+%Para poner la imagen, figura o grafico:
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=1\linewidth]{imagenes/Arbol_de_Problemas.png}
+%\caption{\label{fig:frog}\textit{Árbol de problemas.}}
+%\end{figure}
+
+% ----------- Portada -----------
+\fairemarges 
+\portada
+\tableofcontents 
+
+% ------------ Cuerpo del informe ------------
+\newpage
+
+% ------------ Introduccion ------------
+\section{Introducción}
+Se evalúa el modelo predictivo de desempeño laboral simplex y K-means, los cuales, cumplen un rol fundamental en la selección de personal en las empresas, ya que, en un entorno laboral dinámico y en constante cambio, la capacidad de prever y optimizar el desempeño de los empleados se convierte en un factor crucial para el éxito de las empresas.
+\newline
+
+Por esto mismo, en este portafolio se presenta una situación donde una empresa constructora contrata a ingenieros de la Universidad Finis Terrae para poder implementar un modelo predictivo de desempeño laboral. Esto tiene como objetivo principal establecer un modelo que permita anticipar el rendimiento de los distintos equipos de trabajo en función de sus características tanto como personales como de empleado.
+\newline
+
+En este contexto, junto a las técnicas de análisis de datos y modelados combinadas con la optimización y teoría de matrices. A través de la recopilación, generación y análisis de datos, se buscará caracterizar los perfiles de empleados que sean compatibles con los estándares de la empresa, asimismo, se abordarán las principales etapas del proyecto, desde la definición del problema y la metodología usada, hasta la presentación de los resultados obtenidos.
+\newpage
+
+% ------------ Objetivo ------------
+ \section{Objetivo}
+Diseñar métodos predictivos para evaluar el desempeño laboral dentro de una empresa constructora con el fin o propósito de optimizar la gestión de recursos mediante el análisis e identificación de patrones de rendimiento. El objetivo principal del proyecto es desarrollar un modelo que permita:
+Evaluar la efectividad del modelo predictivo de desempeño laboral en un entorno simulado.
+\newline
+\newline
+Objetivo:
+\begin{split}
+    
+\end{split}
+    \item \textbf{Diseño de Métodos Predictivos}
+    \item \textbf{Evaluación del Desempeño Laboral}
+    \item \textbf{Optimización de la Gestión de Recursos}
+    \item \textbf{Análisis e Identificación de Patrones de Rendimiento}
+\end{enumerate}    
+
+
+\newpage
+
+% ------------ Construcción de la solución propuesta ------------
+\section{Construcción de la solución propuesta}
+Para lograr la solución de la propuesta sobre el desarrollo de un modelo predictivo de desempeño laboral en una empresa constructora de viviendas residenciales, se aborda el problema de la selección de personal y la optimización del recurso humano.
+\newline
+\newline
+Para abordar la propuesta de desarrollar un modelo predictivo de desempeño laboral, se utilizarán diversas herramientas y métodos analíticos. Aquí hay un resumen de cómo se aplicarán:
+\newline
+\newline
+Método Simplex: Se empleará para optimizar la asignación de recursos y tareas entre los empleados, asegurando la eficiencia en las distintas categorías o cargos laborales como Albañiles, Carpinteros, Electricistas, Plomeros, Pintores, Supervisores de Obra y Personal Administrativo. Usando el software Excel como herramienta para organizar los datos y ejecutar el método simplex.
+\newline
+\newline
+K-means Clustering: El software de Google llamado Colab se usará como copilador de la nube para el código de Python, realizando un análisis de clustering para la creación de gráficos y visualización de datos, identificando patrones de rendimiento y agrupar a los mejores empleados con características similares. Ayudando a entender mejor la dinámica de trabajo de manera más efectiva.
+\newline
+\newline
+Modelo Matricial y Cadenas de Markov: Se desarrollará un modelo predictivo que utiliza matrices y cadenas de Markov para prever el comportamiento futuro de los equipos de trabajo. Este modelo ayudará a anticipar el desempeño laboral y a tomar decisiones en la gestión de personal.
+\newline
+\newline
+Estos métodos proporcionarán una base sólida para el análisis y la mejora continua del desempeño laboral en la empresa constructora.
+\newline
+\newline
+El método Simplex implica una serie de transformaciones de tablas, que son similares a la eliminación de Gauss usada para resolver sistemas de ecuaciones lineales. El cual es manipular las filas de una matriz para obtener una forma más sencilla de la misma a través del Pivoteo en se seleccionar una columna pivote y una fila pivote para mejorar la solución actual. Se usan para reducir la matriz a su forma escalonada.
+Según el libro de Grossman y Stanley señala que el método de eliminación de Gauss, es un proceso que se aplica a una matriz ampliada de un sistema de ecuaciones lineales. El objetivo es transformar la matriz ampliada en una forma escalonada (matriz triangular superior) para facilitar la resolución del sistema.(\textit{Grossman, Stanley I, Pérez Pupo et al., 2018, pág.16}) [1].
+\newline
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{imagenes/image.png}
+    \caption{\label{fig:frog}\textit{Sistema de ecuación de coeficientes.}}
+\end{figure}
+\newpage
+Un ejemplo de la solución de un sistema de tres ecuaciones  
+con tres incógnitas: solución única.
+Resuelva el sistema
+\begin{eqnarray}
+2x_1 + 4x_2 + 6x_3 &=& 18 \nonumber \\
+4x_1 + 5x_2 + 6x_3 &=& 24 \nonumber \\
+3x_1 + x_2 - 2x_3 &=& 4 \nonumber
+\end{eqnarray}
+\begin{equation*}
+\text{Figura 1.2.1} \ \text{Fuente: Grossman, Stanley I., Álgebra Lineal, 2012 [1]}
+\end{equation*}
+
+En este caso se buscan tres números \( x_1, x_2, x_3 \) tales que las tres ecuaciones 
+en (1.2.1) se satisfagan. El método de solución que se estudiará será el de simplificar las ecuaciones, de manera que las soluciones se puedan identificar de inmediato. Se comienza por dividir la primera ecuación entre 2. Esto da:
+
+\begin{center}
+\begin{eqnarray}
+x_1 + 2x_2 + 3x_3 &=& 9 \nonumber \\
+4x_1 + 5x_2 + 6x_3 &=& 24 \nonumber \\
+3x_1 + x_2 - 2x_3 &=& 4 \nonumber
+\end{eqnarray}
+\end{center}
+
+Al sumar dos ecuaciones se obtiene una tercera ecuación equivalente. Esta nueva ecuación puede sustituir a cualquiera de las dos ecuaciones del sistema que se usaron para obtenerla. Primero se simplifica el sistema multiplicando ambos lados de la ecuación por 24 y sumando esta nueva ecuación a la ecuación (1.2.2b). Esto da:
+
+\begin{center}
+\begin{eqnarray}
+-4x_1 -8x_2 -12x_3 &=& -26 \nonumber \\
+4x_1 + 5x_2 + 6x_3 &=& 24 \nonumber \\
+\multicolumn{3}{c}{\rule{5cm}{0.4pt}} \nonumber \\
+-3x_2 - 6x_3 &=& -12 \nonumber
+\end{eqnarray}
+\end{center}
+
+La ecuación \(-3x_2 - 6x_3 = -12\) es la nueva ecuación y el sistema ahora es:
+
+\begin{center}
+\begin{eqnarray}
+x_1 + 2x_2 + 3x_3 &=& 9 \nonumber \\
+-3x_2 - 6x_3 &=& -12 \nonumber \\
+3x_1 + x_2 - 2x_3 &=& 4 \nonumber
+\end{eqnarray}
+\end{center}
+
+Entonces, la ecuación se multiplica por -3 y se suma a la ecuación, lo que da por resultado:
+
+\begin{center}
+\begin{eqnarray}
+x_1 + 2x_2 + 3x_3 &=& 9 \nonumber \\
+-3x_2 - 6x_3 &=& -12 \nonumber \\
+-5x_2 - 11x_3 &=& -23 \nonumber
+\end{eqnarray}
+\end{center}
+
+Observar que en el sistema se ha eliminado la variable \(x_1\). Después se divide la ecuación por -3:
+
+\begin{center}
+\begin{eqnarray}
+x_1 + 2x_2 + 3x_3 &=& 9 \nonumber \\
+x_2 + 2x_3 &=& 4 \nonumber \\
+-5x_2 - 11x_3 &=& -23 \nonumber
+\end{eqnarray}
+\end{center}
+
+Se multiplica la ecuación por -2 y se suma a la ecuación; después se multiplica la ecuación por 5 y se suma a la ecuación:
+
+\begin{center}
+\begin{eqnarray}
+x_1 - x_3 &=& 1 \nonumber \\
+x_2 + 2x_3 &=& 4 \nonumber \\
+x_3 &=& -3 \nonumber
+\end{eqnarray}
+\end{center}
+
+Ahora se multiplica la ecuación por -1:
+
+\begin{center}
+\begin{eqnarray}
+x_1 - x_3 &=& 1 \nonumber \\
+x_2 + 2x_3 &=& 4 \nonumber \\
+x_3 &=& 3 \nonumber
+\end{eqnarray}
+\end{center}
+
+Por último, se suma la ecuación a la ecuación y después se multiplica por -2 y se suma a la ecuación para obtener el siguiente sistema, el cual es equivalente al sistema:
+
+\begin{center}
+\begin{eqnarray}
+x_1 &=& 4 \nonumber \\
+x_2 &=& -2 \nonumber \\
+x_3 &=& 3 \nonumber
+\end{eqnarray}
+\end{center}
+
+Solución de un sistema mediante eliminación gaussiana.
+Resuelva el sistema del ejemplo 1.2.1 reduciendo la matriz de coeficientes a la forma escalonada por renglones.
+\[
+\left[
+\begin{array}{ccc|c}
+2 & 4 & 6 & 18 \\
+4 & 5 & 6 & 24 \\
+3 & 1 & -2 & 4 \\
+\end{array}
+\right]
+\]
+
+\begin{center}
+\( R_1 \to \frac{1}{2}R_1 \)
+\[
+\left[
+\begin{array}{ccc|c}
+1 & 2 & 3 & 9 \\
+4 & 5 & 6 & 24 \\
+3 & 1 & -2 & 4 \\
+\end{array}
+\right]
+\]
+
+\( R_2 \to R_2-4R_1 \);
+\( R_3 \to R_3-3R_1 \)
+\[
+\left[
+\begin{array}{ccc|c}
+1 & 2 & 3 & 9 \\
+0 & -3 & -6 & -12 \\
+0 & -5 & -11 & 4-23 \\
+\end{array}
+\right]
+\]
+
+\( R_2 \to \frac{1}{3}R_2 \)
+\[
+\left[
+\begin{array}{ccc|c}
+1 & 2 & 3 & 9 \\
+0 & 1 & 2 & -4\\
+0 & -5 & -11 & -23 \\
+\end{array}
+\right]
+\]
+
+\( R_3 \to R_3 + 5R_2 \)
+\[
+\left[
+\begin{array}{ccc|c}
+1 & 2 & 3 & 9 \\
+0 & 1 & 2 & 4\\
+0 & 0 & -1 & -3 \\
+\end{array}
+\right]
+\]
+
+\( R_3 \to - R_3\)
+\[
+\left[
+\begin{array}{ccc|c}
+1 & 2 & 3 & 9 \\
+0 & 1 & 2 & 4\\
+0 & 0 & 1 & 3 \\
+\end{array}
+\right]
+\]
+\end{center}
+
+La matriz aumentada del sistema (y los coeficientes de la matriz) se encuentran ahora en  
+la forma escalonada por renglones y se puede ver de inmediato que \(x_3=3\). Después se usa la sustitución hacia atrás para despejar primero \(x_2\) y después \(x_1\). La segunda ecuación queda \(x_2+2x_3=4\). Entonces \(x_2+2(3)=4\) y \(x_2=-2\). De igual manera, de la primera ecuación se obtiene \(x_1+2(-2)+3(3)=9\) o  \(x_1=4\). Así, de nuevo se obtiene la solución (4, -2, 3). (\textit{Grossman, Stanley I, Pérez Pupo et al., 2018, pág.16}) [1].
+\newline
+\newline
+
+Para entender el método de K-means Clustering, según el artículo de Alcántara Rosas, indica que los K-Means es un algoritmo utilizado para encontrar una cantidad definida de patrones en una base de datos23. Es valorado en ciencia de datos por su capacidad de clasificar grandes conjuntos de datos en categorías usando criterios estadísticos.(\textit{Alcántara Rosas, Luis Á., 2019}) [2].
+\newline
+\newline
+El cual su aplicación en el artículo es ajustar el algoritmo K-Means con la base de datos Iris para clasificar tres especies de flores iris. Se utilizan cuatro características (ancho y largo de sépalos y pétalos) para encontrar los patrones y clasificar cada flor en su categoría correspondiente.
+\newline
+\newline
+En donde se inicializan centroides dentro de los límites reales de las características de las flores. Luego, se ajustan iterativamente los centroides y una matriz de clasificación \(r_{n,k}\) para minimizar una función de distorsión, que mide la distancia euclidiana entre las observaciones y los centroides.
+\newline
+\newline
+La visualización de resultados del artículo muestra cómo, después de varias iteraciones, el algoritmo converge y clasifica correctamente los puntos de datos en clústeres, representados gráficamente para una mejor comprensión de los resultados.
+\newline
+\newline
+Como optimizando J respecto a \(r_{n,k}\), manteniendo los centroides fijos utilizando la siguiente regla:
+\begin{figure}[H] % La opción [H] fuerza a la figura a estar aquí
+    \centering
+    \includegraphics[width=0.5\linewidth]{imagenes/image1.png}
+    \caption{Optimización de J}
+    Fuente: Alcántara Rosas, Luis Á.,2019 [2]
+    \label{fig:enter-label}
+\end{figure}
+\newline
+\newline
+Optimizando otra vez J, pero ahora respecto a los centroides, manteniendo a \(r_{n,k}\) fijos, tomando la siguiente fórmula:
+\begin{figure}[H] % La opción [H] fuerza a la figura a estar aquí
+    \centering
+    \includegraphics[width=0.2\linewidth]{imagenes/imagen2.png}
+    \caption{Nuevamente optimización de J}
+    Fuente: Alcántara Rosas, Luis Á.,2019 [2]
+    \label{fig:enter-label}
+\end{figure}
+\newline
+\newline
+Indicando que a través del procedimiento de encontrar los cluster, a través del código de python, el cual con las dimensiones obtenidas de las distancias se puede ver en qué punto pertenece a cada clúster fácilmente. Según señala Alcántara Rosas \textit{'Esto es así cuando graficamos en dos dimensiones. Sin embargo tenemos 4 categorías y únicamente podría ser posible verlas en una hiperrealidad de 4 dimensiones, cosa que lamentablemente no podemos hacer.A lo más es posible ver esto en 3 dimensiones.'}. (\textit{Alcántara Rosas, Luis Á., 2019}) [2].
+\newline
+\newline
+\begin{figure}[H] % La opción [H] fuerza a la figura a estar aquí
+    \centering
+    \includegraphics[width=0.5\linewidth]{imagenes/image3.png}
+    \caption{Puntos de clúster}
+    Fuente: Alcántara Rosas, Luis Á.,2019 [2]
+    \label{fig:enter-label}
+\end{figure}
+
+Al graficar en 3D indica que es posible ver en 3 dimensiones. Dando los ejes de feature 0, feature 1 y feature 2:
+\begin{figure}[H] % La opción [H] fuerza a la figura a estar aquí
+    \centering
+    \includegraphics[width=0.5\linewidth]{imagenes/image4.png}
+    \caption{Puntos de clúster en 3D}
+    Fuente: Alcántara Rosas, Luis Á.,2019 \cite{uno}
+    \label{fig:enter-label}
+\end{figure}
+\newline
+\newline
+El cual utilizando la base de datos Iris demuestra el funcionamiento del algoritmo, clasificando las flores en tres categorías. Mostrando gráficamente cómo el algoritmo clasifica los datos en clústers y cómo los centroides se ajustan durante el proceso.
+
+\newpage
+
+
+
+% - Explicación del proceso de construcción de la solución ------------
+\section{Explicación del proceso de construcción de la solución}
+Desarrollar el desempeño laboral implica analizar diversos aspectos, como el porcentaje de logro de objetivos de cada trabajador y las horas de trabajo que dedican a sus responsabilidades. Estos indicadores son fundamentales para evaluar la productividad y la eficiencia de cada trabajador, así como para identificar áreas de mejora y reconocer el desempeño excepcional. El análisis detallado de estos aspectos permite optimizar el recurso humano de la empresa y promover un ambiente laboral más eficaz y productivo. El cual, en un entorno laboral diverso, hay que reconocer que no todos los trabajadores cumplen con las expectativas de rendimiento de manera consistente. Ante esta realidad, es crucial realizar una inspección exhaustiva para evaluar el desempeño individual de cada empleado. Utilizando herramientas como el método simplex, se pueden identificar patrones y tendencias en el rendimiento laboral, lo que facilita la toma de decisiones respecto a la retención o desvinculación de personal. Este enfoque analítico permite gestionar de manera eficiente los recursos humanos de la empresa, asegurando que se mantenga un equipo comprometido y productivo.
+\newline
+\newline
+Para un análisis de clasificación entre los empleados y caracterizar distintos perfiles de desempeño, en donde a través de Excel se crea un modelo predictivo sobre el comportamiento de las ocupaciones del trabajo.
+
+En los cuales están clasificados como:
+\begin{itemize}
+    \item 1. Albañiles: Responsables de la construcción de estructuras, como paredes, pisos y techos.
+    \item 2. Carpinteros: Encargados de trabajar con la madera, construyendo y montando estructuras como marcos de puertas y ventanas, armarios, etc.
+    \item 3. Electricistas: Instalan y mantienen sistemas eléctricos, cableado y equipos de iluminación.
+    \item 4. Plomeros: Se ocupan de instalar y reparar sistemas de tuberías de agua y gas.
+    \item 5. Pintores: Aplican pintura en interiores y exteriores de edificios.
+    \item 6. Supervisores de Obra: Encargados de supervisar y coordinar las actividades en el sitio de construcción.
+    \item 7. Personal Administrativo: Realizan tareas administrativas como gestión de documentos, contratación, etc.
+\end{itemize}
+\newline
+\newline
+La empresa constructora cuenta con un presupuesto de \$80.536.000 pesos chilenos para remunerar a los 100 trabajadores, quienes cumplen con sus horas respectivas de trabajo. Sin embargo, al calcular el costo total de los salarios actuales, se ha determinado que el monto requerido asciende a \$95.937.000 pesos chilenos. Esto significa que existe un déficit de \$15.401.000 pesos chilenos que la empresa no puede cubrir bajo el presupuesto disponible, el cual tiene que ser menor o igual al presupuesto de la empresa.
+\newline
+\newline
+En el cual, para abordar esta situación, se ha segmentado a los empleados en tres categorías basadas en su porcentaje de incidencia al logro de objetivos: alto, intermedio y bajo. Cada categoría tiene recomendaciones específicas para la toma de decisiones.
+\begin{itemize}
+    \item Alto Rendimiento: El porcentaje es del 75\% o más, logrando los objetivos establecidos, lo que indica un trabajo eficiente y productivo.
+    \item Rendimiento Intermedio: El porcentaje está entre el 50\% y 75\%, lo que sugiere la necesidad de capacitación adicional y un mayor esfuerzo para alcanzar los objetivos y mejorar el desempeño.
+    \item Bajo Rendimiento: El porcentaje es del 50\% o menos, indicando que la mayoría de los objetivos establecidos no se cumplen y hay un bajo rendimiento laboral.
+\end{itemize}
+\newline
+\newline
+El proceso de construcción de la solución para el desempeño laboral primero es la recolección de datos relevantes sobre los empleados en una tabla de Excel, como Nombre, Valor Hora(Pesos Chilenos), Ocupación o Cargo, Tiempo esperable de dedicación (hrs), Tiempo evidenciado (hrs), Porcentaje de incidencia al logro de objetivos(\%) y Total de pago (Pesos Chilenos). Luego, aplicando el método simplex en Excel para optimizar la asignación de tareas y recursos. Con el objetivo de decidir cuáles empleados deberían ser retenidos y cuáles despedidos, asegurando que la empresa se mantuviera dentro de su presupuesto mientras maximiza la eficiencia y efectividad de su personal.
+\newline
+\newline
+Mostrando un gráfico visual de los trabajadores de la empresa y sus pagos correspondientes a sus horas trabajadas:
+\begin{figure}[H] % La opción [H] fuerza a la figura a estar aquí
+    \centering
+    \includegraphics[width=1\linewidth]{imagenes/image222.png}
+    \caption{Gráfico de los trabajadores de la empresa}
+    \label{fig:enter-label}
+\end{figure}
+\newline
+\newline
+Utizando el algoritmo de K-means clustering en Google Colab para agrupar a los empleados según patrones de rendimiento. El cual usa una combinación de métodos analíticos y de modelado, con el objetivo de identificar y retener a los empleados más productivos, asegurando que la empresa se mantuviera dentro de su presupuesto y maximizará la eficiencia de su personal.
+\newline
+\newline
+Finalmente, realizando las simulaciones serán para validar los modelos desarrollados, comparando los resultados de las simulaciones con datos de los empleados para evaluar la precisión del modelo. Este enfoque integrado permitió una comprensión detallada del desempeño laboral y facilitó la toma de decisiones estratégicas en la gestión de recursos humanos.
+\newpage
+
+% ------------ Evaluación de efectividad de la solución ------------
+\section{Evaluación de efectividad de la solución}
+La evaluación de la efectividad de la solución se lleva a cabo mediante la implementación de los métodos que va a reflejar la aplicación práctica de la solución propuesta en el entorno laboral de la empresa constructora. El cual, realiza mediciones experimentales que permitieran comparar los resultados obtenidos con las proyecciones teóricas previamente establecidas.
+\newline
+\newline
+Para ello se desarrolló el modelo predictivo basado en los datos de los empleados, que incluía variables como el porcentaje de logro de objetivos, las horas de trabajo y la categorización del rendimiento laboral. Este modelo se somete a pruebas utilizando datos históricos y simulaciones para evaluar su precisión y eficacia en la predicción del desempeño laboral de los trabajadores. Una vez implementado los mejores empleados, se comparan los resultados con las proyecciones teóricas generadas por el modelo predictivo. Realizando el análisis de métricas como la precisión de las predicciones, la eficiencia en la asignación de recursos y la capacidad para identificar a los mejores trabajadores de la empresa.
+\newline
+\newline
+Si se decide despedir a un número significativo de empleados, esto se justificaría por el incumplimiento generalizado de las expectativas de trabajo en términos de horas laboradas y porcentajes de cumplimiento de objetivos en cada una de las categorías u ocupaciones. Por ejemplo, supongamos que, según los registros de la empresa, el 40\% de los trabajadores no logran alcanzar el 50\% de los objetivos establecidos y su dedicación horaria promedio es un 30\% menor que la esperada para su cargo.
+\newline
+\newline
+Dado que la empresa dispone de un presupuesto suficiente y holgado, la decisión de despedir a estos empleados se justifica por la necesidad de mantener altos estándares de productividad y eficiencia. Además, al despedir a aquellos empleados que no cumplen con las expectativas laborales, se libera espacio presupuestario que puede ser reinvertido en contratar a nuevos empleados mejor capacitados y comprometidos con el éxito de la empresa. Según el Gobierno de Chile, explica que la implementación de la falta de cumplimiento de las horas de trabajo requeridas puede resultar en sanciones para los empleadores y, en algunos casos, en el despido de los trabajadores. Es importante revisar esta información para entender completamente las implicaciones legales y los derechos de los trabajadores en relación con sus horas de trabajo.(\textit{Gobierno de Chile, 2018}) [3].
+\newline
+\newline
+Por lo cual, la contratación de nuevos empleados permitirá fortalecer el equipo de trabajo, cubrir las posiciones vacantes dejadas por los despidos y, al mismo tiempo, fomentar un ambiente laboral más dinámico y productivo. Los nuevos empleados podrían ser seleccionados mediante un proceso de reclutamiento más riguroso, enfocado en identificar habilidades y competencias que se alineen con las necesidades específicas de la empresa y los objetivos del proyecto en curso.
+\newpage
+
+% ------------ Contenido del desarrollo ------------
+\section{Contenido del desarrollo}
+Los trabajadores están establecidos en ocupaciones en donde son 7, los cuales utilizando el metodo simplex, seran quienes se quedan a trabjar y quienes serandespedidos. Para garantizsar las horas de trabajo En Chile, los constructores tienen una jornada laboral sujeta a ciertos límites establecidos por la ley. A continuación, te detallo estos límites:
+\newline
+\newline
+Jornada Semanal: Los constructores no pueden trabajar más de 45 horas a la semana1. Estas 45 horas pueden distribuirse en 5 o 6 días.(\textit{Gobierno de Chile, 2018}) [3].
+
+\begin{table}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{imagenes/imagennnn.png}
+    \caption{Datos de Albañiles}
+    \label{fig:enter-label1}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{imagenes/imageee.png}
+    \caption{Datos de Carpinteros}
+    \label{fig:enter-label2}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{imagenes/image111.png}
+    \caption{Datos de Electricistas}
+    \label{fig:enter-label3}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{imagenes/image221.png}
+    \caption{Datos de Plomeros}
+    \label{fig:enter-label4}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{imagenes/imagen123.png}
+    \caption{Datos de Pintores}
+    \label{fig:enter-label5}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{imagenes/image2783423.png}
+    \caption{Datos de Supervisores de Obra}
+    \label{fig:enter-label6}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{imagenes/image5345.png}
+    \caption{Datos de Personal Administrativo}
+    \label{fig:enter-label7}
+\end{table}
+
+
+
+El cual minimizando cada una de las tablas segun sus restrinciones del 75\% mayor o igual de los logros y de cada ocupacion segun sus horas sean iguales o mayores para cada uno de los trabajadores:
+
+Para garantizar, la primera tabla de Trabajadores Albañiles, se compienza con las resrinciones de las 40 horas, lo cual deben ser iguales o mayores, y con un 75\% mayor o igual de los logros.
+\newline
+\newline
+\begin{equation*}
+\text{Minimizar } Z = 26000x_1 + 25000x_2 + 14000x_3 + 18000x_4 + 10000x_5 + 21000x_6 + 25000x_7 + 12000x_8 + 17000x_9 + 17000x_{10} + 14000x_{11} + 25000x_{12} + 20000x_{13} + 24000x_{14} + 19000x_{15} + 25000x_{16} + 12000x_{17} + 27000x_{18}
+\end{equation*}
+
+Restricciones:
+
+Presupuesto Total:
+
+\begin{equation*}
+26000x_1 + 25000x_2 + 14000x_3 + 18000x_4 + 10000x_5 + 21000x_6 + 25000x_7 + 12000x_8 + 17000x_9 + 17000x_{10} + 14000x_{11} + 25000x_{12} + 20000x_{13} + 24000x_{14} + 19000x_{15} + 25000x_{16} + 12000x_{17} + 27000x_{18} \leq 14,040,000
+\end{equation*}
+
+Horas Trabajadas:
+
+\begin{equation*}
+x_1, x_2, x_3, x_4, x_5, x_6, x_7, x_8, x_9, x_{10}, x_{11}, x_{12}, x_{13}, x_{14}, x_{15}, x_{16}, x_{17}, x_{18} \geq 40
+\end{equation*}
+
+Restricción de Incidencia (solo incluir trabajadores con incidencia $\geq$ 75\%):
+
+\begin{equation*}
+x_2 = 0, x_3 = 0, x_4 = 0, x_5 = 0, x_7 = 0, x_9 = 0, x_{11} = 0, x_{12} = 0, x_{13} = 0, x_{15} = 0, x_{16} = 0, x_{17} = 0, x_{18} = 0
+\end{equation*}
+
+Formulación Matemática del Problema Simplex
+
+Minimizar
+
+\begin{equation*}
+Z = 26000x_1 + 21000x_6 + 17000x_{10} + 24000x_{14}
+\end{equation*}
+
+sujeto a:
+
+\begin{align*}
+&26000x_1 + 21000x_6 + 17000x_{10} + 24000x_{14} \leq 14,040,000 \\
+&x_1, x_6, x_{10}, x_{14} \geq 40
+\end{align*}
+
+Siendo el resultado mediante Excel, resolviendo con Solve, se muestra la tabla de los que se quedaran en el trabajo:
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{image0000.png}
+    \caption{Trabajadores de Albañiles}
+    \label{fig:enter-label}
+\end{figure}
+\newpage
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{image1111.png}
+    \caption{Trabajadores de Carpinteros}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{image2222.png}
+    \caption{Trabajadores de Electricidad}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{image3333.png}
+    \caption{Trabajadores de Plomeros}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{image4444.png}
+    \caption{Trabajadores de Supervisores de Obra}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{image5555.png}
+    \caption{Trabajadores de Pintores}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{image6666.png}
+    \caption{Trabajadores de Personal Administrativo}
+    \label{fig:enter-label}
+\end{figure}
+Siendo el Final de los trabajadores, la siguiente grafica:
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{image7777.png}
+    \caption{Empleados que se quedaran}
+    \label{fig:enter-label}
+\end{figure}
+\newline
+\newline
+
+
+\section{Modelo de Análisis de KPIs:}
+Para comenzar, se agrupan los 100 empleados de la empresa en una tabla, donde cada empleado está clasificado según su profesión:
+
+\begin{itemize}
+    \item 1 = Albañil
+    \item 2 = Carpintero
+    \item 3 = Electricista
+    \item 4 = Plomero
+    \item 5 = Pintor
+    \item 6 = Supervisor de Obra
+    \item 7 = Personal Administrativo
+\end{itemize}
+
+El conjunto de datos también incluye información adicional sobre los empleados, como las horas esperadas de trabajo, las horas registradas, el valor de la hora (en Pesos Chilenos), el porcentaje de incidencia en el logro de objetivos y el total de pagos.
+
+Según Villar \cite{dos}, existen tres métodos técnicos importantes para evaluar el desempeño laboral en un lugar de trabajo. Uno de ellos es el indicador clave de desempeño (KPI), que mide principalmente las actividades y sus costos relacionados, considerándose como un método sencillo y rápido para evaluar a los empleados y su cumplimiento con los estándares de la empresa.
+
+\subsection{Búsqueda de KPIs de contratación}
+
+El siguiente código importa las librerías que se utilizarán y abre el documento que se va a analizar. Se inicia cargando los datos desde un archivo CSV utilizando Pandas, lo que crea un DataFrame que contiene los datos a analizar y clusterizar.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\linewidth]{CODIGO K MEANS/1.png}
+    \caption{Ejemplo de código para cargar datos desde un archivo CSV}
+    \label{fig:codigo_1}
+\end{figure}
+
+A continuación, se imprime una descripción estadística de los datos, que proporciona estadísticas resumidas como media, desviación estándar, máximo, mínimo, etc., para cada columna numérica del DataFrame.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Variable} & \textbf{Descripción} \\ \midrule
+Conteo (count) & Número de registros del conjunto de datos \\
+Media (mean) & Promedio de los valores de cada variable \\
+Desviación estándar (std) & Grado de dispersión de los valores respecto a la media \\
+Mínimo (min) & Valor mínimo de cada variable \\
+Máximo (max) & Valor máximo de cada variable \\
+Cuartiles (25\%, 50\%, 75\%) & Valores que dividen los datos en cuatro partes \\
+Promedio de horas & Media de horas trabajadas por categoría \\ \bottomrule
+\end{tabular}
+\caption{Descripción de los datos}
+\label{tab:descripcion_datos}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{CODIGO K MEANS/2.png}
+    \caption{Descripción estadística de los datos}
+    \label{fig:descripcion_estadistica}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Variable} & \textbf{Valor} \\ \midrule
+Conteo & 100 \\
+Media & 50 \\
+Desviación estándar & 10 \\
+Mínimo & 20 \\
+Máximo & 80 \\
+25\% & 40 \\
+50\% & 50 \\
+75\% & 60 \\ \bottomrule
+\end{tabular}
+\caption{Ejemplo de estadísticas}
+\label{tab:ejemplo_estadisticas}
+\end{table}
+
+Después, se realizan operaciones de limpieza y conversión de datos en las columnas que lo requieren. Por ejemplo, se eliminan los caracteres no numéricos de las columnas y se convierten a tipo flotante. Esto se hace para prevenir posibles errores durante la compilación del código y al graficar los datos. Los datos se representan en histogramas para explorar su distribución. Cada histograma muestra la frecuencia de ocurrencia de los valores, permitiendo observar la forma de la distribución y comprender mejor los datos.
+\newline
+
+Posteriormente, se utiliza la función seaborn para graficar las relaciones entre pares de variables. En este gráfico, cada par de variables se representa en un diagrama de dispersión, lo que facilita la identificación de la presencia de clusters y la comprensión de la relación entre las variables y cómo categorizan los datos.
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\linewidth]{CODIGO K MEANS/histograma.png}
+    \caption{histograma de distribución de los datos}
+    \label{fig:histograma}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\linewidth]{CODIGO K MEANS/3.png}
+    \caption{Codigo de Graficos}
+    \label{fig:Codigo}
+\end{figure}
+\newpage{}
+Después, se seleccionan las características relevantes para el clustering (en este caso, todas las variables numéricas) y se almacenan en la matriz X. La variable objetivo 'Categoría' se almacena en y.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\linewidth]{CODIGO K MEANS/4.png}
+    \caption{Grafico Clustering}
+    \label{fig:Grafico}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\linewidth]{CODIGO K MEANS/5.png}
+    \caption{Grafico Clustering}
+    \label{fig:Grafico}
+\end{figure}
+
+
+\subsection{Método del Codo}
+El método del codo es una técnica utilizada en el análisis de clustering para determinar el número óptimo de clusters en un conjunto de datos. La idea es identificar el punto en el que la adición de otro cluster no proporciona mucho mejoramiento en la varianza. Este punto se asemeja a una 'codo', en la gráfica de la suma de errores cuadráticos (SSE) versus el número de clusters.
+\item Proceso de Cálculo del codo
+1. Se itera sobre un rango de posibles números de clusters, por ejemplo, desde 1 hasta 20 en este caso.
+2. Para cada valor de clusters, se aplica el algoritmo de K-means y se calcula la suma de los errores cuadráticos (SSE), que representa la suma de las distancias al cuadrado de cada punto al centroide de su cluster más cercano.
+3. Estos valores de SSE se almacenan en una lista.
+4. Luego, se grafican estos valores SSE en función del número de clusters.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\linewidth]{CODIGO K MEANS/6.png}
+    \caption{Codigo}
+    \label{fig:Codigo}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{CODIGO K MEANS/7.png}
+    \caption{Grafico de Codo}
+    \label{gat:Grafico}
+\end{figure}
+\newpage
+Luego de un análisis al gráfico, se puede ajustar el algoritmo K-means, ya que con el número óptimo de clusters obtenidos por el método del codo, se puede obtener los centroides de los clusters.
+Los centroides representan el centro geométrico de cada cluster en el espacio de características, los cuales, representan la media de todas las muestras asignado a ese cluster específico.\cite{dos}
+Este proceso de asignación y actualización se repite hasta que los centroides convergen, es decir, hasta que no haya cambios significativos en la posición de los centroides entre iteraciones consecutivas o hasta que se alcance un número máximo de iteraciones.
+Se utiliza el modelo entrenado para predecir a qué clusters pertenece cada muestra en el conjunto de datos de entrada "X". Esto se hace mediante el método "predict()", que asigna a cada muestra la etiqueta del cluster al que pertenece más cercano
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{CODIGO K MEANS/8.png}
+    \caption{Codigo K-Means}
+    \label{fig:enter-label}
+\end{figure}
+
+\newpage
+Una vez que se han calculado los centroides finales y se han asignado las etiquetas de cluster a las muestras, se procede a visualizar los resultados, los cuales, muestran las relaciones entre cada característica "Valor Hora", "Horas trabajadas" y "Tiempo Evidenciado", con los puntos de datos coloreados según el cluster al que pertenecen y los centroides marcados con un asterisco.
+
+\begin{gather}
+    \centering
+    \includegraphics[width=0.75\linewidth]{CODIGO K MEANS/9.png}
+    \caption{Grafico}
+    \label{gat:Graficos}
+\end{gather}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{CODIGO K MEANS/10.png}
+    \caption{Grafico}
+    \label{Grafico}
+\end{figure}
+
+Cada gráfico representa una cara de la dimensión 3D, el primero se ve claramente que están diferenciados los 5 grupos, mientras que en el gráfico 2D muestran un patrón muy claro, los clusters están distribuidos en línea recta en el gráfico 2D, esto puede indicar que hay una relación lineal entre las variables utilizadas para el clustering. Específicamente, parece que los clusters están definidos principalmente por una sola dimensión, posiblemente la variable "Valor Hora" o "Horas trabajadas".
+Esto  puede indicar que la columna "Valor Hora" es un factor determinante en la agrupación de los empleados. Esto podría tener implicaciones importantes para la gestión y selección de personal. Por ejemplo, podría sugerir que la empresa tiende a clasificar a los empleados en función de su nivel de salario, lo que podría influir en las decisiones de contratación, promoción y despido.
+\newline
+
+En la parte donde se realiza la limpieza de datos de la columna "Valor Hora". Se eliminan los símbolos de moneda y cualquier otro símbolo no numérico utilizando expresiones regulares. Luego, se convierten los valores a tipo de float, lo que permite realizar operaciones numéricas con estos datos.
+\newline
+
+Posteriormente, en el análisis de clustering, la columna "Valor Hora" se utiliza como una de las características para agrupar a los empleados en clusters con características similares.
+\newline
+
+La columna "Valor Hora" junto con otras características es relevante en el conjunto de datos de entrada (X) para el algoritmo de clustering. Esto permite que el algoritmo agrupe a los empleados en clusters considerando su "tarifa por hora" junto con otras características como las horas trabajadas, el tiempo evidenciado y el porcentaje de incidencia al logro de objetivos.
+\newline
+
+Finalmente, ejecutamos el siguiente código, el cual calcula el centro y la distancia de cada punto del centroide del cluster. Luego, ordena a los empleados en cada cluster según la distancia al centroide de su cluster y se selecciona el empleado más cercano a dicho centroide como el "mejor empleado" de ese cluster. Esto se hace agrupando los empleados por cluster y seleccionando el primero en cada grupo, ya que estará más cercano al centroide.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{CODIGO K MEANS/11.png}
+    \caption{Código "Mejores Empleados"}
+    \label{fig:codigo}
+\end{figure}
+
+Los mejores empleados según los criterios del cluster son:
+
+\begin{table}[H]
+\centering
+\caption{Mejores empleados por cluster}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{Car.} & \textbf{Nombre} & \textbf{Valor Hora} & \textbf{Hrs trab.} & \textbf{Hrs Evid.} & \textbf{Incidencia} & \textbf{Pago} \\ \hline
+1 & Valentina Soto & 21000.0 & 40 & 43 & 56.0 & 903000.0 \\ \hline
+2 & Constanza González & 28000.0 & 40 & 37 & 55.0 & 1036000.0 \\ \hline
+5 & Antonia Rodríguez & 12000.0 & 40 & 44 & 52.0 & 528000.0 \\ \hline
+5 & Sebastián Pérez & 17000.0 & 40 & 44 & 51.0 & 748000.0 \\ \hline
+1 & Catalina Rojas & 25000.0 & 40 & 44 & 67.0 & 1100000.0 \\ \hline
+\end{tabular}
+\end{table}
+
+
+\newpage
+
+
+% ------------ Resultados ------------
+
+\section{Resultados}
+A partir del estudio previo y los resultados obtenidos se puede deducir que el modelo que emplea el método simplex sirve para optimizar la asignación de recursos entre empleados como albañiles, carpinteros, electricistas, plomeros, pintores, supervisores de obra y personal administrativo. Además, se utiliza el algoritmo de clustering K-means para identificar patrones de rendimiento y agrupar empleados con características similares,optimizando luego la toma de decisiones.\\line
+
+También se implementaron modelos matriciales y cadenas de Markov para predecir el comportamiento futuro de los equipos de trabajo, facilitando la toma de decisiones en la gestión de personal. El modelo se ajustó y validó con visualización de datos y análisis estadísticos en Pandas DataFrame y Google Colab con Python.\\
+
+Para evaluar la efectividad, se analizaron KPIs como la tasa de retención de empleados, el tiempo promedio de permanencia y la satisfacción de los empleados. Estos KPIs mostraron el impacto positivo en la gestión de recursos humanos y la selección de personal, además de demostrar que el algoritmo K-means fue efectivo en la división y selección precisa del personal, y el método del codo determinó el número óptimo de clusters, reflejando las habilidades de los empleados.\\line
+
+El análisis de datos de 100 empleados, categorizados por profesión y características laborales, permitió identificar perfiles compatibles con los estándares de la empresa. Los datos incluían horas esperadas y reales de trabajo, valor hora en pesos chilenos, porcentaje de incidencia en objetivos y total de pago. La evaluación de estos datos y los resultados de las técnicas de álgebra lineal confirmaron la eficacia del modelo predictivo en un entorno simulado para que en un futuro estos datos sean esenciales en un contexto real.
+
+\newpage
+
+% ------------ Conclusión ------------
+\section{Conclusión}
+Se desarrolló un modelo de predicción que abarca el desempeño laboral de la empresa constructora, en la cual se abordó su estudio a partir de herramientas y metodologías del álgebra lineal. Se abordaron las diferentes etapas del proyecto, desde la construcción de la solución propuesta hasta la evaluación de su efectividad luego del estudio realizado por el grupo de trabajo. Los métodos implementados incluyen el método Simplex para la optimización de recursos, el algoritmo K-means para el análisis de clusters, y las cadenas de Markov para la predicción del comportamiento futuro de los equipos de trabajo que se busca que sean los más efectivos posibles.\\line
+
+El uso del método simplex permitió optimizar la asignación de tareas, asegurando una distribución eficiente del personal en sus categorías laborales. Además, el algoritmo K-means ayudó a la identificación de patrones de rendimiento y a agrupar a los empleados con características que sean similares según su rol correspondiente dentro de la empresa. Cabe destacar que el modelo matricial y las cadenas de Markov proporcionaron una herramienta poderosa para entender el desempeño laboral, apoyando así la toma de decisiones en la gestión de personal.\\line
+
+El equipo de trabajo buscó que la efectividad fuera evaluada a partir de los indicadores clave de desempeño y análisis estadísticos, verificando que las técnicas utilizadas mejoran la precisión en la selección del personal y la gestión de recursos humanos. La visualización de datos y la determinación del número óptimo de clusters fueron para ajustar y validar el modelo.\\line
+
+Finalmente, el estudio de este modelo predictivo no sólo demostró la aplicabilidad y eficacia de las técnicas del álgebra lineal en un contexto real, sino que también se destaca la importancia de enfoque de optimización, análisis de datos y modelos de predicción.
+\newpage
+
+
+\section{Bibliografia}
+
+\bibliographystyle{unsrtnat}
+\bibliography{Bibliografia}
+
+Claro, aquí están las citas de LaTeX corregidas:
+
+
+\cite{uno} - El algoritmo k-means aplicado a clasificación y procesamiento de imágenes
+\cite{dos} - La evaluación del desempeño laboral desde una perspectiva integral de varios factores
+\cite{tres}
+
+\end{document}

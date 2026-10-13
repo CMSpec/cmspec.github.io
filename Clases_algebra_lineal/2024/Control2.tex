@@ -1,0 +1,344 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\newtheoremstyle{exampstyle}
+  {\topsep} % Space above
+  {\topsep} % Space below
+  {\itshape} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {.} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning `normal')
+\theoremstyle{exampstyle}
+\newtheorem{thm}{Teorema}[chapter]
+\newtheorem{prop}[thm]{Proposici\'on}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corolario}
+\theoremstyle{definition}
+\newtheorem{thme}{Expected Theorem}
+
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{conj}{Conjecture}
+\newtheorem{defin}[thm]{Definici\'on}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+
+\fancyhead[L]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+
+\thispagestyle{fancy}
+\vspace*{1cm}
+
+\begin{minipage}[r]{12cm}
+    \begin{flushright}
+\begin{tikzpicture}
+\draw[green, very thick] (0,0) rectangle (3,2);
+\end{tikzpicture}
+    \end{flushright}
+\end{minipage}
+
+\begin{center}
+\Large{\textbf{Control 2\\ Álgebra Lineal\\ }}
+\end{center}
+\vspace{1cm}
+\begin{minipage}[r]{15cm}
+\begin{flushleft}
+
+Fecha: 27 de mayo 2024 \\%
+Duración: 120 minutos  \\
+Profesores: Camila Muñoz.\\\hspace{1.7cm} Adrián Silva.\\
+\end{flushleft}
+\end{minipage}
+\vspace{2cm}
+\begin{center}
+\Large{\textbf{Facultad de Ingeniería}}
+\end{center}
+\vspace{1cm}
+\textbf{En caso de que un alumno sea sorprendido en actitudes deshonestas, ya sea intentando o
+dejándose copiar, será calificado con nota mínima 1.0 y perderá toda posibilidad de eliminar
+dicha nota. Además, esta conducta quedará archivada como antecedente en su carpeta y
+podrá ser causal de eliminación.
+Así mismo, está prohibido salir de la sala, usar o mantener sobre la mesa teléfonos celulares
+o cualquier tipo de aparato electrónico, a no ser que el profesor lo requiera.}\\
+
+
+
+\vspace{5cm}
+\makebox[12cm]{\textbf{Nombre Alumno}:\ \hrulefill} 
+\newpage
+\thispagestyle{empty}
+\section*{Preguntas}
+\begin{enumerate}
+
+
+\item {\bf (15 puntos)} Resuelva los siguientes ejercicios:
+\begin{enumerate} 
+    \item Sean $v = (1, 1, k)$ , $u = (k, 0, 2)$ y $ w = (1, 1, 1)$ ¿Para que valores de $k\in \mathbb{R}$ el vector $w$ es combinaci\'on lineal de vectores $v$ y $u$?
+    \item Determine el valor de $k$ tal que los vectores $(1, k, 4k+2)$ y $(2, k, 1 )$ sean ortogonales con el producto interno usual.
+\item Sea $V=M_2(\mathbb{R})$, con el producto interno habitual: $\langle A, B\rangle = tr(A^tB)$. Encuentre el valor de $x$, n\'umero real positivo, en las matrices ${A=\begin{pmatrix} x & 0 \\  0 & x\end{pmatrix}}$ y $B=\begin{pmatrix} \sqrt{2} & x \\  1 & 0\end{pmatrix}$ para que el \'angulo entre ellas sea $\dfrac{1}{2}$.
+\end{enumerate}
+%det()=-k(-K+1)
+\textbf{Soluci\'on:} 
+\begin{enumerate}
+    \item Para determinar para qu\'e valores de $k\in \mathbb{R}$ el vector $w$ es combinaci\'on lineal de vectores $v$ y $u$ basta con calcular el determinante e igualar a cero, en cuyo caso los vectores son L.D.
+\[    \begin{vmatrix} 1 & k & 1 \\ 1 & 0 & 1 \\ k & 2 & 1 \end{vmatrix}=-k(-k+1)=0\]
+Luego, los vectores son L.D. si $k=0$ y $k=1$.
+\item Primero calculamos el producto punto e igualamos a cero:
+\[(1, k, 4k+2)\cdot (2, k, 1 )=2+k^2+4k+2=k^2+4k+4=(k+2)^2=0.\]
+Por lo tanto, son ortogonales cuando $k=-2$.
+\item Buscamos $x>0$ tal que $  \cos \dfrac{1}{2} =\dfrac{\langle A, B\rangle}{\|A\|\| B\|}.$ Primero calculamos el producto
+\[\langle A, B\rangle=tr\left(\begin{pmatrix} x & 0 \\  0 & x\end{pmatrix}\begin{pmatrix} \sqrt{2} & x \\  1 & 0\end{pmatrix}\right)=tr\begin{pmatrix} \sqrt{2}x & x^2 \\  x & 0\end{pmatrix}=\sqrt{2}x.\]
+
+Por otro lado, como $x>0$
+\begin{align*}
+    \|A\|=&\sqrt{tr(A^2)}=\sqrt{tr\begin{pmatrix} x^2 & 0 \\  0 & x^2\end{pmatrix}}=\sqrt{2}x\\
+    \| B\|=&\sqrt{tr(B^tB)}=\sqrt{tr\begin{pmatrix} 3 & \sqrt{2}x \\  \sqrt{2}x & x^2\end{pmatrix}}=\sqrt{3+x^2}
+\end{align*}
+Finalmente,
+\[\dfrac{\langle A, B\rangle}{\|A\|\| B\|}=\dfrac{\sqrt{2}x}{\sqrt{2}x\sqrt{3+x^2}}=\dfrac{1}{\sqrt{3+x^2}}=\cos \dfrac{1}{2},\]
+es decir, $3+x^2=\frac{1}{\cos^2\frac{1}{2}}$, luego $x=\sqrt{\frac{1}{\cos^2\frac{1}{2}}-3}=\sqrt{\sec^2\frac{1}{2}-3}$.
+\end{enumerate}
+\newpage
+
+\newpage
+%\item {\bf (12 puntos)} 
+    
+\newpage
+
+    
+%\newpage
+
+\newpage
+\item {\bf (15 puntos)} Para el subespacio de $P_2[\mathbb{R}]$ definido por
+\[H=\{ax^2+bx+c\in P_2[\mathbb{R}]\colon b=0 \wedge 2a-c=0 \}\]
+
+\begin{enumerate}
+\item Demuestre que es un subespacio vectorial de $P_2[\mathbb{R}]$.
+    \item Encuentre una base de $H$ y su dimensi\'on.
+\end{enumerate}
+\textbf{Soluci\'on:}
+\begin{enumerate}
+    \item Sea $p(x)=ax^2+bx+c$ y $q(x)=dx^2+ex+f$ vectores en $H$ y $\alpha \in \mathbb{R}$. Luego $b=e=0$, $2a=c$, $2d=f$
+    \[\alpha p(x)+q(x)=(\alpha a+d)x^2+(0)x+(\alpha 2a+2d)=(\alpha a+d)x^2+(0)x+2(\alpha a+d),\]
+    Por lo tanto, $\alpha p(x)+q(x)\in H$. 
+    \item \begin{align*}
+        H&=\{ax^2+bx+c\in P_2[\mathbb{R}]\colon b=0 \wedge 2a-c=0 \}\\
+        &=\{ax^2+2a\in P_2[\mathbb{R}]\colon a\in \mathbb{R} \}\\
+        &=\{a(x^2+2)\in P_2[\mathbb{R}]\colon a\in \mathbb{R} \}\\
+        &=<x^2+2>\\
+    \end{align*}
+Base de $H$=$x^2+2$ y $\operatorname{dim}H=1$.
+\end{enumerate}
+\newpage
+\item {\bf (15 puntos)} Sean los subespacios $U$ y $W$ de $\mathcal{M}_2[\mathbb{R}]$ definidos por 
+\[U=\left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix}\colon a+b=0\right\}, \qquad W=\left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix}\colon a+c=0\right\}\]
+
+\begin{enumerate}
+\item Determine $U \cap W$, una base para \'este y su dimensión.
+\item De un ejemplo de una matriz en $U+W$ y determine $\dim(U+W)$.
+\end{enumerate}
+\textbf{Soluci\'on:}
+\begin{enumerate}
+    \item Como
+    \begin{align*}
+        U \cap W&=\left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix}\colon a+b=0, a+c=0\right\}\\&=\left\{\begin{pmatrix} a & -a \\ -a & d \end{pmatrix}\colon a,d\in \mathbb{R}\right\}\\
+        &=a\left\{\begin{pmatrix} 1 & -1 \\ -1 & 0 \end{pmatrix}+d\begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}\colon a,d\in \mathbb{R}\right\}
+    \end{align*}
+Luego, base de $U\cap W=\langle\begin{pmatrix} 1 & -1 \\ -1 & 0 \end{pmatrix},\begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}\rangle$ y dimensi\'on de $U\cap W$ es 2.
+\item Una matriz en el espacio suma es por ejemplo: $\begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix}$.
+
+Para calcular la dimensi\'on de $U+W$ podemos usar el teorema de la suma de las dimensiones
+\[\dim_K(U+ W)=\dim_K(U)+\dim_K(W)-\dim_K(U\cap W).\]
+Pero
+    \begin{align*}
+        U &=\left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix}\colon a+b=0 \right\}\\&=\left\{\begin{pmatrix} a & -a \\ c & d \end{pmatrix}\colon a,c,d\in \mathbb{R}\right\}\\
+        &=a\left\{\begin{pmatrix} 1 & -1 \\ 0 & 0 \end{pmatrix}+c\begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}+d\begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}\colon a,d\in \mathbb{R}\right\}\\
+        W&=\left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix}\colon  a+c=0\right\}\\&=\left\{\begin{pmatrix} a & b \\ -a & d \end{pmatrix}\colon a,b,d\in \mathbb{R}\right\}\\
+        &=a\left\{\begin{pmatrix} 1 & 0 \\ -1 & 0 \end{pmatrix}+b\begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}+d\begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}\colon a,d\in \mathbb{R}\right\},
+    \end{align*}
+$\dim_K(U)=\dim_K(W)=3$. Finalmente, usando la parte anterior
+    \[\dim_K(U+ W)=3+3-2=4.\]
+\end{enumerate}
+
+
+\newpage
+    \item {\bf (15 puntos)} Considere el conjunto de vectores $S = \{( 1 , 0 , 0 ), ( 2 , 1 , 0 ) , ( 1 , 1 , 1 )\}$ en $\mathbb{R}^{3}$.
+\begin{enumerate}
+    \item Muestre que $S$ es base de $\mathbb{R}^{3}$.
+    \item Determine las coordenadas de $ ( 2 , 1 , 1 )$ en esta base.
+    \item Encuentre una base ortonormal de $\mathbb{R}^{3}$ a partir de $S$ usando el método de Gram-Schmidt.
+    \item Encuentre la proyección de $ ( 2 , 1 , 1 )$ sobre el plano generado solo por los vectores $\{( 1 , 0 , 0 ), ( 2 , 1 , 0 )\}$.
+\end{enumerate} 
+  \textbf{Soluci\'on:} 
+  \begin{enumerate}
+      \item Para determinar si el conjunto es base, basta demostrar que es L.I. Pues son 3 vectores en $\mathbb{R}^3$.
+\[    \begin{vmatrix} 1 &2 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{vmatrix}=1\neq 0.\]
+Por lo tanto, $S$ es base de $\mathbb{R}^3$.
+\item Haciendo la combinación lineal
+\[\alpha ( 1 , 0 , 0 )+\beta( 2 , 1 , 0 ) +\gamma ( 1 , 1 , 1 )=(2,1,1)\]
+obtenemos el sistema:
+\begin{align*}
+    \begin{pmatrix} 1 &2 & 1 &|2\\ 0 & 1 & 1&|1 \\ 0 & 0 & 1&|1 \end{pmatrix}
+\sim
+    \begin{pmatrix} 1 &0 & 0 &|1\\ 0 & 1 & 0&|0 \\ 0 & 0 & 1&|1 \end{pmatrix},
+\end{align*}
+por lo que $\alpha=1$,$\beta=0$ y $\gamma=1$.
+\item Proceso de Gram Schmidt
+\begin{enumerate}
+\item Escribimos $w_1 = ( 1 , 0 , 0 )$. 
+
+Luego 
+\[w_2 = ( 2 , 1 , 0 ) - \dfrac{\langle ( 2 , 1 , 0 ),( 1 , 0 , 0 )\rangle}{\langle ( 1 , 0 , 0 ),( 1 , 0 , 0 )\rangle}( 1 , 0 , 0 )=( 2 , 1 , 0 ) - \dfrac{2}{1}( 1 , 0 , 0 )=( 0 , 1 , 0 )\]
+%\item Suponemos que esta construcción de $w_k$ es posible hacerla hasta
+%obtener el conjunto ortogonal $ \{w_i\}_{i=1}^{m-1}$ con $w_k=v_k-\sum_{i=1}^{k-1}c_iw_i$.
+\item Calculamos 
+\[w_3=( 1 , 1 , 1 )-\dfrac{\langle ( 1 , 1 , 1 ),w_1\rangle}{\langle w_1,w_1\rangle}w_1-\dfrac{\langle ( 1 , 1 , 1 ),w_2\rangle}{\langle w_2,w_2\rangle}w_2=(0,0,1).\]
+Obteniendo un conjunto ortonormal, pues corresponde a la base canónica.
+\end{enumerate}
+\item Los vectores que generan el plano corresponden a los dos primeros vectores del conjunto $S$. Usando la parte anterior, tenemos que el plano generado
+\[W:=\langle (1,0,0), (2,1,0)\rangle=\langle (1,0,0), (0,1,0)\rangle,\]
+donde la segunda es una base ortonormal. Luego
+
+\[P_W(  2 , 1 , 1 ) = \langle ( 2 , 1 , 1 ) , (1,0,0)\rangle (1,0,0) + \langle ( 2 , 1 , 1 ) , (0,1,0)\rangle (0,1,0)=(2,1,0). \]
+  \end{enumerate}
+        
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+\newpage
+\section*{Formulario.}
+% \textbf{Subespacios vectoriales:} Se dice que $H$ es un subespacio vectorial de $V$ si $H$ para todo $\alpha \in \mathbb{R}$ y para todo $x, y \in H$, $\alpha x+y \in H$.
+
+% \textbf{Combinación Lineal} de $v_1, v_2, \dots, v_n$ vectores en un espacio vectorial $V$ es cualquier vector, $v$, de la forma: $v = a_1 v_1 + a_2v_2 + \cdots +a_n v_n$ donde $a_1, a_2, \dots a_n$ escalares.
+
+% \textbf{Independencia Lineal:} $A$ es Linealmente Independiente (L.I.) si $a_1 v_1 + a_2v_2 + \cdots +a_n v_n=0$ implica que $a_i=0$ para todo $i=1, \dots, n.$
+% %En caso contrario, $A$ se dice linealmente dependiente (L.D.).
+
+
+% \textbf{Bases:} Es un conjunto finito de vectores que es linealmente independiente y genera a $V$.
+
+
+
+
+% \begin{thm}
+% Si $A$ es una base para $V$ y si $v \in V$, entonces existe un conjunto único de escalares $c_1, c_2, \dots, c_n$ tales que $v = c_1v_1+c_2v_2 + \cdots c_nv_n$. Dichos escalares son las coordenadas de $v$ en la base $B$ y se denotan por $[v]_B=(a_1,\dots, a_n)$.
+
+
+% \end{thm}
+
+\begin{itemize}
+ 
+
+
+    \item\textbf{Suma de subespacios:} Sea $V$ un espacio vectorial sobre $\mathbb{R}$ y sean $W_1, W_2 \leq V$ subespacios. Suma de los subespacios 
+\[W_1+W_2=\{v_1+v_2 \colon v_i\in W_i \text{ con } i=1,2\}.\]
+
+
+    \item
+Sean $W_1, W_2$ subespacios vectoriales de dimensi\'on finita de un
+$\mathbb{R}-$espacio vectorial $V $. Entonces $W_1 + W_2$ es de dimensi\'on finita y
+\[\dim_K(W_1+ W_2)=\dim_K(W_1)+\dim_K(W_2)-\dim_K(W_1\cap W_2).\]
+
+
+    \item $V$ es \textbf{Suma directa} de $W_1 \oplus W_2$ si y sólo si $ W_1 + W_2= W$ y además $W_1 \cap W_2 = \{ 0\}$.
+
+
+
+
+
+
+
+%\subsection*{Espacio Euclídeos} 
+
+
+
+    \item Los vectores $u,v\in V$ son \textbf{ortogonales}( $u\perp w$) si $\langle v, w \rangle=0$.
+
+    \item Un conjunto $S$ se llamará una \textbf{base ortogonal} si $S$ es una base de $V$ y si los vectores son ortogonales de a pares.
+
+    \item \textbf{Coordenada de $v$ respecto de la base ortogonal $\{w_i\}$:} $a_i=\frac{\langle v, w_i \rangle}{\langle w_i, w_i \rangle}$.
+
+    \item \textbf{Norma de $v\in V$: } $\|v\| = \sqrt{\langle v, v\rangle}.$
+
+    \item \textbf{Vector normal: } vector de norma 1. Vector normal asociado a $v\in V$ es $\hat{v}=\dfrac{v}{\|v\|}.$
+
+
+
+%\begin{defin}
+%El conjunto de todos los vectores ortogonales a un conjunto $S$ no vacío, es un s.e.$v$ de $V$ y se le llama subespacio vectorial ortogonal a $S$. Notación: $S^\perp $.
+%$S^\perp$ es s.e.v. ortogonal con $<S>$, se dice que $ S^\perp$ y $<S>$ son s.e.v. complementos.
+
+
+    \item \textbf{\'Angulo entre vectores:} Si el ángulo formado por $v$ y $w$ mide $\alpha\in [0,\pi ]$, entonces $ \cos \alpha =\dfrac{\langle v, w\rangle}{\|v\|\| w\|}.$
+
+    \item \textbf{La distancia} entre dos vectores se define como $d(u,v)=\|u-v\|.$
+
+    \item \textbf{Proceso de ortogonalizaci\'on de Gram Schmidt.}
+
+Sea $B = \{v_i\}_{i=1}^m $ una base ordenada cualquiera de $W $.
+\begin{enumerate}
+\item Escriba $w_1 = v_1$. Calcule $w_2 = v_2 - \dfrac{\langle v_2,v_1\rangle}{\langle v_1,v_1\rangle}v_1$.
+%\item Suponemos que esta construcción de $w_k$ es posible hacerla hasta
+%obtener el conjunto ortogonal $ \{w_i\}_{i=1}^{m-1}$ con $w_k=v_k-\sum_{i=1}^{k-1}c_iw_i$.
+\item Calcule de manera sucesiva
+\[w_i=v_i-\dfrac{\langle v_i,w_1\rangle}{\langle w_1,w_1\rangle}w_1-\dfrac{\langle v_i,w_2\rangle}{\langle w_2,w_2\rangle}w_2-\dots-\dfrac{\langle v_i,w_{i-1}\rangle}{\langle w_{i-1},w_{i-1}\rangle}w_{i-1}.\]
+Obteniendo un conjunto ortogonal.
+\item Para conseguir un conjunto ortonormal, calcule $u_i=\dfrac{w_i}{\|w_i\|}$.
+\end{enumerate}
+
+    \item \textbf{Proyección ortogonal de un vector sobre un subespacio}
+Sea $W$ un subespacio de $\mathbb{R}^n$ con base ortonormal $\{ u_1,u_2, \dots , u_k  \}$. Si $v \in \mathbb{R}^n$, entonces la proyección ortogonal de $v$ sobre $W$, denotada por $P_W(v)$, está dada por:
+$P_W( v) = \langle v , u_1\rangle u_1 + \langle v , u_2\rangle u_2 + \cdots + \langle v , u_k\rangle u_k$. En el caso de que la base sea ortogonal, debemos dividir cada sumando por el cuadrado de la norma de $u_i$.
+\end{itemize}
+
+\end{document}

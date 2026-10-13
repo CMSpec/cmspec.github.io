@@ -1,0 +1,163 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+\title{Laboratorio 1}
+\date{}
+\fancyhead[L]{Universidad Finis Terrae \\ Facultad de Ingeniería \\ Algebra Lineal \\ 2do semestre de 2023}
+\fancyhead[R]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\section*{Los Enteros módulo $n$}
+\vspace{0.2 cm}
+
+Los enteros mód $n$ (see lee m\'odulo $n$) se han vuelto indispensables en la teoría y las aplicaciones del álgebra. Por ejemplo, se pueden aplicar en criptografía, teoría de códigos, y la detección de errores en códigos de identificación.
+
+Dos enteros $a$ y $b$ son equivalentes mód $n$, es decir, representan el mismo elemento, si 
+$n$ divide a $a-b$.
+
+Los enteros mód $n$ también particionan 
+$\mathbb{Z}$ en $n$ distintos subconjuntos; denotaremos el conjunto de subconjuntos(llamados clases de equivalencia) por $\mathbb{Z}_n$.
+
+En \textit{Mathlab} podemos escribir
+
+\[\texttt{b=mod(a,n)}\]
+entrega el resto después de dividir $a$ por $n$, donde $a$ es el dividendo y $n$ es el divisor. La función \texttt{mod} sigue la convención de que \texttt{mod(a,0)} devuelve $a$.
+
+% Considere los enteros módulo 12 y la correspondiente partición de los enteros, en las siguientes clases de equivalencia:
+%\begin{align*}
+%    [0]&=\{\dots, -12,0,12,24,\dots\}\\
+%    [1]&=\{\dots, -11,0,13,25,\dots\}\\
+%    \vdots & \\
+%    [11]&=\{\dots, -1,11,23,35,\dots\} 
+%\end{align*}
+%Por ejemplo, escribimos que la clase de equivalencia de cero, es igual a la de 12
+%\[[0]=[12]\]
+%Cuando no haya posibilidad de confusión, usaremos $0,1,\dots,11$ para indicar las clases de equivalencia $$[0],[1],\dots,[11]$$ respectivamente. 
+Podemos hacer aritmética en $\mathbb{Z}_n$. Para dos enteros $a$ y $b$, definimos adición módulo $n$ como $(a+b)\mod n$; es decir, el resto de la división de $a+b$ entre $n$. Similarmente, la multiplicación módulo $n$ se define como $(ab)\mod n$, el resto de la división de $ab$ entre $n$. Por ejemplo, en $\mathbb{Z}_{12}$, la suma $[5]+[9]=[14]=[2]$.
+
+M\'as a\'un, nos interesan los vectores con coordenadas en $\mathbb{Z}_n$. Por ejemplo, $\mathbb{Z}^m_n=\{(a_1,a_2,\dots,a_m)\;:\; a_i \in \mathbb{Z}_n\}$. Defina una operación en $\mathbb{Z}^m_n$ por
+\[(a_1,a_2,\dots,a_m)+(b_1,b_2,\dots,b_m)=(a_1+b_1,a_2+b_2,\dots,a_m+b_m),\]
+es decir, la suma usual de vectores. Luego se calcula a qu\'e clase de equivalencia corresponde cada coordenada.
+
+
+\section*{N\'umeros binarios}
+\vspace{0.2 cm}
+
+Usualmente, usamos el sistema numérico \textbf{decimal} para representar n\'umeros, usando dígitos entre 0 y 9. Escribimos diferentes cantidades utilizando una combinación de estos símbolos y cada d\'igito adicional aumenta el orden de magnitud en 10. Por ejemplo, $65=6\cdot 10+5$. Cuando escribamos en sistema decimal, usaremos la notaci\'on $65_{10}$.
+
+En el sistema \textbf{binario}, los números se representan usando s\'olo dos símbolos diferentes que son el 0 y el 1. En este caso, cada posici\'on (de derecha a izquierda) nos indica la potencia de 2 que se sumar\'a. Siguiendo con el ejemplo anterior, \[65_{10}=1000001=2^6+0+0+0+0+0+2^0=64+1.\] Cuando escribamos en sistema binario, usaremos la notaci\'on $1000001_{2}$.
+\begin{itemize}
+
+\end{itemize}
+
+\section*{Teor\'ia de c\'odigos}
+\vspace{0.2 cm}
+En teor\'ia de c\'odigos los mensajes se transforman en vectores en $\Z_2^n$, donde cada coordenada se conoce como \emph{bit}.  El conjunto de todos los vectores posible se llama código y la transformaci\'on se hace a través de un mecanismo llamado codificador. El mensaje es transmitido y luego decodificado. 
+
+Consideraremos la aparición de errores durante la transmisión. Un error ocurre si hay un cambio en uno o más bits de la palabra del código. Un protocolo decodificador es un método que ya sea convierte 
+vectores en $\Z_2^n$ arbitraria recibida en un mensaje decodificado coherente o da un mensaje de error para ese vector. 
+
+Si el mensaje recibido es una palabra del código (vector permitido), entonces el mensaje decodificado debe ser el mensaje que fue codificado en la palabra del código. 
+
+Para los vectores recibidos que no están en el código, el protocolo dará una indicación de error, o, si somos más astutos, tratará de corregir el error y reconstruir el mensaje original. Nuestro objetivo es transmitir mensajes libres de errores de la forma más barata y rápida posible.
+
+\vspace{0.2 cm}
+\textbf{Problema a resolver:}
+\vspace{0.2 cm}
+
+
+
+
+
+\begin{enumerate}
+\item Estudie el conjunto $\mathbb{Z}_2$ y haga una tabla de las operaciones suma y multiplicaci\'on. Verifique usando \emph{Mathlab}.
+\item Investigue sobre el código ASCII (American Standard Code for Information Interchange) como vectores en $\Z_2^n$, explicitando $n$, el n\'umero total de vectores posibles, n\'umero de caracteres ASCII, etc).
+\item En el código ASCII, ¿qué se puede o debe hacer con el/los bits restantes? Investigue sobre \emph{la paridad} en el c\'odigo y como se relaciona con el producto punto de un vector $x=(x_1,\dots, x_n)$ que todos los d\'igitos son 1, es decir,
+\[\textbf{1}^t\cdot x=1\cdot x_1+\cdots+ 1\cdot x_n.\]
+¿Cómo se relaciona la paridad con la detecci\'on de errores? ¿En un mismo mensaje se puede detectar m\'as de un error? Justifique.
+\item Sea $H$ una matriz en $\mathcal{M}_{m \times n}(\Z^2)$, es decir, cuyas entradas
+son 0 o 1. Se denota como espacio nulo de $H$ al conjunto
+\[\operatorname{Nul}(H)=\{y\in \Z^n_2\colon Hy=0\},\]
+dicho conjunto se conoce como c\'odigo lineal.
+Verifique para la matriz 
+\[H=\begin{pmatrix}
+   0& 1& 0& 1& 0 \\
+    1& 1& 1& 1& 0 \\
+     0& 0& 1& 1& 1 
+\end{pmatrix}\]
+si los vectores $(1 1 1 1 0 0), (01011),(1111110), (010101)$ pertenecen o no al c\'odigo. En \emph{Mathlab}, use el comando \texttt{null}$(H)$ para encontrar los vectores en el c\'odigo.
+\end{enumerate}
+
+
+\textbf{Aspectos formales del Laboratorio}
+{\bf{Grupos de Trabajo}:} Los grupos de trabajo estarán conformados por 3 o 4 estudiantes y
+deben ser aprobados por el profesor. Se penalizarán las modificaciones posteriores de
+estos grupos.
+\vspace*{.5cm}
+
+Todas las entregas se deben realizar en el portal e-Finis en los buzones habilitados para
+tal efecto, no se aceptan trabajos enviados por correo. 
+
+\vspace*{.5cm}
+
+\noindent{\bf{Formato de Entrega}}
+Se deben entregar los documentos en PDF (en caso contrario no se corregirá el informe)
+en formato \LaTeX o con el formato entregado por su profesor.
+
+
+
+{\bf{NOTA}}
+La copia y/o plagio serán sancionados de acuerdo a lo estipulado en el Reglamento de la
+Universidad.
+\end{document}

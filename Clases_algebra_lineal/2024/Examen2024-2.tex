@@ -1,0 +1,148 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+\newcommand{\R}[1]{\mathbb{R}^{#1}}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+
+\fancyhead[L]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+
+\thispagestyle{fancy}
+\vspace*{1cm}
+
+\begin{minipage}[r]{12cm}
+    \begin{flushright}
+\begin{tikzpicture}
+\draw[green, very thick] (0,0) rectangle (3,2);
+\end{tikzpicture}
+    \end{flushright}
+\end{minipage}
+
+\begin{center}
+\Large{\textbf{Examen \\ Álgebra Lineal\\ }}
+\end{center}
+\vspace{1cm}
+\begin{minipage}[r]{15cm}
+\begin{flushleft}
+
+Fecha: marzo de 2025 \\%
+Duración: 120 minutos  \\
+Profesora: Camila Muñoz\\
+\end{flushleft}
+\end{minipage}
+\vspace{2cm}
+\begin{center}
+\Large{\textbf{Facultad de Ingeniería}}
+\end{center}
+\vspace{1cm}
+\textbf{En caso de que un alumno sea sorprendido en actitudes deshonestas, ya sea intentando o
+dejándose copiar, será calificado con nota mínima 1.0 y perderá toda posibilidad de eliminar
+dicha nota. Además, esta conducta quedará archivada como antecedente en su carpeta y
+podrá ser causal de eliminación.
+Así mismo, está prohibido salir de la sala, usar o mantener sobre la mesa teléfonos celulares
+o cualquier tipo de aparato electrónico, a no ser que el profesor lo requiera.}\\
+
+
+
+\vspace{5cm}
+\makebox[12cm]{\textbf{Nombre Alumno}:\ \hrulefill} 
+\newpage
+\thispagestyle{empty}
+
+\begin{enumerate}
+    \item {\bf (12 puntos)} Usando el teorema del rango, determine los valores de $\alpha$ de modo que el sistema
+    \begin{align*}
+ x + 3y &= 1 \\
+ x + 2y +z &= 0\\
+2 x + 5y +(\alpha -1) z &= 1-\alpha 
+\end{align*}
+
+    tenga solución única, infinitas soluciones o ninguna solución. Para $\alpha=0$, determine el conjunto soluci\'on del sistema.
+
+
+\newpage 
+
+\item Considere los conjuntos $B_1= \{ \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix} \}$ y $B_2= \{ \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \} $
+\begin{enumerate}
+    \item {\bf (6 puntos)} Muestre que tanto $B_1$ como $B_2$ son bases de $\mathbb{R}^3$
+    \item {\bf (6 puntos)} Encuentre la matriz de cambio de base de $B_1$ a $B_2$
+\end{enumerate}
+
+\newpage
+
+\item {\bf (12 puntos)} Demuestre que esta función $T: \mathbb{R}^{3} \to \mathbb{R}^{3}$ dada por $${T \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix}
+    2x+z \\ x-y+z \\ y+2z
+\end{pmatrix}}$$
+ es lineal y encuentre su matriz representante en la base canónica.
+
+\newpage
+    \item Sea $H$ el subconjunto de $\mathbb{R}^3$ definido por
+\[H=\{(x,y,z)\in\mathbb{R}^3\colon x-y+z=0  \}\]
+
+\begin{enumerate}
+    \item {\bf (6 puntos)} Demuestre que $H$ es un subespacio vectorial de $\mathbb{R}^3$.
+    \item {\bf (6 puntos)} Encuentre una base de $H$ y determine su dimensión.
+
+\end{enumerate}
+
+\newpage
+    \item Considere la siguiente matriz
+\[    A=\begin{pmatrix} 1 &0 & 0 \\ 2 & 1 & 4 \\ 1 & 1 & 1 \end{pmatrix}.\]
+\begin{enumerate}
+    \item {\bf (6 puntos)} Encuentre los valores propios de $A$.
+    \item {\bf (6 puntos)} Determine si es diagonalizable, en caso positivo, encuentre la matriz diagonal.
+\end{enumerate}
+\end{enumerate}
+
+
+\end{document}

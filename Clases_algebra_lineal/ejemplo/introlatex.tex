@@ -1,0 +1,179 @@
+\documentclass{beamer}
+
+\usepackage[spanish]{babel}
+
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{minted}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes,arrows,positioning,shadows}
+
+\newcommand{\bftt}[1]{\textbf{\texttt{#1}}}
+\newcommand{\comment}[1]{{\color[HTML]{008080}\textit{\textbf{\texttt{#1}}}}}
+\newcommand{\cmd}[1]{{\color[HTML]{008000}\bftt{#1}}}
+\newcommand{\bs}{\char`\\}
+\newcommand{\cmdbs}[1]{\cmd{\bs#1}}
+\newcommand{\lcb}{\char '173}
+\newcommand{\rcb}{\char '175}
+\newcommand{\cmdbegin}[1]{\cmdbs{begin\lcb}\bftt{#1}\cmd{\rcb}}
+\newcommand{\cmdend}[1]{\cmdbs{end\lcb}\bftt{#1}\cmd{\rcb}}
+
+\newenvironment{exampletwouptiny}
+  {\VerbatimEnvironment
+   \begin{VerbatimOut}{example.out}}
+  {\end{VerbatimOut}
+   \setlength{\parindent}{0pt}
+   \fbox{\begin{tabular}{l|l}
+   \begin{minipage}{0.55\linewidth}
+     \inputminted[fontsize=\scriptsize,resetmargins]{latex}{example.out}
+   \end{minipage} &
+   \begin{minipage}{0.35\linewidth}
+     \setlength{\parskip}{6pt plus 1pt minus 1pt}%
+     \raggedright\scriptsize\input{example.out}
+   \end{minipage}
+   \end{tabular}}}
+
+\title{\LaTeX}
+\author{DMCC poner los logos}
+
+\begin{document}
+\begin{frame}
+    \maketitle    
+\end{frame}
+
+\begin{frame}{Qué es}
+    Un sistema de preparación de documentos.
+    Es un  sistema de composición tipográfica de alta calidad. Diseñado para la producción de documentación técnica y científica. \LaTeX{} está disponible como software libre.
+\end{frame}
+
+
+\begin{frame}{Porqué \LaTeX}
+   \begin{itemize}
+       \item Produce documentos elegantes.
+       \item Está diseñado por y para científicos con una activa comunidad que lo mantiene. 
+       \item Es poderoso y versátil.
+   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{¿Cómo funciona?}
+\begin{itemize}
+\item Escribir el documento en texto plano, con comandos que le dan la estructura y significado. 
+\item Guardar el documento.
+\item EL programa de \LaTeX{} toma ese documento, lo procesa y produce un documento final con el formato y estructura que le pedimos.
+\end{itemize}
+\vskip 2ex
+\begin{center}
+\begin{minted}[frame=single]{latex}
+Esto es \emph{texto plano} y esto una variable $x$ 
+\end{minted}
+\vskip 2ex
+\tikz\node[single arrow,fill=gray,font=\ttfamily\bfseries,%
+  rotate=270,xshift=-1em]{latex};
+\vskip 2ex
+\fbox{Esto es \emph{texto plano} y esto una variable $x$}
+\end{center}
+\end{frame}
+
+\begin{frame}{Como usarlo}
+    Uno puede usar \LaTeX:
+    \begin{itemize}
+        \item Local: Descargando una distribución de \LaTeX, y escribiendo en el editor de texto favorito. \item Online: En nuestro caso usaremos Overleaf. 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Estructura de un documento}
+   
+    \begin{minted}[frame=single]{latex}
+    \documentclass{article}
+    \usepackage[spanish]{babel}
+    
+    \begin{document}
+    El contenido %cometario
+    \end{document}
+    \end{minted}
+\end{frame}
+
+\begin{frame}{El lenguaje de \LaTeX}
+    \begin{itemize}
+        \item Los comandos parten con \cmdbs{}
+        \item Todos los documentos deben partir con el comando \cmdbs{documentclass}
+        \item Los argumentos de un comando se entregan entre \cmd{\{ }y \cmd{\} } 
+        \item Algunos cáracteres tienen significados especiales en \LaTeX{} como \cmd{\$}, \cmd{\#}, \cmd{\%}, \cmd{\&} 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Como escribir matemáticas}
+    Para escribir matemáticas se debe usar \cmd{\$}
+
+    \begin{exampletwouptiny}
+Sean $a$ y $b \in \mathbb{N}$
+
+$a_0 + a_1x + a_2x^2 + a_3x^3 + \ldots$
+    \end{exampletwouptiny}
+\vspace{.5cm}
+    \begin{itemize}
+        \item Es importante abrir y cerrar el ambiente matemático
+        \item Existen comandos que solo funcionan dentro del ambiente matemático
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Como escribir matemáticas}
+Hay veces que la ecuación es más grande y no corresponde ponerla en la misma linea que el texto, en estos casos podemos usar \cmdbs{[} y \cmdbs{]} para abrir y cerrar el entorno matemático:
+      \begin{exampletwouptiny}
+Esta es una sumatoria importante:
+\[ S = \sum_{i=0}^n \frac{x^i}{i}\]
+Con esto podemos concluir algo más 
+importante ...
+\end{exampletwouptiny}
+\end{frame}
+
+\begin{frame}[fragile]{Ambientes}
+    \begin{itemize}
+        \item Los ambientes son diferentes contextos de interpretación de comandos y formatos.
+        \item Un mismo comando puede ser interpretado de manera distinta en distintos ambientes
+        \item Todos los ambientes deben partir con \cmdbs{begin} y terminar con \cmdbs{end}
+ \begin{exampletwouptiny}
+\begin{enumerate}
+    \item el item uno
+    \item el item dos
+\end{enumerate}
+
+este texto 
+\begin{center}
+    y este texto
+\end{center}
+\end{exampletwouptiny}
+\item El ambiente matemático también se puede usar con \cmdbegin{equation} y \cmdend{equation}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Paquetes}
+\begin{itemize}
+    \item \LaTeX{} viene con muchos comandos y ambientes por defecto. 
+    \item Un paquete es una libreria de comandos y ambientes que se pueden importar. 
+    \item Para importar un paquete se debe declarar en el preambulo con \cmdbs{usepackage}.
+\end{itemize}
+ \begin{minted}[frame=single]{latex}
+    \documentclass{article}
+    \usepackage[spanish]{babel}
+    \usepackage{amsmath}
+    
+    \begin{document}
+    El contenido %cometario
+    \end{document}
+    \end{minted}
+
+\end{frame}
+
+\begin{frame}{Ejemplos}
+
+Buscar ejemplos diversos de paquetes en diferentes areas, biologia quimica ciencias de la compu. etc.
+    
+\end{frame}
+
+\end{document}

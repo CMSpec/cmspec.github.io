@@ -1,0 +1,88 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}[1]{\mathbb{R}^{#1}}
+
+
+
+
+\title{Taller 3}
+\date{}
+\fancyhead[R]{Universidad Finis Terrae \\ Facultad de Ingeniería \\ Algebra Lineal \\ 2do semestre de 2024}
+\fancyhead[L]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}
+
+
+    \item Considere el conjunto $\{ ( 1 , \alpha , \alpha ), ( 1 , 2 , 1) , (\alpha , 2 , 1 )\}$.
+    \begin{enumerate}
+        \item   Determine para qu\'e valores de $\alpha$ el conjunto es li\-neal\-mente dependiente.
+        \item 
+ Determine la dimensión del espacio generado si $\alpha=2$.
+    \end{enumerate}
+
+\item Sea que $A$ es una matriz de orden $n$ y $x\in \mathbb{R}^n$ un vector no nulo. Supongamos
+que $A^2x = 0$, pero $Ax \neq 0$. Pruebe que $x$ y $Ax$ son linealmente independientes.
+
+
+    \item Sea $H$ el subconjunto de $\mathbb{R}^3$ definido por
+\[H=\{(x,y,z)\in\mathbb{R}^3\colon 2x-3y+z=0  \}\]
+
+\begin{enumerate}
+    \item  Demuestre que $H$ es un subespacio vectorial de $\mathbb{R}^3$.
+    \item  Encuentre una base de $H$ y determine su dimensión.
+    \end{enumerate}
+\item Considere el conjunto de vectores $S = \{( 1 , 0 , 0 ), ( 2 , 1 , 0 ) , ( 1 , 1 , 1 )\}$ en $\mathbb{R}^{3}$.
+\begin{enumerate}
+    \item Muestre que $S$ es base de $\mathbb{R}^{3}$.
+    \item Determine las coordenadas de $ ( 2 , 1 , 1 )$ en esta base.
+    \item Encuentre una base ortonormal de $\mathbb{R}^{3}$ a partir de $S$ usando el método de Gram-Schmidt.
+    \item Encuentre la proyección de $ ( 2 , 1 , 1 )$ sobre el plano generado solo por los vectores $\{( 1 , 0 , 0 ), ( 2 , 1 , 0 )\}$.
+\end{enumerate}
+
+\end{document}

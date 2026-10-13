@@ -1,0 +1,290 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+\begin{document}
+
+
+
+\setlength{\parindent}{0cm}
+
+\textbf{Ejercicio 1 (12 puntos):} Dada la función $f(x,y)= \frac{\cos(x^3+y^3)}{\ln(x^2+y^2)}$, determinar $f_{xx}$, $f_{yy}$ y $f_{xy}$ \\
+
+
+\textbf{Solución: }Derivamos
+
+\begin{align*}
+    f_x &= \frac{-3x^2\ln(x^2+y^2)\sin(x^3+y^3)-\cos(x^3+y^3)\frac{2x}{x^2+y^2}}{(\ln(x^2+y^2))^2} \\
+    f_y &= \frac{-3y^2\ln(x^2+y^2)\sin(x^3+y^3)-\cos(x^3+y^3)\frac{2y}{x^2+y^2}}{(\ln(x^2+y^2))^2}
+\end{align*}
+
+Vamos a necesitar definir unas funciones para que no quede tan largo. Sea
+
+\begin{align*}
+    A &= -3x^2\ln(x^2+y^2)\sin(x^3+y^3)-\cos(x^3+y^3)\frac{2x}{x^2+y^2} \\
+    B &= -3y^2\ln(x^2+y^2)\sin(x^3+y^3)-\cos(x^3+y^3)\frac{2y}{x^2+y^2}
+\end{align*}
+
+Entonces
+
+\begin{align*}
+    f_{xx} &= \frac{(\ln(x^2+y^2))^2A_x- \frac{4Ax\ln(x^2+y^2)}{x^2+y^2}}{(\ln(x^2+y^2))^4} \\
+   f_{yy} &= \frac{(\ln(x^2+y^2))^2B_y- \frac{4By\ln(x^2+y^2)}{x^2+y^2}}{(\ln(x^2+y^2))^4} \\
+   f_{xy} &= \frac{(\ln(x^2+y^2))^2A_y- \frac{4Ay\ln(x^2+y^2)}{x^2+y^2}}{(\ln(x^2+y^2))^4} \\
+\end{align*}
+
+Hasta aquí se considera bien porque el resulatado es extremadamente largo.
+
+
+\newpage
+
+
+\textbf{Ejercicio 2 (12 puntos):} Halle todos los puntos críticos de la función 
+
+\begin{align*}
+    f(x,y) &= y^3-x^3-6xy
+\end{align*}
+
+Clasifique estos puntos como máximo relativo, mínimo relativo o punto de silla. \\
+
+\textbf{Solución: } Calculamos el gradiente
+
+\begin{align*}
+    \nabla f = (-3x^2-6y, 3y^2-6x)
+\end{align*}
+
+Luego para tener un punto crítico necesitamos  $(-3x^2-6y, 3y^2-6x)=(0,0)$, luego
+
+\begin{align*}
+    -3x^2-6y &=0 \\
+    3y^2-6x &=0
+\end{align*}
+
+O bien
+
+\begin{align*}
+    -x^2-2y &=0 \\
+    y^2-2x &=0
+\end{align*}
+
+De la segunda ecuación obtenemos que $x = \frac{y^2}{2}$, reemplazando en la primera, obtenemos
+
+
+\begin{align*}
+    -\frac{y^4}{4}-2y &=0 \\
+    y^4+8y &=0 \\
+    y(y^3+8) &=0 \\
+\end{align*}
+
+De donde hay solo dos opciones $y=0$ o bien $y=-2$. Si $y=0$, entonces $x=0$ y si $y=-2$, entonces $x=2$. Por lo tanto los puntos críticos son $(0,0)$ y $(2,-2)$. Para saber que tipo de puntos son calculamos el Hessiano
+
+\begin{align*}
+    \begin{vmatrix}
+        f_{xx} & f_{xy} \\
+        f_{yx} & f_{yy}
+    \end{vmatrix} &= \begin{vmatrix}
+        -6x & -6 \\
+        -6 & 6y
+    \end{vmatrix} \\
+    &= -36xy-36
+\end{align*}
+
+Al evaluar en $(0,0)$ el determinante es menor que cero y por lo tanto es un punto crítico. Por otra parte para $(2,-2)$ se tiene que el determiante es mayor que cero y $f_{xx}(2,-2) =-12$ es menor que cero por lo tanto es un máximo local
+
+
+
+\newpage
+
+
+
+\textbf{Ejercicio 3 (12 puntos):} Cuando se utilizan $x$ unidades de mano de obra e $y$ unidades de capital, la producción total $P$ de un fabricante está dada por la función de producción:
+
+\begin{align*}
+    P(x,y) = 60x^{2/3}y^{1/3}
+\end{align*}
+
+Los costos de cada unidad de mano de obra y del capital son de US\$ 64 y \\US\$ 108 por unidad respectivamente. Suponga que el fabricante decide elaborar 2160 unidades de su producto. Halle el número de unidades de mano de obra y de capital que deben de emplearse con objeto de Minimizar el Costo Total. \\
+
+\textbf{Solución: } Queremos minimizar el costo total
+\[
+f(x,y)=64x+108y
+\]
+sujeto a la restricción de producción
+\[
+g(x,y) =60x^{2/3}y^{1/3}-2160.
+\]
+Según la regla de multiplicadores de Lagrange necesitamos
+
+\[
+\nabla f = \lambda \nabla g
+\]
+
+Luego 
+
+\begin{align*}
+    (64,108) = (40\lambda x^{-1/3}, 20\lambda y^{-2/3})
+\end{align*}
+
+De la primera coordenadad obtenemos
+\[
+40\lambda x^{-1/3}y^{1/3}=64
+\quad\Rightarrow\quad
+\lambda=-\frac{64}{40}x^{1/3}y^{-1/3}=-\frac{8}{5}x^{1/3}y^{-1/3}.
+\]
+De la segunda coordenada obtenemos
+\[
+20\lambda x^{2/3}y^{-2/3}=-108
+\quad\Rightarrow\quad
+\lambda=-\frac{108}{20}x^{-2/3}y^{2/3}=-\frac{27}{5}x^{-2/3}y^{2/3}.
+\]
+
+Igualando las dos expresiones para \(\lambda\)
+\[
+-\frac{8}{5}x^{1/3}y^{-1/3}=-\frac{27}{5}x^{-2/3}y^{2/3}
+\quad\Longrightarrow\quad
+8x^{1/3}y^{-1/3}=27x^{-2/3}y^{2/3}.
+\]
+Multiplicando por \(x^{2/3}y^{1/3}\) en ambos lados obtenemos
+\[
+8x=27y
+\quad\Rightarrow\quad
+x=\frac{27}{8}y.
+\]
+
+Ahora usamos la restricción \(60x^{2/3}y^{1/3}=2160\), es decir \(x^{2/3}y^{1/3}=36\). Sustituyendo \(x=\tfrac{27}{8}y\):
+\[
+\left(\frac{27}{8}y\right)^{2/3}y^{1/3}
+=\left(\frac{27}{8}\right)^{2/3}y^{2/3}y^{1/3}
+=\frac{9}{4}y =36.
+\]
+De donde
+\[
+y = 36\cdot\frac{4}{9}=16.
+\]
+Y entonces
+\[
+x=\frac{27}{8}\cdot 16 =54.
+\]
+
+
+\newpage
+
+
+
+\textbf{Ejercicio 4 (12 puntos):} Considere el campo vectorial $F(x,y) = (e^{2y}, 1+2xe^{2y})$ \\
+
+
+
+(a) demuestre que es conservativo \\
+(b) calcule su función potencial \\ 
+(c) luego calcule la integral de línea sobre $F$: \\
+
+\begin{align*}
+    \int_C F \cdot dr 
+\end{align*}
+
+Donde $C: r(t) =(te^t,(1+t))$ con $0 \leq t \leq 1$. \\
+
+\textbf{Solución: } a) Tenemos que $M= e^{2y}$ y $N= 1+2xe^{2y}$, tenemos que
+
+\begin{align*}
+    N_x=M_y= 2e^{2y}
+\end{align*}
+
+POo lo tanto es conservativo. \\
+
+
+b) Para la función potencia, calculamos
+
+\begin{align*}
+    f(x,y) &= \int_0^1 F(tx,ty) \cdot (x,y) dt \\
+    &= \int_0^1 (e^{2ty}, 1+2txe^{2ty} )\cdot (x,y) dt \\
+    &= \int_0^1 xe^{2ty} + y+2txye^{2ty}  dt \\
+    &= \left(\frac{x}{2y}e^{2ty}+ty+xe^{2ty}\left(t-\frac{1}{2y}\right) \right)\Big|_0^1\\
+    &= \left(ty+txe^{2ty} \right)\Big|_0^1\\
+    &= xe^{2y}+y
+\end{align*}
+
+c) Notamos que el punto inicial es $r(0)=(0,1)$ y el fial es $r(1) = (e,2)$, luego por el teorema fundamental de las integrales de línea
+
+\begin{align*}
+    \int_C F \cdot dr &= f(e,2) -f(0,1) \\
+    &= ee^4+2 -1 \\
+    &= e^5+1 \\
+\end{align*}
+
+
+\newpage
+
+
+\textbf{Ejercicio 5 (12 puntos):} Utilice el Teorema de Green para calcular $\displaystyle \int_C F \cdot dr$, donde $F(x,y) =(y^2-x^2,xy^2)$  y $C$ es el círculo $x^2+y^2=4$ de $(2,0)$ a $(\sqrt{2},\sqrt{2})$  y  los segmentos de recta de $(\sqrt{2},\sqrt{2})$ a $(0,0)$ y de $(0,0)$ a $(2,0)$. \\
+
+\textbf{Solución: } Notemos que $M= y^2-x^2$ y $N= xy^2$, luego $M_y= 2y$ y $N_x= y^2$. Por el teorema de Green tenemos que 
+
+\begin{align*}
+    \int_C F \cdot dr = \iint_R y^2-2y dA 
+\end{align*}
+
+La región $R$ se puede pasar a polares y nos queda
+
+\begin{align*}
+    \int_C F \cdot dr &= \iint_R y^2-2y dA \\
+                    &= \int_0^{\pi/4} \int_0^2 (r^2\sin^2(\theta)-2r\sin(\theta))r drd\theta \\
+                    &= \int_0^{\pi/4} \int_0^2 r^3\sin^2(\theta)-2r^2\sin(\theta) drd\theta \\
+                    &= \int_0^{\pi/4}\left(\sin^2(\theta)\frac{r^4}{4}-\frac{2r^3}{3}\sin(\theta) \right) \Big|_0^2 d\theta \\
+                    &= \int_0^{\pi/4} 4\sin^2(\theta)-\frac{16}{3}\sin(\theta)  d\theta \\
+                    &= \left(4\left( \frac{\theta}{2}-\frac{\sin(2\theta)}{4}\right)+\frac{16}{3}\cos(\theta)  \right) \Big|_0^{\pi/4}\\
+                    &= \frac{\pi}{2}-1 +\frac{8\sqrt{2}}{3}- \frac{16}{3} \\
+                    &= \frac{\pi}{2}-\frac{19}{3} +\frac{8\sqrt{2}}{3}
+\end{align*}
+
+\end{document}

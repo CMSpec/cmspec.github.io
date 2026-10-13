@@ -1,0 +1,171 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+
+\fancyhead[L]{\includegraphics[scale=0.3]{UFT.png}}
+
+\begin{document}
+
+
+\thispagestyle{fancy}
+\vspace*{1cm}
+
+\begin{minipage}[r]{12cm}
+    \begin{flushright}
+\begin{tikzpicture}
+\draw[green, very thick] (0,0) rectangle (3,2);
+\end{tikzpicture}
+    \end{flushright}
+\end{minipage}
+
+\begin{center}
+\Large{\textbf{Control 2\\ Álgebra Lineal\\ }}
+\end{center}
+\vspace{1cm}
+\begin{minipage}[r]{15cm}
+\begin{flushleft}
+
+Fecha: 29 de mayo de 2023 \\%
+Duración: 120 minutos  \\
+Profesores: Sebastián Cea.\\\hspace{1.7cm} Camila Muñoz\\
+\end{flushleft}
+\end{minipage}
+\vspace{2cm}
+\begin{center}
+\Large{\textbf{Facultad de Ingeniería}}
+\end{center}
+\vspace{1cm}
+\textbf{En caso de que un alumno sea sorprendido en actitudes deshonestas, ya sea intentando o
+dejándose copiar, será calificado con nota mínima 1.0 y perderá toda posibilidad de eliminar
+dicha nota. Además, esta conducta quedará archivada como antecedente en su carpeta y
+podrá ser causal de eliminación.
+Así mismo, está prohibido salir de la sala, usar o mantener sobre la mesa teléfonos celulares
+o cualquier tipo de aparato electrónico, a no ser que el profesor lo requiera.}\\
+
+
+
+\vspace{5cm}
+\makebox[12cm]{\textbf{Nombre Alumno}:\ \hrulefill} 
+\newpage
+\thispagestyle{empty}
+\section*{Preguntas}
+\begin{enumerate}
+
+
+    \item Sean $v = (1, -2, k)$ , $u = (3, k, -2)$ y $ w = (2, -1, 1)$ 
+    \begin{enumerate}
+        \item {\bf (6 puntos)} ¿Para que valores de $k\in \mathbb{R}$ el vector $v$ es combinaci\'on lineal de los vectores $u$ y $w$?
+        \item {\bf (6 puntos)} Si $k=2$, ¿cu\'al es la dimensi\'on del espacio generado?
+    \end{enumerate}
+
+    
+\newpage
+
+\newpage
+\item {\bf (12 puntos)} Determine si el siguiente conjunto es linealmente dependiente o independiente en el $\mathbb{R}-$ espacio vectorial $M_{2}(\mathbb{R})
+
+\[\left\{\begin{pmatrix} -2 & 1 \\ 1 & 0 \end{pmatrix},\begin{pmatrix} 1 & -1 \\ 0 & 2 \end{pmatrix},\begin{pmatrix} -1 & 0 \\ 1 & 2 \end{pmatrix},\begin{pmatrix} 0 & -3 \\ 1 & 2 \end{pmatrix}\right\}. \]
+
+\newpage
+    \item Consideremos $V$ un espacio vectorial de dimensión $3$.
+    \begin{enumerate}
+        \item {\bf (6 puntos)} Sea $\{ v_1, v_2 , v_3 \}$ una base de $V$. Demuestre que \textbf{para todo} $\lambda \neq 0$ el conjunto $\{ \lambda v_1, v_2 , v_3  \}$ es tambi\'en una base.
+        
+        \item {\bf (6 puntos)} Demuestre que si $\lambda =0$, el conjunto $\{ \lambda v_1, v_2 , v_3  \}$ no es una base de $V$. (\textbf{Hint:} Intente escribir el vector $v_1$ como combinaci\'on lineal de los vectores $\lambda v_1, v_2 , v_3 $).
+
+    \end{enumerate}
+
+    \newpage
+\newpage
+
+    \item Sea $H$ el subconjunto de $\mathbb{R}^3$ definido por
+\[H=\{(x,y,z)\in\mathbb{R}^3\colon x+y-2z=0  \}\]
+
+\begin{enumerate}
+    \item {\bf (4 puntos)} Demuestre que $H$ es un subespacio vectorial de $\mathbb{R}^3$.
+    \item {\bf (4 puntos)} Encuentre una base de $H$ y determine su dimensión. 
+    \item {\bf (4 puntos)} ?`Es una base ortogonal??`Es ortonormal? En caso de no serlo, ortonormalice la base.
+\end{enumerate}
+
+        
+        
+   \newpage 
+
+\section*{Formulario}
+
+\begin{itemize}
+    \item {\bf Subespacio vectorial: }Si para todo $\alpha \in K$ y para todo $x, y \in H$, $\alpha x+y \in H$, entonces $H$ es subespacio vectorial.
+    \item {\bf Combinación lineal: } Un vector de la forma $v = a_1 v_1 + a_2v_2 + \cdots +a_n v_n$, donde $a_1, a_2, \dots a_n$ son escalares, se denomina una combinación lineal de $v_1, v_2, \dots , v_n$.
+\item {\bf Linealmente Dependiente e Independiente: }El conjunto $A=\{v_1, v_2, \dots, v_n\}$ es
+Linealmente Independiente (L.I.) si $ a_1 v_1 + a_2v_2 + \cdots +a_n v_n=0$ implica que $a_i=0$ para todo $i=1, \dots, n.$ En caso contrario, es linealmente dependiente (L.D.).
+\item {\bf Base: } Un conjunto $\{ v_1,v_2, \dots, v_n \}$ es una base para un espacio vectorial $V$ si $\{ v_1,v_2, \dots, v_n \}$ es linealmente independiente y genera a $V$.
+\item \textbf{Procedimiento para obtener una base ortonormal}
+Sea $B = \{v_i\}_{i=1}^m $ una base ordenada cualquiera de $W $. 
+\begin{itemize}
+    \item Escribimos $w_1 = v_1$. 
+    \item Calculamos $w_2=v_2-\dfrac{<v_2,w_1>}{<w_1,w_1>}w_1$.
+    \item Calculamos $w_3=v_3-\dfrac{<v_3,w_1>}{<w_1,w_1>}v_1- \dfrac{<v_3,w_2>}{<w_2,w_2>}w_2$.
+    \item Inductivamente obtenemos los vectores $w_m=v_m-\sum_{i=1}^{m-1}c_iw_i$ con $c_i=\frac{<v_m,w_i>}{<w_i,w_i>}$.
+\end{itemize}
+El conjunto $\{ w_1,w_2, \dots, w_n \}$ es una base ortogonal. Si se normaliza cada vector $w_k$, obtenemos nuevos
+vectores $u_k=\frac{w_k}{\|w_k\|}$. Luego, $\{ u_1,u_2, \dots, u_n \}$ una base ortonormal para $W$.
+\end{itemize}
+
+\end{itemize}
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+
+\end{document}

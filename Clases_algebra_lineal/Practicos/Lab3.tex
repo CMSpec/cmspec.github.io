@@ -1,0 +1,316 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathdots, mathrsfs, dsfont,systeme}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,   
+    citecolor=blue,
+    urlcolor=cyan,
+    pdftitle={Algebra lineal},
+    pdfpagemode=FullScreen,
+    }
+\usepackage{amscd}
+\usepackage{nomencl}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{amssymb}
+\usepackage{blkarray}
+\usepackage{multicol}
+\usepackage[a4paper,margin=1cm,footskip=.5cm]{geometry}
+\usepackage[all]{xy}
+\usepackage{pst-node}
+\usepackage{subfigure}
+%\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\Rn}{\mathbb{R}^n}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ns}{NS}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\Pdiv}{PDiv}
+\DeclareMathOperator{\ddiv}{div}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\CaDiv}{CaDiv}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\CH}{CH}
+\DeclareMathOperator{\IM}{Im}
+\DeclareMathOperator{\Pf}{Pf}
+\DeclareMathOperator{\Gl}{GL}
+\DeclareMathOperator{\Sl}{SL}
+\DeclareMathOperator{\St}{St}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\nul}{nul}
+\DeclareMathOperator{\ran}{ran}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\bbH}{\mathbb{H}}
+\setlength{\parindent}{0pt}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.0in}
+\setlength{\topmargin}{0in}
+\setlength{\oddsidemargin}{0in}
+\newtheoremstyle{exampstyle}
+  {\topsep} % Space above
+  {\topsep} % Space below
+  {\itshape} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {.} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning `normal')
+\theoremstyle{exampstyle}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposici\'on}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corolario}
+\theoremstyle{definition}
+\newtheorem{thme}{Expected Theorem}
+
+\newtheorem{rec}[thm]{Recuerdo}
+\newtheorem{conj}{Conjecture}
+\newtheorem{defin}[thm]{Definici\'on}
+
+\newtheoremstyle{break}%
+{}{}%
+{}{}%
+{\bfseries}{}% % Note that final punctuation is omitted.
+{\newline}{}
+\theoremstyle{break}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{sol}[thm]{Soluci\'on}
+\newtheorem{rmk}[thm]{Observaci\'on}
+\numberwithin{equation}{section}
+\newcommand{\gb}[1]{\operatorname{\textbf {#1}}}
+\hypersetup{linkcolor=black}
+
+\pagestyle{fancy}
+
+\lhead{\includegraphics[width = 4cm]{UFT.png}}
+\setlength{\headsep}{0.6in}
+\newcolumntype{a}{ >{\columncolor{yellow}} c }
+
+\fancyhead[RO,LE]{Prof: S. Cea.\\
+Prof: C. Muñoz.\\
+01/2023}}
+
+
+
+\begin{document}
+\begin{minipage}[r]{15cm}
+
+
+\end{minipage}
+
+\begin{center}
+\Large{\textbf{\'Algebra Lineal\\Laboratorio 3  }}
+\end{center}
+\section*{$K-$\emph{means}}
+El algoritmo de $K-$\emph{means} es un algoritmo de agrupamiento que se utiliza para clasificar un conjunto de datos en $K$ grupos o \emph{cluster}. El objetivo principal del algoritmo es minimizar la suma de las distancias cuadradas entre cada punto de datos y el centroide del \emph{cluster} al que pertenece.
+
+El álgebra lineal juega un papel importante en el algoritmo de $K-$means en varias etapas:
+
+\begin{enumerate}
+    \item Representación de datos: En el $K-$\emph{means}, los datos se representan generalmente como una matriz numérica donde cada fila corresponde a una muestra y cada columna representa una característica o dimensión de los datos. Esta matriz de datos se puede denotar como una matriz $X$ de tamaño $m \times n$, donde $m$ es el número de muestras y $n$ es el número de características.
+    \item Cálculo de distancias: En el algoritmo de $K-$\emph{means}, la distancia entre los puntos de datos y los centroides se calcula utilizando la distancia euclidiana. En álgebra lineal, esto se puede representar mediante vectores y normas. La distancia entre dos vectores $u$ y $v$ se define como $d(u,v):=\|u-v\|.$
+    Como el algoritmo se basa en la noción de distancia euclidiana, buscando una medida de la similitud entre dos puntos en un espacio vectorial.
+    \item Actualización de centroides: En cada iteración del algoritmo, se recalculan los centroides de los \emph{cluster} utilizando la media de los puntos de datos asignados a cada \emph{cluster}. Esto se puede realizar mediante operaciones de álgebra lineal, como la suma de vectores y la división por escalares.
+
+
+\end{enumerate}
+
+
+En resumen, el álgebra lineal proporciona las herramientas y técnicas necesarias para realizar operaciones matemáticas y cálculos que se utilizan en diversas etapas del algoritmo de $K-$\emph{means}, desde la representación de datos hasta el cálculo de distancias y la actualización de centroides.
+
+
+En $K-$\emph{means}, los datos se representan típicamente como vectores en un espacio de características, donde cada dimensión del vector representa una característica o variable. Estos vectores se pueden interpretar como puntos en un espacio vectorial.
+
+El objetivo del algoritmo $K-$\emph{means} es agrupar los puntos de datos en clusters de tal manera que los puntos dentro de un mismo cluster sean similares entre sí y diferentes de los puntos en otros clusters. Esto se logra minimizando la suma de las distancias cuadradas entre los puntos de datos y los centroides de los clusters.
+
+En cada iteración del algoritmo, los centroides se actualizan como la media de los puntos asignados a cada cluster. La actualización de los centroides es una operación de álgebra lineal que se realiza en el espacio vectorial de las características de interés .
+
+Además, el algoritmo $K-$\emph{means} utiliza operaciones de álgebra lineal para calcular distancias euclidianas entre los puntos de datos y los centroides. Estas operaciones incluyen la resta de vectores, la norma euclidiana (longitud de un vector) y la suma de vectores.
+
+En resumen, el algoritmo $K-$\emph{means} se aplica en espacios vectoriales, donde los datos se representan como vectores, y utiliza conceptos y operaciones de álgebra lineal para calcular distancias y actualizar los centroides. Esto muestra la relación del algoritmo $K-$\emph{means} con los espacios vectoriales y el álgebra lineal.
+\newline
+
+
+{\bf Objetivo}: Aplicar el algoritmo de k-medias para seleccionar a los mejores representantes de un grupo de 100 personas en 5 categorías diferentes, las cuales se dividen en:
+\begin{itemize}
+    \item “op” = Openness to experience – grado de apertura mental a nuevas experiencias, curiosidad,
+arte
+    \item “co” =Conscientiousness – grado de orden, prolijidad, organización
+    \item “ex” = Extraversion – grado de timidez, solitario o participación ante el grupo social
+    \item “ag” = Agreeableness – grado de empatía con los demás, temperamento
+    \item “ne” = Neuroticism, – grado de neuroticismo, nervioso, irritabilidad, seguridad en sí mismo.
+
+\end{itemize}
+
+\section*{Actividad}
+{\bf Aplicación de k-medias:}
+\begin{enumerate}
+    \item Genere una matriz de datos aleatorios con $n$ filas y $m$ columnas utilizando la función \texttt{rand}. Luego, se guarda la matriz de datos en un archivo CSV utilizando la función \texttt{csvwrite}, especificando el nombre del archivo como \texttt{'datos.csv'}.
+
+Después de ejecutar este código, se generará un archivo llamado 'datos.csv' en el directorio de trabajo de Octave, que contendrá los datos aleatorios en formato CSV. Cada fila del archivo corresponder\'a a una persona y cada columna corresponder\'a a cada una de las 5 categor\'ias mencionadas anteriormente.
+
+Puedes ajustar los valores de $n$ y $m$ según tus necesidades para generar una matriz de datos del tamaño deseado. Además, puedes personalizar los valores y las distribuciones de los datos generados según tus requerimientos específicos.
+    \begin{lstlisting}
+% Generar datos aleatorios
+n = 100;  % Numero de filas
+m = 5;    % Numero de columnas
+datos = rand(n, m);  % Generar matriz de datos aleatorios
+
+% Guardar datos en un archivo CSV
+nombre_archivo = 'datos.csv';
+csvwrite(nombre_archivo, datos);
+ \end{lstlisting}
+
+ 
+    \begin{lstlisting}
+ ## Genera  dos grupos de datos distribuidos normalmente, centrados en 1 y -1 respectivamente
+ C1 = randn (50, 5) + 1;
+ C2 = randn (50, 5) - 1;
+ data = [C1; C2];
+ % Guardar datos en un archivo CSV
+nombre_archivo = 'data.csv';
+csvwrite(nombre_archivo, data);
+ \end{lstlisting}
+ Luego implemente el algoritmo para ambos conjuntos de datos y comp\'arelos.
+
+ \begin{lstlisting}
+
+
+ ## Implementacion del algoritmo para el archivo datos
+ [idx, centers] = kmeans (data, 2);
+
+ ## Graficar los resultados
+ figure;
+ plot (data (idx==1, 1), data (idx==1, 2), 'ro'); #grafica de color rojo los puntos correspondientes al cluster 1, para cada punto en la matriz de datos.
+ hold on;
+ plot (data (idx==2, 1), data (idx==2, 2), 'bs');
+ plot (centers (:, 1), centers (:, 2), 'kv', 'markersize', 10);
+ hold off;
+\end{lstlisting}
+\begin{lstlisting}
+ ## Implementacion del algoritmo para el archivo data
+ C1 = rand (100, 5)+1;
+ C2 = rand (100, 5)-1;
+ C3 = rand (100, 5)+2;
+ data = [C1;C2;C3];
+
+ 
+ [idx, centers] = kmeans (data, 3,'MaxIter',10);
+
+
+ figure;
+ plot (data (idx==1, 1), data (idx==1, 2),'ro');
+ hold on;
+ plot (data (idx==2, 1), data (idx==2, 2), 'bs');
+ hold on;
+ plot (data (idx==3, 1), data (idx==3, 2), 'gd');
+ plot (centers (:, 1), centers (:, 2), 'kv', 'markersize', 10);
+ hold off;
+\end{lstlisting}
+\item Investigue la importancia de elegir el número adecuado de clusters (representantes) y número de iteraciones del algoritmo. Qu\'e pasa si en el segundo conjunto de datos se agrega un conjunto aleatorio \texttt{C3}? Y si aumenta el n\'umero de clusters?
+
+\item Investigue sobre  la función kmeans en OCTAVE para aplicar el algoritmo de $k-$medias a los datos cargados. Asegúrense de que comprendan los parámetros necesarios para la función kmeans, como los datos de entrada, el número de clusters y el número máximo de iteraciones. Por ejemplo,
+
+ \begin{lstlisting}
+num_categorias = size(datos, 5);  % Numero de categorias/caracteristicas
+num_clusters = max(idx);          % Numero de clusters
+
+representantes = zeros(num_clusters, num_categorias);  % Matriz para almacenar los representantes
+
+for i = 1:num_clusters
+    cluster_indices = find(idx == i);  % Indices de filas asignadas al cluster i
+    cluster_data = datos(cluster_indices, :);  % Filas de datos asignadas al cluster i
+    
+    % Calcular el representante de cada categoría
+    for j = 1:num_categorias
+        categoria_data = cluster_data(:, j);  % Valores de la categoria j para el cluster i
+        representantes(i, j) = mean(categoria_data);  % Calcula el promedio de la categoria j en el cluster i
+    end
+end
+
+disp("Mejores representantes por categoria:");
+disp(representantes);
+
+\end{lstlisting}
+    El código calcula los representantes por categoría en cada cluster. Los representantes se calculan como el promedio de los valores de la categoría en el cluster correspondiente.
+\end{enumerate}
+
+
+{\bf Análisis de los resultados:}
+\begin{enumerate}
+    \item Explore los resultados obtenidos, analizando los clusters asignados a cada persona y los centroides de cada cluster.
+\item Interprete los resultados y a identificar a los mejores representantes dentro de cada cluster, basándose en las categorías correspondientes.
+\end{enumerate}
+
+
+{\bf Reflexión y conclusión:}
+\begin{enumerate}
+    \item Elabore un informe que incluya una introducci\'on de kmeans resumiendo los resultados y destacando la importancia de utilizar herramientas como k-medias en la selección de representantes.
+    \item Reflexione e investigue sobre los beneficios y limitaciones del algoritmo de k-medias en este contexto.
+    \item Incluya como anexo los comandos utilizados.
+\end{enumerate}
+
+
+
+
+
+
+\end{document}

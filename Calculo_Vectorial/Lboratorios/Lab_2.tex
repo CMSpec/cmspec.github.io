@@ -1,0 +1,145 @@
+ \documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Primera Semana\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-15,15){\includegraphics[width=5cm]{UFT.png}}
+\end{picture}
+
+
+
+\begin{center}
+\textbf{\large{Laboratorio Evaluado 2}} \\
+\end{center}
+
+\setlength{\parindent}{0cm}
+
+
+
+\begin{center}
+\textbf{Cálculo Vectorial}
+\end{center}
+
+
+\begin{center}
+\textbf{\large{Análisis del Modelo}} \\
+\end{center}
+
+
+
+\hspace{100cm} \\ 
+
+
+Considere que los dos modelos Cobb-Douglas de dos empresas $A$ y  $B$ están dados por
+
+\begin{align*}
+    Y_A &= 10K^{0.3}L^{0.7} \\
+    Y_B &= 7K^{0.83}L^{0.17}
+\end{align*}
+
+El objetivo de este laboratorio es que se realize un análisis exaustivo del modelo Cobb-Douglas, comparando las producciones de estas dos empresas. \\
+
+\begin{center}
+    \textbf{\Large{Actividades}}
+\end{center}
+
+\begin{itemize}
+    \item Usando Matlab u Ocatve, realice un gráfico de ambos modelos.
+    \item Los modelos presentan máximos relativos?, mínimos relativos?, puntos silla?. Argumente usando el gradiente de la función. 
+    \item Compare los modelos en distintos puntos del plano, incluya al menos 10 puntos.
+    \item Considere que el factor capital y la dotación del trabajo están relacionados por \\$K+L=C$, donde $C$ es una constante. Determine  los puntos extremos con esa condición
+    \item ¿Existe algún valor de $C$ para el cual el máximo relativo del punto anterior de $Y_A$ sea mayor al de $Y_B$ ?. En caso de ser cierto determine los valores posibles.
+    \item Explique la razón matemática por la cuál ocurre esto 
+    \item Considere ahora $Y_D = 7K^{0.5}L^{0.5}$ e $Y_E = 7K^{0.5}L^{0.5}$, y realice la comparación de los máximos relativos de $Y_A$, $Y_B$, $Y_D$ e $Y_E$
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{center}
+\textbf{Aspectos Formales}
+\end{center}
+
+- Debe presentar un informe de a lo más 8 páginas con introducción, desarrollo y conclusión. \\
+
+- Usted mismo debe explicar qué significa cada variable en las ecuaciones diferenciales, explicando cual es el significado físico de las mismas. \\
+
+- Los grupos deben ser de a lo más 5 integrantes. \\
+
+- Debe resolver las ecuaciones diferenciales de forma analítica. \\
+
+- Debe resolver las ecuaciones diferenciales de forma computacional utilizando Matlab u Octave. \\
+
+- Debe incluir los gráficos de las soluciones obtenidas.\\
+
+- Los códigos Matlab usados deben ser entregados en un documento aparte. \\
+
+- En la sección de conclusión debe incuir una breve discusión en la cuál expliquen las reacciones de cada integrante del grupo mientras desarrollaban el laboratorio. \\
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

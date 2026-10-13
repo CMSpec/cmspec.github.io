@@ -1,0 +1,179 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\def\env@matrix{\hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{*\c@MaxMatrixCols c}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+
+\fancyhead[L]{\includegraphics[scale=0.3]{UFT.png}}
+
+\begin{document}
+
+
+\thispagestyle{fancy}
+\vspace*{1cm}
+
+\begin{minipage}[r]{12cm}
+    \begin{flushright}
+\begin{tikzpicture}
+\draw[green, very thick] (0,0) rectangle (3,2);
+\end{tikzpicture}
+    \end{flushright}
+\end{minipage}
+
+\begin{center}
+\Large{\textbf{Control 1\\ Álgebra Lineal\\ }}
+\end{center}
+\vspace{1cm}
+\begin{minipage}[r]{15cm}
+\begin{flushleft}
+
+Fecha: 5 de octubre 2023 \\%
+Duración: 90 minutos  \\
+Profesores: Camila Muñoz.\\\hspace{1.7cm} Adrián Silva.\\
+\end{flushleft}
+\end{minipage}
+\vspace{2cm}
+\begin{center}
+\Large{\textbf{Facultad de Ingeniería}}
+\end{center}
+\vspace{1cm}
+\textbf{En caso de que un alumno sea sorprendido en actitudes deshonestas, ya sea intentando o
+dejándose copiar, será calificado con nota mínima 1.0 y perderá toda posibilidad de eliminar
+dicha nota. Además, esta conducta quedará archivada como antecedente en su carpeta y
+podrá ser causal de eliminación.
+Así mismo, está prohibido salir de la sala, usar o mantener sobre la mesa teléfonos celulares
+o cualquier tipo de aparato electrónico, a no ser que el profesor lo requiera.}\\
+
+
+
+\vspace{5cm}
+\makebox[12cm]{\textbf{Nombre Alumno}:\ \hrulefill} 
+\newpage
+\thispagestyle{empty}
+\section*{Preguntas}
+\begin{enumerate}
+
+
+\item {\bf (10 puntos)} Si $A=\begin{pmatrix} 1 & -1 \\ 1 & 2 \end{pmatrix}$, $B=\begin{pmatrix} 0 & 1 \\ 3 & -2 \end{pmatrix}$ y $C=\begin{pmatrix} 1 & 4 \\ -1 & 2 \end{pmatrix}$, resuelva la siguiente ecuación matricial para $X$:
+    \[AX^tB+I_2=C.\]
+    
+
+    
+\newpage
+
+\newpage
+\item {\bf (10 puntos)} Utilizando propiedades de determinantes, determine el valor de $m$, si se sabe que 
+
+\[\begin{vmatrix} 1 & 1  & 2 & 1 \\ 3 & -1 & 2& m\\ 2 & -2 & 0& -1\\ 1 & 1 & -1 &  1  \end{vmatrix}=4. \]
+
+   \newpage 
+       \item  Considere las matrices $A,D,Q \in \mathcal{M}_3(\mathbb{R})$, donde $Q$ es invertible y además,  ́$ A = Q^{-1}DQ$. Demuestre, mediante propiedades de matrices y determinantes que:
+
+\begin{enumerate}
+    \item {\bf (2 puntos)} $A^3=Q^{-1}D^3Q$.
+    \item {\bf (3 puntos)} $A^n=Q^{-1}D^nQ$ para todo $n\in \mathbb{N}$.
+    \item {\bf (5 puntos)} $|A|=|D|$.
+\end{enumerate}
+\textbf{Soluci\'on:}
+\begin{enumerate}
+    \item {\bf (2 puntos)} $A^3=(Q^{-1}DQ)(Q^{-1}DQ)(Q^{-1}DQ)=(Q^{-1}D^3Q)$.
+    \item {\bf (3 puntos)} $A^n=(Q^{-1}DQ)\cdots (Q^{-1}DQ)$ $n$ veces, luego $A^n=Q^{-1}D^nQ$.
+    \item {\bf (5 puntos)} $|A|=|Q^{-1}DQ|=|Q^{-1}| |D| |Q|$, como $Q$ es invertible $|Q^{-1}|\neq 0$ y $|Q^{-1}|=\dfrac{1}{|Q|}$, por lo que $|A|=|Q^{-1}DQ|=\dfrac{1}{|Q|} |D| |Q|=|D|$.
+\end{enumerate}
+\newpage
+    \item {\bf (10 puntos)} Calcule la inversa de
+\[\begin{pmatrix} 1 & 1  & 0  \\ -1 & 1 & 2\\ 1 & 0 & 1 \end{pmatrix}, \]
+por el m\'etodo $A^{-1}=\dfrac{1}{\det(A)}\operatorname{adj}(A)$.
+    \newpage
+\newpage
+
+    \item {\bf (15 puntos)} Usando el teorema del rango, determine los valores de $\alpha$ de modo que el sistema
+    \begin{align*}
+x + y +z &= 4 \\
+2x + 5y-\alpha z &= 3\\
+x + 2y +  z &= 8
+\end{align*}
+
+    tenga solución única, infinitas soluciones o ninguna solución. Para $\alpha=3$, determine el conjunto soluci\'on del sistema.
+        
+        \textbf{Soluci\'on}
+Escribimos la matriz ampliada asociada al sistema {\bf (2 puntos)}
+\[
+(A\,|\,b)=\left( 
+    \begin{array}{ccc|c}
+    1 & 1  & 1 & 4 \\ 2 & 5 & -\alpha & 3\\ 1 & 2 & 1& 8  \end{array}
+\right)\]
+Haciendo operaciones fila, tenemos que {\bf (5 puntos)}
+\[
+(A\,|\,b)\sim \left( 
+    \begin{array}{ccc|c} 1 & 1  & 1 & 4 \\ 0 & 3 & -\alpha-2 & -5\\ 0 & 0 & -\alpha -2 & -17  \end{array}
+\right)\]
+
+Por teorema del rango
+\begin{enumerate}
+    \item Si $\alpha=-2$, entonces $\operatorname{rank}(A)=2<3=\operatorname{rank}(A|b)$, por lo tanto el sistema no tendr\'ia soluci\'on. {\bf (4 puntos)}
+    \item Si $\alpha\neq -2$, entonces $\operatorname{rank}(A)=3=\operatorname{rank}(A|b)$, por lo tanto el sistema tendr\'ia soluci\'on. Como el n\'umero de ecuaciones es 3, tenemos que la soluci\'on es \'unica. {\bf (4 puntos)}
+\end{enumerate}
+En en caso $\alpha=3$, tenemos que la soluci\'on es \'unica y {\bf (3 puntos)}
+\[
+(A\,|\,b)\sim \left( 
+    \begin{array}{ccc|c} 1 & 0  & 0 & -17/5 \\ 0 & 1 & 0 & 4\\ 0 & 0 & 1 & 17/5  \end{array}
+\right)\]
+Por lo tanto la soluci\'on es $\{(x,y,z)=(-17/5,4,17/5)\}$. {\bf (2 puntos)}
+
+
+
+
+\end{enumerate}
+
+
+\end{document}

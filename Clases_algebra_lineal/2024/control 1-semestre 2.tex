@@ -1,0 +1,135 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+
+\fancyhead[L]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+
+\thispagestyle{fancy}
+\vspace*{1cm}
+
+\begin{minipage}[r]{12cm}
+    \begin{flushright}
+\begin{tikzpicture}
+\draw[green, very thick] (0,0) rectangle (3,2);
+\end{tikzpicture}
+    \end{flushright}
+\end{minipage}
+
+\begin{center}
+\Large{\textbf{Control 1\\ Álgebra Lineal\\ }}
+\end{center}
+\vspace{1cm}
+% \begin{minipage}[r]{15cm}
+% \begin{flushleft}
+
+% Fecha: 15 de abril 2024 \\%
+% Duración: 120 minutos  \\
+% Profesores: Camila Muñoz.\\\hspace{1.7cm} Adrián Silva.\\
+% \end{flushleft}
+% \end{minipage}
+% \vspace{2cm}
+% \begin{center}
+% \Large{\textbf{Facultad de Ingeniería}}
+% \end{center}
+% \vspace{1cm}
+% \textbf{En caso de que un alumno sea sorprendido en actitudes deshonestas, ya sea intentando o
+% dejándose copiar, será calificado con nota mínima 1.0 y perderá toda posibilidad de eliminar
+% dicha nota. Además, esta conducta quedará archivada como antecedente en su carpeta y
+% podrá ser causal de eliminación.
+% Así mismo, está prohibido salir de la sala, usar o mantener sobre la mesa teléfonos celulares
+% o cualquier tipo de aparato electrónico, a no ser que el profesor lo requiera.}\\
+
+
+
+% \vspace{5cm}
+% \makebox[12cm]{\textbf{Nombre Alumno}:\ \hrulefill} 
+% \newpage
+\thispagestyle{empty}
+\section*{Preguntas}
+\begin{enumerate}
+
+
+    \item {\bf (XX puntos)} Usando el teorema del rango, determine los valores de $\alpha$ de modo que el sistema
+    \begin{align*}
+ x + 3y &= 1 \\
+ x + 2y +z &= 0\\
+2 x + 5y +(\alpha -1) z &= 1-\alpha 
+\end{align*}
+
+    tenga solución única, infinitas soluciones o ninguna solución. Para $\alpha=0$, determine el conjunto soluci\'on del sistema.
+
+        \item {\bf (XX puntos)} Usando el teorema del rango, determine los valores de $\alpha$ de modo que el sistema
+    \begin{align*}
+ x + y &= -\alpha \\
+\alpha x + 2y +z &= 1\\
+ x + y + z &= 1-\alpha 
+\end{align*}
+
+    tenga solución única, infinitas soluciones o ninguna solución. Para $\alpha=1$, determine el conjunto soluci\'on del sistema.
+        
+        
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+
+
+\end{document}

@@ -1,0 +1,223 @@
+ \documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Primera Semana\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-15,15){\includegraphics[width=5cm]{UFT.png}}
+\end{picture}
+
+
+
+\begin{center}
+\textbf{\large{Laboratorio Evaluado 2}} \\
+\end{center}
+
+\setlength{\parindent}{0cm}
+
+
+
+\begin{center}
+\textbf{Cálculo Vectorial}
+\end{center}
+
+
+\begin{center}
+\textbf{\large{Análisis del Modelo}} \\
+\end{center}
+
+
+
+\hspace{100cm} \\ 
+
+
+Considere que los dos modelos Cobb-Douglas de dos empresas $A$ y  $B$ están dados por
+
+\begin{align*}
+    Y_A &= 10K^{0.3}L^{0.7} \\
+    Y_B &= 7K^{0.83}L^{0.17}
+\end{align*}
+
+El objetivo de este laboratorio es que se realize un análisis exaustivo del modelo Cobb-Douglas, comparando las producciones de estas dos empresas. \\
+
+\begin{center}
+    \textbf{\Large{Actividades}}
+\end{center}
+
+\begin{itemize}
+    \item Usando Matlab u Ocatve, realice un gráfico de ambos modelos.
+    \item Los modelos presentan máximos relativos?, mínimos relativos?, puntos silla?. Argumente usando el gradiente de la función. 
+    \item Compare los modelos en distintos puntos del plano, incluya al menos 10 puntos.
+    \item Considere que el factor capital y la dotación del trabajo están relacionados por \\$K+L=C$, donde $C$ es una constante. Determine  los puntos extremos con esa condición
+    \item ¿Existe algún valor de $C$ para el cual el máximo relativo del punto anterior de $Y_A$ sea mayor al de $Y_B$ ?. En caso de ser cierto determine los valores posibles.
+    \item Explique la razón matemática por la cuál ocurre esto 
+    \item Considere ahora $Y_D = 7K^{0.5}L^{0.5}$ e $Y_E = 7K^{0.5}L^{0.5}$, y realice la comparación de los máximos relativos de $Y_A$, $Y_B$, $Y_D$ e $Y_E$
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\textbf{Solución: } 1) No pude instalar matlab en mi Pc pero los gráficos son los estandar de un modelo Cobb-Douglas. \\
+
+
+
+2) Calculamos el gradiente de $Y_A$, tenemos
+
+\begin{align*}
+    \nabla Y_A = (3K^{-0,7}L^{0,7},7K^{0,3}L^{-0,3})
+\end{align*}
+
+Necesitamos entonces que
+
+\begin{align*}
+    3K^{-0,7}L^{0,7} &=0 \\
+    7K^{0,3}L^{-0,3} &=0
+\end{align*}
+
+Este sistema no tiene solución pues $K \neq 0$ y $L \neq 0$, porque no se puede dividir por cero. Por lo tanto no hay puntos críticos, para $Y_B$ es análogo.\\ \\
+
+
+
+2)Los puntos que se pueden elegir son muchos solo hay que comprobar que sean consistentes, por ejemplo en el punto $(1,1)$, tenemos $Y_A=10$ e $Y_B=7$ por lo tanto $Y_A(1,1) > Y_B(1,1)$. \\ \\
+
+
+3)Tenemos en cada caso la restricción $g(K,L)=K+L-C$, usamos la regla de multiplicadores de Lagrange, necesitamos 
+
+\begin{align*}
+    \nabla Y_A &= \lambda \nabla g \\
+     (3K^{-0,7}L^{0,7},7K^{0,3}L^{-0,3}) &= \lambda (1,1)
+\end{align*}
+
+Luego tenemos el sistema
+ 
+\begin{align*}
+    3K^{-0,7}L^{0,7} &= \lambda \\
+    7K^{0,3}L^{-0,3} &= \lambda
+\end{align*}
+
+Entonces tenemso que
+
+
+\begin{align*}
+    3K^{-0,7}L^{0,7} &= 7K^{0,3}L^{-0,3}\\
+    3L &= 7K \\
+    L&= \frac{7K}{3}
+\end{align*}
+
+Reemplazando en $K+C=L$, obtenemos
+
+\begin{align*}
+    K+ \frac{7K}{3} &= C \\
+    K &= \frac{3C}{10}
+\end{align*}
+
+y entonces 
+
+\begin{align*}
+    L&= \frac{7C}{10}
+\end{align*}
+
+El punto extremo para $Y_A$ es $\displaystyle \left( \frac{3C}{10}, \frac{7C}{10}\right)$. \\ 
+
+Si hacemos los mismo pasaos para $Y_B$, obtenemos el punto obtenemos el punto extremo condicionado   $\displaystyle \left( \frac{83C}{100}, \frac{17C}{100}\right)$ \\
+
+
+Si evaluamos los puntos encontrados en $Y_A$ e $Y_B$, obtenemos
+
+\begin{align*}
+    Y_A &= 10(0,3C)^{0,3}(0,7C)^{0,7} = 10(0,3)^{0,3}(0,7)^{0,7}C \sim 5,4C \\
+    Y_B &= 10(0,83C)^{0,83}(0,17C)^{0,17} = 10(0,83)^{0,83}(0,17)^{0,17}C \sim 4,4C\\
+\end{align*}
+
+4) Podemos ver que si $C$ es mayor que $0$ siempre sew tendrá que el máximo de $Y_A$ será más grnade independiente del valor de $C$. \\\\
+
+
+5) La razón por la cual esto ocurre es que en general el máximo de una Cobbdouglas de la forma $Y=AK^{\alpha}L^{1-\alpha}$ bajo la restricción $K+L=C$ es
+
+\begin{align*}
+    (\alpha C, (1-\alpha)C )
+\end{align*}
+
+Como se puede inferir y demostrar, al reemplzar en la función obtenemos
+
+\begin{align*}
+    Y = AC\alpha^\alpha(1-\alpha)^{1-\alpha}
+\end{align*}
+
+Por lo tanto depende de la función $\alpha^\alpha(1-\alpha)^{1-\alpha}$ y del valor de $A$, si considereamos
+
+\begin{align*}
+    f(\alpha) =  \alpha^\alpha(1-\alpha)^{1-\alpha}
+\end{align*}
+
+Entonces
+
+\begin{align*}
+    f'(\alpha) =  \alpha^\alpha(1-\alpha)^{1-\alpha} \ln\left( \frac{\alpha}{1-\alpha}\right)
+\end{align*}
+
+Podemos ver entonces qye esta función tiene derivada positiva si $\alpha > 0,5$ y negativa si $\alpha < 0,5$, por lo tanto es decreciente entre $[0,1/2]$ y creciente en $[1/2,1]$ y además es simétrica respecto a $1/2$. Aí que en un principio $Y_B$ debería ser mayor que $Y_A$, pero por el facotor de ajuste $10$ que es mayor que $7$ al final termina ocurriendo que $Y_B$ es más pequeño. \\ \\
+
+6) Primero que nada tenemos que $Y_D=Y_E$ (esto es solo una distracción), como pudimos ver en el punto 5 el valor más bajo se va a alcanzar cuando $\alpha=0,5$, por lo tanto como tiene el mismo factor $A=7$ que $Y_B$, podemos concluir directamente que en la evaluación de los puntos máximos se tendrá que
+
+\begin{align*}
+    Y_D=Y_E < Y_B < Y_A
+\end{align*}
+
+
+
+\end{document}

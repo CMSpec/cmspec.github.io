@@ -1,0 +1,599 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+
+\fancyhead[L]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+
+\thispagestyle{fancy}
+\vspace*{1cm}
+
+\begin{minipage}[r]{12cm}
+    \begin{flushright}
+\begin{tikzpicture}
+\draw[green, very thick] (0,0) rectangle (3,2);
+\end{tikzpicture}
+    \end{flushright}
+\end{minipage}
+
+\begin{center}
+\Large{\textbf{Control 2\\ Pauta\\ Álgebra Lineal\\ }}
+\end{center}
+\vspace{1cm}
+\begin{minipage}[r]{15cm}
+\begin{flushleft}
+
+
+
+\end{flushleft}
+\end{minipage}
+\vspace{2cm}
+\begin{center}
+\Large{\textbf{Facultad de Ingeniería}}
+\end{center}
+\vspace{1cm}
+\textbf{En caso de que un alumno sea sorprendido en actitudes deshonestas, ya sea intentando o
+dejándose copiar, será calificado con nota mínima 1.0 y perderá toda posibilidad de eliminar
+dicha nota. Además, esta conducta quedará archivada como antecedente en su carpeta y
+podrá ser causal de eliminación.
+Así mismo, está prohibido salir de la sala, usar o mantener sobre la mesa teléfonos celulares
+o cualquier tipo de aparato electrónico, a no ser que el profesor lo requiera.}\\
+
+
+
+\vspace{5cm}
+\makebox[12cm]{\textbf{Nombre Alumno}:\ \hrulefill} 
+\newpage
+\thispagestyle{empty}
+\section*{Preguntas}
+\begin{enumerate}
+
+
+    \item \textbf{(12 puntos)} Dado el siguiente sistema de ecuaciones lineales:
+
+\[
+\begin{aligned}
+2x + 4y + (c^2 - 1)z &= c + 1 \\
+x + y + z &= 1 \\
+x + 3y + 2z &= 2
+\end{aligned}
+\]
+
+Determine los valores de \( c \in \mathbb{R} \) de modo que el sistema:
+
+\begin{itemize}
+    \item Tenga solución única
+    \item Tenga infinitas soluciones
+    \item No tenga solución
+\end{itemize}
+
+\textbf{Solución: }
+
+Escribimos la matriz aumentada del sistema:
+
+\[
+\left[
+\begin{array}{ccc|c}
+2 & 4 & c^2 - 1 & c + 1 \\
+1 & 1 & 1 & 1 \\
+1 & 3 & 2 & 2
+\end{array}
+\right]
+\]
+
+Aplicamos operaciones elementales:
+
+\begin{itemize}
+    \item \( f_1 - 2f_2 \rightarrow f_1 \)
+    \item \( f_3 - f_2\rightarrow f_3  \)
+\end{itemize}
+
+\[
+\left[
+\begin{array}{ccc|c}
+0 & 2 & c^2 - 3 & c - 1 \\
+1 & 1 & 1 & 1 \\
+0 & 2 & 1 & 1
+\end{array}
+\right]
+\]
+
+Ahora restamos la nueva fila 1 a la fila 3:
+
+\[
+\left[
+\begin{array}{ccc|c}
+0 & 2 & c^2 - 3 & c - 1 \\
+1 & 1 & 1 & 1 \\
+0 & 0 & 4 - c^2 & 2 - c
+\end{array}
+\right]=\left[
+\begin{array}{ccc|c}
+0 & 2 & c^2 - 3 & c - 1 \\
+1 & 1 & 1 & 1 \\
+0 & 0 & (2-c)(2+c) & 2 - c
+\end{array}
+\right]
+\]
+
+A partir de aquí se analizan los valores de \( c \) según el sistema resultante. Como se obtiene la fila:
+
+\[
+0x + 0y + (4 - c^2)z = 2 - c
+\]
+
+Analizamos los siguientes casos:
+
+\begin{itemize}
+    \item \textbf{Solución única:} ocurre cuando \( 4 - c^2 \ne 0 \Rightarrow c \ne \pm 2 \).
+    \item \textbf{Infinitas soluciones:} ocurre cuando \( 4 - c^2 = 0 \) y \( 2 - c = 0 \Rightarrow c = 2 \).
+    \item \textbf{No tiene solución:} ocurre cuando \( 4 - c^2 = 0 \) y \( 2 - c \ne 0 \Rightarrow c = -2 \).
+\end{itemize}
+\newpage
+\item
+\begin{enumerate}
+    \item[(a)] \textbf{(6 puntos)} Determine los valores de \( k \in \mathbb{R} \) que hagan que el conjunto
+    \[
+\left\{
+\begin{pmatrix} 1 \\ k \\ 0 \end{pmatrix},\ 
+\begin{pmatrix} -1 \\ 2 \\ 1 \end{pmatrix},\ 
+\begin{pmatrix} 2 \\ -1 \\ k \end{pmatrix}
+\right\}
+\]
+
+sea linealmente independiente.
+
+\vspace{1em}
+
+\textbf{Solución:}
+
+Un conjunto de tres vectores en \( \mathbb{R}^3 \) es linealmente independiente si el determinante de la matriz que forman como columnas (o filas) es distinto de cero.
+
+Formamos la matriz con estos vectores como columnas:
+
+\[
+A = \begin{bmatrix}
+1 & -1 & 2 \\
+k & 2 & -1 \\
+0 & 1 & k
+\end{bmatrix}
+\]
+
+Calculamos el determinante:
+
+\[
+\det(A) =
+\begin{vmatrix}
+1 & -1 & 2 \\
+k & 2 & -1 \\
+0 & 1 & k
+\end{vmatrix}=k^2+4k+1
+\]
+
+
+
+
+El conjunto es linealmente independiente si:
+
+\[
+\det(A) \ne 0 \Rightarrow k^2+4k+1 \ne 0 \Rightarrow k \ne -2\pm \sqrt{3}
+\]
+
+\vspace{1em}
+
+\textbf{Conclusión:}  
+El conjunto es linealmente independiente si y solo si:
+\[
+\boxed{k \ne -2\pm \sqrt{3}}
+\]
+    
+    \vspace{1em}
+    
+    \item[(b)] \textbf{(6 puntos)} Escriba el vector 
+    \[
+    \vec{v} = 3x^2 - 9x + 11 \in \mathcal{P}_2(\mathbb{R})
+    \]
+    como combinación lineal de los vectores 
+    \[
+    \vec{v}_1 = -x + 1,\quad \vec{v}_2 = x^2 + 2x,\quad \vec{v}_3 = 3x^2 - x + 5.
+    \]
+    
+    \textbf{Solución:}
+    
+    Queremos encontrar escalares \(a, b, c \in \mathbb{R}\) tales que:
+    \[
+    \vec{v} = a\vec{v}_1 + b\vec{v}_2 + c\vec{v}_3
+    \]
+    
+    Sustituimos:
+    \[
+    3x^2 - 9x + 11 = a(-x + 1) + b(x^2 + 2x) + c(3x^2 - x + 5)
+    \]
+    
+    Expandimos:
+    \[
+    a(-x + 1) = -a x + a \\
+    b(x^2 + 2x) = b x^2 + 2b x \\
+    c(3x^2 - x + 5) = 3c x^2 - c x + 5c
+    \]
+    
+    Sumamos todo:
+    \[
+    (b + 3c)x^2 + (-a + 2b - c)x + (a + 5c)
+    \]
+    
+    Igualamos coeficientes con \(3x^2 - 9x + 11\):
+
+    \[
+    \begin{aligned}
+    b + 3c &= 3 \\
+    -a + 2b - c &= -9 \\
+    a + 5c &= 11
+    \end{aligned}
+    \]
+
+    Resolviendo el sistema:
+
+    1. De la primera ecuación: \(b = 3 - 3c\)
+
+    2. Sustituimos en la segunda:
+    \[
+    -a + 2(3 - 3c) - c = -9 \Rightarrow -a + 6 - 6c - c = -9 \Rightarrow -a - 7c = -15 \Rightarrow a = 15 - 7c
+    \]
+
+    3. Sustituimos \(a\) en la tercera:
+    \[
+    15 - 7c + 5c = 11 \Rightarrow -2c = -4 \Rightarrow c = 2
+    \]
+
+    Luego:
+    \[
+    b = 3 - 3(2) = -3,\quad a = 15 - 7(2) = 1
+    \]
+
+    \textbf{Conclusión:}
+    \[
+    \vec{v} = a \vec{v}_1 + b \vec{v}_2 + c \vec{v}_3 = \vec{v}_1 - 3\vec{v}_2 + 2\vec{v}_3
+    \]
+\end{enumerate}
+
+\newpage
+\item
+
+Encuentre en cada caso una base y la dimensión del siguiente espacio vectorial:
+
+\[
+V = \left\langle
+\begin{pmatrix} 0 & -1 \\ 1 & 1 \end{pmatrix},
+\begin{pmatrix} 0 & 1 \\ -2 & 3 \end{pmatrix},
+\begin{pmatrix} 0 & 3 \\ 1 & 4 \end{pmatrix},
+\begin{pmatrix} 0 & 2 \\ -4 & 6 \end{pmatrix}
+\right\rangle
+\]
+
+\textbf{Solución:}
+
+\[
+V = \left\langle
+\begin{pmatrix} 0 & -1 \\ 1 & 1 \end{pmatrix},\ 
+\begin{pmatrix} 0 & 1 \\ -2 & 3 \end{pmatrix},\ 
+\begin{pmatrix} 0 & 3 \\ 1 & 4 \end{pmatrix},\ 
+\begin{pmatrix} 0 & 2 \\ -4 & 6 \end{pmatrix}
+\right\rangle
+\]
+
+\textbf{Solución:}
+
+Representamos cada matriz como un vector en \(\mathbb{R}^4\), leyendo por filas:
+
+\[
+A_1 = \begin{bmatrix} 0 \\ -1 \\ 1 \\ 1 \end{bmatrix}, \quad
+A_2 = \begin{bmatrix} 0 \\ 1 \\ -2 \\ 3 \end{bmatrix}, \quad
+A_3 = \begin{bmatrix} 0 \\ 3 \\ 1 \\ 4 \end{bmatrix}, \quad
+A_4 = \begin{bmatrix} 0 \\ 2 \\ -4 \\ 6 \end{bmatrix}
+\]
+
+Si el determinante es distinto de cero, los vectores son linealmente independientes y forman una base del subespacio.
+
+Consideramos la siguiente matriz:
+
+\[
+M = \begin{bmatrix}
+0 & 0 & 0 & 0 \\
+-1 & 1 & 3 & 2 \\
+1 & -2 & 1 & -4 \\
+1 & 3 & 4 & 6
+\end{bmatrix}
+\]
+
+Cuyo determinante es claramente cero. Eliminamos el \'ultimo vector y haciendo reducci\'on por filas obtenemos:
+
+\[
+M' = \begin{bmatrix}
+0 & 0 & 0 \\
+-1 & 1 & 3  \\
+1 & -2 & 1  \\
+1 & 3 & 4 
+\end{bmatrix}\simeq \begin{bmatrix}
+ 1 & 0 & 0 \\
+ 0& 1 & 0 \\
+ 0 & 0 & 1 \\
+0 & 0 & 0
+\end{bmatrix}
+\]
+
+
+\textbf{Conclusión:}
+
+\begin{itemize}
+\item Una base del espacio vectorial es:
+\[
+\left\{
+\begin{pmatrix} 0 & -1 \\ 1 & 1 \end{pmatrix},\ 
+\begin{pmatrix} 0 & 1 \\ -2 & 3 \end{pmatrix},\ 
+\begin{pmatrix} 0 & 3 \\ 1 & 4 \end{pmatrix}
+\right\}
+\]
+\item La dimensión del espacio vectorial \(V\) es 3.
+\end{itemize}
+La matriz $\begin{pmatrix} 1 & 0 \\0 & 0 \end{pmatrix}$ no pertenece a $V$, pues haciendo la combinación lineal, se obtiene que 
+\[
+\begin{pmatrix} 1 & 0 \\0 & 0 \end{pmatrix}=\alpha
+\begin{pmatrix} 0 & -1 \\ 1 & 1 \end{pmatrix}+\beta\ 
+\begin{pmatrix} 0 & 1 \\ -2 & 3 \end{pmatrix}+\gamma\ 
+\begin{pmatrix} 0 & 3 \\ 1 & 4 \end{pmatrix}
+\]
+resulta $1=0\alpha+0\beta+0\gamma=0$, lo cual es imposible.
+\newpage
+
+
+\item Muestre que el conjunto
+
+\[
+W = \left\{
+\begin{pmatrix}
+x \\
+y \\
+z
+\end{pmatrix}
+\in \mathbb{R}^3 \;\middle|\; 2x - y = 0
+\right\}
+\]
+
+es subespacio vectorial de \(\mathbb{R}^3\). Determine la dimensión de este espacio.
+
+\subsection*{Solución}
+
+Para que \(W\) sea subespacio vectorial de \(\mathbb{R}^3\), debe cumplir las siguientes condiciones:
+
+\begin{itemize}
+  \item Contener al vector cero.
+  \item Ser cerrado bajo suma de vectores.
+  \item Ser cerrado bajo multiplicación por escalar.
+\end{itemize}
+
+
+
+\[
+\begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \in \mathbb{R}^3,\quad \text{y se verifica que } 2(0) - 0 = 0 \Rightarrow \text{pertenece a } W.
+\]
+
+
+Sean \(\vec{u} = \begin{pmatrix} x_1 \\ y_1 \\ z_1 \end{pmatrix}, \vec{v} = \begin{pmatrix} x_2 \\ y_2 \\ z_2 \end{pmatrix} \in W\), es decir, \(2x_1 - y_1 = 0\) y \(2x_2 - y_2 = 0\). Entonces:
+
+\[
+\vec{u} + \vec{v} = \begin{pmatrix} x_1 + x_2 \\ y_1 + y_2 \\ z_1 + z_2 \end{pmatrix},\quad
+2(x_1 + x_2) - (y_1 + y_2) = (2x_1 - y_1) + (2x_2 - y_2) = 0 + 0 = 0
+\]
+
+Entonces \(\vec{u} + \vec{v} \in W\).
+
+
+
+Sea \(\vec{u} = \begin{pmatrix} x \\ y \\ z \end{pmatrix} \in W\) tal que \(2x - y = 0\), y \(\lambda \in \mathbb{R}\). Entonces:
+
+\[
+\lambda \vec{u} = \begin{pmatrix} \lambda x \\ \lambda y \\ \lambda z \end{pmatrix},\quad
+2(\lambda x) - (\lambda y) = \lambda (2x - y) = \lambda \cdot 0 = 0
+\]
+
+Por tanto, \(\lambda \vec{u} \in W\).
+
+\bigskip
+
+\textbf{Conclusión:} \(W\) es subespacio vectorial de \(\mathbb{R}^3\).
+
+Cálculo de la dimensión: La condición \(2x - y = 0\) equivale a:
+
+\[
+y = 2x
+\]
+
+Entonces, todo vector de \(W\) se puede escribir como:
+
+\[
+\begin{pmatrix}
+x \\
+2x \\
+z
+\end{pmatrix}
+= x \begin{pmatrix} 1 \\ 2 \\ 0 \end{pmatrix}
++ z \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}
+\]
+
+Por tanto, una base de \(W\) es:
+
+\[
+\left\{
+\begin{pmatrix} 1 \\ 2 \\ 0 \end{pmatrix},\ 
+\begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}
+\right\}
+\]
+
+\textbf{Y la dimensión de \(W\) es: 2.}
+
+\newpage
+
+\item Considere la matriz
+\[
+A = 
+\begin{pmatrix}
+0 & 3 & 0 \\
+1 & -2 & 0 \\
+2 & 1 & -1
+\end{pmatrix}
+\]
+
+\begin{itemize}
+\item[(a)] Obtenga los valores propios de \(A\) y sus vectores propios asociados.
+\item[(b)] Presente, si es posible, la diagonalización de esta matriz, encontrando matrices \(P\) y \(D\) que cumplan
+\[
+A = P D P^{-1}
+\]
+\end{itemize}
+
+\subsection*{Solución}
+
+\textbf{Paso 1: Calcular los valores propios}
+
+Buscamos los valores propios resolviendo el polinomio característico:
+
+\[
+\det(A - \lambda I) = 0
+\]
+Expandimos por la tercera columna:
+\begin{align*}
+    \det
+\begin{pmatrix}
+-\lambda & 3 & 0 \\
+1 & -2 - \lambda & 0 \\
+2 & 1 & -1 - \lambda
+\end{pmatrix}
+&= 0\\
+%&= (-\lambda)
+% \left|
+% \begin{matrix}
+% -2 - \lambda & 0 \\
+% 1 & -1 - \lambda
+% \end{matrix}
+% \right|\\
+&= (-1-\lambda)[(- \lambda)(-2 - \lambda)-3]\\
+&= (-1-\lambda)[\lambda^2 + 2\lambda-3]\\
+&= (-1-\lambda)[(\lambda+3)(\lambda-1)]
+\end{align*}
+
+Los valores propios son:
+\[
+\boxed{\lambda_1 = -3, \quad \lambda_2 = -1, \quad \lambda_3 = 1}
+\]
+
+Los vectores propios asociados son:
+
+\[
+\lambda = -3 \quad \Rightarrow \quad 
+\vec{v}_1 = 
+\begin{pmatrix}
+-2 \\
+2 \\
+1
+\end{pmatrix}
+\]
+
+\[
+\lambda = -1 \quad \Rightarrow \quad 
+\vec{v}_2 = 
+\begin{pmatrix}
+0 \\
+0 \\
+1
+\end{pmatrix}
+\]
+
+\[
+\lambda = 1 \quad \Rightarrow \quad 
+\vec{v}_3 = 
+\begin{pmatrix}
+6 \\
+2 \\
+7
+\end{pmatrix}
+\]
+
+\textbf{(b) Diagonalización}
+
+Dado que \(A\) tiene 3 valores propios distintos con 3 vectores propios linealmente independientes, se puede diagonalizar.
+
+La matriz \(P\) se forma con los vectores propios como columnas, y la matriz \(D\) es diagonal con los valores propios:
+
+\[
+P = \begin{pmatrix}
+-2 & 0 & 6 \\
+2 & 0 & 2 \\
+1 & 1 & 7
+\end{pmatrix}, \quad
+D = \begin{pmatrix}
+-3 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\]
+
+Entonces, la diagonalización es:
+\[
+\boxed{A = P D P^{-1}}
+\]
+\end{enumerate}
+
+
+\end{document}

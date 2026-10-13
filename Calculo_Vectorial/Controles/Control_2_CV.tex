@@ -1,0 +1,311 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+
+\fancyhead[L]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+
+\thispagestyle{fancy}
+\vspace*{1cm}
+
+\begin{minipage}[r]{12cm}
+    \begin{flushright}
+\begin{tikzpicture}
+\draw[green, very thick] (0,0) rectangle (3,2);
+\end{tikzpicture}
+    \end{flushright}
+\end{minipage}
+
+\begin{center}
+\Large{\textbf{Control 2\\ Cálculo Vectorial\\ }}
+\end{center}
+\vspace{1cm}
+\begin{minipage}[r]{15cm}
+\begin{flushleft}
+
+Fecha: 6 de noviembre 2025 \\%
+Duración: 120 minutos  \\
+\end{flushleft}
+\end{minipage}
+\vspace{2cm}
+\begin{center}
+\Large{\textbf{Facultad de Ingeniería}}
+\end{center}
+\vspace{1cm}
+\setlength{\parindent}{0cm}
+“Es deber de cada alumno mantener una actitud moral y éticamente intachable en el transcurso de toda evaluación” \\
+
+En caso de que un alumno sea sorprendido en actitudes deshonestas ya sea intentando o
+dejándose copiar, será calificado con la nota mínima (1.0) y perderá toda posibilidad de
+eliminar dicha nota. Esta conducta quedará archivada como antecedente en su carpeta y podrá
+constituir causal de eliminación. Asimismo, está \textbf{prohibido salir de la sala, usar o tener
+teléfonos celulares (en bolsillos o sobre las mesas)} o cualquier tipo de aparato electrónico,
+tales como audífonos, smartwatch, entre otros, a no ser que el profesor lo autorice.\\
+
+
+Escala al $60\%$ \\
+
+Puntaje para un 4.0: 36 puntos
+
+
+\vspace{3cm}
+\makebox[12cm]{\textbf{Nombre Alumno}:\ \hrulefill} 
+\newpage
+\thispagestyle{empty}
+
+\setlength{\parindent}{0cm}
+
+\textbf{Ejercicio 1 (15 puntos):} Determine y clasifique los puntos críticos de la siguiente función
+
+\begin{align*}
+    f(x,y) &= e^x(x^2-4x)+y^2-4y \\
+\end{align*}
+
+
+
+\textbf{Solución:} Calculamos el gradiente
+
+\begin{align*}
+    \nabla f &=(e^x(x^2-4x)+e^x(2x-4), 2y-4) \\
+    &=(e^x(x^2-2x-4), 2y-4) \\
+\end{align*}
+
+Luego necesitamos que
+
+\begin{align*}
+    e^x(x^2-2x-4) &= 0 \\
+    2y-4 &= 0
+\end{align*}
+
+De donde se deduce que  $y=2$ y $x^2-2x-4=0$, luego 
+
+\begin{align*}
+    x &= \frac{1 \pm \sqrt{5}}{2}
+\end{align*}
+
+Concluimos que los puntos críticos son $\displaystyle \frac{1 + \sqrt{5}}{2}$ y $\displaystyle \frac{1 - \sqrt{5}}{2}$, ahora calculamos el Hessiano
+
+\begin{align}
+    H = \begin{pmatrix}
+        e^x(x^2-6) & 0 \\
+        0 & 2
+    \end{pmatrix}
+\end{align}
+
+Luego $D(x,y)= 2e^x(x^2-6)$ \\
+
+-Tenemos que $D( \frac{1 + \sqrt{5}}{2},2) > 0$ y además $f_{xx}(\frac{1 + \sqrt{5}}{2},2) > 0$ por lo tanto es un mínim local\\
+
+- Tenemos que $D( \frac{1 - \sqrt{5}}{2},2) < 0$ por lo tanto es un punto silla \\
+
+
+
+
+
+
+\newpage
+
+\textbf{Ejercicio 2 (15 puntos):} Considere la siguiente integral doble
+
+\begin{align*}
+    \int_0^1 \int_{\sqrt[3]{x}}^1 \frac{1}{1+y^4}dydx
+\end{align*}
+
+\begin{enumerate}
+    \item Dibuje la región de integración 
+    \item Calcule la integral invirtiendo la región de integración \\
+\end{enumerate}
+
+
+
+
+1. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Controles/Sin título.png}
+    \label{fig:etiqueta}
+\end{figure}  
+
+
+2. Al invertir el orden obtenemos
+
+\begin{align*}
+    \int_0^1\int_0^{y^3} \frac{1}{1+y^4}dxdy &= \int_0^1 \frac{y^3}{1+y^4}\\
+\end{align*}
+
+Con $u=y^4$ tenemos $du=4y^3dy$, luego
+
+
+\begin{align*}
+    \int_0^1\int_0^{y^3} \frac{1}{1+y^4}dxdy &= \frac{1}{4}\int_0^1 \frac{du}{1+u}\\
+    &= \frac{1}{4}\ln(1+y^4) \Bigg|_0^1\\
+    &= \frac{1}{4}\ln(2)
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+
+\textbf{Pregunta 3 (15 puntos):} Determine el centro de masas de la lámina delimitada por la región circular $x^2+y^2=4$ y cuya función de densidad es $\rho(x,y) = y+2$ \\ \\
+
+\textbf{Solución: }primero calculamos la masa usando coordenadas polares
+
+\begin{align*}
+    m &= \int_0^{2\pi}\int_0^2 (r\sin(\theta)+2)r drd\theta \\
+     &= 2\int_0^{2\pi} r^2\sin(\theta)+2r d\theta \\
+     &= \int_0^{2\pi} \frac{r^3}{3}\sin(\theta)+r^2\bigg|_0^{2} d\theta\\
+     &= \int_0^{2\pi} \frac{8}{3}\sin(\theta)+4 d\theta\\
+     &= \left( 4\theta -\frac{8}{3}\cos(\theta) \right) \bigg|_0^{2\pi} \\
+     &= 8\pi
+\end{align*}
+
+
+Ahora
+
+\begin{align*}
+    \overline{x} &= \frac{1}{8\pi} \iint_R xy+2x dA \\
+\end{align*}
+
+Pero antes de hacer cualquier cálculo podemos notar que ambas funciones $xy$ y $2x$ son funciones impares respecto a $x$ en un círculo centrado en 0, se puede concluir inmediatamente que
+
+\begin{align*}
+    \overline{x} =0
+\end{align*}
+
+Aqunque también se puede hacer calculando directamente las integrales. Por otra parte
+
+
+\begin{align*}
+    \overline{y}  &= \frac{1}{8\pi} \iint_R y^2+2y dA
+\end{align*}
+
+Nuevamente la función $2y$ es impar y esa integral se anula, solo nos queda
+
+
+\begin{align*}
+    \overline{y}  &= \frac{1}{8\pi} \iint_R y^2dA \\
+    &=  \frac{1}{8\pi}\int_0^{2\pi}\int_0^2 r^3\sin^2(\theta) dr d\theta \\
+    &=  \frac{1}{8\pi}\int_0^2 \sin^2(\theta) \frac{2^4}{4} d\theta \\
+    &= \frac{1}{8\pi} 4\left( \frac{\theta}{2}-\frac{\sin(2\theta)}{4}\right)\bigg|_0^{2\pi} \\
+    &=  \frac{1}{8\pi}4\pi \\
+    &= \frac{1}{2}
+\end{align*}
+
+Luego el centro de masas es $\displaystyle \left( 0 , \frac{1}{2}\right)$
+
+
+
+
+
+
+\newpage
+
+
+\textbf{Ejercicio 4 (15 puntos):} Determine 
+
+\begin{align*}
+    \iiint_R x^2yz dV
+\end{align*}
+
+Donde $R$ es la región del primer octante limitado por el cilindro $x^2+y^2=1$, el plano $z=1$ y el plano $XY$
+
+
+
+
+
+
+
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Controles/region.jpg}
+    \label{fig:etiqueta}
+\end{figure}  
+
+
+\textbf{Solución:} Pasando a coordenadas cilíndricas, la integral triple queda de la forma
+
+\begin{align*}
+    \int_0^{\pi/2}\int_0^1\int_0^1 r^4\cos^2(\theta)\sin(\theta)z dzdrd\theta &= \frac{1}{2}\int_0^{\pi/2}\int_0^1 r^4\cos^2(\theta)\sin(\theta) drd\theta  \\
+     &= \frac{1}{10}\int_0^{\pi/2} \cos^2(\theta)\sin(\theta) d\theta  \\
+\end{align*}
+
+Para calcular la última integral hacemos $u=\cos(\theta)$, luego $du=-\sin(\theta)d\theta$, luego
+
+\begin{align*}
+    \int_0^{\pi/2}\int_0^1\int_0^1 r^4\cos^2(\theta)\sin(\theta)z dzdrd\theta &= \frac{1}{10}\int_1^{0} -u^2 du  \\
+    &= \frac{1}{10}\frac{1}{3} \\
+    &= \frac{1}{30}
+\end{align*}
+
+
+
+
+
+
+\end{document}

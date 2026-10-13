@@ -1,0 +1,450 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+
+\fancyhead[L]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+
+\thispagestyle{fancy}
+\vspace*{1cm}
+
+\begin{minipage}[r]{12cm}
+    \begin{flushright}
+\begin{tikzpicture}
+\draw[green, very thick] (0,0) rectangle (3,2);
+\end{tikzpicture}
+    \end{flushright}
+\end{minipage}
+
+\begin{center}
+\Large{\textbf{Control Recuperativo\\ Álgebra Lineal\\ }}
+\end{center}
+\vspace{1cm}
+\begin{minipage}[r]{15cm}
+\begin{flushleft}
+
+Fecha: 23 de junio 2025 \\%
+Duración: 120 minutos  \\
+
+\end{flushleft}
+\end{minipage}
+\vspace{2cm}
+\begin{center}
+\Large{\textbf{Facultad de Ingeniería}}
+\end{center}
+\vspace{1cm}
+\textbf{En caso de que un alumno sea sorprendido en actitudes deshonestas, ya sea intentando o
+dejándose copiar, será calificado con nota mínima 1.0 y perderá toda posibilidad de eliminar
+dicha nota. Además, esta conducta quedará archivada como antecedente en su carpeta y
+podrá ser causal de eliminación.
+Así mismo, está prohibido salir de la sala, usar o mantener sobre la mesa teléfonos celulares
+o cualquier tipo de aparato electrónico, a no ser que el profesor lo requiera.}\\
+
+
+
+\vspace{5cm}
+\makebox[12cm]{\textbf{Nombre Alumno}:\ \hrulefill} 
+\newpage
+\thispagestyle{empty}
+\section*{Preguntas}
+\begin{enumerate}
+
+
+
+\item {\bf (15 puntos)} Dado el siguiente sistema de ecuaciones lineales:
+
+    \begin{align*}
+ x + 3y &= 1 \\
+ x + 2y +z &= 0\\
+2 x + 5y +(\alpha -1) z &= 1-\alpha 
+\end{align*}
+
+    tenga solución única, infinitas soluciones o ninguna solución. Para $\alpha=0$, determine el conjunto soluci\'on del sistema.
+
+
+
+ \textbf{Soluci\'on:}\\
+Escribimos la matriz aumentada del sistema:
+
+\[
+\left[
+\begin{array}{ccc|c}
+1 & 3 & 0 & 1 \\
+1 & 2 & 1 & 0 \\
+2 & 5 & \alpha - 1 & 1 - \alpha
+\end{array}
+\right]
+\]
+
+Restamos la fila 1 a la fila 2:
+
+\[
+F_2 \leftarrow F_2 - F_1:
+\left[
+\begin{array}{ccc|c}
+1 & 3 & 0 & 1 \\
+0 & -1 & 1 & -1 \\
+2 & 5 & \alpha - 1 & 1 - \alpha
+\end{array}
+\right]
+\]
+
+Luego, restamos 2 veces la fila 1 a la fila 3:
+
+\[
+F_3 \leftarrow F_3 - 2F_1:
+\left[
+\begin{array}{ccc|c}
+1 & 3 & 0 & 1 \\
+0 & -1 & 1 & -1 \\
+0 & -1 & \alpha - 1 & -1 - \alpha
+\end{array}
+\right]
+\]
+
+Restamos la fila 2 a la fila 3:
+
+\[
+F_3 \leftarrow F_3 - F_2:
+\left[
+\begin{array}{ccc|c}
+1 & 3 & 0 & 1 \\
+0 & -1 & 1 & -1 \\
+0 & 0 & \alpha - 2 & -\alpha
+\end{array}
+\right]
+\]
+
+
+\begin{itemize}
+\item Si \( \alpha - 2 \neq 0 \), es decir, \( \alpha \neq 2 \), entonces hay una única solución porque el sistema es compatible determinado (rango de la matriz de coeficientes y el de la aumentada es 3).
+\item Si \( \alpha = 2 \), la ecuación implicar\'ia:
+\[
+0 = -2
+\]
+lo cual es una contradicción. Por lo tanto, el sistema es incompatible: \textbf{no tiene solución}.
+\end{itemize}
+
+
+
+Sustituimos \( \alpha = 0 \) en el sistema original:
+\[
+\left[
+\begin{array}{ccc|c}
+1 & 3 & 0 & 1 \\
+0 & -1 & 1 & -1 \\
+0 & 0 & - 2 & 0
+\end{array}
+\right]
+\]
+
+
+\textbf{Por lo tanto, la única solución es:}
+\[
+\boxed{(x, y, z) = (-2,\ 1,\ 0)}
+\]
+
+
+
+\newpage
+    \item Considere el conjunto $S=\{ ( 0 , 1 , 2 ), ( 1 , 1 , 2 ), ( 0 , 0 , -1) \}$.
+    \begin{enumerate}
+        \item {\bf (3 puntos)} Muestre que $S$ es base de $\mathbb{R}^{3}$.
+        \item {\bf (9 puntos)} Encuentre una base ortonormal de $\mathbb{R}^{3}$ a partir de esta base usando el procedimiento de Gram-Schmidt.
+        \item {\bf (3 puntos)} Encuentre las coordenadas de $\{( -1 ,0 , 1 ) \}$ en esta base.    
+
+\end{enumerate} 
+\textbf{Solución:}
+\begin{enumerate}
+
+\item Muestre que \( S \) es base de \( \mathbb{R}^3 \).
+
+Para probar que \( S \) es una base de \( \mathbb{R}^3 \), basta demostrar que los vectores son linealmente independientes.
+
+Formamos la matriz con los vectores como columnas:
+
+\[
+M = \begin{pmatrix}
+0 & 1 & 0 \\
+1 & 1 & 0 \\
+2 & 2 & -1
+\end{pmatrix}
+\]
+
+Calculamos su determinante:
+
+\[
+\det(M) = 
+\begin{vmatrix}
+0 & 1 & 0 \\
+1 & 1 & 0 \\
+2 & 2 & -1
+\end{vmatrix}
+= 0 \cdot \begin{vmatrix} 1 & 0 \\ 2 & -1 \end{vmatrix}
+- 1 \cdot \begin{vmatrix} 1 & 0 \\ 2 & -1 \end{vmatrix}
++ 0 \cdot \begin{vmatrix} 1 & 1 \\ 2 & 2 \end{vmatrix}
+= - (1 \cdot (-1) - 0 \cdot 2) = -(-1) = 1
+\]
+
+Como el determinante es distinto de cero, los vectores son linealmente independientes, por lo tanto, al ser 3 vectores en espacio de dimensión 3, éstos forman una base de \( \mathbb{R}^3 \).
+
+\vspace{0.4cm}
+
+\item Encuentre una base ortonormal de \( \mathbb{R}^3 \) a partir de esta base usando el procedimiento de Gram-Schmidt.
+
+Sea
+\[
+\vec{v}_1 = (0,1,2), \quad \vec{v}_2 = (1,1,2), \quad \vec{v}_3 = (0,0,-1)
+\]
+
+Definimos \( \vec{w}_1 = \vec{v}_1 \)
+\[
+\vec{w}_1 = (0,1,2), \quad
+\|\vec{w}_1\| = \sqrt{1^2 + 2^2} = \sqrt{5}
+\Rightarrow \vec{u}_1 = \frac{1}{\sqrt{5}}(0,1,2)
+\]
+
+
+Ortogonalizamos \( \vec{v}_2 \):
+
+\[
+\text{proy}_{\vec{w}_1}(\vec{v}_2) = \frac{\langle \vec{v}_2, \vec{w}_1 \rangle}{\langle \vec{w}_1, \vec{w}_1 \rangle} \vec{w}_1
+= \frac{(1)(0)+(1)(1)+(2)(2)}{1+4} (0,1,2) = \frac{5}{5}(0,1,2) = (0,1,2)
+\]
+
+\[
+\vec{w}_2 = \vec{v}_2 - \text{proy}_{\vec{w}_1}(\vec{v}_2) = (1,1,2) - (0,1,2) = (1,0,0)
+\Rightarrow \|\vec{w}_2\| = 1, \quad \vec{u}_2 = (1,0,0)
+\]
+
+Ortogonalizamos \( \vec{v}_3 \):
+
+\[
+\text{proy}_{\vec{u}_1}(\vec{v}_3) = \frac{\langle \vec{v}_3, \vec{u}_1 \rangle}{\langle \vec{u}_1, \vec{u}_1 \rangle} \vec{u}_1
+= \frac{(0)(0)+(0)(1)+(-1)(2)}{5}(0,1,2) = \frac{-2}{5}(0,1,2) = (0,-\frac{2}{5},-\frac{4}{5})
+\]
+
+\[
+\text{proy}_{\vec{u}_2}(\vec{v}_3) = \langle \vec{v}_3, \vec{u}_2 \rangle \vec{u}_2 = (0)(1)+(0)(0)+(-1)(0) = 0
+\Rightarrow \text{proyección total} = (0,-\frac{2}{5},-\frac{4}{5})
+\]
+
+\[
+\vec{u}_3 = \vec{v}_3 - \text{proy} = (0,0,-1) - (0,-\frac{2}{5},-\frac{4}{5}) = (0,\frac{2}{5},-\frac{1}{5})
+\]
+
+\[
+\|\vec{u}_3\| = \sqrt{\left(\frac{2}{5}\right)^2 + \left(-\frac{1}{5}\right)^2} = \sqrt{\frac{4}{25} + \frac{1}{25}} = \sqrt{\frac{5}{25}} = \frac{1}{\sqrt{5}}
+\Rightarrow \vec{e}_3 = \sqrt{5} \cdot (0,\frac{2}{5},-\frac{1}{5}) = (0,\frac{2}{\sqrt{5}}, -\frac{1}{\sqrt{5}})
+\]
+
+\textbf{Resultado:} La base ortonormal es:
+\[
+\left\{
+\frac{1}{\sqrt{5}}(0,1,2),\;
+(1,0,0),\;
+\frac{1}{\sqrt{5}}(0,2,-1)\right)
+\right\}
+\]
+
+\vspace{0.4cm}
+
+\item Encuentre las coordenadas de \( \vec{x} = (-1, 0, 1) \) en esta base.
+
+Sea \( B = \{\vec{v}_1, \vec{v}_2, \vec{v}_3\} \), queremos encontrar escalares \( a, b, c \) tales que:
+
+\[
+(-1,0,1) = a(0,1,2) + b(1,1,2) + c(0,0,-1)
+\]
+
+Para encontrar las coordenadas \( (a, b, c) \) de \( \vec{x} = (-1,0,1) \) en esta base ortonormal, usamos:
+
+\[
+a = \langle \vec{x}, \vec{u}_1 \rangle, \quad
+b = \langle \vec{x}, \vec{u}_2 \rangle, \quad
+c = \langle \vec{x}, \vec{u}_3 \rangle
+\]
+
+\textbf{Cálculo:}
+
+\[
+a = \left\langle (-1, 0, 1), \frac{1}{\sqrt{5}}(0,1,2) \right\rangle
+= \frac{1}{\sqrt{5}} \left( 0\cdot(-1) + 1\cdot0 + 2\cdot1 \right) = \frac{2}{\sqrt{5}}
+\]
+
+\[
+b = \langle (-1, 0, 1), (1,0,0) \rangle = (-1)\cdot1 + 0\cdot0 + 1\cdot0 = -1
+\]
+
+\[
+c = \left\langle (-1, 0, 1), \left(0, \frac{2}{\sqrt{5}}, -\frac{1}{\sqrt{5}}\right) \right\rangle
+= 0\cdot(-1) + 0\cdot\frac{2}{\sqrt{5}} + 1\cdot\left(-\frac{1}{\sqrt{5}}\right) = -\frac{1}{\sqrt{5}}
+\]
+
+\textbf{Respuesta:}  
+Las coordenadas de \( \vec{x} = (-1,0,1) \) en la base ortonormal son:
+
+\[
+\left( \frac{2}{\sqrt{5}},\; -1,\; -\frac{1}{\sqrt{5}} \right)
+\]
+\end{enumerate}
+
+\newpage
+    
+    \item Sea $H$ el subconjunto de $\mathbb{R}^3$ definido por
+\[H=\{(x,y,z)\in\mathbb{R}^3\colon 2x-y=0  \}\]
+
+\begin{enumerate}
+\item {\bf (3 puntos)} Determine si los vectores $( 1 ,2 , 3 ) $ y $ ( -1 ,0 , -2 ) $ pertenecen a $H$.
+   \item {\bf (6 puntos)} Demuestre que $H$ es un subespacio vectorial de $\mathbb{R}^3$.
+    \item {\bf (6 puntos)} Encuentre una base de $H$ y determine su dimensión.
+
+\end{enumerate}
+\newpage
+\phantom{0}
+\newpage
+    \item Considere la siguiente matriz
+\[    A=\begin{pmatrix} -1 &1  \\ 0 & 1/2 \end{pmatrix}.\]
+\begin{itemize}
+\item[(a)] {\bf (10 puntos)} Obtenga los valores propios de \(A\) y sus vectores propios asociados.
+\item[(b)] {\bf (5 puntos)} Presente, si es posible, la diagonalización de esta matriz, encontrando matrices \(P\) y \(D\) que cumplan
+\[
+A = P D P^{-1}
+\]
+\end{itemize}
+\end{enumerate}
+\textbf{Solución:}
+
+\begin{itemize}
+
+\item[(a)] \textbf{(10 puntos)} Obtenga los valores propios de \(A\) y sus vectores propios asociados.
+
+Para hallar los valores propios, resolvemos el polinomio característico:
+
+\[
+\det(A - \lambda I) = \det\left( \begin{pmatrix} -1 - \lambda & 1 \\ 0 & \frac{1}{2} - \lambda \end{pmatrix} \right)
+= (-1 - \lambda)\left( \frac{1}{2} - \lambda \right)
+\]
+
+\[
+\Rightarrow (-1 - \lambda)\left( \frac{1}{2} - \lambda \right) = 0
+\]
+
+\[
+\Rightarrow \lambda_1 = -1, \quad \lambda_2 = \frac{1}{2}
+\]
+
+\vspace{0.3cm}
+
+\textbf{Para } \( \lambda_1 = -1 \):
+
+Resolvemos \( (A + I)\vec{v} = 0 \):
+
+\[
+A + I = \begin{pmatrix} 0 & 1 \\ 0 & \frac{3}{2} \end{pmatrix}
+\Rightarrow \begin{pmatrix} 0 & 1 \\ 0 & \frac{3}{2} \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+\]
+
+\[
+\Rightarrow y = 0,\quad x\text{ libre}
+\Rightarrow \vec{v}_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+\]
+
+\vspace{0.3cm}
+
+\textbf{Para } \( \lambda_2 = \frac{1}{2} \):
+
+\[
+A - \frac{1}{2}I = \begin{pmatrix} -\frac{3}{2} & 1 \\ 0 & 0 \end{pmatrix}
+\Rightarrow \begin{pmatrix} -\frac{3}{2} & 1 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+\]
+
+\[
+\Rightarrow -\frac{3}{2}x + y = 0 \Rightarrow y = \frac{3}{2}x
+\Rightarrow \vec{v}_2 = \begin{pmatrix} 2 \\ 3 \end{pmatrix}
+\]
+
+\vspace{0.5cm}
+
+\end{itemize}
+\newpage
+
+
+\section*{Formulario}
+\begin{enumerate}
+    \item \textbf{Coordenada de $v$ respecto de la base ortogonal $\{w_i\}$:} $a_i=\frac{\langle v, w_i \rangle}{\langle w_i, w_i \rangle}$.
+
+
+    \item \textbf{Vector normal: } vector de norma 1. Vector normal asociado a $v\in V$ es $\hat{v}=\dfrac{v}{\|v\|}.$
+
+
+
+    \item \textbf{Proceso de ortogonalizaci\'on de Gram Schmidt.}
+
+Sea $B = \{v_i\}_{i=1}^m $ una base ordenada cualquiera de $W $.
+\begin{enumerate}
+\item Escriba $w_1 = v_1$. Calcule $w_2 = v_2 - \dfrac{\langle v_2,v_1\rangle}{\langle v_1,v_1\rangle}v_1$.
+%\item Suponemos que esta construcción de $w_k$ es posible hacerla hasta
+%obtener el conjunto ortogonal $ \{w_i\}_{i=1}^{m-1}$ con $w_k=v_k-\sum_{i=1}^{k-1}c_iw_i$.
+\item Calcule de manera sucesiva
+\[w_i=v_i-\dfrac{\langle v_i,w_1\rangle}{\langle w_1,w_1\rangle}w_1-\dfrac{\langle v_i,w_2\rangle}{\langle w_2,w_2\rangle}w_2-\dots-\dfrac{\langle v_i,w_{i-1}\rangle}{\langle w_{i-1},w_{i-1}\rangle}w_{i-1}.\]
+Obteniendo un conjunto ortogonal.
+\item Para conseguir un conjunto ortonormal, calcule $u_i=\dfrac{w_i}{\|w_i\|}$.
+\end{enumerate}
+
+\end{enumerate}
+
+
+
+\end{document}

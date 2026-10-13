@@ -1,0 +1,849 @@
+  \documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Primera Semana\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+\end{picture}
+
+
+\begin{center}
+\huge{Primera Semana}
+\end{center}
+
+
+
+\begin{center}
+	\large{Cálculo Vectorial}
+\end{center}
+
+
+
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Cálculo Vectorial. \\}
+\end{center}
+
+
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\setlength{\parindent}{2.9cm}- El espacio $\mathbb{R}^n$ \\
+\phantom{abefwfewefwfefffw} - Operaciones entre vectores	\\
+\phantom{abefwfewefwfefffw} - Producto punto y norma 	\\
+\phantom{abefwfewefwfefffw} - Proyecciones y producto cruz\\
+\phantom{abefwfewefwfefffw} - Rectas en el espacio\\
+\phantom{abefwfewefwfefffw} - Ecuación del plano\\
+
+
+
+\vspace{6cm}
+
+
+\begin{center}
+\today
+\end{center}
+\begin{center}
+Santiago, Chile
+\end{center}
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+
+
+\begin{center}
+\textbf{\large{El espacio $\mathbb{R}^n$}} \\
+\end{center}
+
+Para propósitos de este curso entenderemos el espacio $\mathbb{R}^n$ como el espacio de todas las tuplas de la forma $(x_1,x_2,..., x_n)$ tal que cada coordenada es un número real, en otras palabras
+
+\begin{center}
+$\mathbb{R}^n = \lbrace (x_1,x_2,..., x_n) : x_1,x_2,... ,x_n \in \mathbb{R} \rbrace$
+\end{center}
+
+A lo elementos de $\mathbb{R}^n$ les llamaremos \textbf{vectores} y los denotaremos con una letra y una flecha, por ejemplo $\overrightarrow{u} = (1,2,\sqrt{2})$ o bien $\overrightarrow{w} = (5,-4,75)$. \\
+
+Se tiene que $\mathbb{R}^2$ se identifica como el plano cartesiano mientras que $ \mathbb{R}^3$ se identifica como el espacio. Además $\mathbb{R}^1$ se puede identificar como el mismo conjunto de los número reales, es decir $\mathbb{R}^1 =\mathbb{R}$. \\
+
+
+
+Para los que hayan visto álgebra lineal se tiene que $\mathbb{R}^n$ es un espacio vectorial de dimensión $n$ y por lo tanto tiene sentido llamar vectores a sus elementos, porque por definición un vector es un elemento de un espacio vectorial. \\
+
+
+
+\begin{center}
+\textbf{\large{Operaciones entre vectores}} \\
+\end{center}
+
+
+Sean dos vecotres $\overrightarrow{u},\overrightarrow{v} \in \mathbb{R}^n$, donde 
+
+\begin{center}
+$\overrightarrow{u} = (u_1,u_2,... ,u_n)$
+\end{center}
+
+\begin{center}
+$\overrightarrow{v} = (v_1,v_2,... ,v_n)$
+\end{center}
+
+
+Podemos definir la \textbf{suma de vectores } como
+
+
+\begin{center}
+$\overrightarrow{u}+ \overrightarrow{v} = (u_1+v_1,u_2+v_2,... ,u_n+v_n) $
+\end{center}
+
+Es decir, la suma coordenada a coordenada, tenemos que la suma cumple con todas las propiedades de la suma en los número reales   \\
+
+- $\overrightarrow{u}+ \overrightarrow{v} = \overrightarrow{v}+ \overrightarrow{u}$  (Conmutatividad) \\
+
+- $ (\overrightarrow{u}+ \overrightarrow{v}) + \overrightarrow{w}  = \overrightarrow{u}+ (\overrightarrow{v} +\overrightarrow{w})$ (Asociatividad) \\
+
+- Existe un elemento neutro $\overrightarrow{0}=(0, 0, ... ,0)$, tal que $\overrightarrow{u}+ \overrightarrow{0} = \overrightarrow{0}+ \overrightarrow{u}= \overrightarrow{u}+ \overrightarrow{u}$ para todo $\overrightarrow{u} \in \mathbb{R}^n$ (Existencia del elemento neutro)\\
+
+- Para todo $\overrightarrow{u} \in \mathbb{R}^n$ existe un elemento $\overrightarrow{v} \in \mathbb{R}^n$ tal que $\overrightarrow{u}+ \overrightarrow{v}= \overrightarrow{0}$	(Existencia del elemento inverso)\\
+
+Al inverso aditivo se le denota por $-\overrightarrow{u}$. Esta suma es una extensión de la suma habitual en $\mathbb{R}$ al espacio $\mathbb{R}^n$. \\
+
+\newpage
+
+
+Sean $\alpha \in \mathbb{R}$ y $\overrightarrow{u} \in \mathbb{R}^n$, donde $\overrightarrow{u} =(u_1,u_2,... ,u_n)$ podemos definir la \textbf{multiplicación por escalar} como
+
+\begin{center}
+$\alpha\overrightarrow{u} = (\alpha u_1,\alpha u_2,... ,\alpha u_n)$
+\end{center}
+
+Dados $\alpha,\beta \in \mathbb{R}$ y $\overrightarrow{u},\overrightarrow{v} \in \mathbb{R}^n$. Se cumple que
+
+\begin{center}
+$\alpha(\beta \overrightarrow{u}) = (\alpha \beta)\overrightarrow{u} = \beta(\alpha \overrightarrow{u})$ (Asociatividad)
+\end{center}
+
+\begin{center}
+$\alpha(\overrightarrow{u}+\overrightarrow{v})=\alpha\overrightarrow{u} + \alpha \overrightarrow{u}$ (Distributividad)
+\end{center}
+
+\begin{center}
+$(\alpha+\beta)\overrightarrow{u} = \alpha \overrightarrow{u} + \beta \overrightarrow{u}$ (Distributividad)
+\end{center}
+
+\begin{center}
+$ 0 \overrightarrow{u} = \alpha \overrightarrow{0} = \overrightarrow{0}$
+\end{center}
+
+\begin{center}
+$ (-1)\overrightarrow{u} = -\overrightarrow{u} $ 
+\end{center}
+
+
+\textbf{Ejemplo 1: } Sean $\overrightarrow{u}=(1,-3,4)$, $\overrightarrow{v}=(-1,2,-12)$ y $\overrightarrow{w} = (2,4,-17)$. Entonces
+
+\begin{align*}
+2\overrightarrow{u}-5\overrightarrow{v}+7\overrightarrow{w} &= 2(1,-3,4)-5(-1,2,12)+7(2,4,-17) \\
+&= (2,-6,8)+(5,-10,-60)+(14,28,-119) \\
+&= (21,12,-171) \\
+\end{align*}
+
+
+\textbf{Ejemplo 2: } Sean $\overrightarrow{u}=(1, 3, 5)$, $\overrightarrow{v}=(-8,4,3)$. Entonces
+
+\begin{align*}
+-4(\overrightarrow{u}+\overrightarrow{v}) &= -4( (1,3,5)+(-8,4,3)) \\
+&= -4(-7,7,8) \\
+&= (28,-28,-32) \\
+\end{align*}
+
+
+
+
+
+\newpage
+
+
+\begin{center}
+\textbf{\large{Producto punto, norma y desigualdad de Cauchy-Schwartz}} \\
+\end{center}
+
+Sean dos vecotres $\overrightarrow{u},\overrightarrow{v} \in \mathbb{R}^n$, donde 
+
+\begin{center}
+$\overrightarrow{u} = (u_1,u_2,... ,u_n)$
+\end{center}
+
+\begin{center}
+$\overrightarrow{v} = (v_1,v_2,... ,v_n)$
+\end{center}
+
+
+Podemos definir el \textbf{ producto punto } como
+
+
+
+\begin{center}
+$\overrightarrow{u} \cdot \overrightarrow{v} = u_1v_1+u_2v_2+... +u_nv_n$
+\end{center}
+
+
+Notemos que el producto punto da como resultado un número real, es decir el producto punto es un operador que toma dos vectores y los lleva a un número real, esto se puedo anotar como $\cdot : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}$. \\
+
+Sea $\overrightarrow{u} \in \mathbb{R}$ se puede definir la \textbf{norma}  $||.|| :\mathbb{R}^n \to \mathbb{R}$ como
+
+\begin{center}
+$|| \overrightarrow{u} || = \sqrt{u_1^2+u_2^2 +... +u_n^2}$
+\end{center}
+
+En el caso de $\mathbb{R}^2$ y $\mathbb{R}^3$ la norma se entiende como la distancia del vector al origen (el vector $\overrightarrow{0}$) mientras que el producto punto se entiende como el prducto entre la norma de un vector por la proyección sobre otro vector. En general se tiene que si $\alpha$ es el ángulo entre los vectores $\overrightarrow{u}$ y $\overrightarrow{v}$, entonces
+
+\begin{center}
+$\overrightarrow{u} \cdot \overrightarrow{v} = ||\overrightarrow{u}|| ||\overrightarrow{v}|| \cos(\alpha)$
+\end{center}
+
+Esta última igualdad fue demostrada en clases a través del teorema del coseno. Notemos que esto también nos permiete extender el concepto de ángulo entre vectores a dimensiones más grandes, en general se tiene que el ángluo entre dos vectores viene dado por
+
+\begin{align*}
+\displaystyle \alpha = \arccos \left( \frac{\overrightarrow{u} \cdot \overrightarrow{v}}{||\overrightarrow{u}|| || \overrightarrow{v}||} \right) 
+\end{align*}
+
+Mientras que la distancia entre los dos vectores viene dada por
+
+\begin{center}
+$d(\overrightarrow{u} ,\overrightarrow{v} ) = || \overrightarrow{u} -\overrightarrow{v} || $
+\end{center}
+
+\textbf{Ejemplo 1: } Sean $\overrightarrow{u} = (5,-2,1)$ y $\overrightarrow{v} = (1,-7,-1) $, luego el producto punto entre los vectores viene dado por
+
+\begin{center}
+$\overrightarrow{u} \cdot \overrightarrow{v} = 5 \cdot 1 + -2 \cdot -7 + 1 \cdot -1 = 5+14-1 =18 $
+\end{center}
+
+
+\textbf{Ejemplo 2: } Sean $\overrightarrow{u} = (5,-2,1)$ y $\overrightarrow{v} = (1,-7,-1) $, luego la distancia entre los dos vectores viene dado por
+
+
+\begin{align*}
+d(\overrightarrow{u} ,\overrightarrow{v} ) &= || \overrightarrow{u} -\overrightarrow{v} || \\
+& ||(5,-2,1)-(1,-7,-1)|| \\
+&= || (4,5,2)|| \\
+&= \sqrt{4^2+5^2+2^2}\\
+&= \sqrt{45} \\
+&= 3\sqrt{5} 
+\end{align*}
+
+\newpage
+
+
+
+\textbf{Ejemplo 3: } Sean $\overrightarrow{u} = (4,6,3)$ y $\overrightarrow{v} = (1,1,-1) $, luego el ángulo entre estos dos vectores viene dado por
+
+
+\begin{align*}
+\displaystyle \alpha &= \arccos\left( \frac{\overrightarrow{u} \cdot \overrightarrow{v}}{|| \overrightarrow{u} || ||\overrightarrow{v}||} \right)  \\
+&= \arccos\left( \frac{4+6-3}{\sqrt{61} \sqrt{3}} \right)  \\
+&= \arccos\left( \frac{7}{\sqrt{183}} \right)  \\
+\end{align*}
+
+
+\textbf{La norma y el producto punto cumplen con las siguientes propiedades}
+
+
+\begin{center}
+$||\overrightarrow{u} ||^2 = \overrightarrow{u}  \cdot \overrightarrow{u}  $
+\end{center}
+
+\begin{center}
+$||\alpha \overrightarrow{u} || = |\alpha| || \overrightarrow{u} ||$
+\end{center}
+
+\begin{center}
+$|| \overrightarrow{u} || \geq 0$ 
+\end{center}
+
+\begin{center}
+$|| \overrightarrow{u} || = 0 \Leftrightarrow \overrightarrow{u} =\overrightarrow{0} $ 
+\end{center}
+
+\begin{center}
+$|| \overrightarrow{u} + \overrightarrow{v}|| \leq ||\overrightarrow{u}|| +||\overrightarrow{v}|| $ (Desigualdad Triangular) 
+\end{center}
+
+
+\begin{center}
+$ \overrightarrow{u} \cdot ( \overrightarrow{v} + \overrightarrow{w}) = \overrightarrow{u} \cdot \overrightarrow{v} + \overrightarrow{u} \cdot \overrightarrow{w}$ (Distributividad) 
+\end{center}
+
+\begin{center}
+$\overrightarrow{u} \cdot \overrightarrow{u} \geq 0$
+\end{center}
+
+
+\begin{center}
+$\overrightarrow{u} \cdot \overrightarrow{v} = \overrightarrow{v} \cdot \overrightarrow{u}$ (Conmutatividad)
+\end{center}
+
+\begin{center}
+$\alpha (\overrightarrow{u} \cdot \overrightarrow{v}) = (\alpha \overrightarrow{u}) \cdot \overrightarrow{v} = \overrightarrow{u} \cdot (\alpha \overrightarrow{v})$ (Asociatividad)
+\end{center}
+
+
+
+
+
+
+\begin{center}
+$\overrightarrow{u} \cdot \overrightarrow{v} \leq ||\overrightarrow{u}|| ||\overrightarrow{v}||$ (Desigualdad de Cauchy-Schwartz)
+\end{center}
+
+
+
+\textbf{Definición: } Dados dos vectores $\overrightarrow{u}, \overrightarrow{v} \in \mathbb{R}^n$ se dice que son \textbf{ortogonales } o \textbf{perpendiculares} si y sólo sí $\overrightarrow{u} \cdot \overrightarrow{v} = 0$ \\
+
+\textbf{Ejemplo: } $\overrightarrow{u}= (-1,1,1)$ y $\overrightarrow{v} = (2,1,1)$, entonces
+
+\begin{center}
+$\overrightarrow{u} \cdot \overrightarrow{v} = -2+1+1=0 $
+\end{center}
+
+
+Luego $\overrightarrow{u}$ y $\overrightarrow{u}$ son perpendiculares
+
+
+
+
+\newpage
+
+
+\begin{center}
+\textbf{\large{Proyecciones y producto cruz}} \\
+\end{center}
+
+
+Dados dos vectores $\overrightarrow{u}$ y $\overrightarrow{v}$ se define la proyección de $\overrightarrow{u}$ sobre $\overrightarrow{v}$ como
+
+\begin{center}
+$\displaystyle \text{Proy}_{\overrightarrow{u} \to \overrightarrow{v}} = \left( \frac{\overrightarrow{u} \cdot \overrightarrow{v}}{|| \overrightarrow{v}||^2} \right)  \overrightarrow{v}$
+\end{center}
+
+Notemos que $\displaystyle \frac{\overrightarrow{u} \cdot \overrightarrow{v}}{|| \overrightarrow{v}||^2}$ es un número real. \\
+
+
+\textbf{Ejemplo: } Tomando $\overrightarrow{u} =(2,5)$ y $\overrightarrow{v} =(3,4) $, entonces
+
+\begin{align*}
+\displaystyle \text{Proy}_{\overrightarrow{u} \to \overrightarrow{v}} &= \left( \frac{\overrightarrow{u} \cdot \overrightarrow{v}}{|| \overrightarrow{v}||^2} \right)  \overrightarrow{v} \\
+&= \left( \frac{(2,5) \cdot (3,4)}{||(3,4)||^2} \right)  (3,4) \\
+&= \frac{6+20}{9+16}   (3,4) \\
+&= \frac{26}{25}   (3,4) \\
+&= \left( \frac{78}{25},\frac{104}{25} \right) 
+\end{align*}
+
+
+En $\mathbb{R}^3$, podemos escribir $\hat{\imath}=(1,0,0)$, $\hat{\jmath}=(0,1,0)$ y $\hat{k}=(0,0,1)$, de esta forma todo vector $\overrightarrow{u} =(u_1,u_2,u_3)$ se puede escribir de la forma
+
+\begin{center}
+$\overrightarrow{u}= u_1 \hat{\imath} +u_2\hat{\jmath}+u_3\hat{k}$
+\end{center}
+
+
+
+
+\textbf{Definición: } Dados dos vectores $\overrightarrow{u}$ y $\overrightarrow{u}$ en $\mathbb{R}^3$, surge la necesidad de determinar un vector $\overrightarrow{w}$ que sea perpendicular tanto a $\overrightarrow{u}$ como a $\overrightarrow{w}$. Esta definición será escrita sólo para $\mathbb{R}^3$, definimos entonces el \textbf{producto cruz} como
+
+\begin{center}
+$ \overrightarrow{u} \times \overrightarrow{v} = \begin{vmatrix}
+i & j & k\\
+u_1 & u_2 & u_3\\
+v_1 & v_2 & v_3
+\end{vmatrix} =  \begin{vmatrix}
+u_2 & u_3 \\
+v_2 & v_3
+\end{vmatrix} \hat{\imath}- \begin{vmatrix}
+u_1 & u_3 \\
+v_1 & v_3
+\end{vmatrix} \hat{\jmath} + \begin{vmatrix}
+u_1 & u_2 \\
+v_1 & v_2
+\end{vmatrix} \hat{k}$
+\end{center}
+
+Notemos que $\overrightarrow{u} \times \overrightarrow{v}$ es un vector que es perpendicular tanto a $\overrightarrow{u}$ como a $\overrightarrow{u}$, además se tiene que
+
+\begin{center}
+$||\overrightarrow{u} \times \overrightarrow{v} || =||\overrightarrow{u}||||\overrightarrow{v}|| \sen(\alpha)$
+\end{center}
+
+
+Donde $\alpha$ es el ángulo entre los dos vectores. \\
+
+
+\textbf{Ejemplo: } Sean $\overrightarrow{u} =(1,1,1)$ y $\overrightarrow{v} = (1,-2,-1) $, entonces
+
+
+\begin{center}
+$ \overrightarrow{u} \times \overrightarrow{v} = \begin{vmatrix}
+i & j & k\\
+1 & 1 & 1\\
+1 & -2 & -1
+\end{vmatrix} =  \begin{vmatrix}
+1 & 1 \\
+-2 & -1
+\end{vmatrix} \hat{\imath}- \begin{vmatrix}
+1 & 1 \\
+1 & -1
+\end{vmatrix} \hat{\jmath} + \begin{vmatrix}
+1 & 1 \\
+1 & -2
+\end{vmatrix} \hat{k} = (1,2,-3)$
+\end{center}
+
+
+Dos vectores $\overrightarrow{u} $ y $\overrightarrow{v} $ se dicen \textbf{paralelos } si $\overrightarrow{u} = \lambda \overrightarrow{v} $ donde $\lambda \in \mathbb{R}$, se tiene que
+
+\begin{center}
+$\overrightarrow{u} $ es paralelo a $\overrightarrow{v}$ si y sólo sí $\overrightarrow{u} \times \overrightarrow{v} = \overrightarrow{0}  $
+\end{center} 
+
+\newpage
+
+El producto cruz cumple con las siguientes propiedades \\
+
+- $\overrightarrow{u} \times \overrightarrow{v} = - \overrightarrow{v} \times \overrightarrow{u} $ \\
+
+
+- $(\overrightarrow{u} \times \overrightarrow{v}) \times \overrightarrow{z} = \overrightarrow{u} \times ( \overrightarrow{v} \times \overrightarrow{z} ) $ (Asociatividad) \\
+
+- $\alpha (\overrightarrow{u} \times \overrightarrow{v}) = (\alpha \overrightarrow{u}) \times \overrightarrow{v}$ \\
+
+-$(\overrightarrow{u}+\overrightarrow{v}) \times \overrightarrow{z} = \overrightarrow{u} \times \overrightarrow{z} +\overrightarrow{v} \times \overrightarrow{z}$ \\
+
+
+
+
+
+\begin{center}
+\textbf{\large{Vectores Unitarios}} \\
+\end{center}
+
+
+\textbf{Definición:} un vector $u$ se dice unitario si $|| u || =1$ \\
+
+por ejemplo el vector $(1,0)$ es unitario. Dado un vector cualquiera $v$, se puede crear un vector unitario simplemente dividiendo por la norma, generando el vector
+
+\begin{align*}
+    \frac{v}{|| v||}
+\end{align*}
+
+Este nuevo vector tiene la misma dirección que $v$, pero es un vector unitario, a este proceso se le llama \textbf{normalizar un vector}. Los vecotres unitarios $(1,0,0)$, $(0,1,0)$ y $(0,0,1)$, también llamdos vectores canónicos, son muy útiles y se denotan de la siguiente manera
+
+\begin{align*}
+    \hat{\imath} &= (1,0,0) \\
+    \hat{\jmath} &= (0,1,0) \\
+    \hat{k} &= (0,0,1)
+\end{align*}
+
+Cualquier vector $(a,b,c)$ se puede expresar como
+
+\begin{align*}
+    (a,b,c) = a\hat{\imath}+b\hat{\jmath} +c\hat{k}
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{center}
+\textbf{\large{Rectas en el espacio}} \\
+\end{center}
+
+
+Una recta en el espacio se puede identificar a través de un vector director $\overrightarrow{d}$ y un vector posición $\overrightarrow{p}$, de esta forma una recta $L$ viene dada por
+
+\begin{center}
+$L = \lbrace \overrightarrow{p} + \lambda \overrightarrow{d} : \lambda \in \mathbb{R}\rbrace$
+\end{center}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{Imagenes/descarga.jpg}
+    \caption{Visuaizaci\'on de la ecuaci\'on vectorial de una recta}
+    \label{fig:etiqueta}
+\end{figure}
+
+Usualmente se denota como 
+
+
+\begin{center}
+$L : \overrightarrow{p} + \lambda \overrightarrow{d} $
+\end{center}
+
+Esta última es llamada \textbf{Ecuación vectorial de la recta}. Por ejemplo podemos considerar $\overrightarrow{d}=(1,2,5)$ y $\overrightarrow{p}=(-1,2,3)$ y entonces la recta determinada por estos vectores sería
+
+\begin{center}
+$L : (-1,2,3) + \lambda (1,2,5) $
+\end{center}
+
+
+Si hacemos variar $\lambda$ obtenemos todo el conjunto de puntos que pertenecen a esta recta, por ejemplo, con $\lambda=2$, obtenemos
+
+\begin{center}
+$(-1,2,3) + 2(1,2,5)= (-1,2,3) + (2,4,10)=(1,6,13)  $
+\end{center}
+
+Y por lo tanto el punto $(1,6,13)$ pertenece a la recta $L$. \\
+
+
+Notemos que si consideramos $\overrightarrow{d}=(d_1,d_2,d_3)$ y $\overrightarrow{p}=(p_1,p_2,p_3)$, entonces
+
+\begin{align*}
+L &: \overrightarrow{p} + \lambda \overrightarrow{d} \\
+&= (p_1,p_2,p_3)+\lambda(d_1,d_2,d_3) \\
+&= (p_1+\lambda d_1,p_2 + \lambda d_2,p_3 +\lambda d_3)\\
+\end{align*}
+
+De esta forma obtenemos que las cooredenas $x$, $y$ y $z$ están dadas por
+
+
+\begin{align*}
+x&= p_1+\lambda d_1 \\
+y&= p_2+\lambda d_2 \\
+z&= p_3+\lambda d_3 \\
+\end{align*}
+
+
+Esta se conoce como \textbf{Ecuación paramétrica de la recta} y expresa a todas las coordenadas en función de un único parámetro $\lambda$. Notemos que con estas ecuaciones podemos detectar inmediatamente el vector director y el vector posición. En efecto, sea la recta $L$ dada por 
+
+
+\begin{align*}
+x&= 2+5\lambda  \\
+y&= 3-8\lambda \\
+z&= -4+\lambda  \\
+\end{align*}
+
+
+Podemos detectar que el vector director es $\overrightarrow{d}=(5,-8,1)$ y el vector posición es $\overrightarrow{p}=(2,3,-4)$. Notemos que si despejamos $\lambda$ en cada ecuación obtenemos que
+
+
+\begin{align*}
+\displaystyle \lambda = \frac{x-p_1}{d_1}  \\
+\lambda = \frac{y-p_2}{d_2} \\
+\lambda = \frac{z-p_3}{d_3} 
+\end{align*}
+
+De dónde se deduce que
+
+
+\begin{center}
+$\displaystyle \frac{x-p_1}{d_1} = \frac{y-p_2}{d_2}  = \frac{z-p_3}{d_3} $
+\end{center}
+
+Esto se conoce como \textbf{Ecuación general de la recta}. Podemos detectar inmediatamente el vector director y el vector posición si nos fijamos en los coeficientes que acompañan a las coordenadas. Por ejemplo, consideremos la recta dada por la ecuación general
+
+
+\begin{center}
+$\displaystyle \frac{x-5}{3} = \frac{y+2}{7}  = z+4 $
+\end{center}
+
+Entonces el vector director es $\overrightarrow{d}=(3,7,1)$ y el vector posición es $\overrightarrow{p}=(5,-2,-4)$. \\
+
+
+\textbf{Distancia de un punto a una recta:} En clases se discutió y demostró que la distancia de un punto $A$ a una recta $L: \overrightarrow{p}+ \lambda \overrightarrow{d}$ viene dada por
+
+\begin{center}
+$\displaystyle D(A,L) = \frac{|| (A-\overrightarrow{p}) \times \overrightarrow{d}||}{|| \overrightarrow{d}||}$
+\end{center}
+
+
+\textbf{Ejemplo: } Calcular la distancia entre el punto $A=(1,3,5)$ y la recta $L$ dada por $\displaystyle \frac{x-1}{2} = \frac{y+2}{3}  = z $. \\
+
+\textit{Respuesta: }Primero hay que encontrar el vector posición y el vector director de la recta, se tiene que $\overrightarrow{d}=(2,3,1)$ y  $\overrightarrow{p}=(1,-2,0)$. Entonces
+
+\begin{align*}
+\displaystyle D(A,L) &= \frac{|| ((1,3,5)-(1,-2,0)) \times (2,3,1)||}{|| (2,3,1) ||} \\
+ &= \frac{|| (0,5,5) \times (2,3,1)||}{\sqrt{14}} \\
+  &= \frac{|| (-10,10,10)||}{\sqrt{14}} \\
+    &= \frac{10\sqrt{3}}{\sqrt{14}} \\
+\end{align*}
+
+
+
+\textbf{Propiedades entre dos rectas:} Si tenemos dos rectas $L_1: \overrightarrow{p}+ \lambda \overrightarrow{d}$  y  $L_2: \overrightarrow{u}+ \lambda \overrightarrow{v}$, con $\overrightarrow{d}=(d_1,d_2,d_3)$, $\overrightarrow{p}=(p_1,p_2,p_3)$, $\overrightarrow{u}=(u_1,u_2,u_3)$ y $\overrightarrow{v}=(v_1,v_2,v_3)$. Entonces hay dos posibilidades  \\
+
+\textbf{Caso 1: }  $\displaystyle \frac{d_1}{v_1}= \frac{d_2}{v_2} = \frac{d_3}{v_3}$ (Los vectores directores son paralelos y pueden ser considerados iguales). Entonces hay dos posibilidades \\
+
+- 1. $\displaystyle \frac{p_1-u_1}{d_1}= \frac{p_2-u_2}{d_2} = \frac{p_3-u_3}{d_3}$. En este caso las rectas son coincidentes (Es decir son la misma recta). \\
+
+- 2. $\displaystyle \frac{p_1-u_1}{d_1}\neq \frac{p_2-u_2}{d_2} $ o bien $\displaystyle  \frac{p_2-u_2}{d_2} \neq \frac{p_3-u_3}{d_3}$. En este caso las rectas son paralelas \\ \\ \\
+
+
+
+
+
+\textbf{Caso 2: }  $\displaystyle \frac{d_1}{v_1} \neq \frac{d_2}{v_2}$ o bien $\displaystyle \frac{d_2}{v_2} \neq \frac{d_3}{v_3}$ (Los vectores directores  no son paralelos). Entonces hay dos posibilidades \\
+
+
+- 1. 
+
+\begin{center}
+$\displaystyle \begin{vmatrix}
+p_1-u_1 & d_1 & v_1 \\
+p_2-u_2 & d_2 & v_2 \\
+p_3-u_3 & d_3 & v_3 \\
+\end{vmatrix} = 0$
+\end{center}
+
+En este caso las rectas son secantes, es decir se intersectan y su ángulo de intersección corresponde al ángulo entre los vectores directores. \\
+
+
+
+- 2. 
+
+\begin{center}
+$\displaystyle \begin{vmatrix}
+p_1-u_1 & d_1 & v_1 \\
+p_2-u_2 & d_2 & v_2 \\
+p_3-u_3 & d_3 & v_3 \\
+\end{vmatrix} \neq 0$
+\end{center}
+
+En este caso las rectas  no se intersectan y se dice que las rectas son sesgadas. \\
+
+
+\textbf{Ejemplo:} Consideramos las rectas  $\displaystyle L_1 :  \frac{x-5}{3} = \frac{y+2}{7}  = z+4 $ y $\displaystyle L_2 :  \frac{x-5}{2} = \frac{y-2}{6}  = \frac{z-1}{4} $. Quremos ver que tipo de rectas tenemos. \\
+
+\textit{Respuesta: } Tenemos que los vectores directores de cada recta son $\overrightarrow{d}= (3,7,1)$ y $\overrightarrow{v}=(2,6,4)$, como los vectores no son paralelos pues $\displaystyle \frac{3}{2} \neq \frac{7}{6}$. Entonces, es claro que estamos en el caso $2$. Los vectores posición vienen dados por $\overrightarrow{p}=(5,-2,-4)$ y $\overrightarrow{u}=(5,2,1)$. Notamos que
+
+\begin{center}
+$\displaystyle \begin{vmatrix}
+0 & 3 & 2 \\
+-4 & 7 & 6 \\
+-5 & 1 & 4 \\
+\end{vmatrix} = 20 \neq 0$
+\end{center}
+
+
+Por lo tanto las rectas son sesgadas
+
+\newpage
+
+\begin{center}
+\textbf{\large{Ecuación del plano}} \\
+\end{center}
+
+Como se vió en clases un plano $\Pi$ esta determinado por dos vectores directores $\overrightarrow{d}$ y $\overrightarrow{v}$ y un vector posición $\overrightarrow{p}$ y se puede escribir de la forma
+
+\begin{center}
+$\displaystyle \Pi : \overrightarrow{p}+\lambda \overrightarrow{d} + t \overrightarrow{v}$ con $\lambda,t \in \mathbb{R}$
+\end{center}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Imagenes/images.png}
+    \caption{Visuaizaci\'on de la ecuaci\'on vectorial del plano}
+    \label{fig:etiqueta}
+\end{figure}
+
+
+
+Es decir, al hacer variar $\lambda$ y $t$ obtenemos todos los puntos del plano $\Pi$, a esta ecuación se le conoce como \textbf{Ecuación vectorial del plano}. Entonces, se dice que un plano tiene dos grados de libertad mientras que una recta tiene sólo un grado de libertad. \\
+
+Al vector $\overrightarrow{p}$ se le llama \textbf{vector posición} y a los vectores $\overrightarrow{d}$ y $\overrightarrow{v}$ se les llama \textbf{vectores directores}. \\ 
+
+\textbf{Ejemplo: }Consideramos el plano $\Pi$ generado por los vectores $\overrightarrow{d}=(1,2,3)$ y $\overrightarrow{v}=(-3,4,7)$ y el vector posición $\overrightarrow{p}= (1,0,3)$. Entonces el plano $\Pi$ esta dado por
+
+\begin{align*}
+\displaystyle \Pi &: (1,0,3)+\lambda(1,2,3)+t(-3,4,7) \\
+&: (1+\lambda-3t,2\lambda+4t, 3+3\lambda+7t)
+\end{align*}
+
+
+Al reemplazar por ejemplo $\lambda=1$ y $t=2$, obtenemos el punto $(-4,10,20)$, esto quier decir que $(-4,10,20) \in \Pi$. \\
+
+
+Si bien la ecuación vectorial del plano describe un plano totalmente, no es muy cómoda, en muchas ocaciones es preferible otra descripción del plano. \\
+
+Consideremos un vector $\overrightarrow{n}$ y un vector $\overrightarrow{p}$, podemos crear un plano dado por
+
+\begin{center}
+$\displaystyle \Pi = \lbrace (x,y,x)\in \mathbb{R}^3 : ((x,y,z)-\overrightarrow{p}) \cdot \overrightarrow{n}=0 \rbrace$
+\end{center}
+
+
+Esta constrcción determina un plano y además todo plano puede ser representado de esta forma. Si denotamos $\overrightarrow{p}=(p_1,p_2,p_3)$ y $\overrightarrow{n}=(n_1,n_2,n_3)$, entonces
+
+\begin{center}
+$((x,y,z)-\overrightarrow{p}) \cdot \overrightarrow{n}=0$
+\end{center}
+
+\begin{center}
+$((x,y,z)-(p_1,p_2,p_3)) \cdot (n_1,n_2,n_3)=0$
+\end{center}
+
+\begin{center}
+$(x-p_1,y-p_2,z-p_3) \cdot (n_1,n_2,n_3)=0$
+\end{center}
+
+
+\begin{center}
+$n_1(x-p_1)+n_2(y-p_2)+n_3(z-p_3)=0$
+\end{center}
+
+
+Y concluimos que
+
+\begin{center}
+$n_1x+n_2y+n_3z-n_1p_1-n_2p_2-n_3p_3=0$
+\end{center}
+
+La cual se puede dejar de la forma 
+
+\begin{center}
+$Ax+By+Cz+D=0$
+\end{center}
+
+Donde $A=n_1$, $b=n_2$, $C=n_3$ y $D=-n_1p_1-n_2p_2-n_3p_3 $. A esta ecuación se le conoce como \textbf{Ecuación general del plano} y todo plano puede ser representado por esta ecuación. \\
+
+Al vector  $\overrightarrow{n}=(A,B,C)$ se le llama \textbf{vector normal} al plano
+
+
+
+\textbf{Ejemplo:} Calcular la ecuación del plano cuyo vector normal es $\overrightarrow{n}=(1,7,-3)$ y que pasa por el punto $(-3,2,4)$.\\
+
+\textit{Respuesta:} Ya tenemos $A$, $B$ y $C$, estos vienen dados por las coordenadas del vector normal, es decir $A=1$, $B=7$ y $C=-3$, luego la ecuación general es de la forma
+
+\begin{center}
+$x+7y-3z+D=0$
+\end{center}
+
+Para determinar $D$, tenemos que reemplazar el punto $(-3,2,4)$ en la ecuación y despejar $D$, entonces
+
+
+\begin{center}
+$-3+7(2)-3(4)+D=0$
+\end{center}
+
+\begin{center}
+$-3+14-12+D=0$
+\end{center}
+
+\begin{center}
+$D=1$
+\end{center}
+
+Por lo tanto la ecuación del plano es
+
+
+\begin{center}
+$x+7y-3z+1=0$
+\end{center}
+
+
+
+\textbf{Propiedades entre dos planos:} Si tenemos dos planos $\Pi_1$  y  $\Pi_2$ con vectores normales $\overrightarrow{n}$ y $\overrightarrow{m}$ y vectores posición $\overrightarrow{p}$ y $\overrightarrow{u}$ respectivamente. Entonces hay dos posibilidades  \\
+
+\textbf{Caso 1: }  $\displaystyle \frac{n_1}{m_1}= \frac{n_2}{m_2} = \frac{n_3}{m_3}$ (Los vectores normales son paralelos y pueden ser considerados iguales). Entonces hay dos posibilidades \\
+
+- 1. $(\overrightarrow{p}-\overrightarrow{u}) \cdot \overrightarrow{n} =0$. En este caso los planos son coincidentes (son el mismo plano) \\
+
+- 2. $(\overrightarrow{p}-\overrightarrow{u}) \cdot \overrightarrow{n} \neq 0$. En este caso los planos son paralelos (no se cortan) \\
+
+
+
+
+
+\textbf{Caso 2: }  $\displaystyle \frac{n_1}{m_1} \neq \frac{n_2}{m_2}$ o bien $\displaystyle \frac{n_2}{m_2} \neq \frac{n_3}{m_3}$ (Los vectores normales  no son paralelos ). En este caso los planos se intersectan y el ángulo entre los dos planos viene dado por : \\
+
+\begin{center}
+$\displaystyle \alpha= \arccos\left( \frac{|\overrightarrow{n} \cdot \overrightarrow{m}|}{||\overrightarrow{n}|| || \overrightarrow{m}||}\right) $
+\end{center}
+
+A este ángulo se le conoce como \textbf{ángulo diedro} \\
+
+
+\textbf{Distancia de un punto a un plano:} La distancia de un punto $A$ a un plano $\Pi$ con vector normal $\overrightarrow{n}$ y vector posición $\overrightarrow{p}$ está dada por
+
+\begin{center}
+$\displaystyle d(A,\Pi) = \frac{| (A-\overrightarrow{p}) \cdot \overrightarrow{n}|}{||\overrightarrow{n}||}$
+\end{center}
+
+Esto es claro porque es simplemente la proyección del vector $A-\overrightarrow{p}$ sobre el vector normal $\overrightarrow{n}$. \\
+
+Con esta fórmula se pueden deducir todas las otras fórmulas, por ejemplo la distancias entre planos paralelos, distancia de una recta a un plano, etc. Pero hay que diferenciar todos los casos. \\
+
+
+
+
+
+\end{document} 

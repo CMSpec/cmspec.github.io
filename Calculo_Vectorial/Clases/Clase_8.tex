@@ -1,0 +1,517 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Primera Semana\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+\end{picture}
+
+
+\begin{center}
+\huge{Octava Semana}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Cálculo Vectorial}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Cálculo Vectorial. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:} 
+\end{center}
+\vspace{0.1cm}
+\begin{center}
+\begin{minipage}{0.5\textwidth}
+\begin{enumerate}
+    \item Cambio de Variable
+    \item Coordenadas Polares
+    \item Aplicaciones de las integrales dobles
+\end{enumerate}
+\end{minipage}
+\end{center}
+
+
+
+
+\vspace{6cm}
+
+
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+\section{Cambio de variable}
+
+Cuando ten\'iamos que realizar un cambio de variable en integrales simples digamos la integral
+
+\begin{align*}
+    \int_a^b f(x)dx
+\end{align*}
+
+Con el cambio de variable $x=g(u)$, entonces la nueva integral quedaba
+
+
+\begin{align*}
+    \int_{g(a)}^{g(b)} f(g(u))g'(u)du
+\end{align*}
+
+Esto es lo que se conoce como cambio de variable y solamente se usa la regla de la cadena. Podemos ver que cambian los l\'imites de integraci\'on y adem\'as aparece $g'(u)$ multiplicando. \\
+
+
+En caso de que tengamos dos variables, necesitamos reemplazarlas por otras dos variables. Por ejemplo $x=g(u,v)$ e $y=h(u,v)$, donde $u,v$ ser\'an las nuevas variables. Naturalmente, si la regi\'on encerrada por $x$ e $y$ es $R_{xy}$ en la integral doble original, entonces la nueva regi\'on ser\'a la delimitada por $u$ y $v$ , que llamaremos $R_{u,v}$, de la misma forma como cambian los l\'imites en integrales simples. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/cambio.png}
+    \caption{Cambio de regi\'on al hacer un cambio de variable}
+    \label{fig:etiqueta}
+\end{figure}
+
+
+Pero la pregunta es, qu\'e reemplaza a $g'(u)$?, para responder esta pregunta consideramos la transformaci\'on lineal $T$, como $T(u,v)=(x(u,v),y(u,v))$, entonces 
+
+\begin{align*}
+    J(T) = \frac{\partial(x,y)}{\partial(u,v)} = \begin{vmatrix}
+        \displaystyle\frac{\partial x}{\partial u} &  \displaystyle\frac{\partial x}{\partial v} \\
+        \displaystyle\frac{\partial y}{\partial u} &  \displaystyle\frac{\partial y}{\partial v} 
+    \end{vmatrix}
+\end{align*}
+
+este determinante es llamado el jacobiano de cambio de base, el valor absoluto del jacobiano es el que reemplaza a la derivada dentro de la integral.\\
+
+\textbf{Teorema (Cambio de variable):} Sea $T : R_{uv} \subset \mathbb{R}^2 \to R_{xy}\subset \mathbb{R}^2$ una transformaci\'on inyectiva y de clase $C^1$ en el plano $uv$ en el plano $xy$ tal que $T (u, v ) = (x (u, v ) , y (u, v ))$. Si $f : R_{xy} \to \mathbb{R}$ es Riemann integrable, entonces:
+
+\begin{align*}
+    \iint_{R_{xy}} f(x,y)dA =  \iint_{R_{u,v}} f(u,v) |J(T)|dA
+\end{align*}
+
+\newpage
+
+\textbf{Ejercicio 1:} Calcule el valor de $\iint_{R} x+y+1dA$ donde $R$ es la regi\'on acotada por las gr\'aficas de $y-x=1$, $y-x=-1$, $y+x=1$ e $y+x=2$ \\
+
+\textbf{Respuesta:} Este ejercicio es muy dif\'icil de hacer sin usar cambio de variable, por suerte podemos usar el cambio de variable para hacerlo de forma sencilla. \\
+
+El cambio que hay que realizar es $u=y-x$ y $v=y+x$, ahora tenemos que despejar $x$ e $y$ en funci\'on de $u$ y $v$, sumando ambos obtenmos que $y$ y restando obtenemos $x$
+
+\begin{align*}
+    y &= \frac{u+v}{2} \\
+    x &= \frac{v-u}{2}
+\end{align*}
+
+Luego
+
+
+\begin{align*}
+    J(T) &=\begin{vmatrix}
+        -\frac{1}{2} & \frac{1}{2} \\
+        \frac{1}{2} & \frac{1}{2} \\
+    \end{vmatrix} \\
+    &= -\frac{1}{2}
+\end{align*}
+
+Luego $|J(T)| =1/2$, los l\'imites para laa variable $u$ son $-1$ y $1$ mientras que para la variable $v$ son $1$ y $2$, esto es claro debido a la definici\'on de la regi\'on de integraci\'on, por lo tanto
+
+
+
+
+\begin{align*}
+    \iint_{R_{xy}} f(x,y)dA &=  \iint_{R_{u,v}} f(T(u,v)) |J(T)|dA \\
+    &=  \frac{1}{2}\int_{-1}^1\int_1^2  \frac{v-u}{2} +\frac{u+v}{2} +1 dvdu \\
+    &=  \frac{1}{2}\int_{-1}^1\int_1^2  v +1 dvdu \\
+    &= \frac{1}{2} \int_{-1}^1\left( \frac{v^2}{2}+v\right)\bigg|_1^2 du \\
+    &= \frac{1}{2} \int_{-1}^1 \frac{5}{2}du \\
+    &= \frac{1}{2} \cdot \frac{5}{2} \cdot 2 \\
+    &= \frac{5}{2}
+\end{align*}
+
+
+\textbf{Ejercicio 2:} Calcule el valor de $\displaystyle \iint_{R} \sqrt{\frac{x}{y}}+ \sqrt{xy} dA$ donde $R$ es la regi\'on acotada por las gr\'aficas de $xy=1$, $yx=9$, $y=x$ e $y=4x$ \\
+
+\textbf{Respuesta:} Es claro que uno de los cambios de variable que queremos hacer es $u=xy$, el otro cambio no est\'a tan claro, pero si dividimos por que las segundas dos condiciones, obtenemos que $y/x= 1$ e $y/x=4$, por lo tanto el segundo cambio de variable conveniente es $v= y/x$. \\
+
+Despejando $y$ en ambas igualdades tenemos $y=u/x=vx$, luego $x^2=\displaystyle \frac{u}{v}$ y por lo tanto $\displaystyle x =\sqrt{\frac{u}{v}}$, luego $y = \displaystyle vx = \sqrt{uv}$. Entonces 
+
+\begin{align*}
+    \frac{\partial x}{\partial u} = \frac{1}{2\sqrt{uv}} \hspace{0.3cm}   \frac{\partial x}{\partial v} = -\frac{\sqrt{u}}{\sqrt{v^3}} 
+\end{align*}
+
+\begin{align*}
+    \frac{\partial y}{\partial u} = \frac{\sqrt{}}{2} \hspace{0.3cm}   \frac{\partial x}{\partial v} = -\frac{\sqrt{u}}{\sqrt{v^3}} 
+\end{align*}
+
+
+
+De esta forma el jacobiano queda
+
+\begin{align*}
+|J| = \left| \frac{\partial(x, y)}{\partial(u, v)} \right| 
+= \left|
+\begin{vmatrix}
+\frac{1}{2} u^{-1/2} v^{-1/2} & -\frac{1}{2} u^{1/2} v^{-3/2} \\
+\frac{1}{2} u^{-1/2} v^{1/2} & \frac{1}{2} u^{1/2} v^{-1/2}
+\end{vmatrix}
+\right|
+= \frac{1}{2v}.
+\end{align*}
+
+\vspace{0.3cm}
+
+Los nuevos l\'imites var\'ian entre
+
+\begin{align*}
+1 \leq u \leq 9, \\
+1 \leq v \leq 4. 
+\end{align*}
+
+La nueva funci\'on a integrar ser\'a
+
+\begin{align*}
+\sqrt{\frac{x}{y}} + \sqrt{xy} = \sqrt{\frac{1}{v}} + \sqrt{u}.
+\end{align*}
+
+
+\vspace{0.3cm}
+
+De esta fomra la integral queda
+
+
+\begin{align*}
+    \iint_R \left( \sqrt{\frac{x}{y}} + \sqrt{xy} \right) dA 
+&= \iint_{R_{uv}} \left( \sqrt{\frac{1}{v}} + \sqrt{u} \right) \cdot \frac{1}{2v} \, du\,dv \\
+&=  \int_{1}^{9} \int_{1}^{4} \left( \frac{v^{-3/2}}{2} + \frac{u^{1/2}}{2v} \right) dv\, du \\
+&=\int_{1}^{9} \left( -v^{-1/2} + \frac{u^{1/2}}{2}\ln(v) \right)\bigg|_1^4 du\\
+&=\int_{1}^{9} -\frac{1}{2} + \frac{u^{1/2}}{2}\ln(4)+1 du \\
+&=\int_{1}^{9} \frac{1}{2}+ \frac{u^{1/2}}{2}\ln(4) du \\
+&= \left(\frac{u}{2}+ \frac{u^{3/2}}{3}\ln(4) \right)\bigg|_1^9 \\
+&= 4+\frac{26\ln(4)}{3}
+\end{align*}
+
+
+
+\newpage
+
+\section{Coordenadas Polares}
+
+Reecoredemos que todo punto $P(x,y)$ en el plano cartesiano puede ser escrito en coordenadas polares
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/polares.png}
+    \caption{Punto en coordenadas polares}
+    \label{fig:etiqueta}
+\end{figure}
+
+El cambio de variable es
+
+\begin{align*}
+    x &= r\cos(\theta) \\
+    y &= r\sin(\theta) \\
+    r &= \sqrt{x^2+y^2} \\
+    \theta &= \arctan\left( \frac{y}{x}\right)
+\end{align*}
+
+Esto nos permite transformar regiones $R_{xy}$ en el plano $xy$ a una regi\'on $R_{r\theta}$ en el plano $r\theta$
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{Imagenes/cambiopolar.png}
+    \caption{Regi\'on en coordenadas polares}
+    \label{fig:etiqueta}
+\end{figure}
+\begin{align*}
+    R_{r\theta} = \lbrace (r,\theta) : \alpha \leq \theta \leq \beta, h_1(\theta) \leq r \leq h_2(\theta) \rbrace
+\end{align*}
+
+Por lo tanto consideramos la transformaci\'on lineal $T: \mathbb{R}^2 \to \mathbb{R}^2$ dada por $T(r,\theta)=(r\cos(\theta),r\sin(\theta))$. Esta transformaci\'on es inyectiva para $r \geq 0$ y $0 < \theta \leq 2\pi$ o bien  $0 \leq \theta < 2\pi$. Su jacobiano es
+
+\begin{align*}
+    J(T) &= \begin{vmatrix}
+        \cos(\theta) & -r\sin(\theta) \\
+        \sin(\theta) & r\cos(\theta) 
+    \end{vmatrix} \\
+    &=r
+\end{align*}
+
+por lo tanto usando el teorema de cambio de variable obtenemos el siguiente resultado
+
+
+\begin{align*}
+    \iint_{R_{xy}} f(x,y)dA = \iint_{R_{r,\theta}} f(r\cos(\theta),r\sin(\theta))rdA
+\end{align*}
+
+\newpage
+
+
+
+\textbf{Ejercicio 1:} Calcular 
+
+\begin{align*}
+    \int_0^1 \int_0^{\sqrt{1-x^2}} e^{\sqrt{x^2+y^2}}dydx
+\end{align*}
+
+\textbf{Respuesta:} Aqu\'i nos conviene pasar a coordenadas polares, primero hay que entender la regi\'on de integraci\'on, tenemos que $x$ var\'ia entre 0 y 1 mientras que $y$ var\'ia entre la recta $y=0$ y la curva $y= \sqrt{1-x^2}$, esto corresponde a un cuarto de circunferencia de radio 1
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{Imagenes/cuartocircunferencia.png}
+    \caption{Regi\'on en coordenadas polares}
+    \label{fig:etiqueta}
+\end{figure}
+
+Podemos ver que $0 \leq \theta < \pi/2$ y $0 \leq r \leq 1$, adem\'as sabemos que $r=\sqrt{x^2+y^2}$, luego
+
+
+\begin{align*}
+    \int_0^1 \int_0^{\sqrt{1-x^2}} e^{\sqrt{x^2+y^2}}dydx &= 
+    \int_0^{\pi/2}\int_0^1 re^r dr d\theta \\
+    &= \int_0^{\pi/2} (re^r-e^r)\bigg|_0^1 d\theta \\
+    &= \int_0^{\pi/2} 1 d\theta \\
+    &= \frac{\pi}{2}
+\end{align*}
+
+
+
+\textbf{Ejercicio 2:} Calcular 
+
+\begin{align*}
+    \int_{0}^3 \int_0^{\sqrt{9-x^2}} \arctan\left( \frac{y}{x}\right)dydx
+\end{align*}
+
+\textbf{Respuesta:} Tenemos que $x$ var\'ia entre 0 y 3 mientras que $y$ var\'ia entre la recta $y=0$ y la curva $y= \sqrt{9-x^2}$, esto corresponde a un cuarto de circunferencia de radio 3. \\
+
+
+
+Podemos ver que $0 \leq \theta < \pi/2$ y $0 \leq r \leq 3$, adem\'as sabemos que $r=\arctan(y/x)$, luego
+
+
+\begin{align*}
+    \ \int_{-3}^3 \int_0^{\sqrt{9-x^2}} \arctan\left( \frac{y}{x}\right)dydx &= 
+    \int_0^{\pi/2}\int_0^3 \theta r dr d\theta \\
+    &= \int_0^{\pi/2} \theta \left( \frac{r^2}{2}\right)\bigg|_0^3 d\theta \\
+    &= \frac{9}{2}\int_0^{\pi/2} \theta d\theta \\
+    &= \frac{9}{2}\left( \frac{\theta^2}{2}\right)\bigg|_0^{\pi/2} d\theta \\
+    &= \frac{9\pi^2}{16}
+\end{align*}
+
+\newpage
+
+\section{Aplicaciones de las integrales dobles}
+
+\subsection{Centro de masas}
+
+Las integrales dobles tienen muchas aplicaciones, una de ellas es encontrar el centro de masas de. Supongamos que una l\'amina ocupa una rgi\'on $R$ del plano $xy$ y su densidad en un punto $(x,y)$ est\'a dada por $\rho(x,y)$ , donde $\rho $ es una funci\'on continua sobre $D$. La masa total $m$ de la l\'amina es
+
+\begin{align*}
+    m &= \iint_D \rho(x,y) dA
+\end{align*}
+
+Las coordenadas $(\overline{x},\overline{y})$ del centro de masas vienen dadas por
+
+\begin{align*}
+    \overline{x} &= \frac{1}{m} \iint_D x\rho(x,y) dA \\
+    \overline{y} &= \frac{1}{m} \iint_D y\rho(x,y) dA \\
+\end{align*}
+
+\textbf{Ejercicio:} Determine la masa y el centro de masa  de la l\'amina que ocupa la regi\'on $D$ del primer cuadrante  acotada por $y=x^2$ y la recta $y=1$ y que tiene funci\'on de densidad $\rho(x,y) = xy$ \\
+
+\textbf{Respuesta: } La masa ser\'a
+
+\begin{align*}
+    m &= \int_{0}^1\int_{x^2}^1 xy dydx \\
+      &= \int_{0}^1 \frac{xy^2}{2}\bigg|_1^{x^2}dx \\
+      &= \int_{0}^1 \frac{x}{2}-\frac{x^5}{2} dx \\
+      &=\left(\frac{x^2}{4}-\frac{x^6}{12}\right)\bigg|_{0}^1  \\
+      &= \frac{1}{6}
+\end{align*}
+
+Luego
+
+\begin{align*}
+    \overline{x} &= \frac{1}{m} \int_{0}^1\int_{x^2}^1 x^2y dydx \\
+        &= 6 \int_{0}^1 \frac{x^2y^2}{2}\bigg|_{x^2}^1 dx \\
+        &= 6 \int_{0}^1 \frac{x^2}{2}-\frac{x^6}{2} dx \\
+        &= 6 \left( \frac{x^3}{6}-\frac{x^7}{14} \right)\bigg|_0^1\\
+        &=\frac{4}{7}
+\end{align*}
+
+Por otra parte
+
+\begin{align*}
+    \overline{y} &= \frac{1}{m} \int_{0}^1\int_{x^2}^1 xy^2 dydx \\
+        &= 6 \int_{0}^1 \frac{xy^3}{3}\bigg|_{x^2}^1 dx \\
+        &= 6 \int_{0}^1 \frac{x}{3}-\frac{x^7}{3} dx \\
+        &= 6 \left( \frac{x^2}{6}-\frac{x^8}{24} \right)\bigg|_0^1\\
+        &=\frac{3}{4}
+\end{align*}
+
+Por lo tanto la masa total es $1/6$ y el centro de masas es $C=\displaystyle \left( \frac{4}{7},\frac{3}{4}\right)$
+
+
+
+
+\newpage
+
+
+\subsection{Momento de Inercia}
+
+Supongamos que una l\'amina ocupa una rgi\'on $R$ del plano $xy$ y su densidad en un punto $(x,y)$ est\'a dada por $\rho(x,y)$, entonces las integrales
+
+
+\begin{align*}
+    I_x &= \iint_R y^2\rho(x,y) dA \\
+    I_y &= \iint_R x^2\rho(x,y) dA \\
+\end{align*}
+
+Corresponden a los momentos de inercia de la l\'amina al rededor del eje $x$ y el eje $y$ respectivamente. El momento de inercia al rededor del origen, tambi\'en llamado momento polar es
+
+\begin{align*}
+I_0 =\iint_D (x^2+y^2)\rho(x,y)dA
+\end{align*}
+
+\textbf{Ejercicio:} Determine el momento de inercia del eje $X$ de la l\'amina correspondiente a la regi\'on parab\'olica en el primer cuadrante dada por  $0 \leq y \leq 4-x^2$ si $\rho(x,y) = xy$ \\
+
+\textbf{Respuesta: } El momento de inercia pedido viene dado por
+
+\begin{align*}
+    I_x &= \int_{0}^2 \int_0^{4-x^2} xy^3 dy dx \\
+    &= \int_{0}^2 \left(\frac{xy^4}{4}\right)\bigg|_0^{4-x^2} dx \\
+    &= \int_{0}^2 x\frac{(4-x^2)^4}{4} dx \\
+\end{align*}
+
+Para resolver esta integral usamos el cambio de variable $u=4-x^2$ entonces $du=-2xdx$, cuando $x=0$ se tiene $u=4$ y caundo $x=2$ se tien $u=0$, luego
+
+
+\begin{align*}
+    I_x &= \int_{0}^2 x\frac{(4-x^2)^4}{4} dx \\
+    &= \int_{4}^0 -\frac{u^4}{8} du \\
+    &= -\frac{u^5}{40}\bigg|_4^0 \\
+    &=\frac{4^5}{40} \\
+    &= \frac{128}{5}
+\end{align*}
+
+
+\newpage
+
+
+\subsection{Área de una superficie}
+
+Consideremos la superficie $S$ dada por $z=f(x,y)$ definida sobre una regi\'on  $D$ cerrada y acotada del plano $XY$. Si $f$ y sus primeras derivadas parciales son continuas en la regi\'on $D$, entonces el \'area de la superficie $S$ es
+
+\begin{align*}
+    A(S) = \iint_{D} \sqrt{1-(f_x(x,y))^2-(f_y(x,y))^2} dA
+\end{align*}
+
+
+\textbf{Ejemplo: } Calcular el \'area de la proci\'on del plano $z=2-x-y$ que esta situada encima del ci\'rculo $x^2+y^2 \leq 1$ en el primer cuadrante \\
+
+\textbf{Respuesta: } Dado que \( z = f(x,y)= 2 - x - y \), tenemos
+
+\[
+f_x = -1, \quad f_y = -1
+\]
+
+Por lo tanto, el integrando se convierte en
+
+\[
+\sqrt{1 + (-1)^2 + (-1)^2} = \sqrt{3}
+\]
+
+La región \( D \) es el cuarto de círculo de radio 1 en el primer cuadrante, es decir
+
+\[
+x^2 + y^2 \leq 1, \quad x \geq 0, \quad y \geq 0
+\]
+
+Usamos coordenadas polares
+
+\[
+x = r \cos \theta, \quad y = r \sin \theta
+\]
+
+Los límites de integración son
+
+\[
+0 \leq r \leq 1, \quad 0 \leq \theta \leq \frac{\pi}{2}
+\]
+
+Entonces el área es
+
+\begin{align*}
+    A &=  \iint_D \sqrt{3} \, dx\,dy \\
+    &=  \sqrt{3} \int_0^{\frac{\pi}{2}} \int_0^1 r\,dr\,d\theta \\
+    &=  \sqrt{3} \int_0^{\frac{\pi}{2}}  \frac{r^2}{2} \bigg|_0^1 \, d\theta \\
+    &= \sqrt{3} \int_0^{\frac{\pi}{2}} \frac{1}{2} \, d\theta \\
+    &= \frac{\pi \sqrt{3}}{4}
+\end{align*}
+
+
+
+
+\end{document} 

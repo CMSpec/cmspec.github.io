@@ -1,0 +1,109 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+
+\fancyhead[L]{\includegraphics[scale=0.5]{UFT.png}}
+
+\begin{document}
+
+\begin{center}
+    \Large{\textbf{Propuestas}}
+\end{center}
+
+\setlength{\parindent}{0cm}
+
+
+\textbf{Ejercicio 1:} Responda las siguientes preguntas \\
+
+
+a) Determine la ecuación general del plano que pasa por el punto $(1,2,0)$ y que contiene a la recta de ecuación vectorial $L_1: (2,-1,3)+t(1,0,-2)$. \\
+
+
+b) Demuestre que el plano  encontrado en a) es paralelo a la recta $L_2: (1,2,0)+t(3,3,-11)$ \\ 
+
+c) Demuestre que el plano  encontrado en a) es perpendicular a la recta $L_3$ de ecuación general 
+
+\begin{align*}
+    \frac{x+1}{3} = \frac{2y-3}{5} =\frac{2z+3}{3}
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+\textbf{Ejercicio 2:} Calcule los siguientes límites, en caso de no existir demuéstrelo \\
+
+a) $\displaystyle \lim_{(x,y) \to (0,0)} \frac{x^2y}{\sqrt{x^2+y^2}}$ \\
+
+
+b) $\displaystyle \lim_{(x,y) \to (3,3)} \frac{9x^2-y^4}{3x-y^2}$ \\
+
+c) $\displaystyle \lim_{(x,y) \to (0,0)} \frac{x^3-3x^2y}{(x^2+y^2)^{3/2}}$ \\ \\ \\
+
+
+\textbf{Ejercicio 3:} Considere el cilindro $x^2+y^2=9$ y el $x-y+z=4$, encuentre una parametrización $r(t)$ de la intersección de estas dos superfices, luego demuestre que $r(0)$ es perpendicular a la recta $L$ de ecuación
+
+\begin{align*}
+    \frac{x-1}{2} = \frac{1-y}{5} = \frac{2-z}{6}
+\end{align*}
+
+
+
+
+
+\end{document}

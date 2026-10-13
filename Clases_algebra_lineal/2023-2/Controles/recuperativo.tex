@@ -1,0 +1,145 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+
+\fancyhead[L]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+
+\thispagestyle{fancy}
+\vspace*{1cm}
+
+\begin{minipage}[r]{12cm}
+    \begin{flushright}
+\begin{tikzpicture}
+\draw[green, very thick] (0,0) rectangle (3,2);
+\end{tikzpicture}
+    \end{flushright}
+\end{minipage}
+
+\begin{center}
+\Large{\textbf{Control Recuperativo \\\'Algebra Lineal\\  }}
+\end{center}
+\vspace{1cm}
+\begin{minipage}[r]{15cm}
+\begin{flushleft}
+
+Fecha: 30 de noviembre de 2023 \\%
+Duración: 120 minutos  \\
+Prof: C. Muñoz.\\
+
+\end{flushleft}
+\end{minipage}
+\vspace{2cm}
+\begin{center}
+\Large{\textbf{Facultad de Ingeniería}}
+\end{center}
+\vspace{1cm}
+\textbf{En caso de que un alumno sea sorprendido en actitudes deshonestas, ya sea intentando o
+dejándose copiar, será calificado con nota mínima 1.0 y perderá toda posibilidad de eliminar
+dicha nota. Además, esta conducta quedará archivada como antecedente en su carpeta y
+podrá ser causal de eliminación.
+Así mismo, está prohibido salir de la sala, usar o mantener sobre la mesa teléfonos celulares
+o cualquier tipo de aparato electrónico, a no ser que el profesor lo requiera.}\\
+
+
+
+\vspace{3cm}
+\makebox[12cm]{\textbf{Nombre Alumno}:\ \hrulefill} 
+\newpage
+
+
+
+
+\newpage
+\thispagestyle{empty}
+\begin{document}
+
+\section*{Instrucciones}
+\begin{itemize}
+\item No se asignar\'a puntaje a los ejercicios sin desarrollo.
+    \item Tiene 120 minutos para responder el control.
+    \item No está permitido el uso de celular ni calculadora.
+    \item No está permitido el préstamo de materiales.
+\end{itemize}
+\section*{Preguntas}
+
+
+
+
+
+\begin{enumerate}
+    \item Considere el conjunto $S=\{ \begin{pmatrix} 0 \\ 3 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 2 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 5 \end{pmatrix} \}$ 
+    \begin{enumerate}
+        \item Muestre que $S$ es base de $\mathbb{R}^{3}$.
+        \item Encuentre una base ortonormal de $\mathbb{R}^{3}$ a partir de esta base usando el procedimiento de Gram-Schmidt.
+        \item Encuentre las coordenadas de $\{ \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \}$ en esta base.
+    \end{enumerate} 
+\newpage    
+    \item Encuentre la proyección de $\{ \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \}$ sobre el plano generado por $\{ \begin{pmatrix} 0 \\ 3 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 2 \end{pmatrix} \}$.
+
+\newpage
+             \item Muestre que la función $T:\mathbb{R}^2\to \mathbb{P}_2[x]$ definida por $$T(a,b)=(2a+b)+(a-b)x+(a+b)x^2,$$ es una aplicación lineal. Luego determine $\ker T$ y $\dim \operatorname{Im} T$.
+\newpage     
+\item  Demuestre que esta función $T: \mathbb{R}^{3} \to \mathbb{R}^{3}$ dada por $T \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix}
+    2x+z \\ x-y+z \\ y+2z
+\end{pmatrix}$
+ es lineal y encuentre su matriz representante en la base canónica.
+ \end{enumerate}
+\newpage
+\section*{Formulario} 
+\begin{itemize} 
+\item \textbf{Bases:} Un conjunto de vectores $\{ v_1, \dots , v_n \}$ se dice linealmente independiente si $ \lambda_1 v_1+ \dots + \lambda_n v_n= \Vec{0} \Longrightarrow \lambda_1= \dots = \lambda_n= 0$. $W$ se dice generado por $\{w_1, \dots , w_n\}$ si $<\{w_1, \dots , w_n\}>=\{ \sum \lambda_iw_i | \lambda_i \in \mathbb{R} \}=W$ Una base de un espacio vectorial $V$ es un conjunto linealmente independiente que genera $V$. \item \textbf{Procedimiento para obtener una base ortonormal:} Sea $B = \{v_i\}_{i=1}^m $ una base ordenada cualquiera de $W $. \begin{itemize} \item Escribimos $w_1 = v_1$. \item Calculamos $w_2=v_2-\dfrac{<v_2,w_1>}{<w_1,w_1>}w_1$. \item Calculamos $w_3=v_3-\dfrac{<v_3,w_1>}{<w_1,w_1>}v_1- \dfrac{<v_3,w_2>}{<w_2,w_2>}w_2$. \item Inductivamente obtenemos los vectores $w_m=v_m-\sum_{i=1}^{m-1}c_iw_i$ con $c_i=\frac{<v_m,w_i>}{<w_i,w_i>}$. \end{itemize} El conjunto $\{ w_1,w_2, \dots, w_n \}$ es una base ortogonal. Si se normaliza cada vector $w_k$, obtenemos nuevos vectores $u_k=\frac{w_k}{\|w_k\|}$. Luego, $\{ u_1,u_2, \dots, u_n \}$ una base ortonormal para $W$. 
+\item \textbf{ Coordenada respecto de una base ortogonal } $B = \{w_i\}_{i=1}^m $ est\'a dada por $a_i=\dfrac{\langle v, v_i \rangle}{\langle v_i, v_i \rangle}$ \item {\bf Proyección ortogonal: } Sea $W$ un subespacio de $\mathbb{R}^n$ con base ortogonal $\{ w_1,w_2, \dots , w_k \}$. Si $v \in \mathbb{R}^n$, entonces la proyección ortogonal de $v$ sobre $W$, denotada por $P_W(v)$, está dada por: $$P_W( v) = \frac{\langle v, w_1 \rangle}{\langle w_1, w_1 \rangle}w_1 + \frac{\langle v, w_2 \rangle}{\langle w_2, w_2 \rangle}w_2 + \cdots + \frac{\langle v, w_k \rangle}{\langle w_k, w_k \rangle}w_k.$$ \item {\bf Transformaciones lineales: } Transformación Lineal $T$ de $ V$ en $W$, como una función $T:V\to W$ tal que \begin{enumerate} \item $T(v+w)=T(v)+T(w)$, \item $T(\alpha v)=\alpha T(v)$, \end{enumerate} para todo $v,w\in V$, para todo $\alpha \in K$. \item $T:V\to W$ transformaci\'on lineal, entonces $$\operatorname{dim}V=\operatorname{dim} \operatorname{ker }T+\operatorname{dim}\operatorname{Im}T$$ \item {\bf Valores y Vectores Propios: } $\lambda \in \mathbb{R}$ es valor propio de $M \in \mathcal{M}_{n \times n}$ si existe $\Vec{v}\in \mathbb{R}^n$ con $M\Vec{v}= \lambda \Vec{v}$. $\Vec{v}$ se llama vector propio asociado a $\lambda$ \begin{itemize} \item Los valores propios son las raices del polinomio característico $p(x)=\texttt{det}(M - x I_n ) $ \item Los vectores propios asociados a un valor propio $ \lambda_0$ forman el subespacio propio $E_{\lambda}=\texttt{Ker}(M-\lambda_0 I_n)$ \item La multiplicidad geométrica de $\lambda$ es $\texttt{dim}(E_\lambda)$ y la multiplicidad algebráica es su multiplicidad como raiz del polinomio característico. \end{itemize} \end{itemize}
+
+\end{document}

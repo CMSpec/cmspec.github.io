@@ -1,0 +1,556 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[spanish]{babel}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{epsfig}
+ \renewcommand{\baselinestretch}{0.93}
+ \thispagestyle{empty}
+ \pagestyle{empty}
+\setlength{\textheight}{53pc} \setlength{\textwidth} {36pc}
+\setlength{\topmargin}{-4mm}
+\usepackage{multicol}
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}\par
+    }
+\setlength{\columnsep}{1cm}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calM}{\cal{M}}
+\newcommand{\calP}{\cal{P}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbH}{\mathbb{H}}
+
+
+\theoremstyle{definition}
+\newtheorem{ejer}{Ejercicio}
+\author{Marcos Morales}
+\affil{Universidad Finis Terrae}
+\title{Primera Semana\\}
+
+
+
+	
+
+
+\begin{document}
+
+
+\begin{picture}(400, 75)
+   \put(-40,15){\includegraphics[width=5cm]{UFT.png}}
+\end{picture}
+
+
+\begin{center}
+\huge{Séptima Semana}
+\end{center}
+
+\begin{center}
+\Large{ Marcos Morales, Camila Muñoz}
+\end{center}
+
+\begin{center}
+	\large{Cálculo Vectorial}
+\end{center}
+\begin{center}
+\setlength{\parindent}{0cm}\large{Clases centradas para capacitar a los estudiantes de ingeniería en Cálculo Vectorial. \\}
+\end{center}
+
+
+\vspace{1cm}
+
+\begin{center}
+	\large{Contenidos:}
+\end{center}
+
+\setlength{\parindent}{2.9cm}- Integrales dobles sobre rectángulos\\
+\phantom{abefwfewefwfefffw} - Integrales Iteradas	\\
+\phantom{abefwfewefwfefffw} - Teorema de Fubini para rectángulos	\\
+\phantom{abefwfewefwfefffw} - Integrlaes dobles en regiones generales	\\
+
+
+
+\vspace{6cm}
+
+
+
+
+\pagestyle{empty}
+
+
+\setcounter{page}{1}
+\pagestyle{plain}
+\setlength{\parindent}{0cm}
+
+
+
+
+
+\newpage
+
+\section{Recuerdo de la integral de Riemann}
+
+
+
+Primero vamos a recordar la definición de integral de Riemann. Vamos a considerar \( f : [a,b] \to \mathbb{R} \) una función acotada. Una \textbf{partición} del intervalo \([a,b]\) es un conjunto de puntos
+\[
+    P = \{x_0, x_1, \dots, x_n\} \quad \text{tal que } a = x_0 < x_1 < \cdots < x_n = b.
+\]
+
+
+Para cada subintervalo \( [x_{i-1}, x_i] \), se define:
+
+\begin{align*}
+    m_i &= \inf \{ f(x) : x \in [x_{i-1}, x_i] \},\textbf{ }     M_i = \sup \{ f(x) : x \in [x_{i-1}, x_i] \}.
+\end{align*}
+
+Se definen la suma inferior y la suma superior como \\
+
+\begin{itemize}
+    \item \textbf{Suma inferior:}
+    \[
+        s(f,P) = \sum_{i=1}^{n} m_i (x_i - x_{i-1}).
+    \]
+    
+    \item \textbf{Suma superior:}
+    \[
+        S(f,P) = \sum_{i=1}^{n} M_i (x_i - x_{i-1}).
+    \]
+\end{itemize}
+
+Entonces se definen la integral superior inferior y la integral superior como
+
+\begin{align*}
+    \underline{\int_a^b} f(x)\,dx &= \sup \{ s(f,P) : P \text{ partición de } [a,b] \}, \\
+    \overline{\int_a^b} f(x)\,dx &= \inf \{ S(f,P) : P \text{ partición de } [a,b] \}.
+\end{align*}
+
+
+\textbf{Definición: }Se dice que \( f \) es \textbf{Riemann integrable} en \([a,b]\) si:
+
+\[
+    \underline{\int_a^b} f(x)\,dx = \overline{\int_a^b} f(x)\,dx.
+\]
+
+En tal caso, se define la \textbf{integral de Riemann} de \( f \) en \([a,b]\) como:
+
+\[
+    \int_a^b f(x)\,dx := \underline{\int_a^b} f(x)\,dx.
+\]
+
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/Sumaaa.png}
+    \caption{Interpretación gráfica de una suma de Riemann de funciones en una variable}
+    \label{fig:etiqueta}
+\end{figure}
+
+\newpage
+
+
+\section{Integrales dobles sobre rectángulos}
+
+
+Vamos a usar una idea análoga a lo visto en integrales de Riemann pero para regiones en $\mathbb{R}^2$.\\
+
+
+
+
+
+Sea \( f : R \to \mathbb{R} \) una función acotada, donde \( R = [a,b] \times [c,d] \subset \mathbb{R}^2 \) es un rectángulo. \\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/Region.png}
+    \caption{Imagen de la función $f(x,y)$ en la región $R$}
+    \label{fig:etiqueta}
+\end{figure}
+
+
+Sea \( P \) una partición de \( R \) dada por dividir los intervalos:
+
+\begin{align*}
+    a = x_0 < x_1 < \cdots < x_m = b, \\
+    c = y_0 < y_1 < \cdots < y_n = d.
+\end{align*}
+
+Esto genera subrectángulos de la forma:
+\[
+    R_{ij} = [x_{i-1}, x_i] \times [y_{j-1}, y_j], \quad \text{para } 1 \le i \le m,\, 1 \le j \le n.
+\]
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/particion.png}
+    \caption{Partición del rectángulo $R$ en rectángulos más pequeños}
+    \label{fig:etiqueta}
+\end{figure}
+
+
+En cada subrectángulo \( R_{ij} \), se definen:
+
+\begin{align*}
+    m_{ij} &= \inf \{ f(x,y) : (x,y) \in R_{ij} \}, \\
+    M_{ij} &= \sup \{ f(x,y) : (x,y) \in R_{ij} \}.
+\end{align*}
+
+
+
+Sea \( \Delta x_i = x_i - x_{i-1} \), \( \Delta y_j = y_j - y_{j-1} \). Se definen la suma inferior y la suma superior como:
+
+\begin{itemize}
+    \item \textbf{Suma inferior:}
+    \[
+        s(f,P) = \sum_{i=1}^m \sum_{j=1}^n m_{ij} \, \Delta x_i \, \Delta y_j.
+    \]
+    
+    \item \textbf{Suma superior:}
+    \[
+        S(f,P) = \sum_{i=1}^m \sum_{j=1}^n M_{ij} \, \Delta x_i \, \Delta y_j.
+    \]
+\end{itemize}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/sumasdobles.png}
+    \caption{Sumas parciales de Riemann}
+    \label{fig:etiqueta}
+\end{figure}
+
+
+Definimos la integral doble inferior y la integral doble superior respecto a esta partici\'on $P$ como
+
+\begin{align*}
+    \underline{\iint_R} f(x,y)\,dA &= \sup \{ s(f,P) : P \text{ partición de } R \}, \\
+    \overline{\iint_R} f(x,y)\,dA &= \inf \{ S(f,P) : P \text{ partición de } R \}.
+\end{align*}
+
+
+\textbf{Definición: }Se dice que \( f \) es \textbf{Riemann integrable} en \( R \) si:
+
+\[
+    \underline{\iint_R} f(x,y)\,dA = \overline{\iint_R} f(x,y)\,dA.
+\]
+
+En tal caso, se define la \textbf{integral doble de Riemann} de \( f \) sobre \( R \) como:
+
+\[
+    \iint_R f(x,y)\,dA := \underline{\iint_R} f(x,y)\,dA.
+\]
+
+En este curso no tendremos muchos problemas para la existencia de la integral doble porque trabajaremos con funciones continuas en todo $R$ salvo, a lo más, en un número finito de punto y tenemos la siguiente proposición. \\
+
+\textbf{Proposición:} Sea $f: R \to \mathbb{R}$ función acotada y continua en todo $R$ salvo a lo más en un número finito de curvas suaves (diferenciables), entonces $f$ es Riemann integrable \\
+
+Si $f(x,y) \geq 0$ está definida en un rectángulo $R$, entonces
+
+\begin{align*}
+    \iint_R f(x,y)\,dA
+\end{align*}
+
+se puede interpretar como el volumen del sólido acotado por la superficie $z = f (x, y )$ en el rectángulo $R$ y el plano $XY$. \\
+
+\newpage
+
+
+\textbf{Proposición (Propiedades de las integrales dobles):} Sean $f,g: R \to \mathbb{R}$ integrables en $R$ y sea $k \in \mathbb{R}$. Entonces \\
+
+a) $\displaystyle \iint_R kf(x,y)+g(x,y) \,dA = k\iint_R f(x,y)\,dA+ \iint_R g(x,y) \,dA.$ \\ \\
+
+b) Si $f(x,y) \leq g(x,y) $, $\forall (x,y) \in R$, entonces 
+\begin{align*}
+    \displaystyle \iint_R f(x,y)\,dA \leq \iint_R g(x,y) \,dA. 
+\end{align*}
+
+c) $\displaystyle \left|\iint_R f(x,y) \,dA\right| \leq \iint_R |f(x,y)|\,dA$ \\ \\
+
+
+\section{Integrales iteradas}
+
+
+Supongamos que tenemos un campo escalar de dos variables $f (x, y )$ integrable en el rectángulo $R = [a, b] \times [c, d]$. Se usa la notación $\displaystyle \int f(x,y) dy$ para indicar que $x$ se mantiene fija y $f (x, y )$ se integra con respecto a y de $y = c$ hasta $y = d$. Este procedimiento se llama integración parcial con respecto a y. Notemos que $\displaystyle \int f(x,y) \,dy$ no es un número, es una  función que depende de $x$, se define la integral parcial respecto a $y$ como
+
+\begin{align*}
+    A(x) = \int_c^d f(x,y)dy
+\end{align*}
+
+Si ahora se integramos la funciónn $A (x)$ con respecto a $x$ desde $x = a$ hasta $x = b$, obtenemos:
+
+\begin{align*}
+    \int_a^b A(x) \,dx = \int_a^b \left[\int_c^d f(x,y)dy \right] dx
+\end{align*}
+
+La integral del lado derecho de la expresión anterior se llama integral iterada. En general, se omiten los corchetes y simplemente se escribe
+
+
+\begin{align*}
+     \int_a^b \int_c^d f(x,y)dy dx = \int_a^b \left[\int_c^d f(x,y)dy \right] dx
+\end{align*}
+
+De forma análoga podemos definir
+
+
+\begin{align*}
+     \int_c^d \int_a^b f(x,y)dx dy = \int_c^d \left[\int_a^b f(x,y)dx \right] dy
+\end{align*}
+
+La interpetación geométrica de estas integrales se puede ver en la siguiente imagen
+
+
+\newpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/iteradas.png}
+    \caption{interpetación geométrica de las integrales iteradas, se puede ver como $A(x)$ recorre todo el intervalo $[a,b]$ del eje $X$}
+    \label{fig:etiqueta}
+\end{figure}
+
+
+\textbf{Teorema (Fubini para rectángulos):} Sea $f: R \to \mathbb{R}$ integrable, donde $R =[a,b]\times [c,d]$, entonces:
+
+\begin{align*}
+    \iint_R f(x,y) dA = \int_a^b \int_c^d f(x,y)dydx = \int_c^d \int_a^b f(x,y)dx dy 
+\end{align*}
+
+Este teorema nos permite calcular cualquier integral doble sobre un rectángulo simplemente usando integrales simples. \\
+
+\textbf{Ejemplo: } Calcular la integral doble de la función $f(x,y)=x^2y$ sobre el rectángulo $R=[0,2] \times [1,3]$ .\\
+
+\textit{Solución:} Queremos calcular
+
+\begin{align*}
+    \iint_R f(x, y) \, dA = \iint_R x^2 y \, dA
+\end{align*}
+
+
+Como \( f(x, y) \) es continua en \( R \), aplicamos el Teorema de Fubini
+
+\begin{align*}
+    \iint_R x^2 y \, dA = \int_1^3 \left( \int_0^2 x^2 y \, dx \right) dy
+\end{align*}
+
+Evaluamos la integral interna
+
+\begin{align*}
+    \int_0^2 x^2 y \, dx = y \int_0^2 x^2 \, dx = y \left[ \frac{x^3}{3} \right]_0^2 = y \cdot \frac{8}{3}
+\end{align*}
+
+Ahora evaluamos la integral externa
+
+\begin{align*}
+    \int_1^3 \frac{8}{3} y \, dy &= \frac{8}{3} \int_1^3 y \, dy \\
+    &= \frac{8}{3} \left[ \frac{y^2}{2} \right]_1^3 \\
+    &= \frac{8}{3} \cdot \left( \frac{9 - 1}{2} \right) \\
+    &= \frac{32}{3}.
+\end{align*}
+
+Por lo tanto
+
+\[
+\boxed{\iint_R x^2 y \, dA = \frac{32}{3}}
+\]
+
+\textbf{Observación:} Si hubieramos calculado primero la integral respecto a $y$ y después respecto a $x$ el resultado sería el mismo. \\
+
+
+\textbf{Ejercicios para hacer en clases: } \\
+
+
+
+\textbf{Ejercicio 1: } Calcular
+\[
+\iint_{[0,1] \times [2,4]} (3x + y^2) \, dA
+\]
+
+\textbf{Respuesta:} $\displaystyle \frac{65}{3}$
+
+
+\vspace{1em}
+
+\textbf{Ejercicio 2: }Calcular
+\[
+\iint_{[1,2] \times [0,3]} x y^2 \, dA
+\]
+
+\textbf{Respuesta:}  $\displaystyle 13.5$
+
+
+\vspace{1em}
+
+\textbf{Ejercicio 3: }Calcular
+\[
+\iint_{[0,2] \times [0,1]} e^{x+y} \, dA
+\]
+
+\textbf{Respuesta:} $e^3 - e^2 - e + 1$
+
+\newpage
+
+
+\section{Integrales dobles sobre regiones más generales}
+
+A diferencia de las integrles simples que solo se aplican sobre intervalos, las integrlaes dobles pueden ser definidas en regiones más complicadas que simplemente rectángulos. Vamos a considerar dos tipos de regiones, región del tipo 1 y región del tipo 2
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Imagenes/regiones.png}
+    \caption{Tipos de regiones que vamos a considerar, la de la izquierda la llamaremos región del tipo 1 y a la de la derecha región del tipo 2}
+    \label{fig:etiqueta}
+\end{figure}
+
+\textit{Nota:} No es necesario volver a definir la integral doble pues estas regiones est\'an contenidas en un rect\'angulo grande, por lo tanto, podemos crear una nueva funci\'on que sea igual a $f$ dentro de la regi\'on y cero fuera de la regi\'on, por lo tanto solo son discontinuas en su cortono que est\'a compuesto por curvas suaves. \\
+
+
+\textbf{Región del tipo 1:} Sean $g_1(x)$ y $g_2(x)$ funciones continuas de variable real definidas sobre $[a,b]$. Las regiones del tipo 1 son de la forma
+
+\begin{align*}
+    R_x = \lbrace (x,y) \in \mathbb{R}^2 : a\leq x\leq b, g_1(x)\leq y \leq g_2(x)\rbrace
+\end{align*}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Imagenes/rx.png}
+    \caption{Región $R_x$}
+    \label{fig:etiqueta}
+\end{figure}
+
+La integral doble sobre esta región se puede calcular como
+
+\begin{align*}
+    \iint_{R_x} f(x,y) dA = \int_a^b\int_{g_1(x)}^{g_2(x)}f(x,y) dydx
+\end{align*}
+
+No vamos a demostrar este resultado. \\
+
+
+\newpage
+
+
+\textbf{Región del tipo 2:} Sean $h_1(y)$ y $h_2(y)$ funciones continuas de variable real definidas sobre $[c,d]$. Las regiones del tipo 2 son de la forma
+
+\begin{align*}
+    R_y = \lbrace (x,y) \in \mathbb{R}^2 : c\leq y\leq d, h_1(y)\leq x \leq h_2(y)\rbrace
+\end{align*}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Imagenes/ry.png}
+    \caption{Región $R_xy$}
+    \label{fig:etiqueta}
+\end{figure}
+
+La integral doble sobre esta región se puede calcular como
+
+\begin{align*}
+    \iint_{R_y} f(x,y) dA = \int_c^d\int_{h_1(x)}^{h_2(x)}f(x,y) dxdy
+\end{align*}
+
+No vamos a demostrar este resultado. \\
+
+
+\textbf{Ejercicio 1:} Calcule $\displaystyle \iint_D x^2+y^2 dA$, donde $D$ es la región limitada por $y=x^2$ e $y=\sqrt{x}$ \\
+
+\textbf{Respuesta:} Para hacer estos ejercicios es muy útil dibujar las regiones de integración, en este caso la región es la siguiente
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/rizycuadrado.png}
+    \caption{Región limitada por $y=x^2$ e $y=\sqrt{x}$}
+    \label{fig:etiqueta}
+\end{figure}
+
+Podemos ver que la variable $x$ va entre 0 y 1 mientras que la variable $y$ va entre $f(x)=x^2$ y $g(x)=\sqrt{x}$, por lo tanto tendríamos que
+
+\begin{align*}
+    \iint_{D} x^2+y^2dA &= \int_0^1\int_{x^2}^{\sqrt{x}} x^2+y^2 dydx \\
+    &= \int_0^1 x^2y+\frac{y^3}{3} \bigg|_{x^2}^{\sqrt{x}}  dx \\
+    &= \int_0^1 \left( x^2\sqrt{x}+\frac{\sqrt{x}^3}{3}- x^4-\frac{x^6}{3}\right)  dx \\
+    &= \int_0^1 \left( x^{5/2}+\frac{x^{3/2}}{3}- x^4-\frac{x^6}{3}\right)  dx \\
+    &= \left( \frac{2}{7}x^{7/2}+\frac{2}{15}x^{5/2}- \frac{x^5}{5}-\frac{x^7}{21}\right)\bigg|_{0}^{1} \\
+    &= \frac{2}{7}+\frac{2}{15}-\frac{1}{5}-\frac{1}{21} \\
+    &= \frac{6}{35}
+\end{align*}
+
+En caso de que se quiera integrar primero respecto a la variable $x$ y después respecto a la variable $y$ se tendría que calcular la siguiente integrar
+
+
+
+
+\begin{align*}
+    \iint_{D} x^2+y^2dA &= \int_0^1\int_{y^2}^{\sqrt{y}} x^2+y^2 dydx \\
+\end{align*}
+
+El resultado da lo mismo (ejercicio)\\
+
+
+\textbf{Ejercicio 2 (para el alumno):} Calcule $\displaystyle \iint_D x+2y dA$, donde $D$ es la región limitada por $y=2x^2$ e $y=1+x^2$ \\
+
+
+
+
+\textbf{Ejercicio 3: } Calcule la sigueinte integral invirtiendo el orden de integración 
+
+\begin{align*}
+    \int_0^2 \int_x^2 y^2\sin(xy)dydx
+\end{align*}
+
+Calcular esta integral de forma directa sin intercambiar los límites de integración es bastante complicado. Pra cambiar los límites tenemos que dibujar la región de integración, en este caso tenemos que la variable $x$ se mueve entre 0 y 2 mientras que la variable $y$ se mueve entre $f(x)=x$ y $g(x)=2$, la región es la siguiente
+
+\newpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Imagenes/regionii.png}
+    \caption{Región que delimita el área de integración}
+    \label{fig:etiqueta}
+\end{figure}
+
+
+Ahora tenemos que ver que valores delimitan a la variable $y$, se puede ver en la figura que $y$ está entre 0 y 2 minetras que $x$ queda atrapada entre $x=0$ y $x=y$, por lo tanto al cambiar de variable la integral sería
+
+
+\begin{align*}
+    \int_0^2 \int_0^y y^2\sin(xy)dxdy &= \int_0^2 y^2 \int_0^y \sin(xy)dxdy   \\
+    &= \int_0^2 y^2 \left( -\frac{\cos(xy)}{y}\right)\bigg|_0^y dxdy   \\
+    &= \int_0^2 y^2 \left( \frac{1}{y}-\frac{\cos(y^2)}{y}\right)dy   \\
+    &= \int_0^2 y-y\cos(y^2)dy   \\
+    &= \left(\frac{y^2}{2}-\frac{\sin(y^2)}{2}\right)\bigg|_0^2 \\
+    &= 2-\frac{\sin(4)}{2} \\
+\end{align*}
+
+
+\textbf{Ejercicio 4 (Para el alumno): } Calcule la siguiente integral invirtiendo el orden de integración 
+
+\begin{align*}
+    \int_0^1 \int_{2y}^2 \cos(x^2)dxdy
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+\end{document} 

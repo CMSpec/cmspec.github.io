@@ -1,0 +1,198 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+
+\fancyhead[L]{\includegraphics[scale=0.3]{UFT.png}}
+
+\begin{document}
+
+
+\thispagestyle{fancy}
+\vspace*{1cm}
+
+\begin{minipage}[r]{12cm}
+    \begin{flushright}
+\begin{tikzpicture}
+\draw[green, very thick] (0,0) rectangle (3,2);
+\end{tikzpicture}
+    \end{flushright}
+\end{minipage}
+
+\begin{center}
+\Large{\textbf{Control 2\\ Álgebra Lineal\\ }}
+\end{center}
+\vspace{1cm}
+\begin{minipage}[r]{15cm}
+\begin{flushleft}
+
+Fecha: 9 de noviembre de 2023 \\%
+Duración: 120 minutos  \\
+Profesores: Adrián Silva.\\\hspace{1.7cm} Camila Muñoz\\
+\end{flushleft}
+\end{minipage}
+\vspace{2cm}
+\begin{center}
+\Large{\textbf{Facultad de Ingeniería}}
+\end{center}
+\vspace{1cm}
+\textbf{En caso de que un alumno sea sorprendido en actitudes deshonestas, ya sea intentando o
+dejándose copiar, será calificado con nota mínima 1.0 y perderá toda posibilidad de eliminar
+dicha nota. Además, esta conducta quedará archivada como antecedente en su carpeta y
+podrá ser causal de eliminación.
+Así mismo, está prohibido salir de la sala, usar o mantener sobre la mesa teléfonos celulares
+o cualquier tipo de aparato electrónico, a no ser que el profesor lo requiera.}\\
+
+
+
+\vspace{5cm}
+\makebox[12cm]{\textbf{Nombre Alumno}:\ \hrulefill} 
+\newpage
+\thispagestyle{empty}
+\section*{Preguntas}
+\begin{enumerate}
+
+
+    \item Considere el conjunto $\{ ( 0 , 1 , 1 ), ( 1 , 1 , \alpha) , (\alpha , 0 , 2 )\}$.
+    \begin{enumerate}
+        \item {\bf (6 puntos)}  Determine para qu\'e valores de $\alpha$ el conjunto es li\-neal\-mente dependiente.
+        \item {\bf (6 puntos)} 
+ Determine la dimensión del espacio generado si $\alpha=2$.
+    \end{enumerate}
+   
+    
+\newpage
+
+    \item {\bf (12 puntos)} Sea $U=\{(2,1,3),(1,1,-4),(1,0,1)\}$ un conjunto de vectores en $\mathbb{R}^3$.
+    \begin{enumerate}
+    \item Determine una base para $<U>$.
+        \item Determine y justifique si los vectores $(1,-2,4)$ y $(-1,-1,4)$ pertenecen a $<U>$. En caso afirmativo, encuentre las coordenadas del vector en la base.
+    \end{enumerate}
+
+
+
+
+%    \item En $\mathbb{R}^3$ con el producto interno can\'onico obtenga los valores de $a$ y $b$ para que el vector $u=(a+2b,a+3b,2)$ sea ortogonal a 
+
+
+
+\newpage
+
+    \item Sea $H$ el subconjunto de $\mathbb{R}^3$ definido por
+\[H=\{(x,y,z)\in\mathbb{R}^3\colon x-y+z=0  \}\]
+
+\begin{enumerate}
+    \item {\bf (6 puntos)} Demuestre que $H$ es un subespacio vectorial de $\mathbb{R}^3$.
+    \item {\bf (6 puntos)} Encuentre una base de $H$ y determine su dimensión.
+
+\end{enumerate}
+
+    \newpage
+    \item En $\mathbb{ R}^3$ con p.i. canónico, considere el subespacio
+
+    \[W=<\{(1,0,2),(5,-1,0)\}>\]
+%     \item 
+     
+     \begin{enumerate}
+         \item Encuentre el complemento ortogonal $W^ \perp$.
+         \item Encuentre una base para el espacio $W+ W^\perp$. Justifique
+     \end{enumerate}
+
+
+
+
+
+    \newpage
+     \item Muestre si las siguientes funciones son aplicaciones lineales o no.
+     
+     \begin{enumerate}
+         \item {\bf (4 puntos)} $T:\mathbb{R}^2\to \mathbb{R}$, definida por $T(x,y)=x-y+xy$.
+%         \item $T:\mathbb{R}^2\to \mathbb{P}_2[x]$, definida por $T(x,y)=x-y+xy$.
+        \item {\bf (4 puntos)} $T:\mathbb{R}^2\to P_2[x]$, definida por $T(a,b)=(a+b)+(a-b)x^2$.
+        \item {\bf (4 puntos)} $T:\mathbb{R}^2\to \mathbb{R}$, definida por $T(f)=\int_a^b f(x) \: dx,$.
+     \end{enumerate}
+
+        
+   \newpage 
+
+\section*{Formulario}
+
+\begin{itemize}
+    \item {\bf Subespacio vectorial: }Si para todo $\alpha \in K$ y para todo $x, y \in H$, $\alpha x+y \in H$, entonces $H$ es subespacio vectorial.
+    \item {\bf Combinación lineal: } Un vector de la forma $v = a_1 v_1 + a_2v_2 + \cdots +a_n v_n$, donde $a_1, a_2, \dots a_n$ son escalares, se denomina una combinación lineal de $v_1, v_2, \dots , v_n$.
+\item {\bf Linealmente Dependiente e Independiente: }El conjunto $A=\{v_1, v_2, \dots, v_n\}$ es
+Linealmente Independiente (L.I.) si $ a_1 v_1 + a_2v_2 + \cdots +a_n v_n=0$ implica que $a_i=0$ para todo $i=1, \dots, n.$ En caso contrario, es linealmente dependiente (L.D.).
+\item {\bf Base: } Un conjunto $\{ v_1,v_2, \dots, v_n \}$ es una base para un espacio vectorial $V$ si $\{ v_1,v_2, \dots, v_n \}$ es linealmente independiente y genera a $V$.
+
+%\item {\bf Proyección ortogonal: }Sea $H$ un subespacio de $\mathbb{R}^n$ con base ortogonal $\{ w_1,w_2, \dots , w_k  \}$. Si $v \in \mathbb{R}^n$, entonces la proyección ortogonal de $v$ sobre $W$, denotada por $P_W(v)$, está dada por:
+%$$P_W( v) = \frac{\langle v, w_1 \rangle}{\langle w_1, w_1 \rangle}w_1 + \frac{\langle v, w_2 \rangle}{\langle w_2, w_2 \rangle}w_2 + \cdots + \frac{\langle v, w_k \rangle}{\langle w_k, w_k \rangle}w_k.$$
+%Adem\'as, $P_{W^\perp}( v)=v-P_W( v)$
+\item {\bf Suma de subespacios: }
+Sea $V$ un espacio vectorial sobre $K$ y sean $W_1, W_2$ subespacios de $V$. Definimos la suma de los subespacios $W_i$ y anotamos $W_1 + W_2$ como es subespacio
+\[\{v_1+v_2 \colon v_1\in W_1, v_2\in W_2\}.\]
+
+Adem\'as, se cumple que 
+\[\dim_K(W_1+ W_2)=\dim_K(W_1)+\dim_K(W_2)-\dim_K(W_1\cap W_2).\]
+\item {\bf Transformaciones lineales: } Transformación Lineal $T$ de $ V$ en $W$, como una función $T:V\to W$ tal que
+\begin{enumerate}
+    \item $T(v+w)=T(v)+T(w)$,
+    \item $T(\alpha v)=\alpha T(v)$,
+\end{enumerate}
+para todo $v,w\in V$, para todo $\alpha \in K$.
+\end{itemize}
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+
+\end{document}

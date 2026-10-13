@@ -1,0 +1,182 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+\title{Laboratorio 2}
+\date{}
+\fancyhead[L]{Universidad Finis Terrae \\ Facultad de Ingeniería \\ Algebra Lineal \\ 2do semestre de 2023}
+\fancyhead[R]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+
+\section*{Teor\'ia de c\'odigos}
+\vspace{0.2 cm}
+Como vimos en el laboratorio anterior, sea $H$ una matriz en $\mathcal{M}_{m \times n}(\Z_2)$, es decir, cuyas entradas
+son 0 o 1. Se denota como espacio nulo de $H$ al conjunto
+\[\operatorname{Nul}(H)=\{y\in \Z^n_2\colon Hy=0\},\]
+dicho conjunto se conoce como c\'odigo lineal. Por lo tanto, $x=(x_1,\dots, x_n)^t\in \Z^n_2$ si es una soluci\'on del sistema homog\'eneo asociado a $H$.
+
+\section*{Decodificación de Probabilidad Máxima}
+El mecanismo de codificación presentado en el Laboratorio anterior, no es una solución completa del problema, pues no toma en cuenta la posibilidad de múltiples errores. Por ejemplo, ya sea un $(000)$ o un $(111)$ se podría enviar y se podría recibir un $(001)$. No tenemos forma de decidir a partir de la palabra recibida si se cometió un solo error en el tercer bit o dos errores, uno en el primer bit y uno en el segundo. Sin importar el mecanismo de codificación usado, un mensaje incorrecto puede ser recibido. Podríamos transmitir un $(000)$, tener errores en los tres bits, y recibir la palabra $(111)$ del código. 
+
+
+Es importante explicitar las suposiciones hechas sobre la probabilidad y distribución de los errores de transmisión, de manera que en una aplicación particular, se sabrá si un cierto mecanismo de detección de errores es apropiado. 
+
+Supondremos que los errores de transmisión son infrecuentes, y, que cuando ocurren, ocurren de forma independiente en cada bit; es decir, si $p$ es la probabilidad de un error en un bit y $q$ es la probabilidad de error en otro bit, entonces la probabilidad de errores en ambos bits al mismo tiempo, es $pq$. También supondremos que una $n$-vector recibido se decodificará en la palabra del código que esté más cerca; es decir, suponemos que el receptor usa decodificación de probabilidad máxima.
+
+
+Un canal \textbf{binario simétrico} es un modelo que consiste de un transmisor capaz de enviar una señal binaria, ya sea un 0 o un 1, junto a un receptor. Sea $p$ la probabilidad de que la señal se recibe correctamente. Entonces $q=1-p$ es la probabilidad de recepción incorrecta. Si se envía un 1, entonces la probabilidad de recibir un 1 es $p$ y la probabilidad de recibir un 0 es $q$
+ (Figura \ref{simetrico}). 
+ 
+ \begin{figure}[h]
+     \centering
+     \includegraphics[scale=0.7]{2023-2/Labs/simetrico.PNG}
+     \caption{Canal binario sim\'etrico.}
+     \label{simetrico}
+ \end{figure}
+ 
+ 
+ La probabilidad de que no ocurra ningún error durante la transmisión de una palabra binaria del código de largo $n$ es $p^n$. Por ejemplo, si $p=0.999$ y se envía un mensaje consistente de 10.000 bits, entonces la probabilidad de una transmisión perfecta es
+ \[(0,999)^{10.000}\approx 0,00005.\]
+
+\section*{Distancia de Hamming}
+Sean $x=(x_1,\dots,x_n)$ e $y=(y_1,\dots,y_n)$ $n$-vectores binarios. La distancia de Hamming o distancia, $d(x,y)$, entre $x$ e $y$ es el número de bits en que $x$ e $y$ difieren. La distancia entre dos palabras del código es el mínimo número de errores de transmisión necesarios para transformar una de las palabras en la otra. La distancia mínima para un código, $d_{min}$, es el mínimo de todas las distancias $d(x,y)$, donde $x$ e $y$ son palabras distintas del código. El peso, $w(x)$, de una palabra de un código binario $x$ es el número de unos en $x$.
+ Claramente, $w(x)=d(x,0)$, donde $0=(00\dots 0)$.
+
+\section*{Chequeo de paridad}
+
+Sea $A \in \mathcal{M}_{(n-m) \times m}(\Z_2)$. La matriz $H=(A | I_{n-m})$ es una matriz en $\mathcal{M}_{(n-m) \times n}(\Z_2)$ y es conocida como matriz can\'onica de verificaci\'on de paridad. La matriz 
+
+A partir de la matriz $H$, podemos definir una matriz de orden $n\times m$ dada por $G=\left(\dfrac{I_m}{A}\right)$. La matriz $G$ es llamada matriz generadora estándar.
+
+Si $H \in \mathcal{M}_{m \times n}(\Z_2)$
+ es una matriz verificadora canónica, entonces $\operatorname{Null}(H)$ consiste de todas $x\in \Z^n_2$ las 
+ cuyos primeros $n-m$ bits son arbitrarios, pero cuyos últimos $m$ bits están determinados por $Hx=0$. Cada uno de los últimos $m$ bits sirve como control de paridad para algunos de los primeros $n-m$ bits. Luego, $H$ da lugar a un código de bloque $(n, n-m)$. Los primeros $n-m$
+ bits de 
+$x$
+ se denominan bits de información y los últimos 
+$m$
+ bits se denominan bits de verificación.
+
+\vspace{0.2 cm}
+\textbf{Problema a resolver:}
+\vspace{0.2 cm}
+
+
+
+
+
+\begin{enumerate}
+\item Si una $n$-vector binario $(x_1,\dots,x_n)$ es transmitida por un canal binario simétrico con probabilidad $p$ de que no ha ocurrido error en cada coordenada, entonces demuestre que la probabilidad de que no haya errores en exactamente $k$ coordenadas es
+\[\binom{n}{k}q^kp^{n-k}.\]
+Escriba un pequeño programa que le permita ingresar los par\'ametros $n,k$ y $p$, entregando la probabilidad anterior. 
+
+\item Calcule $d_{min}$ para el c\'odigo lineal dado por \[H=\begin{pmatrix}
+   0& 1& 0& 1& 0 \\
+    1& 1& 1& 1& 0 \\
+     0& 0& 1& 1& 1 
+\end{pmatrix},\]
+para ello calcule a mano todos los elementos del c\'odigo, resolviendo el sistema homog\'eneo.
+\item Si $H$ es una matriz can\'onica de verificaci\'on de paridad y $G$ su matriz ge\-nera\-dora estándar, demuestre que $HG=0$.
+\item Si hemos de usar un código lineal corrector de errores para transmitir los 128 caracteres ASCII, ¿qué tamaño de matriz debe usarse? ¿Qué tamaño de matriz debe usarse para transmitir el conjunto ASCII extendido de 256 caracteres? 
+\item  ¿Qué matrices son matrices verificadoras canónicas? Para aquellas matrices que sean matrices verificadoras canónicas, ¿cuáles son las correspondientes matrices generadoras estándar? %¿Cuáles son las capacidades de detección y corrección de errores de cada una de estas matrices?
+\begin{enumerate}
+    \item $H=\begin{pmatrix}
+   1& 1& 0& 0& 0 \\
+    0& 0& 1& 0& 0 \\
+     0& 0& 0& 1& 0 \\
+          1& 0& 0& 0& 1 
+\end{pmatrix}$
+\item $H=\begin{pmatrix}
+   0& 1& 1& 0& 0&0 \\
+   1& 1& 0& 1& 0& 0 \\
+   0&  1& 0& 0& 1& 0 \\
+      1&    1& 0& 0& 0& 1 
+\end{pmatrix}$
+\item $H=\begin{pmatrix}
+   0& 0& 0& 1& 0& 0&0 \\
+   0& 1& 1&0& 1& 0& 0 \\
+   1&0&  1& 0& 0& 1& 0 \\
+    0&  1&    1& 0& 0& 0& 1 
+\end{pmatrix}$
+\end{enumerate}
+\item Dada la matriz $A=\begin{pmatrix}
+   0& 1& 1 \\
+   1& 1&0 \\
+       1& 0&   1 
+\end{pmatrix}$ construya la matriz verificadora de paridad y la matriz generadora est\'andar $G$. Luego calcule $\operatorname{Null}(H)$ y compare con las im\'agenes de todos los posibles vectores $(x,y,z)\in \mathbb{Z}^3_2$. Puede usar Matlab para este proceso.
+
+\end{enumerate}
+
+
+\textbf{Aspectos formales del Laboratorio}
+{\bf{Grupos de Trabajo}:} Los grupos de trabajo estarán conformados por 3 o 4 estudiantes y
+deben ser aprobados por el profesor. Se penalizarán las modificaciones posteriores de
+estos grupos.
+\vspace*{.5cm}
+
+Todas las entregas se deben realizar en el portal e-Finis en los buzones habilitados para
+tal efecto, no se aceptan trabajos enviados por correo. 
+
+\vspace*{.5cm}
+
+\noindent{\bf{Formato de Entrega}}
+Se deben entregar los documentos en PDF (en caso contrario no se corregirá el informe)
+en formato \LaTeX o con el formato entregado por su profesor.
+
+
+
+{\bf{NOTA}}
+La copia y/o plagio serán sancionados de acuerdo a lo estipulado en el Reglamento de la
+Universidad.
+\end{document}

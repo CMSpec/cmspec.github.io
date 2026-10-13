@@ -1,0 +1,361 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+%\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[all]{xy}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{amsthm}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usetikzlibrary{matrix}
+\usetikzlibrary{cd}
+
+\usepackage[autostyle=true]{csquotes}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}{Lemma}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\Rn}{\mathbb{R}^n}
+
+
+\newcommand{\too}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\hookar}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\colim}[1]{ \underset{#1}{\texttt{colim}} \text{ } }
+\newcommand{\fset}[1]{ \{ #1_0 , \dots , #1_n \} }
+\newcommand{\ddt}{\frac{d}{dt}}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+
+
+
+\fancyhead[L]{\includegraphics[scale=0.1]{UFT.png}}
+
+\begin{document}
+
+
+\thispagestyle{fancy}
+\vspace*{1cm}
+
+\begin{minipage}[r]{12cm}
+    \begin{flushright}
+\begin{tikzpicture}
+\draw[green, very thick] (0,0) rectangle (3,2);
+\end{tikzpicture}
+    \end{flushright}
+\end{minipage}
+
+\begin{center}
+\Large{\textbf{Control 1\\ Cálculo Vectorial\\ }}
+\end{center}
+\vspace{1cm}
+\begin{minipage}[r]{15cm}
+\begin{flushleft}
+
+Fecha: 10 de septiembre 2025 \\%
+Duración: 120 minutos  \\
+
+\end{flushleft}
+\end{minipage}
+\vspace{2cm}
+\begin{center}
+\Large{\textbf{Facultad de Ingeniería}}
+\end{center}
+\vspace{1cm}
+\setlength{\parindent}{0cm}
+“Es deber de cada alumno mantener una actitud moral y éticamente intachable en el transcurso de toda evaluación” \\
+
+En caso de que un alumno sea sorprendido en actitudes deshonestas ya sea intentando o
+dejándose copiar, será calificado con la nota mínima (1.0) y perderá toda posibilidad de
+eliminar dicha nota. Esta conducta quedará archivada como antecedente en su carpeta y podrá
+constituir causal de eliminación. Asimismo, está \textbf{prohibido salir de la sala, usar o tener
+teléfonos celulares (en bolsillos o sobre las mesas)} o cualquier tipo de aparato electrónico,
+tales como audífonos, smartwatch, entre otros, a no ser que el profesor lo autorice.\\
+
+
+Escala al $60\%$ \\
+
+Puntaje para un 4.0: 36 puntos
+
+
+\vspace{3cm}
+\makebox[12cm]{\textbf{Nombre Alumno}:\ \hrulefill} 
+\newpage
+\thispagestyle{empty}
+
+\setlength{\parindent}{0cm}
+
+\textbf{Ejercicio 1 \textbf{(12 puntos)}:} Responda las siguientes preguntas \\
+
+
+a) Determine la ecuación general del plano que pasa por el punto $(1,2,0)$ y que contiene a la recta de ecuación vectorial $L_1: (2,-1,3)+t(t,0,-2)$. \\
+
+ 
+
+c) Demuestre que el plano  encontrado en a) es perpendicualr a la recta $L_1$ de ecuación general 
+
+\begin{align*}
+    \frac{x+1}{3} = \frac{2y-3}{5} =\frac{2z+3}{3}
+\end{align*}
+
+
+\textbf{Solución: }a) Para esto tomamos dos puntos en la recta, usamos $t=0$ y $t=1$, obtenemos los puntos $(2,-1,3)$ y $(3,-1,1)$, luego creamos los dos vectores directores restando estos puntos con el punto $(1,2,0)$
+
+\begin{align*}
+    v_1 &= (2,-1,3)- (1,2,0) = (1,-3,3)\\
+    v_2 &= (3,-1,1)- (1,2,0) = (2,-3,1)\\
+\end{align*}
+
+Ahora creamos el producto cruz entre estos dos vectores
+
+\begin{align*}
+    \begin{vmatrix}
+        i & j & k \\
+        1 & -3 & 3 \\
+        2 & -3 & 1 
+    \end{vmatrix} &= (6,5,3)
+\end{align*}
+
+Este es el vector normal del plano, la ecaución general del plano será
+
+\begin{align*}
+    (6,5,3) \cdot ((x,y,z)-(1,2,0)) &=0  \\
+    (6,5,3) \cdot (x-1,y-2,z) &=0 \\
+    6(x-1)+5(y-2)+3z &=0 \\
+    6x+5y+3z-16 &=0
+\end{align*}
+
+
+b) La recta es
+
+
+\begin{align*}
+    \frac{x+1}{3} = \frac{y-3/2}{\frac{5}{2}}=\frac{z+3/2}{\frac{3}{2}}
+\end{align*}
+
+Su vector director es $\displaystyle \left( 3, \frac{5}{2}, \frac{3}{2}\right)$, podemos ver que
+
+\begin{align*}
+    2\left( 3, \frac{5}{2}, \frac{3}{2}\right) = (6,5,3)
+\end{align*}
+
+Es decir, el vector director de la recta es paralelo al vector normal del plano y esto demuestra que la recta es perpendicular al plano
+
+
+
+
+
+\newpage
+
+\textbf{Ejercicio 2 \textbf{(12 puntos)}:} Considere el cilindro $x^2+y^2=9$ y el plano $x-y+z-4=0$, encuentre una parametrización $r(t)$ de la intersección de estas dos superfices. Luego, determine un punto de esta curva de modo que su recta tangente en este punto sea paralela a la recta $L: \lbrace (x,y,z): y=z \rbrace$ \\
+
+
+\textbf{Solución: }La parametrización del cilindro es $x=3\cos(t)$ e $y=3\sin(t)$, reemplazando esto en el plano, obtenemos
+
+\begin{align*}
+    3\cos(t)-3\sin(t)+z-4 &=0 \\
+    z=3\sin(t)+4-3\cos(t)
+\end{align*}
+
+La curva será
+
+\begin{align*}
+    r(t) = (3\cos(t), 3\sin(t), 3\sin(t)+4-3\cos(t)) 
+\end{align*}
+
+Luego
+
+\begin{align*}
+    r´(t) = (-3\sin(t), 3\cos(t), 3\cos(t)+3\sin(t)) 
+\end{align*}
+
+Ahora bien, la recta tiene como vector director $(0,1,1)$, ahora bien $r'\left( 0\right) = (0,3,3)$, podemos ver que $(0,3,3)=3(0,1,1)$ y por lo tanto son paralelos.
+
+
+
+
+
+
+\newpage
+
+
+\textbf{Ejercicio 3 \textbf{(12 puntos)}:} Sea
+
+\begin{align*}
+    y=50+20\sqrt{x}-5x
+\end{align*}
+
+Calcule la curvatura $\mathcal{K}$ cuando $x=9/4$. Luego indique la magnitud del radio de esta curvatura en ese punto \\
+
+\textbf{Respuesta: } La parametrización de la curva viene dada por
+
+\begin{align*}
+    r(t) = (t,50+20\sqrt{t}-5t,0)
+\end{align*}
+
+
+tenemos
+
+
+\begin{align*}
+    r'(t) = \left( 1,\frac{10}{\sqrt{t}}-5,0 \right)
+\end{align*}
+
+\begin{align*}
+    r''(t) = \left( 0,-\frac{5}{t^{3/2}},0 \right)
+\end{align*}
+
+
+Evaluamos todo en $9/4$
+
+\begin{align*}
+    r\left( \frac{9}{4} \right) &= \left( \frac{9}{4},50+30-\frac{45}{4},0 \right) \\
+    &= \left( \frac{9}{4},\frac{275}{4},0 \right) \\
+\end{align*}
+
+
+\begin{align*}
+    r' \left( \frac{9}{4} \right) &= \left( 1,\frac{20}{3}-5,0 \right) \\
+    &= \left( 1,\frac{5}{3},0 \right)\\
+\end{align*}
+
+
+\begin{align*}
+    r'' \left( \frac{9}{4} \right)  &= \left( 0,-\frac{40}{27},0 \right)\\
+\end{align*}
+
+Luego
+
+\begin{align*}
+    \mathcal{K} &= \frac{|| \left( 1,\frac{5}{3},0 \right) \times \left( 0,-\frac{40}{27},0 \right)|| }{||\left( 1,\frac{5}{3},0 \right) ||^3} \\
+    &= \frac{20}{17\sqrt{34}}
+\end{align*}
+
+El radio de curvatura es
+
+
+\begin{align*}
+    \mathcal{R}&= \frac{17\sqrt{34}}{20}
+\end{align*}
+
+
+
+
+
+
+\newpage
+
+
+\textbf{Ejercicio 4 \textbf{(12 puntos)}:} Determine el valor de $\lambda > 0$ tal que la función
+
+\begin{align*}
+    f(x,y) &= \left\{ \begin{array}{lcc} \frac{5x}{\sqrt{x^2+\lambda y^2}} & si & (x,y) \neq (0,0) \\ \\ 0 & si & (x,y)=(0,0)\end{array} \right.
+\end{align*}
+
+En el punto $(0,0)$ \\
+
+\textbf{Solución: } Calulamos
+
+\begin{align*}
+    \lim_{(x,y) \to (0,0)}  \frac{5x}{\sqrt{x^2+\lambda y^2}} 
+\end{align*}
+
+Pasamos a polares
+
+
+\begin{align*}
+    \lim_{(x,y) \to (0,0)}  \frac{5x}{\sqrt{x^2+\lambda y^2}} &= \lim_{\rho\to 0}   \frac{5\rho \cos(\theta)}{\sqrt{\rho^2\cos^2(\theta)+\lambda \rho^2\sin^2(\theta)}} \\
+    &= \lim_{\rho\to 0}   \frac{5\rho \cos(\theta)}{\rho\sqrt{\cos^2(\theta)+\lambda \sin^2(\theta)}} \\
+    &= \lim_{\rho\to 0}   \frac{5\cos(\theta)}{\sqrt{\cos^2(\theta)+\lambda \sin^2(\theta)}} \\
+\end{align*}
+
+Podemos ver que el límite siempre depende de $\theta$ para $\lambda > 0$, por lo tanto el límite nunca existe. \\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\textbf{Ejercicio 5 \textbf{(12 puntos)}:} Considere la fucnión
+
+\begin{align*}
+    f(x,y) = x\sin(x^2+y^2)
+\end{align*}
+
+Determine la ecuación del plano tangente a esta curva en el punto $\displaystyle P \left( \sqrt{\frac{\pi}{2}}, - \sqrt{\frac{\pi}{2}}, 0 \right)$ \\
+
+\textbf{Respuesta: } Calculamos las derivadas parciales
+
+\begin{align*}
+    f_x = \sin(x^2+y^2) +2x^2\cos(x^2+y^2)
+\end{align*}
+
+\begin{align*}
+    f_y = 2xy\cos(x^2+y^2)
+\end{align*}
+
+Evaloamos en $P$
+
+\begin{align*}
+    f_x (P) = -\pi
+\end{align*}
+
+\begin{align*}
+    f_y(P) = \pi
+\end{align*}
+
+Luego, la ecuación del plano tangente será
+
+\begin{align*}
+    z &= -\pi \left( x-\sqrt{\frac{\pi}{2}}\right) +\pi \left( y+\sqrt{\frac{\pi}{2}}\right) \\
+    &= -\pi x+ \pi y+2\pi\sqrt{\frac{\pi}{2}} \\
+\end{align*}
+
+La ecuaicón general será
+
+\begin{align*}
+    \pi x - \pi y +z -2\pi\sqrt{\frac{\pi}{2}} =0
+\end{align*}
+
+
+
+\end{document}
