@@ -3,11 +3,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { sitePath } from "../../../lib/site-path";
+import type { CourseFeedbackContext } from "../../../lib/course-feedback";
+import CourseFeedback from "./CourseFeedback";
 
 export type CourseIndexItem = { href: string; label?: string; title: string };
 export type CourseIndexUnit = { href: string; items?: CourseIndexItem[]; number: string; title: string };
 
-export default function CourseIndex({ note, units }: { note?: string; units: CourseIndexUnit[] }) {
+export default function CourseIndex({ course, note, units }: { course: CourseFeedbackContext; note?: string; units: CourseIndexUnit[] }) {
   const root = useRef<HTMLElement>(null);
   const topics = useMemo(() => units.flatMap(unit => (unit.items?.length ? unit.items : [unit]).map((item, i) => ({ ...item, unit: unit.title, number: unit.number + "." + (i + 1) }))), [units]);
   const [selection, setSelection] = useState<{ index: number; element: HTMLElement } | null>(null);
@@ -56,13 +58,14 @@ export default function CourseIndex({ note, units }: { note?: string; units: Cou
       <>
         <a className="topic-back" href={sitePath("/aprender")}>← Todos los cursos</a>
         <header className="topic-index-heading"><p>ELIGE POR DÓNDE EMPEZAR</p><h2>Temario del curso</h2><p>{units.length} unidades · {topics.length} minicapítulos. Abre un tema y avanza a tu ritmo.</p></header>
+        <CourseFeedback course={course} />
         <div className="topic-unit-grid">{units.map(unit => <section className="topic-unit-card" key={unit.href}>
           <header><span>{unit.number}</span><h3>{unit.title}</h3></header>
           <ol>{(unit.items?.length ? unit.items : [unit]).map((item, i) => <li key={item.href}><a href={item.href}><span className="topic-number">{unit.number}.{i + 1}</span><span>{item.title}</span><span aria-hidden="true">→</span></a></li>)}</ol>
         </section>)}</div>
         {note && <p className="topic-index-note">{note}</p>}
       </>}
-    {selection && createPortal(<><a className="topic-exercise-button" href={sitePath("/ejercicios")}>Ir a Ejercitación <span aria-hidden="true">→</span></a><nav className="topic-pagination" aria-label="Continuar el curso">
+    {selection && createPortal(<><a className="topic-exercise-button" href={sitePath("/ejercicios")}>Ir a Ejercitación <span aria-hidden="true">→</span></a><CourseFeedback course={course} topic={current!} /><nav className="topic-pagination" aria-label="Continuar el curso">
       {previous ? <a href={previous.href}><small>← ANTERIOR</small><span>{previous.title}</span></a> : <a href="#temario"><small>← VOLVER</small><span>Temario del curso</span></a>}
       {next ? <a className="topic-next" href={next.href}><small>SIGUIENTE →</small><span>{next.title}</span></a> : <a className="topic-next" href="#temario"><small>FIN DEL RECORRIDO ✓</small><span>Volver al temario →</span></a>}
     </nav></>, selection.element)}

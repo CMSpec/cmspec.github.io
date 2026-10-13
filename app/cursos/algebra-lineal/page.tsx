@@ -231,7 +231,7 @@ export default function LinearAlgebraCoursePage() {
       </article>
 
       <div className="course-article-layout">
-        <CourseIndex units={indexUnits} note={course.note} />
+        <CourseIndex course={{ title: course.title, slug: "algebra-lineal" }} units={indexUnits} note={course.note} />
 
         <section className="course-reader" aria-labelledby="course-reader-title">
           <header className="reader-heading">

@@ -49,6 +49,9 @@ jobs:
       - name: Verificar el documento del curso
         run: pnpm run test:pdf
 
+      - name: Verificar los enlaces para reportar errores
+        run: pnpm run test:feedback
+
       - name: Empaquetar el sitio
         uses: actions/upload-pages-artifact@v3
         with:

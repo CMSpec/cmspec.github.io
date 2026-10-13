@@ -64,7 +64,7 @@ export default function DifferentialEquationsCoursePage() {
       </article>
 
       <div className="course-article-layout">
-        <CourseIndex units={indexUnits} />
+        <CourseIndex course={{ title: course.title, slug: "ecuaciones-diferenciales" }} units={indexUnits} />
 
         <section className="course-reader" aria-labelledby="edo-reader-title">
           <header className="reader-heading">

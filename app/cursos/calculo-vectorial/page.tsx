@@ -126,7 +126,7 @@ export default function VectorCalculusCoursePage() {
       </article>
 
       <div className="course-article-layout">
-        <CourseIndex units={indexUnits} />
+        <CourseIndex course={{ title: course.title, slug: "calculo-vectorial" }} units={indexUnits} />
 
         <section className="course-reader" aria-labelledby="vector-reader-title">
           <header className="reader-heading">

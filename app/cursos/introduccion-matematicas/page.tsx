@@ -39,7 +39,7 @@ export default function IntroductoryMathematicsPage() {
       <div className="course-meta"><div><span>COLECCIÓN</span><strong>CMSpec · Aprender</strong></div><div><span>CONTENIDO</span><strong>{chapters.length} unidades · {practiceCount} prácticas guiadas</strong></div><div><span>PUNTO DE PARTIDA</span><strong>Aritmética y operaciones con fracciones</strong></div></div>
     </article>
     <div className="course-article-layout">
-      <CourseIndex units={units} note="Sigue las unidades en orden o consulta una sección. Intenta cada ejercicio antes de abrir su pista y solución."/>
+      <CourseIndex course={{ title: "Introducción a las Matemáticas", slug: "introduccion-matematicas" }} units={units} note="Sigue las unidades en orden o consulta una sección. Intenta cada ejercicio antes de abrir su pista y solución."/>
       <section className="course-reader" aria-labelledby="intro-reader-title">
         <header className="reader-heading"><p>APRENDER DESDE LOS FUNDAMENTOS</p><h2 id="intro-reader-title">Del lenguaje a las ideas.</h2><p>Un curso de fundamentos y álgebra, con conceptos, ejemplos desarrollados y ejercicios con ayuda progresiva. Todo el contenido se estudia aquí mismo.</p></header>
         <div className="differential-visual-note"><span>RUTA DE APRENDIZAJE</span><strong>comprender → representar → resolver → comprobar</strong><p>Lee la idea, explora un ejemplo y ensaya una respuesta propia. Las pistas y las soluciones se abren por separado.</p></div>

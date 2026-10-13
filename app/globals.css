@@ -1845,6 +1845,13 @@ footer { padding: 45px clamp(24px, 7vw, 108px); display: grid; grid-template-col
 .topic-unit-card a:hover { color: var(--blue); background: #f2f7f6; }
 .topic-number { color: var(--muted); font: 11px var(--font-geist-mono); }
 .topic-index-note { margin-top: 28px; color: var(--muted); line-height: 1.7; }
+.course-feedback { margin: 24px 0 30px; }
+.course-feedback-button { display: inline-flex; max-width: 100%; flex-direction: column; gap: 5px; padding: 15px 20px; border: 1px solid #9ebeb8; border-radius: 10px; background: #edf6f5; color: #12343d; text-decoration: none; line-height: 1.5; }
+.course-feedback-button strong { font-size: 16px; }
+.course-feedback-button > span { font-size: 14px; }
+.course-feedback-button:hover { background: #deeeeb; border-color: var(--blue); }
+.course-feedback-button:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.course-feedback p { margin: 8px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
 .topic-reading-bar { max-width: 850px; margin: 0 auto 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; }
 .topic-reading-bar span { color: var(--muted); }
 .topic-pagination { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 48px 0 20px; padding-top: 25px; border-top: 1px solid var(--line); }

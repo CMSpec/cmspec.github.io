@@ -56,7 +56,7 @@ export default function DifferentialCalculusPage() {
         </div>
       </article>
       <div className="course-article-layout">
-        <CourseIndex units={indexUnits} note={differentialCalculusCourse.note} />
+        <CourseIndex course={{ title: differentialCalculusCourse.title, slug: "calculo-diferencial" }} units={indexUnits} note={differentialCalculusCourse.note} />
         <section className="course-reader" aria-labelledby="differential-reader-title">
           <header className="reader-heading"><p>APUNTES COMPLETOS</p><h2 id="differential-reader-title">El cambio, paso a paso.</h2><p>Abre una unidad para consultar conceptos, teoremas, ejemplos resueltos y ejercicios.</p></header>
           <div className="differential-visual-note"><span>IDEA CENTRAL</span><strong>secante → tangente</strong><p>La derivada nace al observar cómo cambia una función en intervalos cada vez más pequeños.</p></div>
