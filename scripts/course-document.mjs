@@ -61,6 +61,13 @@ export function createCourseDocument(source, { date, css, mathCss, slug = "intro
   });
   $(".summation-diagram-narrow").remove();
   if (!introductory) prepareCourseVisuals($, courseUrl);
+  // The additional worked exercises must not remain collapsed in the download.
+  $(".reading-chapters details").each((_, element) => {
+    const help = $(element);
+    const title = help.children("summary").text();
+    help.children("summary").remove();
+    help.replaceWith(`<section class="document-exercise-help"><h6>${escapeHtml(title)}</h6>${help.html()}</section>`);
+  });
   const body = $(".reading-chapters").html();
   const editorial = $(".intro-editorial-note").html() || `<h3>Sobre estos apuntes</h3><p>${escapeHtml(author)}</p><p>Esta edición se genera automáticamente a partir del contenido publicado en CMSpec. Consulta la versión web para acceder a los laboratorios y a las actualizaciones.</p>`;
   const readingIntro = introductory ? $(".intro-manuscript-intro").html().replace("Solo las pistas y las soluciones de las prácticas se abren por separado.", "En esta edición, las pistas y las soluciones de las prácticas se consultan al final del documento.") : `<p>${escapeHtml($(".course-deck").text())}</p>${$(".course-reader > .reader-heading p").last().prop("outerHTML") || ""}<p>Las prácticas de cierre incluyen pistas y soluciones al final. Los ejemplos resueltos y las demostraciones se conservan junto a la teoría. Usa el índice para ir a cada minicapítulo.</p>`;

@@ -11,7 +11,7 @@ const doc = load(html);
 
 test("el PDF conserva todas las unidades, temas, introducciones y notas", () => {
   assert.equal(doc(".document-chapter").length, original(".reading-chapter").length);
-  for (const selector of [".chapter-section", ".intro-source-opening", ".intro-handwritten-note", ".partial-fraction-case", ".partial-fraction-exercises li"]) {
+  for (const selector of [".chapter-section", ".intro-source-opening", ".intro-handwritten-note", ".partial-fraction-case", ".partial-fraction-exercises li", ".intro-supplement", ".intro-supplement-diagram"]) {
     assert.equal(doc(selector).length, original(selector).length, selector);
     original(selector).each((i, element) => {
       // All editorial prose is retained, including math; formulas are re-rendered.
@@ -44,6 +44,7 @@ test("las 64 prácticas enlazan a sus propias pistas y soluciones al final", () 
     assert.equal(doc(`#${id} .intro-practice a`).attr("href"), `#ayudas-${id}`);
   });
   assert.equal(doc("details, button, input, select, script").length, 0);
+  assert.equal(doc(".document-exercise-help").length, 17 * 4 + 4 * 2);
 });
 
 test("índice, enlaces y gráficos estáticos están completos", () => {

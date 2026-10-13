@@ -19,7 +19,8 @@ test("los complementos de LaTeX se leen en el tema correspondiente, sin enlaces 
       for (const p of item.paragraphs) for (const m of p.matchAll(/\$([^$]+)\$/g)) katex.renderToString(m[1], { throwOnError: true, strict: "error" });
     }
   }
-  assert.doesNotMatch(page, /href="[^"]*\.pdf/);
+  const pdfLinks = [...page.matchAll(/href="([^"]*\.pdf)"/g)].map(match => match[1]);
+  assert.ok(pdfLinks.every(href => href === "/descargas/introduccion-matematicas.pdf"));
   assert.ok(page.includes("se divide el cociente obtenido por b; el resto no cambia"));
 });
 

@@ -44,7 +44,7 @@ td,th { border: 1px solid #a8bfc4; padding: 2mm; text-align: center; }
 thead { background: #eef4f5; }
 caption { text-align: left; font-weight: bold; }
 .partial-fraction-case { break-inside: avoid; }
-.partial-fraction-exercises { columns: 2; column-gap: 12mm; }
+.partial-fraction-exercises { columns: 1; }
 .partial-fraction-exercises .course-math { text-align: left; }
 .partial-fraction-exercises li { break-inside: avoid; }
 figure { margin: 5mm 0; break-inside: avoid; }
@@ -52,6 +52,9 @@ figcaption { font-size: 9pt; margin-top: 3mm; }
 svg { display: block; width: 100%; height: auto; max-height: 95mm; margin: 3mm auto; }
 .intro-complex-figure svg { max-width: 100mm; }
 .intro-complex-figure svg text { font: 14px Arial,sans-serif; fill: currentColor; }
+.intro-supplement-diagram svg text { font: 18px Arial,sans-serif; fill: currentColor; }
+.document-exercise-help { margin: 3mm 0; }
+.document-exercise-help h6 { margin-bottom: 2mm; }
 .intro-explorer { margin: 5mm 0; }
 .intro-explorer > svg { max-width: 95mm; }
 .function-notation-diagram svg { max-height: 80mm; }
