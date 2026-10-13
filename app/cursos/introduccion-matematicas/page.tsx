@@ -16,11 +16,11 @@ import { ComplexDiagrams } from "./ComplexDiagrams";
 import SyntheticDivisionExplorer from "./SyntheticDivisionExplorer";
 import SummationDefinitionDiagram from "./SummationDefinitionDiagram";
 import PartialFractionsGuide from "./PartialFractionsGuide";
+import MathText from "./IntroMathText";
+import IntroSupplements from "./IntroSupplements";
+import IntroSupplementDiagrams from "./IntroSupplementDiagrams";
 
 export const metadata: Metadata = { title: "Introducción a las Matemáticas | CMSpec", description: "Lógica, conjuntos, ecuaciones, funciones, trigonometría, vectores, inducción, sumatorias, complejos, polinomios y geometría analítica. Teoría y ejercicios guiados dentro del curso." };
-function MathText({text}: {text:string}) {
-  return <>{text.split(/(\$[^$]+\$)/g).map((part,i) => part.startsWith("$") && part.endsWith("$") ? <span key={i} className="course-inline-math" dangerouslySetInnerHTML={{__html:katex.renderToString(part.slice(1,-1),{output:"mathml",throwOnError:true})}}/> : part)}</>;
-}
 const names = {definition:"Definición",example:"Ejemplo",remark:"Observación"};
 const styles = {definition:"defin",example:"ejem",remark:"rmk"};
 const chapters = [...introductoryChapters, ...introductoryAlgebraExtension];
@@ -62,7 +62,7 @@ export default function IntroductoryMathematicsPage() {
                 <aside className="synthetic-observations" aria-label="Observaciones sobre la división sintética">
                   <h5>Observaciones sobre la división sintética</h5>
                   <ol>
-                    <li><strong>El divisor debe tener grado 1.</strong><p>El método mostrado se aplica directamente a divisores de la forma <MathText text={String.raw`$x-a$`}/>. No usamos esta tabla para un divisor de grado 2 o mayor. Si el divisor es lineal pero su coeficiente principal no es 1, hay que ajustar el procedimiento.</p></li>
+                    <li><strong>El divisor debe tener grado 1.</strong><p>El método mostrado se aplica directamente a divisores de la forma <MathText text={String.raw`$x-a$`}/>. No usamos esta tabla para un divisor de grado 2 o mayor. Para un divisor <MathText text={String.raw`$b(x-a)$, con $b\ne0$`}/>, se divide el cociente obtenido por b; el resto no cambia. El número que se coloca a la izquierda es la raíz a del divisor, no su coeficiente de x.</p></li>
                     <li><strong>El resto siempre es un número, incluido el cero.</strong><p>Por el algoritmo de la división, el resto es cero o tiene grado menor que el divisor. Como el divisor tiene grado 1, el resto no puede contener términos con x: es una constante. En la animación, el resto es 7.</p></li>
                     <li><strong>La fila inferior permite leer el cociente.</strong><p>El último número es el resto; todos los anteriores son los coeficientes del cociente, en orden de potencias decrecientes. Si el dividendo tiene grado n ≥ 1, el cociente tiene grado n − 1. Aquí, de <MathText text={String.raw`$2,1,6\mid7$`}/> obtenemos <MathText text={String.raw`$q(x)=2x^2+x+6$`}/>: grado 2, uno menos que el grado 3 del dividendo.</p></li>
                     <li><strong>¿Qué obtenemos al evaluar el polinomio en 2?</strong><p>El algoritmo de la división nos dice que <MathText text={String.raw`$p(x)=(x-2)q(x)+7$`}/>. Sustituimos x por 2 en esta igualdad:</p><p className="synthetic-evaluation"><MathText text={String.raw`$p(2)=(2-2)q(2)+7=0\cdot q(2)+7=7$.`}/></p><p>Al evaluar en 2 obtenemos 7, el mismo número que quedó como resto. Esta coincidencia es un hecho general que explicaremos en el siguiente tema.</p></li>
@@ -74,6 +74,8 @@ export default function IntroductoryMathematicsPage() {
                 <h5>{note.title}</h5>
                 <div className="intro-note-body">{note.steps.map((step,l)=><p key={l}><MathText text={step}/></p>)}{note.correction && <p className="intro-note-correction"><strong>Observación: </strong>{note.correction}</p>}</div>
               </section>)}</div>}
+              <IntroSupplements section={`${chapter.slug}-${j+1}`}/>
+              <IntroSupplementDiagrams section={`${chapter.slug}-${j+1}`}/>
               <div className="intro-practice"><p className="practice-label">PRÁCTICA · {i+1}.{j+1}</p><p><MathText text={section.exercise}/></p><details><summary>Ver pista</summary><p><MathText text={section.hint}/></p></details><details><summary>Ver solución</summary><p><MathText text={section.solution}/></p></details></div>
             </section>)}
           </article>

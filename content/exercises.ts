@@ -1,6 +1,7 @@
 import { additionalCourseExercises } from "./additional-course-exercises.ts";
 import { overleafExercises } from "./overleaf-exercises.ts";
 import { separateExercises, splitPlans } from "./split-exercises.ts";
+import { introSupplementaryExercises } from "./intro-supplementary-exercises.ts";
 
 export type ExerciseDifficulty = "Inicial" | "Intermedio" | "Desafío" | "Sin clasificar";
 
@@ -218,6 +219,7 @@ export const exercises: Exercise[] = [
   },
   ...additionalCourseExercises,
   ...separateExercises(overleafExercises),
+  ...introSupplementaryExercises,
 ];
 
 export const exerciseGroups = overleafExercises.filter(e => splitPlans[e.slug.split("-").at(-1)!]);

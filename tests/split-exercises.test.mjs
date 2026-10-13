@@ -4,10 +4,11 @@ import {exercises,getExerciseParts,exerciseGroups} from '../content/exercises.ts
 import {overleafExercises} from '../content/overleaf-exercises.ts';
 import {splitPlans,separateExercises} from '../content/split-exercises.ts';
 import {generatePracticeTest,topicKey} from '../lib/practice-test.ts';
+import {introSupplementaryExercises} from '../content/intro-supplementary-exercises.ts';
 
 test('cada grupo revisado se convierte en tarjetas con enunciado y solución propios',()=>{
   assert.equal(exerciseGroups.length,50);
-  assert.equal(exercises.length,336);
+  assert.equal(exercises.length,336 + introSupplementaryExercises.length);
   for(const parent of exerciseGroups){
     const children=getExerciseParts(parent.slug);
     assert.equal(children.length,parent.statement.filter(s=>/^\d+\./.test(s)).length);
