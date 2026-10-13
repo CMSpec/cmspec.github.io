@@ -13,6 +13,9 @@ export function createCourseDocument(source, { date, css, mathCss, slug = "intro
   const courseUrl = `https://cmspec.github.io/cursos/${slug}/`;
   const introductory = slug === "introduccion-matematicas";
   const courseTitle = $(".course-masthead h1").text();
+  // Share the website's contact address and prepared message with the PDF.
+  const feedbackHref = $(".course-masthead .course-feedback-button").first().attr("href");
+  if (!feedbackHref?.startsWith("mailto:")) throw new Error(`Falta el enlace para reportar errores: ${slug}`);
   const author = $(".course-meta > div").filter((_, el) => /^AUTOR/.test($(el).find("span").text())).find("strong").text() || "Camila Muñoz Santander";
   const chapters = $(".reading-chapter");
   if (!chapters.length || !courseTitle) throw new Error(`No se encontró el curso completo: ${slug}`);
@@ -78,7 +81,9 @@ export function createCourseDocument(source, { date, css, mathCss, slug = "intro
       <p>${chapters.length} unidades · ${expectedPracticeCount} prácticas guiadas</p>
       <div class="cover-note"><p>Teoría, introducciones, observaciones y ejemplos desarrollados. Las pistas y soluciones de las prácticas están reunidas al final.</p>
       <p>Los diagramas disponibles se presentan como ejemplos estáticos. Los modelos 3D y laboratorios que necesitan interacción se consultan mediante enlaces a la web. El banco independiente de Ejercitación se consulta por separado.</p>
-      <p><a href="${courseUrl}">cmspec.github.io/cursos/${slug}/</a></p></div></section>
+      <p><a href="${courseUrl}">cmspec.github.io/cursos/${slug}/</a></p>
+      <p class="document-feedback"><a href="${escapeHtml(feedbackHref)}"><strong>¿Encontraste algún error?</strong> Ayúdanos a mejorar estos apuntes.</a><br>
+      <span>El enlace abre un correo con el nombre de este curso. Indica la página o el tema.</span></p></div></section>
     <nav class="toc" aria-label="Índice"><h2>Índice</h2><p>Cada título lleva al tema correspondiente.</p>${contents.join("")}<p><a href="#ayudas">Pistas y soluciones de las prácticas</a></p><p><a href="#bibliografia">Sobre el curso y bibliografía</a></p></nav>
     <section class="reading-intro"><h2>Cómo usar estos apuntes</h2>${readingIntro}</section>
     ${body}

@@ -17,6 +17,8 @@ li { margin-bottom: 2mm; } ul,ol { padding-left: 6mm; }
 .subtitle { font-size: 22pt; margin-bottom: 24mm; }
 .author { font-size: 16pt; }
 .cover-note { margin-top: 20mm; border-top: 1px solid #cbd8dc; padding-top: 6mm; font-size: 10pt; }
+.document-feedback { margin-top: 5mm; font: 9pt/1.55 Arial, sans-serif; break-inside: avoid; }
+.document-feedback span { color: #53666c; }
 .toc { break-after: page; }
 .toc-unit { break-inside: avoid; }
 .toc ol { list-style: none; padding: 0; }

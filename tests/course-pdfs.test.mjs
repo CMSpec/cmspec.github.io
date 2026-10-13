@@ -45,6 +45,22 @@ for (const slug of courseSlugs) {
     });
   });
 
+  test(`${slug}: la portada incluye el mismo enlace de contacto que el curso`, () => {
+    const rendered = load(readFileSync(`out/descargas/${slug}.html`, "utf8"));
+    const expectedHref = original(".course-masthead .course-feedback-button").first().attr("href");
+    for (const document of [doc, rendered]) {
+      const feedback = document(".cover .document-feedback a");
+      assert.equal(feedback.length, 1);
+      assert.match(feedback.text(), /¿Encontraste algún error\? Ayúdanos a mejorar estos apuntes\./);
+      assert.equal(feedback.attr("href"), expectedHref);
+      const url = new URL(feedback.attr("href"));
+      assert.equal(url.protocol, "mailto:");
+      assert.equal(url.pathname, "camila.mspec@gmail.com");
+      assert.equal(url.searchParams.get("subject"), `Corrección de apuntes · ${original("h1").text()}`);
+      assert.ok(url.searchParams.get("body").includes(`https://cmspec.github.io/cursos/${slug}/`));
+    }
+  });
+
   test(`${slug}: conserva el texto de los apuntes y elimina controles sin función en papel`, () => {
     const normalize = text => text.replace(/\s+/g, " ").trim();
     const target = load(html);
